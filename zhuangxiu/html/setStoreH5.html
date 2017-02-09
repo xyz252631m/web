@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>装修页</title>
+	<link rel = "stylesheet" type = "text/css" href = "../css/base.css?v=1.0"/>
+	<link rel = "stylesheet" type = "text/css" href = "../css/setStoreH5.css?v=1.0"/>
+	<!--<link rel="stylesheet" type="text/css" href="//i0.beta.ulecdn.com/yzs/2016/1206/css/index.css?v=1"/>-->
+</head>
+<body>
+<!--left-->
+<!--.....-->
+<!--center-->
+<div class = "layout-center">
+	<div class = "ss-nav">
+		<span><a href = "./pages.html">微页面</a>/编辑微页面</span> <a href = "setStoreH5.html?type=storeMain">店铺主页模板</a> <a href = "setStoreH5.html?type=custom">自定义模板</a>
+	</div>
+	<div class = "ss-edit-store clearfix">
+		<div class = "min-width clearfix">
+			<div class = "preview clearfix">
+				<div class = "p-title">
+					<h3>标题</h3>
+				</div>
+
+
+				<div class = "sty-hr" style = "display: none">
+					<div class = "mc"><p></p></div>
+
+
+					<div class = "active-bor">
+
+					</div>
+				</div>
+
+
+				<!--move op-->
+				<div class = "move-box"></div>
+				<div class = "op-list clearfix">
+					<a>商品列表</a><a>图片广告</a>
+					<a>标题</a><a>图片导航</a><a>文本导航</a><a>辅助线</a><a></a><a></a>
+				</div>
+
+			</div>
+			<div class = "setContent clearfix">
+				<div class = "con-bor clearfix" style = "display: none">
+					<i class = "i-left"></i>
+
+					<!--title-->
+					<div class = "set-banner">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class = "tool-bar">
+		<a class = "btn-save">上架</a><a>保存成草稿</a><a>预览</a>
+	</div>
+</div>
+
+<!--other-->
+<!--遮罩层-->
+<div class = "xui-shade"></div>
+<div id = "test1" style = "display: none">
+	<div class = "box-img-list">
+		<div class = "img-tab">
+			<label class = "search-img"><input type = "text" placeholder = "搜索"/></label>
+			<span class = "active">我的图片</span><span>图标库</span>
+		</div>
+		<div class = "img-con">
+			<div class = "group-list">
+				<p class = "active"><a>未分组</a></p>
+				<p><a>未分组1</a></p>
+				<p><a>未分组2</a></p>
+
+			</div>
+			<div class = "list">
+				<ul>
+					<li>
+						<img src = "../images/tem/tem01.jpg"/>
+						<p>順豐到付</p>
+						<cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+					<li>
+						<img src = "../images/tem/tem03.jpg"/>
+						<p>順豐到付</p><cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+					<li>
+						<img src = "../images/tem/tem01.jpg"/>
+						<p>順豐到付</p><cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+					<li>
+						<img src = "../images/tem/tem03.jpg"/>
+						<p>順豐到付</p><cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+					<li>
+						<img src = "../images/tem/tem02.jpg"/>
+						<p>順豐到付</p><cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+					<li>
+						<img src = "../images/tem/tem04.jpg"/>
+						<p>順豐到付</p><cite class = "c-bg"></cite>
+						<cite class = "c-txt">540*250</cite>
+						<div class = "img-bor">
+							<i class = "i-bg"></i>
+							<i class = "i-icon"></i>
+						</div>
+					</li>
+				</ul>
+				<p class = "state-bar">
+					<a class = "link-upload">上传图片</a>
+
+					<span class = "page-nubmer">
+						<a>上一页</a>
+						<a>1</a><a>2</a><a>3</a>
+						<label><input class = "go-page" type = "text"/>/11页</label>
+						<a>下一页</a>
+					</span>
+					<span>共3条，每页16条</span>
+				</p>
+			</div>
+		</div>
+
+
+		<div class = "btn-list">
+			<a>确认</a>
+		</div>
+	</div>
+</div>
+<div id = "test" style = "display: none">
+	<div class = "box-goods-select">
+		<div class = "img-tab">
+			<span class = "active">已上架商品</span>
+		</div>
+		<div class = "img-con">
+			<div class = "g-search">
+				<ol>
+					<li><span>品牌：</span><label><select>
+						<option>请选择</option>
+					</select></label></li>
+					<li><span>店铺分类：</span><label><select>
+						<option>请选择</option>
+					</select></label></li>
+					<li><span>商城分类：</span><label><select>
+						<option>请选择</option>
+					</select></label></li>
+					<li><span>商品id：</span><label class = "label-input"><input type = "text"/></label></li>
+					<li><span>商品名称：</span><label class = "label-input"><input type = "text"/></label></li>
+					<li><a class = "btn-search">查询</a></li>
+				</ol>
+			</div>
+			<div class = "op-tab">
+				<a>月销量</a><a>上架时间</a><a>价格</a>
+			</div>
+			<div class = "data-list">
+				<table>
+					<thead>
+					<tr>
+						<th width="90px"></th>
+						<th width="280px">商品名称</th>
+						<th width="90px">商品库存</th>
+						<th width="90px">商品价格</th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td class="td-img">
+							<img src = "../images/tem/tem03.jpg"/></td>
+						<td class="td-title"><a target="_blank">电子卡券（购买时无需填写收货地址，测试商品，不发货，不退款）</a></td>
+						<td>商品库存</td>
+						<td>商品价格</td>
+						<td><a class="btn-select">选择</a></td>
+					</tr>
+					<tr>
+						<td class="td-img">
+							<img src = "../images/tem/tem03.jpg"/></td>
+						<td class="td-title"><a target="_blank">电子卡券（购买时无需填写收货地址，测试商品，不发货，不退款）</a></td>
+						<td>商品库存</td>
+						<td>商品价格</td>
+						<td><a class="btn-select">选择</a></td>
+					</tr>
+					<tr>
+						<td class="td-img">
+							<img src = "../images/tem/tem03.jpg"/></td>
+						<td class="td-title"><a target="_blank">电子卡券（购买时无需填写收货地址，测试商品，不发货，不退款）</a></td>
+						<td>商品库存</td>
+						<td>商品价格</td>
+						<td><a class="btn-select">选择</a></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+		<div class = "btn-list">
+			<a class="btn-submit">确认</a>
+			<span class = "page-nubmer">
+						<a>上一页</a>
+						<a>1</a><a>2</a><a>3</a>
+						<label><input class = "go-page" type = "text"/>/11页</label>
+						<a>下一页</a>
+					</span>
+			<span>共3条，每页16条</span>
+		</div>
+	</div>
+</div>
+<script src = "../js/jquery.min.js"></script>
+<script type = "text/javascript" charset = "utf-8" src = "../js/editor/ueditor.config.js"></script>
+<script type = "text/javascript" charset = "utf-8" src = "../js/editor/ueditor.all.min.js"></script>
+<script type = "text/javascript" charset = "utf-8" src = "../js/editor/lang/zh-cn/zh-cn.js"></script>
+<script src = "../js/zhx.min.js"></script>
+<script src = "../js/index.js"></script>
+<!--<script src = "//i0.beta.ulecdn.com/yzs/2016/1206/js/zepto.min.js"></script>-->
+<!--<script src="//i0.beta.ulecdn.com/yzs/2016/1206/js/index.js"></script>-->
+</body>
+</html>

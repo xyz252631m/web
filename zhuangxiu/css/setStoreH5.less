@@ -1,0 +1,109 @@
+/*
+* des:编辑装修页面
+*/
+@import "root";
+body { background-color: #eeeeee; overflow-y: scroll; }
+.layout-center { width: 1200px; margin: 0 auto; }
+/*center*/
+.ss-nav { .h(40px); text-indent: 10px; background-color: white;
+	a { color: #333333; }
+}
+.ss-edit-store { margin: 10px auto 60px; padding: 20px 0; background-color: white;
+
+	.min-width { width: 800px; margin: 0 auto; }
+}
+@import "_labelInput";
+.preview { width: 320px; position: relative; float: left; border: #cecece solid 1px;
+	> div { float: left; width: 100%; cursor: move; position: relative; -moz-user-select: none; -ms-user-select: none; -webkit-user-select: none; user-select: none; }
+	.mc { box-sizing: border-box; }
+	> div:hover { .active; box-sizing: border-box; }
+	.op-list { cursor: default;
+		a { cursor: pointer }
+	}
+	.active {
+		.active-bor { display: block; }
+		.op-box { display: block; }
+	}
+	.p-title { cursor: pointer; }
+
+	/*移动容器*/
+	.move-box { display: none; position: absolute; z-index: 999;
+		> div { box-sizing: border-box; }
+	}
+}
+/*编辑状态边框*/
+.active-bor { display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: #fdb61e dashed 2px;
+}
+.op-box { display: none;
+	a { cursor: pointer; display: block; }
+	.op-del { background: #666666; color: white; opacity: .8; font-size: 12px; padding: 1px 6px; position: absolute; bottom: 0; right: 0; }
+}
+/*标题*/
+.p-title { background: url("@{img}/header_bg.jpg"); height: 64px;
+	h3 { margin-top: 20px; height: 40px; line-height: 40px; text-align: center; color: white; font-size: 15px; }
+}
+/*辅助线*/
+.sty-hr { padding: 15px 0;
+	p { border-bottom: #ececec solid 1px; }
+	.is-blank { margin: 0 10px; }
+}
+/*操作*/
+.op-list { padding-bottom: 10px; margin-top: 30px; background-color: white;
+	a { display: block; font-size: 13px; float: left; width: 70px; text-align: center; height: 28px; line-height: 27px; border: #999999 dashed 1px; margin: 7px 0 0 6px; }
+}
+/*编辑--容器*/
+.setContent { float: left; width: 430px; padding-bottom: 60px;
+	a { cursor: pointer; }
+	.con-bor { position: relative; margin-left: 10px; background-color: #f8f8f8; border: #cccccc solid 1px; border-radius: 8px; display: none;
+		> div { display: none; }
+		.i-left { position: absolute; width: 11px; height: 26px; left: -11px; top: 10px; background: url("@{img}/i_left.jpg") no-repeat; }
+	}
+	em { color: red; }
+}
+/*设置标题*/
+.set-title { padding: 10px 0;
+	p { line-height: 40px; }
+	span { display: inline-block; width: 6em; text-align: right; }
+	label { }
+	.label-select { width: 200px; }
+	.label-color { width: 200px;
+		input { width: 180px; }
+	}
+	.btn-reset { display: inline-block; border: #cccccc solid 1px; border-radius: 0 2px 2px 0; border-left: none; width: 50px; height: 31px; line-height: 31px; vertical-align: middle; }
+
+}
+/*设置辅助线*/
+.set-sty-hr {
+	p { line-height: 40px; }
+	span { display: inline-block; width: 6em; text-align: right; }
+	label { display: inline-block; vertical-align: middle; }
+	.btn-reset { display: inline-block; border: #cccccc solid 1px; border-radius: 0 2px 2px 0; border-left: none; width: 50px; height: 31px; line-height: 31px; vertical-align: middle; }
+	.label-color { width: 80px; border-radius: 2px 0 0 2px; cursor: pointer;
+		input { width: 60px; cursor: pointer; }
+	}
+	.label-radio { margin-right: 20px; }
+	.label-checkbox { width: auto; margin-left: 50px; }
+}
+.nav-link { margin: 10px 10px 0; border: #cccccc solid 1px; background-color: white;
+	a { display: block; width: 100%; height: 100%; cursor: pointer; }
+	i { float: left; margin: 12px 5px 0 10px; width: 17px; height: 17px; background: url("@{img}/icon.png") -1px -89px no-repeat; }
+}
+.tool-bar { position: fixed; z-index: 9999; bottom: 0; left: 50%; width: 1200px; margin-left: -600px; background-color: #ffffcc; height: 50px; line-height: 50px; text-align: center;
+	a { display: inline-block; height: 30px; line-height: 30px; padding: 0 10px; border-radius: 2px; font-size: 12px; border: 1px solid #bbbbbb;
+		text-align: center; vertical-align: middle; background-color: white; margin-right: 10px; }
+	.btn-save { color: #ffffff; background: #3283fa; border-color: #3283fa; }
+}
+/*拖动li*/
+.move-ul { position: relative; }
+@import "_dialog";
+@import "plugins/_banner";
+@import "plugins/_goodsList";
+@import "plugins/_textTitle";
+@import "plugins/_imgAd";
+@import "plugins/_textNav";
+@import "plugins/_imgNav";
+@import "plugins/_goodsSearch";
+@import "plugins/_goods";
+@import "plugins/_editor";
+@import "plugins/_notice";
+
