@@ -1,0 +1,6 @@
+
+
+define(['vue'],function(Vue){
+ 
+
+})
