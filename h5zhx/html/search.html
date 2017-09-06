@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>搜索</title>
+	<link rel = "stylesheet" type = "text/css" href = "../css/base.css?v=1.0"/>
+	<link rel = "stylesheet" type = "text/css" href = "../css/preview.css?v=1.0"/>
+	<!--<link rel = "stylesheet" type = "text/css" href = "//i0.beta.ule.com/mobile/decorate/161226/css/base.css?v=1.0"/>-->
+	<!--<link rel = "stylesheet" type = "text/css" href = "//i0.beta.ule.com/mobile/decorate/161226/css/preview.css?v=1.0"/>-->
+</head>
+<body>
+
+<div class = "pre-tab">
+	<div>
+		<span>预览：</span><a>ipone版</a><a>三星Note3版</a><a>PC版</a>
+	</div>
+</div>
+<div class = "pre-main">
+	<div class = "pre-view w320" style="display: none">
+		<div class="pub-title">
+			<img src="https://img.yzcdn.cn/upload_files/2017/03/25/149042587520346276.jpeg"/>
+			<label>店铺名称</label>
+		</div>
+		<div class="pub-title-box"></div>
+
+		<div class = "goods-search" style = "background-color: #efefef">
+			<label class = "label-search"><input id="searchText" type = "text" placeholder = "搜索商品"><i class = "i-icon"></i></label>
+		</div>
+
+
+		<div class = "search-result">
+			<ul>
+				<li>
+					<div class = "p-img">
+						<a href = "">
+							<img src = "//i2.beta.ulecdn.com/mobile/decorate/161226/images/goods_bg_01.jpg">
+						</a>
+					</div>
+					<div class = "des-info">
+						<p class = "goods-name"><a href = "">实物商品（购买时需填写收货地址，测试商品，不发货，不退款）</a></p>
+						<p class = "goods-price"><em>¥199.00</em></p>
+						<a class = "btn-buy"></a>
+					</div>
+				</li>
+				<li>
+					<div class = "p-img">
+						<a href = "">
+							<img src = "//i2.beta.ulecdn.com/mobile/decorate/161226/images/goods_bg_01.jpg">
+						</a>
+					</div>
+					<div class = "des-info">
+						<p class = "goods-name"><a href = "">实物商品（购买时需填写收货地址，测试商品，不发货，不退款）</a></p>
+						<p class = "goods-price"><em>¥199.00</em></p>
+						<a class = "btn-buy"></a>
+					</div>
+				</li>
+			</ul>
+
+			<div class="pages-search">
+				<a class="up-page dis">上一页</a><a class="next-page">下一页</a>
+			</div>
+
+			<div class="pages-loading"></div>
+		</div>
+		<div class = "search-null">
+			<p>没有找到相关的商品～</p>
+			<a href = "" class = "go-index">去逛逛</a>
+		</div>
+	</div>
+</div>
+
+
+<script src = "../js/zepto.min.js"></script>
+<script src = "../js/preview.js"></script>
+<script src = "../js/search.js"></script>
+<script src = "../js/pc-index.js"></script>
+<!--<script src = "//i1.beta.ulecdn.com/mobile/decorate/161226/js/zepto.min.js"></script>-->
+<!--<script src = "//i1.beta.ulecdn.com/mobile/decorate/161226/js/preview.js"></script>-->
+<!--<script src = "//i1.beta.ulecdn.com/mobile/decorate/161226/js/search.js"></script>-->
+<!--<script src = "//i1.beta.ulecdn.com/mobile/decorate/161226/js/pc-index.js"></script>-->
+<script>
+//	$(function () {
+//		$(".label-search input").bind("focus", function () {
+//			$(this).bind("keydown", function (e) {
+//				// 回车键事件
+//				if (e.which == 13) {
+//					location.href = location.href.split("?")[0] + "?search=" + this.value;
+//				}
+//			});
+//		})
+//		var searchVal = pre.getSearchName("search");
+//		if (searchVal) {
+//			$(".label-search input").val(searchVal);
+//		}
+//	})
+</script>
+
+</body>
+</html>

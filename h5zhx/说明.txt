@@ -1,0 +1,75 @@
+﻿name: h5 店铺装修
+兼容: ie10+
+src: js源文件目录（通过打包 输出到js目录）
+wiki: http://wiki.uletm.com/pages/viewpage.action?pageId=28905708
+beta: /data/webroot/mobile/decorate/161226
+图片尺寸：大图用450   小图用230  列表图用150
+    l:230*230
+    m:80*80
+    s:60*60
+    sl:150*150
+    xl:450*450
+
+测试：郑晟，刘飞
+后端：梁秋阳
+
+######################################
+src:
+    preview.js  手机端使用js,需要引用zepto.js(zepto 重新打包，模块有zepto event ajax ie fx touch)
+    plugin 文件夹下是模块插件
+    alert.js 弹层方法
+    config.js 配置模块
+    core.js 公告方法
+    data.js ajax 访问方法
+    drag.js 拖拽方法
+    elem.js 元素操作方法
+    event.js 绑定事件
+    fn.js 扩展方法
+    init.js 初始化方法
+模块说明：
+        传参 ：key fn    需要将key配置到config.js里
+    	zhx.addPlugin("banner", function () {
+    		return {
+    			name:"店铺店招",//  模块名称
+    			isRepeat: 0,	//是否可以重复，未实现
+    			isShowOp: 0,	//是否显示激活状态(view 虚线框)
+    			isDelete: 0,	//是否显示删除按钮
+    			viewTemplate: function () {//视图 html
+
+    			},
+    			settingTemplate: function () {	//设置 html
+
+    			},
+    			data: {		//数据
+    				bgColor: "#F02D45",
+    				bgImgSrc: "",
+    				bgImgSize: {},
+    				logoSrc: "",
+    				storeName:"",
+    				logoSize: {}
+    			},
+    			check:function(){	//验证， return true 为通过验证，false  不通过验证，并激活当前模块
+
+
+    			},
+    			init: function (viewElem, settingElem) {//初始化绑定事件
+
+
+    			}, 
+
+    			edit: function (initData) {//回显会调用此方法
+
+    			}
+    		}
+    	})
+#######################################
+congfig.js 里的imgroot需要修改
+radio checked 表单控件，获取选中值时，请使用样式（.label-radio-active）获取(例：$node.find(".label-radio-active input").val()),（如果有重复模块，name值会重复）
+
+激活模块方法：zhx.activeView(view); //view 为模块的视图元素
+zhx:{
+plugins //所有的插件列表
+pluginList //当前已选择的插件列表（可拖动）
+holdPluginList //当前已选择的插件列表(不可拖动，目前只有pageTitle)
+dataList //数据列表，和pluginList顺序一致
+}

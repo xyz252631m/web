@@ -1,0 +1,41 @@
+@import "../root";
+/*和goodsList共用样式*/
+.goods-list {
+	.group-1 { background-color: #f2f2f2; }
+	.group-nav { width: 85px; float: left; border-right: 2px solid #e5e5e5;
+		a { display: block; line-height: 18px; box-sizing: border-box;
+			-webkit-tap-highlight-color: transparent;
+			word-wrap: break-word; }
+		li { padding: 20px 10px 20px 15px; border-bottom: 1px solid #e5e5e5; }
+		li:last-child { border-bottom: none; }
+		.active { background-color: white; box-sizing: border-box; border: none; border-left: 4px solid #ff4444; padding-left: 11px;
+		}
+	}
+	.group-con { width: 233px; float: left; border-left: 2px solid #e5e5e5; margin-left: -2px; background-color: white;
+		
+		li { margin-left: 10px; border-bottom: #e5e5e5 solid 1px; height: 80px; position: relative;
+			img { height: 60px; width: 60px; margin: 10px 10px 10px 0; float: left; }
+			.text-con { float: left; height: 80px; width: 150px; }
+			em { color: red; }
+		}
+		li:last-child { border-bottom: none; }
+		p { margin-bottom: 3px; white-space: nowrap; word-break: keep-all; overflow: hidden; text-overflow: ellipsis; display: block; }
+		p:first-child { margin-top: 10px; }
+		.btn-buy { position: absolute; border-radius: 50%; cursor: pointer; right: 10px; bottom: 10px; width: 22px; height: 22px; background: url("@{img}/buy_05.png") no-repeat; background-size: 22px 22px; }
+	}
+	
+	.group-2 { display: none; }
+}
+.set-goods-group {
+	.r-tip{padding-top: 10px;
+		label{margin-left: 24px; width: 360px;}
+	}
+	.show-view{
+		span{margin-left: 24px;}
+	}
+	.set-group-1{ min-height: 80px;
+
+
+	}
+	.set-group-2 { display: none; }
+}
