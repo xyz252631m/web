@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dome</title>
+
+    <script src="../js/zepto.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .table-element-target { height: 80px; width: 500px; position: relative; margin-left: 200px; }
+
+        .plug-box { overflow: hidden }
+
+        .table-body { font-size: 0; }
+
+        .table-body ul { display: inline-block; font-size: 14px; }
+
+        .table-body li { float: left; white-space: nowrap; }
+
+        .table-body li span { }
+
+        .table-element-target { overflow-y: hidden; overflow-x: hidden; }
+
+        @keyframes carouselX {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            /* 50% {
+                box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+            }
+            60% {
+                color: inherit;
+            } */
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+
+        .table-body { position: absolute; left: 0; right: 0; top: 0; bottom: 0; overflow-x: auto; height: 109px; line-height: 109px; width: 1638px;
+            overflow-y: hidden;
+            /*transform: matrix(1, 0, 0, 1, 0, 0); transition: transform 0s linear;*/
+            /*animation: carouselX 10s linear infinite;*/
+        }
+
+        .table-body ul:first-child {
+            /*animation: carouselX 10s linear infinite;*/
+        }
+
+        .table-plug {
+            position: relative; text-align: center;
+            /* width: 100%; */
+            display: inline-block; height: 100%; border-spacing: 0; border-collapse: collapse; border: 1px solid transparent;
+        }
+
+        .direction { position: absolute; right: -36px; bottom: 5px; width: 45px; height: 45px; opacity: .4; background-color: #333; transition: all .35s; border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px; }
+
+        .direction:hover { opacity: .95; right: 5px; }
+
+        .direction i { display: block; width: 50%; height: 100%; position: absolute; top: 0; font-size: 26px; color: white; line-height: 45px; text-align: center; cursor: pointer; }
+
+        .direction .i-left { left: 0; }
+
+        .direction .i-right { right: 1px; }
+    </style>
+
+</head>
+<body>
+<div class="views">
+    <div element-target="" class="table-element-target">
+        <div class="table-body">
+            <ul>
+                <li>
+                    <span class="first-span"><label>编号</label></span>
+                    <span class="">001</span><span class="">002</span>
+                    <span class="">003</span><span class="">004</span>
+                    <span class="">005</span>
+                    <span></span>
+                </li>
+                <li><span class="first-span"><label>姓名</label></span>
+                    <span class="">张三</span><span class="">李四</span>
+                    <span class="">王五</span><span class="">赵六</span>
+                    <span class="">田七</span>
+                    <span></span>
+                </li>
+                <li><span class="first-span"><label>出生日期</label></span>
+                    <span class="">1997-01-01</span>
+                    <span class="">1997-01-01</span>
+                    <span class="">1997-01-01</span>
+                    <span class="">1997-01-01</span>
+                    <span class="">1997-01-01</span>
+                </li>
+            </ul>
+
+        </div>
+        <div class="direction"><i class="i-left fa fa-angle-left"></i> <i class="i-right fa fa-angle-right"></i></div>
+    </div>
+</div>
+
+<script>
+
+    var t = {
+        timer: [],//滚动定时器
+        speed: 15,
+        tableWidth: 0,
+        offset_timer: [],//鼠标移入滚动定时器
+        w_list: [],
+        li_offset: [],
+        statu: 1,
+        //获取实际width
+        getTableWidth() {
+            var elem = $(".table-body ul");
+            var num = 0;
+            elem.find("li").forEach(function (el, idx) {
+                t.li_offset.push(num);
+                num += $(el).width();
+            });
+            this.tableWidth = elem.width();
+        },
+        offset_x: 0,
+        idx: 0,
+        isRun(){
+            var elem = $(".table-body");
+            var run = function () {
+                if (!t.statu) {
+                    return;
+                }
+                t.offset_x -= .5;
+                if (-t.offset_x >= t.tableWidth) {
+                    t.offset_x = -t.offset_x - t.tableWidth;
+                }
+                elem.css({
+                    "transform": "translateX(" + t.offset_x + "px)"
+                });
+                requestAnimationFrame(run);
+            };
+            requestAnimationFrame(run);
+        },
+
+        //暂停动画
+        toOffsetX(offsetX) {
+            var elem = $(".table-body");
+            elem.css({
+                "transform": "translateX(" + offsetX + "px)"
+            })
+        }
+
+    }
+
+    $(function () {
+
+        t.getTableWidth();
+        if (t.tableWidth < 500) {
+            return;
+        }
+
+
+        $(".table-body").width(t.tableWidth * 2 + 'px');
+        $(".table-body").append($(".table-body ul").clone());
+        var time = 500;
+        t.isRun();
+
+
+        $(".table-element-target").on("mouseenter", function () {
+            t.statu = 0;
+            $(".table-body").css({
+                "animation-play-state": "paused"
+            })
+        }).on("mouseleave", function () {
+
+            t.statu = 1;
+            $(".table-body").css({
+                "animation-play-state": "running"
+            });
+            t.isRun();
+
+        }).on("mousewheel", function (e) {
+            var elem = document.querySelector(".table-body ul");
+            var li = elem.querySelectorAll("li");
+            var tem;
+            var idx ;
+            if (e.wheelDelta > 0) {//right  120
+
+                tem = t.li_offset.filter((el) => el < -t.offset_x);
+                idx = tem.length;
+                if (idx <= 0) {
+                    t.offset_x = -t.li_offset[t.li_offset.length - 1];
+                } else {
+                    t.offset_x = -t.li_offset[idx - 1]
+                }
+
+            } else {
+                 tem = t.li_offset.filter((el) => el <= -t.offset_x);
+                 idx = tem.length;
+                if (idx >= t.li_offset.length) {
+                    t.offset_x = 0;
+                } else {
+                    t.offset_x = -t.li_offset[idx + 1]
+                }
+            }
+            t.toOffsetX(t.offset_x)
+        });
+
+
+        $(".i-left").on("click", function () {
+            t.statu = 0;
+            t.offset_x = 0;
+            t.toOffsetX(0);
+        });
+        $(".i-right").on("click", function () {
+            t.statu = 0;
+            t.offset_x = -t.tableWidth + 500;
+            t.toOffsetX(t.offset_x);
+        })
+    });
+    document.addEventListener("focus", function () {
+        console.log("focus")
+    }, false);
+    document.addEventListener("resume", function () {
+        console.log("resume")
+    }, false);
+    document.addEventListener("visibilityChange", function () {
+        console.log("visibilityChange")
+    }, false);// 初始化
+</script>
+
+</body>
+</html>
