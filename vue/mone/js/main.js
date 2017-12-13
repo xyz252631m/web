@@ -6,7 +6,7 @@ require.config({
     }
 });
 
-require(['vue','./components/app.vue'],function(Vue,App){
+require(['vue','../components/app'],function(Vue,App){
  new Vue({
             el: '#app',
             // router,
