@@ -52,3 +52,12 @@
 .left-menu ul i {
   font-size: 22px;
 }
+.bg {
+  background-color: #e0e0e0;
+}
+.m-edit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+}

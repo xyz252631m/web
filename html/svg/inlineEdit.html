@@ -5,23 +5,24 @@
 
     <div class="svg-main">
         <div class="left-menu">
-            <ul>
-                <li><i class="iconfont icon-xuanze"></i></li>
-                <li><i class="iconfont icon-iconfuzhi"></i></li>
-                <li><i class="iconfont icon-zhixian"></i></li>
-                <li><i class="iconfont icon-curve"></i></li>
-                <li><i class="iconfont icon-juxing"></i></li>
-                <li><i class="iconfont icon-yuanxing"></i></li>
-                <li><i class="iconfont icon-wenzi"></i></li>
-                <li><i class="iconfont icon-fangdafangdajing"></i></li>
-                <li><i class="iconfont icon-fangxiaojing"></i></li>
-                <li><i class="iconfont icon-straw"></i></li>
-
+            <ul menu-event="activeType">
+                <li xm-class="getType(0)"><i class="iconfont icon-xuanze"></i></li>
+                <li xm-class="getType(1)"><i class="iconfont icon-iconfuzhi"></i></li>
+                <li xm-class="getType(2)"><i class="iconfont icon-zhixian"></i></li>
+                <li xm-class="getType(3)"><i class="iconfont icon-curve"></i></li>
+                <li xm-class="getType(4)"><i class="iconfont icon-juxing"></i></li>
+                <li xm-class="getType(5)"><i class="iconfont icon-yuanxing"></i></li>
+                <li xm-class="getType(6)"><i class="iconfont icon-wenzi"></i></li>
+                <li xm-class="getType(7)"><i class="iconfont icon-fangdafangdajing"></i></li>
+                <li xm-class="getType(8)"><i class="iconfont icon-fangxiaojing"></i></li>
+                <li xm-class="getType(9)"><i class="iconfont icon-straw"></i></li>
             </ul>
         </div>
         <div class="bg">
-            <div class="edit">
-                svg edit
+            <div class="m-edit" ng-style="editStyle">
+               <svg xmlns:svg="http://www.w3.org/2000/svg" ng-style="svgStyle">
+
+               </svg>
             </div>
         </div>
     </div>
