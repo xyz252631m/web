@@ -5,7 +5,7 @@
 
     <div class="svg-main">
         <div class="left-menu">
-            <ul menu-event="activeType">
+            <ul menu-event>
                 <li xm-class="getType(0)"><i class="iconfont icon-xuanze"></i></li>
                 <li xm-class="getType(1)"><i class="iconfont icon-iconfuzhi"></i></li>
                 <li xm-class="getType(2)"><i class="iconfont icon-zhixian"></i></li>
@@ -20,9 +20,32 @@
         </div>
         <div class="bg">
             <div class="m-edit" ng-style="editStyle">
-               <svg xmlns:svg="http://www.w3.org/2000/svg" ng-style="svgStyle">
+                <svg xmlns:svg="http://www.w3.org/2000/svg" ng-style="svgStyle" edit-panel="editObj">
+                    <g>
+                        <line ng-repeat="m in editObj.lineList" id="svg_line_{{$index}}" svg-shape="m" stroke-width="1.5" stroke="#000" fill="none"/>
 
-               </svg>
+                        <ellipse ng-repeat="m in editObj.ellipseList" id="svg_ell_{{$index}}" svg-shape="m" stroke-width="1.5" stroke="#000" fill="#fff"/>
+                    </g>
+
+                    <g id="selectorGroup0" transform="" display="inline">
+                        <path id="selectedBox0" fill="none" stroke="#4F80FF" shape-rendering="crispEdges" style="pointer-events:none" d="M264.25,141.25 L553.75,141.25 553.75,314.75 264.25,314.75z"></path>
+                        <g display="inline">
+                            <circle id="selectorGrip_rotate_nw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="260.25" cy="137.25"></circle>
+                            <circle id="selectorGrip_rotate_ne" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="557.75" cy="137.25"></circle>
+                            <circle id="selectorGrip_rotate_se" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="557.75" cy="318.75"></circle>
+                            <circle id="selectorGrip_rotate_sw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="260.25" cy="318.75"></circle>
+                            <rect id="selectorGrip_resize_nw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:nw-resize" pointer-events="all" x="260" y="137"></rect>
+                            <rect id="selectorGrip_resize_n" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:n-resize" pointer-events="all" x="405" y="137"></rect>
+                            <rect id="selectorGrip_resize_ne" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:ne-resize" pointer-events="all" x="550" y="137"></rect>
+                            <rect id="selectorGrip_resize_e" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:e-resize" pointer-events="all" x="550" y="224"></rect>
+                            <rect id="selectorGrip_resize_se" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:se-resize" pointer-events="all" x="550" y="311"></rect>
+                            <rect id="selectorGrip_resize_s" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:s-resize" pointer-events="all" x="405" y="311"></rect>
+                            <rect id="selectorGrip_resize_sw" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:sw-resize" pointer-events="all" x="260" y="311"></rect>
+                            <rect id="selectorGrip_resize_w" width="8" height="8" fill="#4F80FF" stroke="rgba(0,0,0,0)" style="cursor:w-resize" pointer-events="all" x="260" y="224"></rect>
+                        </g>
+                    </g>
+                    </g>
+                </svg>
             </div>
         </div>
     </div>

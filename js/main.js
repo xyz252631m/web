@@ -1,6 +1,6 @@
 var isExitJson = (typeof (JSON) !== 'undefined');
 var isIE7 = navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i) == "7.";
-
+// isIE7=true
 require.config({
     baseUrl: '/web/js/',
     urlArgs: 'v=1.0.0',
