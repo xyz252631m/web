@@ -1,0 +1,18 @@
+/**
+*Name: 分页样式
+*Date: 2015-10-13  
+*Description:  js 分页样式  
+*/
+@charset "utf-8";
+@col-blue: rgb(32, 132, 214);
+@col-red: #ea6f5a; //网页主色--红色
+.xui-pages { width: 100%;  font-size: 0;
+  label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
+  a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc solid 1px; border-radius: 3px; text-align: center;
+    user-select: none;
+  }
+  a:hover { background-color: #f5f5f5; }
+  .active { border: @col-red solid 1px; background-color: @col-red; color: white; }
+  .active:hover { background-color: @col-red; }
+  .btn-pager { padding: 5px 12px; }
+}

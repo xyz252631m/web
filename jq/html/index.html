@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery 插件</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+
+</head>
+<body>
+
+<div class="view-header">
+
+</div>
+<div class="view-box">
+    <div class="left-menu">
+        <h4>目录清单</h4>
+        <ul>
+            <li><a href="./list/pager.html" target="jquery_ifr">分页pager</a></li>
+            <li><a href="./form/select.html" target="jquery_ifr">自定义select</a></li>
+        </ul>
+    </div>
+    <div class="right-box">
+        <iframe name="jquery_ifr" src="./list/pager.html"></iframe>
+    </div>
+</div>
+<script>
+    let activeLi = null, cls = 'active';
+    document.querySelectorAll(".left-menu li").forEach((el) => {
+        el.addEventListener("click", function () {
+            if (activeLi) {
+                activeLi.className = "";
+            }
+            activeLi = this;
+            activeLi.className = cls;
+        })
+    })
+</script>
+</body>
+</html>

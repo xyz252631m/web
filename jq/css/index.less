@@ -1,0 +1,30 @@
+/*index 首页*/
+.view-header { height: 90px; box-shadow: 0 3px 15px #ccc; position: relative; z-index: 100; }
+
+.view-box { display: flex; align-items: stretch; position: absolute; top: 90px; bottom: 0; width: 100%;
+}
+
+.left-menu { width: 320px; overflow: hidden; position: relative; z-index: 50;
+
+  h4 { height: 50px; line-height: 50px; font-size: 20px; width: 100%; font-weight: normal; text-indent: 20px; box-shadow: 0 1px 1px #ccc; }
+  ul { overflow: auto; height: 100%;
+    &::-webkit-scrollbar { width: 5px; height: 8px; }
+    //&::-webkit-scrollbar-track { border-left: 1px solid rgba(0, 0, 0, 0.13); border-top: 1px solid rgba(0, 0, 0, 0.13); -webkit-border-radius: 0; border-radius: 0; }
+    &::-webkit-scrollbar-thumb { -webkit-border-radius: 0; border-radius: 0; background: #ffc9c9; }
+    //&::-webkit-scrollbar-thumb:window-inactive { background: rgba(165, 182, 199, 0.7); }
+  }
+  li { height: 40px; line-height: 40px; cursor: pointer; transition: all .3s;
+    &:hover { background-color: #ffefec;
+      a { color: #ea6f5a; }
+    }
+    a { display: block; padding-left: 20px; }
+  }
+  .active { position: relative; background-color: #ffefec;
+    a { color: #ea6f5a; }
+    &::after { position: absolute; left: 0; content: ' '; width: 3px; top: 0; bottom: 0; background-color: #ea6f5a }
+  }
+}
+
+.right-box { flex: 1; box-shadow: inset 3px 0 5px #ccc; overflow: hidden; padding: 5px 0 0 5px;
+  iframe { width: 100%; height: 100%; }
+}
