@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="../../css/pager.css">
     <script src="../../../js/jquery-1.11.1.min.js"></script>
     <script src="../../js/page.js"></script>
-
-
 </head>
+
 <body>
 
 <div class="pre-view">
@@ -35,7 +34,7 @@
     </div>
     <h3>示例：</h3>
     <div class="pre-box" contenteditable="true">
-        <pre>
+        <pre class="ex-1">
         option = {
             url: "../../json/list.json",
             numCount: 5,        //中间显示的数子个数
@@ -56,39 +55,66 @@
             error: null         ////ajax请求出错执行函数
         }
         </pre>
-    </div>
 
-    <div class="btn-list">
+    </div>
+    <div class="btn-list pre-btn-list">
         <button class="apply-opt">执行</button>
     </div>
-    <div style="text-align: center;margin-bottom: 20px;">
+
+    <div style="text-align: center;margin: 20px 0;">
         <div class="xui-pages">
+            <a class="first">首页</a>
             <a class="prev"><em><</em>上一页</a>
             <span class="pageNum">
                 <a class="active">1</a><a>2</a><a>3</a><a>4</a><a>5</a>
                 </span>
             <a class="next">下一页<em>></em></a>
+            <a class="last">末页</a>
+            <label><input class="go-page" type="text"><button class="btn-go">go</button></label>
         </div>
     </div>
     <h3>Page对象：</h3>
-    <div class="table-box">
-        pageShow: false,
-        size: 10,
-        index: 1,
-        count: 0,
-        list: {}
-        <p><span>info(object)：</span><label>分页信息 --- pageShow:分页显示状态 size:每页条数 index:当前页码 count:总条数</label></p>
-        <p><span>config(function)：</span><label></label></p>
-        <p><span>post(function)：</span><label></label></p>
-        <p><span>reset(function)：</span><label></label></p>
-        <p><span>update(function)：</span><label></label></p>
+    <div class="plist-box">
+        <p><span>info<em>&lt;object&gt;</em>：</span><label>分页信息 --- {pageShow:分页显示状态 size:每页条数 index:当前页码 count:总条数}</label></p>
+        <p><span>config<em>&lt;function(option)&gt;</em>：</span><label>配置option，会合并到当前option里，可配合reset和update方法使用</label></p>
+        <p><span>post<em>&lt;function(url, data, success, option)&gt;</em>：</span><label>发起请求，需要在success函数里重新赋值listCount</label></p>
+        <p><span>reset<em>&lt;function()&gt;</em>：</span><label>重置页面索引为1，并发起请求，适用于搜索</label></p>
+        <p><span>refresh<em>&lt;function()&gt;</em>：</span><label>重新请求，不会修改任何配置，适用于刷新</label></p>
     </div>
+    <h3 style="margin-top: 10px;">搜索/刷新示例：</h3>
+    <div class="pre-box">
+        <pre>
+        let pager = new Page($(".xui-pages"));
+        var option={
+            prefixCount: 2
+        };
+        pager.config(option);
+        pager.post("../../json/list.json", {}, function (res, opts) {
+            opts.listCount = res.count;     //重新赋值list总条数
+            //执行绑定逻辑
+            //...
+        });
+        //获取所有参数
+        function getParams(){
 
+        }
+        //搜索
+        $(".btn-search").on("click",function(){
+            pager.config({data:getParams()});
+            pager.reset();
+        })
+        //刷新
+        $(".btn-refresh").on("click",function(){
+            pager.refresh();
+        })
+        </pre>
+
+    </div>
 </div>
 <script>
     $(function () {
         $(".apply-opt").on("click", function () {
-            eval($(".pre-box").text());
+            eval($(".ex-1").text());
             applyPage();
         })
     });
@@ -101,12 +127,8 @@
     });
     function applyPage() {
         pager.config(option);
-        pager.update();
+        pager.refresh();
     }
-
-
-
-
 </script>
 </body>
 </html>

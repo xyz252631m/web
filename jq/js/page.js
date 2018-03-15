@@ -58,26 +58,28 @@
                 update();
             });
             $node.find(".total-page span").text(page.count);
-            if(page.index<=1){
-                node.find(".prev").addClass("dis")
-            }else{
-                node.find(".prev").removeClass("dis")
+            $node.find(".go-page").val(page.index);
+            if (page.index <= 1) {
+                node.find(".prev").addClass("dis");
+                node.find(".first").addClass("dis");
+            } else {
+                node.find(".prev").removeClass("dis");
+                node.find(".first").removeClass("dis");
             }
-            if(page.index>=page.count){
-                node.find(".next").addClass("dis")
-            }else{
-                node.find(".next").removeClass("dis")
+            if (page.index >= page.count) {
+                node.find(".next").addClass("dis");
+                node.find(".last").addClass("dis");
+            } else {
+                node.find(".next").removeClass("dis");
+                node.find(".last").removeClass("dis");
             }
         }
-
         // 更新
         function update() {
             if (page.count > 0 && opts.pageIndex > page.count) {
                 opts.pageIndex = page.count;
             }
             page.index = opts.pageIndex;
-
-
 //                var url = self.format(opts.url, {pageIndex: opts.pageIndex, pageSize: opts.pageSize});
             opts.data.pageIndex = opts.pageIndex;
             opts.data.pageSize = opts.pageSize;
@@ -87,14 +89,6 @@
                     opts.loading();
                 }, opts.loadTime);
             }
-
-
-            // setTimeout(function () {
-            //     opts.success({obj: [1, 2, 3, 4], count: 100}, opts);
-            //     initPager();
-            // }, 200)
-            //
-            // return;
             $.ajax({
                 url: opts.url,
                 data: opts.data,
@@ -102,7 +96,7 @@
                 dataType: opts.dataType,
                 success: function (red) {
                     if (typeof(opts.success) == "function") {
-                        opts.success.call(opts,red);
+                        opts.success.call(opts, red);
                         initPager();
                     }
                 },
@@ -149,7 +143,7 @@
         });
         //go 按钮
         node.find(".btn-go").on("click", function () {
-            var $input = node.find(".go");
+            var $input = node.find(".go-page");
             var val = $input.val();
             if (isNaN(val)) {
                 $input.focus();
@@ -183,14 +177,15 @@
                 opts.pageIndex = 1;
                 update();
             },
-            update: update
+            refresh: update
         }
     }
+
     Page.prototype = {
         // 获取中间的数字列表
         getPageNumber: function (pageIndex, pageCount, num, prefixCount) {
             var list = [];
-            if(num==0){
+            if (num == 0) {
                 return "";
             }
             var txtNumber = num || 5, minPageIndex = 1, maxPageIndex = 1;// 数字数量
@@ -260,4 +255,4 @@
     };
 
     window.Page = Page;
-})()
+})();
