@@ -18,23 +18,75 @@
 <div class="pre-view">
     <h1>分页pager</h1>
     <h3>使用方式：</h3>
-    <div>
-        <pre lang="javascript">
-        let pager = new Page($(".xui-pages"));
-        var option={
-            prefixCount: 2
-        };
-        pager.config(option);
-        pager.post("../../json/list.json", {}, function (res, opts) {
-            opts.listCount = res.count;     //重新赋值list总条数
-            //执行绑定逻辑
-            //...
-        })
-        </pre>
+    <div class="use-box">
+        <span class="pre-tab">
+            <a class="active">js</a><a>css</a><a>less</a><a>html</a>
+        </span>
+        <div class="tab-main">
+            <xmp class="active">
+                let pager = new Page($(".xui-pages"));
+                    var option={
+                        prefixCount: 2
+                    };
+                    pager.config(option);
+                    pager.post("../../json/list.json", {}, function (res, opts) {
+                    opts.listCount = res.count; //重新赋值list总条数
+                    //执行绑定逻辑
+                    //...
+                })
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0 }
+                .xui-pages label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px }
+                .xui-pages a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px;
+                border: #ccc solid 1px; border-radius: 3px; text-align: center; user-select: none }
+                .xui-pages .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999 }
+                .xui-pages .dis:hover { background-color: #eee; border-color: #eee; color: #999 }
+                .xui-pages a:hover { background-color: #f5f5f5 }
+                .xui-pages .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: #fff }
+                .xui-pages .active:hover { background-color: #ea6f5a }
+                .xui-pages .btn-pager { padding: 5px 12px }
+                .xui-pages .go-input{font-size: 0;}
+                .xui-pages .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #ccc
+                solid 1px; border-right: none; border-radius: 3px 0 0 3px }
+                .xui-pages .btn-go { border: #ccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px;  }
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0;
+                    label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
+                    a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc
+                        solid 1px; border-radius: 3px; text-align: center;user-select: none;
+                    }
+                    .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999;
+                        &:hover { background-color: #eee; border-color: #eee; color: #999; }
+                    }
+                    a:hover { background-color: #f5f5f5; }
+                    .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: white; }
+                    .active:hover { background-color: #ea6f5a; }
+                    .btn-pager { padding: 5px 12px; }
+                    .go-input{font-size: 0;}
+                    .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #cccccc solid 1px; border-right: none; border-radius: 3px 0 0 3px }
+                    .btn-go { border: #cccccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px;  }
+                }
+            </xmp>
+            <xmp>
+                <div class="xui-pages">
+                    <a class="first">首页</a>
+                    <a class="prev"><em><</em>上一页</a>
+                    <span class="pageNum"><a class="active">1</a><a>2</a><a>3</a><a>4</a><a>5</a></span>
+                    <a class="next">下一页<em>></em></a>
+                    <a class="last">末页</a>
+                    <label class="go-input"><input class="go-page" type="text">
+                        <button class="btn-go">go</button>
+                    </label>
+                </div>
+            </xmp>
+        </div>
+
     </div>
     <h3>示例：</h3>
-    <div class="pre-box" contenteditable="true">
-        <pre class="ex-1">
+    <div class="pre-box pre-edit-pager" contenteditable="true">
+        <pre class="ex-1" >
         option = {
             url: "../../json/list.json",
             numCount: 5,        //中间显示的数子个数
@@ -46,7 +98,8 @@
             loadTime: 300,      //ajax请求300ms后执行loading函数
             closeLoading: null, //loading 结束执行函数
             success: function(res){     //ajax成功执行函数
-                this.listCount = res.count;     ////重新赋值list总条数
+                //重新赋值list总条数
+                this.listCount = res.count;
                 //执行绑定逻辑
                 //...
             },
@@ -70,14 +123,21 @@
                 </span>
             <a class="next">下一页<em>></em></a>
             <a class="last">末页</a>
-            <label><input class="go-page" type="text"><button class="btn-go">go</button></label>
+            <label class="go-input"><input class="go-page" type="text">
+                <button class="btn-go">go</button>
+            </label>
         </div>
     </div>
     <h3>Page对象：</h3>
     <div class="plist-box">
-        <p><span>info<em>&lt;object&gt;</em>：</span><label>分页信息 --- {pageShow:分页显示状态 size:每页条数 index:当前页码 count:总条数}</label></p>
-        <p><span>config<em>&lt;function(option)&gt;</em>：</span><label>配置option，会合并到当前option里，可配合reset和update方法使用</label></p>
-        <p><span>post<em>&lt;function(url, data, success, option)&gt;</em>：</span><label>发起请求，需要在success函数里重新赋值listCount</label></p>
+        <p><span>info<em>&lt;object&gt;</em>：</span><label>分页信息 --- {pageShow:分页显示状态 size:每页条数 index:当前页码
+            count:总条数}</label></p>
+        <p>
+            <span>config<em>&lt;function(option)&gt;</em>：</span><label>配置option，会合并到当前option里，可配合reset和update方法使用</label>
+        </p>
+        <p>
+            <span>post<em>&lt;function(url, data, success, option)&gt;</em>：</span><label>发起请求，需要在success函数里重新赋值listCount</label>
+        </p>
         <p><span>reset<em>&lt;function()&gt;</em>：</span><label>重置页面索引为1，并发起请求，适用于搜索</label></p>
         <p><span>refresh<em>&lt;function()&gt;</em>：</span><label>重新请求，不会修改任何配置，适用于刷新</label></p>
     </div>
@@ -114,15 +174,21 @@
 <script>
     $(function () {
         $(".apply-opt").on("click", function () {
-            eval($(".ex-1").text());
+            eval($(".pre-edit-pager").text());
             applyPage();
+        });
+        let $tab = $(".pre-tab a");
+        $tab.on("click", function () {
+            let idx = $tab.index(this);
+            $tab.removeClass('active').eq(idx).addClass('active');
+            $(".tab-main xmp").hide().eq(idx).show();
         })
     });
     /*分页*/
     let pager = new Page($(".xui-pages"));
-    let option = {prefixCount:2};
+    let option = {prefixCount: 2};
     pager.config(option);
-    pager.post("../../json/list.json", { }, function (res) {
+    pager.post("../../json/list.json", {}, function (res) {
         this.listCount = res.count;
     });
     function applyPage() {
