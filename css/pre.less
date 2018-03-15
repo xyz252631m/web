@@ -1,5 +1,5 @@
 
-*::-webkit-scrollbar { width: 5px; height: 8px; }
+*::-webkit-scrollbar { width: 5px; height: 3px; }
 
 *::-webkit-scrollbar-thumb { -webkit-border-radius: 0; border-radius: 0; background: #ccc; }
 
@@ -16,7 +16,7 @@ pre {
   /* #2dabee*/
   h3 { background-color: #aeb7bb; color: white; height: 35px; line-height: 35px; font-size: 16px; font-weight: normal; text-indent: 20px; }
 
-  pre, xmp { background-color: #f9f4e1;line-height: 20px; margin: 0; }
+  pre, xmp { background-color: #f9f4e1;line-height: 20px; margin: 0; overflow: auto }
 
   .pre-btn-list { background-color: #f9f4e1; border-top: #b0c1c7 dashed 1px; }
   .use-box { position: relative;
@@ -24,7 +24,7 @@ pre {
       a { width: 50px; font-size: 12px; float: left; height: 24px; text-align: center; line-height: 24px; background-color: #dcdcdc; color: white; margin-left: 1px; }
       .active { color: #f9f4e1; background-color: #c5c5c5 }
     }
-    xmp { display: none; tab-width: 2; margin-left: -2em; }
+    xmp { display: none; tab-width: 2;  }
     .active { display: block; }
   }
 }
@@ -39,7 +39,7 @@ pre {
 
 .plist-box { background-color: #dbe6ea;
   p { line-height: 40px; border-bottom: #cccdce solid 1px; display: flex; }
-  span { display: inline-block; border-right: #cccdce solid 1px; width: 350px; text-align: right; padding-right: 20px; margin-right: 20px; }
+  span { display: inline-block; border-right: #cccdce solid 1px; width: 30%; text-align: right; padding-right: 20px; margin-right: 20px;word-break: break-all; max-width: 350px; }
   em { color: #2dabee; }
   label { flex: 1 }
 
