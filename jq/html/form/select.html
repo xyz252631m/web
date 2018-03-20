@@ -6,8 +6,273 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>select</title>
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/pre.css">
+    <link rel="stylesheet" href="../../css/xui-select.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/xui-select.js"></script>
+    <script src="../../../js/address/city-list.js"></script>
 </head>
 <body>
-select
+<div class="pre-view">
+    <h1>自定义select</h1>
+    <h3>使用方式：</h3>
+    <div class="use-box">
+        <span class="pre-tab">
+            <a class="active">js</a><a>css</a><a>less</a><a>html</a>
+        </span>
+        <div class="tab-main">
+            <xmp class="active">
+                let pager = new Page($(".xui-pages"));
+                var option={
+                prefixCount: 2
+                };
+                pager.config(option);
+                pager.post("../../json/list.json", {}, function (res, opts) {
+                opts.listCount = res.count; //重新赋值list总条数
+                //执行绑定逻辑
+                //...
+                })
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0 }
+                .xui-pages label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px }
+                .xui-pages a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px;
+                border: #ccc solid 1px; border-radius: 3px; text-align: center; user-select: none }
+                .xui-pages .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999 }
+                .xui-pages .dis:hover { background-color: #eee; border-color: #eee; color: #999 }
+                .xui-pages a:hover { background-color: #f5f5f5 }
+                .xui-pages .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: #fff }
+                .xui-pages .active:hover { background-color: #ea6f5a }
+                .xui-pages .btn-pager { padding: 5px 12px }
+                .xui-pages .go-input{font-size: 0;}
+                .xui-pages .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #ccc
+                solid 1px; border-right: none; border-radius: 3px 0 0 3px }
+                .xui-pages .btn-go { border: #ccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size:
+                12px; }
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0;
+                label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
+                a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc
+                solid 1px; border-radius: 3px; text-align: center;user-select: none;
+                }
+                .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999;
+                &:hover { background-color: #eee; border-color: #eee; color: #999; }
+                }
+                a:hover { background-color: #f5f5f5; }
+                .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: white; }
+                .active:hover { background-color: #ea6f5a; }
+                .btn-pager { padding: 5px 12px; }
+                .go-input{font-size: 0;}
+                .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #cccccc solid
+                1px; border-right: none; border-radius: 3px 0 0 3px }
+                .btn-go { border: #cccccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px; }
+                }
+            </xmp>
+            <xmp>
+                <div class="xui-pages">
+                    <a class="first">首页</a>
+                    <a class="prev"><em><</em>上一页</a>
+                    <span class="pageNum"><a class="active">1</a><a>2</a><a>3</a><a>4</a><a>5</a></span>
+                    <a class="next">下一页<em>></em></a>
+                    <a class="last">末页</a>
+                    <label class="go-input"><input class="go-page" type="text">
+                        <button class="btn-go">go</button>
+                    </label>
+                </div>
+            </xmp>
+        </div>
+
+    </div>
+    <h3>示例：</h3>
+    <div class="pre-box pre-edit-pager" contenteditable="true">
+        <pre class="ex-1">
+        //模拟数据
+        function listToObject(list) {
+            let arr=[];
+            list.forEach(function (el,idx) {
+                arr.push({id:idx,text:el})
+            });
+            return arr;
+        }
+        let mSelect = $(".m-select-1").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: [{id: -1, text: "---请选择---"}, {id: 1, text: "男"}, {id: 0, text: "女"}],
+                clickFn: function (item) {
+                    //console.log(item, privoce.getSelectItem())
+                }
+            }
+        );
+        let privoce = $(".city-1").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0"]),
+                clickFn: function (item) {
+                    //console.log(item, privoce.getSelectItem())
+                    city.reset(listToObject(dsy.Items["0_" + item.val]), true);
+                }
+            }
+        );
+
+        let city = $(".city-2").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0_0"]),
+                clickFn: function (item) {
+                    //console.log(item, city.getSelectItem())
+                    area.reset(listToObject(dsy.Items["0_" + item.val + "_0"]));
+                }
+            });
+
+        let area = $(".city-3").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0_0_0"]),
+                clickFn: function (item) {
+                    //console.log(item, area.getSelectItem())
+                }
+            }
+        );
+        </pre>
+
+    </div>
+    <div class="btn-list pre-btn-list">
+        <button class="apply-opt">执行</button>
+    </div>
+
+    <div style="text-align: center;margin: 20px 0;">
+
+        <label class="xui-label-select m-select-1">
+            <i></i><span>杭州</span><a></a>
+        </label>
+
+        <label class="xui-label-select city-1" data-val="003">
+            <strong class="s-unit">省</strong><i></i><span>杭州</span>
+            <a>
+                <label data-val="003">杭州</label>
+            </a>
+        </label>
+        <label class="xui-label-select city-2" data-val="003">
+            <strong class="s-unit">市</strong><i></i><span>杭州</span>
+            <a>
+                <label data-val="003">杭州</label>
+            </a>
+        </label>
+        <label class="xui-label-select city-3" data-val="003">
+            <strong class="s-unit">区</strong><i></i><span>杭州</span>
+            <a>
+                <label data-val="003">杭州</label>
+            </a>
+        </label>
+    </div>
+    <h3>Page对象：</h3>
+    <div class="plist-box">
+        <p><span>info<em>&lt;object&gt;</em>：</span><label>分页信息 --- {pageShow:分页显示状态 size:每页条数 index:当前页码
+            count:总条数}</label></p>
+        <p>
+            <span>config<em>&lt;function(option)&gt;</em>：</span><label>配置option，会合并到当前option里，可配合reset和update方法使用</label>
+        </p>
+        <p>
+            <span>post<em>&lt;function(url, data, success, option)&gt;</em>：</span><label>发起请求，需要在success函数里重新赋值listCount</label>
+        </p>
+        <p><span>reset<em>&lt;function()&gt;</em>：</span><label>重置页面索引为1，并发起请求，适用于搜索</label></p>
+        <p><span>refresh<em>&lt;function()&gt;</em>：</span><label>重新请求，不会修改任何配置，适用于刷新</label></p>
+    </div>
+    <h3 style="margin-top: 10px;">搜索/刷新示例：</h3>
+    <div class="pre-box">
+        <pre>
+        let pager = new Page($(".xui-pages"));
+        var option={
+            prefixCount: 2
+        };
+        pager.config(option);
+        pager.post("../../json/list.json", {}, function (res, opts) {
+            opts.listCount = res.count;     //重新赋值list总条数
+            //执行绑定逻辑
+            //...
+        });
+        //获取所有参数
+        function getParams(){
+
+        }
+        //搜索
+        $(".btn-search").on("click",function(){
+            pager.config({data:getParams()});
+            pager.reset();
+        })
+        //刷新
+        $(".btn-refresh").on("click",function(){
+            pager.refresh();
+        })
+        </pre>
+
+    </div>
+</div>
+
+<script>
+
+    //模拟数据
+    function listToObject(list) {
+        let arr = [];
+        list.forEach(function (el, idx) {
+            arr.push({id: idx, text: el})
+        });
+        return arr;
+    }
+
+    $(function () {
+        let mSelect = $(".m-select-1").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: [{id: -1, text: "---请选择---"}, {id: 1, text: "男"}, {id: 0, text: "女"}],
+                clickFn: function (item) {
+                    //console.log(item, privoce.getSelectItem())
+                }
+            }
+        );
+        let privoce = $(".city-1").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0"]),
+                clickFn: function (item) {
+                    //console.log(item, privoce.getSelectItem())
+                    city.reset(listToObject(dsy.Items["0_" + item.val]), true);
+                }
+            }
+        );
+
+        let city = $(".city-2").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0_0"]),
+                clickFn: function (item) {
+                    //console.log(item, city.getSelectItem())
+                    area.reset(listToObject(dsy.Items["0_" + item.val + "_0"]));
+                }
+            });
+
+        let area = $(".city-3").selectToggle(
+            {
+                id: "id", // 列表key
+                text: "text", // 列表val
+                list: listToObject(dsy.Items["0_0_0"]),
+                clickFn: function (item) {
+                    //console.log(item, area.getSelectItem())
+                }
+            }
+        );
+    })
+
+
+</script>
 </body>
 </html>

@@ -13,6 +13,7 @@
 
 <div class="view-header">
     <canvas id="canvas"></canvas>
+    <div class="txt">常用代码示例</div>
 </div>
 <div class="view-box">
     <div class="left-menu">
@@ -184,13 +185,13 @@
     //调用
     window.onload = function(){
         var dotline = new Dotline({
-            dom:'J_dotLine',//画布id
+            dom:'canvas',//画布id
             cw:1000,//画布宽
-            ch:500,//画布高
+            ch:90,//画布高
             ds:100,//点的个数
             r:0.5,//圆点半径
-            cl:'#12FC41',//粒子线颜色
-            dis:100//触发连线的距离
+            cl:'#ecaea0',//粒子线颜色
+            dis:50//触发连线的距离
         }).start();
     }
 

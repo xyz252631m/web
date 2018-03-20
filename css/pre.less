@@ -9,14 +9,14 @@ pre {
   tab-width: 4;
 }
 
-
-
 .pre-view { padding-left: 5px; padding-right: 5px; padding-bottom: 50px;
-  h1 { text-align: center; font-weight: normal; font-size: 20px; height: 50px; line-height: 50px; }
+  h1 { text-indent: 1em; font-weight: normal; font-size: 20px; height: 50px; line-height: 50px; position: relative;
+    &::before { content: " "; width: 10px; margin: -5px 0 0 4px; height: 10px; border-radius: 50%; background-color: #ea6f5a; position: absolute; top: 50%; left: 0; }
+  }
   /* #2dabee*/
   h3 { background-color: #aeb7bb; color: white; height: 35px; line-height: 35px; font-size: 16px; font-weight: normal; text-indent: 20px; }
 
-  pre, xmp { background-color: #f9f4e1;line-height: 20px; margin: 0; overflow: auto }
+  pre, xmp { background-color: #f9f4e1; line-height: 20px; margin: 0; overflow: auto }
 
   .pre-btn-list { background-color: #f9f4e1; border-top: #b0c1c7 dashed 1px; }
   .use-box { position: relative;
@@ -24,12 +24,12 @@ pre {
       a { width: 50px; font-size: 12px; float: left; height: 24px; text-align: center; line-height: 24px; background-color: #dcdcdc; color: white; margin-left: 1px; }
       .active { color: #f9f4e1; background-color: #c5c5c5 }
     }
-    xmp { display: none; tab-width: 2;  }
+    xmp { display: none; tab-width: 2; }
     .active { display: block; }
   }
 }
 
-.pre-box {background-color: #f9f4e1; padding: 20px 0 }
+.pre-box { background-color: #f9f4e1; padding: 20px 0 }
 
 .btn-list { padding: 10px 20px;
   button { border: none; padding: 5px 10px; min-width: 80px; border-radius: 4px; background-color: #2dabee; color: white; transition: all .1s;
@@ -39,7 +39,7 @@ pre {
 
 .plist-box { background-color: #dbe6ea;
   p { line-height: 40px; border-bottom: #cccdce solid 1px; display: flex; }
-  span { display: inline-block; border-right: #cccdce solid 1px; width: 30%; text-align: right; padding-right: 20px; margin-right: 20px;word-break: break-all; max-width: 350px; }
+  span { display: inline-block; border-right: #cccdce solid 1px; width: 30%; text-align: right; padding-right: 20px; margin-right: 20px; word-break: break-all; max-width: 350px; }
   em { color: #2dabee; }
   label { flex: 1 }
 
