@@ -1,22 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>pager</title>
+    <title>图片轮播</title>
     <link rel="stylesheet" href="../../../css/base.css">
     <link rel="stylesheet" href="../../../css/pre.css">
-    <link rel="stylesheet" href="../../css/pager.css">
+    <link rel="stylesheet" href="../../css/carousel.css">
     <script src="../../../js/jquery-1.11.1.min.js"></script>
     <script src="../../js/page.js"></script>
-
 </head>
-
 <body>
-
 <div class="pre-view">
-    <h1>分页pager</h1>
+    <h1>图片轮播</h1>
     <h3>使用方式：</h3>
     <div class="use-box">
         <span class="pre-tab">
@@ -25,14 +22,14 @@
         <div class="tab-main">
             <xmp class="active">
                 let pager = new Page($(".xui-pages"));
-                    var option={
-                        prefixCount: 2
-                    };
-                    pager.config(option);
-                    pager.post("../../json/list.json", {}, function (res, opts) {
-                    opts.listCount = res.count; //重新赋值list总条数
-                    //执行绑定逻辑
-                    //...
+                var option={
+                prefixCount: 2
+                };
+                pager.config(option);
+                pager.post("../../json/list.json", {}, function (res, opts) {
+                opts.listCount = res.count; //重新赋值list总条数
+                //执行绑定逻辑
+                //...
                 })
             </xmp>
             <xmp>
@@ -53,20 +50,20 @@
             </xmp>
             <xmp>
                 .xui-pages { width: 100%; font-size: 0;
-                    label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
-                    a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc
-                        solid 1px; border-radius: 3px; text-align: center;user-select: none;
-                    }
-                    .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999;
-                        &:hover { background-color: #eee; border-color: #eee; color: #999; }
-                    }
-                    a:hover { background-color: #f5f5f5; }
-                    .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: white; }
-                    .active:hover { background-color: #ea6f5a; }
-                    .btn-pager { padding: 5px 12px; }
-                    .go-input{font-size: 0;}
-                    .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #cccccc solid 1px; border-right: none; border-radius: 3px 0 0 3px }
-                    .btn-go { border: #cccccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px;  }
+                label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
+                a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc
+                solid 1px; border-radius: 3px; text-align: center;user-select: none;
+                }
+                .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999;
+                &:hover { background-color: #eee; border-color: #eee; color: #999; }
+                }
+                a:hover { background-color: #f5f5f5; }
+                .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: white; }
+                .active:hover { background-color: #ea6f5a; }
+                .btn-pager { padding: 5px 12px; }
+                .go-input{font-size: 0;}
+                .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #cccccc solid 1px; border-right: none; border-radius: 3px 0 0 3px }
+                .btn-go { border: #cccccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px;  }
                 }
             </xmp>
             <xmp>
@@ -114,18 +111,21 @@
         <button class="apply-opt">执行</button>
     </div>
 
-    <div class="dome-box">
-        <div class="xui-pages">
-            <a class="first">首页</a>
-            <a class="prev"><em><</em>上一页</a>
-            <span class="pageNum">
-                <a class="active">1</a><a>2</a><a>3</a><a>4</a><a>5</a>
-                </span>
-            <a class="next">下一页<em>></em></a>
-            <a class="last">末页</a>
-            <label class="go-input"><input class="go-page" type="text">
-                <button class="btn-go">go</button>
-            </label>
+    <div class="dome-box" style="height: 700px;">
+        <div class="img-switch">
+            <div class="img-box">
+                <ul>
+                    <li class="animated active-item"><img src="../images/gzjy/tem_1.png"/></li>
+                    <li class="animated"><img src="../images/gzjy/tem_2.jpg"/></li>
+                    <!--<li class="animated"><img src="../images/gzjy/tem_3.jpg"/></li>-->
+                    <!--<li class="animated"><img src="../images/gzjy/tem_4.jpg"/></li>-->
+                    <!--<li class="animated"><img src="../images/gzjy/tem_5.jpg"/></li>-->
+                </ul>
+            </div>
+            <div class="img-btn">
+                <span class="active"></span><span></span>
+                <!--<span></span><span></span><span></span>-->
+            </div>
         </div>
     </div>
     <h3>Page对象：</h3>

@@ -8,7 +8,7 @@
 pre {
   tab-width: 4;
 }
-
+/*view*/
 .pre-view { padding-left: 5px; padding-right: 5px; padding-bottom: 50px;
   h1 { text-indent: 1em; font-weight: normal; font-size: 20px; height: 50px; line-height: 50px; position: relative;
     &::before { content: " "; width: 10px; margin: -5px 0 0 4px; height: 10px; border-radius: 50%; background-color: #ea6f5a; position: absolute; top: 50%; left: 0; }
@@ -19,6 +19,7 @@ pre {
   pre, xmp { background-color: #f9f4e1; line-height: 20px; margin: 0; overflow: auto }
 
   .pre-btn-list { background-color: #f9f4e1; border-top: #b0c1c7 dashed 1px; }
+    /*使用说明--tab*/
   .use-box { position: relative;
     .pre-tab { position: absolute; right: 0; top: 0; height: 30px;
       a { width: 50px; font-size: 12px; float: left; height: 24px; text-align: center; line-height: 24px; background-color: #dcdcdc; color: white; margin-left: 1px; }
@@ -28,19 +29,20 @@ pre {
     .active { display: block; }
   }
 }
-
+/*pre*/
 .pre-box { background-color: #f9f4e1; padding: 20px 0 }
-
+/*执行按钮*/
 .btn-list { padding: 10px 20px;
   button { border: none; padding: 5px 10px; min-width: 80px; border-radius: 4px; background-color: #2dabee; color: white; transition: all .1s;
     &:hover { background-color: #0f8ed2; }
   }
 }
-
+/*返回值说明*/
 .plist-box { background-color: #dbe6ea;
   p { line-height: 40px; border-bottom: #cccdce solid 1px; display: flex; }
   span { display: inline-block; border-right: #cccdce solid 1px; width: 30%; text-align: right; padding-right: 20px; margin-right: 20px; word-break: break-all; max-width: 350px; }
   em { color: #2dabee; }
   label { flex: 1 }
-
 }
+/*示例dome*/
+.dome-box{text-align: center;margin: 10px 0;}
