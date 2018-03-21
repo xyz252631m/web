@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>图片轮播</title>
     <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
     <link rel="stylesheet" href="../../../css/pre.css">
     <link rel="stylesheet" href="../../css/carousel.css">
     <script src="../../../js/jquery-1.11.1.min.js"></script>
-    <script src="../../js/page.js"></script>
+
+
+
 </head>
 <body>
 <div class="pre-view">
@@ -111,20 +114,19 @@
         <button class="apply-opt">执行</button>
     </div>
 
-    <div class="dome-box" style="height: 700px;">
+    <div class="dome-box" >
         <div class="img-switch">
             <div class="img-box">
                 <ul>
-                    <li class="animated active-item"><img src="../images/gzjy/tem_1.png"/></li>
-                    <li class="animated"><img src="../images/gzjy/tem_2.jpg"/></li>
-                    <!--<li class="animated"><img src="../images/gzjy/tem_3.jpg"/></li>-->
-                    <!--<li class="animated"><img src="../images/gzjy/tem_4.jpg"/></li>-->
-                    <!--<li class="animated"><img src="../images/gzjy/tem_5.jpg"/></li>-->
+                    <li class="animated active-item"><img src="../../images/tem/tem_1.jpg"/></li>
+                    <li class="animated"><img src="../../images/tem/tem_2.jpg"/></li>
+                    <li class="animated"><img src="../../images/tem/tem_3.jpg"/></li>
+                    <li class="animated"><img src="../../images/tem/tem_4.jpg"/></li>
                 </ul>
             </div>
             <div class="img-btn">
                 <span class="active"></span><span></span>
-                <!--<span></span><span></span><span></span>-->
+                <span></span><span></span>
             </div>
         </div>
     </div>
@@ -172,24 +174,18 @@
     </div>
 </div>
 <script src="../../js/pre.js"></script>
+<script src="../../js/carousel.js"></script>
 <script>
     $(function () {
         $(".apply-opt").on("click", function () {
             eval($(".pre-edit-pager").text());
             applyPage();
         });
-
     });
     /*分页*/
-    let pager = new Page($(".xui-pages"));
-    let option = {prefixCount: 2};
-    pager.config(option);
-    pager.post("../../json/list.json", {}, function (res) {
-        this.listCount = res.count;
-    });
+
     function applyPage() {
-        pager.config(option);
-        pager.refresh();
+
     }
 </script>
 </body>
