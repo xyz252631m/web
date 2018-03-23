@@ -120,7 +120,10 @@
     <div class="dome-box">
         <div class="xui-clip-box">
             <div class="clip-op">
-                <img src="../../images/tem/tem_1.jpg"/>
+                <!--<img src="../../images/tem/tem_1.jpg"/>-->
+                <div class="img-bg-box">
+                    <canvas id="clipImgCanvas"></canvas>
+                </div>
                 <div class="clip-shadow">
                     <div class="clip-select">
                         <i class="i-1"></i><i class="i-2"></i><i class="i-3"></i><i class="i-4"></i>
@@ -130,7 +133,11 @@
 
             </div>
 
-            <div class="clip-preview"></div>
+            <div class="clip-preview">
+                <img id="preview" src="" alt="">
+                <img id="source" src="" style="display: none;">
+                <img id="source2" src="">
+            </div>
         </div>
     </div>
     <h3>Page对象：</h3>
@@ -199,8 +206,8 @@
 
         var self = this;
         //选中框信息
-        this.info={
-            top:0,left:0,width:0,height:0
+        this.info = {
+            top: 0, left: 0, width: 0, height: 0
         };
         var op = {
             isDown: false,
@@ -212,8 +219,8 @@
             }
         }
         //选中框
-        var op_rect={
-            isDown:false
+        var op_rect = {
+            isDown: false
         }
         $shadow.on("mousedown", function (e) {
             op.isDown = true;
@@ -232,48 +239,95 @@
                 resetSelect(op.rect);
                 $select.css(self.info);
             }
-            if(op_rect.isDown){
+            if (op_rect.isDown) {
                 op.rect.x1 = e.pageX;
                 op.rect.y1 = e.pageY;
                 $select.css({
-                    left:self.info.left+ e.pageX - op.rect.x,
-                    top:self.info.top +  e.pageY - op.rect.y
+                    left: self.info.left + e.pageX - op.rect.x,
+                    top: self.info.top + e.pageY - op.rect.y
                 });
             }
         }).on("mouseup", function () {
             op.isDown = false;
-            if(op_rect.isDown){
-                self.info.left = self.info.left+  op.rect.x1  - op.rect.x;
-                self.info.top  = self.info.top +   op.rect.y1 - op.rect.y;
-                op_rect.isDown=false;
+            if (op_rect.isDown) {
+                self.info.left = self.info.left + op.rect.x1 - op.rect.x;
+                self.info.top = self.info.top + op.rect.y1 - op.rect.y;
+                op_rect.isDown = false;
             }
             //$shadow.Class(shaCls);
         })
         var $select = $elem.find(".clip-select"), $select_i = $select.find("i");
 
 
-        $select.on("mousedown",function (e) {
-            if(!op.isDown){
-                op_rect.isDown=true;
+        $select.on("mousedown", function (e) {
+            if (!op.isDown) {
+                op_rect.isDown = true;
                 op.rect.x = e.pageX;
                 op.rect.y = e.pageY;
             }
             return false
         });
+        var canvas = document.getElementById('clipImgCanvas');
+        var source = document.getElementById('source');
+        var preview = document.getElementById('preview');
+        source.src = '../../images/tem/tem_1.jpg';
+
+        source.onload=function (a) {
+            var width = source.width;
+            var height = source.height;
+
+            var lp = width/height;
+            var context = canvas.getContext('2d');
+            var quality = 0.92;
+            var $op = $elem.find(".clip-op");
+            canvas.width = $op.width();
+            canvas.height = $op.height();
+            console.log(a)
+            context.drawImage(source, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
+
+            var dataUrl = canvas.toDataURL('image/jpeg', quality);
+            preview.src = dataUrl;
+        }
+
+
+
+        function cropImage(targetCanvas, x, y, width, height) {
+            var targetctx = targetCanvas.getContext('2d');
+            var targetctxImageData = targetctx.getImageData(x, y, width, height); // sx, sy, sWidth, sHeight
+
+            var c = document.createElement('canvas');
+            var ctx = c.getContext('2d');
+
+            c.width = width;
+            c.height = height;
+
+            ctx.rect(0, 0, width, height);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.putImageData(targetctxImageData, 0, 0); // imageData, dx, dy
+
+            document.getElementById('source2').src = c.toDataURL('image/jpeg', 0.92);
+            document.getElementById('source2').style.display = 'initial';
+        }
+
+        cropImage(canvas, 0, 0, 200, 200)
 
         //计算选框位置信息
         function resetSelect(rect) {
-             self.info={
-                 left: rect.x1 > rect.x ? rect.left : rect.left + (rect.x1 - rect.x),
-                 top: rect.y1 > rect.y ? rect.top : rect.top + (rect.y1 - rect.y),
-                 width: rect.w,
-                 height: rect.h
-             };
+            self.info = {
+                left: rect.x1 > rect.x ? rect.left : rect.left + (rect.x1 - rect.x),
+                top: rect.y1 > rect.y ? rect.top : rect.top + (rect.y1 - rect.y),
+                width: rect.w,
+                height: rect.h
+            };
         }
 
     }
 
 
+    $(function () {
+
+    })
     var clip = new imgClip({elem: ".xui-clip-box"});
 
 </script>
