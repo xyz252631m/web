@@ -118,7 +118,9 @@
     </div>
 
     <div class="dome-box">
+
         <div class="xui-clip-box">
+            <p><input type="file" class="clip-file"></p>
             <div class="clip-op">
                 <!--<img src="../../images/tem/tem_1.jpg"/>-->
                 <div class="img-bg-box">
@@ -204,6 +206,28 @@
         var opt = $.extend({}, def, option);
         var $elem = $(opt.elem), $shadow = $elem.find(".clip-shadow"), shaCls = "clip-shadow-active";
 
+        var $op = $elem.find(".clip-op");
+        this.box = {
+            w: $op.width(),
+            h: $op.height()
+        }
+        $elem.find(".clip-file").on("change",function (e) {
+
+            var reader=new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload=function(){
+
+
+                var img=new Image();
+                img.onload=function(){
+                    console.log(this.width)
+                    readerBg(this)
+                };
+                img.src=reader.result;
+            }
+        })
+
+
         var self = this;
         //选中框信息
         this.info = {
@@ -211,7 +235,7 @@
         };
         var op = {
             isDown: false,
-            rect: {
+            rect: {//画选框
                 left: 0, top: 0,
                 x: 0, y: 0,
                 x1: 0, y1: 0,
@@ -220,7 +244,9 @@
         }
         //选中框
         var op_rect = {
-            isDown: false
+            isDown: false,
+            left: 0,//移动时的left
+            top: 0  //移动时的top
         }
         $shadow.on("mousedown", function (e) {
             op.isDown = true;
@@ -242,22 +268,44 @@
             if (op_rect.isDown) {
                 op.rect.x1 = e.pageX;
                 op.rect.y1 = e.pageY;
+
+                op_rect.left = self.info.left + e.pageX - op.rect.x;
+                op_rect.top = self.info.top + e.pageY - op.rect.y;
+
+                if (op_rect.left + self.info.width >= self.box.w) {
+                    op_rect.left = self.box.w - self.info.width;
+                }
+                if (op_rect.top + self.info.height >= self.box.h) {
+                    op_rect.top = self.box.h - self.info.height;
+                }
+                if (op_rect.left < 0) {
+                    op_rect.left = 0;
+                }
+                if (op_rect.top < 0) {
+                    op_rect.top = 0;
+                }
                 $select.css({
-                    left: self.info.left + e.pageX - op.rect.x,
-                    top: self.info.top + e.pageY - op.rect.y
+                    left: op_rect.left,
+                    top: op_rect.top,
+                    backgroundPosition:-op_rect.left+'px'+' '+-op_rect.top+'px'
+                 //   clip:'rect('+op_rect.top+'px,'+(op_rect.left+self.info.width)+'px,'+(op_rect.top+self.info.height)+'px,'+op_rect.left+'px)'
                 });
             }
-        }).on("mouseup", function () {
+        });
+
+        $(document).on("mouseup", function () {
             op.isDown = false;
             if (op_rect.isDown) {
-                self.info.left = self.info.left + op.rect.x1 - op.rect.x;
-                self.info.top = self.info.top + op.rect.y1 - op.rect.y;
+                self.info.left = op_rect.left;
+                self.info.top = op_rect.top;
                 op_rect.isDown = false;
             }
             //$shadow.Class(shaCls);
         })
         var $select = $elem.find(".clip-select"), $select_i = $select.find("i");
-
+        $select.css({
+            background:""
+        })
 
         $select.on("mousedown", function (e) {
             if (!op.isDown) {
@@ -272,23 +320,28 @@
         var preview = document.getElementById('preview');
         source.src = '../../images/tem/tem_1.jpg';
 
-        source.onload=function (a) {
+
+        function  readerBg(source) {
             var width = source.width;
             var height = source.height;
 
-            var lp = width/height;
+            var lp = width / height;
             var context = canvas.getContext('2d');
             var quality = 0.92;
             var $op = $elem.find(".clip-op");
             canvas.width = $op.width();
             canvas.height = $op.height();
-            console.log(a)
+
             context.drawImage(source, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
 
             var dataUrl = canvas.toDataURL('image/jpeg', quality);
             preview.src = dataUrl;
         }
 
+
+        source.onload = function (a) {
+
+        }
 
 
         function cropImage(targetCanvas, x, y, width, height) {
