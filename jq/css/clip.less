@@ -1,29 +1,45 @@
 /*图片*/
 @img: '../images';
-.xui-clip-box {
+.xui-clip-box { width: 900px; height: 600px;position: relative;
 
-  .clip-op { width: 600px; height: 400px; position: relative;
+  .clip-op { width: 640px; height: 480px; position: absolute;top:50px;left:0;
     img { max-width: 100%; max-height: 100%; user-select: none }
 
-    .img-bg-box{position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+    .img-bg-box { position: absolute; top: 0; left: 0; right: 0; bottom: 0;background-color: #f7f7f7; }
 
-    .clip-shadow { position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
-    .clip-shadow-active{background-color:rgba(0,0,0,.6)  }
-    .clip-select{ width: 100px; height: 100px;position: absolute; left:30px;top:50px;border:#00a0e9 solid 1px; cursor: pointer;
+    .clip-shadow { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    .clip-shadow-active {
+      .shadow-rect { position: absolute; background-color: rgba(0, 0, 0, .6); user-select: none;pointer-events: none; }
+      .shadow-1 { top: 0; left: 0; right: 0; }
+      .shadow-2 { right: 0; }
+      .shadow-3 {   bottom: 0; left: 0; right: 0;}
+      .shadow-4 { left: 0;  }
+    }
+    .clip-select { width: 100px; height: 100px; box-sizing: border-box; position: absolute; left: 30px; top: 50px; border: #00a0e9 solid 1px; cursor: pointer;
 
+      i { position: absolute; display: block; width: 5px; height: 5px; background-color: #00a0e9; user-select: none; }
+      .i-1 { left: -3px; top: -3px; cursor: nw-resize }
+      .i-2 { left: 50%; top: -3px; margin-left: -2px; cursor: ns-resize }
+      .i-3 { right: -3px; top: -3px; cursor: ne-resize }
 
+      .i-4 { left: -3px; top: 50%; margin-top: -2px; cursor: ew-resize }
+      .i-5 { right: -3px; top: 50%; margin-top: -2px; cursor: ew-resize }
 
-      i{ position: absolute; display: block; width: 5px; height: 5px; background-color: #00a0e9;user-select: none;}
-      .i-1{left:-3px;top:-3px;cursor: nw-resize}
-      .i-2{left:50%; top:-3px; margin-left: -2px; cursor: ns-resize}
-      .i-3{right:-3px;top:-3px;cursor: ne-resize}
-
-      .i-4{left:-3px;top:50%;margin-top: -2px; cursor: ew-resize }
-      .i-5{right:-3px;top:50%;margin-top: -2px; cursor: ew-resize }
-
-      .i-6{bottom: -3px;left:-3px;cursor: ne-resize}
-      .i-7{bottom: -3px;left:50%;margin-left: -2px; cursor: ns-resize}
-      .i-8{bottom: -3px;right:-3px; cursor: nw-resize }
+      .i-6 { bottom: -3px; left: -3px; cursor: ne-resize }
+      .i-7 { bottom: -3px; left: 50%; margin-left: -2px; cursor: ns-resize }
+      .i-8 { bottom: -3px; right: -3px; cursor: nw-resize }
     }
   }
+
+  .clip-preview{position: absolute; width: 200px;  top:50px; bottom: 0; right:0;
+    .preview-img{position: absolute; background-color: #f7f7f7;
+      canvas{ width: 100%; height: 100%;}
+    }
+    .pv-1{width: 200px; height: 200px; left:0;top:0}
+    .pv-2{width: 150px; height: 150px;top:220px;left:0;}
+    .pv-3{width: 100px; height: 100px;left:0;top:390px;}
+  }
+
+
+
 }

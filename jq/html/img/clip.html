@@ -127,6 +127,11 @@
                     <canvas id="clipImgCanvas"></canvas>
                 </div>
                 <div class="clip-shadow">
+
+                    <div class="shadow-rect shadow-1"></div>
+                    <div class="shadow-rect shadow-2"></div>
+                    <div class="shadow-rect shadow-3"></div>
+                    <div class="shadow-rect shadow-4"></div>
                     <div class="clip-select">
                         <i class="i-1"></i><i class="i-2"></i><i class="i-3"></i><i class="i-4"></i>
                         <i class="i-5"></i><i class="i-6"></i><i class="i-7"></i><i class="i-8"></i>
@@ -136,9 +141,19 @@
             </div>
 
             <div class="clip-preview">
-                <img id="preview" src="" alt="">
-                <img id="source" src="" style="display: none;">
-                <img id="source2" src="">
+                <!--<img id="preview" src="" alt="">-->
+                <!--<img id="source" src="" style="display: none;">-->
+                <!--<img id="source2" src="">-->
+
+                <div class="preview-img pv-1">
+                    <canvas id="preImg_1"></canvas>
+                </div>
+                <div class="preview-img pv-2">
+                    <canvas id="preImg_2"></canvas>
+                </div>
+                <div class="preview-img pv-3">
+                    <canvas id="preImg_3"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -201,38 +216,57 @@
     }
 
     function imgClip(option) {
-
-        var def = {};
+        var self = this;
+        var def = {
+            aspectRatio: 1 //宽高比
+        };
         var opt = $.extend({}, def, option);
         var $elem = $(opt.elem), $shadow = $elem.find(".clip-shadow"), shaCls = "clip-shadow-active";
+
+        var $shadowList = $shadow.find(".shadow-rect");
 
         var $op = $elem.find(".clip-op");
         this.box = {
             w: $op.width(),
-            h: $op.height()
-        }
-        $elem.find(".clip-file").on("change",function (e) {
+            h: $op.height(),
+            aspectRatio: 0
+        };
+        this.box.aspectRatio = this.box.w / this.box.h;
+        console.log(this.box)
+        $elem.find(".clip-file").on("change", function (e) {
 
-            var reader=new FileReader();
+            var reader = new FileReader();
             reader.readAsDataURL(this.files[0]);
-            reader.onload=function(){
+            reader.onload = function () {
 
-
-                var img=new Image();
-                img.onload=function(){
+                var img = new Image();
+                img.onload = function () {
                     console.log(this.width)
                     readerBg(this)
                 };
-                img.src=reader.result;
+                img.src = reader.result;
+                self.imgInfo.source = img;
             }
         })
+        //原图信息
+        this.imgInfo = {
+            source: null
+        }
 
 
-        var self = this;
         //选中框信息
         this.info = {
             top: 0, left: 0, width: 0, height: 0
         };
+        //原图缩放信息
+        this.zoomObj = {
+            x: 0, y: 0, w: 0, h: 0,
+            normal: {
+                w: 0,
+                h: 0,
+                ar: 0
+            }
+        }
         var op = {
             isDown: false,
             rect: {//画选框
@@ -261,17 +295,36 @@
                 op.rect.x1 = e.pageX;
                 op.rect.y1 = e.pageY;
                 op.rect.w = Math.abs(op.rect.x1 - op.rect.x);
-                op.rect.h = Math.abs(op.rect.y1 - op.rect.y);
+                if (op.rect.w + op.rect.left >= self.box.w) {
+                    op.rect.w = self.box.w - op.rect.left;
+                }
+                if (opt.aspectRatio) {
+                    op.rect.h = op.rect.w / opt.aspectRatio;
+                } else {
+                    op.rect.h = Math.abs(op.rect.y1 - op.rect.y);
+                }
+                if (op.rect.h + op.rect.top >= self.box.h) {
+                    op.rect.h = self.box.h - op.rect.top;
+                }
+                //计算选框位置信息
+                function resetSelect(rect) {
+                    self.info = {
+                        left: rect.x1 > rect.x ? rect.left : rect.left + rect.w,
+                        top: rect.y1 > rect.y ? rect.top : rect.top + rect.h,
+                        width: rect.w,
+                        height: rect.h
+                    };
+                }
+
                 resetSelect(op.rect);
-                $select.css(self.info);
+//                /$select.css(self.info);
+                drawSelect(self.info.left, self.info.top, self.info.width, self.info.height)
             }
             if (op_rect.isDown) {
                 op.rect.x1 = e.pageX;
                 op.rect.y1 = e.pageY;
-
                 op_rect.left = self.info.left + e.pageX - op.rect.x;
                 op_rect.top = self.info.top + e.pageY - op.rect.y;
-
                 if (op_rect.left + self.info.width >= self.box.w) {
                     op_rect.left = self.box.w - self.info.width;
                 }
@@ -284,14 +337,19 @@
                 if (op_rect.top < 0) {
                     op_rect.top = 0;
                 }
-                $select.css({
-                    left: op_rect.left,
-                    top: op_rect.top,
-                    backgroundPosition:-op_rect.left+'px'+' '+-op_rect.top+'px'
-                 //   clip:'rect('+op_rect.top+'px,'+(op_rect.left+self.info.width)+'px,'+(op_rect.top+self.info.height)+'px,'+op_rect.left+'px)'
-                });
+                drawSelect(op_rect.left, op_rect.top, self.info.width, self.info.height);
+                drawPreview(canvas, op_rect.left, op_rect.top, self.info.width, self.info.height)
             }
         });
+
+        //绘制选框
+        function drawSelect(left, top, width, height) {
+            $shadowList.eq(0).css({height: top});
+            $shadowList.eq(1).css({left: left + width, top, height});
+            $shadowList.eq(2).css({top: top + height});
+            $shadowList.eq(3).css({width: left, height, top});
+            $select.css({left, top, width, height});
+        }
 
         $(document).on("mouseup", function () {
             op.isDown = false;
@@ -301,12 +359,8 @@
                 op_rect.isDown = false;
             }
             //$shadow.Class(shaCls);
-        })
+        });
         var $select = $elem.find(".clip-select"), $select_i = $select.find("i");
-        $select.css({
-            background:""
-        })
-
         $select.on("mousedown", function (e) {
             if (!op.isDown) {
                 op_rect.isDown = true;
@@ -318,63 +372,90 @@
         var canvas = document.getElementById('clipImgCanvas');
         var source = document.getElementById('source');
         var preview = document.getElementById('preview');
-        source.src = '../../images/tem/tem_1.jpg';
 
-
-        function  readerBg(source) {
-            var width = source.width;
-            var height = source.height;
-
+        function readerBg(sourceImg) {
+            var width = sourceImg.width;
+            var height = sourceImg.height;
             var lp = width / height;
+            let zm = self.zoomObj = {
+                x: 0,
+                y: 0,
+                w: width,
+                h: height,
+                normal: {
+                    w: width,
+                    h: height,
+                    ar: lp
+                }
+            };
+            if (lp >= self.box.aspectRatio) {
+                if (width > self.box.w) {
+                    zm.w = self.box.w;
+                    zm.h = self.box.w / width * height;
+                } else {
+                    zm.x = (self.box.w - zm.x) / 2
+                }
+                zm.y = (self.box.h - zm.h) / 2
+            } else {
+                if (height > self.box.h) {
+                    zm.h = self.box.h;
+                    zm.w = self.box.h / height * width;
+                } else {
+                    zm.y = (self.box.h - zm.y) / 2
+                }
+                zm.x = (self.box.w - zm.w) / 2
+            }
             var context = canvas.getContext('2d');
             var quality = 0.92;
-            var $op = $elem.find(".clip-op");
-            canvas.width = $op.width();
-            canvas.height = $op.height();
-
-            context.drawImage(source, 0, 0, width, height, 0, 0, canvas.width, canvas.height);
-
-            var dataUrl = canvas.toDataURL('image/jpeg', quality);
-            preview.src = dataUrl;
+            canvas.width = self.box.w;
+            canvas.height = self.box.h;
+            context.drawImage(sourceImg, 0, 0, width, height, zm.x, zm.y, zm.w, zm.h);
         }
 
 
-        source.onload = function (a) {
-
-        }
-
-
-        function cropImage(targetCanvas, x, y, width, height) {
-            var targetctx = targetCanvas.getContext('2d');
-            var targetctxImageData = targetctx.getImageData(x, y, width, height); // sx, sy, sWidth, sHeight
-
-            var c = document.createElement('canvas');
-            var ctx = c.getContext('2d');
-
-            c.width = width;
-            c.height = height;
-
-            ctx.rect(0, 0, width, height);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            ctx.putImageData(targetctxImageData, 0, 0); // imageData, dx, dy
-
-            document.getElementById('source2').src = c.toDataURL('image/jpeg', 0.92);
-            document.getElementById('source2').style.display = 'initial';
-        }
-
-        cropImage(canvas, 0, 0, 200, 200)
-
-        //计算选框位置信息
-        function resetSelect(rect) {
-            self.info = {
-                left: rect.x1 > rect.x ? rect.left : rect.left + (rect.x1 - rect.x),
-                top: rect.y1 > rect.y ? rect.top : rect.top + (rect.y1 - rect.y),
-                width: rect.w,
-                height: rect.h
+        let preImg_1 = document.getElementById("preImg_1");
+        let preImg_2 = document.getElementById("preImg_2");
+        let preImg_3 = document.getElementById("preImg_3");
+        let preImgWH = {
+            pre1: {
+                w: preImg_1.offsetWidth,
+                h: preImg_1.offsetHeight
+            },
+            pre2: {
+                w: preImg_2.offsetWidth,
+                h: preImg_2.offsetHeight
+            },
+            pre3: {
+                w: preImg_3.offsetWidth,
+                h: preImg_3.offsetHeight
+            }
+        };
+        preImg_1.width = preImgWH.pre1.w;
+        preImg_1.height = preImgWH.pre1.h;
+        preImg_2.width = preImgWH.pre2.w;
+        preImg_2.height = preImgWH.pre2.h;
+        preImg_3.width = preImgWH.pre3.w;
+        preImg_3.height = preImgWH.pre3.h;
+        function drawPreview(canvas, x, y, width, height) {
+            let context = canvas.getContext('2d');
+            let pos = {
+                x: self.zoomObj.normal.w / (self.zoomObj.w / (x - self.zoomObj.x)),
+                y: self.zoomObj.normal.h / (self.zoomObj.h / (y - self.zoomObj.y)),
+                w: self.zoomObj.normal.w / (self.zoomObj.w / width),
+                h: self.zoomObj.normal.h / (self.zoomObj.h / height)
             };
+            let c1 = preImg_1.getContext('2d');
+            let c2 = preImg_2.getContext('2d');
+            let c3 = preImg_3.getContext('2d');
+            //clear
+            c1.clearRect(0, 0, preImgWH.pre1.w, preImgWH.pre1.h);
+            c2.clearRect(0, 0, preImgWH.pre2.w, preImgWH.pre2.h);
+            c3.clearRect(0, 0, preImgWH.pre3.w, preImgWH.pre3.h);
+            //draw
+            c1.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre1.w, preImgWH.pre1.h);
+            c2.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre2.w, preImgWH.pre2.h);
+            c3.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre3.w, preImgWH.pre3.h);
         }
-
     }
 
 
