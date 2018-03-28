@@ -29,7 +29,9 @@ require.config({
                             $sceProvider.enabled(false);
                         });
                     } else {
-                        return angular.module(moudlename, module || []);
+                        return angular.module(moudlename, module || []).config(function ($compileProvider) {
+                            $compileProvider.debugInfoEnabled(false)
+                        });
                     }
                 }
             }

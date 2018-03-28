@@ -21,6 +21,17 @@
         let y1 = y0 + r * Math.sin(angle * Math.PI / 180);
         return {x1, y1};
     }
+    <svg>
+                        <g class="s-arrow" v-if="arrow.isShow">
+                                        <line class="s-lines" :style="arrow.line.style" fill="none" fill-opacity="0" stroke="#57a6f9" stroke-opacity="1" stroke-width="2"
+                                              stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"
+                                              :x1="arrow.line.x1" :y1="arrow.line.y1" :x2="arrow.line.x2" :y2="arrow.line.y2" stroke-dasharray="6,4" dojoGfxStrokeStyle="dash"></line>
+                                        <g class="arrow" :transform="arrow.transform">
+                                            <line fill="none" fill-opacity="0" stroke="#57a6f9" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" x1="0" y1="0" x2="-8" y2="-4" stroke-dasharray="none" dojoGfxStrokeStyle="solid"></line>
+                                            <line fill="none" fill-opacity="0" stroke="#57a6f9" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" x1="0" y1="0" x2="-8" y2="4" stroke-dasharray="none" dojoGfxStrokeStyle="solid"></line>
+                                        </g>
+                                    </g>
+    </svg>
 </pre>
 
 
