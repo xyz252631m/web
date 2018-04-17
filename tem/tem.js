@@ -436,3 +436,27 @@ const gos = {
         },
     }
 }
+
+const tree={
+    getItemByTree(tree, id){
+        let fn = function (tree, list) {
+            tree.forEach(function (el) {
+                list.push(el);
+                if (el.children) {
+                    fn(el.children, list);
+                }
+            });
+            return list;
+        };
+        let getPath = function (list, id, arrPath) {
+            list.forEach(function (el) {
+                if (el.id == id) {
+                    arrPath.push(el);
+                    getPath(list, el.pid, arrPath);
+                }
+            });
+            return arrPath;
+        };
+        return getPath(fn(tree, []), id, []).reverse();
+    },
+}
