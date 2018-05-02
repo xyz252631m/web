@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset = "UTF-8">
+	<meta charset="UTF-8">
 	<title>首页</title>
+	<script>
+		function c(a,b,c,d) {
+			 a.clipboardData.setData("Text","666")
+		}
+		function b(a){
+
+
+			window.getSelection().collapse(a,0);
+			a.select();
+			console.log(document.execCommand("copy"));
+		}
+	</script>
 </head>
+
 <body>
-<div class = "layout-center">
-
-
-
-</div>
+	<span class="layout-center" onclick="b(this)" oncopy="c(event)">
+		333333333333333333333333333333333333
+	</span>
 </body>
 </html>

@@ -18,7 +18,7 @@
                 <li xm-class="getType(9)"><i class="iconfont icon-straw"></i></li>
             </ul>
         </div>
-        <div class="bg">
+        <div class="bg" ng-mousedown="clearSelect()">
             <div class="m-edit" ng-style="editStyle">
                 <svg xmlns:svg="http://www.w3.org/2000/svg" ng-style="svgStyle" edit-panel="editObj">
                     <g>
@@ -30,7 +30,7 @@
                     <g ng-repeat="m in editObj.list" id="m.type"></g>
 
                     <g id="selectorGroup0" transform="" display="inline" ng-repeat="s in editObj.selectList">
-                        <path id="selectedBox0"  fill="none" stroke="#4F80FF" shape-rendering="crispEdges" ng-style="selectBoxStyle" svg-shape="s"></path>
+                        <path id="selectedBox0" fill="none" stroke="#4F80FF" shape-rendering="crispEdges" ng-style="selectBoxStyle" svg-shape="s"></path>
                         <g display="inline">
                             <circle id="selectorGrip_rotate_nw" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="260.25" cy="137.25"></circle>
                             <circle id="selectorGrip_rotate_ne" fill="#000" r="8" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="0" style="cursor:url(images/xzh.png) 12 12, auto;" cx="557.75" cy="137.25"></circle>
@@ -48,10 +48,10 @@
                     </g>
 
 
-                    <g class="close-join"  >
-                        <rect fill="#fff" stroke="#000" stroke-width="0" x="163" y="106" width="12" height="12"></rect>
-                        <path stroke="#999" stroke-width="0" fill="#666" stroke-opacity="null" fill-opacity="null" d="m100,100l-4.06621,-4.06609l4.06606,-4.06601l-1.62642,-1.62629l-4.066,4.066l-4.06612,-4.066l-1.62627,1.62629l4.06602,4.06608l-4.06602,4.06602l1.62627,1.62629l4.06605,-4.06599l4.06606,4.06613l1.62656,-1.62643z"></path>
-                    </g>
+                    <!--<g class="close-join"  >-->
+                    <!--<rect fill="#fff" stroke="#000" stroke-width="0" x="163" y="106" width="12" height="12"></rect>-->
+                    <!--<path stroke="#999" stroke-width="0" fill="#666" stroke-opacity="null" fill-opacity="null" d="m100,100l-4.06621,-4.06609l4.06606,-4.06601l-1.62642,-1.62629l-4.066,4.066l-4.06612,-4.066l-1.62627,1.62629l4.06602,4.06608l-4.06602,4.06602l1.62627,1.62629l4.06605,-4.06599l4.06606,4.06613l1.62656,-1.62643z"></path>-->
+                    <!--</g>-->
 
                     </g>
                 </svg>
