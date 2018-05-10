@@ -6,7 +6,8 @@ define(["angular"], function (angular) {
         $scope.editObj = {
             activeType: 0,//  0-20 菜单  101 d
             list: [],
-            selectList: [],//选中列表
+            select: [],//选中列表 {item:null,oldItem:null}
+            borderList: [],//边框列表
             isDown: false
         };
 
@@ -31,7 +32,7 @@ define(["angular"], function (angular) {
         };
         //全局样式
         $scope.allStyle = {
-            strokeWidth: 5,
+            strokeWidth: 2,
             stroke: "#000",
             fill: "none"
         };
@@ -83,7 +84,7 @@ define(["angular"], function (angular) {
 
         $scope.getSelectBorder = function (item, params) {
             //var pos = node.getBBox();
-            var pos = angular.copy(item), ds = ($scope.allStyle.strokeWidth - $scope.selectBoxStyle.strokeWidth) / 2;
+            var pos = item , ds = ($scope.allStyle.strokeWidth - $scope.selectBoxStyle.strokeWidth) / 2;
             pos.width = Math.abs(pos.x2 - pos.x);
             pos.height = Math.abs(pos.y2 - pos.y);
             var select_item = {
@@ -142,6 +143,7 @@ define(["angular"], function (angular) {
 
                             if (node.nodeName == "svg") {
 
+                                // x y x2 y2 为边框定位属性
                                 switch (scope.editObj.activeType) {
                                     case 0:
 
@@ -175,66 +177,85 @@ define(["angular"], function (angular) {
                     e.stopPropagation();
                 });
                 ele.bind("mousemove", function (e) {
+
                     if (isDown) {
-                        item.x2 = e.offsetX;
-                        item.y2 = e.offsetY;
-                        switch (scope.editObj.activeType) {
-                            case 0: //选择----移动
-                                scope.$apply(function () {
-                                    var dx = e.offsetX - offsetX, dy = e.offsetY - offsetY;
-                                    if (scope.downSelect.item) {
-                                        var selectItem = scope.downSelect.item, oldItem = scope.downSelect.oldItem;
-                                        switch (item.type) {
-                                            case 2:
-                                                selectItem.x1 = oldItem.x1 + dx;
-                                                selectItem.x2 = oldItem.x2 + dx;
-                                                selectItem.y1 = oldItem.y1 + dy;
-                                                selectItem.y2 = oldItem.y2 + dy;
-                                                break;
-                                        }
-                                    }
 
-                                });
-                                break;
-                                break;
-                            case 2://直线
-                                scope.$apply(function () {
-                                    // item.x2 = e.offsetX;
-                                    //item.y2 = e.offsetY;
-                                    item.nodeName = "line";
-                                    if (!moveIdx) {
-                                        if (item.x1 == item.x2 && item.y1 == item.y2) {
 
-                                        } else {
-                                            scope.editObj.list.push(item);
-                                            moveIdx = 1;
-                                        }
+                        var dx = e.offsetX - offsetX, dy = e.offsetY - offsetY;
+                        //存在选中
+                        if (scope.editObj.select.length) {
+                            scope.$apply(function () {
+                                //移动距离val
+                                var t_pos = function (list, item, oldItem, val) {
+                                    angular.forEach(list, function (el) {
+                                        item[el] = oldItem[el] + val;
+                                    });
+                                };
+                                angular.forEach(scope.editObj.select, function (el, idx) {
+                                    var selectItem = el.item, oldItem = el.oldItem;
+                                    switch (selectItem.type) {
+                                        case 2:
+                                            t_pos(["x", "x1", "x2"], selectItem, oldItem, dx);
+                                            t_pos(["y", "y1", "y2"], selectItem, oldItem, dy);
+                                            break;
+                                        case 5:
+                                            t_pos(["x", "cx", "x2"], selectItem, oldItem, dx);
+                                            t_pos(["y", "cy", "y2"], selectItem, oldItem, dy);
+                                            break
                                     }
-                                });
-                                break;
-                            case 5://圆
-                                scope.$apply(function () {
-                                    var dx = e.offsetX - offsetX, dy = e.offsetY - offsetY;
-                                    item.rx = Math.abs(dx) / 2;
-                                    item.ry = Math.abs(dy) / 2;
-                                    item.cx = offsetX + dx / 2;
-                                    item.cy = offsetY + dy / 2;
-                                    item.nodeName = "ellipse";
-                                    if (!moveIdx) {
-                                        if (dx == 0 && dy == 0) {
+                                    scope.editObj.borderList = [scope.getSelectBorder(selectItem)];
+                                })
+                            })
 
-                                        } else {
-                                            scope.editObj.list.push(item);
-                                            //e.target.getBoundingClientRect()
-                                            moveIdx = 1;
+                        } else {
+                            //菜单
+                            switch (scope.editObj.activeType) {
+                                case 0: //选择----移动
+                                    scope.$apply(function () {
+
+
+                                    });
+                                    break;
+                                case 2://直线
+                                    scope.$apply(function () {
+                                        item.x2 = e.offsetX;
+                                        item.y2 = e.offsetY;
+                                        item.nodeName = "line";
+                                        if (!moveIdx) {
+                                            if (item.x1 == item.x2 && item.y1 == item.y2) {
+
+                                            } else {
+                                                scope.editObj.list.push(item);
+                                                moveIdx = 1;
+                                            }
                                         }
-                                    }
-                                });
-                                break;
+                                    });
+                                    break;
+                                case 5://圆
+                                    scope.$apply(function () {
+                                        var dx = e.offsetX - offsetX, dy = e.offsetY - offsetY;
+                                        item.rx = Math.abs(dx) / 2;
+                                        item.ry = Math.abs(dy) / 2;
+                                        item.cx = offsetX + dx / 2;
+                                        item.cy = offsetY + dy / 2;
+                                        item.x2 = e.offsetX;
+                                        item.y2 = e.offsetY;
+                                        item.nodeName = "ellipse";
+                                        if (!moveIdx) {
+                                            if (dx == 0 && dy == 0) {
+
+                                            } else {
+                                                scope.editObj.list.push(item);
+                                                //e.target.getBoundingClientRect()
+                                                moveIdx = 1;
+                                            }
+                                        }
+                                    });
+                                    break;
+                            }
+                            console.log(scope.editObj.list)
                         }
-                        console.log(scope.editObj.list)
                     }
-
                 });
 
 
@@ -243,6 +264,7 @@ define(["angular"], function (angular) {
                     y1 = e.y;
                     isDown = false;
                     moveIdx = 0;
+                    scope.editObj.select = [];
                     //  scope.downSelect.item = null;
                     console.log("up", e);
                     //  var node = e.target;
@@ -252,10 +274,10 @@ define(["angular"], function (angular) {
                             console.log("ups", item)
                             switch (item.nodeName) {
                                 case 'line':
-                                    scope.editObj.selectList = [scope.getSelectBorder(item)];
+                                    scope.editObj.borderList = [scope.getSelectBorder(item)];
                                     break;
                                 case 'ellipse':
-                                    scope.editObj.selectList = [scope.getSelectBorder(item)];
+                                    scope.editObj.borderList = [scope.getSelectBorder(item)];
                                     break;
                                 // case 'svg':
                                 //     //   scope.editObj.activeType = 0;
@@ -265,9 +287,10 @@ define(["angular"], function (angular) {
                                     //   scope.editObj.activeType = 0;
                                     break;
                             }
-                        })
+                        });
                         item = null;
                     }
+
                 });
 
 
@@ -304,10 +327,7 @@ define(["angular"], function (angular) {
                 }, true);
 
                 ele.bind("mousedown", function (e) {
-
                     var item = $parse(attr.svgShape)(scope);
-                    //  scope.downSelect.oldItem = angular.copy(item);
-                    //  scope
                     console.log("dd", scope.downItem);
                     //var node = e.target;
                     if (item) {
@@ -315,10 +335,12 @@ define(["angular"], function (angular) {
                             //添加选中item
                             switch (item.nodeName) {
                                 case 'line':
-                                    scope.editObj.selectList = [scope.getSelectBorder(item)];
+                                    scope.editObj.borderList = [scope.getSelectBorder(item)];
+                                    scope.editObj.select = [{item, oldItem: angular.copy(item)}];
                                     break;
                                 case 'ellipse':
-                                    scope.editObj.selectList = [scope.getSelectBorder(item)];
+                                    scope.editObj.borderList = [scope.getSelectBorder(item)];
+                                    scope.editObj.select = [{item, oldItem: angular.copy(item)}];
                                     break;
                                 case 'svg':
                                     //   scope.editObj.activeType = 0;
@@ -330,7 +352,8 @@ define(["angular"], function (angular) {
                             }
                         })
                     }
-                })
+                });
+
             }
         }
     }
