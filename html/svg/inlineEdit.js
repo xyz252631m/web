@@ -120,6 +120,7 @@ define(["angular"], function (angular) {
         }
     }
 
+    //svg 的属性、事件
     editPanel.$inject = ["xmElement", "$parse"];
     function editPanel(xmElement, $parse) {
         return {
@@ -292,13 +293,11 @@ define(["angular"], function (angular) {
                     }
 
                 });
-
-
             }
         }
     }
 
-    //每一项 item
+    //每一项 item 属性、事件 事件会向上(svg)冒泡
     svgShape.$inject = ["xmElement", "$parse"];
     function svgShape(xmElement, $parse) {
         return {
