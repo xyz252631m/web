@@ -73,12 +73,12 @@ require(["angularAMD", "uiRoute", "extend", "angularCSS", "flowerDialog", "date"
     }
     // registerRoutes
     function registerRoutes($stateProvider, $urlRouterProvider, $httpProvider) {
-        $urlRouterProvider.otherwise("/index");
+        $urlRouterProvider.otherwise("/list");
         $stateProvider
-            .state("index", angularAMD.route({
-                url: "/index",
+            .state("list", angularAMD.route({
+                url: "/list",
                 templateUrl: function ($stateParams) {
-                    return htmlUrl + "index.html";
+                    return htmlUrl + "list.html";
                 },
                 css: function ($stateParams) {
                     return htmlUrl + "css/index.css";

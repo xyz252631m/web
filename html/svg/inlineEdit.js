@@ -98,7 +98,6 @@ define(["angular"], function (angular) {
                 p8: {x: pos.x - 4, y: pos.y - 4 + pos.height / 2, type: 103},
                 d: ["M", pos.x - ds, ",", pos.y - ds, "L", pos.x + pos.width + ds, ",", pos.y - ds, " ", pos.x + pos.width + ds, ",", pos.y + pos.height + ds, " ", pos.x - ds, ",", pos.y + pos.height + ds + "z"].join("")
             };
-
             return angular.extend(select_item, params);
         }
     }
