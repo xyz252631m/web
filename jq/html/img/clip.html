@@ -209,6 +209,7 @@
             applyPage();
         });
     });
+
     /*分页*/
 
     function applyPage() {
@@ -306,6 +307,7 @@
                 if (op.rect.h + op.rect.top >= self.box.h) {
                     op.rect.h = self.box.h - op.rect.top;
                 }
+
                 //计算选框位置信息
                 function resetSelect(rect) {
                     self.info = {
@@ -362,11 +364,15 @@
         });
         var $select = $elem.find(".clip-select"), $select_i = $select.find("i");
         $select.on("mousedown", function (e) {
-            if (!op.isDown) {
+            var node = e.target;
+            if (node.nodeName === "DIV") {
                 op_rect.isDown = true;
                 op.rect.x = e.pageX;
                 op.rect.y = e.pageY;
+            } else if (node.nodeName === "I") {
+
             }
+
             return false
         });
         var canvas = document.getElementById('clipImgCanvas');
@@ -436,6 +442,7 @@
         preImg_2.height = preImgWH.pre2.h;
         preImg_3.width = preImgWH.pre3.w;
         preImg_3.height = preImgWH.pre3.h;
+
         function drawPreview(canvas, x, y, width, height) {
             let context = canvas.getContext('2d');
             let pos = {
