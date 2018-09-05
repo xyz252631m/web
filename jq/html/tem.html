@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="../../css/base.css">
+</head>
+
+
+<body bgcolor="#999999">
+<div style="position:absolute;top:250px;left:250px;">
+    <img src="point_bg.png" onclick="vControl('GETMOUSEPOSINPIC',this)"/></div>
+<script language="javascript" type="text/javascript">
+    var JPos = {};
+    (function ($) {
+        $.$getAbsPos = function (p) {
+            var _x = 0;
+            var _y = 0;
+            while (p.offsetParent) {
+                _x += p.offsetLeft;
+                _y += p.offsetTop;
+                p = p.offsetParent;
+            }
+
+            _x += p.offsetLeft;
+            _y += p.offsetTop;
+
+            return {x: _x, y: _y};
+        };
+
+        $.$getMousePos = function (evt) {
+            var _x, _y;
+            evt = evt || window.event;
+            if (evt.pageX || evt.pageY) {
+                _x = evt.pageX;
+                _y = evt.pageY;
+            } else if (evt.clientX || evt.clientY) {
+                _x = evt.clientX + document.body.scrollLeft - document.body.clientLeft;
+                _y = evt.clientY + document.body.scrollTop - document.body.clientTop;
+            } else {
+                return $.$getAbsPos(evt.target);
+            }
+            return {x: _x, y: _y};
+        }
+    })(JPos);
+
+
+    function vControl(pChoice) {
+        switch (pChoice) {
+            case "GETMOUSEPOSINPIC":
+                var mPos = JPos.$getMousePos();
+                var iPos = JPos.$getAbsPos(arguments[1]);
+
+                window.status = (mPos.x - iPos.x) + " " + (mPos.y - iPos.y);
+
+                var x = mPos.x - iPos.x,y = mPos.y - iPos.y;
+                console.log(`transform: translate3d(${x}-29.5px,${y}-29.5px, 0)`)
+
+                break;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/base.css"/>
+    <link rel="stylesheet" href="list.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../../js/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<select class="x-form-text data-box-select" id="ig_dateType2" style="width:100px;">
+    <option value="0" selected="selected">年</option>
+    <option value="1">季度</option>
+</select>
+<input class="x-form-text form-control" type="text" placeholder="起始时间" id="endDate1" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\',{d:0});}',dateFmt:'yyyy'})">
+
+<div class="g-data-box">
+    <div class="input-group">
+        <input class="x-form-text form-control" type="text" placeholder="起始时间" id="endDate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\',{d:0});}',dateFmt:'yyyy'})">
+    </div>
+    <div class="input-group">
+        <input class="x-form-text form-control" type="text" placeholder="起始时间" onfocus="WdatePicker({ skin:'twoer1',dateFmt: 'yyyy年MM季度', disabledDates: ['....-0[5-9]-..', '....-1[0-2]-..', '%y-01-01']})">
+    </div>
+</div>
+
+<p>
+    <input id="d1213" class="Wdate" type="text" onfocus="WdatePicker({ isShowToday:false, skin:'twoer1',dateFmt: 'yyyy年MM季度',disabledDates:['....-0[5-9]-..', '....-1[0-2]-..']})">
+
+    <input id="d1214" class="Wdate" type="text" onclick="WdatePicker({dateFmt:'yyyy年MM季度',qsEnabled:true,quickSel:['yyyy-01'],disabledDates:['....-0[5-9]-..', '....-1[0-2]-..']})">
+</p>
+<script>
+    $(function () {
+        // $("#d1213").on("click", function () {
+        //    WdatePicker({skin:'twoer1',dateFmt: 'yyyy年MM季度', disabledDates: ['....-0[5-9]-..', '....-1[0-2]-..', '%y-01-01']})
+        // })
+        function ShowDateSelect(id, callback) {
+            var $elem = this.$elem = $(id);
+            this.$list = $(".g-data-box");
+            this.idx = $(".data-box-select").index($elem) || 0;
+            this.showDateByType(0);
+            var self = this;
+            $elem.on("change", function () {
+                self.showDateByType($(this).val());
+                callback && callback.call(self, $(this).val());
+            })
+        }
+
+        ShowDateSelect.prototype.showDateByType = function (idx) {
+            this.$list.eq(this.idx).find(".input-group").hide().eq(idx).css("display", "table");
+        }
+        ShowDateSelect.prototype.getDateVal = function () {
+            var val = this.$elem.val(), list = this.$list.eq(this.idx).find(".input-group");
+            if (val == 0 || val == 1) {
+                return [list.eq(val).find("input").val()];
+            } else if (val == 2) {
+                return [list.eq(val).find("input").eq(0).val(), list.eq(val).find("input").eq(1).val()];
+            }
+        }
+
+        //   var select1 = new ShowDateSelect("#ig_dateType1")
+
+        window.select2 = new ShowDateSelect("#ig_dateType2")
+        //var select3 = new ShowDateSelect("#ig_dateType3")
+    })
+</script>
+</body>
+</html>
