@@ -1,0 +1,32 @@
+.dya-table-box {width: 100%;height: 100%;position: relative;}
+.dya-table-box ol, .dya-table-box ul {margin: 0;padding: 0;}
+.dya-table-box li {list-style: none;}
+.dya-header {position: relative;z-index: 1;}
+.dya-header ol {height: 28px;}
+.dya-header li {height: 28px;line-height: 28px;float: left;}
+.dya-table-box table {width: 100%;table-layout: fixed}
+.dya-table-box table th {padding: 5px 8px; background-color: #F9F9F9; font-size: 12px; font-weight: normal;
+    color: #999; height: 28px; border-top: solid #dedede 1px;border-right: solid #c3c3c3 1px; border-bottom: solid #c3c3c3 1px; text-overflow: ellipsis; white-space: nowrap;
+    overflow: hidden; -webkit-user-select: none; -moz-user-select: none; cursor: default; position: relative;}
+.dya-table-box table th:last-child { border-right: none;}
+.dya-header-box table {border-left: solid #dedede 1px;border-right: solid #dedede 1px;}
+.header-scroll {overflow-y: scroll;}
+.dya-main-box {position: absolute;top: 29px;bottom: 0;left: 0;right: 0;overflow: auto}
+.dya-main-box > table { border-left: solid #dedede 1px;border-right: solid #dedede 1px; }
+.dya-table-box table td { position: inherit; padding: 8px; white-space: nowrap; font-size: 13px;
+    border-bottom: solid #dedede 1px; border-right: solid #dedede 1px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+    min-width: 30px; background-color: #FFF; -webkit-user-select: text; -moz-user-select: text;}
+.dya-table-box td:last-child { border-right: none;}
+.dya-table-box .tr-list > td {cursor: pointer}
+/*.tr-edit {display: none;}*/
+.dya-table-box .tr-edit > td {padding: 0;}
+.inner-edit-box {display: none;}
+.dya-table-box .tr-list:hover > td {background-color: #F3F3F3; border-color: #E9E9E9;}
+.dya-table-box .tr-active > td {background-color: #F3F3F3; border-color: #E9E9E9;}
+.td-hover {background-color: #F3F3F3; border-color: #E9E9E9;}
+.dya-table-box .dya-inner-table td {border: none;}
+.dya-table-box .w-full {width: 100%;}
+/**/
+.td-title span { color: #428bca; }
+
+.dya-table-box .x-form-text{padding-left: 10px;}
