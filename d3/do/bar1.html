@@ -16,7 +16,7 @@
         x: [
             {
                 name: "年",
-                value: ["2015", "2016", "2016", "2016", "2017", "2017", "2018"]
+                value: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"]
             },
             {
                 name: "月",
@@ -32,8 +32,8 @@
         ]
     };
     let grid = {
-        left: 40, right: 40, top: 40, bottom: 30
-    }
+        left: 40, right: 40, top: 40, bottom: 50
+    };
     let minYList = [], maxYList = [];
     data.y.forEach(d => {
         minYList.push(d3.min(d.value));
@@ -42,60 +42,42 @@
     let minY = d3.min(minYList), maxY = d3.max(maxYList);
     let svg = d3.select("svg");
     let width = +svg.attr("width"), height = +svg.attr("height");
-    console.log(width, height)
     let g = svg.append("g").attr("transform", "translate(" + grid.top + "," + grid.left + ")");
-
-
     let xScale1 = d3.scaleBand().domain(data.x[0].value).rangeRound([0, width - grid.left - grid.right]);
     let xAxis1 = d3.axisBottom(xScale1);
-
-    var yScale = d3.scaleLinear()
-        .domain([0, maxY])
-        .range([height - grid.top - grid.bottom, 0]);
-    var yAxis = d3.axisLeft(yScale);
-
-
+    let yScale = d3.scaleLinear().domain([0, maxY + (maxY / data.y[0].value.length)]).range([height - grid.top - grid.bottom, 0]);
+    let yAxis = d3.axisLeft(yScale);
     g.append("g")
         .attr("transform", "translate(" + 0 + "," + (height - grid.top - grid.bottom) + ")")
         .call(xAxis1);
     g.append("g")
         .attr("transform", "translate(0,0)")
         .call(yAxis);
-
-
-    console.log("yy", yScale(55))
-
-    let gList = g.selectAll(".rect").data(data.x[0].value).enter().append("g");
-
-
-    let padding = 60;
+    let gList = g.selectAll(".rect").data(data.y[0].value).enter().append("g");
+    let padding = 30;
     gList.append("rect").attr("x", function (d, i) {
-        return xScale1(d) + padding / 2;
+        return xScale1(data.x[0].value[i]) + padding / 2;
     }).attr("y", function (d, i) {
         return yScale(data.y[0].value[i]);
     }).attr("width", function () {
         return xScale1.step() - padding;
-    })
-        .attr("height", function (d, i) {
-            return height - grid.top - grid.bottom - yScale(data.y[0].value[i]);
-        })
-        .attr("fill", "#b66bec");
+    }).attr("height", function (d, i) {
+        return height - grid.top - grid.bottom - yScale(data.y[0].value[i]);
+    }).attr("fill", "#b66bec");
 
 
     gList.append("text")
         .attr("x", function (d, i) {
-            return xScale1(d) + padding / 2;
+            return xScale1(data.x[0].value[i]) + padding / 2;
         })
         .attr("y", function (d, i) {
             return yScale(data.y[0].value[i]);
         })
-        .attr("dx", function () {
-            return (xScale1.step() - padding) / 2;
-        })
-        .attr("dy", 20)
         .text(function (d) {
             return d;
-        })
+        }).attr("dx", function (d) {
+        return (xScale1.step() - padding) / 2 - this.getBBox().width / 2;
+    }).attr("dy", -5)
 
 
 </script>
