@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>分组维</title>
+    <script src="../code/highcharts.js"></script>
+    <script src="../code/modules/exporting.js"></script>
+    <script src="../code/modules/export-data.js"></script>
+    <script src="../lib/grouped-categories.js"></script>
+</head>
+<body>
+
+<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+
+    Highcharts.chart('container', {
+        chart: {
+            renderTo: "chart",
+            type: "column"
+        },
+        title: {
+            text: "图表标题"
+        },
+        series: [{
+            data: [4, 14, 18, 5, 6, 5, 14, 15, 12]
+        }],
+        plotOptions: {
+            waterfall: {
+                lineColor: "#eee",
+                borderWidth: 0,
+                lineWidth: 1,
+            }
+        },
+        xAxis: {
+
+            labels: {},
+            plotBands: [
+                {
+                    name: "2015",
+                    color: "#eee",
+                    from: 0 - .5,
+                    to: 3 - .5
+                }, {
+                    name: "2016",
+                    color: "#eee",
+                    from: 6 - .5,
+                    to: 8 - .5
+                }
+            ],
+            tickColor: "rgba(0, 0, 0, .1)",
+            tickWidth: 1,
+            categories: [{
+                name: "2015",
+                categories: ["1月", "3月", "5月"]
+            }, {
+                name: "2016",
+                categories: ["4月", "5月", "6月"]
+            }, {
+                name: "2017",
+                categories: ["2月", "3月"]
+            }, {
+                name: "2018",
+                categories: ["2月"]
+            }]
+        }
+    });
+</script>
+</body>
+</html>

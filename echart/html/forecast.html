@@ -1,0 +1,513 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forecast</title>
+    <script src="../test/lib/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="../dist/echarts.js"></script>
+    <script src="./twoAxis/twoAxis.js"></script>
+    <script src="forecast/forecast.js"></script>
+    <style>
+        html {background-color: #333;}
+        h1 {
+            line-height: 60px;
+            height: 60px;
+            background: #146402;
+            text-align: center;
+            font-weight: bold;
+            color: #eee;
+            font-size: 14px;
+        }
+        .chart {
+            height: 600px;
+        }
+    </style>
+    <script src="../dist/dark.js"></script>
+
+</head>
+<body>
+
+<div id="main" class="chart"></div>
+<script>
+
+    var chart = echarts.init(document.getElementById('main'), "dark");
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
+    var data4 = [];
+    var twoAxisData = [];
+    for (var i = 0; i < 30; i++) {
+        xAxisData.push('类目' + i);
+        data1.push((Math.random() * 5).toFixed(2));
+        data2.push(-Math.random().toFixed(2));
+        data3.push((Math.random() + 0.5).toFixed(2));
+        data4.push((Math.random() + 0.3).toFixed(2));
+        if (i < 7) {
+            twoAxisData.push("类型1")
+        } else if (i < 10) {
+            twoAxisData.push("类型2")
+        } else if (i < 14) {
+            twoAxisData.push("类型3")
+        } else if (i < 16) {
+            twoAxisData.push("类型4")
+        } else {
+            twoAxisData.push("类型5")
+        }
+    }
+
+    xAxisData = ["2222222222", "333333333333333333", "2", "1", "1", "3", "4", "6", "4", "8", "9", "3", "2", "4", "5", "644444", "7333333", "2222222", "366666666", "777777774", "58888888", "9999999", "88888888888888", "111111111111111"];
+    twoAxisData = ["上海", "上海", "上海", "北京", "北京", "北京", "广州", "广州", "广州", "成都", "成都", "成都", "杭州", "杭州", "杭州",
+        "武汉", "武汉", "武汉", "深圳", "深圳", "深圳", "长沙", "长沙", "长沙", "重庆", "重庆", "重庆", "天津", "天津", "天津"];
+
+    forecastData = [1, 2, 3, 4, 5, 4];
+    console.log(forecastData);
+    forecastMinData = [1, 1, 2, 2, 4, 4];
+    forecastMaxData = [3, 3, 5, 8, 7, 9];
+
+
+    chart.setOption({
+
+        tooltip: {},
+        grid: {
+            top: 100,
+            bottom: 90
+        },
+
+        dataZoom: {
+            type: "slider",
+            realtime: true,
+            start: "50",
+            end: "100"
+        },
+
+        xAxis: {
+
+            name: '横轴',
+
+            silent: false,
+
+
+            "data": ["2017年01月19日", "2017年02月19日", "2017年10月19日", "2017年11月19日", "2017年11月20日", "2017年12月19日", "2017年12月20日", "2018年01月20日", "2018年01月26日", "2018年02月19日", "2018年02月26日", "2018年03月20日", "2018年04月20日", "2018年04月26日", "2018年05月19日", "2018年05月20日", "2018年06月19日", "2018年06月20日", "2018年06月26日", "2018年07月19日", "2018年07月20日", "2018年07月26日", "2018年08月19日", "2018年08月20日", "2018年08月26日", "2018年09月20日", "2018年09月26日", "2018年10月19日", "2018年10月26日", "2018年11月19日", "2018年11月20日", "2018年11月26日", "2018年11月27日", "2018年11月28日", "2018年11月29日", "2018年11月30日", "2018年12月01日", "2018年12月02日", "2018年12月03日", "2018年12月04日", "2018年12月05日", "2018年12月06日"],
+            axisTick: {
+                show: true,
+            },
+            axisLabel: {
+                show: true,
+                // align: "left",
+                //  interval: 0,
+                // rotate: -45,
+                // formatter: function (label) {
+                //     return label.split('').join("\n")
+                // }
+                //  color:"red"
+            },
+            axisLine: {
+                onZero: true
+            },
+            splitLine: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+        twoAxis: {
+            // data: twoAxisData,
+            // splitArea: {
+            //     show: true,
+            //     areaStyle: {
+            //         // color:['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+            //         // color:['rgba(200,200,200,0.3)','rgba(250,250,250,0.3)']
+            //     }
+            // },
+            // axisLabel: {
+            //     show: true,
+            //     // color:"rgba(224, 16, 16, 1)"
+            //     // color:"red"
+            //
+            //     // formatter: function (label) {
+            //     //     return label+"666";
+            //     // }
+            // }
+        },
+        yAxis: {
+
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+
+        series: [{
+            name: 'bar',
+            type: 'bar',
+            stack: 'one',
+            itemStyle: {
+                color: '#3398DB',
+
+            },
+            cursor: 'move',
+            data:  [{
+                "oldValue": "1.00",
+                "targetIndex": 0,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2017年01月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 1,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2017年02月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "0.0",
+                "targetIndex": 2,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "0.0",
+                "coljlw0rhvt": "2017年10月19日",
+                "colmg8dlyw3": "0.0"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 3,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2017年11月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 4,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2017年11月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 5,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2017年12月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "2.00",
+                "targetIndex": 6,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "2.00",
+                "coljlw0rhvt": "2017年12月20日",
+                "colmg8dlyw3": "2.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 7,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年01月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "12.00",
+                "targetIndex": 8,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "12.00",
+                "coljlw0rhvt": "2018年01月26日",
+                "colmg8dlyw3": "12.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 9,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年02月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "6.00",
+                "targetIndex": 10,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "6.00",
+                "coljlw0rhvt": "2018年02月26日",
+                "colmg8dlyw3": "6.00"
+            }, {
+                "oldValue": "2.00",
+                "targetIndex": 11,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "2.00",
+                "coljlw0rhvt": "2018年03月20日",
+                "colmg8dlyw3": "2.00"
+            }, {
+                "oldValue": "2.00",
+                "targetIndex": 12,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "2.00",
+                "coljlw0rhvt": "2018年04月20日",
+                "colmg8dlyw3": "2.00"
+            }, {
+                "oldValue": "6.00",
+                "targetIndex": 13,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "6.00",
+                "coljlw0rhvt": "2018年04月26日",
+                "colmg8dlyw3": "6.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 14,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年05月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 15,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年05月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "2.00",
+                "targetIndex": 16,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "2.00",
+                "coljlw0rhvt": "2018年06月19日",
+                "colmg8dlyw3": "2.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 17,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年06月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "6.00",
+                "targetIndex": 18,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "6.00",
+                "coljlw0rhvt": "2018年06月26日",
+                "colmg8dlyw3": "6.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 19,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年07月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 20,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年07月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "6.00",
+                "targetIndex": 21,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "6.00",
+                "coljlw0rhvt": "2018年07月26日",
+                "colmg8dlyw3": "6.00"
+            }, {
+                "oldValue": "3.00",
+                "targetIndex": 22,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "3.00",
+                "coljlw0rhvt": "2018年08月19日",
+                "colmg8dlyw3": "3.00"
+            }, {
+                "oldValue": "4.00",
+                "targetIndex": 23,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "4.00",
+                "coljlw0rhvt": "2018年08月20日",
+                "colmg8dlyw3": "4.00"
+            }, {
+                "oldValue": "12.00",
+                "targetIndex": 24,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "12.00",
+                "coljlw0rhvt": "2018年08月26日",
+                "colmg8dlyw3": "12.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 25,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年09月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "6.00",
+                "targetIndex": 26,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "6.00",
+                "coljlw0rhvt": "2018年09月26日",
+                "colmg8dlyw3": "6.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 27,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年10月19日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "12.00",
+                "targetIndex": 28,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "12.00",
+                "coljlw0rhvt": "2018年10月26日",
+                "colmg8dlyw3": "12.00"
+            }, {
+                "oldValue": "4.00",
+                "targetIndex": 29,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "4.00",
+                "coljlw0rhvt": "2018年11月19日",
+                "colmg8dlyw3": "4.00"
+            }, {
+                "oldValue": "1.00",
+                "targetIndex": 30,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "1.00",
+                "coljlw0rhvt": "2018年11月20日",
+                "colmg8dlyw3": "1.00"
+            }, {
+                "oldValue": "12.00",
+                "targetIndex": 31,
+                "textColData": [""],
+                "yName": "money(求和)",
+                "value": "12.00",
+                "coljlw0rhvt": "2018年11月26日",
+                "colmg8dlyw3": "12.00"
+            }, {
+                "oldValue": 12.84960541407138,
+                "value": "13",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 7.539298168272083,
+                "value": "8",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 8.521903293426341,
+                "value": "9",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 11.299170762194889,
+                "value": "11",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 9.579254797056329,
+                "value": "10",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 14.048287460040875,
+                "value": "14",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 15.340071848579615,
+                "value": "15",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 14.521802816551844,
+                "value": "15",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 17.8557474093055,
+                "value": "18",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }, {
+                "oldValue": 23.31066542039337,
+                "value": "23",
+                "textColData": [""],
+                "itemStyle": {
+                    "opacity": 0.5
+                },
+                "yName": "money(求和)"
+            }]
+        }],
+        forecast: [{
+            "type": "line",
+            "seriesIndex": 0,
+            "data": [12.84960541407138, 7.539298168272083, 8.521903293426341, 11.299170762194889, 9.579254797056329, 14.048287460040875, 15.340071848579615, 14.521802816551844, 17.8557474093055, 23.31066542039337],
+            "minData": [-0.20335708127580077, -5.728858596876982, null, null, null, null, null, null, null, null],
+            "maxData": [20.493292111845825, 18.17460857168186, null, null, null, null, null, null, null, null],
+            "start": 32,
+            line: {
+                color: "#3398DB"
+            }
+        }],
+    });
+
+
+    window.onresize = chart.resize;
+
+</script>
+</body>
+</html>

@@ -10,12 +10,18 @@
 </head>
 
 <body>
-    <div> </div>
+    <div>
+
+        <input type="text" placeholder="请输入" oninput="input()">
+    </div>
 
 
 
     <script>
-
+        function input(){
+            e=event;
+            console.log("input",e,e.propertyName)
+        }
 
         // $.ajaxPrefilter(function (options) {
         //     if (options.crossDomain && jQuery.support.cors) {
