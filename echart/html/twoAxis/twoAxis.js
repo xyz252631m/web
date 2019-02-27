@@ -16,6 +16,7 @@
         defaultOption: {
             data: [],
             offset: 30,
+            axis: "x",   // x  y
             axisLine: {
                 show: true,
                 onZero: true,
@@ -47,6 +48,8 @@
                 showMaxLabel: null,
                 margin: 8,
                 formatter: null,
+                align: "center",
+                verticalAlign: "middle",
                 fontSize: 12
             },
             splitLine: {
@@ -76,18 +79,23 @@
             return null;
         },
         init: function (ecModel, api) {
+            this.lable_w = 0;
             this._labels = [];
             this._splitArea = [];
             this._tickLists = [];
         },
         render: function (seriesModel, ecModel, api) {
             let group = this.group;
-            let grid = ecModel.getModel('grid'), xAxis = ecModel.getComponent("xAxis");
-            let posList = this.settingPosIndexByList(seriesModel);
-            let rect = xAxis.axis.grid.getRect(),
-                tickCoords = xAxis.axis.getTicksCoords(),
-                labels = xAxis.axis.getViewLabels();
+            let grid = ecModel.getModel('grid'), axis = ecModel.getComponent("xAxis").axis;
+            let isY = seriesModel.get('axis') === "y";
+            if (isY) {
+                axis = ecModel.getComponent("yAxis").axis;
+            }
 
+            let posList = this.settingPosIndexByList(seriesModel);
+            let rect = axis.grid.getRect(),
+                tickCoords = axis.getTicksCoords(),
+                labels = axis.getViewLabels();
             let animationModel = {
                 duration: seriesModel.getShallow('animationDurationUpdate'),
                 animationEasing: seriesModel.getShallow('animationEasingUpdate'),
@@ -96,7 +104,7 @@
 
             let tcLen = tickCoords.length;
             //获取刻度之间的间距
-            let _bandWidth = xAxis.axis.getBandWidth();
+            let _bandWidth = axis.getBandWidth();
             let bandWidth = _bandWidth;
             //可能存在间隔显示的情况
             if (tcLen >= 2) {
@@ -105,14 +113,27 @@
                 bandWidth = tickCoords[0].coord || _bandWidth;
             }
             let toMaxWidth = function (val) {
-                let max = rect.x + rect.width;
-                if (val > max) {
-                    return max;
+                if (isY) {
+                    let max = rect.y + rect.height;
+                    if (val > max) {
+                        return max;
+                    } else {
+                        return val;
+                    }
                 } else {
-                    return val;
+                    let max = rect.x + rect.width;
+                    if (val > max) {
+                        return max;
+                    } else {
+                        return val;
+                    }
                 }
+
             };
-            let h = rect.y + rect.height + seriesModel.get("offset");
+            let textStyleModel = seriesModel.getModel('axisLabel');
+            let fontSize = textStyleModel.get("fontSize");
+            let w = rect.x - seriesModel.get("offset") - this.lable_w * fontSize - 10;
+            let h = rect.y + rect.height + seriesModel.get("offset") + 10;
             let labelMap = {}, labelPosList = [];
 
             let getItemByPos = function (tick, posList) {
@@ -138,10 +159,18 @@
                 let remainder = diff % 2;
                 let middle = item.startIndex + Math.ceil(diff / 2);
                 let tickItemCoord = labels[middle].coord;//getCoordsByValue(middle);
-                if (remainder) {
-                    item.position = [toMaxWidth(rect.x + tickItemCoord), h];
+                if (isY) {
+                    if (remainder) {
+                        item.position = [w, toMaxWidth(rect.y + rect.height - tickItemCoord)];
+                    } else {
+                        item.position = [w, rect.y + rect.height - tickItemCoord - bandWidth / 2];
+                    }
                 } else {
-                    item.position = [rect.x + tickItemCoord + bandWidth / 2, h];
+                    if (remainder) {
+                        item.position = [toMaxWidth(rect.x + tickItemCoord), h];
+                    } else {
+                        item.position = [rect.x + tickItemCoord + bandWidth / 2, h];
+                    }
                 }
             };
             labels.forEach(function (item, idx) {
@@ -168,17 +197,15 @@
                     }
                 }
             });
-
-            this.buildLabels(seriesModel, labelPosList, animationModel);
-            this.buildSplitArea(seriesModel, labelPosList, animationModel, rect, bandWidth, posList);
-            this.buildTicks(seriesModel, labelPosList, animationModel, rect);
+            //console.log("labels",labels)
+            this.buildLabels(seriesModel, labelPosList, animationModel, isY);
+            this.buildSplitArea(seriesModel, labelPosList, animationModel, rect, bandWidth, posList, isY);
+            this.buildTicks(seriesModel, labelPosList, animationModel, rect, isY);
         },
 
-        buildLabels: function (seriesModel, labelPosList, animationModel) {
+        buildLabels: function (seriesModel, labelPosList, animationModel, isY) {
             let textStyleModel = seriesModel.getModel('axisLabel');
             let fmt = textStyleModel.get("formatter");
-
-
             let textColor = textStyleModel.getTextColor() || seriesModel.get('axisLine.lineStyle.color');
             let createTextEl = function (item, _pos, position, idx) {
                 let textEl = new graphic.Text({
@@ -189,7 +216,8 @@
                 graphic.setTextStyle(textEl.style, textStyleModel, {
                     text: fmt ? fmt(item.text, idx) : item.text,
                     font: textStyleModel.getFont(),
-                    textAlign: textStyleModel.get("align") || "center",
+                    textAlign: textStyleModel.get("align"),
+                    textVerticalAlign: textStyleModel.get("verticalAlign"),
                     textFill: typeof textColor === 'function' ? textColor(item.name, idx) : textColor
                 });
                 textEl.animateTo({
@@ -210,7 +238,8 @@
                     //已存在时直接更新
                     labelItem.textEl.show();
                     graphic.setTextStyle(labelItem.textEl.style, textStyleModel, {
-                        textAlign: textStyleModel.get("align") || "center",
+                        textAlign: textStyleModel.get("align"),
+                        textVerticalAlign: textStyleModel.get("verticalAlign"),
                         font: textStyleModel.getFont(),
                         textFill: typeof textColor === 'function' ? textColor(item.name, idx) : textColor
                     });
@@ -237,7 +266,7 @@
             })
         },
 
-        buildTicks: function (seriesModel, labelPosList, animationModel, rect) {
+        buildTicks: function (seriesModel, labelPosList, animationModel, rect, isY) {
             this._tickLists.forEach(d => {
                 d.updateState = false;
             });
@@ -274,6 +303,14 @@
                         x2: rect.x + item.start.coord,
                         y2: rect.y + rect.height + seriesModel.get("offset")
                     };
+                    if (isY) {
+                        shape = {
+                            x1: rect.x - seriesModel.get("offset"),
+                            y1: rect.y + rect.height - item.start.coord,
+                            x2: rect.x,
+                            y2: rect.y + rect.height - item.start.coord,
+                        };
+                    }
                     tickItem.lineEl.show();
                     let style = zrUtil.defaults(lineStyleModel.getLineStyle(), {
                         lineDash: lineStyleModel.getLineDash() || [0, 0]
@@ -293,7 +330,14 @@
                         x2: rect.x + item.start.coord,
                         y2: rect.y + rect.height + seriesModel.get("offset")
                     };
-
+                    if (isY) {
+                        shape = {
+                            x1: rect.x - seriesModel.get("offset"),
+                            y1: rect.y + rect.height - item.start.coord,
+                            x2: rect.x,
+                            y2: rect.y + rect.height - item.start.coord,
+                        };
+                    }
                     let lineEl = createTick(item, shape, shape, color);
                     this._tickLists.push({name: item.name, lineEl, shape, updateState: true});
                     this.group.add(lineEl);
@@ -307,7 +351,7 @@
             })
         },
 
-        buildSplitArea: function (seriesModel, labelPosList, animationModel, rect, bandWidth, posList) {
+        buildSplitArea: function (seriesModel, labelPosList, animationModel, rect, bandWidth, posList, isY) {
             let splitAreaModel = seriesModel.getModel('splitArea');
             let areaStyleModel = splitAreaModel.getModel('areaStyle');
             let areaColors = areaStyleModel.get('color');
@@ -341,9 +385,22 @@
                         width: item.end.coord - item.start.coord + bandWidth,
                         height: rect.height
                     };
-                    //超出图表内容部分
-                    if (shape.x + shape.width > rect.x + rect.width) {
-                        shape.width -= shape.x + shape.width - (rect.x + rect.width)
+                    if (isY) {
+                        shape = {
+                            x: rect.x,
+                            y: rect.y + rect.height - item.end.coord - bandWidth,
+                            width: rect.width,
+                            height: item.end.coord - item.start.coord + bandWidth,
+                        };
+                        //超出图表内容部分
+                        if (shape.y + shape.height > rect.y + rect.height) {
+                            shape.height -= shape.y + shape.height - (rect.y + rect.height)
+                        }
+                    } else {
+                        //超出图表内容部分
+                        if (shape.x + shape.width > rect.x + rect.width) {
+                            shape.width -= shape.x + shape.width - (rect.x + rect.width)
+                        }
                     }
                     splitAreaItem.rectEl.show();
                     splitAreaItem.rectEl.animateTo({
@@ -359,6 +416,14 @@
                         width: item.end.coord - item.start.coord + bandWidth,
                         height: rect.height
                     };
+                    if (isY) {
+                        shape = {
+                            x: rect.x,
+                            y: rect.y + rect.height - item.end.coord - bandWidth,
+                            width: rect.width,
+                            height: item.end.coord - item.start.coord + bandWidth,
+                        };
+                    }
                     let colorIndex = posList.findIndex(d => d.name === item.name);
                     let color = areaColors[colorIndex % 2];
                     let rectEl = createSplitArea(item, shape, shape, color);
@@ -376,17 +441,29 @@
         //获取当前数据的位置信息
         settingPosIndexByList: function (seriesModel) {
             let list = seriesModel.get("data");
+            let lable_w = 0;
             let posList = [];
             if (list) {
+                let getLength = function (str) {
+                    if (!str) {
+                        return 0;
+                    }
+                    return str.replace(/[\u0391-\uFFE5]/g, "xx").length / 2;
+                };
                 let getName = function (dataItem) {
                     return dataItem && (dataItem.value == null ? dataItem : dataItem.value);
                 };
                 zrUtil.each(list, function (dataItem, idx) {
                     let name = getName(dataItem);
+                    let nLen = getLength(name);
+                    if (nLen > lable_w) {
+                        lable_w = nLen;
+                    }
                     if (idx) {
+
                         let prevName = getName(list[idx - 1]);
                         if (prevName === name) {
-                            posList[posList.length-1].end = idx;
+                            posList[posList.length - 1].end = idx;
                         } else {
                             posList.push({
                                 name: name + "_" + idx,
@@ -407,11 +484,12 @@
                     }
                 })
             }
-            console.log("posList1",posList)
-
+            //console.log("posList1", posList)
+            this.lable_w = lable_w;
             return posList;
         },
         dispose: function () {
+            this.lable_w = 0;
             this._labels = [];
             this._splitArea = [];
             this._tickLists = [];
