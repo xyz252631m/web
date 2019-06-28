@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>创建产品页</title>
+    <style>
+        div { width: 700px; margin: 0 auto; }
+        span { display: inline-block; width: 130px; }
+        input { width: 500px; height: 30px; padding: 0 2px; }
+        p { line-height: 50px; }
+        .btn { padding: 10px 15px; cursor: pointer; background-color: #00a0e9; color: white; border-radius: 3px; }
+        .token, .ticket { display: inline-block; margin-left: 20px; font-size: 13px; }
+        .dis { border: #eee solid 1px; color: #999; }
+        .add-md{width: 270px;position: fixed;top:40%;right: 90px;border: #ccc solid 1px;line-height: 30px;}
+    </style>
+    <script src="../vue/vue.min.js"></script>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+
+</head>
+<body>
+<div id="add">
+    <p><span>副标题：</span><input type="text" v-model="title1"/></p>
+    <p><span>标题：</span><input type="text" v-model="title"/></p>
+</div>
+
+<div class="add-md">
+    <p @click="addChanPing">添加产品概述</p>
+    <p>添加产品特点</p>
+    <p>添加图->文</p>
+    <p>添加文->图</p>
+    <p>添加独立标题</p>
+</div>
+
+
+<script>
+    let vm = new Vue({
+        el: "#add",
+        data: {
+            title1: "",
+            title: ""
+        },
+        methods:{
+            addChanPing(){
+
+            }
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>

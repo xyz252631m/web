@@ -1,0 +1,3 @@
+<view class="in-txt">
+  <textarea placeholder='请输入' auto-focus="true" maxlength="-1" bindinput="input" value="{{text}}"></textarea>
+</view>
