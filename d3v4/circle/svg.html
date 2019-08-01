@@ -8,7 +8,7 @@
         .circle_bar {
             stroke-dasharray: 562, 562;
             stroke-dashoffset: 0;
-        // animation: donut 800 ms infinite;
+            animation: donut 800ms infinite;
         }
         @keyframes donut {
             from {
@@ -31,14 +31,13 @@
 <body>
 
 
-<svg width="186" height="186" xmlns="http://www.w3.org/2000/svg">
-
-    <circle r="90" cy="93" cx="93" stroke-width="3" stroke="#333" fill="none"/>
-    <circle class="circle_bar" r="90" cy="93" cx="93" stroke-linecap="round" stroke-width="4" stroke="orange" fill="none">
+<svg height="186" width="186" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="93" cy="93" fill="none" r="90" stroke="#333" stroke-width="3"></circle>
+    <circle class="circle_bar" cx="93" cy="93" fill="none" r="90" stroke="orange" stroke-linecap="round" stroke-width="4">
         <animate attributeName="stroke-dasharray"
-                 from="0, 562"  to="562, 562"
                  begin="0s" dur="5s"
-                 fill="remove" repeatCount="indefinite"/>
+                 fill="remove" from="0, 562"
+                 repeatCount="indefinite" to="562, 562"></animate>
     </circle>
 </svg>
 <script>
