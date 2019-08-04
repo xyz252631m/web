@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue project</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{myMsg}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            message:"hello",
+            name:"vue",
+            item:{
+                userName:"vue",
+                address:"sm"
+            }
+        },
+        watch:{
+            name(oldVal,newVal){
+                this.message += this.name;
+            },
+            'item.address'(oldVal,newVal) {
+                console.log(newVal)
+            },
+            item:{
+                handler(oldVal,newVal){
+                    console.log(newVal)
+                },
+                deep:true
+            }
+        },
+        computed: {
+            myMsg: function () {
+                return this.message+this.name
+            }
+        },
+
+    });
+    //window.vm = vm;
+</script>
+</body>
+</html>

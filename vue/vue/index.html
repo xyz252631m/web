@@ -9,9 +9,13 @@
 </head>
 <body>
 <div id="app">
-    <span v-show="show">{{ message }}</span>
+    <p><span v-show="show">{{ message }}</span></p>
+    <p>
+        <span v-if="show">{{ message }}</span>
+        <span v-else>no</span>
+    </p>
     <div>
-        <button @click="showNode">显示</button>
+        <button v-on:click="showNode">显示</button>
     </div>
 </div>
 <script>
@@ -27,7 +31,7 @@
             }
         }
     });
-    window.vm = vm;
+    //window.vm = vm;
 </script>
 </body>
 </html>

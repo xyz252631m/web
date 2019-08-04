@@ -9,16 +9,17 @@
 </head>
 <body>
 <div id="app">
-    <span v-show="show">{{ message }}</span>
-    <div>
-        <button @click="showNode">显示</button>
-    </div>
+
+    <span v-for="m in num">{{ m }}</span>
+
+
 </div>
 <script>
     var vm = new Vue({
         el:"#app",
         data: {
-            show:false,
+            num:5,
+            list:[],
             message: 'Hello Vue!'
         },
         methods:{
@@ -27,7 +28,7 @@
             }
         }
     });
-    window.vm = vm;
+    //window.vm = vm;
 </script>
 </body>
 </html>
