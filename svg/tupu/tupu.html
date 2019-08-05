@@ -38,7 +38,7 @@
 <script>
     $(function () {
         var relation = new Relation(SVG, {
-            id: "svgBox"
+            id: "svgBox",
         });
         $.getJSON("./data.json", function (res) {
             if (res && res.result) {
@@ -48,6 +48,8 @@
             relation.init(companyInfo);
 
         });
+
+        window.tr=relation
 
 
         //  var rect = draw.rect(100, 100).attr({fill: '#f06'});

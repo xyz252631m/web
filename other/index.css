@@ -37,7 +37,7 @@ body {
   right: 0;
   left: 0;
   height: 65px;
-  background: url("images/header_bg.jpg") top center repeat-x;
+  background: url("./images/header_bg.jpg") top center repeat-x;
   text-align: center;
   color: #fff;
 }
