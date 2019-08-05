@@ -1,0 +1,2647 @@
+{
+  "status": 200,
+  "result": {
+    "id": "917720a16d08bdde171681983391aed0",
+    "name": "恒大地产集团有限公司",
+    "nodeType": "999",
+    "children": [
+      {
+        "id": "p08585eb4f2e233333e51ec819bd8389c96c2",
+        "name": "法定代表人",
+        "nodeType": "101",
+        "children": [
+          {
+            "id": "p08585eb4f2e2e51ec819bd8389c96c2",
+            "name": "甄立涛",
+            "image": "https://co-image.qichacha.com/Personimage/p08585eb4f2e2e51ec819bd8389c96c2.jpg",
+            "operType": 1,
+            "nodeType": "998"
+          }
+        ]
+      },
+      {
+        "id": "p333234308585eb4f2e2e51ec819bd8389c96c2",
+        "name": "实际控制人",
+        "nodeType": "102",
+        "children": []
+      },
+      {
+        "id": "p085c819bd8389c96c2",
+        "name": "最终受益人",
+        "nodeType": "103",
+        "children": []
+      },
+      {
+        "id": "p08585819bd836c2",
+        "name": "股东",
+        "nodeType": "104",
+        "children": [
+          {
+            "id": "f93c6a23cf326e025b16d58b7ce67fe6",
+            "name": "广州市凯隆置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f93c6a23cf326e025b16d58b7ce67fe6.jpg",
+            "percent": "63.46%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999",
+            "children": [
+              {
+                "id": "4f218ce45e2dea7e6bbbe7f3ee14f95d",
+                "name": "恒大地产集团济南置业有限公司",
+                "image": "https://co-image.qichacha.com/Companyimage/4f218ce45e2dea7e6bbbe7f3ee14f95d.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "d63958513cc9960a56168ea19d818e9d",
+                "name": "恒大地产集团重庆有限公司",
+                "image": "https://co-image.qichacha.com/Companyimage/d63958513cc9960a56168ea19d818e9d.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "d9d53abd55ee50b42119b4dcab9afa35",
+                "name": "广州市鑫源投资有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/d9d53abd55ee50b42119b4dcab9afa35.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "1c5022656b5e7799d2e6d371229cbe39",
+                "name": "恒大地产集团北京有限公司",
+                "image": "https://co-image.qichacha.com/Companyimage/1c5022656b5e7799d2e6d371229cbe39.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "68698df5477983f73a659eb6dc711eb1",
+                "name": "太原金世恒房地产开发有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/68698df5477983f73a659eb6dc711eb1.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "24a4b8b36d22997692decfc5cbcd0cfd",
+                "name": "佛山市南海俊诚房地产开发有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/24a4b8b36d22997692decfc5cbcd0cfd.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "23f7eda5f64a174bdd9e6d9d839aa40d",
+                "name": "北京沙河恒大置业有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/23f7eda5f64a174bdd9e6d9d839aa40d.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "a2a23b342c7b46c27d4cc28ebd859f76",
+                "name": "恒大地产集团武汉有限公司",
+                "image": "https://co-image.qichacha.com/Companyimage/a2a23b342c7b46c27d4cc28ebd859f76.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "7a9c17ae2f68e8977a20c1c7af5c734a",
+                "name": "合肥粤丰置业有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/7a9c17ae2f68e8977a20c1c7af5c734a.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "3eed8b1fabc96a73ef650f523c7d77eb",
+                "name": "恒大地产集团太原有限公司",
+                "image": "https://co-image.qichacha.com/Companyimage/3eed8b1fabc96a73ef650f523c7d77eb.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "c336bf736ab61b65e75f9578e7d2dfd6",
+                "name": "清远市俊鑫房地产开发有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/c336bf736ab61b65e75f9578e7d2dfd6.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "0eb7c1ec041071ff2225c69c6f9dbc38",
+                "name": "太原市俊恒房地产开发有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/0eb7c1ec041071ff2225c69c6f9dbc38.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "90a9eb72b6c920db4b308f023e6d447f",
+                "name": "重庆恒大君鑫房地产开发有限公司",
+                "image": "https://qccdata.qichacha.com/Autoimage/90a9eb72b6c920db4b308f023e6d447f.jpg",
+                "percent": "100%",
+                "location": "",
+                "productName": "",
+                "stockCode": "",
+                "nodeType": "999"
+              }
+            ]
+          },
+          {
+            "id": "13f35512613f66982c4f55bd0f9fb620",
+            "name": "南京润恒企业管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/13f35512613f66982c4f55bd0f9fb620.jpg",
+            "percent": "4.70%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1f2e83258a94b6837539858fa7a01dc1",
+            "name": "深圳市华建控股有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1f2e83258a94b6837539858fa7a01dc1.jpg",
+            "percent": "3.20%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2e3898c7d1af65de2aa40fe2f9028840",
+            "name": "深圳市键诚投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/2e3898c7d1af65de2aa40fe2f9028840.jpg",
+            "percent": "2.72%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "a732301099907916638fcb3ee31b0a67",
+            "name": "山东高速地产集团有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/a732301099907916638fcb3ee31b0a67.jpg",
+            "percent": "2.12%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "acfd971b692088c2ad5dd10db7a5460e",
+            "name": "苏州工业园区睿灿投资企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/acfd971b692088c2ad5dd10db7a5460e.jpg",
+            "percent": "2.08%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "3a1ecec6f22535040bd3e9aeb5653e5d",
+            "name": "山东高速投资控股有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/3a1ecec6f22535040bd3e9aeb5653e5d.jpg",
+            "percent": "1.89%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8065158d89c21c24edc5cb4585932f14",
+            "name": "嘉寓汽车配件宁夏(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/8065158d89c21c24edc5cb4585932f14.jpg",
+            "percent": "1.82%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c2c48ffa3f1112a70c068e46847eb753",
+            "name": "深圳市深业深恒投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c2c48ffa3f1112a70c068e46847eb753.jpg",
+            "percent": "1.76%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "379da6b03d172dfcd87f18fa73b11da2",
+            "name": "广田投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/379da6b03d172dfcd87f18fa73b11da2.jpg",
+            "percent": "1.60%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1073d498506b2a06017316503d7ba6cf",
+            "name": "中信聚恒(深圳)投资控股中心(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/1073d498506b2a06017316503d7ba6cf.jpg",
+            "percent": "1.60%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f5a2bbff0eb4c90a096da6b30311bae8",
+            "name": "深圳市麒翔投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f5a2bbff0eb4c90a096da6b30311bae8.jpg",
+            "percent": "1.60%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5317c2cab1cace5059a04329e9bfe3b0",
+            "name": "济南畅赢金程股权投资合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/5317c2cab1cace5059a04329e9bfe3b0.jpg",
+            "percent": "1.18%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "17cbfd99c0d01d71b44f4b945b40d8ee",
+            "name": "广州逸合投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/17cbfd99c0d01d71b44f4b945b40d8ee.jpg",
+            "percent": "1.18%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0fb25d50e5945273b6bd9eb6b4277020",
+            "name": "四川鼎祥股权投资基金有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0fb25d50e5945273b6bd9eb6b4277020.jpg",
+            "percent": "1.18%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "147bbde6ee5c922d7d7a8a465c7525ca",
+            "name": "深圳正威(集团)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/147bbde6ee5c922d7d7a8a465c7525ca.jpg",
+            "percent": "1.18%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c9bc6ea9b43459b4b496562649ac4db4",
+            "name": "深圳市美投步阳投资合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/c9bc6ea9b43459b4b496562649ac4db4.jpg",
+            "percent": "1.12%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "986d1c8d38e9919d868d64bd74cd385e",
+            "name": "广东唯美明珠投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/986d1c8d38e9919d868d64bd74cd385e.jpg",
+            "percent": "0.96%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "800fc354c1b93d5f09efc7462d664909",
+            "name": "宁波民银金投鸿达叁号投资管理合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/800fc354c1b93d5f09efc7462d664909.jpg",
+            "percent": "0.96%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6884e13fe7f0ff7e2f93aa346521924c",
+            "name": "深圳市中融鼎兴投资合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/6884e13fe7f0ff7e2f93aa346521924c.jpg",
+            "percent": "0.96%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b054117cb1ce548b4343c2e812fd297e",
+            "name": "嘉兴宇民伍号投资合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/b054117cb1ce548b4343c2e812fd297e.jpg",
+            "percent": "0.64%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5849be0a20b8d7f06c73b96fcca1abf4",
+            "name": "潍坊金橙宏源投资管理合伙企业(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/5849be0a20b8d7f06c73b96fcca1abf4.jpg",
+            "percent": "0.64%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2743e826ef2be9be36833dc17680e8d4",
+            "name": "山东铁路发展基金有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/2743e826ef2be9be36833dc17680e8d4.jpg",
+            "percent": "0.48%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f2cd2de39204a56bbec4ea9c13459bf1",
+            "name": "上海豪仁物业管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f2cd2de39204a56bbec4ea9c13459bf1.jpg",
+            "percent": "0.32%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "a7e01cf52e9f1b4acf1c8e3d18e2ba99",
+            "name": "青岛永合金丰集团有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/a7e01cf52e9f1b4acf1c8e3d18e2ba99.jpg",
+            "percent": "0.32%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1b0a44073793ae8bad5b35122415e975",
+            "name": "深圳市中意前海控股有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1b0a44073793ae8bad5b35122415e975.jpg",
+            "percent": "0.32%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "p08585eb434575679bd8389c96c2",
+        "name": "高管",
+        "nodeType": "105",
+        "children": [
+          {
+            "id": "pcb6bc3131ebe9df44234697469df092",
+            "name": "许家印",
+            "image": "https://co-image.qichacha.com/Personimage/pcb6bc3131ebe9df44234697469df092.jpg",
+            "Job": "董事长",
+            "nodeType": "998"
+          },
+          {
+            "id": "p08585eb4f2e2e51ec819bd8389c96c2",
+            "name": "甄立涛",
+            "image": "https://co-image.qichacha.com/Personimage/p08585eb4f2e2e51ec819bd8389c96c2.jpg",
+            "Job": "总经理",
+            "nodeType": "998"
+          },
+          {
+            "id": "pc02aface447773ffca71e828385c6db",
+            "name": "何妙玲",
+            "image": "https://co-image.qichacha.com/Personimage/pc02aface447773ffca71e828385c6db.jpg",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "pf51c51dfd078a701363c91ce8df2b43",
+            "name": "赵长龙",
+            "image": "https://co-image.qichacha.com/Personimage/pf51c51dfd078a701363c91ce8df2b43.jpg",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "pe7f5b4423655301bd5c9c70295f6293",
+            "name": "吉兴顺",
+            "image": "",
+            "Job": "监事",
+            "nodeType": "998"
+          }
+        ]
+      },
+      {
+        "id": "pop9ec819bd8389c96c2",
+        "name": "对外投资",
+        "nodeType": "106",
+        "children": [
+          {
+            "id": "93c0a7e34f5e39484eaed236e7e951df",
+            "name": "恒大地产集团韶关有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/93c0a7e34f5e39484eaed236e7e951df.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2c451cc60ff2cf33b620e46e1d0df8c9",
+            "name": "佛山市南海盈裕房地产发展有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/2c451cc60ff2cf33b620e46e1d0df8c9.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4c23f447cab754eb4b820805efe89ffb",
+            "name": "南京恒大富丰置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/4c23f447cab754eb4b820805efe89ffb.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "93fb64ad54806f59919136273e4cc0a6",
+            "name": "恒大地产集团上海盛建置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/93fb64ad54806f59919136273e4cc0a6.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4ac64ffdc5a0732c54ac051f8be0fd95",
+            "name": "恒大地产集团贵阳置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/4ac64ffdc5a0732c54ac051f8be0fd95.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "80eeb05da212122ec10ea5520917a885",
+            "name": "丹阳恒大置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/80eeb05da212122ec10ea5520917a885.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "98127140ebcd1de4a5d4b5f0b381f30c",
+            "name": "恒大地产集团长沙置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/98127140ebcd1de4a5d4b5f0b381f30c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6ca9224afdd656993f23fac968c7d247",
+            "name": "恒大地产集团吉安有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6ca9224afdd656993f23fac968c7d247.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ac1a7289eeeabbe275298877e9a9f894",
+            "name": "恒大地产集团乌鲁木齐有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/ac1a7289eeeabbe275298877e9a9f894.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "96e593d5f84da1ffbcb8b9bf384f9d85",
+            "name": "恒大地产集团盐城有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/96e593d5f84da1ffbcb8b9bf384f9d85.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "407a17d801c54fa6f60912e1811acb5e",
+            "name": "太原万恒房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/407a17d801c54fa6f60912e1811acb5e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "af8b87d971b33386464d0d1b2ae3acf3",
+            "name": "恒大地产集团(沈阳)投资有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/af8b87d971b33386464d0d1b2ae3acf3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "72177a49cad6b046010f276ea321cbf3",
+            "name": "恒大地产集团石家庄有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/72177a49cad6b046010f276ea321cbf3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6a5000792451f7de11a119c5bc4d3555",
+            "name": "太原恒泽房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6a5000792451f7de11a119c5bc4d3555.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e736f46ae5daece2a3d2206755eacb7e",
+            "name": "恒大地产集团珠三角房地产开发有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e736f46ae5daece2a3d2206755eacb7e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "07191e9ad90cc655db48c280cd826140",
+            "name": "恒大地产集团包头有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/07191e9ad90cc655db48c280cd826140.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bc661b7f5a1dbccb8839ee04d605e3c9",
+            "name": "恒大地产集团成都有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/bc661b7f5a1dbccb8839ee04d605e3c9.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "73ecbca6d1f549011456bd270b245979",
+            "name": "海盐盛建置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/73ecbca6d1f549011456bd270b245979.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ae11457edd7c5461949c0a35a1e1c6af",
+            "name": "南宁金碧恒大置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ae11457edd7c5461949c0a35a1e1c6af.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4b29adac57b72d43d1246ca394e6bf2e",
+            "name": "淮安恒大富丰房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/4b29adac57b72d43d1246ca394e6bf2e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "56949f0baa7741e33f6cd0e7c7c1efd8",
+            "name": "恒大地产集团天津有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/56949f0baa7741e33f6cd0e7c7c1efd8.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "95efe9055f604aecaf0b58ac03bec569",
+            "name": "恒大地产集团广东房地产开发有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/95efe9055f604aecaf0b58ac03bec569.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5963ffe821f72aefc6d8d8557329a387",
+            "name": "恒大地产集团合肥有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/5963ffe821f72aefc6d8d8557329a387.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "86b6f6c8866629cd7013f31771d0fe85",
+            "name": "恒大地产集团兰州置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/86b6f6c8866629cd7013f31771d0fe85.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "29057d395a319813f31c016b3ab9e78a",
+            "name": "宁夏昊天房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/29057d395a319813f31c016b3ab9e78a.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c3be83cc3f8255a11228f9c5670dfb85",
+            "name": "广州通瑞达房地产实业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c3be83cc3f8255a11228f9c5670dfb85.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9eb1cc32d7ea0dc51c3df9c161213baf",
+            "name": "恒大地产集团景德镇置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/9eb1cc32d7ea0dc51c3df9c161213baf.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ae5ee046c301eb5afc2117c92ccd02b9",
+            "name": "太原名都房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ae5ee046c301eb5afc2117c92ccd02b9.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b3ed15ea3aacc1da4e024f75776e00db",
+            "name": "恒大地产集团洛阳有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/b3ed15ea3aacc1da4e024f75776e00db.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c4995f49ebe120059e29f61d2baa9a14",
+            "name": "恒大地产集团天津蓟县有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/c4995f49ebe120059e29f61d2baa9a14.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7f99bcf845caed4e6c35aafdee14ee79",
+            "name": "儋州恒大滨海投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/7f99bcf845caed4e6c35aafdee14ee79.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "861682434ffe41bdd695c1a128fd9adf",
+            "name": "恒大地产集团银川有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/861682434ffe41bdd695c1a128fd9adf.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0edd4119b30cee63e8af91043365a1b8",
+            "name": "贵阳恒大美筑房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0edd4119b30cee63e8af91043365a1b8.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6ec033f7dc8184584c6da0b202cb624e",
+            "name": "常德金泽置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6ec033f7dc8184584c6da0b202cb624e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "592ad529f0be40730b05cfd30f7b18f9",
+            "name": "恒大地产集团(中山)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/592ad529f0be40730b05cfd30f7b18f9.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "976d321199bce251bcc2111b920847d2",
+            "name": "无锡恒大房产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/976d321199bce251bcc2111b920847d2.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0eb6aa4635c1d509758a76530416d90d",
+            "name": "恒大地产集团呼和浩特有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/0eb6aa4635c1d509758a76530416d90d.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ccdc4a3e2dd1c5b4c148981e3458eec5",
+            "name": "南昌中电投高新置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ccdc4a3e2dd1c5b4c148981e3458eec5.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f8113b59300bc019f5b50d5115253dce",
+            "name": "南京汉典房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f8113b59300bc019f5b50d5115253dce.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0fa78b1f468a02f277ae96684cf4d9eb",
+            "name": "恒大地产集团梧州御湖置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/0fa78b1f468a02f277ae96684cf4d9eb.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "fd3cade8bfecd7985c7aa2309f7978be",
+            "name": "恒大地产集团海南有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/fd3cade8bfecd7985c7aa2309f7978be.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f1cdd5dc8275eb0dad5f3bfbefec6d5e",
+            "name": "恒大地产集团湛江御景置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/f1cdd5dc8275eb0dad5f3bfbefec6d5e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "70310ec782760fe2a1d947dac874e4f1",
+            "name": "西安祺云置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/70310ec782760fe2a1d947dac874e4f1.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7d4ed612da096bebeb97c59e6cba7201",
+            "name": "宿迁恒大华府置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/7d4ed612da096bebeb97c59e6cba7201.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dc6352964a950ff099af4b09e5de9bc7",
+            "name": "淮北粤通置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/dc6352964a950ff099af4b09e5de9bc7.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "339f6f629087c66b5777acd90fb01e89",
+            "name": "东莞市城邦房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/339f6f629087c66b5777acd90fb01e89.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6d3355b641e30ae3ae1536feefdcaced",
+            "name": "恒大体育集团有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6d3355b641e30ae3ae1536feefdcaced.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b14ba3a4f244b63f45647123db9e2c2f",
+            "name": "深圳恒大材料物流集团有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/b14ba3a4f244b63f45647123db9e2c2f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e288246606918c6c444eb226001741ea",
+            "name": "恒大地产集团粤东有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e288246606918c6c444eb226001741ea.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c61e398c571d913c85fc3c15440df3e9",
+            "name": "恒大地产集团九江有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/c61e398c571d913c85fc3c15440df3e9.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1407fc748c280086a2244b405f66e74e",
+            "name": "嘉兴恒大置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1407fc748c280086a2244b405f66e74e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cdd69500803b40eeedfb7d114b54fb02",
+            "name": "合肥粤恒置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/cdd69500803b40eeedfb7d114b54fb02.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9dd31d0fa83f083f83155af93fa37288",
+            "name": "衢州恒大盛建置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/9dd31d0fa83f083f83155af93fa37288.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "492ff7b6dc8173b4afff2c79bb3d77a0",
+            "name": "铜陵恒大置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/492ff7b6dc8173b4afff2c79bb3d77a0.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cf8de6ca7cd27e642e030a2bde5dc704",
+            "name": "恒大地产集团石嘴山有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/cf8de6ca7cd27e642e030a2bde5dc704.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "121b9da18d796c1de5f6b6ec3a46ee4b",
+            "name": "大同俊景房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/121b9da18d796c1de5f6b6ec3a46ee4b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "696b94c7d523169d641a4c5dc99dbc1a",
+            "name": "恒大地产集团南京置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/696b94c7d523169d641a4c5dc99dbc1a.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e9d1a50b34bfb1a831c94ff8ef5fdfd0",
+            "name": "乌海市俊景房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/e9d1a50b34bfb1a831c94ff8ef5fdfd0.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6b7cf3a358d93e06526ecd9ec5bd8216",
+            "name": "吕梁市俊汇房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6b7cf3a358d93e06526ecd9ec5bd8216.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7f7ee86f1109673a5505bc3106849741",
+            "name": "广州市裕菲投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/7f7ee86f1109673a5505bc3106849741.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e9b40f3f009b4b677e241c50530ee7c0",
+            "name": "平湖恒大名都置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/e9b40f3f009b4b677e241c50530ee7c0.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "430b6549a56472cf2ce79f7ca2e94645",
+            "name": "恒大地产集团哈尔滨有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/430b6549a56472cf2ce79f7ca2e94645.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c78804c19542c96e82526edc9e8be02b",
+            "name": "恒大地产集团云浮有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/c78804c19542c96e82526edc9e8be02b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "05240183d094e0459d27055ef0f2908b",
+            "name": "湖南雄震置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/05240183d094e0459d27055ef0f2908b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "818f189d128b42c21ba024be9fbb3419",
+            "name": "太原恒睿房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/818f189d128b42c21ba024be9fbb3419.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "88a3c44c9c0b6c2e019bbfba975cb10e",
+            "name": "运城市金恒房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/88a3c44c9c0b6c2e019bbfba975cb10e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e2120a30cebc80aeff7f7048a0f4fb80",
+            "name": "恒大地产集团(深圳)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e2120a30cebc80aeff7f7048a0f4fb80.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "06963308c0c9224190cb5a2e8653517c",
+            "name": "恒大园林集团有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/06963308c0c9224190cb5a2e8653517c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "23953556d0690358794d8edea534c51c",
+            "name": "恒大地产集团西安有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/23953556d0690358794d8edea534c51c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "48c4d7c67d342494f561e7c93034caf5",
+            "name": "河南恒大家居产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/48c4d7c67d342494f561e7c93034caf5.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "de0428c223bbf682f3f8d31c9d537bdb",
+            "name": "恒大地产集团白洋淀温泉城有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/de0428c223bbf682f3f8d31c9d537bdb.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0e7e37a641a82441f91bb4b99b00e3d6",
+            "name": "恒大商业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/0e7e37a641a82441f91bb4b99b00e3d6.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c0221566b827c6ebd180efdb1290c548",
+            "name": "岳阳金碧置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c0221566b827c6ebd180efdb1290c548.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bdf439214144ffe42001c01d8c9f2f04",
+            "name": "恒大地产集团鹿泉有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/bdf439214144ffe42001c01d8c9f2f04.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2009b9c84452946951c8950136dab64d",
+            "name": "广州市恒合工程监理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/2009b9c84452946951c8950136dab64d.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "3e25eb1bbd226c127482fb0aff4f61aa",
+            "name": "贵阳恒大云景房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/3e25eb1bbd226c127482fb0aff4f61aa.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d830ea833b0871ad8e8e60392323fce7",
+            "name": "恒大地产集团(江西)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/d830ea833b0871ad8e8e60392323fce7.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bcebb6994d0dae6bf959a22b15958ec3",
+            "name": "运城市鑫万瑞房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/bcebb6994d0dae6bf959a22b15958ec3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0207eacc836bc6ca001a0b75fd39ae40",
+            "name": "广州恒大(增城)房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0207eacc836bc6ca001a0b75fd39ae40.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "08ceac682a2d1cb54eb183fdf41fac1f",
+            "name": "恒大培冠教育科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/08ceac682a2d1cb54eb183fdf41fac1f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "246446962e33d08d3d4afff7b8f640aa",
+            "name": "恒大地产集团山西有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/246446962e33d08d3d4afff7b8f640aa.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e4bbfef90c51d3d63e1edbecb96b8d80",
+            "name": "恒大地产集团(东莞)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e4bbfef90c51d3d63e1edbecb96b8d80.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0ebb632e42ee98da572ae47acd5fa3ce",
+            "name": "启东恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0ebb632e42ee98da572ae47acd5fa3ce.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4e0c2102e6b44f8ea348191a439d160a",
+            "name": "山西嘉盛房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/4e0c2102e6b44f8ea348191a439d160a.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d89099cd6e8ed4a7415699bc942a106a",
+            "name": "恒大地产集团长春有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/d89099cd6e8ed4a7415699bc942a106a.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "643eb2a7c6c8578c87d8bea80b8f1040",
+            "name": "恒大建筑设计院有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/643eb2a7c6c8578c87d8bea80b8f1040.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "3c354db9387ee07a1dbb544ed2e548c3",
+            "name": "恒大鑫隆(沈阳)置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/3c354db9387ee07a1dbb544ed2e548c3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d4a808e7d6d70b5e31a601b8c6b28292",
+            "name": "广州市俊汇房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/d4a808e7d6d70b5e31a601b8c6b28292.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "386083826144980ac9ef874e054f1498",
+            "name": "双鸭山恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/386083826144980ac9ef874e054f1498.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "323c2a93b2e0b4c97852e38e59af0534",
+            "name": "北京恒世投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/323c2a93b2e0b4c97852e38e59af0534.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "232723d65feaa0d5ac02ae3e82552f6f",
+            "name": "恒大地产集团福州有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/232723d65feaa0d5ac02ae3e82552f6f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "983c0191b2668b898ccafe03009f0290",
+            "name": "合肥粤泰置业有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/983c0191b2668b898ccafe03009f0290.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9ed7fc936799dec6b4526f3017686ec1",
+            "name": "合肥粤泰商业运营管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/9ed7fc936799dec6b4526f3017686ec1.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ddc688e0cb2bfe28ac0f738c5f378bd3",
+            "name": "恒大地产集团昆明有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/ddc688e0cb2bfe28ac0f738c5f378bd3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "071880d104970a70215f07f25bd8c53d",
+            "name": "广州恒晖建筑工程有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/071880d104970a70215f07f25bd8c53d.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "73ebac93912ae3f9f14c11202f67c581",
+            "name": "常德恒泽置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/73ebac93912ae3f9f14c11202f67c581.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0471eb8d7b79edf6a3364db98491fe13",
+            "name": "扬州旭升房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0471eb8d7b79edf6a3364db98491fe13.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e7114dd0511e873988b8140557dae2ab",
+            "name": "恒大大方扶贫管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/e7114dd0511e873988b8140557dae2ab.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f2ed944b8624b8cf7a09b288bbdbd9ea",
+            "name": "大方扶贫有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f2ed944b8624b8cf7a09b288bbdbd9ea.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "3f239d3618037fd5dfbda94ceb6b23cf",
+            "name": "北京恒粤置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/3f239d3618037fd5dfbda94ceb6b23cf.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "272c3e97066a2e9e68dcbf1071c76892",
+            "name": "恒大地产集团大连有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/272c3e97066a2e9e68dcbf1071c76892.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "93f60cc82284252082c1335107301d77",
+            "name": "恒大地产集团河源有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/93f60cc82284252082c1335107301d77.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8f7e383f9dfd9033374549404d981126",
+            "name": "广州市恒大永昌置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/8f7e383f9dfd9033374549404d981126.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b673053c94133b5fcf962d4087905047",
+            "name": "广州市恒大卓越置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/b673053c94133b5fcf962d4087905047.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "22e21cc225762a869e865183bf5d9032",
+            "name": "恒大地产集团防城港有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/22e21cc225762a869e865183bf5d9032.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6d672655853bd5c1acd5fe5a2178fe43",
+            "name": "恒大地产集团阳江有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6d672655853bd5c1acd5fe5a2178fe43.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "33cc5aea6690e5e3a35e3fd4dbafd57e",
+            "name": "连云港恒大城置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/33cc5aea6690e5e3a35e3fd4dbafd57e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6b282d974b31f69946a10e6fdecc6a2d",
+            "name": "恒大地产集团自贡有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6b282d974b31f69946a10e6fdecc6a2d.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1e5b56d2e0122efb59f0dd8c5913dd85",
+            "name": "恒大地产集团佛冈有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/1e5b56d2e0122efb59f0dd8c5913dd85.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6abb91e19fc967bd75461c88e94a48b4",
+            "name": "恒大地产集团南宁有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6abb91e19fc967bd75461c88e94a48b4.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e4dc8e3a1e3f65e5f80278c26f70eb39",
+            "name": "恒大地产集团郑州有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e4dc8e3a1e3f65e5f80278c26f70eb39.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "14afdf63e508d402c33f02aa6f983c87",
+            "name": "湖南恒辰置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/14afdf63e508d402c33f02aa6f983c87.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "952c49e9666ce0cebc1ea5b9dbfb8cff",
+            "name": "南昌恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/952c49e9666ce0cebc1ea5b9dbfb8cff.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "11780a6900d63240480b6439e6a09182",
+            "name": "吕梁市离石区恒煜房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/11780a6900d63240480b6439e6a09182.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c13b0071239ca050399cef13b07489d4",
+            "name": "太康扶贫有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c13b0071239ca050399cef13b07489d4.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8d759c0204ae5d929f09355a6dd72df3",
+            "name": "太原恒林房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/8d759c0204ae5d929f09355a6dd72df3.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "a9de38b4e265544908ec4a3b71bedc7f",
+            "name": "太原恒坪房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/a9de38b4e265544908ec4a3b71bedc7f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "627505439a2c53ca78f126a061e269ed",
+            "name": "太原恒大盛腾房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/627505439a2c53ca78f126a061e269ed.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "fb12813b57c5cf63365cc6a11db1c825",
+            "name": "太原恒大鼎盛房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/fb12813b57c5cf63365cc6a11db1c825.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9d5baa4c30b7bc80080487b8456250cd",
+            "name": "太原恒大吉安房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/9d5baa4c30b7bc80080487b8456250cd.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e17e928fde60896eb9e6b8d3f7cc938e",
+            "name": "成都金堂恒大酒店有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e17e928fde60896eb9e6b8d3f7cc938e.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "39818749b0308249e5781d1e3387abdc",
+            "name": "彭山恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/39818749b0308249e5781d1e3387abdc.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "260729e29f734edfedaaae54a0eb095c",
+            "name": "太原俊豪房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/260729e29f734edfedaaae54a0eb095c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "536d0b50957765d0be39b8c2eb6f32bb",
+            "name": "深圳市中心港房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/536d0b50957765d0be39b8c2eb6f32bb.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4467d631ebea44fabc9db58d8da13e97",
+            "name": "广州市金碧恒盈物业服务有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/4467d631ebea44fabc9db58d8da13e97.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0f0ca78e36afb352e599bc315d8e006b",
+            "name": "广州市金碧世家物业服务有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/0f0ca78e36afb352e599bc315d8e006b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dbab7dc581c317a4f079f70759558b7f",
+            "name": "北京天力兴业投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/dbab7dc581c317a4f079f70759558b7f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "09b2ab81541177c87df9dcf7e8dd53b1",
+            "name": "儋州市恒大逸阁公寓管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/09b2ab81541177c87df9dcf7e8dd53b1.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "13f1a81a68ad9e292d3505fdce2c7b43",
+            "name": "林芝恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/13f1a81a68ad9e292d3505fdce2c7b43.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "149799c9cff7d25f4a7b5ed30dfa998b",
+            "name": "南京恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/149799c9cff7d25f4a7b5ed30dfa998b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6237a035b3c05005fc2b3ac2bddb1726",
+            "name": "武汉恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6237a035b3c05005fc2b3ac2bddb1726.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4ffc692550099ab7e1e1560580329214",
+            "name": "天津东丽湖恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/4ffc692550099ab7e1e1560580329214.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "be9dde051b65bca839a88efaa1740870",
+            "name": "天津恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/be9dde051b65bca839a88efaa1740870.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "46509e20c1a431e01dd0341deefaeb7c",
+            "name": "东营恒大棕榈岛酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/46509e20c1a431e01dd0341deefaeb7c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "eef65f0b382bb9df1becd7bcda08da6b",
+            "name": "恩平恒大温泉酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/eef65f0b382bb9df1becd7bcda08da6b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cbad1812f1e62dac650dcbd87188f6b6",
+            "name": "恒大世纪城(清远)酒店有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/cbad1812f1e62dac650dcbd87188f6b6.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ec0f2aef1ea94f6dc54f4865330ae937",
+            "name": "重庆恒大酒店有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/ec0f2aef1ea94f6dc54f4865330ae937.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9b76f6c36e9b799e59c2f1b6a3838ab8",
+            "name": "广州市恒大园林设计院有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/9b76f6c36e9b799e59c2f1b6a3838ab8.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1d9458178d67f6805cbabf4b64d29787",
+            "name": "广州市恒大装修设计院有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1d9458178d67f6805cbabf4b64d29787.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b2c3bc43a21b458479872401cd6518bd",
+            "name": "林芝华锦日用品有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/b2c3bc43a21b458479872401cd6518bd.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c06f5005a06a723abba216d829e08247",
+            "name": "广州市恒大酒店有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c06f5005a06a723abba216d829e08247.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "69e73c92a74e0beca3c994fbc5045543",
+            "name": "广州恒大装饰工程有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/69e73c92a74e0beca3c994fbc5045543.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dfe969b6ebaf45592c23cb5b6e4de137",
+            "name": "广州市品宴餐饮企业管理有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/dfe969b6ebaf45592c23cb5b6e4de137.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "866382099162fc760c1cab0072318d19",
+            "name": "广州恒大民族歌舞团有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/866382099162fc760c1cab0072318d19.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "73de635e99a22625158536cb7e667f05",
+            "name": "重庆市鑫恒观光农业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/73de635e99a22625158536cb7e667f05.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bfa118bebf5b95d9cf28fedd3107e757",
+            "name": "鹤山市鑫鑫观光产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/bfa118bebf5b95d9cf28fedd3107e757.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4a328798dc483a234d873c78edaf9675",
+            "name": "鄂州鑫金生态观光产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/4a328798dc483a234d873c78edaf9675.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "840caced0ff0dd2d0bab51bdf255a65a",
+            "name": "安宁市淦鑫观光产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/840caced0ff0dd2d0bab51bdf255a65a.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e2ef7ee8e165a5c6ff13bea5823d1421",
+            "name": "眉山市彭山区鑫鑫观光产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/e2ef7ee8e165a5c6ff13bea5823d1421.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8ab5096d83ddb33112633b03ad9e33a6",
+            "name": "武汉鑫金观光产业园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/8ab5096d83ddb33112633b03ad9e33a6.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "266c0e4735b23191f104ed43ec25a8ff",
+            "name": "广州恒大生态农业开发基地有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/266c0e4735b23191f104ed43ec25a8ff.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f604bda80521b4f92d785b0b04fa099c",
+            "name": "恒大(佛冈)汤塘农场有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f604bda80521b4f92d785b0b04fa099c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "697cc1aa4b7cba10f81e5bb0fd2f5911",
+            "name": "恒大(清新)生态示范园有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/697cc1aa4b7cba10f81e5bb0fd2f5911.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e7f4f626a5410b45a0973d0d3af4de7b",
+            "name": "广州市金碧大世界饮食娱乐有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/e7f4f626a5410b45a0973d0d3af4de7b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ff91df64af9b7f8d2acd0d510ec6a89c",
+            "name": "广州市金碧房地产代理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ff91df64af9b7f8d2acd0d510ec6a89c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6b1c681d18026b53b3c2ce3a94b8118c",
+            "name": "广州市恒大广告有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6b1c681d18026b53b3c2ce3a94b8118c.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f9fdf11f3bb8e1b0379acc636fc7cb6f",
+            "name": "佛山市恒大金属建筑材料有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f9fdf11f3bb8e1b0379acc636fc7cb6f.jpg",
+            "percent": "99.01%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5825c04ef9e20b3cd37e2182a5d3eb4b",
+            "name": "合肥粤祺商业运营管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/5825c04ef9e20b3cd37e2182a5d3eb4b.jpg",
+            "percent": "95.67%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f8a93eb2deb13250c2f66cbd94e97c38",
+            "name": "临汾市紫旌房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f8a93eb2deb13250c2f66cbd94e97c38.jpg",
+            "percent": "95.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7d9b15e7c8883e0ad25e9349c75b02e4",
+            "name": "太原恒鑫房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/7d9b15e7c8883e0ad25e9349c75b02e4.jpg",
+            "percent": "94.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c31d69e9eaecb2addf61958bbd643954",
+            "name": "山西兰花康宇房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c31d69e9eaecb2addf61958bbd643954.jpg",
+            "percent": "82.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ea02d1269799afec643467d4adab6ae5",
+            "name": "航发投资管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ea02d1269799afec643467d4adab6ae5.jpg",
+            "percent": "80.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5c068ed899570fdef740633ec433d6cd",
+            "name": "太原恒德隆房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/5c068ed899570fdef740633ec433d6cd.jpg",
+            "percent": "80.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c72264c46279e34ce1dae08eff6eb151",
+            "name": "合肥粤诚置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c72264c46279e34ce1dae08eff6eb151.jpg",
+            "percent": "79.69%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b20c4b9a61ddce7389ca17caebbe6103",
+            "name": "运城经济开发区壹加壹房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/b20c4b9a61ddce7389ca17caebbe6103.jpg",
+            "percent": "71.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "71b12c30a58eb44ccf555b3ff592b2f9",
+            "name": "太原盛世君泰房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/71b12c30a58eb44ccf555b3ff592b2f9.jpg",
+            "percent": "70.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "865fe9586954959ba0724c311b8bc2d1",
+            "name": "太原恒大君泰房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/865fe9586954959ba0724c311b8bc2d1.jpg",
+            "percent": "70.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8113489760df4d538224f798d003c06e",
+            "name": "太原俊景房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/8113489760df4d538224f798d003c06e.jpg",
+            "percent": "65.58%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c7dcb35ceb8c2ebf93b12a0be22e8fdb",
+            "name": "西安曲江投资建设有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c7dcb35ceb8c2ebf93b12a0be22e8fdb.jpg",
+            "percent": "65.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "fa059a60f36af42b16ec7f192529a053",
+            "name": "阳泉市燎原房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/fa059a60f36af42b16ec7f192529a053.jpg",
+            "percent": "64.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "aa80bf0a38bfc4baf38edbe4cacf453f",
+            "name": "恒大怡和置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/aa80bf0a38bfc4baf38edbe4cacf453f.jpg",
+            "percent": "62.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "90a0c9d430326379c4231c3a32acfcb6",
+            "name": "合肥粤祺置业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/90a0c9d430326379c4231c3a32acfcb6.jpg",
+            "percent": "61.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bbfbb98d148d51fcfa06822cf3ff3fa5",
+            "name": "广州恒大淘宝足球俱乐部股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/bbfbb98d148d51fcfa06822cf3ff3fa5.jpg",
+            "percent": "56.71%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "292eecbb9a0c4bfec862018a9e119511",
+            "name": "北京富华房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/292eecbb9a0c4bfec862018a9e119511.jpg",
+            "percent": "55.04%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5482ee7b9b8af0dcb85172eb6f1f6644",
+            "name": "临汾恒平房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/5482ee7b9b8af0dcb85172eb6f1f6644.jpg",
+            "percent": "55.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6ae3e59347ce35a15730994929bc7630",
+            "name": "北京北恒中慧教育科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6ae3e59347ce35a15730994929bc7630.jpg",
+            "percent": "55.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "31734d5f0ab5d0de20eb9f4367517b8d",
+            "name": "深圳市恒宁商业发展有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/31734d5f0ab5d0de20eb9f4367517b8d.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "82d6826fcb7689ba4d5f0ebee9ae327e",
+            "name": "王府井恒大商业控股有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/82d6826fcb7689ba4d5f0ebee9ae327e.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "179b5e4f8c171af90a896918aa9963fc",
+            "name": "忻州恒大国信房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/179b5e4f8c171af90a896918aa9963fc.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ce0714e90d0dc2ae913d26dab2162eb0",
+            "name": "江西星宇置业发展有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ce0714e90d0dc2ae913d26dab2162eb0.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bbb2e1ef77c3a799b5259d529dcefa34",
+            "name": "恒大地产集团恩平有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/bbb2e1ef77c3a799b5259d529dcefa34.jpg",
+            "percent": "50.98%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6e2807349e5b0573124cbc11b5189185",
+            "name": "北京观止文化艺术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/6e2807349e5b0573124cbc11b5189185.jpg",
+            "percent": "30.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ccc7affa3b355d841c2abe9d3b8dd511",
+            "name": "北京润业文化艺术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/ccc7affa3b355d841c2abe9d3b8dd511.jpg",
+            "percent": "25.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2a073593b33e21e9eb05dc033c7ba3f6",
+            "name": "廊坊发展股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/2a073593b33e21e9eb05dc033c7ba3f6.jpg",
+            "percent": "20.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d2967b95812b297b2b5c0a9026d70c26",
+            "name": "北京东方业佳文化艺术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/d2967b95812b297b2b5c0a9026d70c26.jpg",
+            "percent": "20.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cebc8b6eb39e286821a6e8d694aed630",
+            "name": "上海易居生源股权投资中心(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/cebc8b6eb39e286821a6e8d694aed630.jpg",
+            "percent": "6.1223%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "0166f43b7392cf6d609f26370c1b5eb7",
+            "name": "深圳市建设(集团)有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/0166f43b7392cf6d609f26370c1b5eb7.jpg",
+            "percent": "5.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "23ca77d328c755cd7e97f5798ecb7320",
+            "name": "江西宏吉投资有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/23ca77d328c755cd7e97f5798ecb7320.jpg",
+            "percent": "2.67%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d24d205c8dce04c2308a97bd2cd966e0",
+            "name": "上海伍翎投资中心(有限合伙)",
+            "image": "https://qccdata.qichacha.com/Autoimage/d24d205c8dce04c2308a97bd2cd966e0.jpg",
+            "percent": "2.59%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1d224d995b2771c0d4dceedaf2b1eaa9",
+            "name": "湛江恒大石油化工有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1d224d995b2771c0d4dceedaf2b1eaa9.jpg",
+            "percent": "70.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "61b7ac11c63f6ea3803c4015519aa6e2",
+            "name": "恒大地产集团揭阳有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/61b7ac11c63f6ea3803c4015519aa6e2.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6859fcb3d92e159a2524872cbb3ed92d",
+            "name": "恒大地产集团清新有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6859fcb3d92e159a2524872cbb3ed92d.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "1ee953443278145078faa60a5d447333",
+            "name": "天津蓟县金鑫观光产业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/1ee953443278145078faa60a5d447333.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8811bbb7df7b02e0c6f92d564b538ab8",
+            "name": "佛山市南海区蓝筹鞋业有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/8811bbb7df7b02e0c6f92d564b538ab8.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "07e84d01c8e5de15d27598231a9c7a4d",
+            "name": "太原恒庆房地产开发有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/07e84d01c8e5de15d27598231a9c7a4d.jpg",
+            "percent": "75.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "17d5031e699c479d78324715d940ef15",
+            "name": "王府井恒大商业管理有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/17d5031e699c479d78324715d940ef15.jpg",
+            "percent": "49.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "pop9ec84447819bd83389c96c2",
+        "name": "控股企业",
+        "nodeType": "107",
+        "children": []
+      },
+      {
+        "id": "pop9345ec434819bd88389c96c2",
+        "name": "分支机构",
+        "nodeType": "109",
+        "children": [
+          {
+            "id": "1fd2fe02d520c74eaf87257c04384c4a",
+            "image": "https://co-image.qichacha.com/Companyimage/1fd2fe02d520c74eaf87257c04384c4a.jpg",
+            "name": "恒大地产集团有限公司广州分公司",
+            "nodeType": "999"
+          },
+          {
+            "id": "8b29efd2c8c752fd1fe0a7d723c5482d",
+            "image": "https://co-image.qichacha.com/Companyimage/8b29efd2c8c752fd1fe0a7d723c5482d.jpg",
+            "name": "恒大地产集团有限公司北京办事处",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "pop344359345ec4346819bd883869c96c2",
+        "name": "供应商",
+        "nodeType": "110",
+        "children": [
+          {
+            "id": "9aa01437ce112653ce0c792e56eabc5a",
+            "image": "https://co-image.qichacha.com/Companyimage/9aa01437ce112653ce0c792e56eabc5a.jpg",
+            "name": "科顺防水科技股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "3e75bee608d2569b9e87bd8bc87d119e",
+            "image": "https://co-image.qichacha.com/Companyimage/3e75bee608d2569b9e87bd8bc87d119e.jpg",
+            "name": "山东舜网传媒股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8294c7bf1360281243ace91e08e150b4",
+            "image": "https://co-image.qichacha.com/Companyimage/8294c7bf1360281243ace91e08e150b4.jpg",
+            "name": "云南瑞博检测技术股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e111f1271c3ca36096a935d2d288ec77",
+            "image": "https://co-image.qichacha.com/Companyimage/e111f1271c3ca36096a935d2d288ec77.jpg",
+            "name": "深圳世联行集团股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "8d6ee6764b945673af9541662886016e",
+            "image": "https://co-image.qichacha.com/Companyimage/8d6ee6764b945673af9541662886016e.jpg",
+            "name": "安徽省安泰科技股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "bbfbb98d148d51fcfa06822cf3ff3fa5",
+            "image": "https://co-image.qichacha.com/Companyimage/bbfbb98d148d51fcfa06822cf3ff3fa5.jpg",
+            "name": "广州恒大淘宝足球俱乐部股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "e95a4e41bb5bc1bc349bdf8f2b86c28e",
+            "image": "https://co-image.qichacha.com/Companyimage/e95a4e41bb5bc1bc349bdf8f2b86c28e.jpg",
+            "name": "重庆建工集团股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "05db84a5f496b5a990a72dea343bfec4",
+            "image": "https://co-image.qichacha.com/Companyimage/05db84a5f496b5a990a72dea343bfec4.jpg",
+            "name": "深圳广田集团股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d7fcc826211ca5233932eebabdfabc7d",
+            "image": "https://co-image.qichacha.com/Companyimage/d7fcc826211ca5233932eebabdfabc7d.jpg",
+            "name": "上海凌脉网络科技股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "420bdecb24816630bbd5dd5430a52778",
+            "image": "https://co-image.qichacha.com/Companyimage/420bdecb24816630bbd5dd5430a52778.jpg",
+            "name": "广东顶固集创家居股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "eb0cc90ddb71601cfba201f151d03003",
+            "image": "https://co-image.qichacha.com/Companyimage/eb0cc90ddb71601cfba201f151d03003.jpg",
+            "name": "超凡知识产权服务股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dfa04296abadee973d8f526a3106690f",
+            "image": "https://co-image.qichacha.com/Companyimage/dfa04296abadee973d8f526a3106690f.jpg",
+            "name": "上海威派格智慧水务股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f5aa00825c3c9012efbddb9d497e0828",
+            "image": "https://co-image.qichacha.com/Companyimage/f5aa00825c3c9012efbddb9d497e0828.jpg",
+            "name": "深圳市华阳国际工程设计股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "74d9a87f9374d87669ab8f268b0fc27c",
+            "image": "https://co-image.qichacha.com/Companyimage/74d9a87f9374d87669ab8f268b0fc27c.jpg",
+            "name": "上海全筑建筑装饰集团股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c1857f4e75f4e8630d3b9645493cd55c",
+            "image": "https://co-image.qichacha.com/Companyimage/c1857f4e75f4e8630d3b9645493cd55c.jpg",
+            "name": "深圳壹创国际设计股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b1638dc13e73b20b2d46bfabea6dc59b",
+            "image": "https://co-image.qichacha.com/Companyimage/b1638dc13e73b20b2d46bfabea6dc59b.jpg",
+            "name": "中化岩土集团股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dd47f86893e708e1ecdba9f7749aaf86",
+            "image": "https://co-image.qichacha.com/Companyimage/dd47f86893e708e1ecdba9f7749aaf86.jpg",
+            "name": "广东麒麒文化传播股份有限公司",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "pop9345ec3343481669c96c2",
+        "name": "历史对外投资",
+        "nodeType": "112",
+        "children": []
+      },
+      {
+        "id": "pop934533ec45534819bd868389c96c2",
+        "name": "历史法人",
+        "nodeType": "113",
+        "children": []
+      },
+      {
+        "id": "pop9345ec43434389c96c2345",
+        "name": "历史股东",
+        "nodeType": "114",
+        "children": []
+      }
+    ]
+  }
+}

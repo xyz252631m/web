@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>首页</title>
+    <link href="base.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link href="icon/iconfont.css" rel="stylesheet">
+    <script src="./js/jquery-1.11.1.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
+</head>
+<body>
+<div class="header">
+    <span class="timer">2019年6月11日  星期二</span>
+    <span class="title">智慧社区平台</span>
+</div>
+<div class="main">
+    <div class="row row-1">
+        <div class="cell cell-1">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+            <div class="cell-main">
+                <div class="cell-title">社区人员总数</div>
+                <div class="nan-nv">
+                    <div class="nan-box">
+                        <p><i class="iconfont icon-nan"></i></p>
+                        <p><span class="txt-bor">2500人</span></p>
+                    </div>
+                    <div class="nv-box">
+                        <p><i class="iconfont icon-nv"></i></p>
+                        <p><span class="txt-bor">2000人</span></p>
+                    </div>
+                    <div class="legend-box">
+                        <p><i class="iconfont icon-nan"></i><span>男</span></p>
+                        <p><i class="iconfont icon-nv"></i><span>女</span></p>
+                    </div>
+                </div>
+                <div id="echart1" style="height: 255px;"></div>
+                <div class="chart-legend-box">
+                    <ul>
+                        <li><i class="i-1"></i><span class="txt-bor">0 - 6儿童</span></li>
+                        <li><i class="i-2"></i><span class="txt-bor">0 - 6儿童</span></li>
+                        <li><i class="i-3"></i><span class="txt-bor">0 - 6儿童</span></li>
+                        <li><i class="i-4"></i><span class="txt-bor">0 - 6儿童</span></li>
+                        <li><i class="i-5"></i><span class="txt-bor">0 - 6儿童</span></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-2">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+            <div class="cell-main">
+                <div class="map-box"></div>
+                <div class="map-info-box">
+                    <ul>
+                        <li class="li-1">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label>15</label>
+                            </div>
+                        </li>
+                        <li class="li-2">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label>15</label>
+                            </div>
+                        </li>
+                        <li class="li-3">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label>15</label>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="li-1">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label class="err-tip">15</label>
+                            </div>
+                        </li>
+                        <li class="li-2">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label>15</label>
+                            </div>
+                        </li>
+                        <li class="li-3">
+                            <div>
+                                <span>垃圾桶</span>
+                                <label class="err-tip">15</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tag-box">
+                    <ul>
+                        <li>
+                            <div><i class="iconfont icon-jiankong"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-cipan"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-door_bashou"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-icon-test"></i><span>视频监控</span></div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <div><i class="iconfont icon-renlian"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-xinxifabu"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-xiaofang"></i><span>视频监控</span></div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-diandongche"></i><span>视频监控</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-3">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+
+            <div class="cell-main">
+                <div class="cell-title">环境</div>
+                <ul class="pie-box">
+                    <li>
+                        <div class="pie">
+                            <svg height="146" width="146" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="73" cy="73" fill="none" r="62" stroke="#ee5140" stroke-width="22"></circle>
+                                <circle class="circle-bar" cx="73" cy="73" fill="none" r="62" stroke="#30c4a0"
+                                        stroke-dasharray="95,390" stroke-dashoffset="0" stroke-width="22">
+                                    <animate attributeName="stroke-dasharray"
+                                             begin="0s" dur="300ms"
+                                             from="0, 390"
+                                             to="95, 390"></animate>
+                                </circle>
+                            </svg>
+                            <span class="center-txt">25℃</span>
+
+                        </div>
+                        <p><span class="txt-bor2">当前温度</span></p>
+                    </li>
+                    <li>
+                        <div class="pie">
+                            <svg height="146" width="146" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="73" cy="73" fill="none" r="62" stroke="#255cd3" stroke-width="22"></circle>
+                                <circle class="circle-bar" cx="73" cy="73" fill="none" r="62" stroke="#6ff654"
+                                        stroke-dasharray="130,390" stroke-dashoffset="0" stroke-width="22">
+                                    <animate attributeName="stroke-dasharray"
+                                             begin="0s" dur="300ms"
+                                             from="0, 390"
+                                             to="130, 390"></animate>
+                                </circle>
+                            </svg>
+                            <span class="center-txt">30%</span>
+
+                        </div>
+                        <p><span class="txt-bor2">当前温度</span></p>
+                    </li>
+                    <li>
+                        <div class="pie">
+                            <svg height="146" width="146" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="73" cy="73" fill="none" r="62" stroke="#d5de47" stroke-width="22"></circle>
+                                <circle class="circle-bar" cx="73" cy="73" fill="none" r="62" stroke="#497ab4"
+                                        stroke-dasharray="20,390" stroke-dashoffset="0" stroke-width="22">
+                                    <animate attributeName="stroke-dasharray"
+                                             begin="0s" dur="300ms"
+                                             from="0, 390"
+                                             to="20, 390"></animate>
+                                </circle>
+                            </svg>
+                            <span class="center-txt">25℃</span>
+                        </div>
+                        <p><span class="txt-bor2">当前温度</span></p>
+                    </li>
+                    <li>
+                        <div class="pie">
+                            <svg height="146" width="146" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="73" cy="73" fill="none" r="62" stroke="#9f9fa1" stroke-width="22"></circle>
+                                <circle class="circle-bar" cx="73" cy="73" fill="none" r="62" stroke="#9f9fa1"
+                                        stroke-dasharray="390,390" stroke-dashoffset="0" stroke-width="22">
+
+                                </circle>
+                            </svg>
+                            <span class="center-txt weather"><i class="iconfont icon-w_zhongyu" style="color: #9f9fa1"></i></span>
+
+                        </div>
+                        <p><span class="txt-bor2">当前温度</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row row-2">
+        <div class="cell cell-1">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+            <div class="cell-main">
+                <div class="cell-title">社区车辆</div>
+                <ul class="bar-box">
+                    <li>
+
+                        <span class="bar bar-1"><span class="bar-label">5000</span><i></i></span>
+                        <span class="txt-bor">总车辆</span>
+                    </li>
+                    <li>
+                        <span class="bar bar-2"><span class="bar-label" style="bottom: 80%">4000</span><i style="height: 80%"></i></span>
+                        <span class="txt-bor">进入车辆</span>
+                    </li>
+                    <li>
+                        <span class="bar bar-3"><span class="bar-label" style="bottom: 20%">1000</span><i style="height:20%"></i></span>
+                        <span class="txt-bor">出库车辆</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="cell cell-2">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+            <div class="cell-main">
+                <div class="cell-title">监控中心</div>
+                <div class="img-box">
+                    <div class="img-1">
+                        <img alt="" src="./images/1086691146444_07.jpg">
+                    </div>
+                    <div class="img-2"><img alt="" src="./images/1086691146444_09.jpg"></div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-3">
+            <div class="cell-bg">
+                <span class="s-1"></span>
+                <span class="s-2"></span>
+                <span class="s-3"></span>
+                <span class="s-4"></span>
+            </div>
+            <div class="cell-main">
+                <div class="cell-title">消防</div>
+                <ul class="water-box">
+                    <li>
+                        <p><i class="iconfont icon-jinggao"></i></p>
+                        <p><span class="txt-bor2">告警</span></p>
+                    </li>
+                    <li>
+                        <p><i class="iconfont icon-shui"></i></p>
+                        <p><span class="txt-bor2">消防用水</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function initEchart1(id) {
+        var option = {
+            color: ["#fe912a", "#5b39ce", "#00c4ff", "#31fd00", "#df2938", "#4a7ab8", "#d5e046", "#9f9fa1"],
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        {value: 65, name: '邮件营销'},
+                        {value: 15, name: '联盟广告'},
+                        {value: 5, name: '视频广告'},
+                        {value: 3, name: '搜索引擎'},
+                        {value: 12, name: '直接访问'},
+                    ],
+                    label: {
+                        formatter: "{c}%"
+                    }
+                }
+            ]
+        };
+        var myChart = echarts.init(document.getElementById(id));
+        myChart.setOption(option);
+        $(window).on("resize", function () {
+            myChart.resize();
+        })
+    }
+
+    initEchart1("echart1")
+
+
+</script>
+</body>
+</html>

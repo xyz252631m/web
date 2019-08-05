@@ -47,6 +47,7 @@ Relation.prototype = {
     renderRoot: function (rootItem) {
         var group = this.rootGroup.group();
 
+        rootItem.g = group
         var w = rootItem.name.length * 14 + 32;
         var rect = group.rect(w, 40);
         group.transform({x: this.hw - w / 2, y: this.hh - 20});
@@ -75,8 +76,8 @@ Relation.prototype = {
     },
     init: function (data) {
 
+        this.data = data;
         this.renderRoot(data);
-
         var rightGroup = this.rootGroup.group();
         var rightLineG = rightGroup.group();
         var rightNodeG = rightGroup.group();
@@ -95,7 +96,12 @@ Relation.prototype = {
                     leftList.push(item);
                 }
             });
+            this.rightList = rightList;
+            this.leftList = leftList;
             conventData(rightList);
+            // mapLevel["0"] = [data];
+            // mapId[data.id] = data;
+            // infoList.push(data);
             var rlen = rightList.length;
             var rbox = this.rootRect.rbox();
             var x = rbox.x2;
@@ -122,7 +128,7 @@ Relation.prototype = {
                     var x = this.getX(d.level);
                     //  var y = this.getY(d.level);
                     var off_y = this.getOffsetY(d);
-                    console.log("offy", off_y)
+                    // console.log("offy", off_y)
                     //绘制子节点
                     d.children.forEach((k, ki) => {
                         //   if (ki < 10) {
@@ -137,7 +143,7 @@ Relation.prototype = {
                         k.x = d.x + x + 70;
                         //console.log("y",this.getY(d.children, k))
                         k.y = this.getY(d.children, k) + off_y;
-                        console.log("y", k.y)
+                        // console.log("y", k.y)
                         this.childNode(rightNodeG, true, k);
                         //  }
                     });
@@ -158,7 +164,7 @@ Relation.prototype = {
             var r_last = list[list.length - 1];
             var r_centerX = r_frist.x - 35;
 
-            rightLineG.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).stroke({
+            data.vLine = rightLineG.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).stroke({
                 width: 0.5,
                 color: "#666"
             }).attr("data-id", data.id);
@@ -215,7 +221,7 @@ Relation.prototype = {
         var num = idx - pi - 1;
         var p = num * 50 + 10 + 40;           //50 :h+10 40:原最小间隔
         var space = p - (prevItem.children.length * 50 - 10) / 2 - (item.children.length * 50 - 10) / 2;
-        console.log("space", space)
+        //console.log("space", space)
         return space < 40 ? 40 : space;
 
     },
@@ -236,7 +242,12 @@ Relation.prototype = {
                 }
 
             } else {
-                return 0
+                if (item.children.length) {
+                    return item.children[0].x
+                } else {
+                    return 0
+                }
+
             }
 
 
@@ -285,13 +296,13 @@ Relation.prototype = {
         //console.log(text, text.width(), text.rbox());
         if (item.children && item.children.length) {
             this.renderState(g, item);
-            g.attr("class", "svg-csp")
+            g.attr("class", "svg-csp").attr("data-id", item.id);
+            g.on("click", this.openClick, this)
         } else {
             item.w -= 15;
             rect.width(item.w);
         }
         item.rect = rect;
-
         g.line(-35, 20, 0, 20).stroke({width: 0.5, color: "#666"});
         // if (item.open && item.children.length) {
         //
@@ -311,24 +322,126 @@ Relation.prototype = {
 
             g.on("click", this.moreClick, this)
         }
-        g.on("mouseenter",this.mouseenter)
-        g.on("mouseleave",this.mouseleave)
+        g.on("mouseenter", this.mouseenter)
+        g.on("mouseleave", this.mouseleave)
 
     },
-    mouseenter(e){
-        var rect =this.rbox();
-        var left = rect.x-340+25;
+    mouseenter(e) {
+        var rect = this.rbox();
+        var left = rect.x - 340 + 25;
         var top = rect.y;
         $(".info-box").css({
-            left:left+"px",
-            top: top+"px"
+            left: left + "px",
+            top: top + "px"
         }).show()
     },
-    mouseleave(){
+    mouseleave() {
         $(".info-box").hide()
     },
+    openClick(e) {
+        //  console.log(this,e)
+        var node = e.target.parentNode;
+        if (node.getAttribute("class") !== "svg-csp") {
+            node = node.parentNode;
+        }
+        var id = node.getAttribute("data-id");
+        var item = mapId[id];
+        console.log("click", item)
+        if (item.open) {
+            //收
+            item.open = false;
+            item.children.forEach(d => {
+                d.g.remove();
+                d.g = null;
+                d.vLine = null;
+                var info_i = infoList.indexOf(d);
+                if (info_i >= 0) {
+                    infoList.splice(info_i, 1);
+                }
+                var map_i = mapLevel[item.level + 1].indexOf(d);
+                if (map_i >= 0) {
+                    mapLevel[d.level].splice(map_i, 1);
+                }
+                if (mapId[d.id]) {
+                    delete mapId[d.id];
+                }
+            });
+            if (item.vLine) {
+                item.vLine.remove();
+                item.vLine = null;
+            }
+
+            item.rightLine.remove();
+            item.rightLine = null;
+            var g = item.g.select("g").get(0);
+            g.line(7.5, 4, 7.5, 11).stroke({width: 1, color: "rgb(102, 102, 102)"});
+            //更新下部分item y坐标
+            // var list = mapLevel[item.level];
+            // var idx = list.indexOf(item);
+            // var prevItem = this.getPrevItem(list, idx);
+            //
+            // this.updateNextItem(prevItem);
+            //
+            // this.updateLineByLevel(item.level - 1);
+
+        } else {
+            //展开
+            item.open = true;
+            var off_y = this.getOffsetY(item);
+            var x = this.getX(item.level);
+            item.children.forEach(k => {
+                k.level = item.level + 1;
+                k.pid = item.id;
+                k.open = false;
+                if (!mapLevel[k.level]) {
+                    mapLevel[k.level] = [];
+                }
+                mapLevel[k.level].push(k);
+                // item.children.push(k);
+                infoList.push(k);
+                mapId[k.id] = k;
+                k.space = 10;
+                k.h = 40;
+                k.w = k.name.length * 14 + 22 + 14 + 5;
+                k.x = item.x + x + 70;
+                //console.log("y",this.getY(d.children, k))
+                k.y = this.getY(item.children, k) + off_y;
+                //  console.log("y", k.y)
+                this.childNode(this.rightNodeG, true, k)
+            });
+
+            this.line(this.rightLineG, item)
+            var frist = item.children[0];
+            var last = item.children[item.children.length - 1];
+            var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+            var centerX = frist.x - item.x - 35;
+            var group = this.rightLineG;
+            var g = item.g.select("g").get(0);
+            g.select("line").get(1).remove();
+            // if (item.children.length > 1) {
+            //     item.vLine = group.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).stroke({
+            //         width: 0.5,
+            //         color: "#666"
+            //     }).attr("data-id", item.id);
+            // }
+
+
+            //  item.vLine.height(item.children.length * 50 - 10 - 40);
+            item.y = centerY - 20;
+            item.g.y(item.y);
+            //更新下部分item y坐标
+            this.updateNextItem(item);
+
+            this.updateLineByLevel(item.level - 1);
+
+
+        }
+
+
+    },
+    //更多点击事件
     moreClick(e, a) {
-        console.log(this, e, a);
+        //console.log(this, e, a);
 
         var node = e.target.parentNode;
         if (node.getAttribute("class") !== "svg-more") {
@@ -340,28 +453,223 @@ Relation.prototype = {
         var item = mapId[pid];
         console.log(mapId[pid]);
         if (item.moreOpen) {
-
-        } else {
-
+            item.moreOpen = false;
             item.children.pop();
             node.remove();
             var off_y = this.getOffsetY(item);
             var x = this.getX(item.level);
-            item.moreList.forEach(k => {
+            var child = [], moreList = [];
+            item.children.forEach((k, idx) => {
+                if (idx < 10) {
+                    child.push(k);
+                } else {
+                    moreList.push(k);
+                }
+            });
+            var temList = [{
+                id: "more_" + item.id + "_0032",
+                name: "更多",
+                isMoreItem: true,
+                pid: item.id,
+                moreOpen: false
+            }];
+
+
+            item.children = child;
+            item.moreList = moreList;
+            console.log("item", item);
+            temList.forEach(k => {
+                k.level = item.level + 1;
+                k.pid = item.id;
+                k.open = false;
+                if (!mapLevel[k.level]) {
+                    mapLevel[k.level] = [];
+                }
+                mapLevel[k.level].push(k);
                 item.children.push(k);
+                infoList.push(k);
+                mapId[k.id] = k;
                 k.space = 10;
                 k.h = 40;
                 k.w = k.name.length * 14 + 22 + 14 + 5;
                 k.x = item.x + x + 70;
                 //console.log("y",this.getY(d.children, k))
                 k.y = this.getY(item.children, k) + off_y;
-                console.log("y", k.y)
+                //  console.log("y", k.y)
                 this.childNode(this.rightNodeG, true, k)
-            })
-            this.line(this.rightLineG, item);
+            });
+            moreList.forEach(d => {
+                d.g.remove();
+                d.g = null;
+                d.vLine = null;
+                var info_i = infoList.indexOf(d);
+                if (info_i >= 0) {
+                    infoList.splice(info_i, 1);
+                }
+                var map_i = mapLevel[d.level].indexOf(d);
+                if (map_i >= 0) {
+                    mapLevel[d.level].splice(map_i, 1);
+                }
+                if (mapId[d.id]) {
+                    delete mapId[d.id];
+                }
+            });
+            //this.line(this.rightLineG, item);
+            var frist = item.children[0];
+            var last = item.children[item.children.length - 1];
+            var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+            item.vLine.height(item.children.length * 50 - 10 - 40);
+            item.y = centerY - 20;
+            item.g.y(item.y);
+            //更新下部分item y坐标
+            this.updateNextItem(item);
+
+            this.updateLineByLevel(item.level - 1);
+
+
+        } else {
+            item.moreOpen = true;
+            item.children.pop();
+            node.remove();
+            var off_y = this.getOffsetY(item);
+            var x = this.getX(item.level);
+            item.moreList.push({
+                id: "more_" + item.id + "_0033",
+                name: "收起",
+                isMoreItem: true,
+                pid: item.id,
+                moreOpen: true
+            });
+            item.moreList.forEach(k => {
+                k.level = item.level + 1;
+                k.pid = item.id;
+                k.open = false;
+                if (!mapLevel[k.level]) {
+                    mapLevel[k.level] = [];
+                }
+                mapLevel[k.level].push(k);
+                item.children.push(k);
+                infoList.push(k);
+                mapId[k.id] = k;
+                k.space = 10;
+                k.h = 40;
+                k.w = k.name.length * 14 + 22 + 14 + 5;
+                k.x = item.x + x + 70;
+                //console.log("y",this.getY(d.children, k))
+                k.y = this.getY(item.children, k) + off_y;
+                //  console.log("y", k.y)
+                this.childNode(this.rightNodeG, true, k)
+            });
+            //this.line(this.rightLineG, item);
+            var frist = item.children[0];
+            var last = item.children[item.children.length - 1];
+            var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+            item.vLine.height(item.children.length * 50 - 10 - 40);
+            item.y = centerY - 20;
+            item.g.y(item.y);
+            //更新下部分item y坐标
+            this.updateNextItem(item);
+
+            this.updateLineByLevel(item.level - 1);
+            var pid = item.pid;
+            if (pid) {
+                var pitem = mapId[pid];
+
+
+            }
+
         }
     },
-    //画线
+    //更新下部分item y
+    updateNextItem(item) {
+        var list = mapLevel[item.level];
+        var idx = list.indexOf(item);
+        var upList = [], downList = [];
+
+        list.forEach((d, i) => {
+            if (i < idx) {
+                upList.push(d);
+            } else if (i > idx) {
+                downList.push(d);
+            }
+        });
+        console.log("downList", downList)
+        downList.forEach((d, i) => {
+
+
+            var x = this.getX(d.level);
+            //  var y = this.getY(d.level);
+            var off_y = this.getOffsetY(d);
+            console.log("offy", off_y)
+            if (d.open) {
+                d.children.forEach((k, ki) => {
+                    k.y = this.getY(d.children, k) + off_y;
+                    k.g.y(k.y);
+                });
+            }
+            if (d.children.length) {
+                var frist = d.children[0];
+                var last = d.children[d.children.length - 1];
+                d.vLine&&d.vLine.y(frist.y + 20);
+                var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+                d.y = centerY - 20;
+                d.g.y(d.y);
+                // d.vLine.height(last.y + 20);
+
+            }
+            // item.vLine.height();
+
+        })
+
+    },
+
+    updateLineByLevel(level) {
+
+
+        console.log("level", level)
+
+        var list;
+        if (level == 0) {
+
+
+            var list = this.rightList
+            var d = this.data;
+
+            var frist = list[0];
+            var last = list[list.length - 1];
+            // d.vLine.y(frist.y + 20);
+            d.vLine.height(last.y - frist.y);
+            var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+            d.y = centerY - 20;
+            //d.g.y(d.y);
+
+
+        } else {
+            while (level > 0) {
+                list = mapLevel[level];
+
+                list.forEach((d, idx) => {
+                    if (d.children.length) {
+                        var frist = d.children[0];
+                        var last = d.children[d.children.length - 1];
+                        d.vLine.y(frist.y + 20);
+                        var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+                        d.y = centerY - 20;
+                        d.g.y(d.y);
+                    }
+                })
+
+
+                level--;
+            }
+        }
+
+
+    },
+    updateItemY(item) {
+
+    },
+    //画线 竖
     line(group, item) {
 
         var g = item.g;
@@ -374,7 +682,7 @@ Relation.prototype = {
             item.rightLine = g.line(item.w, 20, centerX, 20).stroke({width: 0.5, color: "#666"});
             var centerY = frist.y + (last.y + 40 - frist.y) / 2;
             if (item.children.length > 1) {
-                group.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).stroke({
+                item.vLine = group.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).stroke({
                     width: 0.5,
                     color: "#666"
                 }).attr("data-id", item.id);
@@ -417,6 +725,7 @@ Relation.prototype = {
 
     },
 
+    //渲染+ - 按钮状态
     renderState(group, item) {
 
         var g = group.group();
@@ -425,6 +734,7 @@ Relation.prototype = {
         g.circle(15).fill('#fff').stroke({width: 1, color: "rgb(102, 102, 102)"});
         g.line(4, 7.5, 11, 7.5).stroke({width: 1, color: "rgb(102, 102, 102)"});
         if (item.isMoreItem) {
+
             if (!item.moreOpen) {
                 g.line(7.5, 4, 7.5, 11).stroke({width: 1, color: "rgb(102, 102, 102)"});
             }
@@ -473,6 +783,7 @@ function conventData(list) {
     fn(list, mapLevel, mapId, infoList, 1, "root");
 
     infoList.forEach((d, i) => {
+
         if (d.children.length > 10) {
             var child = [], moreList = [];
             d.children.forEach((k, idx) => {
@@ -486,13 +797,14 @@ function conventData(list) {
                 id: "more_" + d.id + "_" + i,
                 name: "更多",
                 isMoreItem: true,
-                pid: d.id
-
-            })
+                pid: d.id,
+                moreOpen: false
+            });
+            d.moreOpen = false;
             d.children = child;
             d.moreList = moreList;
             d.hasMore = true;
-            d.moreOpen = false;
+
 
         }
     });

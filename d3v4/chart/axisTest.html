@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title</title>
+    <script src="../d3.v4.min.js"></script>
+</head>
+<body>
+<div style="text-align:center">
+    <svg width="860" height="660" font-family="sans-serif" font-size="10" text-anchor="middle">
+
+
+    </svg>
+</div>
+<script>
+    var svg = d3.select("svg"), width = +svg.attr("width"), height = +svg.attr("height");
+    svg.append("g").append("text").text("标题").attr("class", "title").attr("x", 400).attr("y", 30).style("font-size", "18px");
+    var transform = {
+        x: 0,
+        y: 0,
+        x1: 0,
+        y1: 0,
+        z: 1
+    };
+
+    var drag = d3.drag().on("drag", function () {
+        transform.x1 = transform.x - (d3.event.subject.x - d3.event.x);
+        transform.y1 = transform.y - (d3.event.subject.y - d3.event.y);
+        svg.attr("style", "transform:translate(" + transform.x1 + "px," + transform.y1 + "px) scale(" + transform.z + ")")
+    }).on("end", function () {
+        transform.x = transform.x1;
+        transform.y = transform.y1;
+    });
+
+    svg.call(drag);
+
+    //svg.call(zoom);
+
+    var colorList = d3.scaleOrdinal(d3.schemeCategory20c);
+    var pack = d3.pack().size([width, height]).radius(null).padding(20);
+    // var data = [
+    //     {id: "1", value: 56, name: "文具文具文具"},
+    //     {id: "2", value: 725700, name: "母婴母婴母婴"},
+    //     {id: "3", value: 1823396, name: "食品食品食品"},
+    //     {id: "4", value: 1121648, name: "家居"},
+    //     {id: "5", value: 672144, name: "鞋"},
+    //     {id: "6", value: 432323, name: "书"},
+    //     {id: "7", value: 566880, name: "数码"},
+    //     {id: "8", value: 909117, name: "服装"},
+    //     {id: "9", value: 578599, name: "运动"},
+    //     {id: "10", value: 610143, name: "饰品"}
+    // ];
+    //var width = 400, height = 400;
+    var data = [100, 120, 140, 160, 180, 200];
+
+    function initD3(data) {
+
+
+
+        var xscale = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([0, width - 100]);
+
+        var yscale = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([height/2, 0]);
+
+        var x_axis = d3.axisBottom().scale(xscale);
+
+        var y_axis = d3.axisLeft().scale(yscale);
+
+        svg.append("g")
+            .attr("transform", "translate(50, 10)")
+            .call(y_axis);
+
+        var xAxisTranslate = height/2 + 10;
+
+        svg.append("g")
+            .attr("transform", "translate(50, " + xAxisTranslate  +")")
+            .call(x_axis)
+
+// 添加坐标轴元素
+//         svg.append('g')
+//             .attr('class', 'axis')
+//             .attr('transform', 'translate(0,' + (height - padding.bottom - padding.top) + ')')
+//             .call(x_axis);
+//         svg.append('g')
+//             .attr('class', 'axis')
+//             .call(y_axis);
+
+
+
+
+    }
+
+    initD3(data)
+
+
+    // setTimeout(function () {
+    //     // d3.selectAll('.node').remove();   //删除整个SVG
+    //     initD3([
+    //         {id: "39", value: 578599, name: "运3动"},
+    //         {id: "130", value: 610143, name: "饰3品"}])
+    //
+    // }, 2000)
+
+
+</script>
+</body>
+</html>

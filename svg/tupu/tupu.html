@@ -9,11 +9,11 @@
     <script src="../../js/jquery-1.11.1.min.js"></script>
     <script src="../svg.min.js"></script>
     <script src="../svg.draggable.min.js"></script>
-    <script src="relation.js"></script>
+    <script src="relations.js"></script>
 
     <style>
-        .svg-csp{cursor: pointer}
-        .svg-more{cursor: pointer}
+        .svg-csp {cursor: pointer}
+        .svg-more {cursor: pointer}
     </style>
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 <div class="info-box">
     <div class="img-box">
-        <img src="1.jpg" alt="">
+        <img alt="" src="1.jpg">
     </div>
     <div class="info-list">
         <h4>北京撒考虑到考公司</h4>
@@ -38,7 +38,7 @@
 <script>
     $(function () {
         var relation = new Relation(SVG, {
-            id:"svgBox"
+            id: "svgBox"
         });
         $.getJSON("./data.json", function (res) {
             if (res && res.result) {
