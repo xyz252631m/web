@@ -68,6 +68,7 @@ function NodeReader(isRight, data, option) {
                 });
                 this.rightList = rightList;
                 this.leftList = leftList;
+
                 if(isRight){
                     conventData(rightList);
                     this.render(isRight);
@@ -190,29 +191,52 @@ function NodeReader(isRight, data, option) {
             text.x(10);
             text.y(12);
             var text_rbox = text.rbox();
-            item.w = text_rbox.width + 20 + 20;
-            rect.width(item.w);
-            item.op_x = text_rbox.width + 5 + 10;
+           // item.w = text_rbox.width + 20 + 20;
+           // rect.width(item.w);
+            if(isRight){
+
+                item.op_x = text_rbox.width + 5 + 10;
+            }else{
+
+                item.op_x = 8;
+            }
+
+
+
             item.op_y = text_rbox.y;
             //console.log(text, text.width(), text.rbox());
             if (item.children && item.children.length) {
+                if(!isRight){
+                    text.x(30);
+                }
+
                 this.renderState(g, item);
                 g.attr("class", "svg-csp").attr("data-id", item.id);
                 g.on("click", this.openClick, this)
             } else {
-                item.w -= 15;
-                rect.width(item.w);
+               // item.w -= 15;
+               // rect.width(item.w);
             }
             item.rect = rect;
-            g.line(-35, 20, 0, 20).stroke({width: 0.5, color: "#666"});
+            if(isRight){
+
+                g.line(-35, 20, 0, 20).stroke({width: 0.5, color: "#666"});
+            }else{
+
+                g.line(item.w, 20, item.w+35, 20).stroke({width: 0.5, color: "#666"});
+            }
+
             // if (item.open && item.children.length) {
             //
             //     g.line(item.w, 20, item.children[0].x - 35, 20).stroke({width: 0.5, color: "#666"});
             // }
             // text.variant("")
             if (item.isMoreItem) {
-                item.w += 15;
-                rect.width(item.w);
+                //item.w += 15;
+               // rect.width(item.w);
+                if(!isRight){
+                    text.x(30);
+                }
                 this.renderState(g, item);
                 rect.fill("#f1f1f1");
                 text.font({
@@ -579,8 +603,8 @@ function NodeReader(isRight, data, option) {
                 }
                 var max_w = 0;
                 list.forEach(d => {
-                    var w = getLength(d.name) * 14 / 2 + 22;//22 padding
-                    if (d.children.length) {
+                    var w = getLength(d.name) * 14 / 2 + 20;//22 padding
+                    if (d.children.length||d.isMoreItem) {
                         w += 20;  //展开收缩按钮
                     }
                     d.w = w;
@@ -739,7 +763,7 @@ function NodeReader(isRight, data, option) {
                     }
                 }else{
                     centerX = frist.x-frist.w - item.x - 35;
-                    item.rightLine = g.line(0, 20, centerX, 20).stroke({width: 0.5, color: "#666"});
+                    //item.rightLine = g.line(0, 20, centerX, 20).stroke({width: 0.5, color: "#666"});
                     // if (item.children.length > 1) {
                     //     item.vLine = this.rightLineG.line(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20).stroke({
                     //         width: 0.5,
