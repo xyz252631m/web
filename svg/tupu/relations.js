@@ -636,7 +636,13 @@ function NodeReader(isRight, data, option) {
                             if (!d.open || !d.children.length) {
                                 if (list[idx + 1].pid === d.pid) {
                                     if (list[idx + 1].y - d.y > 50) {
+                                        var top_num = parseInt((list[idx + 1].y - 50 - d.y) / 2);
                                         d.y = list[idx + 1].y - 50;
+                                        var pItem = mapId[d.pid];
+                                        while (pItem) {
+                                            pItem.y += top_num;
+                                            pItem = mapId[pItem.pid];
+                                        }
                                     }
                                 }
                             }
