@@ -1,10 +1,11 @@
 function NodeReader(isRight, data, option) {
-    var companyInfo = {}, mapLevel = {}, mapId = {}, infoList = [];
+    var mapLevel = {}, mapId = {}, infoList = [];
     var maxInfo = [];
     var lineWidth = 1;
     var tool = {
-
         init: function (data) {
+            data._id = data.id || "root";
+            data.open = true;
             this.data = data;
             this.renderRoot(data);
             this.createGroup();
@@ -24,7 +25,7 @@ function NodeReader(isRight, data, option) {
                 } else {
                     conventData(leftList);
                 }
-                mapId[data.id] = data;
+                mapId[data._id] = data;
                 this.calcItemPos(isRight);
                 this.render(isRight, true);
             }
@@ -37,9 +38,9 @@ function NodeReader(isRight, data, option) {
             this.lineGroup = lineGroup;
             this.nodeGroup = nodeGroup;
         },
-        getItemById: function (id) {
-            if (mapId[id]) {
-                return mapId[id];
+        getItemById: function (_id) {
+            if (mapId[_id]) {
+                return mapId[_id];
             } else {
                 return null;
             }
@@ -58,29 +59,6 @@ function NodeReader(isRight, data, option) {
                 return item;
             } else {
                 return null;
-            }
-        },
-        loopLevelList(desc, fn) {
-            var keys = [];
-            for (var key in mapLevel) {
-                keys.push(Number(key));
-            }
-            var max = Math.max.apply(Math, keys);
-            var idx = max, list;
-            //倒序
-            if (desc) {
-                while (idx > 0) {
-                    list = mapLevel[idx];
-                    fn(list, idx);
-                    idx--;
-                }
-            } else {
-                i = 1;
-                while (i <= max) {
-                    list = mapLevel[idx];
-                    fn(list, idx);
-                    i++;
-                }
             }
         },
         //寻找到下一个展开的iten ,用来重置y位置
@@ -112,6 +90,7 @@ function NodeReader(isRight, data, option) {
             return space < 40 ? 40 : space;
         },
 
+        //鼠标移入事件
         mouseenter: function (e) {
             var rect = this.g.rbox();
             var left = rect.x - 340 + 25;
@@ -127,7 +106,8 @@ function NodeReader(isRight, data, option) {
                 }).show();
             }
 
-            if (this.children.length) {
+            if (this.children.length && this.open) {
+
                 $.each(this.children, function (idx) {
                     this.hLine.stroke({color: option.hoverLineColor})
                 });
@@ -173,12 +153,12 @@ function NodeReader(isRight, data, option) {
                 }
             }
         },
-
+        //鼠标移出事件
         mouseleave: function () {
             if (option.hasDetailInfo) {
                 $(".info-box").hide();
             }
-            if (this.children.length) {
+            if (this.children.length && this.open) {
                 $.each(this.children, function (idx) {
                     this.hLine.stroke({color: option.lineColor})
                 });
@@ -198,124 +178,62 @@ function NodeReader(isRight, data, option) {
             if (node.getAttribute("class") !== "svg-node") {
                 node = node.parentNode;
             }
-            var id = node.getAttribute("data-id");
-            var item = mapId[id];
+            var _id = node.getAttribute("data-id");
+            var item = mapId[_id];
             if (item.hover_polyline) {
                 item.hover_polyline.remove();
                 item.hover_polyline = null;
             }
-            var y = item.y;
+            if (!item.children.length) {
+                return;
+            }
+            //收起
             if (item.open) {
                 item.open = false;
-                var queue = [];
-                let fn = function (list) {
-                    $.each(list, function (idx, d) {
-                        var info_i = infoList.indexOf(d);
-                        if (info_i >= 0) {
-                            infoList.splice(info_i, 1);
-                        }
-                        var map_i = mapLevel[d.level].indexOf(d);
-                        if (map_i >= 0) {
-                            mapLevel[d.level].splice(map_i, 1);
-                        }
-                        if (mapId[d.id]) {
-                            queue.push(mapId[d.id]);
-                            delete mapId[d.id];
-                        }
-                        if (d.children) {
-                            if (d.children.length) {
-                                fn(d.children);
-                            }
-                        }
-                    })
-                };
-
-
-                // this.halfGroup.remove();
-                // var halfGroup = this.rootGroup.group();
-                //
-                // var nodeGroup = halfGroup.group();
-                // var lineGroup = halfGroup.group();
-                // this.halfGroup = halfGroup;
-                // this.lineGroup = lineGroup;
-                // this.nodeGroup = nodeGroup;
-
-                // var list = mapLevel[item.level];
-                // var h = list[list.length - 1].y - list[0].y;
-
-
-                fn(item.children);
-                this.calcItemPos(isRight);
-
-                if (isRight) {
-                    queue.forEach(function (d, idx) {
-                        d.g.animate(option.anTime).opacity(0).translate(item.x + item.w, item.y).after(function () {
-                            this.remove();
-                        });
-                        d.hLine.animate(option.anTime).x(0);
-
-                    });
-                    item.rightLine && item.rightLine.animate(option.anTime).width(0).after(function () {
-                        this.remove();
-                        item.rightLine = null;
-                    });
-                    item.vLine && item.vLine.animate(option.anTime).x(item.x + item.w).y(item.y).height(40).after(function () {
-                        this.remove();
-                        item.vLine = null;
-                    });
-                } else {
-                    queue.forEach(function (d, idx) {
-                        d.g.animate(option.anTime).opacity(0).translate(item.x - d.w, item.y).after(function () {
-                            this.remove();
-                        });
-                        d.hLine.animate(option.anTime).x(0);
-                    });
-                    item.rightLine && item.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
-                        this.remove();
-                        item.rightLine = null;
-                    });
-                    item.vLine && item.vLine.animate(option.anTime).x(item.x).y(item.y).height(40).after(function () {
-                        this.remove();
-                        item.vLine = null;
-                    });
-                }
-
-
-                // var new_h = list[list.length - 1].y - list[0].y;
-                // var new_y = item.y;
-                // var num = h/2-this.hh-y - (new_h/2-this.hh-new_y)
-                // console.log(y, item.y)
-                // console.log(h, new_h,num)
-
-                // this.loopLevelList(false,function (list,idx) {
-                //     list.forEach(function(d,idx){
-                //         d.y-=num;
-                //     })
-                // });
-
-
+                this.closeItemChildren(item, item, true);
                 this.render(isRight);
-                // if (mapId[item.pid]) {
-                //     this.rootGroup.animate().move(mapId[item.pid].x-this.hw,  mapId[item.pid].y-this.hh)
-                // }
-
-
             } else {
                 item.open = true;
                 var temList = [];
+                var pid = item._id;
                 let fn = function (list) {
                     $.each(list, function (idx, d) {
-                        d.open = false;
-                        d.g = null;
-                        infoList.push(d);
-                        if (!mapLevel[d.level]) {
-                            mapLevel[d.level] = [];
+                        if (idx < 10) {
+                            d.idx = idx;
+                            d._id = d.id;
+                            d.hide = false;
+                            d.open = false;
+                            d.pid = pid;
+                            d.g = null;
+                            d.animateMoreAdd = true;
+                            d.level = item.level + 1;
+                            if (!d.childrenList) {
+                                d.childrenList = d.children || [];
+                            }
+                            if (!d.children) {
+                                d.children = [];
+                            }
+                            if (mapId[d._id]) {
+                                d._id = "node_" + d.id + "_" + idx + "_" + new Date().getTime();
+                            }
+                            mapId[d._id] = d;
+                            if (!mapLevel[d.level]) {
+                                mapLevel[d.level] = [];
+                            }
+
+                            temList.push(d);
                         }
-                        mapId[d.id] = d;
-                        temList.push(d);
+
                     });
                 };
-                fn(item.children);
+                fn(item.childrenList);
+                if (item.childrenList.length > 10) {
+                    var mItem = this.moreItemObj(item);
+                    item.moreOpen = false;
+                    mapId[mItem._id] = mItem;
+                    temList.push(mItem);
+                }
+                item.children = temList;
                 var list = mapLevel[item.level];
                 var idx = list.indexOf(item);
                 if (idx > 0) {
@@ -331,14 +249,7 @@ function NodeReader(isRight, data, option) {
                 } else {
                     Array.prototype.splice.apply(mapLevel[item.level + 1], [0, 0].concat(temList));
                 }
-                // this.halfGroup.remove();
-                // var halfGroup = this.rootGroup.group();
-                //
-                // var nodeGroup = halfGroup.group();
-                // var lineGroup = halfGroup.group();
-                // this.halfGroup = halfGroup;
-                // this.lineGroup = lineGroup;
-                // this.nodeGroup = nodeGroup;
+
                 temList.forEach(function (d) {
                     d.animateAdd = true;
                     d.animateMoreAdd = false;
@@ -347,54 +258,41 @@ function NodeReader(isRight, data, option) {
                     d.pw = item.w;
                 });
                 this.calcItemPos(isRight);
-
                 item.animateAdd = true;
-                //  item.rightLine && item.rightLine.animate(option.anTime).width(0).after(function () {
-                // this.remove();
-                // item.rightLine = null;
-                // });
-                //  if(item.vLine){
-                //      var v_plot = item.vLine.plot();
-                //      var x1=v_plot.value[0][0],x2=v_plot.value[1][0];
-                //      var y1=v_plot.value[0][1],y2=v_plot.value[1][1];
-                //      item.vLine.plot(x1,item.y+20,x1,item.y+20).animate(option.anTime).plot()
-                //
-                //  }
-                //item.vLine && item.vLine.animate(option.anTime).x(item.x + item.w).y(item.y).height(40).after(function () {
-                // this.remove();
-                // item.vLine = null;
-                // });
                 this.render(isRight);
-                // this.rootGroup.animate().move( -(item.x-this.hw),  -(item.y-this.hh) )
-
             }
 
 
         },
         //更多点击事件
-        moreClick: function (e, a) {
+        moreClick: function (e) {
             var node = e.target.parentNode;
             if (node.getAttribute("class") !== "svg-more") {
                 node = node.parentNode;
             }
+            var self = this;
             var pid = node.getAttribute("data-pid");
 
             function celHover() {
-                var id = node.getAttribute("data-id");
-                var item = mapId[id];
-                if (item.hover_polyline) {
+                var _id = node.getAttribute("data-id");
+                var item = mapId[_id];
+                if (item && item.hover_polyline) {
                     item.hover_polyline.remove();
                     item.hover_polyline = null;
                 }
             }
 
             celHover();
-
-            //var pid = this.attr("data-pid");
             var item = mapId[pid];
+            if (!item) {
+                return;
+            }
+            if (item.childrenList.length < 10) {
+                return;
+            }
+            //收起
             if (item.moreOpen) {
                 item.moreOpen = false;
-
                 var temList = [];
                 var len = item.children.length;
                 var removeList = [];
@@ -415,24 +313,17 @@ function NodeReader(isRight, data, option) {
                 lastItem.name = "展开";
                 lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = false;
-                // this.halfGroup.remove();
-                // var halfGroup = this.rootGroup.group();
-                // var nodeGroup = halfGroup.group();
-                // var lineGroup = halfGroup.group();
-                // this.halfGroup = halfGroup;
-                // this.lineGroup = lineGroup;
-                // this.nodeGroup = nodeGroup;
                 this.calcItemPos(isRight);
-
                 var tem = temList[9];
                 removeList.forEach(function (d, idx) {
                     d.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
                         this.remove();
                     });
                     //d.hLine.animate(option.anTime).x(0);
-
+                    if (d.open) {
+                        self.closeItemChildren(d, tem, false)
+                    }
                 });
-
                 this.render(isRight);
             } else {
                 item.moreOpen = true;
@@ -440,10 +331,12 @@ function NodeReader(isRight, data, option) {
                 $.each(item.childrenList, function (i, d) {
                     if (i > 9) {
                         d.idx = i;
+                        d._id = d.id;
                         d.hide = false;
                         d.pid = pid;
                         d.open = false;
                         d.g = null;
+                        d.animateAdd = false;
                         d.animateMoreAdd = true;
                         d.level = item.level + 1;
                         if (!d.children) {
@@ -453,34 +346,29 @@ function NodeReader(isRight, data, option) {
                         if (!mapLevel[d.level + 1]) {
                             mapLevel[d.level + 1] = [];
                         }
-                        mapId[d.id] = d;
+                        if (mapId[d._id]) {
+                            d._id = "node_" + d.id + "_" + i + "_" + new Date().getTime();
+                        }
+                        mapId[d._id] = d;
                         temList.push(d);
                     }
                 });
-                item.children.splice(10, 0, ...temList);
+                Array.prototype.splice.apply(item.children, [10, 0].concat(temList));
                 var lastItem = item.children[item.children.length - 1];
                 var idx = mapLevel[item.level + 1].indexOf(lastItem);
-                mapLevel[item.level + 1].splice(idx, 0, ...temList);
+                Array.prototype.splice.apply(mapLevel[item.level + 1], [idx, 0].concat(temList));
                 lastItem.name = "收缩";
                 lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = true;
-                // this.halfGroup.remove();
-                // var halfGroup = this.rootGroup.group();
-                //
-                // var nodeGroup = halfGroup.group();
-                // var lineGroup = halfGroup.group();
-                // this.halfGroup = halfGroup;
-                // this.lineGroup = lineGroup;
-                // this.nodeGroup = nodeGroup;
                 this.calcItemPos(isRight);
                 var temItem = item.children[9];
                 temList.forEach(function (d) {
                     d.py = temItem.y;
                 });
-
                 this.render(isRight);
             }
         },
+
         //渲染
         render: function (isRight, isInit) {
             var keys = [];
@@ -489,7 +377,6 @@ function NodeReader(isRight, data, option) {
             }
             var max = Math.max.apply(Math, keys);
             var idx = max, list;
-
             var self = this;
             while (idx > 0) {
                 list = mapLevel[idx];
@@ -497,11 +384,14 @@ function NodeReader(isRight, data, option) {
                     if (d.hide) {
 
                     } else {
-                        self.childNode(isRight, d);
-                        self.renderLine(isRight, d);
+                        if (mapId[d.pid]) {
+                            if (mapId[d.pid].open) {
+                                self.childNode(isRight, d);
+                                self.renderLine(isRight, d);
+                            }
+                        }
                     }
                 });
-
                 idx--;
             }
             var list = mapLevel[1];
@@ -521,7 +411,7 @@ function NodeReader(isRight, data, option) {
                     this.data.right_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).stroke({
                         width: lineWidth,
                         color: option.lineColor
-                    }).attr("data-id", this.data.id);
+                    }).attr("data-id", this.data._id);
                 }
 
             } else {
@@ -531,21 +421,17 @@ function NodeReader(isRight, data, option) {
                     this.data.left_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).stroke({
                         width: lineWidth,
                         color: option.lineColor
-                    }).attr("data-id", this.data.id);
+                    }).attr("data-id", this.data._id);
                 }
-
             }
-
-
             var r_centerY = r_frist.y + (r_last.y + 40 - r_frist.y) / 2;
             if (isInit) {
                 this.halfGroup.y(-(r_centerY - this.hh))
             } else {
                 this.halfGroup.animate(option.anTime).y(-(r_centerY - this.hh));
             }
-
-            // this.halfGroup.y(-(r_centerY - this.hh))
         },
+        //计算位置
         calcItemPos(isRight) {
             var self = this;
             var keys = [];
@@ -556,17 +442,14 @@ function NodeReader(isRight, data, option) {
             var idx = max, list;
 
             function getSpace(item) {
-                // var pitem = mapId[item.pid];
-                // var idx = pitem.children.indexOf(item);
-                // if (idx > 0) {
-                //     return 10;
-                // } else {
-                //     return 40;
-                // }
                 if (item.idx) {
                     return 10;
                 } else {
-                    return 40;
+                    if (mapLevel[item.level].indexOf(item) === 0) {
+                        return 0;
+                    } else {
+                        return 40;
+                    }
                 }
             }
 
@@ -577,7 +460,6 @@ function NodeReader(isRight, data, option) {
                 if (item.hasMore) {
                     if (!item.moreOpen) {
                         last = item.children[8];
-
                     } else {
                         last = item.children[item.children.length - 2];
                     }
@@ -591,9 +473,9 @@ function NodeReader(isRight, data, option) {
             }
 
             var i = 1;
+            //默认排列位置
             while (i <= max) {
                 list = mapLevel[i];
-
                 var max_w = 0;
                 $.each(list, function (di, d) {
                     var w = getLength(d.name) * 14 / 2 + 20;//20 padding
@@ -653,68 +535,132 @@ function NodeReader(isRight, data, option) {
             }
 
             calcParentItem();
-            i = 1;
+            var hasRepeat = true;
+            var count = 1;
+            while (hasRepeat && count < 10) {
+                hasRepeat = false;
+                i = 1;
+                count++;
+                while (i <= max) {
+                    list = mapLevel[i];
+                    let fn = function (list, t) {
+                        $.each(list, function (idx, d) {
+                            d.y += t;
+                            if (d.children) {
+                                if (d.children.length) {
+                                    fn(d.children, t);
+                                }
+                            }
+                        });
+                    };
 
-            var hasRepeat = false;
-            while (i <= max) {
-                list = mapLevel[i];
-                let fn = function (list, t) {
+                    //从上层到下层 计算位置
                     $.each(list, function (idx, d) {
-                        d.y += t;
-                        if (d.children) {
-                            if (d.children.length) {
-                                fn(d.children, t);
+                        if (idx) {
+                            var num = d.y - list[idx - 1].y;
+                            var top = 50;
+                            if (d.pid !== list[idx - 1].pid) {
+                                top = 80;
+                            }
+                            if (num < top) {
+                                hasRepeat = true;
+                                var t = top - num;
+                                d.y += t;
+                                if (d.children.length) {
+                                    fn(d.children, t);
+                                }
                             }
                         }
                     });
-                };
+                    i++;
+                }
 
-                $.each(list, function (idx, d) {
-                    if (idx) {
-                        var num = d.y - list[idx - 1].y;
-                        var top = 50;
-                        if (d.pid !== list[idx - 1].pid) {
-                            top = 80;
-                        }
-                        if (num < top) {
-                            hasRepeat = true;
-                            var t = top - num;
-                            d.y += t;
+
+                if (hasRepeat) {
+                    idx = max;
+                    //根据子节点计算父级位置
+                    while (idx > 0) {
+                        list = mapLevel[idx];
+                        $.each(list, function (i, d) {
+                            d.space = getSpace(d);
                             if (d.children.length) {
-                                fn(d.children, t);
+                                if (d.open) {
+                                    getH(d);
+                                    d.y = d.centerY - 20;
+                                }
                             }
-                        }
+                        });
+                        idx--;
                     }
-                });
-                i++;
+                }
             }
-            if (hasRepeat) {
-                idx = max;
-                //根据子节点计算父级位置
-                while (idx > 0) {
-                    list = mapLevel[idx];
-                    $.each(list, function (i, d) {
-                        d.space = getSpace(d);
-                        if (d.children.length) {
-                            // w += 20;  //展开收缩按钮
-                            if (d.open) {
-                                getH(d);
-                                d.y = d.centerY - 20;
-                            } else {
-                                if (i) {
-                                    d.y = list[i - 1].y + 40 + d.space;
+            //美化未展开节点 -- 均等分高度
+            i = 1;
+            while (i <= max) {
+                list = mapLevel[i];
+                var len = list.length;
+                if (list.length > 1) {
+                    list.forEach(function (d, idx) {
+                        if (idx) {
+                            if (idx < len - 1) {
+                                var nextOpen = list[idx + 1].open && list[idx + 1].children.length;
+                                var currOpen = d.open && d.children.length;
+                                if (!currOpen && nextOpen) {
+                                    var tem_idx = idx;
+                                    var temList = [];
+                                    while (tem_idx >= 0) {
+                                        if (list[tem_idx].pid === d.pid) {
+                                            if (!list[tem_idx].open || !list[tem_idx].children.length) {
+                                                temList.unshift(list[tem_idx]);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            break;
+                                        }
+                                        tem_idx--;
+                                    }
+                                    if (temList.length) {
+                                        var upItem = list[idx - temList.length];
+                                        var downItem = list[idx + 1];
+                                        if (upItem && upItem.pid === downItem.pid) {
+                                            var num = (downItem.y - upItem.y) / (temList.length + 1);
+                                            temList.forEach(function (tem, tem_i) {
+                                                tem.y = upItem.y + num * (tem_i + 1);
+                                            })
+                                        }
+                                    }
                                 }
                             }
                         } else {
-                            if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
+                            if (!d.open || !d.children.length) {
+                                if (list[idx + 1].pid === d.pid) {
+                                    if (list[idx + 1].y - d.y > 50) {
+                                        d.y = list[idx + 1].y - 50;
+                                    }
+                                }
                             }
                         }
-                        d.h = 40;
                     });
-                    idx--;
                 }
+                i++;
             }
+        },
+
+        moreItemObj(d) {
+            var id = "more_" + d.id + "_01";
+            var tem = {
+                id: id,
+                _id: id,
+                name: "展开",
+                isMoreItem: true,
+                pid: d._id,
+                idx: 10,
+                level: d.level + 1,
+                moreOpen: false,
+                children: []
+            };
+            return tem;
         },
         //渲染根节点
         renderRoot: function (rootItem) {
@@ -748,7 +694,6 @@ function NodeReader(isRight, data, option) {
             }
             var g = this.nodeGroup.group();
             item.g = g;
-            var rbox = this.rootRect.rbox();
             var rect = g.rect(item.w, 40);
             if (item.animateAdd) {
                 if (isRight) {
@@ -790,11 +735,8 @@ function NodeReader(isRight, data, option) {
                     text.x(30);
                 }
                 this.renderState(g, item);
-                g.attr("class", "svg-csp").attr("data-id", item.id);
+                g.attr("class", "svg-csp").attr("data-id", item._id);
                 g.on("click", this.openClick, this)
-            } else {
-                // item.w -= 15;
-                // rect.width(item.w);
             }
             item.rect = rect;
             if (isRight) {
@@ -804,7 +746,6 @@ function NodeReader(isRight, data, option) {
                 } else {
                     item.hLine = g.line(-35, 20, 0, 20).stroke({width: lineWidth, color: option.lineColor});
                 }
-
             } else {
                 if (item.animateAdd) {
                     item.hLine = g.line(item.w, 20, item.w, 20).stroke({width: lineWidth, color: option.lineColor});
@@ -815,7 +756,6 @@ function NodeReader(isRight, data, option) {
                         color: option.lineColor
                     });
                 }
-
             }
 
             if (item.isMoreItem) {
@@ -826,16 +766,15 @@ function NodeReader(isRight, data, option) {
                 text.font({
                     size: 14
                 });
-                g.attr("class", "svg-more").attr("data-id", item.id).attr("data-pid", item.pid);
-
-                g.on("click", this.moreClick, this)
+                g.attr("class", "svg-more").attr("data-id", item._id).attr("data-pid", item.pid);
+                g.on("click", this.moreClick, this);
             } else {
-                g.attr("class", "svg-node")
+                g.attr("class", "svg-node");
             }
             g.on("mouseenter", this.mouseenter, item);
             g.on("mouseleave", this.mouseleave, item);
-
         },
+        //更新状态 + -
         updateState: function (item) {
             var g = item.op_g;
             if (g) {
@@ -843,7 +782,6 @@ function NodeReader(isRight, data, option) {
                 line && line.remove();
                 if (item.isMoreItem) {
                     if (!item.moreOpen) {
-
                         g.line(7.5, 4, 7.5, 11).stroke({width: 1});
                     }
                 } else {
@@ -851,7 +789,84 @@ function NodeReader(isRight, data, option) {
                         g.line(7.5, 4, 7.5, 11).stroke({width: 1});
                     }
                 }
+            }
+        },
+        //关闭item子节点 item 要关闭的item posItem 动画定位到的item 默认为item
+        closeItemChildren(item, posItem, isResetPos) {
+            if (!posItem) {
+                posItem = item;
+            }
+            var queue = [];
+            let fn = function (list) {
+                $.each(list, function (idx, d) {
+                    var info_i = infoList.indexOf(d);
+                    if (info_i >= 0) {
+                        infoList.splice(info_i, 1);
+                    }
+                    var map_i = mapLevel[d.level].indexOf(d);
+                    if (map_i >= 0) {
+                        mapLevel[d.level].splice(map_i, 1);
+                    }
+                    if (mapId[d._id]) {
+                        queue.push(mapId[d._id]);
+                        delete mapId[d._id];
+                    }
+                    if (d.children) {
+                        if (d.children.length && d.open) {
+                            fn(d.children);
+                        }
+                    }
+                })
+            };
+            fn(item.children);
+            isResetPos && this.calcItemPos(isRight);
 
+            if (isRight) {
+                queue.forEach(function (d, idx) {
+                    d.g.animate(option.anTime).opacity(0).translate(posItem.x + posItem.w, posItem.y).after(function () {
+                        this.remove();
+                    });
+                    d.hLine.animate(option.anTime).x(0);
+                    d.rightLine && d.rightLine.animate(option.anTime).width(0).after(function () {
+                        this.remove();
+                        d.rightLine = null;
+                    });
+                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x + posItem.w).y(posItem.y).height(40).after(function () {
+                        this.remove();
+                        d.vLine = null;
+                    });
+                });
+                item.rightLine && item.rightLine.animate(option.anTime).width(0).after(function () {
+                    this.remove();
+                    item.rightLine = null;
+                });
+                item.vLine && item.vLine.animate(option.anTime).x(item.x + item.w).y(item.y).height(40).after(function () {
+                    this.remove();
+                    item.vLine = null;
+                });
+            } else {
+                queue.forEach(function (d, idx) {
+                    d.g.animate(option.anTime).opacity(0).translate(posItem.x - d.w, posItem.y).after(function () {
+                        this.remove();
+                    });
+                    d.hLine.animate(option.anTime).x(0);
+                    d.rightLine && d.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
+                        this.remove();
+                        d.rightLine = null;
+                    });
+                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x).y(posItem.y).height(40).after(function () {
+                        this.remove();
+                        d.vLine = null;
+                    });
+                });
+                item.rightLine && item.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
+                    this.remove();
+                    item.rightLine = null;
+                });
+                item.vLine && item.vLine.animate(option.anTime).x(item.x).y(item.y).height(40).after(function () {
+                    this.remove();
+                    item.vLine = null;
+                });
             }
         },
         //渲染+ - 按钮状态
@@ -881,8 +896,7 @@ function NodeReader(isRight, data, option) {
                 if (isRight) {
                     centerX = frist.x - item.x - 35;
                     if (item.rightLine) {
-
-                        // item.rightLine.animate(option.anTime).w(centerX)
+                        item.rightLine.animate(option.anTime).width(centerX - item.w)
                     } else {
                         if (item.animateAdd) {
                             item.rightLine = g.line(item.w, 20, item.w, 20).stroke({
@@ -897,26 +911,23 @@ function NodeReader(isRight, data, option) {
                                 color: option.lineColor
                             });
                         }
-
-
                     }
-
-                    var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+                  //  var centerY = frist.y + (last.y + 40 - frist.y) / 2;
                     if (item.children.length > 1) {
                         if (item.vLine) {
-                            item.vLine.animate(option.anTime).y(frist.y + 20).height(last.y - frist.y)
+                            item.vLine.animate(option.anTime).x(item.x + centerX).y(frist.y + 20).height(last.y - frist.y)
                         } else {
                             if (item.animateAdd) {
                                 item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).stroke({
                                     width: lineWidth,
                                     color: option.lineColor
-                                }).attr("data-id", item.id);
+                                }).attr("data-id", item._id);
                                 item.vLine.animate(option.anTime).plot(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20)
                             } else {
                                 item.vLine = this.lineGroup.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).stroke({
                                     width: lineWidth,
                                     color: option.lineColor
-                                }).attr("data-id", item.id);
+                                }).attr("data-id", item._id);
                             }
                         }
                     }
@@ -940,20 +951,21 @@ function NodeReader(isRight, data, option) {
                     }
                     if (item.children.length > 1) {
                         if (item.vLine) {
-                            item.vLine.animate(option.anTime).y(frist.y + 20)
+                            // item.vLine.animate(option.anTime).y(frist.y + 20)
+                            item.vLine.animate(option.anTime).x(item.x - centerX).y(frist.y + 20).height(last.y - frist.y)
                         } else {
                             if (item.animateAdd) {
                                 //item.x + item.w, item.y + 20, item.x + item.w, item.y + 20
                                 item.vLine = this.lineGroup.line(item.x, item.y + 20, item.x, item.y + 20).stroke({
                                     width: lineWidth,
                                     color: option.lineColor
-                                }).attr("data-id", item.id);
+                                }).attr("data-id", item._id);
                                 item.vLine.animate(option.anTime).plot(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20)
                             } else {
                                 item.vLine = this.lineGroup.line(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20).stroke({
                                     width: lineWidth,
                                     color: option.lineColor
-                                }).attr("data-id", item.id);
+                                }).attr("data-id", item._id);
                             }
 
                         }
@@ -975,9 +987,13 @@ function NodeReader(isRight, data, option) {
         infoList = [];
         let fn = function (list, mapLevel, mapId, infoList, level, pid) {
             list.forEach(function (d, idx) {
+                if (level > option.renderLevel) {
+                    return
+                }
                 d.level = level;
                 d.idx = idx;
                 d.pid = pid;
+                d._id = d.id;
                 d.childrenList = d.children || [];
                 if (idx >= 10) {
                     return
@@ -986,24 +1002,23 @@ function NodeReader(isRight, data, option) {
                     mapLevel[level.toString()] = [];
                 }
                 mapLevel[level.toString()].push(d);
-                if (!d.id || mapId[d.id]) {
-                    d.id = pid + "_" + new Date().getTime() + "_" + idx;
+                if (!d._id || mapId[d._id]) {
+                    d._id = pid + "_" + new Date().getTime() + "_" + idx;
                 }
 
-                mapId[d.id] = d;
-                d.open = level < 4;
+                mapId[d._id] = d;
+                d.open = level < option.renderLevel;
                 infoList.push(d);
                 if (d.children) {
                     if (d.children.length) {
-                        fn(d.children, mapLevel, mapId, infoList, level + 1, d.id);
+                        fn(d.children, mapLevel, mapId, infoList, level + 1, d._id);
                     }
                 } else {
                     d.children = [];
                 }
-
             })
         };
-        fn(list, mapLevel, mapId, infoList, 1, data.id);
+        fn(list, mapLevel, mapId, infoList, 1, data._id);
 
         infoList.forEach(function (d, i) {
             if (d.children.length > 10) {
@@ -1013,16 +1028,17 @@ function NodeReader(isRight, data, option) {
                         child.push(k);
                     } else if (idx === 10) {
                         var tem = {
-                            id: "more_" + d.id + "_01",
+                            id: "more_" + d._id + "_01",
+                            _id: "more_" + d._id + "_01",
                             name: "展开",
                             isMoreItem: true,
-                            pid: d.id,
+                            pid: d._id,
                             idx: idx,
                             level: d.level + 1,
                             moreOpen: false,
                             children: []
                         };
-                        mapId[tem.id] = tem;
+                        mapId[tem._id] = tem;
                         infoList.push(tem);
                         var upItem = d.children[9];
                         var upIdx = mapLevel[tem.level].indexOf(upItem);
@@ -1049,7 +1065,10 @@ function NodeReader(isRight, data, option) {
 
 function Relation(SVG, option) {
     var def = {
-        anTime: 200
+        //动画时长
+        anTime: 200,
+        //初始渲染层级数量
+        renderLevel: 3
     };
     this.option = $.extend({}, def, option);
     var box_dom = document.getElementById(option.id);
@@ -1120,8 +1139,8 @@ Relation.prototype.init = function (obj) {
         hh: this.hh,
         rootGroup: this.rootGroup
     }, this.option);
-    var halfGroup = new NodeReader(true, obj, opt);
-    var leftGroup = new NodeReader(false, obj, opt);
+    this.rightGroup = new NodeReader(true, obj, opt);
+    this.leftGroup = new NodeReader(false, obj, opt);
 };
 
 

@@ -1,6 +1,6 @@
 
 .box{width: 100%;height: 100%;font-size: 0;
-  svg{font-size: 14px;}
+  svg{font-size: 14px;transform: translateZ(0)}
 }
 
 
@@ -25,11 +25,11 @@ img{max-width: 50px;max-height:50px}
   }
 
 }
-.svg-root-node{
+.svg-root-node{user-select: none;
   rect{fill:#128BED;}
   text{fill: #fff}
 }
-.svg-node{
+.svg-node{user-select: none;
   rect{fill:#128BED;cursor: pointer}
   text{fill: #fff;cursor: pointer}
   circle{cursor: pointer}

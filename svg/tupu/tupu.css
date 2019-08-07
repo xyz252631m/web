@@ -5,6 +5,7 @@
 }
 .box svg {
   font-size: 14px;
+  transform: translateZ(0);
 }
 .info-box {
   width: 310px;
@@ -36,11 +37,17 @@
 .info-box .info-list p {
   margin-top: 7px;
 }
+.svg-root-node {
+  user-select: none;
+}
 .svg-root-node rect {
   fill: #128BED;
 }
 .svg-root-node text {
   fill: #fff;
+}
+.svg-node {
+  user-select: none;
 }
 .svg-node rect {
   fill: #128BED;
