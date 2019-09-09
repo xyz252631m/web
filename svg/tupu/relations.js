@@ -1074,7 +1074,8 @@ function Relation(SVG, option) {
         //动画时长
         anTime: 200,
         //初始渲染层级数量
-        renderLevel: 3
+        renderLevel: 3,
+        scale: 1
     };
     this.option = $.extend({}, def, option);
     var box_dom = document.getElementById(option.id);
@@ -1109,7 +1110,7 @@ function Relation(SVG, option) {
         draw.width($(window).width());
         draw.height($(window).height());
     });
-    var scale = 1;
+    var scale = this.option.scale || 1;
 
     // 缩放事件
     function drag(e) {
@@ -1147,6 +1148,7 @@ Relation.prototype.init = function (obj) {
     }, this.option);
     this.rightGroup = new NodeReader(true, obj, opt);
     this.leftGroup = new NodeReader(false, obj, opt);
+    this.rootGroup.scale(this.option.scale || 1)
 };
 
 

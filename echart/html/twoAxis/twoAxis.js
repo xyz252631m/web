@@ -79,7 +79,7 @@
             return null;
         },
         init: function (ecModel, api) {
-            this.lable_w = 0;
+            this.label_w = 0;
             this._labels = [];
             this._splitArea = [];
             this._tickLists = [];
@@ -132,7 +132,7 @@
             };
             let textStyleModel = seriesModel.getModel('axisLabel');
             let fontSize = textStyleModel.get("fontSize");
-            let w = rect.x - seriesModel.get("offset") - this.lable_w * fontSize - 10;
+            let w = rect.x - seriesModel.get("offset") - this.label_w * fontSize - 10;
             let h = rect.y + rect.height + seriesModel.get("offset") + 10;
             let labelMap = {}, labelPosList = [];
 
@@ -441,7 +441,7 @@
         //获取当前数据的位置信息
         settingPosIndexByList: function (seriesModel) {
             let list = seriesModel.get("data");
-            let lable_w = 0;
+            let label_w = 0;
             let posList = [];
             if (list) {
                 let getLength = function (str) {
@@ -456,8 +456,8 @@
                 zrUtil.each(list, function (dataItem, idx) {
                     let name = getName(dataItem);
                     let nLen = getLength(name);
-                    if (nLen > lable_w) {
-                        lable_w = nLen;
+                    if (nLen > label_w) {
+                        label_w = nLen;
                     }
                     if (idx) {
 
@@ -485,11 +485,11 @@
                 })
             }
             //console.log("posList1", posList)
-            this.lable_w = lable_w;
+            this.label_w = label_w;
             return posList;
         },
         dispose: function () {
-            this.lable_w = 0;
+            this.label_w = 0;
             this._labels = [];
             this._splitArea = [];
             this._tickLists = [];

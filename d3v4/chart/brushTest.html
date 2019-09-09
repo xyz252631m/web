@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <title>Title</title>
+    <title>brush</title>
     <script src="../d3.v4.min.js"></script>
 </head>
 <body>
@@ -73,7 +73,18 @@
 
         var x_axis = d3.axisBottom().scale(xScale);
 
+
+
+
+
         var y_axis = d3.axisLeft().scale(yScale);
+
+
+        y_axis.ticks(10);
+        y_axis.tickFormat(function(a,b){
+            console.log("a",a,b)
+            return a
+        })
 
         svg.append("g")
             .attr("transform", "translate(50, 10)")
@@ -84,6 +95,11 @@
         var axis = svg.append("g")
             .attr("transform", "translate(50, " + xAxisTranslate + ")")
             .call(x_axis);
+
+
+
+
+
         console.log(axis)
 
         var g = svg.append("g");
