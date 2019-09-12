@@ -2,62 +2,79 @@ let mapLevel = {};
 let mapId = {};
 let infoList = [];
 
+//处理数据
 function conventData(list) {
     mapLevel = {};
     mapId = {};
     infoList = [];
     let fn = function (list, mapLevel, mapId, infoList, level, pid) {
-        list.forEach(d => {
+        list.forEach(function (d, idx) {
+            if (level > 3) {
+                return
+            }
+            d.level = level;
+            d.idx = idx;
+            d.pid = pid;
+            d._id = d.id;
+            d.childrenList = d.children || [];
+            if (idx >= 10) {
+                return
+            }
             if (!mapLevel[level.toString()]) {
                 mapLevel[level.toString()] = [];
             }
             mapLevel[level.toString()].push(d);
-            d.level = level;
-
-            d.pid = pid;
-            if (d.id) {
-                mapId[d.id] = d;
-            } else {
-                console.log(d)
+            if (!d._id || mapId[d._id]) {
+                d._id = pid + "_" + new Date().getTime() + "_" + idx;
             }
+
+            mapId[d._id] = d;
             d.open = level < 3;
             infoList.push(d);
             if (d.children) {
                 if (d.children.length) {
-                    fn(d.children, mapLevel, mapId, infoList, level + 1, d.id);
+                    fn(d.children, mapLevel, mapId, infoList, level + 1, d._id);
                 }
             } else {
                 d.children = [];
             }
-
         })
     };
     fn(list, mapLevel, mapId, infoList, 1, "root");
 
-    infoList.forEach((d, i) => {
-
+    infoList.forEach(function (d, i) {
         if (d.children.length > 10) {
             var child = [], moreList = [];
-            d.children.forEach((k, idx) => {
+            d.children.forEach(function (k, idx) {
                 if (idx < 10) {
                     child.push(k);
+                } else if (idx === 10) {
+                    var tem = {
+                        id: "more_" + d._id + "_01",
+                        _id: "more_" + d._id + "_01",
+                        name: "展开",
+                        isMoreItem: true,
+                        pid: d._id,
+                        idx: idx,
+                        level: d.level + 1,
+                        moreOpen: false,
+                        children: []
+                    };
+                    mapId[tem._id] = tem;
+                    infoList.push(tem);
+                    var upItem = d.children[9];
+                    var upIdx = mapLevel[tem.level].indexOf(upItem);
+                    mapLevel[tem.level].splice(upIdx + 1, 0, tem);
+                    child.push(tem);
                 } else {
+                    k.hide = true;
                     moreList.push(k);
                 }
-            });
-            child.push({
-                id: "more_" + d.id + "_" + i,
-                name: "更多",
-                isMoreItem: true,
-                pid: d.id,
-                moreOpen: false
             });
             d.moreOpen = false;
             d.children = child;
             d.moreList = moreList;
             d.hasMore = true;
-
-
         }
     });
 }
@@ -325,14 +342,75 @@ class Tree {
     openClick(d) {
         console.log(d)
         if (d.data.isMoreItem) {
+            let pid = d.parent.data.id;
+            let item_g = d.data.g;
             //收起
             if (d.data.moreOpen) {
                 d.data.moreOpen = false;
+                d.data.name = "展开"
+                let temList = [], removeList = [];
+                let item = d.parent;
+                let len = item.data.children.length;
+                item.data.children.forEach((p, i) => {
+                    if (i > 9 && i < len - 1) {
+                        p.hide = true;
+                        removeList.push(p);
+                    } else {
+                        temList.push(p);
+                    }
+                });
+                item.data.children = temList;
+                // var lastItem = item.children[item.children.length - 1];
+                // lastItem.name = "展开";
+                var tem = temList[9].g.datum();
+
+                removeList.forEach(function (p, idx) {
+                    p.g.attr("opacity", 1)
+                        .transition()
+                        .attr("opacity", 0)
+                        .attr('transform', function (d) {
+                            return "translate(" + d.y + "," + (tem.x + 40) + ")";
+                        })
+                        .remove();
+                    // p.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
+                    //     this.remove();
+                    // });
+                    //d.hLine.animate(option.anTime).x(0);
+                    if (p.open) {
+                        //self.closeItemChildren(p, tem, false)
+                    }
+                });
 
             } else {
                 d.data.moreOpen = true;
-
+                let temList = [];
+                d.parent.data.childrenList.forEach((p, i) => {
+                    if (i > 9) {
+                        p.idx = i;
+                        p.hide = false;
+                        p.pid = pid;
+                        p.open = false;
+                        p.g = null;
+                        p.animateAdd = false;
+                        p.animateMoreAdd = true;
+                        if (!p.children) {
+                            p.children = [];
+                        }
+                        p.childrenList = p.children || [];
+                        temList.push(p);
+                    }
+                })
+                Array.prototype.splice.apply(d.parent.data.children, [10, 0].concat(temList));
+                var temItem = d.parent.data.children[9];
+                temList.forEach(function (d) {
+                    d.py = temItem.y;
+                });
+                d.data.name = "收缩"
             }
+
+            item_g.select('text').text(function (d) {
+                return d.data.name;
+            })
         } else {
             //收起
             if (d.data.open) {
@@ -374,11 +452,12 @@ class Tree {
                 d.data.children = d.data.openList;
                 d.data.openList = [];
             }
-            //重新计算层级、位置
-            let root = this.initTreeLayout(this.data);
-            let treeData = this.tree(root);
-            this.calcItemPos(treeData);
+
         }
+        //重新计算层级、位置
+        let root = this.initTreeLayout(this.data);
+        let treeData = this.tree(root);
+        this.calcItemPos(treeData);
 
     }
 
