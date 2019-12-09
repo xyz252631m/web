@@ -85,11 +85,14 @@ Page({
 
 
         if (app.globalData.userInfo) {
+          console.log(111)
             this.setData({
                 userInfo: app.globalData.userInfo,
                 hasUserInfo: true
             })
+          util.downNoteList(app.globalData.userInfo);
         } else if (this.data.canIUse) {
+          console.log(222)
             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
             // 所以此处加入 callback 以防止这种情况
             app.userInfoReadyCallback = res => {
@@ -97,8 +100,11 @@ Page({
                     userInfo: res.userInfo,
                     hasUserInfo: true
                 })
+              util.downNoteList(res.userInfo);
+              
             }
         } else {
+          console.log(333)
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
                 withCredentials: true,
@@ -108,6 +114,7 @@ Page({
                         userInfo: res.userInfo,
                         hasUserInfo: true
                     })
+                  util.downNoteList(app.globalData.userInfo);
                 }
             })
         }

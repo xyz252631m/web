@@ -151,6 +151,7 @@ class Tree {
                 mapLevel[d.depth] = 0;
             }
 
+
             if (!d.data.children) {
                 d.data.children = [];
             }
@@ -275,6 +276,9 @@ class Tree {
             list.select("line").attr("x1", 4).attr("y1", 7.5).attr("x2", 11).attr("y2", 7.5);//4, 7.5, 11, 7.5
             let addList = list.filter(function (d) {
                 if (d.data.isMoreItem) {
+                    if (!d.data.moreOpen) {
+                        return d
+                    }
                 } else {
                     if (!d.data.open) {
                         return d
@@ -291,18 +295,76 @@ class Tree {
         op_gs.call(opUpdate);
         //竖线
         let vDataList = nodes.filter(d => d.children && d.children.length > 1);
+        console.log("vDataList",vDataList)
         let vList_update = link_g.selectAll('.link-v').data(vDataList);
-        let vList_enter = vList_update.enter().append('path');
+        let vList_enter = vList_update.enter().append('line');
 
 
         function updateVList(list) {
+            // let adList = list.filter(d => d.data.animateAdd);
+            // let resList = list.filter(d => !d.data.animateAdd);
+            // resList.attr('class', 'link link-v')
+            //     .attr("x1", function (d) {
+            //         let first = d.children[0];
+            //         return first.y - 35
+            //     })
+            //     .attr("y1", function (d) {
+            //         let first = d.children[0];
+            //         //  let last = d.children[d.children.length - 1];
+            //         // return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
+            //         return first.x + 20
+            //     })
+            //     .attr("x2", function (d) {
+            //         let first = d.children[0];
+            //         return first.y - 35
+            //     })
+            //     .attr("y2", function (d) {
+            //         let last = d.children[d.children.length - 1];
+            //         // return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
+            //         return last.x + 20
+            //     })
             list.attr('class', 'link link-v')
-                .transition()
-                .attr('d', function (d) {
+                .attr("x1", function (d) {
                     let first = d.children[0];
+                    return first.y - 35
+                })
+                .attr("y1", function (d) {
+                    return d.x + 20
+                })
+                .attr("x2", function (d) {
+                    let first = d.children[0];
+                    return first.y - 35
+                })
+                .attr("y2", function (d) {
+                    return d.x + 20
+                })
+                .attr("opacity", 0)
+                .transition()
+                .attr("opacity", 1)
+                .attr("x1", function (d) {
+                    let first = d.children[0];
+                    return first.y - 35
+                })
+                .attr("x2", function (d) {
+                    let first = d.children[0];
+                    return first.y - 35
+                })
+                .attr('y1', function (d) {
+                    let first = d.children[0];
+                    //  let last = d.children[d.children.length - 1];
+                    // return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
+                    return first.x + 20
+                })
+                .attr("y2", function (d) {
                     let last = d.children[d.children.length - 1];
-                    return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
-                });
+                    // return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
+                    return last.x + 20
+                })
+            // .attr('d', function (d) {
+            //     let first = d.children[0];
+            //     let last = d.children[d.children.length - 1];
+            //     return `M ${first.y - 35} ${first.x + 20}V${last.x + 20}`
+            // });
         }
 
         vList_update.call(updateVList);
@@ -318,17 +380,93 @@ class Tree {
 
 
         //父到子 -- 连接子项的线
+        nodes.forEach(d=>{
+            if(d.rightLine){
+
+            }else{
+
+                if (d.animateAdd) {
+                    item.rightLine = g.line(item.w, 20, item.w, 20).stroke({
+                        width: lineWidth,
+                        color: option.lineColor
+                    });
+                    // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
+                    item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
+                } else {
+                    item.rightLine = g.line(item.w, 20, centerX, 20).stroke({
+                        width: lineWidth,
+                        color: option.lineColor
+                    });
+                }
+            }
+
+
+        })
+
+
+        return;
         let rList_update = link_g.selectAll('.link-r').data(hasChildList);
 
-        let rList_enter = rList_update.enter().append('path');
+        let rList_enter = rList_update.enter().append('line');
 
         function updateRList(list) {
+            // let adList = list.filter(d => d.data.animateAdd);
+            // let resList = list.filter(d => !d.data.animateAdd);
+            // resList.attr('class', 'link link-r')
+            //     .attr("x1", function (d) {
+            //         return d.y + d.w;
+            //     })
+            //     .attr("y1", function (d) {
+            //         return d.x + 20;
+            //     })
+            //     .attr("x2", function (d) {
+            //         let first = d.children[0];
+            //         return first.y - 35
+            //     })
+            //     .attr("y2", function (d) {
+            //         return d.x + 20;
+            //     })
             list.attr('class', 'link link-r')
-                .attr('d', function (d) {
+                .attr("x1", function (d) {
+                    return d.y + d.w
+                })
+                .attr("y1", function (d) {
+                    return d.x + 20
+                })
+                .attr("x2", function (d) {
+                    return d.y + d.w
+                })
+                .attr("y2", function (d) {
+                    return d.x + 20
+                })
+                .attr("opacity", 0)
+                .transition()
+                .attr("opacity", 1)
+                .attr("x1", function (d) {
+                    return d.y + d.w
+                })
+                .attr("y1", function (d) {
+                    return d.x + 20
+                })
+                .attr("y2", function (d) {
+                    return d.x + 20
+                })
+                .attr("x2", function (d) {
                     let first = d.children[0];
-                    let last = d.children[d.children.length - 1];
-                    return `M ${first.y - 35} ${d.x + 20}H${d.y + d.w}`
-                });
+                    return first.y - 35
+                })
+                .each(function (d) {
+                        d.data.animateAdd = false;
+                    }
+                )
+
+
+            // list.attr('class', 'link link-r')
+            //     .attr('d', function (d) {
+            //         let first = d.children[0];
+            //         let last = d.children[d.children.length - 1];
+            //         return `M ${first.y - 35} ${d.x + 20}H${d.y + d.w}`
+            //     });
         }
 
         rList_update.call(updateRList);
@@ -417,7 +555,7 @@ class Tree {
                 d.data.open = false;
                 d.data.openList = d.data.children;
                 d.data.children = [];
-
+                d.data.animateAdd = true;
                 var queue = [];
                 let fn = function (list) {
                     list.forEach(a => {

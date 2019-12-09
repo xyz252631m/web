@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>全国天气网 api接口</title>
+    <link href="../../css/base.css" rel="stylesheet">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- 6777 -->
+<script type="text/javascript">
+    // WIDGET = {FID: '7xoqb0orv8'}
+</script>
+<!--<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>-->
+<script type="text/javascript">
+    let a = $.ajax({
+        url: "https://apip.weatherdt.com/plugin/data?key=7xoqb0orv8&lang=zh&location=101110101"
+    });
+
+    a.success(res => {
+        console.log(res)
+        if(res){
+            let today = res.forecast.forecast[0];
+            $("body").append(`<p>${res.basic.city} ： ${today.tqw_txt_d} ${today.tqw_txt_n} ${today.tmp_min}~${today.tmp_max} </p>`);
+            $("body").append(`<p> 实时： ${res.now.tmp} ${res.now.txt}   </p>`)
+        }
+    });
+
+
+</script>
+</body>
+</html>

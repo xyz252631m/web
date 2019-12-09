@@ -9,6 +9,7 @@ const formatTime = date => {
     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 };
 
+
 const formatNumber = n => {
     n = n.toString();
     return n[1] ? n : '0' + n
@@ -128,13 +129,14 @@ let op = {
     },
     downNoteList: function (params, callback) {
         //http://test-1251114761.costj.myqcloud.com/ebook/69FE0EDB17C93FAF9948/bookshelf.json
-        var url = "https://test-1251114761.cos.ap-beijing-1.myqcloud.com/" + params.nickName + "/list.json";
+        //var url = "https://test-1251114761.cos.ap-beijing-1.myqcloud.com/" + params.nickName + "/list.json";
+        var url = "https://test-1251114761.cos.ap-beijing-1.myqcloud.com/ebook/69FE0EDB17C93FAF9948/bookshelf.json";
         wx.downloadFile({
             url: url,
             filePath: `${wx.env.USER_DATA_PATH}/list.json`,
             success: function (res) {
 
-                if (res.status === 200) {
+                if (res.statusCode === 200) {
                     console.log("res", res);
                 } else {
                     console.log("res", res);

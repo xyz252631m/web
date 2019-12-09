@@ -30,7 +30,7 @@ function NodeReader(isRight, data, option) {
                 this.render(isRight, true);
             }
         },
-        createGroup() {
+        createGroup: function () {
             var halfGroup = this.rootGroup.group();
             var nodeGroup = halfGroup.group();
             var lineGroup = halfGroup.group();
@@ -432,7 +432,7 @@ function NodeReader(isRight, data, option) {
             }
         },
         //计算位置
-        calcItemPos(isRight) {
+        calcItemPos: function (isRight) {
             var self = this;
             var keys = [];
             for (var key in mapLevel) {
@@ -653,7 +653,7 @@ function NodeReader(isRight, data, option) {
             }
         },
 
-        moreItemObj(d) {
+        moreItemObj: function (d) {
             var id = "more_" + d.id + "_01";
             var tem = {
                 id: id,
@@ -730,6 +730,7 @@ function NodeReader(isRight, data, option) {
             var text_rbox = text.rbox();
             var tr = this.rootGroup.matrixify();
             if (isRight) {
+                //计算缩放 width
                 item.op_x = (text_rbox.width / tr.d) + 5 + 10;
             } else {
                 item.op_x = 8;
@@ -798,7 +799,7 @@ function NodeReader(isRight, data, option) {
             }
         },
         //关闭item子节点 item 要关闭的item posItem 动画定位到的item 默认为item
-        closeItemChildren(item, posItem, isResetPos) {
+        closeItemChildren: function (item, posItem, isResetPos) {
             if (!posItem) {
                 posItem = item;
             }

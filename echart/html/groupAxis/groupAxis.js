@@ -1,5 +1,5 @@
 /*
-** v:2.0
+** v:3.0
 * */
 (function (root, factory) {
     if (typeof exports === 'object' && typeof module === 'object')
