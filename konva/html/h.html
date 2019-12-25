@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>konva</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/konva.min.js"></script>
+
+    <style>
+        .map-box {width: 100%;height: 100%;}
+
+        .chart-item {width: 600px;height: 450px;display: inline-block;}
+    </style>
+    <script src="../js/lineChart.js"></script>
+    <script src="../../echart/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<div class="map-box" id="box">
+    <!--    <div class="chart-item">-->
+
+    <!--    </div>-->
+    <!--    <div class="chart-item">-->
+
+    <!--    </div>-->
+</div>
+
+
+<script>
+
+
+    $(function () {
+        var $box = $(".map-box");
+
+        function getRes() {
+            var src = "http://192.168.0.22:7930/waterloss/ga/previewResultDrawingData";
+            $.ajax({
+                url: src,
+                type: "post",
+                dataType: "json",
+                // crossDomain: true,
+                // contentType: false, //必须
+                // processData: false,
+                data: {
+                    modelId: '01f86426c3bb462da6b32192b57ece79',
+                    isAll: true
+                },
+                success: function (res) {
+                    console.log(res);
+                    // console.time('总计时器');
+                    // createChart(res.data);
+                    // console.timeEnd('总计时器');
+                    // return;
+
+                    var h = [];
+                    res.data.forEach(d => {
+                        h.push('<div class="chart-item"></div>');
+                    });
+                    $box.html(h.join(""));
+                    console.time('总计时器');
+                    $(".chart-item").each(function (idx) {
+                        var lineList = [];
+                        var item = res.data[idx];
+                        var xMax=0,yMax=0;
+                        item.nameData.forEach((d, i) => {
+                            xMax = Math.max(...item.xData[i]);
+                            yMax = Math.max(...item.yData[i]);
+                            lineList.push({
+                                name: d,
+                                xData: item.xData[i],
+                                yData: item.yData[i]
+                            });
+                        });
+
+
+                        console.log("line",lineList)
+                        var chart = new LineChart(Konva, {
+                            container: this,
+                            width: 600,
+                            height: 450,
+                            xRange:[0,xMax],
+                            yRange:[0,Math.ceil(yMax/5+yMax)],
+                            lineList: lineList
+                        });
+                    });
+                    console.timeEnd('总计时器');
+
+                }
+            })
+        }
+
+        getRes();
+        // 0:best  2:faild
+        var colorList = ["#2fcb09", "#1fcbca", "#d76d66"];
+
+        //创建图表
+        function createChart(obj) {
+            var list = obj || [];
+            //生成dom元素
+            var h = [];
+            $.each(list, function () {
+                h.push('<div class="chart-item"></div>');
+            });
+            $box.html(h.join(""));
+            //个数为1时，特殊处理
+            if (list.length === 1) {
+                $box.addClass("one-charts");
+            } else {
+                $box.removeClass("one-charts");
+            }
+            //拼接图表参数
+            $.each(list, function (idx) {
+                var item = this;
+                var defs = {
+                    title: {
+                        text: "",
+                        left: '50%',
+                        textStyle: {
+                            fontWeight: "normal"
+                        },
+                        textAlign: "center"
+                    },
+                    toolbox: {
+                        right:10,
+                        itemSize:12,
+                        feature: {
+                            myTool1: {
+                                show: true,
+                                title: '全屏',
+                                icon: 'path://M733.549304 0l116.434359 116.23452-226.402521 226.40252 57.053835 57.068109 226.459617-226.445342 120.616689 120.41685V0H733.549304zM689.513507 619.855586l-57.068108 57.068109 224.232847 224.232847-122.64362 122.843458h293.676657V729.838022l-114.007751 114.207588-224.190025-224.190024zM338.197775 404.144414l57.068109-57.068109L171.033037 122.843458 293.676657 0H0v294.161978l114.022025-114.207588 224.17575 224.190024zM347.076305 624.294851L120.616689 850.754468 0 730.323343v293.676657h294.161978l-116.420084-116.23452 226.40252-226.40252-57.068109-57.068109z',
+                                iconStyle:{
+                                    color:"#666"
+                                },
+                                onclick: function (){
+                                    localStorage.setItem("soat_preview_option",JSON.stringify(defs));
+                                    window.open('/waterloss/ga/resultDrawingNewPage',"resultDrawingNewPage");
+                                }
+                            }
+                        }
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            lineStyle: {
+                                color: "#ccc"
+                            }
+                        }
+                    },
+                    grid: {
+                        top: 40,
+                        left: 60,
+                        right: 20,
+                        bottom: 40
+                    },
+                    xAxis: {
+                        name: "时间t/s",
+                        nameLocation: "center",
+                        nameGap: 20,
+                        type: 'value',
+                        axisLine: {
+                            lineStyle: {
+                                color: "#777"
+                            }
+                        },
+                        axisLabel: {
+                            color: "#777"
+                        },
+                        axisTick: {
+                            color: "#777",
+                            alignWithLabel: true
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                type: "dashed"
+                            }
+                        }
+                    },
+                    yAxis: {
+                        name: "",
+                        nameGap: 20,
+                        type: 'value',
+                        axisLine: {
+                            lineStyle: {
+                                color: "#777"
+                            }
+                        },
+                        axisLabel: {
+                            color: "#777"
+                        },
+                        axisTick: {
+                            color: "#777"
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                type: "dashed"
+                            }
+                        }
+                    },
+                    series: []
+                };
+                defs.title.text = item.chartName + '';
+                defs.yAxis.name = "单位："+ item.dataUnits + '';
+                var seriesList = [];
+                $.each(item.nameData, function (i) {
+                        var data = [];
+                        $.each(item.xData[i], function (xi) {
+                            data.push([+this, item.yData[i][xi]])
+                        });
+                        var series = {
+                            name: this + '',
+                            symbol:"none",
+                            data: data,
+                            type: 'line',
+                            //smooth: true,
+                            itemStyle: {
+                                color: colorList[1]
+                            }
+                        };
+                        if (this.match(/\_best$/)) {
+                            series.itemStyle.color = colorList[0];
+                        } else if (this.match(/\_n$/)) {
+                            series.itemStyle.color = colorList[2];
+                    }
+                    seriesList.push(series);
+                });
+                defs.series = seriesList;
+                var myChart = echarts.init($(".chart-item")[idx]);
+                myChart.setOption(defs);
+                $(window).on("resize", function () {
+                    myChart.resize();
+                });
+
+            });
+        }
+    })
+
+
+    // var stage = new Konva.Stage({
+    //     container:' $('.map-box')[0]',
+    //     width: window.innerWidth,
+    //     height: window.innerHeight
+    // });
+
+
+    // var layer = new Konva.Layer();
+    //
+    // var rect = new Konva.Rect({
+    //     x: 100,
+    //     y: 50,
+    //     width: 200,
+    //     height: 100,
+    //     fill: '#ccc'
+    // });
+    // layer.add(rect);
+    // stage.add(layer);
+    // layer.draw();
+</script>
+</body>
+</html>

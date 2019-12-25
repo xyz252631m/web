@@ -1,0 +1,50 @@
+.view-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+.menu-box {
+  background-color: #283243;
+  width: 300px;
+  display: none;
+}
+.menu-box .menu-main {
+  margin: 40px;
+  flex: 1;
+}
+.menu-box p {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 250ms linear;
+  cursor: pointer;
+  padding-bottom: 15px;
+}
+.menu-box ul {
+  border-left: 1px dashed #323e4f;
+  padding-left: 25px;
+  border-bottom: 1px solid #323e4f;
+}
+.menu-box li {
+  color: #a9c7df;
+  padding-bottom: 15px;
+  cursor: pointer;
+  transition: all 250ms linear;
+}
+.menu-box li:hover {
+  color: #fff;
+}
+.content-box {
+  background-color: #1c2532;
+  flex: 1;
+}
+@media (min-width: 980px) {
+  .menu-box {
+    display: flex;
+  }
+}
+/*# sourceMappingURL=app.component.css.map */

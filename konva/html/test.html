@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>关联图谱</title>
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../svg/css/gltp.css">
+
+    <script src="../../d3v4/d3.v4.min.js"></script>
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+
+
+
+</head>
+<body>
+<div class="body-bg"></div>
+<div id="svgBox">
+    <svg id="svg" style="width: 100%;height: 100%;">
+        <defs>
+            <marker id="arrowCompany" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="27.5" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
+            </marker>
+            <marker id="arrowCompanyHover" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="27.5" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
+            </marker>
+            <marker id="arrowPerson" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="27.5" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
+            </marker>
+            <marker id="arrowPersonHover" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="27.5" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
+            </marker>
+        </defs>
+    </svg>
+</div>
+
+<script src="../../svg/svg.min.js"></script>
+<script src="../js/figure.js"></script>
+<script>
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    $(function () {
+        $.getJSON("../json/gltp1.json", function (res) {
+            var obj = res.result;
+            initMap(obj);
+        });
+        var figure = {};
+        //初始化
+        function initMap(obj) {
+            var nodes = obj.nodes;
+            var links = obj.links;
+            var width = $("#svgBox").width();
+            var height = $("#svgBox").height();
+            //初始化力学仿真器，通过布局函数格式化数据
+            var simulation = d3.forceSimulation(nodes).alphaMin(0.5)
+                .force("link", d3.forceLink(links)
+                    .distance(150)
+                    .id(function (m) {
+                        return m.id;
+                    })
+                )
+                .force("charge", d3.forceManyBody().strength(-800))  //注1>
+                .force("center", d3.forceCenter(width / 2, height / 2))  //设置力学仿真器的中心
+                .on("end", function () {
+                    $.each(nodes, function () {
+                        this._x = this.x;
+                        this._y = this.y;
+                    });
+                    figure = new Figure(SVG, {
+                        $box: $("#svgBox"),//父级容器
+                        isDrag: true,
+                        nodes: nodes,
+                        links: links,
+                        mousewheel: function (scale) {
+                            // rangeBox.setScaleVal(scale);
+                        },
+                        nodeClick: function (item) {
+                            console.log(item, item.id);
+                            // item.name = item.properties.name;
+                            // console.log(item)
+                        },
+                        celNodeClick: function (item) {
+                            $(".left-tip-panel").hide();
+                        }
+                    });
+                });
+        }
+
+
+
+
+
+
+
+    })
+</script>
+</body>
+</html>

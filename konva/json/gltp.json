@@ -1,0 +1,5725 @@
+{
+  "status": 200,
+  "result": {
+    "nodes": [
+      {
+        "id": "63189440",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "f058cc57ceb332c77f46fdd9dc76c772",
+          "registCapi": "2000000.000",
+          "name": "深圳市引导基金投资有限公司",
+          "econKind": "有限责任公司(国有独资)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "10328725",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "276352a95db7aa252420e896ffb1ff6c",
+          "registCapi": "46415.828",
+          "name": "湖南发展集团股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "99589094",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p5bf198309851fe05e3dad0bc3d3e48e",
+          "role": "自然人股东",
+          "name": "王志坚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "54882632",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d0ca754f7049728c42859eb8a28a17fb",
+          "registCapi": "5000.000",
+          "name": "无锡美林数联科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "105847362",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p6fcdfc51320ba2f68e07b19f0678b96",
+          "role": "自然人股东",
+          "name": "李炜",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "116860152",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p92c07f235f1a3dccb3f27ff7b792897",
+          "role": "",
+          "name": "马卫",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "18721549",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "47635c2a6eabc66e0c54edf44e112a11",
+          "registCapi": "6000.000",
+          "name": "华农健康产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "29839828",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "71e2c4709a93d6928188e918dc9e443b",
+          "registCapi": "122.222",
+          "name": "杭州晨聚网络科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "118225688",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9716455e8dfef7326b39ec43003af2d",
+          "role": "自然人股东",
+          "name": "郭联伟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "127295874",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pb3ed983f9f7c88cdf0688f9c2da74f2",
+          "role": "自然人股东",
+          "name": "严亚文",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "178982076",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "prd7b308da12e4ab0c0b4e72ea80bfeb",
+          "role": "董事",
+          "name": "杨人龙",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "130149854",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pbd00865ba4e05a06afd85a30e687b72",
+          "role": "自然人股东",
+          "name": "张鹏飞",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "175229038",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "prb8f9f37c8806d03803eff96ac98ae5",
+          "role": "自然人股东",
+          "name": "姚关琦",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "120535311",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9e6c7f6f13f28a07bacb4fcd36da88b",
+          "role": "自然人股东",
+          "name": "安葆红",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "91005263",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p40c2c1ac32b6d47d758d291a40fcbec",
+          "role": "",
+          "name": "黄惠敏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "4407909",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "10e6ea6ffa4663395d3f01ff89c35266",
+          "registCapi": "3813.395",
+          "name": "深圳市火乐科技发展有限公司",
+          "econKind": "有限责任公司(中外合资)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "61750148",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "eae1d4b195f316d1171d09a811d83016",
+          "registCapi": "1000.000",
+          "name": "上海悦会信息科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "58592085",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "dee21f29a987890b7fd1e0d0d826a1c2",
+          "registCapi": "500.000",
+          "name": "上海琢学科技有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "84771644",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p2d088f4426b38165d72037ab9103906",
+          "role": "自然人股东",
+          "name": "洪一新",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "11555971",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2c0f5e45704392ecbd89f6b435309b7f",
+          "registCapi": "1000.000",
+          "name": "湖北世纪英才文化发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "8811186",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2199185dcd026a4ba76ce0caab69b9d5",
+          "registCapi": "1137.317",
+          "name": "北京云途腾科技有限责任公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "43146405",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "a4566382899505482616f6cec86d7c36",
+          "registCapi": "0.000",
+          "name": "泉州市禹道丰侨股权投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "54866303",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d0bacf53972924d9c899fc3f4847cac0",
+          "registCapi": "1867.818",
+          "name": "北京寄云鼎城科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "66594746",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "西安深谱之光智能科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "147703433",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pf4ea8a4598f3256bcf0d09dccf27802",
+          "role": "监事",
+          "name": "周永红",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "158933297",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr38f9756714953d479556cd9f6fefb8",
+          "role": "自然人股东",
+          "name": "苗刚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "14724778",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "38251637cc35b5decad68857c0083f2a",
+          "registCapi": "0.000",
+          "name": "湖北嵩山科技创新股权投资基金中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "50172599",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bef9157d195d517d5e14982d03ca1027",
+          "registCapi": "0.000",
+          "name": "杭州米拓投资合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "7609407",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "1d06d5a1297cb4d10f4997bea72887ba",
+          "registCapi": "8200.000",
+          "name": "杭州华威实业投资有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "18145112",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4532b719c46f42a38514fc39296b44b9",
+          "registCapi": "1111.111",
+          "name": "彩盟财务管理咨询（杭州）有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "14252180",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3655fd117e93310b314ac308ec57a8b2",
+          "registCapi": "1144.168",
+          "name": "北京洛可可科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "79965321",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p1dd403bac5fbd0de938c05123d0050a",
+          "role": "自然人股东",
+          "name": "张锦华",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "8500430",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "206a951ab0da49c232c37ed49cb90088",
+          "registCapi": "141755.634",
+          "name": "湖南电广传媒股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "86993788",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p340f4b5cd19225d3f52dbf9de433dbd",
+          "role": "董事",
+          "name": "潘若鸣",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "52190025",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "c69c85dd125c7fa06ede24856979d005",
+          "registCapi": "0.000",
+          "name": "珠海达晨创梦股权投资企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "167952471",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr7eaf873405472b2b26bcb3821b7a49",
+          "role": "监事",
+          "name": "刘强",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "128925176",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pb91bf5d2a7ff6de080c6749e6c5bd16",
+          "role": "自然人股东",
+          "name": "唐旭东",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "75227160",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p0edea422c58a4890b8bbe3dabeb45b7",
+          "role": "自然人股东",
+          "name": "郭刚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "49601680",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bcd161fc8a91f35fc76260e2d49498c0",
+          "registCapi": "10000.000",
+          "name": "深圳市达晨睿泽一号股权投资企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "104011861",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p69fac020a22087689a8f9935c24a373",
+          "role": "董事",
+          "name": "程宏亮",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "32245642",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "7af78522f430feef95f4d791a4692390",
+          "registCapi": "17091.032",
+          "name": "北京天健源达科技股份有限公司",
+          "econKind": "股份有限公司(中外合资、未上市)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "458863",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "01c4039cd66449d6e42e9fe1aa40fca6",
+          "registCapi": "1000.000",
+          "name": "广东知好乐教育科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "5510201",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "1514de55d4584ddd3b2a3192b836ce6e",
+          "registCapi": "0.000",
+          "name": "杭州禧筠朝旭创业投资合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "91480861",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p4243bd45838300f1d59c16a18a95a33",
+          "role": "自然人股东",
+          "name": "杨汇慧",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "92934628",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p46dd517843b53e17e3913f8ef60742f",
+          "role": "",
+          "name": "李慧斌",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "161681356",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr4ddc01692864ee9df6d2ed7fd12fb1",
+          "role": "自然人股东",
+          "name": "周守栋",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "37541454",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8f050a030edc778eaa265c1215a63afc",
+          "registCapi": "10000.000",
+          "name": "浙江天子股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "19988291",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4c35a7a98b43bb980711cda9571440e3",
+          "registCapi": "1000.000",
+          "name": "广东红孩子文化传媒有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "107426324",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p74cee5e64da17e5f371895e54fc7fc1",
+          "role": "监事",
+          "name": "张根林",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "12896432",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3127c88e78e222acc4bb7d74558eb17f",
+          "registCapi": "0.000",
+          "name": "无锡天睿信息科技合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "126819832",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pb26a4c85fd3826b339ab87d8e8b7d24",
+          "role": "自然人股东",
+          "name": "苏菲",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "55078195",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d189c49cd98fe50173de6239d92d647f",
+          "registCapi": "80000.000",
+          "name": "西子电梯集团有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "101129848",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p60d57ad53e339b77c1a9c9862b19722",
+          "role": "",
+          "name": "胡卫伟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "57839602",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "dc04ef42068ff7108ab16ad8eea0ebde",
+          "registCapi": "0.000",
+          "name": "北京君鼎方达投资管理中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "56225241",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d5e0c3b0baf0d89246787a1d09994080",
+          "registCapi": "1605.848",
+          "name": "北京泽塔云科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "61052195",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "e83c5810b0a237508e5f793a5f7eba91",
+          "registCapi": "363.170",
+          "name": "杭州凌感科技有限公司",
+          "econKind": "有限责任公司(台港澳与境内合资)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "27200287",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "67e2cf18ae5b7d86765e131382e8f0d0",
+          "registCapi": "144.928",
+          "name": "众景视界（北京）科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "65355108",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "f8958f6a18f79b76fa25aaa42d7136f5",
+          "registCapi": "24347.830",
+          "name": "浙江方向投资有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "39250130",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "95811ce1c64be6730bc8f01f7d5d097b",
+          "registCapi": "1275.510",
+          "name": "江苏多肯新材料有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "50969999",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "c1fec621de5a01ab6ec1ff401850e75f",
+          "registCapi": "6000.000",
+          "name": "厦门南讯股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "141679352",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe1b41a54ea0662cbe4a16fd4e381663",
+          "role": "自然人股东",
+          "name": "张松",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "140711656",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pde9f853fb4c5bb0375c770f84dcb648",
+          "role": "自然人股东",
+          "name": "徐进",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "19278763",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "498196bc4bb7ef196358da572bad00ed",
+          "registCapi": "14.171",
+          "name": "上海举佳爽网络科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "149752416",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pfb72440b555e765792e6bd306e95a69",
+          "role": "自然人股东",
+          "name": "马良",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "73943270",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p0ad05883c832fcb0a66dd8acad3479f",
+          "role": "自然人股东",
+          "name": "陈瑜",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "35091591",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "85bbb308dae233f27deb276d16c12f37",
+          "registCapi": "2883.900",
+          "name": "北京华昊中天生物技术有限公司",
+          "econKind": "有限责任公司(中外合资)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "67107694",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ff4c36b5ab00a428bd2275c72f7aa4bf",
+          "registCapi": "5000.000",
+          "name": "河南中原大数据研究院有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "45634089",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "adc9a60e88cd3ebbf4807597f5e6685b",
+          "registCapi": "100.000",
+          "name": "广州华影信息科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "35825331",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "88845f2504ddacf3375499673d169a46",
+          "registCapi": "4614.245",
+          "name": "广州易尊网络科技股份有限公司",
+          "econKind": "其他股份有限公司(非上市)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "4424914",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "10f772b84fe6010d55f8e63bb7dbdc6c",
+          "registCapi": "7200.000",
+          "name": "昆山嘉成晨丰投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "126641432",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pb1d9838a871cd707b94a14e35931850",
+          "role": "自然人股东",
+          "name": "章建兰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "13660744",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "341430c8c558caf0111affed177219c3",
+          "registCapi": "500.000",
+          "name": "北京红孩子文化传媒有限公司",
+          "econKind": "有限责任公司(自然人独资)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "61398323",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "e98cbd72d346c3887f4362e69b222eb2",
+          "registCapi": "0.000",
+          "name": "霍尔果斯数聚通达股权投资合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "53509547",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "cb99412fe787e8205d9688669221bfd9",
+          "registCapi": "4632.787",
+          "name": "北京文安智能技术股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "133706085",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pc84ff6cd6fbd7b5b2efe0e5bbf0dd68",
+          "role": "自然人股东",
+          "name": "梅峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "70915749",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p013c4c47a4ccbbc3733814b3b6000cd",
+          "role": "自然人股东",
+          "name": "王水福",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "157590523",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr2edeee67af8d18baba45e089dfeaae",
+          "role": "自然人股东",
+          "name": "张超",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "23080390",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5807955ad5c70cbd0636a9d80ec6f68f",
+          "registCapi": "500.000",
+          "name": "无锡融合大数据创新中心有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "37071005",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8d3cac9c779bb148523a052eab33b5c8",
+          "registCapi": "6000.000",
+          "name": "上海艾瑞市场咨询股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "93095220",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p475fdfef0acc0df5952c53bd8e05e30",
+          "role": "自然人股东",
+          "name": "王璐",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "144226395",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe9d489c4f9a42243116ba0cfd4caee3",
+          "role": "自然人股东",
+          "name": "高伟朋",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "89698204",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p3c9e41f50a13f1432cc16da7f39da77",
+          "role": "",
+          "name": "程宏斌",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "115760686",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p8f417ac3c2e4e427039fe34bf98f2aa",
+          "role": "董事",
+          "name": "靖稳峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "94296407",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p4b2d1d3008771cf5e4f00751613e7ae",
+          "role": "董事",
+          "name": "窦勇",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "20472305",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4e0e66fa8696245f9e8c98058a057555",
+          "registCapi": "1000.000",
+          "name": "郑州市数智大数据科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "16153149",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3da0bae3fcc5140daac10b088d80bf50",
+          "registCapi": "2000.000",
+          "name": "浙江广翔实业投资有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "48617513",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "b91907c09b584362fd32db12d1d0f72c",
+          "registCapi": "0.000",
+          "name": "杭州慕华股权投资基金合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "4246159",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "104a39c510810c9901890f07098aab45",
+          "registCapi": "1227.273",
+          "name": "西安中科华芯测控有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "181978121",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "prf07f65c571b90b1ba36363dee9c0c8",
+          "role": "监事",
+          "name": "赵耀峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "37654762",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8f731fc8481d64e4a20cc6583e8e1812",
+          "registCapi": "10000.000",
+          "name": "杭州城北电气承装公司",
+          "econKind": "股份合作制",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "21452178",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "51cc53a1cb2b6f9f77dcceab5099459d",
+          "registCapi": "515.996",
+          "name": "深圳市金研微科技有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "118679495",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p988788cff444e31c2b3cb63e876bd81",
+          "role": "自然人股东",
+          "name": "李辉",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "91033531",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p40d9ae6606f3ed2551728367e9e3c21",
+          "role": "自然人股东",
+          "name": "陈浩铭",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "56302465",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d62b881f626ffb215610b6d7c8fac264",
+          "registCapi": "1300.000",
+          "name": "北京天健智慧科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "145341046",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "ped620d85f58bab03d079a77be24eb45",
+          "role": "自然人股东",
+          "name": "牛清娜",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "180974633",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pre829929bca89438c515a9047fed79a",
+          "role": "自然人股东",
+          "name": "李小栋",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "11047498",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2a201531da85a67a60d6d41ab2b0c230",
+          "registCapi": "987.088",
+          "name": "成都数联铭品科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "163949863",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr5f5cc365da1845ac3320953294368f",
+          "role": "监事会主席",
+          "name": "王晓慧",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "165130047",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr688895ad52372eff45bd9e1ccbf356",
+          "role": "董事",
+          "name": "周琳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "180016215",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pre039a9934ea797130eac96d64a2895",
+          "role": "自然人股东",
+          "name": "郄茜",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "21369781",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "517be31194f5383fc9274bde2fc8fe76",
+          "registCapi": "5566.410",
+          "name": "北京云房数据技术有限责任公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "58128258",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "dd1df4a2ce447f4f9a375db1484729ce",
+          "registCapi": "80.000",
+          "name": "深圳市通元合创投资有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "8758905",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "216676b669c20c9c93a491a533146981",
+          "registCapi": "3786.459",
+          "name": "杭州莱源环保科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "112568395",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p851edb58d752c12ed8aee6fd92536b0",
+          "role": "自然人股东",
+          "name": "杜志宏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "116119572",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9065b10c32eb9510e9b2d5255e68bb9",
+          "role": "",
+          "name": "沈军",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "11053481",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2a25eb249fb5f3118d245e4bc3b3319d",
+          "registCapi": "9500.000",
+          "name": "洛阳佳嘉乐农产品开发股份有限公司",
+          "econKind": "其他股份有限公司(非上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "2866473",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "0b0897118e6874f3a9909d26b6494bc6",
+          "registCapi": "1477.072",
+          "name": "北京阅微基因技术有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "137862965",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pd58b3f694614862079a2f26a93e40ca",
+          "role": "自然人股东",
+          "name": "徐娟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "55112267",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d1ab40186b5c85bb0698313f8a7e8752",
+          "registCapi": "1000.000",
+          "name": "北京知好乐信息科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "38101826",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "91253782d4f5a5f0afa82554fc94c8a0",
+          "registCapi": "2443.793",
+          "name": "广东欧工科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "8473483",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "205050191bfe541fb30c1368b32223f5",
+          "registCapi": "600.000",
+          "name": "郑州六合投资有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "19228206",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "49507fc7c512f5ec5be480ae4f05b207",
+          "registCapi": "1629.844",
+          "name": "北京网思科平科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "121636428",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pa1ec740b5b6a67e025886e096dbc3db",
+          "role": "",
+          "name": "陈彦文",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "23203950",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5880d9fb1e4a21232ea64466ff3a604b",
+          "registCapi": "6800.000",
+          "name": "上海唐盛投资股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "76592028",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p132d2ffa7647e9a352e2756cf66390d",
+          "role": "自然人股东",
+          "name": "肖斌",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "26937995",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "66e377fe04503409f4417ef0d6b31bda",
+          "registCapi": "1387.831",
+          "name": "武汉金豆医疗数据科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "152146945",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr06e451b362e1b923b662d4cdb16b7e",
+          "role": "监事",
+          "name": "杨浩英",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "22966348",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5797d5b376595194069337b0660834d8",
+          "registCapi": "1482.720",
+          "name": "翱旗创业（北京）科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "2924859",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "0b427b802f2d62f298d20179af4cbe87",
+          "registCapi": "10000.000",
+          "name": "红孩子文化产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "49533417",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bc8f47bebd6fa8dea7d8c2547538f343",
+          "registCapi": "1488.894",
+          "name": "上海艾想实业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "91908196",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p439d13988135ffdab24758324a933de",
+          "role": "自然人股东",
+          "name": "曹辉",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "30570226",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "74a503679101b03d418669eaaef1c0e2",
+          "registCapi": "1200.000",
+          "name": "安普德（天津）科技股份有限公司",
+          "econKind": "股份有限公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "56441977",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d6b32a5933b3903cbc0f6b7cb52f1cb7",
+          "registCapi": "1000.000",
+          "name": "中原金控（深圳）投资有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "141180750",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe01dc89891e93b47c9d030b2758976e",
+          "role": "自然人股东",
+          "name": "蔡昊黎",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "18218034",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4579b122fc9b017e79ad4ba5fe293c7e",
+          "registCapi": "1000.000",
+          "name": "漯河南华城企业总部基地管理有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "54616169",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "cfc838b6e92a9e0869e8d3252ef6f892",
+          "registCapi": "5530.797",
+          "name": "湖北博士隆科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "142305098",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe3b39ebe5341b38efe59eab3a6ba51b",
+          "role": "",
+          "name": "马宝军",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "115985882",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p8ff872553d0dec361f67b06d4b2643e",
+          "role": "自然人股东",
+          "name": "柳卫涛",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "34198845",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8258fbb6d47579a0965a9b3efc2901e1",
+          "registCapi": "3403.727",
+          "name": "中商惠民（北京）电子商务有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "37739784",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8fc5cefb83f9cef9060a3f2f1e46e5ec",
+          "registCapi": "1250.000",
+          "name": "天智（苏州）智能系统有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "5332328",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "14683a039f06d83e83d23a930d11aef2",
+          "registCapi": "0.000",
+          "name": "上海歌斐惟朴股权投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "40827729",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "9b7dbd3bd34e5087ddc7bafb13e25929",
+          "registCapi": "14929.000",
+          "name": "北京明朝万达科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "102129494",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p640188a9e9748ebcd7866f7d486f4a5",
+          "role": "自然人股东",
+          "name": "王锟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "48903592",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ba2dce25fb798aab537b7a68a6022b93",
+          "registCapi": "165.333",
+          "name": "深圳码隆科技有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "53231727",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ca8bcf2c04ba319c61d197986bb9e592",
+          "registCapi": "258.465",
+          "name": "杭州赤霄科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "158597175",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr3671967ff8b9a72b50aa53e78a8090",
+          "role": "董事",
+          "name": "王伟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "41658175",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "9ea43a58de295aa9f78524ebf9ec8bfb",
+          "registCapi": "6800.000",
+          "name": "创业黑马科技集团股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "6722338",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "19a85585cc3713a3807361dc67fe7774",
+          "registCapi": "146.958",
+          "name": "昆仑智汇数据科技（北京）有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "47453072",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "b4b33280a0f8fe560bf0f9f3842ecc90",
+          "registCapi": "1814.433",
+          "name": "利穗科技（苏州）有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "40696100",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "9afe352b5a0774a49f5152c9e3ba55b8",
+          "registCapi": "5000.000",
+          "name": "四季青服装集团有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "122854424",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pa5cc101faf6a7f944bca345f4010f1f",
+          "role": "自然人股东",
+          "name": "廖虎臣",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "166734523",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr751774615563a4b00c82ae72ac93be",
+          "role": "监事",
+          "name": "查晓荣",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "11716089",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2cab76ceeebbda9c82ecd28feb37c926",
+          "registCapi": "12000.000",
+          "name": "勇猛机械股份有限公司",
+          "econKind": "股份有限公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "25569997",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "61aa0ae512e1c82ba1c74a37bb697bb6",
+          "registCapi": "3694.179",
+          "name": "昆山佰奥智能装备股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "19524710",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4a70fcaa533e162e35c68d96d262c121",
+          "registCapi": "204700.000",
+          "name": "深圳市达晨创丰股权投资企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "115210637",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p8d8254a0835610c29395a4b09d882a8",
+          "role": "自然人股东",
+          "name": "杨晓辉",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "1141059",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "04639774c3fb967e1f500f6ba2bcc0d2",
+          "registCapi": "5040.000",
+          "name": "成都锐思环保技术股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "8358187",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "1fdfdbb001191fe79c8fa97101c63839",
+          "registCapi": "1342.150",
+          "name": "广东朗呈医疗器械科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "35513161",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8754c774f55bb8e48e976cdb7a33d254",
+          "registCapi": "10000.000",
+          "name": "嵩岳科技产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "115566004",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p8ea3140f991fdc0ffa0364c39b59bac",
+          "role": "自然人股东",
+          "name": "苏魁",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "18775106",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "47985041b22a56d4d5c4077f2f526480",
+          "registCapi": "3266.777",
+          "name": "西安欣创电子技术有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "50282915",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bf6491cbb5f8fa450a5c0c2b577e0797",
+          "registCapi": "2616.000",
+          "name": "重庆鹰谷光电股份有限公司",
+          "econKind": "股份有限公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "56551939",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d71e5367e7df2dea5b2a037d0e41aab8",
+          "registCapi": "3409.090",
+          "name": "江西燕南科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "23747594",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5a9e7a9cd1d02504dfa803b55efa8337",
+          "registCapi": "1000.000",
+          "name": "西咸新区大数据交易所有限责任公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "53338699",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "caf37c410dfb1d620605d29908363f7d",
+          "registCapi": "6156.716",
+          "name": "北京索为系统技术股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "42574830",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "a224e4720c1f828f37a38f1d62b0b11c",
+          "registCapi": "495.807",
+          "name": "北京六人游国际旅行社股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "2459983",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "09782728cbcaa15cdbd53898db3a0013",
+          "registCapi": "8690.000",
+          "name": "美林数据技术股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "51842682",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "c54cb69cfd09d31cbd281604c2a3df99",
+          "registCapi": "10.000",
+          "name": "海口玖锦大药房有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "63419049",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "f1388f158ba16bbb1ba016db8371282f",
+          "registCapi": "3000.000",
+          "name": "振华智造（西安）科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股的法人独资)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "17741409",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "43aa7833b79418b39bdc72eead7f9f29",
+          "registCapi": "1320.634",
+          "name": "深圳市三合通发精密五金制品有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "117894249",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9608b991f482fde6b2396334611ace5",
+          "role": "自然人股东",
+          "name": "冯如飞",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "19740249",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4b43357c0a2f911923189c66e6041955",
+          "registCapi": "1200.000",
+          "name": "南京商托斯信息科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "29005004",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "6ebe702854c74a38887bce3be8147f85",
+          "registCapi": "15199.369",
+          "name": "数据堂（北京）科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "149608860",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pfafd2301b73495c8514b4892172e7f7",
+          "role": "自然人股东",
+          "name": "张平梅",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "55485497",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d3141342b3c845aab5a225aa0e7f6c6b",
+          "registCapi": "1000.000",
+          "name": "美林数据技术（杭州）有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "59182846",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "e12115032f0df68bbe06bf3341cd34e6",
+          "registCapi": "1176.471",
+          "name": "杭州昊方控制设备有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "13737389",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "345fa16113248332effb050985cddcaa",
+          "registCapi": "60.000",
+          "name": "海口君雅贸易有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "101171590",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p60f78cec1b379a8d279be375481c167",
+          "role": "自然人股东",
+          "name": "陈立英",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "121742016",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pa2424863f0d2c8728d3c91874336023",
+          "role": "自然人股东",
+          "name": "樊俊岭",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "145644842",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pee5ab1632e8784c8b80fc3bbb12db17",
+          "role": "自然人股东",
+          "name": "侯娟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "135155590",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pccecaae707f68a47a2763ac31abb924",
+          "role": "自然人股东",
+          "name": "刘宏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "83345279",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p288515dc3d3481bb8bf59470b7186e9",
+          "role": "自然人股东",
+          "name": "吴垌沅",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "78191907",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p183a340d8dc42a19067580f9187bd1f",
+          "role": "自然人股东",
+          "name": "苏晓磊",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "64637002",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "f5da268d04062b12c505c3dee1ceae9a",
+          "registCapi": "500.000",
+          "name": "燕南国创科技（北京）有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "149620093",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pfb0621adc2a66a938c27f86be2ac8be",
+          "role": "自然人股东",
+          "name": "张亚军",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "131769411",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pc226720e08a8c02c4bbd26bb354c38c",
+          "role": "自然人股东",
+          "name": "祝慧良",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "145105209",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "peca0e1b9679b9c2345221e3eada80ef",
+          "role": "自然人股东",
+          "name": "白朝旭",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "43579706",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "a5fe03b6dd572e462e4bfe5b2493a2f8",
+          "registCapi": "1800.893",
+          "name": "华清科盛（北京）信息技术有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "54336158",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ceb902682d71dd34617bfab362393e1c",
+          "registCapi": "1250.000",
+          "name": "深圳前海慧联科技发展有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "30632560",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "74e0c9c2a749d39e1aa5fb7a32e3d4b2",
+          "registCapi": "11451.235",
+          "name": "深圳欣锐科技股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "46204258",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "aff3919472af317fd97f24daafe52a08",
+          "registCapi": "0.000",
+          "name": "上海歌斐鸿仑投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "75503908",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p0fbe59e6aa87cdfcfb81916584f9f25",
+          "role": "自然人股东",
+          "name": "赵耀峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "133332567",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pc720264657ab4787515cba4e64ee011",
+          "role": "自然人股东",
+          "name": "淡阳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "32554587",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "7c227dca3dd95a50fe67b213a7c6c12e",
+          "registCapi": "0.000",
+          "name": "上海歌斐惟忠股权投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "6379468",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "185e279fc60098371a16ba0f7524f2aa",
+          "registCapi": "2000.000",
+          "name": "中科视元科技（杭州）有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "481706",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "01da59c0eed61c6eb0fe307917569905",
+          "registCapi": "1166.480",
+          "name": "全民认证科技（杭州）有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "14808401",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3877951898d6d2f163d08a9f8f08ae77",
+          "registCapi": "0.000",
+          "name": "北京天睿聚合投资管理中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "23032558",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "57d8f5aec0c1ad516139201521dab609",
+          "registCapi": "4895.000",
+          "name": "郑州科慧科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "39686636",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "972a1bdbdb931cf1185873c31591322c",
+          "registCapi": "2050.814",
+          "name": "上海游戏多网络科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "25951290",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "631fc7a47457e30ef5e6841ffa4f44bf",
+          "registCapi": "4650.468",
+          "name": "深圳市时代高科技设备股份有限公司",
+          "econKind": "股份有限公司(非上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "97834597",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p5661e5411618a59e950ae0ac0f74c06",
+          "role": "自然人股东",
+          "name": "宋旻",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "38679035",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "935692c43800a0a5ce301809ca64a960",
+          "registCapi": "1000.000",
+          "name": "湖州越球投资有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "5350891",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "147a787bbe8899e055cffff63c663008",
+          "registCapi": "10000.000",
+          "name": "深圳协和方元投资基金管理股份有限公司",
+          "econKind": "股份有限公司(非上市)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "12891512",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3122e69eecf2aa1b47db9308183b7196",
+          "registCapi": "1000.000",
+          "name": "北京瀚沙科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "162244118",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr522f3a4f643cbfdd6c01920a5fa93c",
+          "role": "监事",
+          "name": "黄哲",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "40287195",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "997210924fca737c1e040a887b179a80",
+          "registCapi": "12000.000",
+          "name": "成都芯通科技股份有限公司",
+          "econKind": "股份有限公司(中外合资、未上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "137008021",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pd2d1a394b5b024b58ec125e972a892c",
+          "role": "监事",
+          "name": "常立亚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "38825455",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "93e478104341a27e03e34e510c93af15",
+          "registCapi": "500.000",
+          "name": "安肽和（杭州）医疗科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "36702192",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8bd72331a49e794b35dced93ca738342",
+          "registCapi": "50000.000",
+          "name": "河南建业控股发展有限公司",
+          "econKind": "有限责任公司（非自然人投资或控股的法人独资）",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "14253341",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3657120203ab56c2d5c215ba78042d1c",
+          "registCapi": "50000.000",
+          "name": "西咸新区智慧城市发展集团有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "56513176",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d6f88149c35c6a68f61f1b7ed74c9319",
+          "registCapi": "10603.500",
+          "name": "河南鑫安利安全科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "160597592",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr4599781129ba17c4048efa8959e58b",
+          "role": "自然人股东",
+          "name": "杨雷",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "6364587",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "184fd2cf81e78498f6c54687c8474ecc",
+          "registCapi": "5000.000",
+          "name": "清大知好乐教育科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "67222986",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ffbd792db6bd80a675392cf2fd534795",
+          "registCapi": "18668.571",
+          "name": "深圳市达晨财智创业投资管理有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "136451565",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pd10bf556a1b4146fd4185520300f23b",
+          "role": "自然人股东",
+          "name": "王艳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "54223595",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ce4c080da5455193e3eccfcdad6de269",
+          "registCapi": "1455.000",
+          "name": "杭州大天数控机床有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "14467341",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "372796bf7f719aa57e95c2fbdb2eecae",
+          "registCapi": "18900.000",
+          "name": "知好乐教育科技集团有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "45523812",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ad5e88301a8126519e6b62e1f55c02c4",
+          "registCapi": "1466.859",
+          "name": "乐森机器人（深圳）有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "39094151",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "94e9762cf5c561f9df8a344e4e1b2e8d",
+          "registCapi": "3125.000",
+          "name": "东莞市鑫诠光电技术有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "23171250",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5860c4b8bc19a0601d79dd0eb44e2286",
+          "registCapi": "11500.000",
+          "name": "江苏智慧新吴信息科技有限公司",
+          "econKind": "有限责任公司(国有独资)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "5951884",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "16c1b2df7d088f21b05cf9eb316bfd16",
+          "registCapi": "2000.000",
+          "name": "美林数据（江苏）有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "122887816",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pa5e75d4fd42aa0e46f4022bc7cf0489",
+          "role": "自然人股东",
+          "name": "孙焕良",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "140297095",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pdd4d7c79f767c553b7957cbafd95284",
+          "role": "自然人股东",
+          "name": "宋林利",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "56366215",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d669853aae5b9344dad616bb3e334e55",
+          "registCapi": "3000.000",
+          "name": "河南嵩山科技创新基金管理有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "158768301",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr37bbd25620b3f918d6335c0ce1edcc",
+          "role": "总经理",
+          "name": "韩笑康",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "66943005",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "feaabd9399abb16513014f54b7ab967e",
+          "registCapi": "3750.000",
+          "name": "成都智明达电子股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "35747783",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "88388d11cfc161f23970fb199c7c7b19",
+          "registCapi": "1500.000",
+          "name": "安普德（北京）科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "134412778",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pca8ff34a46cac8162347bc00b001e1a",
+          "role": "董事",
+          "name": "任慧宏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "49264390",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bb8a833f3635af5a861c46c04e99f3ee",
+          "registCapi": "7902.632",
+          "name": "武汉华康世纪洁净室技术工程有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "42733436",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "a2c098a254ac39f89e0766d081c11ba4",
+          "registCapi": "1984.126",
+          "name": "上海狮吼网络科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "81515310",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p22ba9229572c3e219cf3a9f26df5dd5",
+          "role": "自然人股东",
+          "name": "章荷云",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "103453661",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p683556c53e1478a86dde1278c01fa9c",
+          "role": "",
+          "name": "郑前",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "88606897",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p3929f3dbb1b3590086cf1f9cd49f4c6",
+          "role": "自然人股东",
+          "name": "于洋",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "64491041",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "f54c3094928fcba865b3997513070483",
+          "registCapi": "145.380",
+          "name": "北京爱游易科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "28254803",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "6be7aa83bf1d93e6bb7a680f734c8a20",
+          "registCapi": "10833.333",
+          "name": "广东新大禹环境科技股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "6562919",
+        "type": "INVEST",
+        "source": "14253341",
+        "target": "23747594",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 70,
+          "shouldCapi": 700
+        }
+      },
+      {
+        "id": "150868219",
+        "type": "LEGAL",
+        "source": "104011861",
+        "target": "2459983",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "91583859",
+        "type": "LEGAL",
+        "source": "67222986",
+        "target": "52190025",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "93691282",
+        "type": "LEGAL",
+        "source": "142305098",
+        "target": "56366215",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "1035782",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "39094151",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 4,
+          "shouldCapi": 125
+        }
+      },
+      {
+        "id": "6562920",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "23747594",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 30,
+          "shouldCapi": 300
+        }
+      },
+      {
+        "id": "67656196",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "37071005",
+        "properties": {
+          "stockPercent": 4.5
+        }
+      },
+      {
+        "id": "138822743",
+        "type": "LEGAL",
+        "source": "137008021",
+        "target": "19988291",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "5611079",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "25951290",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 5.56,
+          "shouldCapi": 200
+        }
+      },
+      {
+        "id": "27677109",
+        "type": "INVEST",
+        "source": "142305098",
+        "target": "14724778",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 7.27,
+          "shouldCapi": 800
+        }
+      },
+      {
+        "id": "183928546",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "29005004",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "218402066",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "21369781",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "153442098",
+        "type": "LEGAL",
+        "source": "93095220",
+        "target": "54882632",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "4561500",
+        "type": "INVEST",
+        "source": "67107694",
+        "target": "66594746",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 5,
+          "shouldCapi": 11.0526
+        }
+      },
+      {
+        "id": "27677116",
+        "type": "INVEST",
+        "source": "117894249",
+        "target": "14724778",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.73,
+          "shouldCapi": 300
+        }
+      },
+      {
+        "id": "27677115",
+        "type": "INVEST",
+        "source": "134412778",
+        "target": "14724778",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 4.55,
+          "shouldCapi": 500
+        }
+      },
+      {
+        "id": "27677112",
+        "type": "INVEST",
+        "source": "121742016",
+        "target": "14724778",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 6.36,
+          "shouldCapi": 700
+        }
+      },
+      {
+        "id": "27677113",
+        "type": "INVEST",
+        "source": "78191907",
+        "target": "14724778",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 4.55,
+          "shouldCapi": 500
+        }
+      },
+      {
+        "id": "189975922",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "11047498",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "7052874",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "30632560",
+        "properties": {
+          "stockPercent": 3.36
+        }
+      },
+      {
+        "id": "241863245",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "66943005",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "1799220",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "11047498",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 12.03,
+          "shouldCapi": 118.75
+        }
+      },
+      {
+        "id": "2420246",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "56302465",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 4.31,
+          "shouldCapi": 55.998
+        }
+      },
+      {
+        "id": "605242",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "50172599",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 15.62,
+          "shouldCapi": 78.1199
+        }
+      },
+      {
+        "id": "4277370",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "8758905",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 11.64,
+          "shouldCapi": 440.57
+        }
+      },
+      {
+        "id": "7123026",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "37739784",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 250
+        }
+      },
+      {
+        "id": "276747328",
+        "type": "EMPLOY",
+        "source": "152146945",
+        "target": "54882632",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "113223808",
+        "type": "LEGAL",
+        "source": "93095220",
+        "target": "55485497",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "168011836",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "18721549",
+        "properties": {
+          "role": "执行董事"
+        }
+      },
+      {
+        "id": "2891372",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "18145112",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 10,
+          "shouldCapi": 111.11
+        }
+      },
+      {
+        "id": "276747326",
+        "type": "EMPLOY",
+        "source": "99589094",
+        "target": "54882632",
+        "properties": {
+          "role": "总经理,董事"
+        }
+      },
+      {
+        "id": "276747327",
+        "type": "EMPLOY",
+        "source": "165130047",
+        "target": "54882632",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "276747324",
+        "type": "EMPLOY",
+        "source": "93095220",
+        "target": "54882632",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "4806155",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "32245642",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 4.07,
+          "shouldCapi": 695.1804
+        }
+      },
+      {
+        "id": "232864674",
+        "type": "EMPLOY",
+        "source": "99589094",
+        "target": "23080390",
+        "properties": {
+          "role": "执行董事"
+        }
+      },
+      {
+        "id": "232864676",
+        "type": "EMPLOY",
+        "source": "152146945",
+        "target": "23080390",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "86864230",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "56513176",
+        "properties": {
+          "stockPercent": 6.6
+        }
+      },
+      {
+        "id": "2534506",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "45523812",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 12.07,
+          "shouldCapi": 176.9912
+        }
+      },
+      {
+        "id": "362581",
+        "type": "INVEST",
+        "source": "93095220",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 20.35
+        }
+      },
+      {
+        "id": "362580",
+        "type": "INVEST",
+        "source": "104011861",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 20.58
+        }
+      },
+      {
+        "id": "1530436",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "67107694",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "362582",
+        "type": "INVEST",
+        "source": "89698204",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 10.18
+        }
+      },
+      {
+        "id": "47927432",
+        "type": "INVEST",
+        "source": "131769411",
+        "target": "40696100",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 6,
+          "shouldCapi": 300
+        }
+      },
+      {
+        "id": "4622354",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "8358187",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 6.71,
+          "shouldCapi": 90
+        }
+      },
+      {
+        "id": "5666817",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "18775106",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 6.5,
+          "shouldCapi": 212.48
+        }
+      },
+      {
+        "id": "232806839",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "40287195",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "1530432",
+        "type": "INVEST",
+        "source": "35513161",
+        "target": "67107694",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 55,
+          "shouldCapi": 2750
+        }
+      },
+      {
+        "id": "2360444",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "55485497",
+        "properties": {
+          "role": "",
+          "stockPercent": 100,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "2313851",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "35091591",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 4.45,
+          "shouldCapi": 128.2035
+        }
+      },
+      {
+        "id": "5715980",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "42574830",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 9,
+          "shouldCapi": 38.7931
+        }
+      },
+      {
+        "id": "201662052",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "2924859",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "6822411",
+        "type": "INVEST",
+        "source": "14467341",
+        "target": "6364587",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 5,
+          "shouldCapi": 250
+        }
+      },
+      {
+        "id": "248285345",
+        "type": "EMPLOY",
+        "source": "70915749",
+        "target": "55078195",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "201662059",
+        "type": "EMPLOY",
+        "source": "91005263",
+        "target": "2924859",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "128498118",
+        "type": "LEGAL",
+        "source": "70915749",
+        "target": "65355108",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "277092587",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "6364587",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "509045",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "49264390",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 5.01,
+          "shouldCapi": 395.1315
+        }
+      },
+      {
+        "id": "5061183",
+        "type": "INVEST",
+        "source": "55485497",
+        "target": "5951884",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 40,
+          "shouldCapi": 800
+        }
+      },
+      {
+        "id": "5176381",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "59182846",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 235.2942
+        }
+      },
+      {
+        "id": "11357400",
+        "type": "INVEST",
+        "source": "91005263",
+        "target": "14467341",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 5.81,
+          "shouldCapi": 0
+        }
+      },
+      {
+        "id": "66464142",
+        "type": "INVEST",
+        "source": "91005263",
+        "target": "19988291",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 39,
+          "shouldCapi": 390
+        }
+      },
+      {
+        "id": "2462303",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "22966348",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 9,
+          "shouldCapi": 133.486
+        }
+      },
+      {
+        "id": "66464139",
+        "type": "INVEST",
+        "source": "137008021",
+        "target": "19988291",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 41,
+          "shouldCapi": 410
+        }
+      },
+      {
+        "id": "70601291",
+        "type": "INVEST",
+        "source": "104011861",
+        "target": "12891512",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1,
+          "shouldCapi": 10
+        }
+      },
+      {
+        "id": "365179",
+        "type": "INVEST",
+        "source": "149620093",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 3.25
+        }
+      },
+      {
+        "id": "232864671",
+        "type": "EMPLOY",
+        "source": "158768301",
+        "target": "23080390",
+        "properties": {
+          "role": "总经理"
+        }
+      },
+      {
+        "id": "365178",
+        "type": "INVEST",
+        "source": "91005263",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 3.97
+        }
+      },
+      {
+        "id": "6507747",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "6722338",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 8.23,
+          "shouldCapi": 12.089
+        }
+      },
+      {
+        "id": "2872491",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "38101826",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 10.6,
+          "shouldCapi": 259.091
+        }
+      },
+      {
+        "id": "252656525",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "6379468",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "168856727",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "481706",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "6333674",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "8811186",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 11.81,
+          "shouldCapi": 134.359
+        }
+      },
+      {
+        "id": "59312387",
+        "type": "INVEST",
+        "source": "92934628",
+        "target": "66594746",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 81.43,
+          "shouldCapi": 180
+        }
+      },
+      {
+        "id": "25205515",
+        "type": "INVEST",
+        "source": "149620093",
+        "target": "51842682",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 60,
+          "shouldCapi": 0
+        }
+      },
+      {
+        "id": "7280354",
+        "type": "INVEST",
+        "source": "67222986",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 0.98,
+          "shouldCapi": 2000
+        }
+      },
+      {
+        "id": "7280352",
+        "type": "INVEST",
+        "source": "5350891",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "86399925",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "29005004",
+        "properties": {
+          "stockPercent": 5.96
+        }
+      },
+      {
+        "id": "181098078",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "1141059",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "860827",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "26937995",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 9.81,
+          "shouldCapi": 136.0947
+        }
+      },
+      {
+        "id": "120854947",
+        "type": "LEGAL",
+        "source": "104011861",
+        "target": "14808401",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "7164154",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "48617513",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 3.33,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "5520589",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "11716089",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 8,
+          "shouldCapi": 960
+        }
+      },
+      {
+        "id": "4011174",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "54223595",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 10,
+          "shouldCapi": 145.5
+        }
+      },
+      {
+        "id": "162208523",
+        "type": "EMPLOY",
+        "source": "142305098",
+        "target": "56366215",
+        "properties": {
+          "role": "董事长兼总经理"
+        }
+      },
+      {
+        "id": "482976",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "34198845",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 6.56,
+          "shouldCapi": 222.62775
+        }
+      },
+      {
+        "id": "3682964",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "4407909",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 0,
+          "shouldCapi": 0
+        }
+      },
+      {
+        "id": "4109966",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "64491041",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 7.38,
+          "shouldCapi": 10.7324
+        }
+      },
+      {
+        "id": "7280351",
+        "type": "INVEST",
+        "source": "38679035",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "7280350",
+        "type": "INVEST",
+        "source": "23203950",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "657080",
+        "type": "INVEST",
+        "source": "67222986",
+        "target": "49601680",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1,
+          "shouldCapi": 100
+        }
+      },
+      {
+        "id": "7280349",
+        "type": "INVEST",
+        "source": "11555971",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "7280347",
+        "type": "INVEST",
+        "source": "10328725",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 2.44,
+          "shouldCapi": 5000
+        }
+      },
+      {
+        "id": "7280346",
+        "type": "INVEST",
+        "source": "4424914",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 3.52,
+          "shouldCapi": 7200
+        }
+      },
+      {
+        "id": "3439745",
+        "type": "INVEST",
+        "source": "49601680",
+        "target": "21369781",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 5.87,
+          "shouldCapi": 326.92
+        }
+      },
+      {
+        "id": "7280345",
+        "type": "INVEST",
+        "source": "46204258",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 3.91,
+          "shouldCapi": 8000
+        }
+      },
+      {
+        "id": "7280344",
+        "type": "INVEST",
+        "source": "63189440",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 4.89,
+          "shouldCapi": 10000
+        }
+      },
+      {
+        "id": "157940190",
+        "type": "LEGAL",
+        "source": "105847362",
+        "target": "58592085",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "7280343",
+        "type": "INVEST",
+        "source": "8500430",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 4.89,
+          "shouldCapi": 10000
+        }
+      },
+      {
+        "id": "7280342",
+        "type": "INVEST",
+        "source": "43146405",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 5.13,
+          "shouldCapi": 10500
+        }
+      },
+      {
+        "id": "130561905",
+        "type": "LEGAL",
+        "source": "99589094",
+        "target": "23080390",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "7280341",
+        "type": "INVEST",
+        "source": "5332328",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 22.72,
+          "shouldCapi": 46500
+        }
+      },
+      {
+        "id": "7280340",
+        "type": "INVEST",
+        "source": "32554587",
+        "target": "19524710",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 23.84,
+          "shouldCapi": 48800
+        }
+      },
+      {
+        "id": "255011212",
+        "type": "EMPLOY",
+        "source": "104011861",
+        "target": "12891512",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "81841247",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "39686636",
+        "properties": {
+          "stockPercent": 8.1699
+        }
+      },
+      {
+        "id": "4275853",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "23080390",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 100,
+          "shouldCapi": 500
+        }
+      },
+      {
+        "id": "365768",
+        "type": "INVEST",
+        "source": "135155590",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 2.61
+        }
+      },
+      {
+        "id": "17283018",
+        "type": "INVEST",
+        "source": "84771644",
+        "target": "7609407",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 42.31,
+          "shouldCapi": 3469.42
+        }
+      },
+      {
+        "id": "237849340",
+        "type": "EMPLOY",
+        "source": "104011861",
+        "target": "66594746",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "133139772",
+        "type": "LEGAL",
+        "source": "92934628",
+        "target": "66594746",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "3009785",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "2866473",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 8.63,
+          "shouldCapi": 127.5
+        }
+      },
+      {
+        "id": "237849337",
+        "type": "EMPLOY",
+        "source": "134412778",
+        "target": "66594746",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "580317",
+        "type": "INVEST",
+        "source": "49601680",
+        "target": "481706",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 4.8,
+          "shouldCapi": 55.991
+        }
+      },
+      {
+        "id": "2982133",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "61750148",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 6.79,
+          "shouldCapi": 67.94
+        }
+      },
+      {
+        "id": "237849335",
+        "type": "EMPLOY",
+        "source": "92934628",
+        "target": "66594746",
+        "properties": {
+          "role": "董事兼总经理"
+        }
+      },
+      {
+        "id": "220494328",
+        "type": "EMPLOY",
+        "source": "131769411",
+        "target": "40696100",
+        "properties": {
+          "role": "经理"
+        }
+      },
+      {
+        "id": "7117956",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "41658175",
+        "properties": {
+          "stockPercent": 5.83
+        }
+      },
+      {
+        "id": "248748607",
+        "type": "EMPLOY",
+        "source": "91005263",
+        "target": "19988291",
+        "properties": {
+          "role": "执行董事"
+        }
+      },
+      {
+        "id": "197871",
+        "type": "INVEST",
+        "source": "36702192",
+        "target": "56366215",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 10,
+          "shouldCapi": 300
+        }
+      },
+      {
+        "id": "248748605",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "19988291",
+        "properties": {
+          "role": "经理"
+        }
+      },
+      {
+        "id": "14873104",
+        "type": "INVEST",
+        "source": "94296407",
+        "target": "49601680",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.8,
+          "shouldCapi": 180
+        }
+      },
+      {
+        "id": "698617",
+        "type": "INVEST",
+        "source": "67222986",
+        "target": "52190025",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 0.01,
+          "shouldCapi": 0.525
+        }
+      },
+      {
+        "id": "5909155",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "17741409",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 7.89,
+          "shouldCapi": 104.1633
+        }
+      },
+      {
+        "id": "444671",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "58128258",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 3.29,
+          "shouldCapi": 2.63
+        }
+      },
+      {
+        "id": "976119",
+        "type": "INVEST",
+        "source": "14467341",
+        "target": "55112267",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 61,
+          "shouldCapi": 610
+        }
+      },
+      {
+        "id": "138580667",
+        "type": "LEGAL",
+        "source": "70915749",
+        "target": "55078195",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "698615",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "52190025",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 99.99,
+          "shouldCapi": 5249.475
+        }
+      },
+      {
+        "id": "233490709",
+        "type": "EMPLOY",
+        "source": "91005263",
+        "target": "45634089",
+        "properties": {
+          "role": "执行董事"
+        }
+      },
+      {
+        "id": "43847069",
+        "type": "INVEST",
+        "source": "115985882",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.99,
+          "shouldCapi": 3.8712
+        }
+      },
+      {
+        "id": "285353474",
+        "type": "EMPLOY",
+        "source": "105847362",
+        "target": "58592085",
+        "properties": {
+          "role": "总经理,执行董事"
+        }
+      },
+      {
+        "id": "43847068",
+        "type": "INVEST",
+        "source": "180016215",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.09,
+          "shouldCapi": 4.2541
+        }
+      },
+      {
+        "id": "253133335",
+        "type": "EMPLOY",
+        "source": "141180750",
+        "target": "14253341",
+        "properties": {
+          "role": "副总经理,董事"
+        }
+      },
+      {
+        "id": "43847071",
+        "type": "INVEST",
+        "source": "157590523",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.73,
+          "shouldCapi": 2.8361
+        }
+      },
+      {
+        "id": "7297899",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "58592085",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 100,
+          "shouldCapi": 500
+        }
+      },
+      {
+        "id": "43847064",
+        "type": "INVEST",
+        "source": "133706085",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.41,
+          "shouldCapi": 5.5303
+        }
+      },
+      {
+        "id": "43847067",
+        "type": "INVEST",
+        "source": "135155590",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.09,
+          "shouldCapi": 4.2541
+        }
+      },
+      {
+        "id": "43847066",
+        "type": "INVEST",
+        "source": "126819832",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.23,
+          "shouldCapi": 4.8213
+        }
+      },
+      {
+        "id": "285353477",
+        "type": "EMPLOY",
+        "source": "167952471",
+        "target": "58592085",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "43847061",
+        "type": "INVEST",
+        "source": "75227160",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.63,
+          "shouldCapi": 6.3811
+        }
+      },
+      {
+        "id": "6409576",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "19740249",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 8.89,
+          "shouldCapi": 106.679
+        }
+      },
+      {
+        "id": "43847060",
+        "type": "INVEST",
+        "source": "83345279",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.29,
+          "shouldCapi": 8.9336
+        }
+      },
+      {
+        "id": "43847062",
+        "type": "INVEST",
+        "source": "91033531",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.52,
+          "shouldCapi": 5.9557
+        }
+      },
+      {
+        "id": "43847057",
+        "type": "INVEST",
+        "source": "149752416",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.72,
+          "shouldCapi": 10.6352
+        }
+      },
+      {
+        "id": "43847056",
+        "type": "INVEST",
+        "source": "75503908",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.83,
+          "shouldCapi": 11.0606
+        }
+      },
+      {
+        "id": "43847059",
+        "type": "INVEST",
+        "source": "102129494",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.39,
+          "shouldCapi": 9.359
+        }
+      },
+      {
+        "id": "934657",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "30570226",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 14,
+          "shouldCapi": 168
+        }
+      },
+      {
+        "id": "253133337",
+        "type": "EMPLOY",
+        "source": "158597175",
+        "target": "14253341",
+        "properties": {
+          "role": "副总经理"
+        }
+      },
+      {
+        "id": "43847052",
+        "type": "INVEST",
+        "source": "136451565",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.95,
+          "shouldCapi": 11.5286
+        }
+      },
+      {
+        "id": "43847055",
+        "type": "INVEST",
+        "source": "118225688",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.92,
+          "shouldCapi": 11.4009
+        }
+      },
+      {
+        "id": "43847054",
+        "type": "INVEST",
+        "source": "130149854",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.93,
+          "shouldCapi": 11.4435
+        }
+      },
+      {
+        "id": "43847051",
+        "type": "INVEST",
+        "source": "144226395",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 3.26,
+          "shouldCapi": 12.7622
+        }
+      },
+      {
+        "id": "189042259",
+        "type": "EMPLOY",
+        "source": "73943270",
+        "target": "16153149",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "43847047",
+        "type": "INVEST",
+        "source": "133332567",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 3.26,
+          "shouldCapi": 12.7622
+        }
+      },
+      {
+        "id": "43847046",
+        "type": "INVEST",
+        "source": "115210637",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 3.36,
+          "shouldCapi": 13.1451
+        }
+      },
+      {
+        "id": "43847040",
+        "type": "INVEST",
+        "source": "120535311",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 5.31,
+          "shouldCapi": 20.7599
+        }
+      },
+      {
+        "id": "43847043",
+        "type": "INVEST",
+        "source": "128925176",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 4.02,
+          "shouldCapi": 15.6976
+        }
+      },
+      {
+        "id": "43847042",
+        "type": "INVEST",
+        "source": "140297095",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 4.87,
+          "shouldCapi": 19.0441
+        }
+      },
+      {
+        "id": "49442262",
+        "type": "INVEST",
+        "source": "104011861",
+        "target": "61398323",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.58,
+          "shouldCapi": 100
+        }
+      },
+      {
+        "id": "2242310",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "4246159",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 11.41,
+          "shouldCapi": 140
+        }
+      },
+      {
+        "id": "3254548",
+        "type": "INVEST",
+        "source": "67107694",
+        "target": "20472305",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 34,
+          "shouldCapi": 340
+        }
+      },
+      {
+        "id": "43847092",
+        "type": "INVEST",
+        "source": "175229038",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.07,
+          "shouldCapi": 0.2836
+        }
+      },
+      {
+        "id": "1363263",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "14252180",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 6.65,
+          "shouldCapi": 76.09
+        }
+      },
+      {
+        "id": "43847089",
+        "type": "INVEST",
+        "source": "115566004",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.11,
+          "shouldCapi": 0.4254
+        }
+      },
+      {
+        "id": "1419064",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "37541454",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 4.8,
+          "shouldCapi": 480
+        }
+      },
+      {
+        "id": "43847088",
+        "type": "INVEST",
+        "source": "145341046",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.11,
+          "shouldCapi": 0.4254
+        }
+      },
+      {
+        "id": "2828036",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "48903592",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 6.11,
+          "shouldCapi": 10.1041
+        }
+      },
+      {
+        "id": "43847087",
+        "type": "INVEST",
+        "source": "99589094",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.22,
+          "shouldCapi": 0.8508
+        }
+      },
+      {
+        "id": "151287862",
+        "type": "LEGAL",
+        "source": "141180750",
+        "target": "23747594",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "43847086",
+        "type": "INVEST",
+        "source": "118679495",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.23,
+          "shouldCapi": 0.8934
+        }
+      },
+      {
+        "id": "43847083",
+        "type": "INVEST",
+        "source": "160597592",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.29,
+          "shouldCapi": 1.1344
+        }
+      },
+      {
+        "id": "43847082",
+        "type": "INVEST",
+        "source": "158933297",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.36,
+          "shouldCapi": 1.418
+        }
+      },
+      {
+        "id": "43847077",
+        "type": "INVEST",
+        "source": "88606897",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.54,
+          "shouldCapi": 2.127
+        }
+      },
+      {
+        "id": "43847076",
+        "type": "INVEST",
+        "source": "122854424",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.65,
+          "shouldCapi": 2.5524
+        }
+      },
+      {
+        "id": "180119430",
+        "type": "EMPLOY",
+        "source": "149620093",
+        "target": "13737389",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "43847079",
+        "type": "INVEST",
+        "source": "180974633",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.36,
+          "shouldCapi": 1.418
+        }
+      },
+      {
+        "id": "43847078",
+        "type": "INVEST",
+        "source": "127295874",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.54,
+          "shouldCapi": 2.127
+        }
+      },
+      {
+        "id": "43847073",
+        "type": "INVEST",
+        "source": "161681356",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 0.73,
+          "shouldCapi": 2.8361
+        }
+      },
+      {
+        "id": "141023064",
+        "type": "LEGAL",
+        "source": "89698204",
+        "target": "63419049",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "205116",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "35747783",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 11.2,
+          "shouldCapi": 168
+        }
+      },
+      {
+        "id": "27256480",
+        "type": "INVEST",
+        "source": "73943270",
+        "target": "16153149",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 25,
+          "shouldCapi": 500
+        }
+      },
+      {
+        "id": "13444492",
+        "type": "INVEST",
+        "source": "137008021",
+        "target": "18721549",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 20,
+          "shouldCapi": 1200
+        }
+      },
+      {
+        "id": "160131273",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "54866303",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "185313353",
+        "type": "EMPLOY",
+        "source": "86993788",
+        "target": "67107694",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "2096988",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "43579706",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 6.17,
+          "shouldCapi": 111.1111
+        }
+      },
+      {
+        "id": "185313359",
+        "type": "EMPLOY",
+        "source": "104011861",
+        "target": "67107694",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "185313356",
+        "type": "EMPLOY",
+        "source": "115760686",
+        "target": "67107694",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "185313347",
+        "type": "EMPLOY",
+        "source": "92934628",
+        "target": "67107694",
+        "properties": {
+          "role": "董事兼总经理"
+        }
+      },
+      {
+        "id": "185313350",
+        "type": "EMPLOY",
+        "source": "134412778",
+        "target": "67107694",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "271811427",
+        "type": "EMPLOY",
+        "source": "135155590",
+        "target": "2459983",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "4046701",
+        "type": "INVEST",
+        "source": "16153149",
+        "target": "65355108",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 3.08,
+          "shouldCapi": 750
+        }
+      },
+      {
+        "id": "4046700",
+        "type": "INVEST",
+        "source": "37654762",
+        "target": "65355108",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 5,
+          "shouldCapi": 1217.39
+        }
+      },
+      {
+        "id": "195351798",
+        "type": "EMPLOY",
+        "source": "104011861",
+        "target": "38825455",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "271811425",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "2459983",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "271811431",
+        "type": "EMPLOY",
+        "source": "83345279",
+        "target": "2459983",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "4046697",
+        "type": "INVEST",
+        "source": "55078195",
+        "target": "65355108",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 75.76,
+          "shouldCapi": 18445.66
+        }
+      },
+      {
+        "id": "271811429",
+        "type": "EMPLOY",
+        "source": "145341046",
+        "target": "2459983",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "4046699",
+        "type": "INVEST",
+        "source": "40696100",
+        "target": "65355108",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 6.16,
+          "shouldCapi": 1500
+        }
+      },
+      {
+        "id": "271811428",
+        "type": "EMPLOY",
+        "source": "88606897",
+        "target": "2459983",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "4046698",
+        "type": "INVEST",
+        "source": "7609407",
+        "target": "65355108",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 10,
+          "shouldCapi": 2434.78
+        }
+      },
+      {
+        "id": "185313362",
+        "type": "EMPLOY",
+        "source": "107426324",
+        "target": "67107694",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "173854470",
+        "type": "EMPLOY",
+        "source": "84771644",
+        "target": "7609407",
+        "properties": {
+          "role": "副董事长"
+        }
+      },
+      {
+        "id": "86229112",
+        "type": "INVEST",
+        "source": "14724778",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 4.83
+        }
+      },
+      {
+        "id": "271811432",
+        "type": "EMPLOY",
+        "source": "130149854",
+        "target": "2459983",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "21395483",
+        "type": "INVEST",
+        "source": "149620093",
+        "target": "13737389",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 60,
+          "shouldCapi": 36
+        }
+      },
+      {
+        "id": "86229118",
+        "type": "INVEST",
+        "source": "14808401",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 3.17
+        }
+      },
+      {
+        "id": "86229117",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 3.88
+        }
+      },
+      {
+        "id": "86229116",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "2459983",
+        "properties": {
+          "stockPercent": 4.37
+        }
+      },
+      {
+        "id": "1405301",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "21452178",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 15.81,
+          "shouldCapi": 81.5687
+        }
+      },
+      {
+        "id": "228904644",
+        "type": "EMPLOY",
+        "source": "73943270",
+        "target": "65355108",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "56474175",
+        "type": "INVEST",
+        "source": "91005263",
+        "target": "45634089",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 20,
+          "shouldCapi": 20
+        }
+      },
+      {
+        "id": "228904646",
+        "type": "EMPLOY",
+        "source": "131769411",
+        "target": "65355108",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "164823216",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "14467341",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "91581969",
+        "type": "LEGAL",
+        "source": "67222986",
+        "target": "49601680",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "87158868",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "23032558",
+        "properties": {
+          "stockPercent": 6.13
+        }
+      },
+      {
+        "id": "7179530",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "53509547",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 8.04,
+          "shouldCapi": 321.7393
+        }
+      },
+      {
+        "id": "228904643",
+        "type": "EMPLOY",
+        "source": "70915749",
+        "target": "65355108",
+        "properties": {
+          "role": "董事长,董事"
+        }
+      },
+      {
+        "id": "271811418",
+        "type": "EMPLOY",
+        "source": "93095220",
+        "target": "2459983",
+        "properties": {
+          "role": "董事兼总经理"
+        }
+      },
+      {
+        "id": "143258080",
+        "type": "LEGAL",
+        "source": "137008021",
+        "target": "13660744",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "160750846",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "458863",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "228904654",
+        "type": "EMPLOY",
+        "source": "84771644",
+        "target": "65355108",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "164823224",
+        "type": "EMPLOY",
+        "source": "91005263",
+        "target": "14467341",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "271811423",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "2459983",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "7338242",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "54336158",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 250
+        }
+      },
+      {
+        "id": "271811421",
+        "type": "EMPLOY",
+        "source": "104011861",
+        "target": "2459983",
+        "properties": {
+          "role": "董事长"
+        }
+      },
+      {
+        "id": "228904650",
+        "type": "EMPLOY",
+        "source": "101129848",
+        "target": "65355108",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "199692951",
+        "type": "EMPLOY",
+        "source": "93095220",
+        "target": "55485497",
+        "properties": {
+          "role": "执行董事兼总经理"
+        }
+      },
+      {
+        "id": "228904657",
+        "type": "EMPLOY",
+        "source": "166734523",
+        "target": "65355108",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "81517485",
+        "type": "INVEST",
+        "source": "94296407",
+        "target": "6722338",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.11,
+          "shouldCapi": 1.6336
+        }
+      },
+      {
+        "id": "69044581",
+        "type": "INVEST",
+        "source": "94296407",
+        "target": "6379468",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 10,
+          "shouldCapi": 200
+        }
+      },
+      {
+        "id": "246518735",
+        "type": "EMPLOY",
+        "source": "135155590",
+        "target": "5951884",
+        "properties": {
+          "role": "总经理,董事"
+        }
+      },
+      {
+        "id": "199692952",
+        "type": "EMPLOY",
+        "source": "147703433",
+        "target": "55485497",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "1367958",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "19278763",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 12.7,
+          "shouldCapi": 1.8
+        }
+      },
+      {
+        "id": "90313440",
+        "type": "INVEST",
+        "source": "121636428",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "6086111",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "50969999",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 5.27,
+          "shouldCapi": 316.0502
+        }
+      },
+      {
+        "id": "90313446",
+        "type": "INVEST",
+        "source": "126641432",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "4312004",
+        "type": "INVEST",
+        "source": "14467341",
+        "target": "45634089",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 35,
+          "shouldCapi": 35
+        }
+      },
+      {
+        "id": "90313444",
+        "type": "INVEST",
+        "source": "103453661",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "271660470",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "6722338",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "90313450",
+        "type": "INVEST",
+        "source": "81515310",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "1782163",
+        "type": "INVEST",
+        "source": "56441977",
+        "target": "14724778",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 27.27,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "1782162",
+        "type": "INVEST",
+        "source": "36702192",
+        "target": "14724778",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 27.27,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "90313448",
+        "type": "INVEST",
+        "source": "116119572",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "257228511",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "13660744",
+        "properties": {
+          "role": "经理"
+        }
+      },
+      {
+        "id": "90313454",
+        "type": "INVEST",
+        "source": "116860152",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "1782166",
+        "type": "INVEST",
+        "source": "56366215",
+        "target": "14724778",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 1.82,
+          "shouldCapi": 200
+        }
+      },
+      {
+        "id": "90313452",
+        "type": "INVEST",
+        "source": "101171590",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "1782165",
+        "type": "INVEST",
+        "source": "18218034",
+        "target": "14724778",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 9.09,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "1782164",
+        "type": "INVEST",
+        "source": "8473483",
+        "target": "14724778",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 9.09,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "180053295",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "53338699",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "90313462",
+        "type": "INVEST",
+        "source": "97834597",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.17,
+          "shouldCapi": 2400
+        }
+      },
+      {
+        "id": "185909378",
+        "type": "EMPLOY",
+        "source": "149620093",
+        "target": "51842682",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "6459892",
+        "type": "INVEST",
+        "source": "49601680",
+        "target": "19228206",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 1.92,
+          "shouldCapi": 31.25
+        }
+      },
+      {
+        "id": "66160232",
+        "type": "INVEST",
+        "source": "70915749",
+        "target": "55078195",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 55.62,
+          "shouldCapi": 44500
+        }
+      },
+      {
+        "id": "5368782",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "35825331",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 9.81,
+          "shouldCapi": 0
+        }
+      },
+      {
+        "id": "6772167",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "56225241",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 10.51,
+          "shouldCapi": 167.4714
+        }
+      },
+      {
+        "id": "114082",
+        "type": "INVEST",
+        "source": "14467341",
+        "target": "458863",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 63,
+          "shouldCapi": 630
+        }
+      },
+      {
+        "id": "105733102",
+        "type": "LEGAL",
+        "source": "92934628",
+        "target": "67107694",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "5433339",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "63419049",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 100,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "4639212",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "25569997",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 12,
+          "shouldCapi": 144
+        }
+      },
+      {
+        "id": "76857663",
+        "type": "INVEST",
+        "source": "91005263",
+        "target": "57839602",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 19.8,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "947621",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "54616169",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 9.07,
+          "shouldCapi": 426.428
+        }
+      },
+      {
+        "id": "90313422",
+        "type": "INVEST",
+        "source": "140711656",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 2.93,
+          "shouldCapi": 6000
+        }
+      },
+      {
+        "id": "90313431",
+        "type": "INVEST",
+        "source": "91480861",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.51,
+          "shouldCapi": 3100
+        }
+      },
+      {
+        "id": "17653944",
+        "type": "INVEST",
+        "source": "134412778",
+        "target": "35513161",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 33,
+          "shouldCapi": 3300
+        }
+      },
+      {
+        "id": "90313428",
+        "type": "INVEST",
+        "source": "112568395",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.56,
+          "shouldCapi": 3200
+        }
+      },
+      {
+        "id": "881082",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "27200287",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 6,
+          "shouldCapi": 8.6957
+        }
+      },
+      {
+        "id": "6873554",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "40827729",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 2.9,
+          "shouldCapi": 174.1936
+        }
+      },
+      {
+        "id": "1787296",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "64637002",
+        "properties": {
+          "role": "法人股东",
+          "stockPercent": 8,
+          "shouldCapi": 40
+        }
+      },
+      {
+        "id": "90313433",
+        "type": "INVEST",
+        "source": "122887816",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "137654665",
+        "type": "LEGAL",
+        "source": "135155590",
+        "target": "5951884",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "90313439",
+        "type": "INVEST",
+        "source": "137862965",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "3928965",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "11053481",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 0,
+          "shouldCapi": 0
+        }
+      },
+      {
+        "id": "90313436",
+        "type": "INVEST",
+        "source": "79965321",
+        "target": "19524710",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 1.47,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "91886266",
+        "type": "LEGAL",
+        "source": "67222986",
+        "target": "19524710",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "316357",
+        "type": "INVEST",
+        "source": "39686636",
+        "target": "42733436",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 5.04,
+          "shouldCapi": 100
+        }
+      },
+      {
+        "id": "3523582",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "29839828",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 8.18,
+          "shouldCapi": 10
+        }
+      },
+      {
+        "id": "469963",
+        "type": "INVEST",
+        "source": "8500430",
+        "target": "67222986",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 3733.7144
+        }
+      },
+      {
+        "id": "316361",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "42733436",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 2.08,
+          "shouldCapi": 41.24
+        }
+      },
+      {
+        "id": "6802359",
+        "type": "INVEST",
+        "source": "23171250",
+        "target": "54882632",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 20,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "6802358",
+        "type": "INVEST",
+        "source": "2459983",
+        "target": "54882632",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 60,
+          "shouldCapi": 3000
+        }
+      },
+      {
+        "id": "1979852",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "50282915",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 10.96,
+          "shouldCapi": 255.0091
+        }
+      },
+      {
+        "id": "5136797",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "53231727",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 13.7,
+          "shouldCapi": 35.4061
+        }
+      },
+      {
+        "id": "270812151",
+        "type": "EMPLOY",
+        "source": "94296407",
+        "target": "19228206",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "6234506",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "39250130",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 10.58,
+          "shouldCapi": 135
+        }
+      },
+      {
+        "id": "252963019",
+        "type": "EMPLOY",
+        "source": "181978121",
+        "target": "63419049",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "175690145",
+        "type": "EMPLOY",
+        "source": "91005263",
+        "target": "55112267",
+        "properties": {
+          "role": "监事会主席"
+        }
+      },
+      {
+        "id": "252963017",
+        "type": "EMPLOY",
+        "source": "89698204",
+        "target": "63419049",
+        "properties": {
+          "role": "执行董事兼总经理"
+        }
+      },
+      {
+        "id": "6739899",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "56551939",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 7.52,
+          "shouldCapi": 256.4736
+        }
+      },
+      {
+        "id": "6802360",
+        "type": "INVEST",
+        "source": "12896432",
+        "target": "54882632",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 20,
+          "shouldCapi": 1000
+        }
+      },
+      {
+        "id": "130886188",
+        "type": "LEGAL",
+        "source": "91005263",
+        "target": "45634089",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "79102806",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "28254803",
+        "properties": {
+          "stockPercent": 8.03
+        }
+      },
+      {
+        "id": "43847039",
+        "type": "INVEST",
+        "source": "149608860",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 5.31,
+          "shouldCapi": 20.7599
+        }
+      },
+      {
+        "id": "43847038",
+        "type": "INVEST",
+        "source": "145105209",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 5.84,
+          "shouldCapi": 22.8444
+        }
+      },
+      {
+        "id": "43847032",
+        "type": "INVEST",
+        "source": "141679352",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 7.44,
+          "shouldCapi": 29.0696
+        }
+      },
+      {
+        "id": "43847034",
+        "type": "INVEST",
+        "source": "145644842",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 5.94,
+          "shouldCapi": 23.2273
+        }
+      },
+      {
+        "id": "4792238",
+        "type": "INVEST",
+        "source": "49601680",
+        "target": "66943005",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 2.44,
+          "shouldCapi": 82.35
+        }
+      },
+      {
+        "id": "175690131",
+        "type": "EMPLOY",
+        "source": "137008021",
+        "target": "55112267",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "43847030",
+        "type": "INVEST",
+        "source": "91908196",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 7.62,
+          "shouldCapi": 29.7786
+        }
+      },
+      {
+        "id": "5857205",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "61052195",
+        "properties": {
+          "role": "其他投资者",
+          "stockPercent": 1.74,
+          "shouldCapi": 6.32
+        }
+      },
+      {
+        "id": "272622035",
+        "type": "EMPLOY",
+        "source": "163949863",
+        "target": "23747594",
+        "properties": {
+          "role": "监事会主席"
+        }
+      },
+      {
+        "id": "35540979",
+        "type": "INVEST",
+        "source": "137008021",
+        "target": "2924859",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 60,
+          "shouldCapi": 6000
+        }
+      },
+      {
+        "id": "43847027",
+        "type": "INVEST",
+        "source": "104011861",
+        "target": "14808401",
+        "properties": {
+          "role": "自然人股东",
+          "stockPercent": 10.83,
+          "shouldCapi": 42.3423
+        }
+      },
+      {
+        "id": "272622033",
+        "type": "EMPLOY",
+        "source": "162244118",
+        "target": "23747594",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "6420878",
+        "type": "INVEST",
+        "source": "65355108",
+        "target": "5510201",
+        "properties": {
+          "role": "企业法人",
+          "stockPercent": 13.33,
+          "shouldCapi": 2000
+        }
+      },
+      {
+        "id": "2119119",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "47453072",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 7.73,
+          "shouldCapi": 140.2062
+        }
+      },
+      {
+        "id": "272622032",
+        "type": "EMPLOY",
+        "source": "147703433",
+        "target": "23747594",
+        "properties": {
+          "role": "监事"
+        }
+      },
+      {
+        "id": "272622030",
+        "type": "EMPLOY",
+        "source": "158597175",
+        "target": "23747594",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "272622029",
+        "type": "EMPLOY",
+        "source": "135155590",
+        "target": "23747594",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "272622028",
+        "type": "EMPLOY",
+        "source": "76592028",
+        "target": "23747594",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "114251578",
+        "type": "LEGAL",
+        "source": "137008021",
+        "target": "2924859",
+        "properties": {
+          "role": ""
+        }
+      },
+      {
+        "id": "272622024",
+        "type": "EMPLOY",
+        "source": "178982076",
+        "target": "23747594",
+        "properties": {
+          "role": "董事"
+        }
+      },
+      {
+        "id": "272622023",
+        "type": "EMPLOY",
+        "source": "141180750",
+        "target": "23747594",
+        "properties": {
+          "role": "董事长兼总经理"
+        }
+      },
+      {
+        "id": "7137171",
+        "type": "INVEST",
+        "source": "19524710",
+        "target": "49533417",
+        "properties": {
+          "role": "合伙企业",
+          "stockPercent": 4.03,
+          "shouldCapi": 59.992
+        }
+      }
+    ]
+  }
+}

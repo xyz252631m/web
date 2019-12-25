@@ -1,0 +1,861 @@
+{
+  "status": 200,
+  "result": {
+    "id": "09782728cbcaa15cdbd53898db3a0013",
+    "name": "美林数据技术股份有限公司",
+    "nodeType": "999",
+    "children": [
+      {
+        "id": "",
+        "name": "法定代表人",
+        "nodeType": "101",
+        "children": [
+          {
+            "id": "p69fac020a22087689a8f9935c24a373",
+            "name": "程宏亮",
+            "image": "",
+            "operType": 1,
+            "nodeType": "998"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "实际控制人",
+        "nodeType": "102",
+        "children": []
+      },
+      {
+        "id": "",
+        "name": "最终受益人",
+        "nodeType": "103",
+        "children": []
+      },
+      {
+        "id": "",
+        "name": "股东",
+        "nodeType": "104",
+        "children": [
+          {
+            "id": "3877951898d6d2f163d08a9f8f08ae77",
+            "name": "北京天睿聚合投资管理中心",
+            "image": "https://qccdata.qichacha.com/Autoimage/3877951898d6d2f163d08a9f8f08ae77.jpg",
+            "percent": "77.40%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "p69fac020a22087689a8f9935c24a373",
+            "name": "程宏亮",
+            "image": "",
+            "percent": "7.08%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p475fdfef0acc0df5952c53bd8e05e30",
+            "name": "王璐",
+            "image": "",
+            "percent": "6.73%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998",
+            "children": [
+              {
+                "id": "8a687cddfc3fa2b75755193a243a5d58",
+                "name": "上海健运投资管理有限公司",
+                "image": "https://qccdata.qichacha.com/autoimage/8a687cddfc3fa2b75755193a243a5d58.jpg",
+                "percent": "0.01%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }, {
+                "id": "9ad7cc95777cdbb29225a1fdce86e250",
+                "name": "宁波明和投资管理有限公司",
+                "image": "https://qccdata.qichacha.com/autoimage/9ad7cc95777cdbb29225a1fdce86e250.jpg",
+                "percent": "",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }, {
+                "id": "4770c071f33bd609e30b5d1538d71491",
+                "name": "上海联创永宣创业投资企业",
+                "image": "https://qccdata.qichacha.com/autoimage/4770c071f33bd609e30b5d1538d71491.jpg",
+                "percent": "",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }
+            ]
+          },
+          {
+            "id": "p3c9e41f50a13f1432cc16da7f39da77",
+            "name": "程宏斌",
+            "image": "",
+            "percent": "3.45%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998",
+            "children": [{
+              "id": "b5d5f52fe7ab62ef3b09e371b81a71c1",
+              "name": "北京欧比特控制工程研究院有限公司",
+              "image": "https://co-image.qichacha.com/companyimage/b5d5f52fe7ab62ef3b09e371b81a71c1.jpg",
+              "percent": "100%",
+              "location": "",
+              "productname": "",
+              "stockcode": "",
+              "nodeType": "999"
+            }, {
+              "id": "d8cf99d0b8ca68a31fba221882891132",
+              "name": "上海智建电子工程有限公司",
+              "image": "https://qccdata.qichacha.com/autoimage/d8cf99d0b8ca68a31fba221882891132.jpg",
+              "percent": "100%",
+              "location": "",
+              "productname": "",
+              "stockcode": "",
+              "nodeType": "999"
+            }
+            ]
+          },
+          {
+            "id": "p40c2c1ac32b6d47d758d291a40fcbec",
+            "name": "黄惠敏",
+            "image": "",
+            "percent": "1.27%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998",
+            "children":[
+              {
+                "id": "742ce0e4de642d8df03dca96b50c24be",
+                "image": "https://qccdata.qichacha.com/autoimage/742ce0e4de642d8df03dca96b50c24be.jpg",
+                "name": "北京古仓空间科技发展中心",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "",
+                "image": "",
+                "name": "香港创信电子有限公司",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }
+            ]
+          },
+          {
+            "id": "pfb0621adc2a66a938c27f86be2ac8be",
+            "name": "张亚军",
+            "image": "",
+            "percent": "0.83%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "pccecaae707f68a47a2763ac31abb924",
+            "name": "刘宏",
+            "image": "",
+            "percent": "0.73%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998",
+            "children": [
+              {
+                "id": "205e7e61f029063628e3eeec140fa7fa",
+                "name": "青岛欧比特宇航科技有限公司",
+                "image": "https://qccdata.qichacha.com/autoimage/205e7e61f029063628e3eeec140fa7fa.jpg",
+                "percent": "100%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }, {
+                "id": "cbeb53ea1bef38629525bc6514bbd26b",
+                "name": "珠海金特科技有限公司",
+                "image": "https://qccdata.qichacha.com/autoimage/cbeb53ea1bef38629525bc6514bbd26b.jpg",
+                "percent": "100%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }
+            ]
+          },
+          {
+            "id": "p042a083b95526034f3ee612466d2f40",
+            "name": "黄文强",
+            "image": "",
+            "percent": "0.46%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p9d4ebd7cdeffe41aeb70171b0d8996f",
+            "name": "常艺馨",
+            "image": "",
+            "percent": "0.36%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p077ab4f1e0ad6ea50dad0d5f612876d",
+            "name": "黄炜",
+            "image": "",
+            "percent": "0.35%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p8f417ac3c2e4e427039fe34bf98f2aa",
+            "name": "靖稳峰",
+            "image": "",
+            "percent": "0.28%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "pf4ea8a4598f3256bcf0d09dccf27802",
+            "name": "周永红",
+            "image": "",
+            "percent": "0.25%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p132d2ffa7647e9a352e2756cf66390d",
+            "name": "肖斌",
+            "image": "",
+            "percent": "0.20%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p6fcdfc51320ba2f68e07b19f0678b96",
+            "name": "李炜",
+            "image": "",
+            "percent": "0.19%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p3929f3dbb1b3590086cf1f9cd49f4c6",
+            "name": "于洋",
+            "image": "",
+            "percent": "0.15%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p5bf198309851fe05e3dad0bc3d3e48e",
+            "name": "王志坚",
+            "image": "",
+            "percent": "0.12%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p6db1faead36cae41288b7723fb2fc1e",
+            "name": "王俊杰",
+            "image": "",
+            "percent": "0.06%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "pb4e00252ecc29f79f51e95ca8199fad",
+            "name": "仲建琴",
+            "image": "",
+            "percent": "0.06%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          },
+          {
+            "id": "p82a4412defa897c281034cffb70dc89",
+            "name": "卢耀宗",
+            "image": "https://co-image.qichacha.com/Personimage/p82a4412defa897c281034cffb70dc89.jpg",
+            "percent": "0.05%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "998"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "高管",
+        "nodeType": "105",
+        "children": [
+          {
+            "id": "p475fdfef0acc0df5952c53bd8e05e30",
+            "name": "王璐",
+            "image": "",
+            "Job": "董事兼总经理",
+            "nodeType": "998"
+          },
+          {
+            "id": "p69fac020a22087689a8f9935c24a373",
+            "name": "程宏亮",
+            "image": "",
+            "Job": "董事长",
+            "nodeType": "998"
+          },
+          {
+            "id": "p4b2d1d3008771cf5e4f00751613e7ae",
+            "name": "窦勇",
+            "image": "https://co-image.qichacha.com/Personimage/p4b2d1d3008771cf5e4f00751613e7ae.jpg",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "pd2d1a394b5b024b58ec125e972a892c",
+            "name": "常立亚",
+            "image": "",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "pccecaae707f68a47a2763ac31abb924",
+            "name": "刘宏",
+            "image": "",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "p3929f3dbb1b3590086cf1f9cd49f4c6",
+            "name": "于洋",
+            "image": "",
+            "Job": "董事",
+            "nodeType": "998"
+          },
+          {
+            "id": "ped620d85f58bab03d079a77be24eb45",
+            "name": "牛清娜",
+            "image": "",
+            "Job": "监事",
+            "nodeType": "998"
+          },
+          {
+            "id": "p288515dc3d3481bb8bf59470b7186e9",
+            "name": "吴垌沅",
+            "image": "",
+            "Job": "监事",
+            "nodeType": "998"
+          },
+          {
+            "id": "pbd00865ba4e05a06afd85a30e687b72",
+            "name": "张鹏飞",
+            "image": "https://co-image.qichacha.com/Personimage/pbd00865ba4e05a06afd85a30e687b72.jpg",
+            "Job": "监事",
+            "nodeType": "998"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "对外投资",
+        "nodeType": "106",
+        "children": [
+          {
+            "id": "f1388f158ba16bbb1ba016db8371282f",
+            "name": "振华智造（西安）科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/f1388f158ba16bbb1ba016db8371282f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d3141342b3c845aab5a225aa0e7f6c6b",
+            "name": "美林数据技术（杭州）有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/d3141342b3c845aab5a225aa0e7f6c6b.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5807955ad5c70cbd0636a9d80ec6f68f",
+            "name": "无锡融合大数据创新中心有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/5807955ad5c70cbd0636a9d80ec6f68f.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "dee21f29a987890b7fd1e0d0d826a1c2",
+            "name": "上海琢学科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/dee21f29a987890b7fd1e0d0d826a1c2.jpg",
+            "percent": "100%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d0ca754f7049728c42859eb8a28a17fb",
+            "name": "无锡美林数联科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/d0ca754f7049728c42859eb8a28a17fb.jpg",
+            "percent": "60.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "5a9e7a9cd1d02504dfa803b55efa8337",
+            "name": "西咸新区大数据交易所有限责任公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/5a9e7a9cd1d02504dfa803b55efa8337.jpg",
+            "percent": "30.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "ff4c36b5ab00a428bd2275c72f7aa4bf",
+            "name": "河南中原大数据研究院有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/ff4c36b5ab00a428bd2275c72f7aa4bf.jpg",
+            "percent": "20.00%",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "控股企业",
+        "nodeType": "107",
+        "children": []
+      },
+      {
+        "id": "",
+        "name": "供应商",
+        "nodeType": "110",
+        "children": [
+          {
+            "id": "75fcf8cab66b9053a2e407dd1cc49ac5",
+            "name": "北京柯锐特信息技术有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/75fcf8cab66b9053a2e407dd1cc49ac5.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d3928fc30ba2128b00f15c1d3d2b36a8",
+            "name": "深圳市屯溪信息科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/d3928fc30ba2128b00f15c1d3d2b36a8.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "g2df02998d022f098e15ea043a05a785",
+            "name": "北京京航计算通讯研究所",
+            "image": "https://qccdata.qichacha.com/Autoimage/g2df02998d022f098e15ea043a05a785.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "36472acb6b7455f3680176b050b47a1c",
+            "name": "郑州乐鸟软件技术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/36472acb6b7455f3680176b050b47a1c.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7596642f32f390b38ce54d026e0bb094",
+            "name": "上海格蒂电力科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/7596642f32f390b38ce54d026e0bb094.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6d3b3b53c0ac5257d25b43aa20805879",
+            "name": "联通系统集成有限公司内蒙古自治区分公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6d3b3b53c0ac5257d25b43aa20805879.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+
+          {
+            "id": "59dec34b556ee426279df77fd9cf2902",
+            "name": "富通时代科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/59dec34b556ee426279df77fd9cf2902.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "",
+            "name": "网智技术研究所",
+            "image": "",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cb51e90f7289b9672fc822797e0a24b5",
+            "name": "福建亿榕信息技术有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/cb51e90f7289b9672fc822797e0a24b5.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f9deef2d304e12f8063f6a45e674372e",
+            "name": "金航数码科技有限责任公司",
+            "image": "https://co-image.qichacha.com/Companyimage/f9deef2d304e12f8063f6a45e674372e.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d63b635ec542bae40fb314a20b85d68e",
+            "name": "成都思晗科技股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/d63b635ec542bae40fb314a20b85d68e.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "a49d323b0592e04a0c97db42e188d8be",
+            "name": "西安安智科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/a49d323b0592e04a0c97db42e188d8be.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "219b8f120a9b7286209d82f111bfd2e5",
+            "name": "陕西瑞云软件科技有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/219b8f120a9b7286209d82f111bfd2e5.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "4d2933effeb8f2c9d612c2d78bfdaeee",
+            "name": "海南新生信息技术有限公司陕西分公司",
+            "image": "https://co-image.qichacha.com/Companyimage/4d2933effeb8f2c9d612c2d78bfdaeee.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "25b439f4badab0c5b20e2c9714b88992",
+            "name": "埃森哲（中国）有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/25b439f4badab0c5b20e2c9714b88992.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "66bd3e3c6c02f8902ed200de2b5505c0",
+            "name": "南京创客汇网络信息技术有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/66bd3e3c6c02f8902ed200de2b5505c0.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "96449f7a5bc5e730a2e4996137fe2a4c",
+            "name": "河南中宝档案技术管理咨询有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/96449f7a5bc5e730a2e4996137fe2a4c.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "403cb276e5bddccbf9a444b7ee199d58",
+            "name": "上海欧弗信息科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/403cb276e5bddccbf9a444b7ee199d58.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "6505e4bd7d1f9e63b6ef351ff379393d",
+            "name": "中智西安经济技术合作有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/6505e4bd7d1f9e63b6ef351ff379393d.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7575082b2974e7d434c910eaa862cbf2",
+            "name": "南京南瑞信息通信科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/7575082b2974e7d434c910eaa862cbf2.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "9a0f420308ca350c5aa59f591015c66a",
+            "name": "软通动力信息技术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/9a0f420308ca350c5aa59f591015c66a.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "811a676ad8ba40ee5f4f59faf69f6524",
+            "name": "沈阳中科博微科技股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/811a676ad8ba40ee5f4f59faf69f6524.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2b6d9da7eaadc1cdc7cb07c93b1153be",
+            "name": "深圳市沛才科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/2b6d9da7eaadc1cdc7cb07c93b1153be.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "b5ca856814c68fafa640be8cf0f0f6df",
+            "name": "无锡众志和达数据计算股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/b5ca856814c68fafa640be8cf0f0f6df.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "客户",
+        "nodeType": "111",
+        "children": [
+          {
+            "id": "gd20bc427a77fa70239095577f4dd8d1",
+            "name": "华北计算技术研究所",
+            "image": "https://qccdata.qichacha.com/Autoimage/gd20bc427a77fa70239095577f4dd8d1.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "34bcad2af4fa3a04c17b093d67236780",
+            "name": "西安交大捷普网络科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/34bcad2af4fa3a04c17b093d67236780.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7575082b2974e7d434c910eaa862cbf2",
+            "name": "南京南瑞信息通信科技有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/7575082b2974e7d434c910eaa862cbf2.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "f9deef2d304e12f8063f6a45e674372e",
+            "name": "金航数码科技有限责任公司",
+            "image": "https://co-image.qichacha.com/Companyimage/f9deef2d304e12f8063f6a45e674372e.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "7bb7f10fbffbdb6af869af34e8697ecc",
+            "name": "福建榕基软件股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/7bb7f10fbffbdb6af869af34e8697ecc.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "04bd041f28146534f038c409d5176ebb",
+            "name": "上海博辕信息技术服务有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/04bd041f28146534f038c409d5176ebb.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "cb51e90f7289b9672fc822797e0a24b5",
+            "name": "福建亿榕信息技术有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/cb51e90f7289b9672fc822797e0a24b5.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "72b8fc3ddfcf8064e29b2c9ebc8e7fae",
+            "name": "山东省城市商业银行合作联盟有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/72b8fc3ddfcf8064e29b2c9ebc8e7fae.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "a48583e1a49e8fd6ec30c83b16787c5b",
+            "name": "上海科旭网络科技股份有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/a48583e1a49e8fd6ec30c83b16787c5b.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "69a84c8a7a59255b219d8e32defdd2b3",
+            "name": "国网信通亿力科技有限责任公司",
+            "image": "https://co-image.qichacha.com/Companyimage/69a84c8a7a59255b219d8e32defdd2b3.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "194b98a582763c28b7a4f211f012de7e",
+            "name": "国网陕西省电力公司信息通信公司",
+            "image": "https://co-image.qichacha.com/Companyimage/194b98a582763c28b7a4f211f012de7e.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "2e4805c37229561654dd20afd7377b6a",
+            "name": "南京南瑞集团公司信息通信技术分公司",
+            "image": "https://co-image.qichacha.com/Companyimage/2e4805c37229561654dd20afd7377b6a.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "d9df7f0405efb36685beed541dcea872",
+            "name": "西安应用光学研究所",
+            "image": "https://qccdata.qichacha.com/Autoimage/d9df7f0405efb36685beed541dcea872.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "g75817ee7bb9e533cede77447e373836",
+            "name": "中国电子科技集团公司第十五研究所",
+            "image": "https://qccdata.qichacha.com/Autoimage/g75817ee7bb9e533cede77447e373836.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c2e671e9233133e0c008ce702dcf3d73",
+            "name": "北京中电普华信息技术有限公司",
+            "image": "https://co-image.qichacha.com/Companyimage/c2e671e9233133e0c008ce702dcf3d73.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "",
+            "name": "洛阳014中心",
+            "image": "",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          },
+          {
+            "id": "c38376423627b857b8e44dec88105af4",
+            "name": "北京凯普创网络技术有限公司",
+            "image": "https://qccdata.qichacha.com/Autoimage/c38376423627b857b8e44dec88105af4.jpg",
+            "location": "",
+            "productName": "",
+            "stockCode": "",
+            "nodeType": "999"
+          }
+        ]
+      }
+    ]
+  }
+}
