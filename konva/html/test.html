@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../svg/css/gltp.css">
 
-    <script src="../../d3v4/d3.v4.min.js"></script>
+    <!--    <script src="../../d3v4/d3.v4.min.js"></script>-->
     <script src="../../js/jquery-1.11.1.min.js"></script>
-
 
 
 </head>
@@ -41,6 +40,7 @@
 
 <script src="../../svg/svg.min.js"></script>
 <script src="../js/figure.js"></script>
+<script src="../js/d3-quadtree.v1.js"></script>
 <script>
     //生成从minNum到maxNum的随机数
     function randomNum(minNum, maxNum) {
@@ -63,52 +63,303 @@
             initMap(obj);
         });
         var figure = {};
+
         //初始化
         function initMap(obj) {
             var nodes = obj.nodes;
             var links = obj.links;
             var width = $("#svgBox").width();
             var height = $("#svgBox").height();
-            //初始化力学仿真器，通过布局函数格式化数据
-            var simulation = d3.forceSimulation(nodes).alphaMin(0.5)
-                .force("link", d3.forceLink(links)
-                    .distance(150)
-                    .id(function (m) {
-                        return m.id;
-                    })
-                )
-                .force("charge", d3.forceManyBody().strength(-800))  //注1>
-                .force("center", d3.forceCenter(width / 2, height / 2))  //设置力学仿真器的中心
-                .on("end", function () {
-                    $.each(nodes, function () {
-                        this._x = this.x;
-                        this._y = this.y;
-                    });
-                    figure = new Figure(SVG, {
-                        $box: $("#svgBox"),//父级容器
-                        isDrag: true,
-                        nodes: nodes,
-                        links: links,
-                        mousewheel: function (scale) {
-                            // rangeBox.setScaleVal(scale);
-                        },
-                        nodeClick: function (item) {
-                            console.log(item, item.id);
-                            // item.name = item.properties.name;
-                            // console.log(item)
-                        },
-                        celNodeClick: function (item) {
-                            $(".left-tip-panel").hide();
+
+            var initialRadius = 10,
+                initialAngle = Math.PI * (3 - Math.sqrt(5));
+            var force = {
+                initializeNodes(nodes) {
+                    for (var i = 0, n = nodes.length, node; i < n; ++i) {
+                        node = nodes[i];
+                        node.index = i;
+                        if (node.fx != null) node.x = node.fx;
+                        if (node.fy != null) node.y = node.fy;
+                        if (isNaN(node.x) || isNaN(node.y)) {
+                            var radius = initialRadius * Math.sqrt(i), angle = i * initialAngle;
+                            node.x = radius * Math.cos(angle);
+                            node.y = radius * Math.sin(angle);
                         }
-                    });
+                        if (isNaN(node.vx) || isNaN(node.vy)) {
+                            node.vx = node.vy = 0;
+                        }
+                    }
+                }
+            };
+            force.initializeNodes(nodes);
+            var nodeMap = {};
+            $.each(nodes, function (idx) {
+                this.x = this.x + width / 2;
+                this.y = this.y + height / 2;
+                this.index = idx;
+                nodeMap[this.id] = this;
+                // this._x = this.x;
+                // this._y = this.y;
+            });
+            links.forEach(d => {
+                d.source = nodeMap[d.source];
+                d.target = nodeMap[d.target];
+            });
+
+            function d3f() {
+                var alpha = 1,
+                    alphaMin = 0.001,
+                    alphaDecay = 1 - Math.pow(alphaMin, 1 / 300),
+                    alphaTarget = 0,
+                    velocityDecay = 0.6,
+                    forces = new Map();
+                var strengths = -500;
+                var quadtree = d3.quadtree;
+
+                function x$1(d) {
+                    return d.x;
+                }
+
+                function y$1(d) {
+                    return d.y;
+                }
+
+                function jiggle() {
+                    return (Math.random() - 0.5) * 1e-6;
+                }
+
+                function force_s(_) {
+                    var i, n = nodes.length;
+                    var tree = quadtree(nodes, x$1, y$1).visitAfter(accumulate);
+                    for (alpha = _, i = 0; i < n; ++i) {
+                        node = nodes[i];
+                        tree.visit(apply);
+                    }
+                }
+
+                var distanceMin2 = 1,
+                    distanceMax2 = Infinity,
+                    theta2 = 0.81;
+
+                function apply(quad, x1, _, x2) {
+                    if (!quad.value) return true;
+
+                    var x = quad.x - node.x,
+                        y = quad.y - node.y,
+                        w = x2 - x1,
+                        l = x * x + y * y;
+
+                    // Apply the Barnes-Hut approximation if possible.
+                    // Limit forces for very close nodes; randomize direction if coincident.
+                    if (w * w / theta2 < l) {
+                        if (l < distanceMax2) {
+                            if (x === 0) x = jiggle(), l += x * x;
+                            if (y === 0) y = jiggle(), l += y * y;
+                            if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
+                            node.vx += x * quad.value * alpha / l;
+                            node.vy += y * quad.value * alpha / l;
+                        }
+                        return true;
+                    }
+
+                    // Otherwise, process points directly.
+                    else if (quad.length || l >= distanceMax2) return;
+
+                    // Limit forces for very close nodes; randomize direction if coincident.
+                    if (quad.data !== node || quad.next) {
+                        if (x === 0) x = jiggle(), l += x * x;
+                        if (y === 0) y = jiggle(), l += y * y;
+                        if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
+                    }
+
+                    do if (quad.data !== node) {
+                        w = strengths * alpha / l;
+                        node.vx += x * w;
+                        node.vy += y * w;
+                    } while (quad = quad.next);
+                }
+
+                function accumulate(quad) {
+                    var strength = 0, q, c, weight = 0, x, y, i;
+
+                    // For internal nodes, accumulate forces from child quadrants.
+                    if (quad.length) {
+                        for (x = y = i = 0; i < 4; ++i) {
+                            if ((q = quad[i]) && (c = Math.abs(q.value))) {
+                                strength += q.value, weight += c, x += c * q.x, y += c * q.y;
+                            }
+                        }
+                        quad.x = x / weight;
+                        quad.y = y / weight;
+                    }
+
+                    // For leaf nodes, accumulate forces from coincident quadrants.
+                    else {
+                        q = quad;
+                        q.x = q.data.x;
+                        q.y = q.data.y;
+                        do strength += strengths;//strengths[q.data.index];
+                        while (q = q.next);
+                    }
+
+                    quad.value = strength;
+                }
+
+
+                var iterations = 1;
+
+                var bias = [];
+
+                var strengths_l = [], distances_l = 150;
+
+                function initialize_l() {
+                    if (!nodes) return;
+
+                    var i,
+                        n = nodes.length,
+                        m = links.length,
+
+                        link;
+
+                    for (i = 0, count = new Array(n); i < m; ++i) {
+                        link = links[i], link.index = i;
+                        count[link.source.index] = (count[link.source.index] || 0) + 1;
+                        count[link.target.index] = (count[link.target.index] || 0) + 1;
+                    }
+
+                    for (i = 0, bias = new Array(m); i < m; ++i) {
+                        bias[i] = count[link.source.index] / (count[link.source.index] + count[link.target.index]);
+                    }
+                    console.log("count", count)
+                    initializeStrength();
+
+
+                }
+
+                function defaultStrength(link) {
+                    return 1 / Math.min(count[link.source.index], count[link.target.index]);
+                }
+
+                function initializeStrength() {
+                    if (!nodes) return;
+
+                    for (var i = 0, n = links.length; i < n; ++i) {
+                        strengths_l[i] = +defaultStrength(links[i], i, links);
+                    }
+                }
+
+
+                initialize_l();
+                console.log(123, strengths_l, distances_l)
+
+                function force_l(alpha) {
+                    debugger
+                    for (var k = 0, n = links.length; k < iterations; ++k) {
+                        for (var i = 0, link, source, target, x, y, l, b; i < n; ++i) {
+                            link = links[i], source = link.source, target = link.target;
+                            x = target.x + target.vx - source.x - source.vx || jiggle();
+                            y = target.y + target.vy - source.y - source.vy || jiggle();
+                            l = Math.sqrt(x * x + y * y);
+                            l = (l - distances_l) / l * alpha * strengths_l[i];
+                            x *= l, y *= l;
+                            target.vx -= x * (b = bias[i]);
+                            target.vy -= y * b;
+                            source.vx += x * (b = 1 - b);
+                            source.vy += y * b;
+                        }
+                    }
+                }
+
+
+                function tick(iterations) {
+                    var i, n = nodes.length, node;
+
+                    if (iterations === undefined) iterations = 1;
+
+                    for (var k = 0; k < iterations; ++k) {
+                        alpha += (alphaTarget - alpha) * alphaDecay;
+                        //
+                        //  forces.each(function (force) {
+
+                        force_l(alpha);
+                        force_s(alpha);
+                        // });
+
+                        for (i = 0; i < n; ++i) {
+                            node = nodes[i];
+                            if (node.fx == null) node.x += node.vx *= velocityDecay;
+                            else node.x = node.fx, node.vx = 0;
+                            if (node.fy == null) node.y += node.vy *= velocityDecay;
+                            else node.y = node.fy, node.vy = 0;
+                            if (node.properties.name === "赵耀峰") {
+                                console.log(node)
+                            }
+
+                        }
+                    }
+                }
+
+                var timer = setInterval(step, 1000 / 60);
+
+                function step() {
+                    tick();
+
+                    if (alpha < alphaMin) {
+                        clearInterval(timer);
+                        init();
+                    }
+                }
+
+            }
+
+            d3f();
+
+            function init() {
+                // nodes.forEach(d=>{
+                //     d.x = Math.ceil(d.x);
+                //     d.y = Math.ceil(d.y);
+                // });
+
+                console.log(nodes, links)
+                figure = new Figure(SVG, {
+                    $box: $("#svgBox"),//父级容器
+                    isDrag: true,
+                    nodes: nodes,
+                    links: links,
+                    mousewheel: function (scale) {
+                        // rangeBox.setScaleVal(scale);
+                    },
+                    nodeClick: function (item) {
+                        console.log(item, item.id);
+                        // item.name = item.properties.name;
+                        // console.log(item)
+                    },
+                    celNodeClick: function (item) {
+                        $(".left-tip-panel").hide();
+                    }
                 });
+
+            }
+
+
+            //初始化力学仿真器，通过布局函数格式化数据
+            // var simulation = d3.forceSimulation(nodes).alphaMin(0.5)
+            //     .force("link", d3.forceLink(links)
+            //         .distance(150)
+            //         .id(function (m) {
+            //             return m.id;
+            //         })
+            //     )
+            //     .force("charge", d3.forceManyBody().strength(-800))  //注1>
+            //     .force("center", d3.forceCenter(width / 2, height / 2))  //设置力学仿真器的中心
+            //     .on("end", function () {
+            //         $.each(nodes, function () {
+            //             this._x = this.x;
+            //             this._y = this.y;
+            //         });
+            //
+            //     });
         }
-
-
-
-
-
-
 
     })
 </script>
