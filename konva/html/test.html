@@ -105,6 +105,29 @@
                 d.source = nodeMap[d.source];
                 d.target = nodeMap[d.target];
             });
+            figure = new Figure(SVG, {
+                $box: $("#svgBox"),//父级容器
+                isDrag: true,
+                nodes: nodes,
+                links: links,
+                mousewheel: function (scale) {
+                    // rangeBox.setScaleVal(scale);
+                },
+                nodeClick: function (item) {
+                    console.log(item, item.id);
+                    // item.name = item.properties.name;
+                    // console.log(item)
+                },
+                celNodeClick: function (item) {
+                    $(".left-tip-panel").hide();
+                }
+            });
+            console.log(figure)
+
+            function update_d3(nodes, links) {
+
+                figure.stepUpdate(nodes, links)
+            }
 
             function d3f() {
                 var alpha = 1,
@@ -303,16 +326,37 @@
 
                 function step() {
                     tick();
-
+                    update_d3(nodes, links)
                     if (alpha < alphaMin) {
                         clearInterval(timer);
-                        init();
+                        //  init();
                     }
                 }
 
             }
 
-            d3f();
+            // d3f();
+
+
+            function cusf() {
+                nodes.forEach(d => {
+
+                });
+
+                links.forEach(d => {
+                    let {source, target} = d;
+                    let dx = target.x - source.x;
+                    let dy = target.y - source.y;
+                    let dd = Math.sqrt(dx * dx + dy * dy);
+
+
+                });
+
+
+            }
+
+            cusf();
+            console.log(nodes, links)
 
             function init() {
                 // nodes.forEach(d=>{
@@ -320,24 +364,6 @@
                 //     d.y = Math.ceil(d.y);
                 // });
 
-                console.log(nodes, links)
-                figure = new Figure(SVG, {
-                    $box: $("#svgBox"),//父级容器
-                    isDrag: true,
-                    nodes: nodes,
-                    links: links,
-                    mousewheel: function (scale) {
-                        // rangeBox.setScaleVal(scale);
-                    },
-                    nodeClick: function (item) {
-                        console.log(item, item.id);
-                        // item.name = item.properties.name;
-                        // console.log(item)
-                    },
-                    celNodeClick: function (item) {
-                        $(".left-tip-panel").hide();
-                    }
-                });
 
             }
 

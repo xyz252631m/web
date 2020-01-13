@@ -6,10 +6,11 @@
     <title>关系图谱</title>
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/tupu.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="../js/jquery-1.11.1.min.js"></script>
     <script src="../js/svg.min.js"></script>
-    <script src="../js/relations.js"></script>
+    <script src="../js/relations_right.js"></script>
+
 
 </head>
 <body>
@@ -176,6 +177,14 @@
             hasDetailInfo: true,
             mousewheel: function (scale) {
                 rangeBox.setScaleVal(scale);
+            },
+            //节点点击事件
+            nodeClick: function (item) {
+                console.log("click", item);
+                if (item.level === 1) {
+                    //第二层
+                    console.log("第二层")
+                }
             },
             //详细信息框显示之前触发事件
             detailInfoShowBefore: function (item, $box) {

@@ -424,6 +424,33 @@ $.extend(Figure.prototype, {
 
         return false;
     },
+    //step 更新
+    stepUpdate: function (nodes, links) {
+        var t = 33.5;
+        nodes.forEach(d => {
+            if (d.g) {
+                d.g.translate(d.x - t, d.y - t);
+            }
+        })
+        links.forEach(d => {
+            if (d.line) {
+                var x = d.source.x;
+                var y = d.source.y;
+                var x1 = d.target.x;
+                var y1 = d.target.y;
+                d.line.plot(d.source.x, d.source.y, d.target.x, d.target.y);
+                var deg = tool.getAngle(x, y, x1, y1);
+
+                if (deg > 90 && deg < 270) {
+                    deg -= 180;
+                }
+                if (deg > -270 && deg < -90) {
+                    deg += 180;
+                }
+                d.textNode.rotate(0).x(x + (x1 - x) / 2).y(y + (y1 - y) / 2 - 6).rotate(deg);
+            }
+        })
+    },
     renderLink: function (item) {
         var self = this;
         var g = self.up_line.group().addClass("node-link-" + item.source.nodeType);
@@ -472,7 +499,7 @@ $.extend(Figure.prototype, {
         this.scale = scale;
         return scale;
     },
-    scaleMap: function(scale){
+    scaleMap: function (scale) {
         if (scale < 0.1) {
             scale = 0.1;
         }
