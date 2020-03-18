@@ -130,7 +130,7 @@ function NodeReader(isRight, data, option) {
                             [self.x + self.w, self.y + 20]])
                             .fill("transparent")
                             .addClass(option.lineHoverCls);
-                    }else{
+                    } else {
                         this.hover_polyline = tool.lineGroup.polyline([
                             [this.x + this.w, this.y + 20],
                             [this.x + this.w + 35, this.y + 20],
@@ -1164,12 +1164,19 @@ function Relation(SVG, option) {
     var self = this;
     //拖动事件
     $(window).on("mousedown.relation", function (e) {
-        isDown = true;
-        x1 = e.pageX;
-        y1 = e.pageY;
-        x = self.rootGroup.x();
-        y = self.rootGroup.y();
-        $(box_dom).addClass("svg-move");
+        if (box_dom.contains(e.target)) {
+            isDown = true;
+            x1 = e.pageX;
+            y1 = e.pageY;
+            x = self.rootGroup.x();
+            y = self.rootGroup.y();
+            $(box_dom).addClass("svg-move");
+            try {
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            } catch (e) {
+
+            }
+        }
     }).on("click", function () {
         $(".info-box").hide();
         $(this).removeClass("svg-move");
@@ -1239,7 +1246,7 @@ Relation.prototype.minus = function () {
     this.scale = scale;
     return scale;
 };
-Relation.prototype.scaleMap = function(scale){
+Relation.prototype.scaleMap = function (scale) {
     if (scale < 0.1) {
         scale = 0.1;
     }
