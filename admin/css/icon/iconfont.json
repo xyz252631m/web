@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4237369",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "8102700",
+      "name": "菜单",
+      "font_class": "icon-test",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}
