@@ -303,11 +303,9 @@
                         alpha += (alphaTarget - alpha) * alphaDecay;
                         //
                         //  forces.each(function (force) {
-
                         force_l(alpha);
                         force_s(alpha);
                         // });
-
                         for (i = 0; i < n; ++i) {
                             node = nodes[i];
                             if (node.fx == null) node.x += node.vx *= velocityDecay;
@@ -317,7 +315,6 @@
                             if (node.properties.name === "赵耀峰") {
                                 console.log(node)
                             }
-
                         }
                     }
                 }
