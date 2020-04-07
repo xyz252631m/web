@@ -7,13 +7,27 @@
     <title>jquery 插件</title>
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/xui-select.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/xui-select.js"></script>
+
+
 
 </head>
 <body>
 
 <div class="view-header">
     <canvas id="canvas"></canvas>
-    <div class="txt">常用代码示例</div>
+    <div class="txt">插件示例</div>
+    <div class="theme-list">
+        <span>主题切换：</span>
+        <label class="xui-label-select" data-val="1">
+            <i></i><span>蓝色</span>
+            <a>
+                <label data-val="1">蓝色</label>
+            </a>
+        </label>
+    </div>
 </div>
 <div class="view-box">
     <div class="left-menu">
@@ -39,6 +53,18 @@
             activeLi.className = cls;
         })
     });
+
+
+    let temList = [{id: 1, text: "蓝色"}, {id: 2, text: "红色"}];
+    let mSelect = $(".xui-label-select").selectToggle(
+        {
+            id: "id", // 列表key
+            text: "text", // 列表val
+            list: temList,
+            click: function (item) {
+                //console.log(item, mSelect.getSelectItem())
+            }
+        });
 
 
     ;(function (window) {
@@ -185,15 +211,15 @@
     }(window));
     //调用
     window.onload = function () {
-        var dotline = new Dotline({
-            dom: 'canvas',//画布id
-            cw: 1000,//画布宽
-            ch: 90,//画布高
-            ds: 100,//点的个数
-            r: 0.5,//圆点半径
-            cl: '#ecaea0',//粒子线颜色
-            dis: 50//触发连线的距离
-        }).start();
+        // var dotline = new Dotline({
+        //     dom: 'canvas',//画布id
+        //     cw: 1000,//画布宽
+        //     ch: 90,//画布高
+        //     ds: 100,//点的个数
+        //     r: 0.5,//圆点半径
+        //     cl: '#81b6ec',//粒子线颜色
+        //     dis: 50//触发连线的距离
+        // }).start();
     }
 
 </script>
