@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>alertBox</title>
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../css/alertBox.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/alertBox.js"></script>
+
+
+</head>
+<body>
+
+<button id="alert">alert</button>
+
+<button id="iframe">iframe</button>
+
+<script>
+
+    $(function () {
+
+        $("#alert").on("click",function () {
+            alertBox.info({content:"this is test!",isMove:true})
+        })
+        $("#iframe").on("click",function () {
+            alertBox.iframe({url:"http://www.baidu.com",width:700,height:500,iframeWidth:"100%",ifremeHeight:'450px',isMove:true})
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.alertbox-shade { width: 100%; position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: #000; filter: alpha(opacity=10); opacity: .1; z-index: 9999 }
+
+.alertbox { position: fixed; left: 40%; top: 40%; width: 400px; z-index: 10000 }
+
+.alertbox .box-bor { z-index: 10001; position: absolute; top: 0; left: 0; width: 400px; background-color: #999; opacity: .5; border-radius: 3px }
+
+.alertbox .box-con { z-index: 10002; border: #ccc solid 1px; position: absolute; width: 400px; background-color: #fff }
+
+.alertbox h3 { height: 29px; -moz-user-select: none; -ms-user-select: none; -webkit-user-select: none; user-select: none; margin:5px 10px 0; line-height: 29px; text-indent: 5px; border-bottom: #999 solid 1px }
+
+.alertbox h3 span { float: right }
+
+.alertbox h3 span a { display: block; width: 29px; line-height: 29px; text-align: center; background: url(../images/alertBox/close.png) -4px -4px no-repeat; text-indent: -99999px }
+
+.alertbox h3 span a:hover { background-color: #fff; color: #333 }
+
+.alertbox .alert-main {cursor: default; overflow: hidden;z-index: 11000 }
+
+.alertbox .alert-main > img { vertical-align: middle; margin-left: 10px; margin-top: 10px }
+
+.alertbox .alert-main > span { -moz-user-select: none; -ms-user-select: none; -webkit-user-select: none; user-select: none; margin-left: 20px; vertical-align: middle }
+
+.alertbox .alert-btn { height: 45px; position: absolute; bottom: 0; right: 0 }
+
+.alertbox .alert-btn input { float: right; width: 90px; height: 30px; line-height: 30px; background-color: #2084d6; border-radius: 3px; color: #fff; margin:7px  10px; }
+
+.alertbox .alert-btn input:hover { background-color: #0474ca }
+
+.alertbox .alert-info { height:45px; position: absolute; bottom: 0; right: 0 }
+
+.alertbox .alert-info input { opacity: 1; 	 float: right; width: 90px; height: 30px; line-height: 30px; background-color: #2084d6; border-radius: 3px; color: #fff; margin:7px  10px; }
+
+.alertbox .alert-info input:hover { background-color: #0474ca;  }
