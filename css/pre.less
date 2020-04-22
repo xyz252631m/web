@@ -48,3 +48,19 @@ pre {
 }
 /*示例dome*/
 .dome-box{text-align: center;margin: 10px 0;}
+
+/*loading*/
+.k-bar {
+  position: absolute; width: 25px; height: 2px; border-radius: 2px; background-color: #4b9cdb;
+  bottom: 0; left: 0; z-index: 2; animation: k-loadingJ 4s cubic-bezier(.17, .37, .43, .67) infinite;
+}
+@keyframes k-loadingJ {
+  0%, 100% {
+    transform: translate(0, 0)
+  }
+  50% {
+    transform: translate(220px, 0);
+    background-color: #f5634a;
+    width: 40px
+  }
+}

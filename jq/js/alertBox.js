@@ -10,7 +10,7 @@
         isborder: true,
         borwidth: 4,
         iframeWidth: "100%",
-        ifremeHeight: '160px',
+        iframeHeight: '160px',
         showShadeLayer: true,
         noBtn: false,
         init: function () { },
@@ -98,11 +98,11 @@
             });
         }
     };
-    //ifram
+    //iframe
     a.alertBox.iframe = function (options) {
         opts = $.extend({}, defaults, options);
         var arrHtml = tool.getTitle(opts);
-        arrHtml.push('<div class="alert-main"><iframe FRAMEBORDER="0" style="width:' + options.iframeWidth + ';height:' + options.ifremeHeight + ';" src="');
+        arrHtml.push('<div class="alert-main"><iframe FRAMEBORDER="0" style="width:' + options.iframeWidth + ';height:' + options.iframeHeight + ';" src="');
         arrHtml.push(options.url + '"></iframe></div>');
         arrHtml.push(tool.getBtn(opts));
         arrHtml.push("</div>");
