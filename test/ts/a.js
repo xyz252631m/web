@@ -21,3 +21,4 @@ var Test = /** @class */ (function () {
 }());
 var test = new Test();
 test.getMin();
+//# sourceMappingURL=a.js.map
