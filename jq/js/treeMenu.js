@@ -1,7 +1,7 @@
 /*
 *des:树形菜单
 * */
-// define(function () {
+define(function () {
     function TreeMenu(option) {
         var defs = {
             //菜单节点
@@ -45,6 +45,14 @@
             });
             this.treeData = newList;
         },
+
+
+        //重置数据
+        resetTree: function (list) {
+            this.map = {};
+            this.toTree(list);
+            this.createTreeMenu(this.treeData);
+        },
         //将list转换为treeData
         convertToTreeData: function (list) {
             var map = this.map, newList = [];
@@ -79,7 +87,7 @@
                         this.pid = item.id;
                     } else {
                         if (this.pid !== item.id) {
-                            console.error("pid 为对应到item id !");
+                            console.error("pid 未对应到item id !");
                         }
                     }
                 });
@@ -93,6 +101,32 @@
                 dom.find(">a").find(".arrow").hide().remove();
             }
         },
+
+
+        //选中某一项数据
+        selectItem: function (id) {
+            var item = this.map[id];
+            if (item) {
+                var $ul = this.$menuBox.find(">ul");
+                var $li = this.$menuBox.find("li[data-id=" + id + "]");
+                $li.trigger("click", true);
+                var $temUl = $li.parent("ul");
+                while ($temUl !== $ul) {
+                    $temUl.show();
+                    $li = $temUl.parent("li");
+                    if ($li.length) {
+                        $li.removeClass("close-ul");
+                        $li.addClass("open-li");
+                        $temUl = $li.parent("ul");
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                console.warn("未找到item ! id:" + id);
+            }
+        },
+
 
         openLiLoading: function (dom) {
             dom.find(">a").append('<span class="k-bar"></span>');
@@ -111,7 +145,7 @@
                 if (list.length) {
                     h.push('<ul class="ul-' + level + '" data-level="' + level + '">');
                     $.each(list, function (idx) {
-                        h.push('<li data-id="' + this.id + '" data-url="' + this.url + '" data-clen="' + this.children.length + '">');
+                        h.push('<li data-id="' + this.id + '" data-clen="' + this.children.length + '">');
                         h.push('<a href="javascript:void(0);">');
                         if (this.type === "catalog" || this.children && this.children.length) {
                             h.push('<span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span>');
@@ -206,7 +240,7 @@
                 });
             }
             //菜单点击事件
-            this.$menuBox.on("click", function (e) {
+            this.$menuBox.on("click", function (e, noAni) {
                 var $node = $(e.target);
                 var $li = getLi(e);
                 var src = $li.attr("data-src");
@@ -238,12 +272,22 @@
                         // $li.toggleClass("close-ul");
                         var $ul = $li.find(">ul");
                         if ($ul.is(":hidden")) {
-                            $ul.slideDown(200);
+                            if (noAni) {
+                                $ul.show();
+                            } else {
+                                $ul.slideDown(200);
+                            }
+
                             $li.removeClass("close-ul");
                             $li.addClass("open-li");
                             catalogOpen = true;
                         } else {
-                            $ul.slideUp(200);
+                            if (noAni) {
+                                $ul.hide();
+                            } else {
+                                $ul.slideUp(200);
+                            }
+
                             $li.addClass("close-ul");
                             $li.removeClass("open-li");
                             catalogOpen = false;
@@ -259,8 +303,8 @@
             });
         }
     });
-//     return TreeMenu;
-// })
+    return TreeMenu;
+})
 
 
 

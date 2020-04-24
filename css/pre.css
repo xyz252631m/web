@@ -25,10 +25,9 @@ pre {tab-width: 4}
 .plist-box em {color: #2dabee}
 .plist-box label {-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1}
 .dome-box {text-align: center;margin: 10px 0}
-.k-bar {position: absolute;width: 25px;height: 2px;border-radius: 2px;background-color: #4b9cdb;bottom: 0;left: 0;z-index: 2;
-
-    -webkit-animation: k-loadingJ 4s cubic-bezier(.17, .37, .43, .67) infinite;
-    animation: k-loadingJ 4s cubic-bezier(.17, .37, .43, .67) infinite}
+/*loading 1*/
+/* <span class="k-bar"></span>*/
+.k-bar {position: absolute;width: 25px;height: 2px;border-radius: 2px;background-color: #4b9cdb;bottom: 0;left: 0;z-index: 2;-webkit-animation: k-loadingJ 4s cubic-bezier(.17, .37, .43, .67) infinite;animation: k-loadingJ 4s cubic-bezier(.17, .37, .43, .67) infinite}
 @-webkit-keyframes k-loadingJ {
     0%, 100% {-webkit-transform: translate(0, 0);transform: translate(0, 0)}
     50% {-webkit-transform: translate(220px, 0);transform: translate(220px, 0);background-color: #f5634a;width: 40px}
@@ -37,3 +36,29 @@ pre {tab-width: 4}
     0%, 100% {-webkit-transform: translate(0, 0);transform: translate(0, 0)}
     50% {-webkit-transform: translate(220px, 0);transform: translate(220px, 0);background-color: #f5634a;width: 40px}
 }
+/*loading 2*/
+/*
+<div class="k-ring-2">
+    <div class="k-ball-holder2">
+        <div class="k-ball1e"></div>
+        <div class="k-ball2c"></div>
+        <div class="k-ball5b"></div>
+        <div class="k-ball6b"></div>
+    </div>
+</div>
+*/
+.k-ring-2 {position: relative;width: 45px;height: 45px;margin: 0 auto;border: 4px solid #9c27b0;border-radius: 100%}
+.k-ball-holder2 {-webkit-animation: k-loadingE 2.3s linear infinite;animation: k-loadingE 2.3s linear infinite;position: absolute;width: 12px;height: 45px;left: 17px;top: 0}
+@-webkit-keyframes k-loadingE {
+    0% {-webkit-transform: rotate(0deg);transform: rotate(0deg)}
+    100% {-webkit-transform: rotate(360deg);transform: rotate(360deg)}
+}
+@keyframes k-loadingE {
+    0% {-webkit-transform: rotate(0deg);transform: rotate(0deg)}
+    100% {-webkit-transform: rotate(360deg);transform: rotate(360deg)}
+}
+.k-ball1e {position: absolute;top: -10px;left: -1px;width: 16px;height: 16px;border-radius: 100%;background: #d4e533}
+.k-ball2c {position: absolute;bottom: -10px;left: -1px;width: 16px;height: 16px;border-radius: 100%;background: #f44336}
+.k-ball5b {position: absolute;top: 14px;left: -26px;width: 16px;height: 16px;border-radius: 100%;background: #4caf50}
+.k-ball6b {position: absolute;top: 14px;right: -26px;width: 16px;height: 16px;border-radius: 100%;background: #3f51b5}
+.test-div {-webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;align-items: center}

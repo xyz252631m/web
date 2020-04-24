@@ -21,7 +21,7 @@ pre {
 
 
   .pre-btn-list { background-color: #ecebe9; border-top: #b0c1c7 dashed 1px; }
-    /*使用说明--tab*/
+  /*使用说明--tab*/
   .use-box { position: relative;
     .pre-tab { position: absolute; right: 0; top: 0; height: 30px;
       a { width: 50px; font-size: 12px; float: left; height: 24px; text-align: center; line-height: 24px; background-color: #dcdcdc; color: white; margin-left: 1px; }
@@ -47,7 +47,7 @@ pre {
   label { flex: 1 }
 }
 /*示例dome*/
-.dome-box{text-align: center;margin: 10px 0;}
+.dome-box {text-align: center;margin: 10px 0;}
 
 /*loading*/
 .k-bar {
@@ -64,3 +64,18 @@ pre {
     width: 40px
   }
 }
+
+
+/*loading 2*/
+.k-ring-2 { position: relative; width: 45px; height: 45px; margin: 0 auto; border: 4px solid #9C27B0; border-radius: 100%;}
+.k-ball-holder2 { animation: k-loadingE 2.3s linear infinite; position: absolute; width: 12px; height: 45px; left: 17px; top: 0;}
+@keyframes k-loadingE {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+.k-ball1e { position: absolute; top: -10px; left: -1px; width: 16px; height: 16px; border-radius: 100%; background: #d4e533;}
+.k-ball2c { position: absolute; bottom: -10px; left: -1px; width: 16px; height: 16px; border-radius: 100%; background: #F44336;}
+.k-ball5b { position: absolute; top: 14px; left: -26px; width: 16px; height: 16px; border-radius: 100%; background: #4CAF50;}
+.k-ball6b { position: absolute; top: 14px; right: -26px; width: 16px; height: 16px; border-radius: 100%; background: #3F51B5;}
+
+.test-div{align-items:center}
