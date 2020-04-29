@@ -1,5 +1,8 @@
+declare let $: any;
+
 
 function getSearchName(name) {
+    // @ts-ignore
     let str = location.search.replace(/\?/, "");
     let arry = str.split("&");
     let obj = {};
@@ -9,3 +12,15 @@ function getSearchName(name) {
     })
     return obj[name] || "";
 }
+
+
+
+
+class tool {
+    constructor() {
+        var arr: Array<number> = [];
+        arr.push(345)
+    }
+}
+
+

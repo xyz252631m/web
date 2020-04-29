@@ -1,15 +1,27 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "sourceMap": true,
     "declaration": true,
     "importHelpers": true,
-    "lib": ["es2019"],
+    "lib": [
+      "es2019"
+    ],
     "allowJs": true
   },
   "exclude": [
-    "node_modules"
+    "**/node_modules",
+    "**/My97DatePicker",
+    "**/angular",
+    "**/angular-1.2.20",
+    "**/address",
+    "**/json2.js",
+    "**/canvasDown.js",
+    "**/domReady.js",
+    "**/extend.js",
+    "**/flower-dialog.js",
+    "js/main.js"
   ],
   "include": [
     "./js/**/*"

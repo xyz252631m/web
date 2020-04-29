@@ -8,12 +8,14 @@ define(function () {
             $el: null,
             //操作框
             $opBox: null,
-            //是否存在 操作按钮 可以为function
+            //是否存在操作按钮 默认为Boolean 类型 ， 可以为function需要返回 Boolean 类型值
             hasOpBtn: false,
             //操作框 显示之前的事件
             opBoxShowBefore: null,
             //点击事件
             click: null,
+            //添加数据项时 按 type 类型排序
+            softList: ["catalog"],
             //操作框点击事件 type：返回html上的data-type属性值
             opClick: null
         };
@@ -103,19 +105,117 @@ define(function () {
         },
 
 
+        //排序 文件夹在最开始
+        treeListOrder: function (arr, types) {
+            if (!types) {
+                types = ["catalog"];
+            }
+            //如果数组长度小于等于1，则返回数组本身
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            var arrList = [];
+
+            var list = [];
+            types.forEach(function () {
+                list.push([]);
+            });
+            var lastList = [];
+
+            arr.forEach(function (item, i) {
+                // if (typeof type === "function") {
+                //
+                // } else {
+                var idx = types.indexOf(item.type);
+                if (idx >= 0) {
+                    list[idx].push(item);
+                } else {
+                    lastList.push(item);
+                }
+                // }
+            });
+            list.forEach(function (d) {
+                d.forEach(function (p) {
+                    arrList.push(p);
+                })
+            })
+            lastList.forEach(function (p) {
+                arrList.push(p);
+            })
+            return arrList;
+        },
+
+        //合并数据
+        addTreeDataItem: function (item) {
+            var self = this;
+            var pid = item.pid;
+            var add = function (list, item) {
+                var idx = list.indexOf(item);
+                var html = "";
+                //特殊处理 -- 初始下级为空的情况
+                if (list.length === 1) {
+                    html = self.template([item], item.level || 1);
+                } else {
+                    html = self.template(item, item.level || 1);
+                }
+                if (idx > 0) {
+                    //存在文件夹
+                    var beforeId = list[idx - 1].id;
+                    var $bli = self.$menuBox.find("li[data-id='" + beforeId + "']");
+                    $bli.after(html);
+                } else if (idx === 0) {
+                    //存在节点 但没有文件夹
+                    var pid = item.pid;
+                    var $pli = self.$menuBox.find("li[data-id='" + pid + "']");
+                    if (list.length === 1) {
+                        $pli.append(html);
+                    } else {
+                        $pli.find(">ul").prepend(html);
+                    }
+                } else {
+
+                }
+            }
+            //非根节点
+            if (pid) {
+                var pitem = this.map[pid];
+                //异步文件夹不用处理
+                if (!item.isGetedData && pitem.children.length === 0) {
+                    return;
+                }
+                this.convertToTreeData([item]);
+                if (pitem) {
+                    pitem.children = this.treeListOrder(pitem.children);
+                    add(pitem.children, item);
+                }
+            } else {
+                this.convertToTreeData([item]);
+                this.treeData.push(item);
+                this.treeData = this.treeListOrder(this.treeData);
+                add(this.treeData, item);
+            }
+        },
+
+
         //选中某一项数据
-        selectItem: function (id) {
+        selectItem: function (id, noTriggerClick) {
             var item = this.map[id];
             if (item) {
+                //item.active = true;
                 var $ul = this.$menuBox.find(">ul");
-                var $li = this.$menuBox.find("li[data-id=" + id + "]");
-                $li.trigger("click", true);
+                var $li = this.$menuBox.find("li[data-id='" + id + "']");
+                if (noTriggerClick) {
+
+                } else {
+                    $li.trigger("click", true);
+                }
+
                 var $temUl = $li.parent("ul");
                 while ($temUl !== $ul) {
                     $temUl.show();
                     $li = $temUl.parent("li");
                     if ($li.length) {
-                        $li.removeClass("close-ul");
                         $li.addClass("open-li");
                         $temUl = $li.parent("ul");
                     } else {
@@ -140,50 +240,61 @@ define(function () {
         //拼接 html
         template: function (childrenList, level) {
             var self = this;
+            var liTemplate = function (h, item, level) {
+                h.push('<li data-id="' + item.id + '" data-clen="' + item.children.length + '">');
+                h.push('<a href="javascript:void(0);">');
+                if (item.type === "catalog" || item.children && item.children.length) {
+                    h.push('<span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span>');
+                }
+                h.push('<label>');
+                switch (item.icoType) {
+                    case "home":
+                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
+                        break;
+                    default:
+                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
+                        break;
+                }
+                h.push(item.name);
+                h.push('</label>');
+
+                if (typeof (self.opt.hasOpBtn) === "function") {
+                    var flag = self.opt.hasOpBtn.call(self, item);
+                    if (flag) {
+                        h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
+                    }
+                } else {
+                    if (!!self.opt.hasOpBtn) {
+                        h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
+                    }
+                }
+                h.push('</a>');
+                if (item.type === "catalog" || item.children && item.children.length) {
+                    h.push(fn(item.children, level + 1));
+                }
+                h.push('</li>');
+                return h;
+            }
             var fn = function (list, level) {
                 var h = [];
                 if (list.length) {
                     h.push('<ul class="ul-' + level + '" data-level="' + level + '">');
                     $.each(list, function (idx) {
-                        h.push('<li data-id="' + this.id + '" data-clen="' + this.children.length + '">');
-                        h.push('<a href="javascript:void(0);">');
-                        if (this.type === "catalog" || this.children && this.children.length) {
-                            h.push('<span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span>');
-                        }
-                        h.push('<label>');
-                        switch (this.icoType) {
-                            case "home":
-                                h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                                break;
-                            default:
-                                h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                                break;
-                        }
-                        h.push(this.name);
-                        h.push('</label>');
-
-                        if (typeof (self.opt.hasOpBtn) === "function") {
-                            var flag = self.opt.hasOpBtn.call(self, this);
-                            if (flag) {
-                                h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
-                            }
-                        } else {
-                            if (!!self.opt.hasOpBtn) {
-                                h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
-                            }
-                        }
-                        h.push('</a>');
-                        if (this.type === "catalog" || this.children && this.children.length) {
-                            h.push(fn(this.children, level + 1));
-                        }
-                        h.push('</li>');
+                        liTemplate(h, this, level)
                     });
                     h.push('</ul>');
                 }
                 return h.join("");
             };
-            var htmlStr = fn(childrenList, level || 1);
-            return htmlStr;
+
+            if ($.isArray(childrenList)) {
+                var htmlStr = fn(childrenList, level || 1);
+                return htmlStr;
+            } else {
+                return liTemplate([], childrenList, level || 1).join("");
+            }
+
+
         },
 
         //生成树形菜单
