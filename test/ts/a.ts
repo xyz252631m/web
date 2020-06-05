@@ -6,7 +6,7 @@ class Test {
     pai() {
         let list = [1, 2, 3, 4];
         list.forEach(d => {
-            console.log(d)
+            //console.log(d)
         })
     }
 
@@ -20,6 +20,12 @@ class Test {
         let list2: Array<Array<number>> = [[1, 2, 3], [4, 5], [2, 4, 6]];
         let tList = list2.flat();
     }
+
+
+
+
+
+
 
 
 }

@@ -1,6 +1,3 @@
-var layer = /** @class */ (function () {
-    function layer() {
-    }
-    return layer;
-}());
+class layer {
+}
 //# sourceMappingURL=modal.v1.js.map

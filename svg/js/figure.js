@@ -129,7 +129,6 @@ function Figure(SVG, option) {
         y1: 0
     };
 
-
     var scale = 1;
 
     this.scale = scale;
@@ -270,7 +269,7 @@ $.extend(Figure.prototype, {
             circle.radius(22.5);
         } else {
         }
-        var list = tool.getStrList(item.properties.name);
+        var list = tool.getStrList(item.name || item.properties.name);
         var text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
         if (list.length === 2) {
             text.y(20);
@@ -443,7 +442,7 @@ $.extend(Figure.prototype, {
         if (deg > -270 && deg < -90) {
             deg += 180;
         }
-        var text = g.text(item.properties.role || "").x(x + (x1 - x) / 2).y(y + (y1 - y) / 2 - 6).rotate(deg);
+        var text = g.text((item.properties && item.properties.role) || "").x(x + (x1 - x) / 2).y(y + (y1 - y) / 2 - 6).rotate(deg);
         item.textNode = text;
 
         if (item.source.nodeType === "person") {
@@ -472,7 +471,7 @@ $.extend(Figure.prototype, {
         this.scale = scale;
         return scale;
     },
-    scaleMap: function(scale){
+    scaleMap: function (scale) {
         if (scale < 0.1) {
             scale = 0.1;
         }
