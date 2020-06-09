@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "amd",
     "target": "es6",
     "sourceMap": true,
     "declaration": true,
     "importHelpers": true,
     "lib": [
-      "es2019"
+      "es2019",
+      "dom"
     ],
     "allowJs": true
   },

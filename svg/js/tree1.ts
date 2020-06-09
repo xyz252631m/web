@@ -1,6 +1,15 @@
-import '../../lib/axios.js';
+// import '../../lib/axios.js';
 
-console.log(111)
+require(['../../lib/axios.js'], function (a) {
+    console.log(a)
+})
+
+
+
+
+
+
+
 
 
 

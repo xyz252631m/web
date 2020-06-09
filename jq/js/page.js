@@ -24,7 +24,10 @@
             success: null,
             method: "post",
             dataType: "json",//传入数据格式  默认为json 可设置为string
-            error: null
+            error: null,
+            //参数名称
+            paramPageIndex: "pageIndex",
+            paramPageSize: "pageSize"
         };
         var page = {
             pageShow: false,
@@ -81,8 +84,8 @@
             }
             page.index = opts.pageIndex;
 //                var url = self.format(opts.url, {pageIndex: opts.pageIndex, pageSize: opts.pageSize});
-            opts.data.pageIndex = opts.pageIndex;
-            opts.data.pageSize = opts.pageSize;
+            opts.data[opts.paramPageIndex] = opts.pageIndex;
+            opts.data[opts.paramPageSize] = opts.pageSize;
             var timer = 0;
             if (opts.loading) {
                 timer = setTimeout(function () {
