@@ -15,4 +15,3 @@ class tool {
         arr.push(345);
     }
 }
-//# sourceMappingURL=url.js.map

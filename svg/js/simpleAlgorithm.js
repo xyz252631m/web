@@ -127,4 +127,3 @@ class ChartTree {
         return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
     }
 }
-//# sourceMappingURL=simpleAlgorithm.js.map
