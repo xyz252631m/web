@@ -22,7 +22,11 @@
     "**/domReady.js",
     "**/extend.js",
     "**/flower-dialog.js",
-    "js/main.js"
+    "**/require.js",
+    "**/main.js"
+  ],
+  "globalThis": [
+    "define"
   ],
   "include": [
     "./js/**/*",
