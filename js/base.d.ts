@@ -2,24 +2,22 @@ interface loadOpt {
     js: string;
     css?: string;
 }
-interface loadMap {
-    key: string;
-    callback?: Function;
-}
-declare function A(): void;
-declare function _define(name: string, callback: Function): Function;
+declare function _define(name: string, callback: Function): void;
 declare namespace _define {
     var amd: boolean;
 }
 declare const define: typeof _define;
 declare class MI {
-    private map;
-    private lastList;
+    map: {};
+    loadList: Array<any>;
+    exportMap: {};
+    tool: {};
+    static tool: {};
     constructor();
-    load(name: string | Function, callback: Function): Function;
-    use(name: string, opt: loadOpt): void;
-    define(name: any, callback: Function): void;
-    loader(name: any, callback?: Function): void;
+    load(name: string | Function, callback: Function): void;
+    use(name: string): any;
+    define(name: any, callback: object | Function): void;
+    preload(url: any): any;
 }
 declare const mi: MI;
-declare function loadJS(url: any): void;
+declare function loadJS(url: any, resolve: any, reject: any): void;

@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <title>svg tree 1</title>
     <script src="../../js/base.js"></script>
-    <script src="../js/citeTree.js"></script>
+    <!--    <script src="../js/citeTree.js"></script>-->
 </head>
 <body>
 
+
+<script type="module">
+    //  import CiteTree from "../js/citeTree.js"
+    let svg_pm = mi.preload("../js/svg.min.js");
+    let axios_pm = mi.preload("../../lib/axios.js");
+
+
+    mi.define("init", async () => {
+        let citeTree = mi.preload("../js/citeTree.js");
+        let a = await citeTree;
+
+        console.log("a", a)
+        let b = new a();
+        console.log(b)
+
+
+    })
+
+
+    // console.log(CiteTree)
+</script>
 
 </body>
 </html>
