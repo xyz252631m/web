@@ -1,21 +1,21 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    class CiteTree {
-        constructor(svg, option) {
-            let def = this.getDefs();
+    var CiteTree = /** @class */ (function () {
+        function CiteTree(svg, option) {
+            var def = this.getDefs();
             this.option = Object.assign({}, def, option);
-            let box_dom = this.box_dom = document.getElementById(option.id);
+            var box_dom = this.box_dom = document.getElementById(option.id);
             this.width = box_dom.offsetWidth;
             this.height = box_dom.offsetHeight;
             this.hw = this.width / 2;
             this.hh = this.height / 2;
-            let draw = svg('svgBox').size(this.width, this.height);
+            var draw = svg('svgBox').size(this.width, this.height);
             this.draw = draw;
             this.rootGroup = draw.group();
             this.bindEvent();
         }
-        getDefs() {
+        CiteTree.prototype.getDefs = function () {
             return {
                 //动画时长
                 anTime: 200,
@@ -25,11 +25,11 @@ define(["require", "exports"], function (require, exports) {
                 //line hover 样式名称
                 lineHoverCls: "line-hover"
             };
-        }
-        bindEvent() {
-            let draw = this.draw;
-            let isDown = false, x1, y1, x, y;
-            let self = this, box_dom = this.box_dom;
+        };
+        CiteTree.prototype.bindEvent = function () {
+            var draw = this.draw;
+            var isDown = false, x1, y1, x, y;
+            var self = this, box_dom = this.box_dom;
             //拖动事件
             $(window).on("mousedown.relation", function (e) {
                 if (box_dom.contains(e.target)) {
@@ -39,12 +39,8 @@ define(["require", "exports"], function (require, exports) {
                     x = self.rootGroup.x();
                     y = self.rootGroup.y();
                     $(box_dom).addClass("svg-move");
-                    try {
-                        //
-                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-                    }
-                    catch (e) {
-                    }
+                    //window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    window.getSelection && window.getSelection().removeAllRanges();
                 }
             }).on("click", function () {
                 $(".info-box").hide();
@@ -62,19 +58,18 @@ define(["require", "exports"], function (require, exports) {
                 draw.width($(window).width());
                 draw.height($(window).height());
             });
-            let scale = this.option.scale || 1;
-            this.scale = scale;
+            this.scale = this.option.scale || 1;
             // 缩放事件
             function drag(e) {
-                let driect = null;
-                let scale = self.scale;
+                var direct = null;
+                var scale = self.scale;
                 if (e.wheelDelta) {
-                    driect = e.wheelDelta;
+                    direct = e.wheelDelta;
                 }
                 else {
-                    driect = -e.detail * 40;
+                    direct = -e.detail * 40;
                 }
-                var isUp = driect > 0;
+                var isUp = direct > 0;
                 if (isUp) {
                     scale += 0.1;
                     if (scale > 3) {
@@ -94,7 +89,11 @@ define(["require", "exports"], function (require, exports) {
                 drag(e);
                 self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
             });
-        }
-    }
+        };
+        return CiteTree;
+    }());
     exports.CiteTree = CiteTree;
+    function a() {
+    }
+    exports.default = a;
 });

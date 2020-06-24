@@ -6,7 +6,7 @@ declare class CiteTree {
     private hh;
     private draw;
     rootGroup: any;
-    private box_dom;
+    private readonly box_dom;
     private scale;
     getDefs(): {
         anTime: number;
@@ -17,4 +17,5 @@ declare class CiteTree {
     constructor(svg: any, option: any);
     bindEvent(): void;
 }
+export default function a(): void;
 export { CiteTree };

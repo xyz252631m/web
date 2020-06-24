@@ -1,15 +1,16 @@
 /*
 * des : simple algorithm
 * */
-class SimpleAlgorithm {
-    constructor() {
+var SimpleAlgorithm = /** @class */ (function () {
+    function SimpleAlgorithm() {
         this.tree = [];
         this.ChartTree = ChartTree;
     }
-}
+    return SimpleAlgorithm;
+}());
 ///配置项的接口
-class TreeOption {
-    constructor() {
+var TreeOption = /** @class */ (function () {
+    function TreeOption() {
         //动画时长
         this.anTime = 200;
         //初始渲染层级数量
@@ -20,9 +21,10 @@ class TreeOption {
         //节点点击事件
         this.nodeClick = null;
     }
-}
-class ChartTree {
-    constructor(option) {
+    return TreeOption;
+}());
+var ChartTree = /** @class */ (function () {
+    function ChartTree(option) {
         // getTreeItem() {
         //     let treeItem: TreeItem = {
         //         id: "",
@@ -41,12 +43,12 @@ class ChartTree {
         this.opts = option;
     }
     //处理数据
-    conventData(list, data) {
-        let { mapLevel, mapId, infoList } = this;
-        let option = this.opts;
-        let fn = function (list, mapLevel, mapId, infoList, level, pid) {
+    ChartTree.prototype.conventData = function (list, data) {
+        var _a = this, mapLevel = _a.mapLevel, mapId = _a.mapId, infoList = _a.infoList;
+        var option = this.opts;
+        var fn = function (list, mapLevel, mapId, infoList, level, pid) {
             list.forEach(function (d, idx) {
-                let item;
+                var item;
                 item.data = d;
                 item.id = d.id;
                 if (level > option.renderLevel) {
@@ -83,13 +85,13 @@ class ChartTree {
         fn(list, mapLevel, mapId, infoList, 1, data._id);
         infoList.forEach(function (d, i) {
             if (d.children.length > 10) {
-                let child = [], moreList = [];
+                var child_1 = [], moreList_1 = [];
                 d.children.forEach(function (k, idx) {
                     if (idx < 10) {
-                        child.push(k);
+                        child_1.push(k);
                     }
                     else if (idx === 10) {
-                        let treeItem = {
+                        var treeItem = {
                             //  id: "more_" + d._id + "_01",
                             // _id: "more_" + d._id + "_01",
                             //kl:"#4",
@@ -109,11 +111,11 @@ class ChartTree {
                         // let upItem = d.children[9];
                         // let upIdx = mapLevel[tem.level].indexOf(upItem);
                         //mapLevel[tem.level].splice(upIdx + 1, 0, tem);
-                        child.push(treeItem);
+                        child_1.push(treeItem);
                     }
                     else {
                         // k.hide = true;
-                        moreList.push(k);
+                        moreList_1.push(k);
                     }
                 });
                 d.moreOpen = false;
@@ -122,8 +124,9 @@ class ChartTree {
                 d.hasMore = true;
             }
         });
-    }
-    getLength(str) {
+    };
+    ChartTree.prototype.getLength = function (str) {
         return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
-    }
-}
+    };
+    return ChartTree;
+}());

@@ -1,4 +1,4 @@
-declare let $: any;
+// declare let $: any;
 
 
 function getSearchName(name) {

@@ -6,7 +6,7 @@ class CiteTree {
     private hh: number;
     private draw: any;
     rootGroup;
-    private box_dom: HTMLElement;
+    private readonly box_dom: HTMLElement;
     private scale: any;
 
     getDefs() {
@@ -35,6 +35,7 @@ class CiteTree {
         this.bindEvent();
     }
 
+
     bindEvent() {
         let draw = this.draw;
         let isDown = false, x1, y1, x, y;
@@ -48,12 +49,8 @@ class CiteTree {
                 x = self.rootGroup.x();
                 y = self.rootGroup.y();
                 $(box_dom).addClass("svg-move");
-                try {
-                    //
-                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-                } catch (e) {
-
-                }
+                //window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                window.getSelection && window.getSelection().removeAllRanges();
             }
         }).on("click", function () {
             $(".info-box").hide();
@@ -71,19 +68,20 @@ class CiteTree {
             draw.width($(window).width());
             draw.height($(window).height());
         });
-        let scale = this.option.scale || 1;
-        this.scale = scale;
+
+
+        this.scale = this.option.scale || 1;
 
         // 缩放事件
         function drag(e) {
-            let driect = null;
+            let direct = null;
             let scale = self.scale;
             if (e.wheelDelta) {
-                driect = e.wheelDelta;
+                direct = e.wheelDelta;
             } else {
-                driect = -e.detail * 40;
+                direct = -e.detail * 40;
             }
-            var isUp = driect > 0;
+            let isUp = direct > 0;
             if (isUp) {
                 scale += 0.1;
                 if (scale > 3) {
@@ -101,10 +99,18 @@ class CiteTree {
 
         draw.on("mousewheel", function (e) {
             drag(e);
+
             self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
         });
 
+
     }
+
+
+}
+
+export default function a() {
+
 
 }
 
@@ -112,6 +118,8 @@ class CiteTree {
 export {
     CiteTree
 }
+
+
 
 
 
