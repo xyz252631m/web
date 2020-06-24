@@ -22,7 +22,7 @@ declare class MI {
 }
 declare function $(elem: any): _jq;
 declare namespace $ {
-    var extend: (target: any, ...source: any[]) => void;
+    var extend: (target: any, ...source: any[]) => any;
     var deepCopy: (obj: any, cache?: any[]) => any;
     var post: (url: any, data: any, success: any, config?: any) => Promise<any>;
     var get: (url: any, success: any, config?: any) => Promise<any>;

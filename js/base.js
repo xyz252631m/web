@@ -34,6 +34,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 //amd load
 function _define(name, callback) {
     return mi.load(name, callback);
@@ -147,6 +154,19 @@ $.extend = function (target) {
     var source = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         source[_i - 1] = arguments[_i];
+    }
+    var list = __spreadArrays(source);
+    var deep = false, _s = target;
+    if (typeof target === "boolean") {
+        deep = target;
+        _s = list.shift();
+    }
+    var res = Object.assign.apply(Object, __spreadArrays([{}, _s], list));
+    if (deep) {
+        return this.deepCopy(res);
+    }
+    else {
+        return res;
     }
 };
 //深拷贝

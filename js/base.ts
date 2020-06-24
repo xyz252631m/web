@@ -129,8 +129,18 @@ function $(elem: any): _jq {
 
 //对象合并
 $.extend = function (target, ...source) {
-
-
+    let list = [...source];
+    let deep = false, _s = target;
+    if (typeof target === "boolean") {
+        deep = target;
+        _s = list.shift();
+    }
+    let res = Object.assign({}, _s, ...list);
+    if (deep) {
+        return this.deepCopy(res);
+    } else {
+        return res;
+    }
 }
 //深拷贝
 $.deepCopy = function (obj, cache = []) {
