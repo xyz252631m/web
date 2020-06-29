@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取dts</title>
+    <script src="../svg/svg.js"></script>
+    <script src="../js/base.js"></script>
+</head>
+<body>
+
+<div id="html">
+
+</div>
+
+<script>
+
+
+    let namespace = [];
+
+    for (let key in SVG) {
+        if (SVG.hasOwnProperty(key)) {
+            namespace.push(key);
+        }
+    }
+
+    let h=[];
+    function createNS(){
+        namespace.forEach(d=>{
+            h.push(d);
+        })
+
+
+    }
+    createNS();
+    console.log(namespace)
+
+
+    //$("#html").html(h.join(" "));
+
+
+</script>
+</body>
+</html>
