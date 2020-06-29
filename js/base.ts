@@ -9,7 +9,9 @@ function _define(name: string, callback: Function) {
 }
 
 _define.amd = true;
+
 const define = _define;
+
 
 class MI {
     //加载成功对象
@@ -117,15 +119,16 @@ function $(elem: any): _jq {
         return;
     }
     let obj = new _jq(elem);
-    let d = function () {
+    let _q = function () {
     };
-    d.prototype = _jq.prototype;
-    let _d = new d();
+    _q.prototype = _jq.prototype;
+    let _d = new _q();
     obj.el.forEach(d => {
         [].push.call(_d, d)
     })
     return _d;
 }
+
 
 //对象合并
 $.extend = function (target, ...source) {
@@ -142,6 +145,8 @@ $.extend = function (target, ...source) {
         return res;
     }
 }
+
+
 //深拷贝
 $.deepCopy = function (obj, cache = []) {
     // typeof [] => 'object'
@@ -169,7 +174,7 @@ $.deepCopy = function (obj, cache = []) {
 
 //axios post
 $.post = async function (url, data, success, config?) {
-    let axios = await mi.preload("/lib/axios.js");
+    let axios: AxiosStatic = await mi.preload("/lib/axios.js");
     return axios.post(url, data, config || {}).then(function (res) {
         success(res.data)
     });
@@ -182,6 +187,11 @@ $.get = async function (url, success, config?) {
         success(res.data)
     });
 }
+$.each = function (list: any, fn: Function) {
+    list.forEach((d, idx) => {
+        fn.call(d, idx, d)
+    });
+}
 
 MI.tool = $;
 
@@ -189,6 +199,7 @@ class _jq {
     el: Array<Window> | NodeListOf<Element>;
     forEach: (callbackfn: (value: any, index: number, array: any[]) => void, thisArg?: any) => void;
     splice: { (start: number, deleteCount?: number): any[]; (start: number, deleteCount: number, ...items: any[]): any[] };
+    _events: any;
 
     constructor(elem: any) {
         if (Array.isArray(elem)) {
@@ -196,6 +207,7 @@ class _jq {
         } else {
             this.el = this.selector(elem);
         }
+        this._events = {};
     }
 
     selector(elem: any) {
@@ -215,36 +227,86 @@ class _jq {
     }
 
     get(idx: number) {
-        return $(this[0]);
+        return $(this[idx]);
+    }
+
+    eq(idx: number) {
+        return this.get(idx);
     }
 
     //绑定事件
-    on(type: string, entrust?: string | Function, cb?: string | Function) {
+    on(eventName: string, entrust?: string | Function, cb?: Function) {
+
+        let names = eventName.split(".");
+
+        let type = names[0];
+        let ns = names[1];
 
         if (typeof entrust === "function") {
             cb = entrust;
             entrust = "";
         }
+
+        function addEvent(elem, type, ns, fn) {
+            let events = elem['_jq_event'];
+            if (!events) {
+                elem['_jq_event'] = {
+                    [type]: [{ns, fn}]
+                };
+            } else {
+                if (events[type]) {
+                    events[type].push({ns, fn});
+                } else {
+                    events[type] = [{ns, fn}];
+                }
+            }
+        }
+
+        // this._events[type] = cb;
         this.forEach(d => {
             if (entrust) {
                 d.addEventListener(type, function (e) {
-
                     console.log("e", e)
-
-                    //d.addEventListener(type, cb);
+                    if (this.contains(e.target)) {
+                        cb.call(this, e);
+                    }
                 });
+                // addEvent(d, type, cb);
             } else {
                 d.addEventListener(type, cb);
+                //addEvent(d, type, cb);
             }
-
+            addEvent(d, type, ns, cb);
         })
 
         return this;
     }
 
+    off(eventName: string) {
+        let names = eventName.split(".");
+        let type = names[0];
+        let ns = names[1];
+
+
+        this.forEach(d => {
+
+
+        })
+
+
+    }
+
     hide() {
         this.forEach(d => {
             d.style.display = "none";
+        });
+        return this;
+    }
+
+    each(fn: Function) {
+        let list = this.el;
+        list.forEach((d, idx) => {
+            fn.call(d, idx, d)
         });
         return this;
     }
@@ -270,6 +332,7 @@ class _jq {
                 }
             }
         }
+        return this;
     }
 
     text(text: string) {
@@ -363,6 +426,9 @@ function loadJS(url, resolve, reject) {
 }
 
 const mi = new MI();
+
+
+
 
 
 

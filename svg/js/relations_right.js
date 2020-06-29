@@ -1186,7 +1186,7 @@ function Relation(SVG, option) {
         $(box_dom).addClass("svg-move");
     }).on("click", function () {
         $(".info-box").hide();
-        $(this).removeClass("svg-move");
+        $(box_dom).removeClass("svg-move");
     });
     $(window).on("mousemove.relation", function (e) {
         if (isDown) {

@@ -140,10 +140,10 @@ function $(elem) {
         return;
     }
     var obj = new _jq(elem);
-    var d = function () {
+    var _q = function () {
     };
-    d.prototype = _jq.prototype;
-    var _d = new d();
+    _q.prototype = _jq.prototype;
+    var _d = new _q();
     obj.el.forEach(function (d) {
         [].push.call(_d, d);
     });
@@ -225,6 +225,11 @@ $.get = function (url, success, config) {
         });
     });
 };
+$.each = function (list, fn) {
+    list.forEach(function (d, idx) {
+        fn.call(d, idx, d);
+    });
+};
 MI.tool = $;
 var _jq = /** @class */ (function () {
     function _jq(elem) {
@@ -234,6 +239,7 @@ var _jq = /** @class */ (function () {
         else {
             this.el = this.selector(elem);
         }
+        this._events = {};
     }
     _jq.prototype.selector = function (elem) {
         if (typeof elem === "string") {
@@ -251,30 +257,73 @@ var _jq = /** @class */ (function () {
         return $(list);
     };
     _jq.prototype.get = function (idx) {
-        return $(this[0]);
+        return $(this[idx]);
+    };
+    _jq.prototype.eq = function (idx) {
+        return this.get(idx);
     };
     //绑定事件
-    _jq.prototype.on = function (type, entrust, cb) {
+    _jq.prototype.on = function (eventName, entrust, cb) {
+        var names = eventName.split(".");
+        var type = names[0];
+        var ns = names[1];
         if (typeof entrust === "function") {
             cb = entrust;
             entrust = "";
         }
+        function addEvent(elem, type, ns, fn) {
+            var _a;
+            var events = elem['_jq_event'];
+            if (!events) {
+                elem['_jq_event'] = (_a = {},
+                    _a[type] = [{ ns: ns, fn: fn }],
+                    _a);
+            }
+            else {
+                if (events[type]) {
+                    events[type].push({ ns: ns, fn: fn });
+                }
+                else {
+                    events[type] = [{ ns: ns, fn: fn }];
+                }
+            }
+        }
+        // this._events[type] = cb;
         this.forEach(function (d) {
             if (entrust) {
                 d.addEventListener(type, function (e) {
                     console.log("e", e);
-                    //d.addEventListener(type, cb);
+                    if (this.contains(e.target)) {
+                        cb.call(this, e);
+                    }
                 });
+                // addEvent(d, type, cb);
             }
             else {
                 d.addEventListener(type, cb);
+                //addEvent(d, type, cb);
             }
+            addEvent(d, type, ns, cb);
         });
         return this;
+    };
+    _jq.prototype.off = function (eventName) {
+        var names = eventName.split(".");
+        var type = names[0];
+        var ns = names[1];
+        this.forEach(function (d) {
+        });
     };
     _jq.prototype.hide = function () {
         this.forEach(function (d) {
             d.style.display = "none";
+        });
+        return this;
+    };
+    _jq.prototype.each = function (fn) {
+        var list = this.el;
+        list.forEach(function (d, idx) {
+            fn.call(d, idx, d);
         });
         return this;
     };
@@ -303,6 +352,7 @@ var _jq = /** @class */ (function () {
                 _loop_1(key);
             }
         }
+        return this;
     };
     _jq.prototype.text = function (text) {
         if (text) {

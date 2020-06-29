@@ -37,6 +37,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 $(function () {
     var _this = this;
     mi.define("ready", function () { return __awaiter(_this, void 0, void 0, function () {
+        // console.log("a", CiteTree)
+        // console.log("axios_pm", MI.tool.axios)
+        // $.get("../json/gltp.json", function (res) {
+        //     console.log("Res", res)
+        // })
+        // $("div").on("click", "p", function (e) {
+        //     console.log(789,e)
+        // })
         //生成从minNum到maxNum的随机数
         function randomNum(minNum, maxNum) {
             switch (arguments.length) {
@@ -51,21 +59,14 @@ $(function () {
         var SVG, citeTree, CiteTree, nameList, tagList, rangeBox, relation, fullscreen;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, mi.preload("../js/svg.min.js")];
+                case 0: return [4 /*yield*/, mi.preload("../svg.min.js")];
                 case 1:
                     SVG = _a.sent();
+                    console.log("SVG", SVG);
                     citeTree = mi.preload("../js/citeTree.js");
                     return [4 /*yield*/, citeTree];
                 case 2:
                     CiteTree = (_a.sent()).CiteTree;
-                    // console.log("a", CiteTree)
-                    // console.log("axios_pm", MI.tool.axios)
-                    // $.get("../json/gltp.json", function (res) {
-                    //     console.log("Res", res)
-                    // })
-                    $("div").on("click", "p", function (e) {
-                        console.log(e);
-                    });
                     nameList = ["高大山", "谢大海", "马宏宇", "林莽", "黄强辉", "章汉夫", "范长江", "林君雄", "谭平山", "朱希亮", "李四光", "甘铁生", "张伍绍祖", "马继祖", "程孝先", "宗敬先",
                         "年广嗣", "汤绍箕", "吕显祖", "何光宗", "孙念祖", "马建国", "节振国", "冯兴国", "郝爱民", "于学忠", "马连良", "胡宝善", "李宗仁", "洪学智", "余克勤", "吴克俭", "杨惟义", "李文信",
                         "王德茂", "李书诚", "杨勇", "高尚德", "刁富贵", "汤念祖", "吕奉先", "何光宗", "冷德友", "安怡孙", "贾德善", "蔡德霖", "关仁", "郑义贾怡孙天民", "赵大华", "赵进喜", "赵德荣", "赵德茂",
@@ -209,8 +210,8 @@ $(function () {
                     $.get("../json/tupuData.json", function (res) {
                         if (res && res.result) {
                             var companyInfo = res.result;
+                            relation.init(companyInfo);
                         }
-                        relation.init(companyInfo);
                     });
                     //window.tr = relation;
                     //放大

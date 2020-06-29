@@ -24,8 +24,9 @@ declare function $(elem: any): _jq;
 declare namespace $ {
     var extend: (target: any, ...source: any[]) => any;
     var deepCopy: (obj: any, cache?: any[]) => any;
-    var post: (url: any, data: any, success: any, config?: any) => Promise<any>;
+    var post: (url: any, data: any, success: any, config?: any) => Promise<void>;
     var get: (url: any, success: any, config?: any) => Promise<any>;
+    var each: (list: any, fn: Function) => void;
 }
 declare class _jq {
     el: Array<Window> | NodeListOf<Element>;
@@ -34,14 +35,18 @@ declare class _jq {
         (start: number, deleteCount?: number): any[];
         (start: number, deleteCount: number, ...items: any[]): any[];
     };
+    _events: any;
     constructor(elem: any);
     selector(elem: any): any[] | NodeListOf<Element>;
     find(selector: string): _jq;
     get(idx: number): _jq;
-    on(type: string, entrust?: string | Function, cb?: string | Function): this;
+    eq(idx: number): _jq;
+    on(eventName: string, entrust?: string | Function, cb?: Function): this;
+    off(eventName: string): void;
     hide(): this;
+    each(fn: Function): this;
     show(): this;
-    css(a: any, b?: any): void;
+    css(a: any, b?: any): this;
     text(text: string): any;
     html(html: string): any;
     addClass(cls: string): void;

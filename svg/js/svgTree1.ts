@@ -2,7 +2,10 @@ $(function () {
 
 
     mi.define("ready", async () => {
-        let SVG = await mi.preload("../js/svg.min.js");
+        let SVG = await mi.preload("../svg.min.js");
+
+        console.log("SVG",SVG)
+
         let citeTree = mi.preload("../js/citeTree.js");
         let {CiteTree} = await citeTree;
         // console.log("a", CiteTree)
@@ -13,9 +16,9 @@ $(function () {
         //     console.log("Res", res)
         // })
 
-        $("div").on("click", "p", function (e) {
-            console.log(e)
-        })
+        // $("div").on("click", "p", function (e) {
+        //     console.log(789,e)
+        // })
 
 
         //生成从minNum到maxNum的随机数
@@ -177,8 +180,9 @@ $(function () {
 
             if (res && res.result) {
                 var companyInfo = res.result;
+                relation.init(companyInfo);
             }
-            relation.init(companyInfo);
+
         });
         //window.tr = relation;
 

@@ -12,10 +12,33 @@
 </head>
 <body>
 
-
+<div class="div-1">
+    <p>111</p>
+</div>
+<div class="div-2">
+    <p>222</p>
+    <p>333</p>
+</div>
 <script>
 
+    $(".div-1").on("click","p",function () {
 
+        console.log(1,this.innerText)
+    })
+
+    $(".div-2").on("click","p",function () {
+
+        console.log(2,this.innerText)
+    })
+
+    $(".div-1").on("click","p",function () {
+
+        console.log(4,this.innerText)
+    })
+    $(".div-1").on("click" ,function () {
+
+        console.log(5,this.innerText)
+    })
     class a {
 
         b = 6
