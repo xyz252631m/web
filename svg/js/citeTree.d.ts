@@ -1,3 +1,12 @@
+interface CiteData {
+    _id: any;
+    id: any;
+    x: number;
+    y: number;
+    right_vLine?: svgjs.Line;
+    left_vLine?: svgjs.Line;
+    children: Array<CiteData>[];
+}
 declare class CiteTree {
     private option;
     private width;
@@ -18,6 +27,7 @@ declare class CiteTree {
     };
     constructor(svg: any, option: any);
     init(obj: any): void;
+    convertTreeData(list: Array<CiteData>): any[];
     bindEvent(): void;
 }
 export default function a(): void;

@@ -286,9 +286,9 @@ class _jq {
         let names = eventName.split(".");
         let type = names[0];
         let ns = names[1];
-
-
         this.forEach(d => {
+
+
 
 
         })

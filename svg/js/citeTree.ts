@@ -1,5 +1,6 @@
 interface CiteData {
     _id: any,
+    id: any,
     x: number,
     y: number,
     right_vLine?: svgjs.Line,
@@ -25,7 +26,7 @@ class NodeReader {
     hh: any;
     rootRect: any;
 
-    constructor(isRight:boolean, data:CiteData, option) {
+    constructor(isRight: boolean, data: CiteData, option) {
         this.mapLevel = {};
         this.mapId = {};
         this.infoList = [];
@@ -788,7 +789,7 @@ class NodeReader {
         let option = this.option;
         let maxInfo = this.maxInfo;
         let isRight = this.isRight;
-        let self =this;
+        let self = this;
 
         let group = this.rootGroup.group().attr("class", "svg-root-node");
         rootItem.g = group;
@@ -958,8 +959,8 @@ class NodeReader {
                 size: 14
             });
             g.attr("class", "svg-more").attr("data-id", item._id).attr("data-pid", item.pid);
-            state_g.on("click",function (e) {
-                self.moreClick(e,item,self);
+            state_g.on("click", function (e) {
+                self.moreClick(e, item, self);
             });
         } else {
             g.attr("class", "svg-node").addClass("level-" + item.level);
@@ -1296,26 +1297,57 @@ class CiteTree {
         this.rootGroup.scale(this.option.scale || 1);
     }
 
+    //转为tree型 list
+    convertTreeData(list: Array<CiteData>) {
+        let repMap = {};
+        let temList = [];
+
+        //去除重复
+        list.forEach(d => {
+            if (!repMap[d.id]) {
+                repMap[d.id] = d;
+                let a = $.extend(d)
+                temList.push($.extend(d, {isOpen: false, children: []}));
+            }
+        });
+        let map = {}, treeData = [];
+        temList.forEach(d => {
+            map[d.id] = d;
+        });
+        temList.forEach(d => {
+            if (d.pid) {
+                if (map[d.pid]) {
+                    map[d.pid].children.push(d);
+                }
+            }
+        });
+        for (let key in map) {
+            if (!map[key].pid) {
+                treeData.push(map[key]);
+            }
+        }
+        return treeData;
+    }
 
     bindEvent() {
 
-        $(".div-1").on("click","p",function () {
+        $(".div-1").on("click", "p", function () {
 
-            console.log(1,this.innerText)
+            console.log(1, this.innerText)
         })
 
-        $(".div-2").on("click","p",function () {
+        $(".div-2").on("click", "p", function () {
 
-            console.log(2,this.innerText)
+            console.log(2, this.innerText)
         })
 
-        $(".div-1").on("click","p",function () {
+        $(".div-1").on("click", "p", function () {
 
-            console.log(4,this.innerText)
+            console.log(4, this.innerText)
         })
-        $(".div-1").on("click" ,function () {
+        $(".div-1").on("click", function () {
 
-            console.log(5,this.innerText)
+            console.log(5, this.innerText)
         })
 
 

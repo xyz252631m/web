@@ -1242,6 +1242,36 @@ define(["require", "exports"], function (require, exports) {
             // this.leftGroup = new NodeReader(false, obj, opt);
             this.rootGroup.scale(this.option.scale || 1);
         };
+        //转为tree型 list
+        CiteTree.prototype.convertTreeData = function (list) {
+            var repMap = {};
+            var temList = [];
+            //去除重复
+            list.forEach(function (d) {
+                if (!repMap[d.id]) {
+                    repMap[d.id] = d;
+                    var a_1 = $.extend(d);
+                    temList.push($.extend(d, { isOpen: false, children: [] }));
+                }
+            });
+            var map = {}, treeData = [];
+            temList.forEach(function (d) {
+                map[d.id] = d;
+            });
+            temList.forEach(function (d) {
+                if (d.pid) {
+                    if (map[d.pid]) {
+                        map[d.pid].children.push(d);
+                    }
+                }
+            });
+            for (var key in map) {
+                if (!map[key].pid) {
+                    treeData.push(map[key]);
+                }
+            }
+            return treeData;
+        };
         CiteTree.prototype.bindEvent = function () {
             $(".div-1").on("click", "p", function () {
                 console.log(1, this.innerText);
