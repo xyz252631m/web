@@ -132,14 +132,19 @@ var MI = /** @class */ (function () {
     };
     return MI;
 }());
-function $(elem) {
-    if (typeof elem === "function") {
-        document.addEventListener("DOMContentLoaded", function () {
-            elem();
-        });
+function $(selector) {
+    if (typeof selector === "function") {
+        if (document.body) {
+            selector();
+        }
+        else {
+            document.addEventListener("DOMContentLoaded", function () {
+                selector();
+            });
+        }
         return;
     }
-    var obj = new _jq(elem);
+    var obj = new _jq(selector);
     var _q = function () {
     };
     _q.prototype = _jq.prototype;
@@ -199,7 +204,7 @@ $.post = function (url, data, success, config) {
         var axios;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, mi.preload("/lib/axios.js")];
+                case 0: return [4 /*yield*/, mi.preload("/lib/axios.min.js")];
                 case 1:
                     axios = _a.sent();
                     return [2 /*return*/, axios.post(url, data, config || {}).then(function (res) {
@@ -215,7 +220,7 @@ $.get = function (url, success, config) {
         var axios;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, mi.preload("/lib/axios.js")];
+                case 0: return [4 /*yield*/, mi.preload("/lib/axios.min.js")];
                 case 1:
                     axios = _a.sent();
                     return [2 /*return*/, axios.get(url, config || {}).then(function (res) {
@@ -288,22 +293,20 @@ var _jq = /** @class */ (function () {
                 }
             }
         }
-        // this._events[type] = cb;
         this.forEach(function (d) {
             if (entrust) {
-                d.addEventListener(type, function (e) {
-                    console.log("e", e);
+                var fn = function (e) {
                     if (this.contains(e.target)) {
                         cb.call(this, e);
                     }
-                });
-                // addEvent(d, type, cb);
+                };
+                d.addEventListener(type, fn);
+                addEvent(d, type, ns, fn);
             }
             else {
                 d.addEventListener(type, cb);
-                //addEvent(d, type, cb);
+                addEvent(d, type, ns, cb);
             }
-            addEvent(d, type, ns, cb);
         });
         return this;
     };
@@ -312,6 +315,21 @@ var _jq = /** @class */ (function () {
         var type = names[0];
         var ns = names[1];
         this.forEach(function (d) {
+            var events = d['_jq_event'];
+            if (events) {
+                if (events[type]) {
+                    var list_1 = [];
+                    events[type].forEach(function (p) {
+                        if (ns && ns !== p.ns) {
+                            list_1.push(p);
+                        }
+                        else {
+                            d.removeEventListener(type, p.fn);
+                        }
+                    });
+                    events[type] = list_1;
+                }
+            }
         });
     };
     _jq.prototype.hide = function () {

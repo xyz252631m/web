@@ -111,14 +111,18 @@ class MI {
     }
 }
 
-function $(elem: any): _jq {
-    if (typeof elem === "function") {
-        document.addEventListener("DOMContentLoaded", function () {
-            elem();
-        })
+function $(selector: any): _jq {
+    if (typeof selector === "function") {
+        if (document.body) {
+            selector();
+        } else {
+            document.addEventListener("DOMContentLoaded", function () {
+                selector();
+            })
+        }
         return;
     }
-    let obj = new _jq(elem);
+    let obj = new _jq(selector);
     let _q = function () {
     };
     _q.prototype = _jq.prototype;
@@ -128,7 +132,6 @@ function $(elem: any): _jq {
     })
     return _d;
 }
-
 
 //对象合并
 $.extend = function (target, ...source) {
@@ -174,7 +177,7 @@ $.deepCopy = function (obj, cache = []) {
 
 //axios post
 $.post = async function (url, data, success, config?) {
-    let axios: AxiosStatic = await mi.preload("/lib/axios.js");
+    let axios: AxiosStatic = await mi.preload("/lib/axios.min.js");
     return axios.post(url, data, config || {}).then(function (res) {
         success(res.data)
     });
@@ -182,7 +185,7 @@ $.post = async function (url, data, success, config?) {
 
 //axios get
 $.get = async function (url, success, config?) {
-    let axios = await mi.preload("/lib/axios.js");
+    let axios: AxiosStatic = await mi.preload("/lib/axios.min.js");
     return axios.get(url, config || {}).then(function (res) {
         success(res.data)
     });
@@ -236,12 +239,9 @@ class _jq {
 
     //绑定事件
     on(eventName: string, entrust?: string | Function, cb?: Function) {
-
         let names = eventName.split(".");
-
         let type = names[0];
         let ns = names[1];
-
         if (typeof entrust === "function") {
             cb = entrust;
             entrust = "";
@@ -262,21 +262,20 @@ class _jq {
             }
         }
 
-        // this._events[type] = cb;
         this.forEach(d => {
             if (entrust) {
-                d.addEventListener(type, function (e) {
-                    console.log("e", e)
+                let fn = function (e) {
                     if (this.contains(e.target)) {
                         cb.call(this, e);
                     }
-                });
-                // addEvent(d, type, cb);
+                }
+                d.addEventListener(type, fn);
+                addEvent(d, type, ns, fn);
             } else {
                 d.addEventListener(type, cb);
-                //addEvent(d, type, cb);
+                addEvent(d, type, ns, cb);
             }
-            addEvent(d, type, ns, cb);
+
         })
 
         return this;
@@ -287,13 +286,21 @@ class _jq {
         let type = names[0];
         let ns = names[1];
         this.forEach(d => {
-
-
-
-
+            let events = d['_jq_event'];
+            if (events) {
+                if (events[type]) {
+                    let list = [];
+                    events[type].forEach(p => {
+                        if (ns && ns !== p.ns) {
+                            list.push(p);
+                        } else {
+                            d.removeEventListener(type, p.fn);
+                        }
+                    })
+                    events[type] = list;
+                }
+            }
         })
-
-
     }
 
     hide() {

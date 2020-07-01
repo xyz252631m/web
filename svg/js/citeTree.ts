@@ -72,6 +72,8 @@ class NodeReader {
         }
     }
 
+
+
     createGroup() {
         let halfGroup = this.rootGroup.group();
         let nodeGroup = halfGroup.group();
@@ -1330,27 +1332,6 @@ class CiteTree {
     }
 
     bindEvent() {
-
-        $(".div-1").on("click", "p", function () {
-
-            console.log(1, this.innerText)
-        })
-
-        $(".div-2").on("click", "p", function () {
-
-            console.log(2, this.innerText)
-        })
-
-        $(".div-1").on("click", "p", function () {
-
-            console.log(4, this.innerText)
-        })
-        $(".div-1").on("click", function () {
-
-            console.log(5, this.innerText)
-        })
-
-
         let draw = this.draw;
         let isDown = false, x1, y1, x, y;
         let self = this, box_dom = this.box_dom;

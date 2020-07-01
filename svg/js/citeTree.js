@@ -1273,18 +1273,6 @@ define(["require", "exports"], function (require, exports) {
             return treeData;
         };
         CiteTree.prototype.bindEvent = function () {
-            $(".div-1").on("click", "p", function () {
-                console.log(1, this.innerText);
-            });
-            $(".div-2").on("click", "p", function () {
-                console.log(2, this.innerText);
-            });
-            $(".div-1").on("click", "p", function () {
-                console.log(4, this.innerText);
-            });
-            $(".div-1").on("click", function () {
-                console.log(5, this.innerText);
-            });
             var draw = this.draw;
             var isDown = false, x1, y1, x, y;
             var self = this, box_dom = this.box_dom;

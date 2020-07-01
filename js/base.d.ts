@@ -20,12 +20,12 @@ declare class MI {
     define(name: any, callback: object | Function): void;
     preload(url: any): any;
 }
-declare function $(elem: any): _jq;
+declare function $(selector: any): _jq;
 declare namespace $ {
     var extend: (target: any, ...source: any[]) => any;
     var deepCopy: (obj: any, cache?: any[]) => any;
     var post: (url: any, data: any, success: any, config?: any) => Promise<void>;
-    var get: (url: any, success: any, config?: any) => Promise<any>;
+    var get: (url: any, success: any, config?: any) => Promise<void>;
     var each: (list: any, fn: Function) => void;
 }
 declare class _jq {
