@@ -1185,6 +1185,7 @@ function Relation(SVG, option) {
         if (isDown) {
             self.rootGroup.translate(x + e.pageX - x1, y + e.pageY - y1);
         }
+        return false
     }).on("mouseup", function () {
         isDown = false;
         $(box_dom).removeClass("svg-move");

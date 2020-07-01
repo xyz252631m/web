@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.environment = {
+export const environment = {
     production: true
 };
 //# sourceMappingURL=environment.prod.js.map

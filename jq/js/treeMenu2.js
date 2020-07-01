@@ -27,6 +27,8 @@ define(function () {
         this.$menuBox = this.opt.$el;
         this.lastLi = null;
 
+        //激活item
+        this.activeItem = null;
         //默认显示的数量
         this.showItemNum = 50;
         //数据列表
@@ -36,29 +38,34 @@ define(function () {
         //显示的开始索引
         this.dataIdx = 0;
         //滚动位置
-        this.dataLastScroll=0;
+        this.dataLastScroll = 0;
     }
 
     $.extend(TreeMenu.prototype, {
         init: function () {
             this.getMenuHeight();
             this.bindEvent();
-
-            this.dataList = this.treeData;
-
+            this.dataList = this.getFlatList();
             this.refreshDataList(0);
-
-
-            //  this.createTreeMenu(this.treeData);
-            //   this.createTreeBg();
-
-
         },
-        // createTreeBg: function () {
-        //     var $bg = '<div class="virtual-tree-bg"></div>'
-        //     this.$bg = $bg;
-        //     this.$menuBox.prepend($bg);
-        // },
+        //获取显示的list数据
+        getFlatList: function () {
+            var treeData = this.treeData;
+            var newList = [];
+            var fn = function (newList, list, level) {
+                list.forEach(function (d) {
+                    d.level = level;
+                    newList.push(d);
+                    if (d.open) {
+                        if (d.children && d.children.length) {
+                            fn(newList, d.children, level + 1);
+                        }
+                    }
+                });
+            }
+            fn(newList, treeData, 1);
+            return newList;
+        },
         //获取菜单的高度
         getMenuHeight: function () {
             this.boxH = this.$menuBox.height();
@@ -66,7 +73,6 @@ define(function () {
         },
         //获取子级
         getOpenItem: function (item) {
-
             var list = []
             var fn = function (list, item) {
                 item.children.forEach(function (d) {
@@ -79,11 +85,10 @@ define(function () {
             }
             fn(list, item);
             return list;
-
         },
         //处理数据 将list数据转为tree层级数据
         toTree: function (list) {
-            var newList = this.convertToTreeData(list);
+            var newList = this.convertToTreeData(list, true);
             var map = this.map;
             $.each(list, function () {
                 var item = map[this.pid];
@@ -130,60 +135,21 @@ define(function () {
             }
             return this.liTemplate(showList);
         },
-        liTemplate: function (list) {
-            var h = [];
-            var self = this;
-            $.each(list, function (idx, item) {
-                var cls = "level-li-" + item.level;
-                if (item.open) {
-                    cls += " open-li "
-                }
 
-                h.push('<li class="' + cls + '" data-id="' + item.id + '" data-clen="' + item.children.length + '">');
-                h.push('<a href="javascript:void(0);">');
-                if (item.type === "catalog" || item.children && item.children.length) {
-                    h.push('<span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span>');
-                }
-                h.push('<label>');
-                switch (item.icoType) {
-                    case "home":
-                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                        break;
-                    default:
-                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                        break;
-                }
-                h.push(item.name);
-                h.push('</label>');
-
-                if (typeof (self.opt.hasOpBtn) === "function") {
-                    var flag = self.opt.hasOpBtn.call(self, item);
-                    if (flag) {
-                        h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
-                    }
-                } else {
-                    if (!!self.opt.hasOpBtn) {
-                        h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
-                    }
-                }
-                h.push('</a>');
-                // if (item.type === "catalog" || item.children && item.children.length) {
-                //     h.push(fn(item.children, level + 1));
-                // }
-                h.push('</li>');
-            });
-            return h.join("");
-
-        },
         //重置数据
         resetTree: function (list) {
             this.map = {};
             this.toTree(list);
-            this.createTreeMenu(this.treeData);
+            this.dataList = this.getFlatList();
+
+            this.dataIdx = 0;
+            this.dataLastScroll = 0;
+            this.refreshDataList(0);
         },
         //将list转换为treeData
         convertToTreeData: function (list) {
             var map = this.map, newList = [];
+            //初始化 并合并到map里
             $.each(list, function () {
                 this.count = 0;
                 this.level = 1;
@@ -209,8 +175,9 @@ define(function () {
 
         //刷新 节点数据
         refreshNodeData: function (item, dom, list) {
+            var self = this;
+
             if (list && list.length) {
-                var map = this.map;
                 $.each(list, function () {
                     if (!this.pid) {
                         this.pid = item.id;
@@ -220,14 +187,37 @@ define(function () {
                         }
                     }
                 });
-                this.convertToTreeData(list);
+                $.each(list, function () {
+                    if (this.pid) {
+                        if (self.map[this.id]) {
+
+                        } else {
+                            this.count = 0;
+                            this.level = 1;
+                            this.isGetedData = false;
+                            if (!this.children) {
+                                this.children = [];
+                            }
+                            self.map[this.id] = this;
+                            self.map[this.pid].children.push(this);
+                        }
+                    }
+                });
+                // this.convertToTreeData(list);
                 item.isGetedData = true;
-                var html = this.template(item.children, item.level);
-                dom.append(html);
-                dom.trigger("click");
+                var $li = this.$menuBox.find("li[data-id='" + item.id + "']");
+                //默认没有子节点（直接追加 合并后的子节点） 如果默认有子节点则会重复
+                //true 合并后的子节点会直接替换原有子节点
+                $li.trigger("click", {isReplace: true});
             } else {
                 item.isGetedData = true;
-                dom.find(">a").find(".arrow").hide().remove();
+                // if (item.open) {
+                //     item.open = false;
+                //     dom.removeClass("open-li");
+                // } else {
+                item.open = true;
+                dom.addClass("open-li");
+                // }
             }
         },
 
@@ -245,27 +235,33 @@ define(function () {
             var arrList = [];
 
             var list = [];
-            types.forEach(function () {
-                list.push([]);
-            });
+            // types.forEach(function () {
+            //     list.push([]);
+            // });
             var lastList = [];
-
             arr.forEach(function (item, i) {
-                // if (typeof type === "function") {
-                //
-                // } else {
-                var idx = types.indexOf(item.type);
-                if (idx >= 0) {
-                    list[idx].push(item);
+                if (item.type !== "table") {
+                    list.push(item);
                 } else {
                     lastList.push(item);
                 }
-                // }
             });
+
+
+            // arr.forEach(function (item, i) {
+            //     // if (typeof type === "function") {
+            //     //
+            //     // } else {
+            //     var idx = types.indexOf(item.type);
+            //     if (idx >= 0) {
+            //         list[idx].push(item);
+            //     } else {
+            //         lastList.push(item);
+            //     }
+            //     // }
+            // });
             list.forEach(function (d) {
-                d.forEach(function (p) {
-                    arrList.push(p);
-                })
+                arrList.push(d);
             })
             lastList.forEach(function (p) {
                 arrList.push(p);
@@ -275,61 +271,139 @@ define(function () {
 
         //合并数据
         addTreeDataItem: function (item) {
-            var self = this;
             var pid = item.pid;
-            var add = function (list, item) {
-                var idx = list.indexOf(item);
-                var html = "";
-                //特殊处理 -- 初始下级为空的情况
-                if (list.length === 1) {
-                    html = self.template([item], item.level || 1);
-                } else {
-                    html = self.template(item, item.level || 1);
-                }
-                if (idx > 0) {
-                    //存在文件夹
-                    var beforeId = list[idx - 1].id;
-                    var $bli = self.$menuBox.find("li[data-id='" + beforeId + "']");
-                    $bli.after(html);
-                } else if (idx === 0) {
-                    //存在节点 但没有文件夹
-                    var pid = item.pid;
-                    var $pli = self.$menuBox.find("li[data-id='" + pid + "']");
-                    if (list.length === 1) {
-                        $pli.append(html);
-                    } else {
-                        $pli.find(">ul").prepend(html);
-                    }
-                } else {
-
-                }
-            }
             //非根节点
             if (pid) {
                 var pitem = this.map[pid];
                 //异步文件夹不用处理
-                if (!item.isGetedData && pitem.children.length === 0) {
-                    return;
-                }
-                this.convertToTreeData([item]);
                 if (pitem) {
+                    this.convertToTreeData([item]);
+                    if (!item.isGetedData && pitem.children.length === 0) {
+                        return;
+                    }
+                    item.level = pitem.level + 1;
                     pitem.children = this.treeListOrder(pitem.children);
-                    add(pitem.children, item);
+                    if (pitem.open) {
+                        this.dataList = this.getFlatList();
+                        this.refreshTree();
+                    }
+                } else {
+                    console.error("未找到pid item!")
                 }
             } else {
                 this.convertToTreeData([item]);
                 this.treeData.push(item);
-                this.treeData = this.treeListOrder(this.treeData);
-                add(this.treeData, item);
+                if (this.treeData.length === 1) {
+
+                } else {
+                    this.treeData = this.treeListOrder(this.treeData);
+                }
+                this.dataList = this.getFlatList();
+                this.refreshTree();
             }
         },
 
+        refreshTree: function () {
+            this.refreshDataList(this.dataIdx);
+        },
+
+        //刷新树节点 -- 目录 isTable: 不为目录节点
+        refreshTreeByItem: function (id, list, isTable) {
+            var item = this.map[id];
+            if (!list) {
+                list = [];
+            }
+            if (item) {
+                var map = this.map;
+                var tableList = [], noTableList = [];
+                //获取所有的表item
+                item.children.forEach(function (d) {
+                    if (d.type === "table") {
+                        tableList.push(d);
+                    } else {
+                        noTableList.push(d);
+                    }
+                });
+                if (isTable) {
+                    //属性文本（非目录）节点
+                    list.forEach(function (d) {
+                        //已存在不处理
+                        if (map[d.id]) {
+                            $.extend(map[d.id], d);
+                            noTableList.push(map[d.id]);
+                        } else {
+                            d.pid = item.id;
+                            d.count = 0;
+                            d.level = item.level + 1;
+                            d.isGetedData = false;
+                            if (!d.children) {
+                                d.children = [];
+                            }
+                            map[d.id] = d;
+                            noTableList.push(d);
+                        }
+                    });
+                    item.children = noTableList;
+                } else {
+                    //刷新目录节点
+                    list.reverse().forEach(function (d) {
+                        //已存在不处理
+                        if (map[d.id]) {
+                            $.extend(map[d.id], d);
+                            tableList.unshift(map[d.id]);
+                        } else {
+                            d.pid = item.id;
+                            d.count = 0;
+                            d.level = item.level + 1;
+                            d.isGetedData = false;
+                            if (!d.children) {
+                                d.children = [];
+                            }
+                            map[d.id] = d;
+                            tableList.unshift(d);
+                        }
+                    });
+                    item.children = tableList;
+                }
+
+                //如果是展示状态 则刷新树
+                if (item.open) {
+                    this.dataList = this.getFlatList();
+                    this.refreshTree();
+                }
+            }
+        },
+
+
+        //刷新树节点名称
+        refreshItemNode: function (newItem) {
+            var item = this.map[newItem.id];
+            if (item) {
+                var $li = this.$menuBox.find("li[data-id='" + newItem.id + "']");
+                if ($li.length) {
+                    var h = this.iconTemp(newItem.icoType || item.icoType);
+                    h += newItem.name;
+                    $li.find(">a>label").html(h);
+                }
+            }
+        },
 
         //选中某一项数据
         selectItem: function (id, noTriggerClick) {
             var item = this.map[id];
             if (item) {
-                var $ul = this.$menuBox.find(">ul");
+                this.activeItem = item;
+                var pitem = this.map[item.pid];
+                while (pitem) {
+                    pitem.open = true;
+                    if (pitem.pid) {
+                        pitem = this.map[pitem.pid]
+                    } else {
+                        break;
+                    }
+                }
+                this.dataList = this.getFlatList();
+                this.refreshTree();
                 var $li = this.$menuBox.find("li[data-id='" + id + "']");
                 if (noTriggerClick) {
 
@@ -337,51 +411,53 @@ define(function () {
                     $li.trigger("click", true);
                 }
 
-                var $temUl = $li.parent("ul");
-                while ($temUl !== $ul) {
-                    $temUl.show();
-                    $li = $temUl.parent("li");
-                    if ($li.length) {
-                        $li.removeClass("close-ul");
-                        $li.addClass("open-li");
-                        $temUl = $li.parent("ul");
-                    } else {
-                        break;
-                    }
-                }
             } else {
                 console.warn("未找到item ! id:" + id);
             }
         },
 
-
         openLiLoading: function (dom) {
             dom.find(">a").append('<span class="k-bar"></span>');
             return true;
         },
+
         closeLiLoading: function (dom) {
             dom.find(">a").find(".k-bar").hide().remove();
             return false;
         },
+        iconTemp: function (icoType) {
+            var h = [];
+            switch (icoType) {
+                case "home":
+                    h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
+                    break;
+                default:
+                    h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
+                    break;
+            }
+            return h.join("");
 
-        //拼接 html
-        template: function (childrenList, level) {
+        },
+        liTemplate: function (list) {
+            var h = [];
             var self = this;
-            var liTemplate = function (h, item, level) {
-                h.push('<li  data-id="' + item.id + '" data-clen="' + item.children.length + '">');
+            $.each(list, function (idx, item) {
+                var cls = "level-li-" + item.level;
+                if (item.open) {
+                    cls += " open-li "
+                }
+                if (self.activeItem) {
+                    if (item.id === self.activeItem.id) {
+                        cls += " active "
+                    }
+                }
+                h.push('<li class="' + cls + '" data-id="' + item.id + '" data-clen="' + item.children.length + '">');
                 h.push('<a href="javascript:void(0);">');
-                if (item.type === "catalog" || item.children && item.children.length) {
+                if (item.type !== "table" || item.children && item.children.length) {
                     h.push('<span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span>');
                 }
                 h.push('<label>');
-                switch (item.icoType) {
-                    case "home":
-                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                        break;
-                    default:
-                        h.push('<span class="icon-box"> <i class="fa fa-fw fa-file-text"></i></span>');
-                        break;
-                }
+                h.push(self.iconTemp(item.icoType));
                 h.push(item.name);
                 h.push('</label>');
 
@@ -395,40 +471,20 @@ define(function () {
                         h.push('<span class="icon-op"><i class="fa fa-fw fa-reorder"></i></span>');
                     }
                 }
+                if (item.loading) {
+                    h.push('<span class="k-bar"></span>');
+                }
+
                 h.push('</a>');
-                if (item.type === "catalog" || item.children && item.children.length) {
-                    h.push(fn(item.children, level + 1));
-                }
+                // if (item.type === "catalog" || item.children && item.children.length) {
+                //     h.push(fn(item.children, level + 1));
+                // }
                 h.push('</li>');
-                return h;
-            }
-            var fn = function (list, level) {
-                var h = [];
-                if (list.length) {
-                    h.push('<ul class="ul-' + level + '" data-level="' + level + '">');
-                    $.each(list, function (idx) {
-                        liTemplate(h, this, level)
-                    });
-                    h.push('</ul>');
-                }
-                return h.join("");
-            };
-
-            if ($.isArray(childrenList)) {
-                var htmlStr = fn(childrenList, level || 1);
-                return htmlStr;
-            } else {
-                return liTemplate([], childrenList, level || 1).join("");
-            }
-
+            });
+            return h.join("");
 
         },
 
-        //生成树形菜单
-        createTreeMenu: function (childrenList) {
-            var htmlStr = this.template(childrenList);
-            this.$menuBox.html(htmlStr);
-        },
         getMenuItem: function (id) {
             return this.map[id];
         },
@@ -478,7 +534,7 @@ define(function () {
                 });
             }
             //菜单点击事件
-            this.$menuBox.on("click", function (e, noAni) {
+            this.$menuBox.on("click", function (e, obj) {
                 var $node = $(e.target);
                 var $li = getLi(e);
                 var src = $li.attr("data-src");
@@ -490,6 +546,7 @@ define(function () {
                 if (e.target.nodeName === "I") {
                     spanNode = e.target.parentNode;
                 }
+                //操作按钮 点击事件
                 if (spanNode.nodeName === "SPAN" && $(spanNode).hasClass("icon-op")) {
                     if (self.opt.$opBox && self.opt.$opBox.length) {
                         var $box = self.opt.$opBox;
@@ -503,13 +560,43 @@ define(function () {
                     }
                     return;
                 }
+                var isReplace = false, noSelect = false;
+
+                if (obj) {
+                    isReplace = !!obj.isReplace;
+                    noSelect = !!obj.noSelect;
+                }
+
+
                 if (item) {
+                    if (!noSelect) {
+                        if (self.activeItem) {
+                            var activeLi = self.$menuBox.find("li[data-id='" + self.activeItem.id + "']");
+                            activeLi.removeClass("active");
+                        }
+                        self.activeItem = item;
+                    }
+
                     self.opt.$opBox && self.opt.$opBox.fadeOut();
                     if (item.children.length) {
                         // $li.find(">ul").slideToggle(200);
                         // $li.toggleClass("close-ul");
                         var list = self.getOpenItem(item);
-                        if (item.open) {
+
+
+                        if (!item.open || isReplace) {
+                            //添加子节点
+                            var idx = self.dataList.indexOf(item);
+                            if (idx >= 0) {
+                                list.unshift(idx + 1, 0);
+                                Array.prototype.splice.apply(self.dataList, list);
+                            }
+                            item.open = true;
+                            // $li.addClass("close-ul");
+                            // $li.removeClass("open-li");
+                            catalogOpen = false;
+                        } else {
+                            //删除子节点
                             list.forEach(function (d) {
                                 var i = self.dataList.indexOf(d);
                                 if (i >= 0) {
@@ -520,23 +607,30 @@ define(function () {
                             // $li.removeClass("close-ul");
                             // $li.addClass("open-li");
                             catalogOpen = true;
-                        } else {
-                            var idx = self.dataList.indexOf(item);
-                            if (idx >= 0) {
-                                list.unshift(idx + 1, 0);
-                                Array.prototype.splice.apply(self.dataList, list);
-                            }
-                            item.open = true;
-                            // $li.addClass("close-ul");
-                            // $li.removeClass("open-li");
-                            catalogOpen = false;
+                        }
+                        if (isReplace) {
+                            self.dataList = self.getFlatList();
                         }
 
                         self.refreshDataList(self.dataIdx);
+                        $li = self.$menuBox.find("li[data-id='" + self.activeItem.id + "']");
+                    } else {
+                        //已请求过数据
+                        if (item.isGetedData) {
+                            if (item.open) {
+                                item.open = false;
+                                $li.removeClass("open-li");
+                            } else {
+                                item.open = true;
+                                $li.addClass("open-li");
+                            }
+                        }
                     }
                     self.lastLi && self.lastLi.removeClass("active")
+
                     $li.addClass("active");
                     self.lastLi = $li;
+
                     if (self.opt.click) {
                         self.opt.click.call(self, item, $li, catalogOpen);
                     }

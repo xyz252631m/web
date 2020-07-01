@@ -1,4 +1,6 @@
+// declare let $: any;
 function getSearchName(name) {
+    // @ts-ignore
     var str = location.search.replace(/\?/, "");
     var arry = str.split("&");
     var obj = {};
@@ -8,4 +10,10 @@ function getSearchName(name) {
     });
     return obj[name] || "";
 }
-//# sourceMappingURL=url.js.map
+var tool = /** @class */ (function () {
+    function tool() {
+        var arr = [];
+        arr.push(345);
+    }
+    return tool;
+}());

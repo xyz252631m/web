@@ -682,6 +682,22 @@
             fullscreen = !fullscreen;
         });
 
+
+        // 监听全屏事件
+        window.onresize = function () {
+            if (!checkFull()) {
+                $(".op-btn-expand").find("i").removeClass("fa-compress");
+                $(".op-btn-expand").find("p").text("全屏");
+                fullscreen = false;
+            }
+        }
+        function checkFull() {
+            var isFull = document.fullscreen || window.fullScreen || document.webkitIsFullScreen || document.msFullscreenEnabled;
+            if (isFull === undefined) {
+                isFull = false;
+            }
+            return isFull;
+        }
     })
 </script>
 </body>
