@@ -1,20 +1,20 @@
 /*树形菜单*/
-.left-sidebar-menu {
+.virtual-tree-menu {
   position: absolute;
-  top: 0;
+  top: 100px;
   bottom: 0;
   left: 0;
   right: 0;
   overflow-y: hidden;
   padding: 0 5px 5px 10px;
 }
-.left-sidebar-menu:hover {
+.virtual-tree-menu:hover {
   overflow-y: auto;
 }
-.left-sidebar-menu .sidebar-menu {
+.virtual-tree-menu .sidebar-menu {
   padding: 0;
 }
-.left-sidebar-menu .sidebar-toggler {
+.virtual-tree-menu .sidebar-toggler {
   text-indent: 5px;
   background-color: #fff;
   border-radius: 15px 0 0 15px;
@@ -26,27 +26,27 @@
   height: 25px;
   font-size: 16px;
 }
-.left-sidebar-menu .icon-box {
+.virtual-tree-menu .icon-box {
   display: inline-block;
   height: auto;
   padding: 5px 0;
   margin-right: 3px;
   line-height: normal;
 }
-.left-sidebar-menu ul {
+.virtual-tree-menu ul {
   margin: 0;
   padding: 0;
 }
-/*.left-sidebar-menu > ul {position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow-y: auto;padding-top: 0;list-style: none;margin: 0;border-radius: 0}*/
-.left-sidebar-menu > ul > li {
+/*.virtual-tree-menu > ul {position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow-y: auto;padding-top: 0;list-style: none;margin: 0;border-radius: 0}*/
+.virtual-tree-menu > ul > li {
   display: block;
   padding: 0;
   border: 0;
 }
-.left-sidebar-menu > ul > li ul {
+.virtual-tree-menu > ul > li ul {
   display: none;
 }
-.left-sidebar-menu a {
+.virtual-tree-menu a {
   background-color: #fff;
   color: #333;
   display: block;
@@ -103,18 +103,18 @@
   }
 }
 /*hover*/
-.left-sidebar-menu a:hover {
+.virtual-tree-menu a:hover {
   background-color: #61b8f9;
   border-color: #61b8f9;
   color: #fff;
 }
-.left-sidebar-menu a:hover i {
+.virtual-tree-menu a:hover i {
   color: #fff;
 }
-.left-sidebar-menu a:hover .icon-op {
+.virtual-tree-menu a:hover .icon-op {
   display: block;
 }
-.left-sidebar-menu .arrow {
+.virtual-tree-menu .arrow {
   position: absolute;
   top: 50%;
   margin-top: -8px;
@@ -122,7 +122,8 @@
   height: auto;
   line-height: normal;
 }
-.left-sidebar-menu .icon-op {
+/*.virtual-tree-menu .has-arrow .arrow {display: block;}*/
+.virtual-tree-menu .icon-op {
   position: absolute;
   top: 50%;
   margin-top: -8px;
@@ -131,30 +132,30 @@
   line-height: normal;
   display: none;
 }
-.left-sidebar-menu .icon-op i {
+.virtual-tree-menu .icon-op i {
   pointer-events: none;
 }
-.left-sidebar-menu li {
+.virtual-tree-menu li {
   font-size: 0;
 }
 /*active*/
-.left-sidebar-menu .active > a {
+.virtual-tree-menu .active > a {
   background-color: #61b8f9;
   border-color: #61b8f9;
   color: #fff;
 }
-.left-sidebar-menu .active > a i {
+.virtual-tree-menu .active > a i {
   color: #fff;
 }
 /*open*/
-.left-sidebar-menu .open-li > a > .arrow > i::before {
+.virtual-tree-menu .open-li > a > .arrow > i::before {
   content: "\f0d7";
 }
-.left-sidebar-menu i {
+.virtual-tree-menu i {
   font-size: 14px;
   color: #666;
 }
-.left-sidebar-menu label {
+.virtual-tree-menu label {
   font-size: 12px;
   width: 100%;
   margin: 0;
@@ -165,40 +166,46 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.virtual-tree-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 /*2 级*/
-.left-sidebar-menu > ul ul li a {
+.virtual-tree-menu .level-li-2 a {
   padding-left: 38px;
 }
-.left-sidebar-menu > ul ul li .arrow {
+.virtual-tree-menu .level-li-2 .arrow {
   left: 20px;
 }
 /*3级*/
-.left-sidebar-menu > ul ul ul li a {
+.virtual-tree-menu .level-li-3 a {
   padding-left: 57px;
 }
-.left-sidebar-menu > ul ul ul li .arrow {
+.virtual-tree-menu .level-li-3 .arrow {
   left: 39px;
 }
 /*4级*/
-.left-sidebar-menu > ul ul ul ul li a {
-  padding-left: 77px;
+.virtual-tree-menu .level-li-4 a {
+  padding-left: 76px;
 }
-.left-sidebar-menu > ul ul ul ul li .arrow {
+.virtual-tree-menu .level-li-4 .arrow {
   left: 58px;
 }
 /*5级*/
-.left-sidebar-menu > ul ul ul ul ul li a {
-  padding-left: 97px;
+.virtual-tree-menu .level-li-5 a {
+  padding-left: 95px;
 }
-.left-sidebar-menu > ul ul ul ul ul li .arrow {
-  left: 78px;
+.virtual-tree-menu .level-li-5 .arrow {
+  left: 77px;
 }
 /*6级*/
-.left-sidebar-menu > ul ul ul ul ul ul li a {
-  padding-left: 117px;
+.virtual-tree-menu .level-li-6 a {
+  padding-left: 114px;
 }
-.left-sidebar-menu > ul ul ul ul ul ul li .arrow {
-  left: 98px;
+.virtual-tree-menu .level-li-6 .arrow {
+  left: 96px;
 }
 .op-menu-box {
   position: absolute;
@@ -222,4 +229,79 @@
 .op-menu-box p:hover {
   background-color: #bbe4f8;
 }
-/*# sourceMappingURL=tree.css.map */
+/*loading*/
+.k-ring-2 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  border-radius: 100%;
+}
+.k-ball-holder2 {
+  -webkit-animation: k-loadingE 2.3s linear infinite;
+  animation: k-loadingE 2.3s linear infinite;
+  position: absolute;
+  width: 12px;
+  height: 45px;
+  left: 17px;
+  top: 0;
+}
+@-webkit-keyframes k-loadingE {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes k-loadingE {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.k-ball1e {
+  position: absolute;
+  top: -10px;
+  left: -1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #f9dd18;
+}
+.k-ball2c {
+  position: absolute;
+  bottom: -10px;
+  left: -1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #ff5722;
+}
+.k-ball5b {
+  position: absolute;
+  top: 14px;
+  left: -26px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #4caf50;
+}
+.k-ball6b {
+  position: absolute;
+  top: 14px;
+  right: -26px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #238cda;
+}
+/*# sourceMappingURL=virtualTree.css.map */

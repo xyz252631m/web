@@ -7,6 +7,7 @@ lib-cov
 *.pid
 *.gz
 .idea/*
+.git/*
 .vs/*
 *.map
 os_gather
@@ -19,4 +20,3 @@ upload/
 typings/
 npm-debug.log
 node_modules
-#https://github.com/xyz252631m/web.git
