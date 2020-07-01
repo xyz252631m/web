@@ -8,6 +8,7 @@ lib-cov
 *.gz
 .idea/*
 .vs/*
+*.map
 os_gather
 os_gather.pub
 pids/
