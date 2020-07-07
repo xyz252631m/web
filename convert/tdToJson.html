@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../assets/lib/jquery/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="../assets/lib/bootstrap/bootstrap.min.css">
+    <script src="Convert_Pinyin.js"></script>
+    <style>
+        body {text-align: center}
+        p {margin: 5px auto;padding: 0;text-align: left;width: 600px;}
+        textarea {width: 600px;border: #0077aa solid 1px; margin: 20px auto;height: 100px;}
+        input {border: #0077aa solid 1px; height: 28px;}
+        ul {width: 600px;margin: 20px auto;padding: 0;}
+        li {list-style: none;display: inline-block; margin: 5px; padding: 5px 10px; border: #0077aa solid 1px;}
+    </style>
+</head>
+<body>
+
+<p>thead</p>
+<textarea id="th"><tr>
+                    <th>序号</th>
+                    <th>银行账号</th>
+                    <th>账户名称</th>
+                    <th>银行账户性质</th>
+                    <th>开户日期</th>
+                    <th>有效期起</th>
+                    <th>有效期止</th>
+                    <th>有效标志</th>
+                    <th>币种</th>
+                    <th>银行开户登记证号</th>
+                    <th>行政区划</th>
+                    <th>银行行别</th>
+                    <th>开户银行</th>
+                    <th>首选缴税账户标识</th>
+                    <th>一般退税账户标识</th>
+                    <th>出口退税账户标识</th>
+                    <th>录入人</th>
+                    <th>录入日期</th>
+                </tr></textarea>
+<p>tbody</p>
+<textarea id="jsonData"></textarea>
+<p>标题：<input id="title"/> <span id="py_title"></span> <label for=""><input style="vertical-align:-10px" id="show_py" type="checkbox"/>显示对应信息</label></p>
+<p>
+    <button class="btn btn-info">生成</button>
+    <input id="jsonObj">
+</p>
+<ul style="display: none">
+
+</ul>
+
+
+<p>grid</p>
+<textarea id="out_grid"></textarea>
+<p>json</p>
+
+<textarea id="out_json"></textarea>
+
+<script>
+    var ConvertName = function () {
+        var chinaName = $('#chinaName').val();
+        //获取全写拼音（调用js中方法）
+        var fullName = pinyin.getFullChars(chinaName);
+        //获取简写拼音（调用js中方法）
+        var easyName = pinyin.getCamelChars(chinaName);
+        //给两个文本框赋值
+        $('#fullName').val(fullName);
+        $('#easyName').val(easyName);
+    }
+    $(".show_py").on("click", function () {
+        if ($("#show_py").prop("checked")) {
+            $("ul").show();
+        } else {
+            $("ul").hide();
+        }
+    })
+    $(".btn-info").on("click", function () {
+        var $tr = $($("#th").val());
+        var list = $tr.find("th");
+        if (list.length === 0) {
+            list = $tr.find("td");
+        }
+        let zhList = Array.from(list).map(d => $.trim($(d).text())).filter(d => (d !== "序号" && d && isNaN(d)));
+        console.log(zhList, Array.from(list).map(d => $.trim($(d).text())))
+        let py = zhList.map(d => pinyin.getCamelChars(d).toLocaleLowerCase())
+
+
+        console.log(py.map(d => `num_${d}`).join(","))
+
+        var idStr = [];
+        py.map(d => `num_${d}`).forEach((d, i) => {
+            idStr.push(`"${d}":obj.${py[i]},  //${zhList[i]}`);
+        })
+
+        console.log(idStr.join("\n"))
+
+        var jsonNum = {};
+        py.forEach(d => {
+            jsonNum[d] = 1;
+        })
+        console.log(JSON.stringify(jsonNum));
+        //判断重复
+        var js_obj = $("#jsonObj").val().split(",");
+        var set_obj = Array.from(new Set(js_obj));
+        var isRep = set_obj.length === js_obj.length;
+        if(!isRep){
+            set_obj.forEach(d=>{
+                var idx = js_obj.indexOf(d);
+                js_obj.splice(idx,1);
+            })
+        }
+
+        console.log("是否有重复项：", !isRep,js_obj);
+
+
+        var h = [];
+        zhList.forEach((d, i) => {
+            h.push(`<li>${d}<br>${py[i]}</li>`);
+        })
+        $("ul").html(h.join(" "));
+        if ($("#show_py").prop("checked")) {
+            $("ul").show();
+        } else {
+            $("ul").hide();
+        }
+//标题
+        var title = $.trim($("#title").val());
+
+        var py_title = pinyin.getCamelChars(title).toLocaleLowerCase();
+
+        $("#py_title").text(py_title);
+        let cellList = [];
+
+        function getTxtWidth(txt) {
+            var c = document.createElement("canvas");
+            var ctx = c.getContext("2d");
+            ctx.font = "12px 'Helvetica Neue',Helvetica,Arial,sans-serif";
+
+            return parseInt(ctx.measureText(txt).width)
+
+        }
+
+
+        py.forEach((d, i) => {
+            cellList.push({
+                field: d,
+                title: zhList[i],
+                sort: ["desc", "asc"],
+                attr: {
+                    style: `min-width:${getTxtWidth(zhList[i]) + 33}px`
+                }
+            })
+        })
+
+        function replaceJson(str) {
+            return str.replace(/^\[?|\]?$/g, '')
+                .replace(/\"title\"/g, "title")
+                .replace(/\"attr\"/g, "attr")
+                .replace(/\"sort\"/g, "sort")
+                .replace(/\"field\"/g, "field")
+                .replace(/\"style\"/g, "style")
+        }
+
+
+        var gridStr = `var datagrid1 = require("x/x-panel-datagrid").load("#xDatagrid", {
+            title: "${title}",
+            iconClass: "fa fw fa-table",
+            foot: true,
+            tools: gridOption.tools,
+            grid: {
+                tableBorder: true,
+                columns: [
+                    gridOption.numCell,
+                    {
+                        field: "id",
+                        hidden: true
+                    },${replaceJson(JSON.stringify(cellList))}],
+                ajax: {
+                    url: "../../json/jcfz/${py_title}.json"
+                },
+                pageable: gridOption.pageable,
+                onDrawFinish: function () {
+                    $("#view_loading").hide();
+                }
+            }
+        });`;
+        $("#out_grid").val(gridStr.toString());
+
+        var jsonObj = {
+            "total": 4,
+            "rows": []
+        }
+
+
+        var $tbody = $($("#jsonData").val());
+        var dataList = [];
+        $.each($tbody.find("td"), function () {
+            dataList.push($.trim($(this).text() || ""));
+        })
+
+        var count = 0;
+        while (count < jsonObj.total) {
+            let obj = {};
+            py.forEach((d, i) => {
+                obj[d] = dataList[i];
+            })
+            jsonObj.rows.push(obj);
+            count++
+        }
+
+
+        $("#out_json").val(JSON.stringify(jsonObj));
+    })
+</script>
+</body>
+</html>

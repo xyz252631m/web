@@ -1,1 +1,334 @@
-.body-bg{background:url("../images/body_bg_01.png") repeat;position:absolute;left:0;top:0;right:0;bottom:0}.box{width:100%;height:100%;font-size:0}.box svg{font-size:14px;transform:translateZ(0)}.box svg line{stroke-width:1px;stroke:#cecece}.box svg .node-op-state circle{fill:#fff;stroke:#666}.box svg .node-op-state line{stroke:#666}.svg-root-node{user-select:none}.svg-root-node rect{fill:#3ba1f4}.svg-root-node text{fill:#fff}.svg-node{user-select:none}.svg-node rect{stroke-width:1px;fill:#eceff5;cursor:pointer;stroke:#ccc}.svg-node text{fill:#333;cursor:pointer}.svg-node circle{cursor:pointer}.svg-more{cursor:pointer}.svg-more rect{fill:#f1f1f1;stroke:#ccc}.svg-more text{fill:#333}.level-1 rect{stroke-width:1px;fill:#ffae64;cursor:pointer;stroke:#eeefdc}.level-1 text{fill:#fff;cursor:pointer}.level-1 .node-op-state circle{fill:#f5efe2}.line-hover{stroke-dasharray:5;stroke:#0e83f4;animation:offset 30s linear infinite;transform-origin:0 0 0;opacity:.5}.left-link-hover{opacity:1}@keyframes offset{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-1000}}.svg-csp{cursor:pointer}.svg-move{cursor:move}.info-box{width:340px;display:none;position:fixed;box-shadow:rgba(0,0,0,0.2) 2px 2px 4px,rgba(0,0,0,0.2) -2px 0 4px;background-color:#fff;border-radius:6px}.info-box .img-box{margin:15px;width:40px;height:40px;padding:5px;background-size:cover;float:left;border-radius:8px}.info-box .img-box img{max-width:50px;max-height:50px}.info-box .info-list{float:left;min-height:60px;padding:15px;width:220px}.info-box .info-list p{margin-top:7px}.info-box .hr-line{height:5px;float:left;background-color:#eee;width:100%;clear:both}.info-box .per-info-list{width:100%;padding:10px 15px;clear:both}.info-box .per-info-list label{color:#999}.info-box .per-info-list ol{font-size:0}.info-box .per-info-list ol li{width:50%;display:inline-block;height:30px;line-height:30px;font-size:14px}.info-box .info-box-1 .img-box{font-size:0;border-radius:10px;background-color:#d08080}.info-box .info-box-1 .img-box span{display:inline-block;width:20px;height:20px;text-align:center;line-height:20px;color:#fff;font-size:18px}.info-box .info-box-1 .info-list{min-height:100px}.info-box .info-box-2 .img-box span{display:block;width:50px;height:50px;border-radius:10px;background-color:#d08080;text-align:center;line-height:50px;color:#fff;font-size:30px}.info-list label{color:#999}.info-list .tag-list label{color:#128bed;background-color:#dceefd;padding:0 5px;margin-right:10px}.info-list .tag-list label:nth-child(1){color:#094;background-color:#ebfff4}.info-list .tag-list label:nth-child(2){color:#6f77d1;background-color:#eaebf8}.info-list .tag-list label:nth-child(3){color:#f9ad14;background-color:#fef3dc}.info-list .tag-list label:nth-child(4){color:#ec9662;background-color:#fff4ed}.op-box{border:#ccc solid 1px;position:absolute;background:#fff;width:46px;right:20px;bottom:150px;font-size:18px;z-index:20}.op-box li{cursor:pointer;height:55px;color:#999;text-align:center;box-sizing:border-box;font-size:12px;padding:5px}.op-box li i{display:block;text-align:center;width:100%;font-size:20px;margin-top:5px}.op-box .active{color:#fff;background-color:#128bed}.op-box li:hover{color:#fff;background-color:#128bed}.mind-op-panel{position:fixed;right:50px;top:50px;z-index:999;width:30px;height:300px;user-select:none}.mind-op-panel .op-range-box{position:absolute;top:30px;left:5px;border:#e9eaec solid 1px;width:24px;height:216px;box-sizing:border-box;box-shadow:#ccc 3px 3px 3px;background-color:#fff}.mind-op-panel .op-range{width:4px;height:200px;position:absolute;left:9px;top:7px;z-index:999;box-sizing:border-box;background-color:#e9eaec}.mind-op-panel .range-content{width:14px;height:14px;border-radius:50%;background-color:#fff;border:#57a3f3 solid 2px;position:absolute;top:57.7px;left:-5px;cursor:pointer;box-sizing:border-box;user-select:none}.mind-op-panel .range-select{width:4px;height:57.7px;position:absolute;left:0;top:0;z-index:9;background-color:#57a3f3}.mind-op-panel .range-content:hover{transform:scale(1.15);transition:transform .4s}.mind-op-panel .op-btn{position:absolute;width:22px;text-align:center;height:22px;background-color:#fff;border:#e9eaec solid 1px;left:5px;color:#6eb4fd;cursor:pointer;z-index:999;box-shadow:#ccc 3px 3px 3px}.mind-op-panel .op-btn:hover{color:#57a3f3;transform:scale(1.1);transition:transform .4s}.mind-op-panel .op-btn-minus{top:0}.mind-op-panel .op-btn-plus{top:254px}.mind-op-panel .op-btn-refresh{top:283px}.mind-op-panel .op-btn-expand{top:312px}/*# sourceMappingURL=tupu.css.map */
+.body-bg {
+  background: url("../images/body_bg_01.png") repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+.box svg {
+  font-size: 14px;
+  transform: translateZ(0);
+}
+.box svg line {
+  stroke-width: 1px;
+  stroke: #cecece;
+}
+.box svg .node-op-state circle {
+  fill: #fff;
+  stroke: #666;
+}
+.box svg .node-op-state line {
+  stroke: #666;
+}
+.svg-root-node {
+  user-select: none;
+}
+.svg-root-node rect {
+  fill: #3ba1f4;
+}
+.svg-root-node text {
+  fill: #fff;
+}
+.svg-node {
+  user-select: none;
+}
+.svg-node rect {
+  stroke-width: 1px;
+  fill: #eceff5;
+  cursor: pointer;
+  stroke: #ccc;
+}
+.svg-node text {
+  fill: #333;
+  cursor: pointer;
+}
+.svg-node circle {
+  cursor: pointer;
+}
+.svg-more {
+  cursor: pointer;
+}
+.svg-more rect {
+  fill: #f1f1f1;
+  stroke: #ccc;
+}
+.svg-more text {
+  fill: #333;
+}
+.level-1 rect {
+  stroke-width: 1px;
+  fill: #ffae64;
+  cursor: pointer;
+  stroke: #eeefdc;
+}
+.level-1 text {
+  fill: #fff;
+  cursor: pointer;
+}
+.level-1 .node-op-state circle {
+  fill: #f5efe2;
+}
+.line-hover {
+  stroke-dasharray: 5;
+  stroke: #0e83f4;
+  animation: offset 30s linear infinite;
+  transform-origin: 0 0 0;
+  opacity: 0.5;
+}
+.left-link-hover {
+  opacity: 1;
+}
+@keyframes offset {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+  }
+}
+.svg-csp {
+  cursor: pointer;
+}
+.svg-move {
+  cursor: move;
+}
+/*提示框*/
+.info-box {
+  width: 340px;
+  display: none;
+  position: fixed;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px, rgba(0, 0, 0, 0.2) -2px 0px 4px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.info-box .img-box {
+  margin: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-size: cover;
+  float: left;
+  border-radius: 8px;
+}
+.info-box .img-box img {
+  max-width: 50px;
+  max-height: 50px;
+}
+.info-box .info-list {
+  float: left;
+  min-height: 60px;
+  padding: 15px;
+  width: 220px;
+}
+.info-box .info-list p {
+  margin-top: 7px;
+}
+.info-box .hr-line {
+  height: 5px;
+  float: left;
+  background-color: #eee;
+  width: 100%;
+  clear: both;
+}
+.info-box .per-info-list {
+  width: 100%;
+  padding: 10px 15px;
+  clear: both;
+}
+.info-box .per-info-list label {
+  color: #999;
+}
+.info-box .per-info-list ol {
+  font-size: 0;
+}
+.info-box .per-info-list ol li {
+  width: 50%;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+}
+.info-box .info-box-1 .img-box {
+  font-size: 0;
+  border-radius: 10px;
+  background-color: #d08080;
+}
+.info-box .info-box-1 .img-box span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+  font-size: 18px;
+}
+.info-box .info-box-1 .info-list {
+  min-height: 100px;
+}
+.info-box .info-box-2 .img-box span {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #d08080;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 30px;
+}
+/*标签颜色*/
+.info-list label {
+  color: #999;
+}
+.info-list .tag-list label {
+  color: #128BED;
+  background-color: #DCEEFD;
+  padding: 0 5px;
+  margin-right: 10px;
+}
+.info-list .tag-list label:nth-child(1) {
+  color: #009944;
+  background-color: #EBFFF4;
+}
+.info-list .tag-list label:nth-child(2) {
+  color: #6F77D1;
+  background-color: #EAEBF8;
+}
+.info-list .tag-list label:nth-child(3) {
+  color: #F9AD14;
+  background-color: #FEF3DC;
+}
+.info-list .tag-list label:nth-child(4) {
+  color: #EC9662;
+  background-color: #FFF4ED;
+}
+/*快捷操作层*/
+/*快捷操作层*/
+.op-box {
+  border: #ccc solid 1px;
+  position: absolute;
+  background: #fff;
+  width: 46px;
+  right: 20px;
+  bottom: 150px;
+  font-size: 18px;
+  z-index: 20;
+}
+.op-box li {
+  cursor: pointer;
+  height: 55px;
+  color: #999;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 5px;
+}
+.op-box li i {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 5px;
+}
+.op-box .active {
+  color: #fff;
+  background-color: #128BED;
+}
+.op-box li:hover {
+  color: #fff;
+  background-color: #128BED;
+}
+.mind-op-panel {
+  position: fixed;
+  right: 50px;
+  top: 50px;
+  z-index: 999;
+  width: 30px;
+  height: 300px;
+  user-select: none;
+  /**/
+}
+.mind-op-panel .op-range-box {
+  position: absolute;
+  top: 30px;
+  left: 5px;
+  border: #e9eaec solid 1px;
+  width: 24px;
+  height: 216px;
+  box-sizing: border-box;
+  box-shadow: #ccc 3px 3px 3px;
+  background-color: white;
+}
+.mind-op-panel .op-range {
+  width: 4px;
+  height: 200px;
+  position: absolute;
+  left: 9px;
+  top: 7px;
+  z-index: 999;
+  box-sizing: border-box;
+  background-color: #e9eaec;
+}
+.mind-op-panel .range-content {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: white;
+  border: #57a3f3 solid 2px;
+  position: absolute;
+  top: 57.7px;
+  left: -5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+}
+.mind-op-panel .range-select {
+  width: 4px;
+  height: 57.7px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  background-color: #57a3f3;
+}
+.mind-op-panel .range-content:hover {
+  transform: scale(1.15);
+  transition: transform 0.4s;
+}
+.mind-op-panel .op-btn {
+  position: absolute;
+  width: 22px;
+  text-align: center;
+  height: 22px;
+  background-color: white;
+  border: #e9eaec solid 1px;
+  left: 5px;
+  color: #6eb4fd;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: #ccc 3px 3px 3px;
+}
+.mind-op-panel .op-btn:hover {
+  color: #57a3f3;
+  transform: scale(1.1);
+  transition: transform 0.4s;
+}
+.mind-op-panel .op-btn-minus {
+  top: 0;
+}
+.mind-op-panel .op-btn-plus {
+  top: 254px;
+}
+.mind-op-panel .op-btn-refresh {
+  top: 283px;
+}
+.mind-op-panel .op-btn-expand {
+  top: 312px;
+}
+/*# sourceMappingURL=tupu.css.map */

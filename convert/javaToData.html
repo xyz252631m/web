@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7/css/bootstrap.css">
+    <script src="../js/Convert_Pinyin.js"></script>
+    <style>
+        body {text-align: center}
+        p {margin: 5px auto;padding: 0;text-align: left;width: 600px;}
+        textarea {width: 600px;border: #0077aa solid 1px; margin: 20px auto;height: 100px;}
+        input {border: #0077aa solid 1px; height: 28px;}
+        ul {width: 600px;margin: 20px auto;padding: 0;}
+        li {list-style: none;display: inline-block; margin: 5px; padding: 5px 10px; border: #0077aa solid 1px;}
+    </style>
+
+</head>
+<body>
+
+<p>java</p>
+<textarea id="java">@ToVoCheck(isNotNUll=true,Length = 3, Section = "(0,999)")
+	private String ccc;//编号，仅3数字
+	@ToVoCard(group="CCC0000",number=1,replace="CCC=${ccc}")
+	private String name;//名称，英文</textarea>
+
+<p>
+    <button class="btn btn-info">生成</button>
+
+</p>
+<p>html</p>
+<textarea id="html_txt"></textarea>
+<p>js</p>
+<textarea id="js_txt"></textarea>
+
+
+<script>
+    var ConvertName = function () {
+        var chinaName = $('#chinaName').val();
+        //获取全写拼音（调用js中方法）
+        var fullName = pinyin.getFullChars(chinaName);
+        //获取简写拼音（调用js中方法）
+        var easyName = pinyin.getCamelChars(chinaName);
+        //给两个文本框赋值
+        $('#fullName').val(fullName);
+        $('#easyName').val(easyName);
+    }
+    $(".show_py").on("click", function () {
+        if ($("#show_py").prop("checked")) {
+            $("ul").show();
+        } else {
+            $("ul").hide();
+        }
+    })
+    $(".btn-info").on("click", function () {
+        let list = $("#java").val().split(/\n/).map(d => d.trim());
+
+        let list_a = [], list_b = [],nameList=[],labelList=[];
+        list.forEach((d, i) => {
+            if (i % 2 === 1) {
+                let arr = d.split(";");
+                list_a.push(arr[1]);
+                var tem=arr[0].split(" ");//private String name
+                nameList.push(tem[2]);
+                if (arr[0].indexOf("=") >= 0) {
+                    list_a.push(`${tem[2].replace("=", ":")},`);
+                } else {
+                    list_a.push(`${tem[2]}:"",`);
+                }
+                list_b.push(tem[1]);
+                labelList.push(arr[1].replace("//","").replace(","," ").replace("，"," ").split(" ")[0]);
+            }
+        });
+
+        console.log(list)
+
+        console.log(list_a.join('\n'))
+        $("#js_txt").val(list_a.join('\n'))
+        var h=[];
+        list_b.forEach((d,i)=>{
+            h.push(`<el-form-item label="${labelList[i]}">`);
+            if(d==="Double"){
+                h.push(`<el-input-number size="mini" v-model="nowdata.${nameList[i]}" @change="change($event,'${labelList[i]}')" :controls="false"></el-input-number>`)
+            }else if(d==="String"){
+                h.push(`<el-input v-model="nowdata.${nameList[i]}" size="mini" placeholder="${labelList[i]}"></el-input>`)
+            }
+
+
+            h.push(`</el-form-item>`)
+
+        });
+        $("#html_txt").val(h.join(" "))
+
+    })
+</script>
+</body>
+</html>
