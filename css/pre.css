@@ -3,9 +3,12 @@
   height: 3px;
 }
 *::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 0;
   border-radius: 0;
   background: #ccc;
+}
+*::-moz-selection {
+  background-color: #ea6f5a;
+  color: white;
 }
 *::selection {
   background-color: #ea6f5a;
@@ -120,6 +123,7 @@ pre {
 .plist-box p {
   line-height: 40px;
   border-bottom: #cccdce solid 1px;
+  display: -ms-flexbox;
   display: flex;
 }
 .plist-box span {
@@ -136,7 +140,8 @@ pre {
   color: #2dabee;
 }
 .plist-box label {
-  flex: 1;
+  -ms-flex: 1;
+      flex: 1;
 }
 /*示例dome*/
 .dome-box {
@@ -153,15 +158,31 @@ pre {
   bottom: 0;
   left: 0;
   z-index: 2;
-  animation: k-loadingJ 4s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+  -webkit-animation: k-loadingJ 4s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+          animation: k-loadingJ 4s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+@-webkit-keyframes k-loadingJ {
+  0%,
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(220px, 0);
+            transform: translate(220px, 0);
+    background-color: #f5634a;
+    width: 40px;
+  }
 }
 @keyframes k-loadingJ {
   0%,
   100% {
-    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
   }
   50% {
-    transform: translate(220px, 0);
+    -webkit-transform: translate(220px, 0);
+            transform: translate(220px, 0);
     background-color: #f5634a;
     width: 40px;
   }
@@ -176,19 +197,32 @@ pre {
   border-radius: 100%;
 }
 .k-ball-holder2 {
-  animation: k-loadingE 2.3s linear infinite;
+  -webkit-animation: k-loadingE 2.3s linear infinite;
+          animation: k-loadingE 2.3s linear infinite;
   position: absolute;
   width: 12px;
   height: 45px;
   left: 17px;
   top: 0;
 }
-@keyframes k-loadingE {
+@-webkit-keyframes k-loadingE {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes k-loadingE {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 .k-ball1e {
@@ -228,9 +262,10 @@ pre {
   background: #3F51B5;
 }
 .test-div {
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .a {
-  align-items: flex-end;
+  -ms-flex-align: end;
+      align-items: flex-end;
 }
-/*# sourceMappingURL=pre.css.map */

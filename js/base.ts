@@ -195,6 +195,9 @@ $.each = function (list: any, fn: Function) {
         fn.call(d, idx, d)
     });
 }
+$.trim = function (str: string) {
+    return (str || "").trim();
+}
 
 MI.tool = $;
 
@@ -362,6 +365,16 @@ class _jq {
         }
     }
 
+    val(val: string) {
+        if (val) {
+            this.forEach(d => {
+                d.value = val;
+            })
+        } else {
+            return this[0].value;
+        }
+    }
+
     addClass(cls: string) {
         this.forEach(d => {
             d.classList.add(cls);
@@ -373,6 +386,7 @@ class _jq {
             d.classList.remove(cls);
         })
     }
+
 
     width() {
         return this[0].offsetWidth;

@@ -27,6 +27,7 @@ declare namespace $ {
     var post: (url: any, data: any, success: any, config?: any) => Promise<void>;
     var get: (url: any, success: any, config?: any) => Promise<void>;
     var each: (list: any, fn: Function) => void;
+    var trim: (str: string) => string;
 }
 declare class _jq {
     el: Array<Window> | NodeListOf<Element>;
@@ -49,6 +50,7 @@ declare class _jq {
     css(a: any, b?: any): this;
     text(text: string): any;
     html(html: string): any;
+    val(val: string): any;
     addClass(cls: string): void;
     removeClass(cls: string): void;
     width(): any;

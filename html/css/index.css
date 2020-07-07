@@ -14,6 +14,7 @@
 .index-menu > a:hover {
   color: #313131;
   box-shadow: 0 0 3px 0 #0e90d2, 0 1px 6px 0 #888;
-  transform: translateY(-3px);
+  -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+          transform: translateY(-3px);
 }
-/*# sourceMappingURL=index.css.map */

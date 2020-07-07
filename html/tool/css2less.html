@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <script src="../../js/base.js"></script>
+    <style>
+
+        textarea {width: 100%;border: #eee solid 1px;height: 350px; padding: 5px 5px;}
+    </style>
+</head>
+<body>
+<textarea id="in_txt">
+.view {
+  position: absolute;
+  top: 0;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+  background-color: #eee;
+}
+.list {
+  padding: 10px;
+  background-color: white;
+}
+.list p {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: #ececec solid 1px;
+  position: relative;
+}
+.list p span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  line-height: 40px;
+  width: 4em;
+  text-align: right;
+  color: #242424;
+}
+.list p label {
+  position: absolute;
+  left: 4em;
+  top: 0;
+  right: 0;
+}
+.list p input {
+  width: 100%;
+  padding-left: 10px;
+  border: none;
+  color: #999;
+}
+.btn-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  border-top: #ccc solid 1px;
+}
+.btn-box button {
+  width: 50%;
+  border: none;
+  float: left;
+  height: 100%;
+  font-size: 16px;
+  position: relative;
+  background-color: #ea6f5a;
+  color: #fff;
+}
+.btn-box button:first-child::after {
+  content: " ";
+  position: absolute;
+  right: -1px;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  background-color: #ccc;
+  z-index: 1;
+}
+.btn-box-read {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  display: none;
+}
+.btn-box-read button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 16px;
+  background-color: #ea6f5a;
+}
+.btn-box-read .btn-back {
+  color: white;
+}
+.btn-box-read .btn-back i {
+  color: white;
+}
+</textarea>
+<p></p>
+<textarea id="out_txt"></textarea>
+
+
+<script>
+
+
+    $(function () {
+        let inDom = $("#in_txt"), outDom = $("#out_txt");
+        inDom.on("input", function (e) {
+            convent(this.value);
+        })
+        convent(inDom.val());
+
+        function convent(newVal) {
+
+            let val = newVal.replace(/\s+/g, " ").replace(/[\t\n]|^\s*|\s$/g, "").replace(/\s*\{\s*/g, " { ").replace(/\s*;\s*/g, "; ").replace(/\s*}\s*/g, "}\n");
+
+            console.log(val);
+
+            let list = val.split(/\n/);
+
+            // 错误list
+            let noList = [];
+            //重复list
+            let repList = [];
+            console.log(list)
+            let map = {};
+            list.forEach(d => {
+                let idx = d.indexOf("{");
+                if (idx >= 0) {
+                    let name = d.substring(0, idx);
+                    let val = d.substring(idx + 1, d.length - 1);
+                    addPath($.trim(name), $.trim(val));
+                } else {
+                    noList.push(d);
+                }
+            })
+
+            function splitName(name) {
+
+                let arr = [name];
+                let types = [" + ", " > ", " "];
+                let typeList = [];
+                let temList = [];
+                types.forEach(d => {
+                    let idx = name.indexOf(d);
+                    if (idx >= 0) {
+                        typeList.push(d);
+                    }
+                });
+                typeList.forEach(d => {
+                    arr.forEach(p => {
+                        let tList = p.split(d).map((m, i) => {
+                            if (i) {
+                                return d + m;
+                            } else {
+                                return m
+                            }
+                        })
+
+                        temList.push(...tList);
+                    })
+                    arr = temList;
+                    temList = [];
+                });
+
+                return arr;
+            }
+
+            function addPath(name, valStr) {
+                let val = $.trim(valStr);
+                if (val) {
+                    let end = val[val.length - 1];
+                    if (end !== ";") {
+                        val += ";";
+                    }
+                }
+
+                let list = splitName(name);
+                let item = null;
+                list.forEach((d, i) => {
+                    if (!i) {
+                        if (!map[d]) {
+                            map[d] = {
+                                val: ""
+                            };
+                        }
+                        item = map[d];
+                    } else {
+                        if (!item[d]) {
+                            item[d] = {
+                                val: ""
+                            };
+                        } else {
+                            repList.push({
+                                name: d,
+                                text: item[d],
+                                val: val
+                            });
+                        }
+                        item = item[d];
+                    }
+
+                })
+                item.val += val;
+            }
+
+            console.log(map);
+            console.log("repList", repList)
+
+            function outVal(map, h) {
+                let fn = function (item, h) {
+                    h.push(item.val);
+                    let flag = false;
+                    for (let key in item) {
+                        if (key === "val") {
+                            continue;
+                        }
+                        if (item.hasOwnProperty(key)) {
+                            flag = true;
+                            h.push("\n");
+                            h.push(key);
+                            h.push("{");
+                            fn(item[key], h);
+                            h.push("}");
+                        }
+                    }
+                    if (flag) {
+                        h.push("\n");
+                    }
+                }
+
+                for (let key in map) {
+                    if (map.hasOwnProperty(key)) {
+                        h.push(key);
+                        h.push("{");
+                        fn(map[key], h);
+                        h.push("}\n");
+                    }
+                }
+            }
+
+            let h = [];
+            outVal(map, h)
+            outDom.val(h.join(" "));
+
+        }
+
+
+    })
+
+</script>
+</body>
+</html>

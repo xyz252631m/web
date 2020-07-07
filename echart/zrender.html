@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zReader</title>
+    <script src="dist/echarts.js"></script>
+    <script src="../js/base.js"></script>
+    <style>
+        .chart-dom {width: 600px;height: 400px;}
+    </style>
+    <script src="js/dy-index.js"></script>
+
+</head>
+<body>
+
+<div id="chart1" class="chart-dom">
+
+</div>
+
+<script>
+
+    function chart1(id) {
+        var myChart = echarts.init(document.getElementById(id));
+        let option = {
+            color: ['#3398DB'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '直接访问',
+                    type: 'bar',
+                    label:{
+                        show:true
+                    },
+                    barWidth: 30,
+                    data: [150, 562, 2700, 3834, 3990, 3230, 2420]
+                },
+                {
+                    name: '直接访问2',
+                    type: 'bar',
+                    barWidth: 30,
+                    data: [120, 532, 2400, 3334, 3390, 3330, 2120]
+                }
+            ]
+        };
+        myChart.setOption(option);
+        return myChart;
+    }
+
+    let myChart = chart1("chart1");
+    initZr(myChart);
+
+
+    function initZr(myChart) {
+        console.log(myChart);
+        let zr = myChart._zr;
+
+        zr.on("click",function (e) {
+
+            console.log("e",e);
+        })
+
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -235,6 +235,9 @@ $.each = function (list, fn) {
         fn.call(d, idx, d);
     });
 };
+$.trim = function (str) {
+    return (str || "").trim();
+};
 MI.tool = $;
 var _jq = /** @class */ (function () {
     function _jq(elem) {
@@ -390,6 +393,16 @@ var _jq = /** @class */ (function () {
         }
         else {
             return this[0].innerHTML;
+        }
+    };
+    _jq.prototype.val = function (val) {
+        if (val) {
+            this.forEach(function (d) {
+                d.value = val;
+            });
+        }
+        else {
+            return this[0].value;
         }
     };
     _jq.prototype.addClass = function (cls) {

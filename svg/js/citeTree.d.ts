@@ -1,3 +1,4 @@
+import svgjs = require("../svg.js");
 interface CiteData {
     _id: any;
     id: any;
