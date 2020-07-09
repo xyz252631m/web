@@ -175,6 +175,8 @@ $.deepCopy = function (obj, cache = []) {
     return copy
 }
 
+
+
 //axios post
 $.post = async function (url, data, success, config?) {
     let axios: AxiosStatic = await mi.preload("/lib/axios.min.js");
@@ -190,6 +192,7 @@ $.get = async function (url, success, config?) {
         success(res.data)
     });
 }
+
 $.each = function (list: any, fn: Function) {
     list.forEach((d, idx) => {
         fn.call(d, idx, d)

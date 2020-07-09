@@ -24,13 +24,13 @@
         </span>
         <div class="tab-main">
             <xmp class="active">
-                let pager = new Page($(".xui-pages"));
+                var pager = new Page($(".xui-pages"));
                     var option={
                         prefixCount: 2
                     };
                     pager.config(option);
-                    pager.post("../../json/list.json", {}, function (res, opts) {
-                    opts.listCount = res.count; //重新赋值list总条数
+                    pager.post("../../json/list.json", {}, function (res) {
+                    this.listCount = res.count; //重新赋值list总条数
                     //执行绑定逻辑
                     //...
                 })

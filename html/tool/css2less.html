@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="../../css/base.css">
     <script src="../../js/base.js"></script>
     <style>
-
+        
         textarea {width: 100%;border: #eee solid 1px;height: 350px; padding: 5px 5px;}
     </style>
 </head>
 <body>
-<textarea id="in_txt">
+<label for="in_txt">输入：</label><textarea id="in_txt">
 .view {
   position: absolute;
   top: 0;
@@ -104,12 +104,8 @@
 }
 </textarea>
 <p></p>
-<textarea id="out_txt"></textarea>
-
-
+<label for="out_txt">输出：</label><textarea id="out_txt"></textarea>
 <script>
-
-
     $(function () {
         let inDom = $("#in_txt"), outDom = $("#out_txt");
         inDom.on("input", function (e) {
