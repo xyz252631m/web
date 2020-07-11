@@ -108,7 +108,7 @@
 <script>
     $(function () {
         let inDom = $("#in_txt"), outDom = $("#out_txt");
-        inDom.on("input", function (e) {
+        inDom.on("input", function () {
             convent(this.value);
         })
         convent(inDom.val());
