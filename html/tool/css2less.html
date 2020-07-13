@@ -117,7 +117,7 @@
 
             let val = newVal.replace(/\s+/g, " ").replace(/[\t\n]|^\s*|\s$/g, "").replace(/\s*\{\s*/g, " { ").replace(/\s*;\s*/g, "; ").replace(/\s*}\s*/g, "}\n");
 
-            console.log(val);
+            console.log(val.replace(/\/\*.*(\n).*\*\\/, ''));
 
             let list = val.split(/\n/);
 
@@ -125,21 +125,32 @@
             let noList = [];
             //重复list
             let repList = [];
-            console.log(list)
+            //@ list
+            let t_list = [];
+
             let map = {};
             list.forEach(d => {
-                let idx = d.indexOf("{");
-                if (idx >= 0) {
-                    let name = d.substring(0, idx);
-                    let val = d.substring(idx + 1, d.length - 1);
-                    addPath($.trim(name), $.trim(val));
+                //排除 @ -- 动画、media
+                let d_idx = $.trim(d).indexOf("@");
+                if (d_idx === 0) {
+                    t_list.push(d);
                 } else {
-                    noList.push(d);
+                    let idx = d.indexOf("{");
+                    if (idx >= 0) {
+                        let name = d.substring(0, idx);
+                        let val = d.substring(idx + 1, d.length - 1);
+                        addPath($.trim(name), $.trim(val));
+                    } else {
+                        noList.push(d);
+                    }
                 }
+
+
             })
 
             function splitName(name) {
 
+                name = name.replace(", ", ",");
                 let arr = [name];
                 let types = [" + ", " > ", " "];
                 let typeList = [];
@@ -209,6 +220,8 @@
 
             console.log(map);
             console.log("repList", repList)
+            console.log("t_list", t_list)
+
 
             function outVal(map, h) {
                 let fn = function (item, h) {
@@ -244,6 +257,12 @@
 
             let h = [];
             outVal(map, h)
+
+            t_list.forEach(d => {
+                h.push(d);
+            })
+
+
             outDom.val(h.join(" "));
 
         }

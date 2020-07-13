@@ -4,16 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>表格</title>
-    <script type="text/javascript" src="../assets/lib/require/require.js"></script>
-    <!--[if lte IE 9]>
-    <script type="text/javascript" src="../assets/lib/jquery/jquery-1.11.1.js"></script>
-    <![endif]-->
-    <![if !IE]>
-    <script type="text/javascript" src="../assets/lib/jquery/jquery-2.1.3.min.js"></script>
-    <![endif]>
-    <script src="../assets/lib/x-control/x-control.core.min.js"></script>
-    <script type="text/javascript" src="../assets/config.js"></script>
     <link rel="stylesheet" href="./_table.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+
 
 </head>
 <body>
@@ -81,7 +74,7 @@
 <script>
 
 
-    require(["ready!", "x/x-form-combobox", "lib/number/x-number", "lib/my97datepicker/my97datepicker"], function () {
+   
         //初始化表格
         var dyaTable = new DyaTable({
             selector: "#tableMain",
@@ -115,30 +108,30 @@
                 var id = "#" + $editBox.attr("id");
                 var typeSelector = id + " .che-type";
                 item.input = {};
-                item.input.x_type = require("x/x-form-combobox").load(typeSelector, {
-                    text: "text",
-                    id: "id",
-                    // ajax: {
-                    //     url: "json/combobox1.json"
-                    // },
-                    data: [
-                        {"text": "小型物件", "id": "0001"},
-                        {"text": "中型物件", "id": "0002"},
-                        {"text": "中型物件2", "id": "0003"},
-                        {"text": "中型物件3", "id": "0004"}
-                    ],
-                    onDrawFinish: function (dom) {
-                        $(dom).width("100%")
-                    }
-                });
-                var numSelector = id + " .che-num";
-                item.input.x_num = require("lib/number/x-number").load(numSelector, {
-                    stepping: 1,
-                    decimals: 0,//小数位设定，2表示两位小数
-                    onDrawFinish: function (dom) {
-                        $(dom).width("100%")
-                    }
-                });
+                // item.input.x_type = require("x/x-form-combobox").load(typeSelector, {
+                //     text: "text",
+                //     id: "id",
+                //     // ajax: {
+                //     //     url: "json/combobox1.json"
+                //     // },
+                //     data: [
+                //         {"text": "小型物件", "id": "0001"},
+                //         {"text": "中型物件", "id": "0002"},
+                //         {"text": "中型物件2", "id": "0003"},
+                //         {"text": "中型物件3", "id": "0004"}
+                //     ],
+                //     onDrawFinish: function (dom) {
+                //         $(dom).width("100%")
+                //     }
+                // });
+                // var numSelector = id + " .che-num";
+                // item.input.x_num = require("lib/number/x-number").load(numSelector, {
+                //     stepping: 1,
+                //     decimals: 0,//小数位设定，2表示两位小数
+                //     onDrawFinish: function (dom) {
+                //         $(dom).width("100%")
+                //     }
+                // });
                 //删除
                 var self = this;
                 $editBox.find(".btn-del").on("click", function () {
@@ -206,7 +199,7 @@
         });
 
 
-    });
+    
 
 </script>
 </body>
