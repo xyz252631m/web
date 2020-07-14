@@ -50,6 +50,7 @@ declare class _jq {
     css(a: any, b?: any): this;
     text(text: string): any;
     html(html: string): any;
+    append(): void;
     val(val: string): any;
     addClass(cls: string): void;
     removeClass(cls: string): void;

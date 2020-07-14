@@ -395,6 +395,8 @@ var _jq = /** @class */ (function () {
             return this[0].innerHTML;
         }
     };
+    _jq.prototype.append = function () {
+    };
     _jq.prototype.val = function (val) {
         if (val) {
             this.forEach(function (d) {

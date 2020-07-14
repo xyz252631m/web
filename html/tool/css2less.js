@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>css</title>
-    <link rel="stylesheet" href="../../css/base.css">
-    <script src="../../js/base.js"></script>
-    <style>
-        
-        textarea {width: 100%;border: #eee solid 1px;height: 350px; padding: 5px 5px;}
-    </style>
-</head>
-<body>
-<label for="in_txt">输入：</label><textarea id="in_txt">
- body, html {width: 100%;height: 100%;margin: 0;padding: 0;overflow-y: auto;background: #f7f7f8}
-body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-serif;padding: 10px 5px 10px 10px;}
+let val = `body, html {width: 100%;height: 100%;margin: 0;padding: 0;overflow-y: auto;background: #f7f7f8}
+body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\\5b8b\\4f53", sans-serif;
+    padding: 15px 5px 2px 10px;}
 .ellipsis {-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;overflow: hidden}
 .table {margin-bottom: 0 !important}
 .table tr th {font-size: 14px;color: #777}
 .table-striped > tbody > tr:nth-of-type(odd) {background-color: #f5f5f5}
-.m-head {height: 90px;border-top-left-radius: 5px;border-top-right-radius: 5px}
+.m-head {height: 70px;border-top-left-radius: 5px;border-top-right-radius: 5px}
 .m-head .m-title {display: inline-block;border: 0 !important}
-.m-head .head-icon {width: 90px;height: 90px;position: absolute;top: 0;left: 0}
+.m-head .head-icon {
+    transform: scale(0.7);
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: -7px;
+    left: -8px;
+
+}
 .m-head .head-icon .bg, .m-head .head-icon i {position: absolute;top: 0;left: 0;right: 0;bottom: 0}
 /*.m-head .head-icon .bg {background-color: #fff;opacity: .1}*/
 .m-head .icon-bg {position: absolute;top: 0;right: 0;width: 112px;height: 95px;opacity: .05;-webkit-transform: rotate(30deg);-ms-transform: rotate(30deg);-moz-transform: rotate(30deg);-o-transform: rotate(30deg);transform: rotate(30deg)}
-.m-head .head-main {color: #fff;position: absolute;left: 90px;top: 0;padding-left: 0;right: 0;}
-.m-head .head-main h4 {font-size: 20px;letter-spacing: 2px;color: #fefefe;font-weight: 700;margin: 20px auto 8px 0;white-space: nowrap;}
+.m-head .head-main {color: #fff;position: absolute;left: 75px;top: 0;padding-left: 0;right: 0;}
+.m-head .head-main h4 {font-size: 20px;letter-spacing: 2px;color: #fefefe;font-weight: 700;margin: 10px auto 8px 0;white-space: nowrap;}
 .m-head .head-main p {font-size: 14px;color: rgba(254, 254, 254, .502)}
 
 
@@ -38,7 +33,7 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 .m-head .i-5 {background: url("../images/icon_15.png") center center no-repeat;}
 .m-head .i-6 {background: url("../images/icon_16.png") center center no-repeat;}
 .m-head .i-7 {background: url("../images/icon_17.png") center center no-repeat;}
-.m-head .i-7 .i-7-bg {position: absolute; top: 26px; left: 26px; right: 25px; bottom: 36px;background-color: #ff984c;}
+.m-head .i-7 .i-7-bg {position: absolute; top: 26px; left: 26px; right: 25px; bottom: 36px;background-color: #12cad9;}
 
 .m-head .i-7 .i-7-1 { position: absolute; top: auto; left: 28px; bottom: 38px; height: 4px;width: 6px;background-color: #fff;}
 .m-head .i-7 .i-7-2 {position: absolute;top: auto;left: 37px; bottom: 38px; height: 8px;width: 6px;background-color: #fff;}
@@ -188,7 +183,8 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 
 .m-block {position: relative;background: #fff;box-shadow: 0px 0px 11px 0px rgba(96, 99, 104, 0.6);
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    transform: translateZ(0);
     padding: 8px;border-radius: 10px;overflow: hidden;-webkit-transition: all .2s ease-in-out;-o-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;transition: all .2s ease-in-out;}
 .m-block:hover {box-shadow: 0px 0px 11px 0px rgba(96, 99, 104, 0.7)}
 .m-block .card-img {position: absolute;height: 100%;right: 0;top: 0;pointer-events: none;opacity: .5}
@@ -209,27 +205,30 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 .m-box .m-title {color: #fde318;font-weight: 600;font-size: 18px}
 .m-table {width: 100%;text-align: left;position: relative}
 .m-table th {padding: 8px 0;white-space: nowrap;color: #fff;text-align: center}
-.m-table td {background-color: #fff;padding: 17px 0;font-size: 14px;border-bottom: #f2f2f2 solid 1px;color: #4d89e2;font-weight: 700;text-align: center}
-.m-table td:first-child {color: #484848;font-weight: 400;font-size: 14px}
+.m-table td {background-color: #fff;padding: 17px 0;font-size: 13px;border-bottom: #f2f2f2 solid 1px;color: #4d89e2;font-weight: 700;text-align: center}
+.m-table td:first-child {color: #484848;font-weight: 400;font-size: 13px}
 .m-table td:first-child, .m-table th:first-child { text-align: center}
 
 .m-table tr {-webkit-transition: all .35s ease;-o-transition: all .35s ease;-moz-transition: all .35s ease;transition: all .35s ease}
 .m-table tr:hover td {background: #f4f4f4}
 .m-table .two-level-name {text-indent: 2em}
 .m-table .progress {margin-bottom: 0;height: 17px;background-color: #bed1ec;border-radius: 11px;width: 100%}
-.m-table .progress-bar-info {background-color: #eb885a}
+.m-table .progress-bar-info {background-color: #12cad9}
 .panel-1 {background: #fff}
-.panel-1 .m-head {background: #ff984c; }
+.panel-1 .m-head {background: #12cad9; }
 .panel-1 .m-table {margin-bottom: 2px}
-.panel-1 .m-table th {border-bottom: #ececec solid 1px; color: #70757b; background-color: #ffebde; width: 100px; font-weight: bold;}
+.panel-1 .m-table th {border-bottom: #ececec solid 1px; color: #70757b; background-color: #d0f4f8; width: 100px; font-weight: bold;}
 .panel-1 .m-table td {padding: 14px 0;}
 .panel-1 .m-table td:first-child, .panel-1 .m-table th:first-child {padding-left: 15px;width: 100px}
 .panel-1 .m-table td:last-child, .panel-1 .m-table th:last-child {padding-right: 15px;width: 80px}
 .panel-1 .slideshow_item .m-block {border-radius: 0;}
 .panel-1 .m-body > table {height: 225px}
+
+
+
 .panel-2 {background: #fff}
-.panel-2 .m-head {background: #12cad9; }
-.panel-2 .m-table th { border-bottom: #ececec solid 1px; color: #70757b; background-color: #d0f4f8; width: 100px; font-weight: bold;}
+.panel-2 .m-head {background: #ff984c; }
+.panel-2 .m-table th { border-bottom: #ececec solid 1px; color: #70757b; background-color: #ffebde; width: 100px; font-weight: bold;}
 .panel-2 .m-table td {padding: 14px 0;}
 .panel-2 .slideshow_item .m-block {border-radius: 0;}
 .panel-2 .m-body > table {height: 225px}
@@ -239,6 +238,8 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 .panel-4 {background: #fff}
 .panel-4 .m-head {background: #137fff; }
 .panel-4 .m-table th { border-bottom: #ececec solid 1px; color: #70757b; background-color: #d0e5ff; width: 100px; font-weight: bold;}
+.panel-4 .m-table td {padding: 15px 0;}
+
 .slide-chart {position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: #fff}
 .col-sm-4-top {position: relative}
 .text-left {text-align: left !important}
@@ -358,10 +359,11 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 .ani-table .table-body {overflow: hidden}
 .ani-table .table-body td {border: #e6e6e6 solid 1px}
 .ani-table .table-body tr:nth-of-type(odd) {background-color: #f5f5f5}
-.header-box { height: 50px; border-radius: 5px; background: -webkit-linear-gradient(135deg, #06418e, #1572e8) !important;
+.header-box { height: 80px; border-radius: 5px; background: -webkit-linear-gradient(135deg, #06418e, #1572e8) !important;
     background: -moz-linear-gradient(135deg, #06418e, #1572e8) !important;
     background: -o-linear-gradient(135deg, #06418e, #1572e8) !important;
-    background: linear-gradient(-45deg, #06418e, #1572e8) !important; color: #fff; position: relative; margin: 0 5px 10px 0;}
+    background: linear-gradient(-45deg, #06418e, #1572e8) !important; color: #fff;
+    position: relative; margin: 0 5px 15px 0;}
 .header-box .info { position: absolute; top: 0; padding: 55px 0 0 30px; display: inline-block; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; text-shadow: 1px 1px 3px #333; z-index: 1}
 .header-box .info p { opacity: .7; margin-top: 10px; font-size: 14px}
 .header-box h2 { font-size: 22px; margin: 0; letter-spacing: 2px}
@@ -379,20 +381,20 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 .title-box{ position: absolute;top:0;bottom: 0;left:0;width: 90px;background: #fff url("../images/title_bg_01_01.jpg") right top no-repeat;
     background-size: 100% 100%;
 }
-.title-pos-bg {position: absolute;top:108px;left:23px;  width: 90px; height: 70px;
+.title-pos-bg {position: absolute;top:85px;left:23px;  width: 90px; height: 70px;
 }
 
 .t-box-1 .txt-bg { background: url("../images/t_01.png") no-repeat;width: 41px;height: 28px;display: block; }
 
 
-.t-box-2  .title-box{background-image: url("../images/title_bg_02_01.jpg")}
+.t-box-2  .title-box{background-image: url("../images/title_bg_03_01.jpg")}
 .t-box-2 .txt-bg { background: url("../images/t_02.png") no-repeat;width: 41px;height: 28px;display: block; }
 
 
-.t-box-3  .title-box{background-image: url("../images/title_bg_03_01.jpg")}
+.t-box-3  .title-box{background-image: url("../images/title_bg_02_01.jpg")}
 .t-box-3 .txt-bg { background: url("../images/t_03.png") no-repeat;width: 41px;height: 28px;display: block; }
 .title-pos-bg .txt-1 {background-position: left center;}
-.title-pos-bg .txt-2 {background-position: right center; margin-top: 100px;}
+.title-pos-bg .txt-2 {background-position: right center; margin-top: 80px;}
 
 .center-box .row >div{padding: 0 5px;}
 
@@ -406,8 +408,8 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 
 
 /*row 3*/
-.m-table-32 td { padding: 13px 0 !important;}
-
+.m-table-32 td { padding: 11px 0 !important;}
+.m-table-33 td{ padding: 12px 0 !important;}
 
 .gonggao {
     position: relative;
@@ -415,14 +417,15 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 }
 
 .gonggao .scrollDiv {
+    margin-top: 18px;
     font-weight: bold;
     text-shadow: 1px 1px 0px #000000, 2px 2px 0px #7c7c7c, 3px 3px 0px #000000, 4px 4px 4px #060806;
     letter-spacing: 1px;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .gonggao .fglb-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-shadow: 1px 1px 0px #887b15, 2px 2px 0px #938512, 3px 3px 0px #000000, 4px 4px 4px #060806;
     letter-spacing: 2px;
@@ -1358,237 +1361,237 @@ body {font: 14px/1.5 "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-ser
 
 .zxcg-li:hover {
     color: #fce218;
-}
-</textarea>
-<p></p>
-<label for="out_txt">输出：</label><textarea id="out_txt"></textarea>
-<script>
-    $(function () {
-        let inDom = $("#in_txt"), outDom = $("#out_txt");
-        inDom.on("input", function () {
-            convent(this.value);
-        })
-        let out_str =  convent(inDom.val());
+}`;
+// let inDom = $("#in_txt"), outDom = $("#out_txt");
+// inDom.on("input", function () {
+//     convent(this.value);
+// })
+let $ = {
+    trim(str) {
+        return (str || "").trim();
+    }
+};
 
-        function convent(newVal) {
-
-            let val = newVal.replace(/\s+/g, " ")
-                .replace(/[\t\n]|^\s*|\s$/g, "")
-                .replace(/\s*\{\s*/g, " { \n")
-                .replace(/\s*;\s*/g, ";\n")
-                .replace(/\s*}\s*/g, "\n}\n")
-                //.replace(/\/\*/g, "/*\n")
-                .replace(/\*\//g, "*/\n");
-            //.replace(/\n\*\//g, "\*\/\n")
-            // .replace(/\*\//g, "\*\/\n");
-
-            //   console.log(val.replace(/\/\*.*(\n).*\*\\/, ''));
-
-            //   console.log(val)
-
-            let list = val.split(/\n/);
-            //  console.log(list)
-
-            // 错误list
-            let noList = [];
-            //重复list
-            let repList = [];
-            //@ list
-            let t_list = [];
+let out_str = convent(val);
 
 
-            let map = {};
+function convent(newVal) {
 
-            function getBeginEnd(list, str) {
-                let begin = str.match(/\{/g);
-                if (begin) {
-                    list[0] += begin.length;
-                }
-                let end = str.match(/\}/g);
-                if (end) {
-                    list[1] += end.length;
-                }
-                return list;
+    let val = newVal.replace(/\s+/g, " ")
+        .replace(/[\t\n]|^\s*|\s$/g, "")
+        .replace(/\s*\{\s*/g, " { \n")
+        .replace(/\s*;\s*/g, ";\n")
+        .replace(/\s*}\s*/g, "\n}\n")
+        //.replace(/\/\*/g, "/*\n")
+        .replace(/\*\//g, "*/\n");
+    //.replace(/\n\*\//g, "\*\/\n")
+    // .replace(/\*\//g, "\*\/\n");
+
+    //   console.log(val.replace(/\/\*.*(\n).*\*\\/, ''));
+
+    //   console.log(val)
+
+    let list = val.split(/\n/);
+    //  console.log(list)
+
+    // 错误list
+    let noList = [];
+    //重复list
+    let repList = [];
+    //@ list
+    let t_list = [];
+
+
+    let map = {};
+
+    function getBeginEnd(list, str) {
+        let begin = str.match(/\{/g);
+        if (begin) {
+            list[0] += begin.length;
+        }
+        let end = str.match(/\}/g);
+        if (end) {
+            list[1] += end.length;
+        }
+        return list;
+    }
+
+    let beList = [0, 0];
+    let beginMode = false;
+
+    //注释 对象
+    let notesList = [];
+    let isNotes = false;
+    list.forEach(d => {
+        //是否为注释
+        let e_idx = $.trim(d).indexOf("/*");
+        if (e_idx >= 0) {
+            isNotes = true;
+        }
+        if (isNotes) {
+            notesList.push(d);
+            if ($.trim(d).indexOf("*/") >= 0) {
+                isNotes = false;
+            }
+        } else {
+            //排除 @ -- 动画、media
+            let d_idx = $.trim(d).indexOf("@");
+
+            if (d_idx === 0) {
+                beginMode = true;
+                beList = [0, 0];
             }
 
-            let beList = [0, 0];
-            let beginMode = false;
-
-            //注释 对象
-            let notesList = [];
-            list.forEach(d => {
-                //是否为注释
-                let e_idx = $.trim(d).indexOf("/*");
-                if (e_idx >= 0) {
-                    beginMode = true;
-                    beList = [0, 0];
+            if (beginMode) {
+                getBeginEnd(beList, d);
+                t_list.push(d);
+                if (beList[0] === beList[1]) {
+                    beginMode = false;
                 }
-                if (beginMode) {
-                    getBeginEnd(beList, d);
-                    notesList.push(d);
-                    if (beList[0] === beList[1]) {
-                        beginMode = false;
-                    }
+            } else {
+                let idx = d.indexOf("{");
+                if (idx >= 0) {
+                    let name = d.substring(0, idx);
+                    let val = d.substring(idx + 1, d.length - 1);
+                    let _notesList = notesList;
+                    notesList = [];
+                    addPath($.trim(name), $.trim(val), _notesList);
                 } else {
-                    //排除 @ -- 动画、media
-                    let d_idx = $.trim(d).indexOf("@");
-
-                    if (d_idx === 0) {
-                        beginMode = true;
-                        beList = [0, 0];
-                    }
-
-                    if (beginMode) {
-                        getBeginEnd(beList, d);
-                        t_list.push(d);
-                        if (beList[0] === beList[1]) {
-                            beginMode = false;
-                        }
-                    } else {
-                        let idx = d.indexOf("{");
-                        if (idx >= 0) {
-                            let name = d.substring(0, idx);
-                            let val = d.substring(idx + 1, d.length - 1);
-                            let _notesList = notesList;
-                            notesList=[];
-                            addPath($.trim(name), $.trim(val),_notesList);
-                        } else {
-                            noList.push(d);
-                        }
-                    }
-
-                }
-
-
-            })
-            // console.log(noList)
-
-            function splitName(name) {
-
-                name = name.replace(", ", ",");
-                let arr = [name];
-                let types = [" + ", " > ", " "];
-                let typeList = [];
-                let temList = [];
-                types.forEach(d => {
-                    let idx = name.indexOf(d);
-                    if (idx >= 0) {
-                        typeList.push(d);
-                    }
-                });
-                typeList.forEach(d => {
-                    arr.forEach(p => {
-                        let tList = p.split(d).map((m, i) => {
-                            if (i) {
-                                return d + m;
-                            } else {
-                                return m
-                            }
-                        })
-
-                        temList.push(...tList);
-                    })
-                    arr = temList;
-                    temList = [];
-                });
-
-                return arr;
-            }
-
-            function addPath(name, valStr,_notesList) {
-                let val = $.trim(valStr);
-                if (val) {
-                    let end = val[val.length - 1];
-                    if (end !== ";") {
-                        val += ";";
-                    }
-                }
-
-                let list = splitName(name);
-                let item = null;
-                list.forEach((d, i) => {
-                    if (!i) {
-                        if (!map[d]) {
-                            map[d] = {
-                                val: ""
-                            };
-                        }
-                        item = map[d];
-                    } else {
-                        if (!item[d]) {
-                            item[d] = {
-                                val: ""
-                            };
-                        } else {
-                            repList.push({
-                                name: d,
-                                text: item[d],
-                                val: val
-                            });
-                        }
-                        item = item[d];
-                    }
-
-                })
-                item.notes = _notesList;
-                item.val += val;
-                console.log("item")
-                console.log(item)
-            }
-
-
-            function outVal(map, h) {
-                let fn = function (item, h) {
-                    if(item.notes&&item.notes.length){
-                        h.push(item.notes.join(""))
-                    }
-                    h.push(item.val);
-                    let flag = false;
-                    for (let key in item) {
-                        if (key === "val"||key==="notes") {
-                            continue;
-                        }
-                        if (item.hasOwnProperty(key)) {
-                            flag = true;
-                            h.push("\n");
-                            h.push(key);
-                            h.push("{");
-                            fn(item[key], h);
-                            h.push("}");
-                        }
-                    }
-                    if (flag) {
-                        h.push("\n");
-                    }
-                }
-
-                for (let key in map) {
-                    if (map.hasOwnProperty(key)) {
-                        h.push(key);
-                        h.push("{");
-                        fn(map[key], h);
-                        h.push("}\n");
-                    }
+                    noList.push(d);
                 }
             }
-
-            let h = [];
-            outVal(map, h)
-
-            t_list.forEach(d => {
-                h.push(d);
-            })
-
-
-            return h.join(" ");
-            //  console.log(h.join(" "))
-
 
         }
 
-        outDom.val(out_str);
+
     })
 
-</script>
-</body>
-</html>
+    // console.log(noList)
+
+    function splitName(name) {
+
+        name = name.replace(", ", ",");
+        let arr = [name];
+        let types = [" + ", " > ", " "];
+        let typeList = [];
+        let temList = [];
+        types.forEach(d => {
+            let idx = name.indexOf(d);
+            if (idx >= 0) {
+                typeList.push(d);
+            }
+        });
+        typeList.forEach(d => {
+            arr.forEach(p => {
+                let tList = p.split(d).map((m, i) => {
+                    if (i) {
+                        return d + m;
+                    } else {
+                        return m
+                    }
+                })
+
+                temList.push(...tList);
+            })
+            arr = temList;
+            temList = [];
+        });
+
+        return arr;
+    }
+
+    function addPath(name, valStr, _notesList) {
+        let val = $.trim(valStr);
+        if (val) {
+            let end = val[val.length - 1];
+            if (end !== ";") {
+                val += ";";
+            }
+        }
+
+        let list = splitName(name);
+        let item = null;
+        list.forEach((d, i) => {
+            if (!i) {
+                if (!map[d]) {
+                    map[d] = {
+                        val: ""
+                    };
+                }
+                item = map[d];
+            } else {
+                if (!item[d]) {
+                    item[d] = {
+                        val: ""
+                    };
+                } else {
+                    repList.push({
+                        name: d,
+                        text: item[d],
+                        val: val
+                    });
+                }
+                item = item[d];
+            }
+
+        })
+        item.notes = _notesList;
+        item.val += val;
+
+    }
+
+
+    function outVal(map, h) {
+        let fn = function (item, h) {
+            if (item.notes && item.notes.length) {
+                h.push(item.notes.join(""))
+            }
+            h.push(item.val);
+            let flag = false;
+            for (let key in item) {
+                if (key === "val" || key === "notes") {
+                    continue;
+                }
+                if (item.hasOwnProperty(key)) {
+                    flag = true;
+                    h.push("\n");
+                    h.push(key);
+                    h.push("{");
+                    fn(item[key], h);
+                    h.push("}");
+                }
+            }
+            if (flag) {
+                h.push("\n");
+            }
+        }
+
+        for (let key in map) {
+            if (map.hasOwnProperty(key)) {
+                h.push(key);
+                h.push("{");
+                fn(map[key], h);
+                h.push("}\n");
+            }
+        }
+    }
+
+    let h = [];
+    outVal(map, h)
+
+    t_list.forEach(d => {
+        h.push(d);
+    })
+
+
+    return h.join(" ");
+    //  console.log(h.join(" "))
+
+
+}
+
+console.log("==================")
+console.log(out_str)
+// outDom.val(out_str);
+
+

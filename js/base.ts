@@ -368,6 +368,10 @@ class _jq {
         }
     }
 
+    append(){
+
+    }
+
     val(val: string) {
         if (val) {
             this.forEach(d => {
