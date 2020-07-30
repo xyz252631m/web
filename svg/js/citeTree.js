@@ -1,6 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.CiteTree = void 0;
     var NodeReader = /** @class */ (function () {
         function NodeReader(isRight, data, option) {
             this.mapLevel = {};
