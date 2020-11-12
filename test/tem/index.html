@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/index.js"></script>
+
+</head>
+<body>
+
+<header class="navbar">
+    <a href="/" class="home-link router-link-active">
+        <span class="site-name">web演示系统</span>
+    </a>
+    <div class="links" style="max-width: 1054px;">
+        <nav class="nav-links can-hide">
+            <div class="nav-item active">
+                <span href="/" class="nav-link ">首页</span>
+            </div>
+            <div class="nav-item">
+                <span href="/dealt.html" class="nav-link">待办</span>
+            </div>
+            <div class="nav-item">
+                <span href="/log.html" class="nav-link">更新日志</span>
+            </div>
+            <div class="nav-item">
+                <span href="/help.html" class="nav-link">帮助</span>
+            </div>
+            <div class="nav-item">
+                <span href="/help.html" class="nav-link">登录</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<div class="page-main">
+    <div class="nav-panel index-page">
+        <div class="logo-box"><img src="./images/logo.png" alt=""></div>
+        <div class="logo-box logo-box2"><img src="./images/logo.png" alt=""></div>
+        <h3>ZT-World-Designer</h3>
+        <p>页面快速设计工具</p>
+        <div class="btn-box"><a href="./LOG" type="bottom" class="btn-go">进入设计器</a></div>
+    </div>
+    
+    <div class="nav-panel">
+    
+    </div>
+    <div class="nav-panel log-box">
+        
+        <div class="left-sidebar">
+            <ul>
+                <li class="active"><a href="#item1">2020-11-02</a></li>
+                <li><a href="#item2">2020-11-03</a></li>
+            </ul>
+        </div>
+        <div class="page log-page">
+            <h3 class="page-title">更新日志</h3>
+            
+            <div class="log-list-box">
+                <h4 id="item1"><a href="#item1">#</a>2020-11-03</h4>
+                <ul>
+                    <li class="p-added"><span>新增</span>表格组件</li>
+                    <li class="p-added"><span>新增</span>全局主题管理功能</li>
+                    <li class="p-repair"><span>修复</span>跨页面粘贴报错BUG</li>
+                    <li class="p-repair"><span>修复</span>在iframe小分辨率下，左右存在间距，拖动菜单时拖动块的位置不准确</li>
+                    <li style="height: 300px;"></li>
+                </ul>
+                <h4 id="item2"><a href="#item2">#</a>2020-11-02</h4>
+                <ul>
+                    <li class="p-added"><span>新增</span>表格组件</li>
+                    <li class="p-added"><span>新增</span>全局主题管理功能</li>
+                    <li class="p-repair"><span>修复</span>跨页面粘贴报错BUG</li>
+                    <li class="p-repair"><span>修复</span>在iframe小分辨率下，左右存在间距，拖动菜单时拖动块的位置不准确</li>
+                    <li style="height: 300px;"></li>
+                </ul>
+            </div>
+        
+        </div>
+    
+    </div>
+    
+    <div class="nav-panel">
+    
+    </div>
+    
+    <div class="nav-panel login-box">
+        
+        
+        <div class="add-log-box">
+            <h3 class="page-title">添加日志</h3>
+            
+            <div class="add-log-body">
+                <p><span>日志标题</span><input type="text" class="input-log-title"></p>
+                <p><span class="list-title">日志内容</span></p>
+                <ol style="display:none"></ol>
+                <ul>
+                    <li><span>类型</span>
+                        <div class="type-select-box" data-val="add">
+                            <label class="active" data-val="add">新增功能</label>
+                            <label data-val="repair">修复BUG</label>
+                            <label data-val="del">删除功能</label>
+                        </div>
+                    </li>
+                    <li>
+                        <span>内容</span>
+                        <textarea></textarea>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary btn-ok">添加</button>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="add-log-footer">
+                <button type="button" class="btn btn-primary btn-save">保存</button>
+                <button type="button" class="btn btn-default btn-cel">取消</button>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

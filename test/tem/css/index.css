@@ -1,0 +1,127 @@
+/*头部 header*/
+.navbar {position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 3.6rem; background-color: #fff; box-sizing: border-box; border-bottom: 1px solid #eaecef; padding: 0.7rem 1.5rem; line-height: 2.2rem;}
+.navbar .site-name { font-size: 1.3rem; font-weight: 600; color: #2c3e50; position: relative;}
+.navbar .links {padding-left: 1.5rem; box-sizing: border-box; background-color: #fff; white-space: nowrap; font-size: .9rem; position: absolute; right: 1.5rem; top: .7rem; display: flex;}
+.nav-links .nav-item { position: relative; display: inline-block; margin-left: 1.5rem; line-height: 2rem;}
+.nav-links span {color: #2c3e50;cursor: pointer;}
+.nav-links span:hover { margin-bottom: -2px; border-bottom: 2px solid #46bd87;}
+.nav-links .active span { margin-bottom: -2px; border-bottom: 2px solid #46bd87;}
+.page-main {position: absolute;left: 0;top: 58px;right: 0;bottom: 0;}
+
+/*首页*/
+.index-page {text-align: center; height: 550px; padding-top: 92px;}
+.index-page .logo-box {background-color: #3eaf7c; width: 100px; height: 100px; margin: 0 auto; border-radius: 50%;}
+.index-page .logo-box img {width: 100%; height: 100%;}
+.index-page .logo-box2 {position: absolute;left: 50%;margin-left: -39px; top: 94px;}
+.index-page h3 {font-size: 30px; padding: 10px 0; }
+.index-page p {color: #6a8bad;font-size: 22px; padding: 10px 0; }
+.index-page .btn-box {padding-top: 10px;}
+.index-page .btn-go {padding: 15px 22px;display: inline-block; background: #3eaf7c;color: #fff; font-size: 14px; border: none;border-radius: 3px;cursor: pointer;transition: background .4s;}
+.index-page .btn-go:hover {background: #4abf8a;}
+
+/*左侧导航栏*/
+.left-sidebar {font-size: 16px;
+    width: 300px;
+    position: fixed;
+    z-index: 10;
+    margin: 0;
+    top: 58px;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    border-right: 1px solid #eaecef;
+    overflow-y: auto;}
+.left-sidebar ul {padding: 28px 0;}
+.left-sidebar li {height: 32px;line-height: 32px;border-left: 4px solid transparent;cursor: pointer;padding-left: 32px;}
+.left-sidebar li:hover { color: #3eaf7c;}
+.left-sidebar .active {font-weight: 600; color: #3eaf7c; border-left-color: #3eaf7c;}
+.page {padding-left: 300px;}
+
+/*更新日志*/
+.log-page {color: #2c3e50; padding-top: 25px;}
+.log-page .page-title {font-size: 29px;text-align: center;font-weight: normal;}
+
+
+.log-list-box {padding: 0 40px 20px 80px;}
+.log-list-box h4 {font-size: 22px;font-weight: 600;padding-bottom: 5px; border-bottom: 1px solid #eaecef; margin-bottom: 10px; margin-top: 40px;}
+.log-list-box h4:hover a {opacity: 1;}
+.log-list-box h4 a {color: #3eaf7c;margin-left: -18px;font-size: 18px;display: inline-block;width: 18px;text-align: center; font-weight: bold;opacity: 0;cursor: pointer;}
+.log-list-box h4 a:hover {text-decoration: underline}
+.log-list-box li {list-style: inside;font-size: 16px; }
+/*.log-list-box li span {padding: 3px 5px;}*/
+/*.log-page .p-added { background-color: #b2d3ff}*/
+/*.log-page .p-repair { background-color: #edfff7}*/
+/*#b2d3ff #edfff7*/
+
+
+/*添加日志*/
+
+.add-log-box { position: absolute;top: 100px;left: 50%; transform: translateX(-50%); width: 800px;border: 1px solid #ccc;box-shadow: 0 0 4px #ccc; }
+
+.add-log-box .page-title {font-size: 18px; font-weight: normal; border-bottom: 1px solid #eaecef;
+    height: 40px;line-height: 40px; padding-left: 7px;
+
+}
+.add-log-body {padding: 15px 20px; min-height: 200px;}
+.add-log-box p {height: 30px;line-height: 30px; margin-bottom: 20px}
+.add-log-box p > span, .add-log-box ul li > span {padding-right: 5px; padding-left: 10px; line-height: 30px;display: inline-block;vertical-align: top;}
+.add-log-box input[type=text] {height: 30px;border: 1px solid #ccc;border-radius: 3px;padding: 0 3px;color: #555;width: 280px;}
+.add-log-box input[type=text]:focus {border-color: #3eaf7c;}
+.add-log-box .input-error {animation: borError 0.3s linear forwards; animation-iteration-count: 3;}
+@keyframes borError {
+    0% {border: 1px solid #ccc}
+    100% {border: 1px solid #d61c1c}
+}
+
+
+.add-log-box p .list-title {border-left: #3eaf7c solid 2px; display: inline-block;padding-left: 8px;}
+.type-select-box { display: inline-block;font-size: 0; }
+.type-select-box label {display: inline-block; position: relative; font-size: 14px; border: #d8d8d8 solid 1px;padding: 3px 7px;cursor: pointer; margin-left: -1px;z-index: 1}
+.type-select-box label:first-child {margin-left: 0}
+.type-select-box .active {color: #3eaf7c;border-color: #3eaf7c;z-index: 9; }
+.add-log-box ul {padding-left: 2px; padding-top: 10px;}
+.add-log-box ul li {margin-bottom: 15px;}
+.add-log-box textarea {border: 1px solid #ccc;width: 400px;resize: none;height: 90px;border-radius: 3px; padding: 3px}
+.add-log-box textarea:focus {border-color: #3eaf7c;}
+.add-log-box ol {padding-left: 26px; margin-top: -12px; margin-bottom: 12px;overflow-y: auto;max-height: 210px;border-bottom: #dcdcdc solid 1px; padding-bottom: 10px;}
+.add-log-box ol li {list-style: inherit;position: relative; height: 21px;line-height: 21px;cursor: pointer;}
+
+.add-log-box ol li label {display: inline-block;cursor: pointer; line-height: 18px; height: 21px; vertical-align: middle; width: 100%; padding-right: 60px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+.add-log-box ol li:hover {color: #47c38a}
+.add-log-box ol li .li-del {position: absolute;right: 0; color: #cb2929;cursor: pointer;top: 0;font-size: 12px;}
+.add-log-box ol li .li-del:hover {color: #8a2424;}
+
+.btn { font-size: 14px; border: none;border-radius: 3px;line-height: 1;height: 28px;padding: 0 15px; cursor: pointer;}
+.btn-primary {background-color: #47c38a;color: #fff;}
+.btn-primary:hover {background-color: #40b881;}
+.btn-warning {background-color: #ffb800}
+.btn-warning:hover {background-color: #d29c11;}
+.btn-default {background-color: #fff;color: #333;border: #ccc solid 1px;}
+.btn-default:hover {color: #40b881}
+.btn-ok {margin-left: 46px;}
+.btn-add {margin-left: 10px;}
+.add-log-footer { text-align: right;padding-right: 10px;font-size: 0;
+    height: 45px;line-height: 45px;
+}
+.add-log-footer button {margin-left: 10px;margin-top: 8px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
