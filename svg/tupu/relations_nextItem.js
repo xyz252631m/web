@@ -199,7 +199,7 @@ function NodeReader(isRight, data, option) {
                 item.open = true;
                 var temList = [];
                 var pid = item._id;
-                let fn = function (list) {
+                var fn = function (list) {
                     $.each(list, function (idx, d) {
                         if (idx < 10) {
                             d.idx = idx;
@@ -546,7 +546,7 @@ function NodeReader(isRight, data, option) {
                 count++;
                 while (i <= max) {
                     list = mapLevel[i];
-                    let fn = function (list, t) {
+                    var fn = function (list, t) {
                         $.each(list, function (idx, d) {
                             d.y += t;
                             if (d.children) {
@@ -807,7 +807,7 @@ function NodeReader(isRight, data, option) {
                 posItem = item;
             }
             var queue = [];
-            let fn = function (list) {
+            var fn = function (list) {
                 $.each(list, function (idx, d) {
                     var info_i = infoList.indexOf(d);
                     if (info_i >= 0) {
@@ -995,7 +995,7 @@ function NodeReader(isRight, data, option) {
         mapLevel = {};
         mapId = {};
         infoList = [];
-        let fn = function (list, mapLevel, mapId, infoList, level, pid) {
+        var fn = function (list, mapLevel, mapId, infoList, level, pid) {
             list.forEach(function (d, idx) {
                 if (level > option.renderLevel) {
                     return
