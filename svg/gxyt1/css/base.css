@@ -81,4 +81,4 @@ cite, code, em, strong, var { font-style: normal; font-weight: 400 }
 
 *::-webkit-scrollbar-thumb { -webkit-border-radius: 0; border-radius: 0; background: #ccc; }
 
-*::selection { background-color: #ea6f5a; color: #ffffff }
+*::selection { background-color: #ea6f5a; color: white }

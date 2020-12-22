@@ -328,20 +328,22 @@ $.extend(Figure.prototype, {
     renderLegend: function (nodes) {
         var self = this;
         var $ul = $(".legend-box");
-        var typeMap = this.typeMap, typeList = [];
-        //预置两种类型
-        typeMap["company"] = {
-            typeId: "company",
-            typeName: "公司",
-            color: "",
-            list: []
-        }
-        typeMap["person"] = {
-            typeId: "person",
-            typeName: "个人",
-            color: "",
-            list: []
-        }
+        var typeMap = this.typeMap, typeList = [], equalTypeList = [];
+        //预置类型
+
+
+        // typeMap["company"] = {
+        //     typeId: "company",
+        //     typeName: "公司",
+        //     color: "",
+        //     list: []
+        // }
+        // typeMap["person"] = {
+        //     typeId: "person",
+        //     typeName: "个人",
+        //     color: "",
+        //     list: []
+        // }
         nodes.forEach(function (d) {
             if (!typeMap[d.typeId]) {
                 typeMap[d.typeId] = {
@@ -353,17 +355,40 @@ $.extend(Figure.prototype, {
                 typeList.push(typeMap[d.typeId]);
             }
             typeMap[d.typeId].list.push(d);
-            typeMap[d.nodeType].list.push(d);
+            if (d.equalType !== undefined) {
+
+
+                if (!typeMap[d.equalType]) {
+                    typeMap[d.equalType] = {
+                        typeId: d.equalType,
+                        typeName: d.equalTypeName,
+                        color: "",
+                        list: []
+                    };
+                    equalTypeList.push(typeMap[d.equalType]);
+                }
+                typeMap[d.equalType].list.push(d);
+            }
         });
+
 
         var h = [];
         typeList.forEach(function (d) {
             h.push('<li data-type-id="' + d.typeId + '"><i class="i-icon" data-color="' + d.color + '" style="background-color: ' + d.color + '"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
         })
         //其他类型
-        h.push('<li class="li-line"></li>')
-        h.push('<li class="li-two-type li-person" data-type-id="person"><i class="i-icon"></i><span>个人</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
-        h.push('<li class="li-two-type li-company" data-type-id="company"><i class="i-icon"></i><span>公司</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+        if(equalTypeList.length){
+            h.push('<li class="li-line"></li>')
+            equalTypeList.forEach(function (d) {
+
+                h.push('<li class="li-two-type li-company" data-type-id="' + d.typeId + '"><i class="i-icon"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+
+            })
+        }
+
+        // h.push('<li class="li-line"></li>')
+        // h.push('<li class="li-two-type li-person" data-type-id="person"><i class="i-icon"></i><span>个人</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+        // h.push('<li class="li-two-type li-company" data-type-id="company"><i class="i-icon"></i><span>公司</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
         $ul.html(h.join(""));
 
         //图例点击事件
@@ -472,70 +497,26 @@ $.extend(Figure.prototype, {
         var g = self.up_node.group().addClass("node-" + item.nodeType);
         item.g = g;
         var bg = self.opt.nodeColorByTypeId(item.typeId, item);
-        var list;
+
         var text;
-        if (item.nodeType === "person") {
-            g.transform({x: item.x - 33.5, y: item.y - 33.5});
-            var circle = g.circle(67);
-            circle.radius(22.5);
-            circle.fill(bg);
-            list = tool.getStrList(item.name || item.properties.name);
-            text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
-            if (list.length === 2) {
-                text.y(20);
-                text.build(true);
-                text.tspan(list[1] + '').x(10).dy(15);
-                text.build(false);
-            } else if (list.length === 3) {
-                text.build(true);
-                text.tspan(list[1] + '').x(5).dy(15);
-                text.tspan(list[2] + '').x(10).dy(15);
-                text.build(false);
-            } else {
-                text.x(33).y(27).attr("text-anchor", "middle");
-            }
 
-        } else {
-            var rect = g.rect(150, 50);
-            rect.rx(5).ry(5).fill(bg);
+        var rect = g.rect(150, 35);
+        rect.rx(5).ry(5).fill(bg);
 
-            var icon = this.draw.defs().select("#companyIcon").first();
-            icon.width(20).height(20).fill("#fff");
-            var icon_g = g.group().x(-48).y(14).use(icon);
-            list = tool.getStrTwoList(item.name || item.properties.name);
-            text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
-            if (list.length === 1) {
-                text.x(35).y(18)
-            } else {
-                text.x(35).y(11);
-                text.build(true);
-                text.tspan(list[1] + '').x(35).dy(15);
-                text.build(false);
-            }
+        //  var icon = this.draw.defs().select("#companyIcon").first();
+        //  icon.width(20).height(20).fill("#fff");
+        // var icon_g = g.group().x(-48).y(14).use(icon);
 
+        text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(12).y(11);
+        var text_box = text.rbox();
+        item.bor_rect_w = text_box.width + 12 + 12;
 
-            var text_box = text.rbox();
-            item.bor_rect_w = text_box.width + 35 + 12;
-
-
-            rect.width(item.bor_rect_w);
-            g.transform({x: item.x - item.bor_rect_w / 2, y: item.y - 25});
-            if (item.isRoot) {
-                g.addClass("root-node")
-                rect.addClass("root-rect");
-                rect.stroke({color: bg, opacity: 1, width: 5});
-            }
-            // var text = status_g.text(item.properties.status).font({size: 12}).fill("#333").x(5).dy(0);
-
-            var status_g = g.group().addClass("node-status");
-            status_g.transform({x: item.bor_rect_w - 15, y: -10})
-            var rect_s = status_g.rect(100, 22);
-            var b_color = self.opt.statusColor(item);
-            rect_s.rx(5).ry(5).fill(b_color);
-            var s_text = status_g.text(item.properties.status).font({size: 12}).fill("#333").x(5).dy(0);
-            var s_text_box = s_text.rbox();
-            item.status_w = s_text_box.width + 10;
-            rect_s.width(item.status_w);
+        rect.width(item.bor_rect_w);
+        g.transform({x: item.x - item.bor_rect_w / 2, y: item.y - 17.5});
+        if (item.isRoot) {
+            g.addClass("root-node")
+            rect.addClass("root-rect");
+            rect.stroke({color: bg, opacity: 1, width: 5});
         }
 
         g.on("mousedown", this.mousedown, {self: self, item: item});
@@ -544,7 +525,13 @@ $.extend(Figure.prototype, {
     },
     renderLink: function (item) {
         var self = this;
-        var g = self.up_line.group().addClass("node-link-" + item.source.nodeType);
+
+        var cls = "node-link-" + item.source.nodeType;
+        if (item.type === "equal") {
+            cls = "node-link-person";
+        }
+
+        var g = self.up_line.group().addClass(cls);
         item.g = g;
 
         var points = self.convertStartEndPoint(item.source, item.target);
@@ -603,12 +590,18 @@ $.extend(Figure.prototype, {
         item.textNode = text;
 
         var arrow_marker;
-        if (item.source.nodeType === "person") {
-            arrow_marker = this.draw.defs().select("#arrowPerson").first();
-        } else {
+
+        if (item.type !== "equal") {
             arrow_marker = this.draw.defs().select("#arrowCompany").first();
+            line.marker("end", arrow_marker);
+        } else {
+
+
+            // arrow_marker = this.draw.defs().select("#arrowPerson").first();
+            // line.marker("end", arrow_marker);
         }
-        line.marker("end", arrow_marker);
+
+
     },
     //转换坐标点
     convertStartEndPoint: function (source, target) {
@@ -619,6 +612,7 @@ $.extend(Figure.prototype, {
             y1: target.y
         }
 
+        var h2 = 17;
         if (target.nodeType === "company") {
             var x2 = target.bor_rect_w / 2;
             var deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
@@ -626,7 +620,7 @@ $.extend(Figure.prototype, {
             if (-x2 < tem && tem < x2) {
                 if (deg < -90) {
                     obj.x1 -= tem;
-                    obj.y1 += 25;
+                    obj.y1 += h2;
                 } else {
                     if (deg < 0) {
                         obj.x1 -= tem;
@@ -634,9 +628,9 @@ $.extend(Figure.prototype, {
                         obj.x1 += tem;
                     }
                     if (deg < 0) {
-                        obj.y1 += 25;
+                        obj.y1 += h2;
                     } else {
-                        obj.y1 -= 25;
+                        obj.y1 -= h2;
                     }
                 }
             } else {
@@ -679,13 +673,17 @@ $.extend(Figure.prototype, {
         var linksNodes = self.getLinkNodes(item);
         // item.g.addClass("node-" + item.nodeType + "-hover");
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-            this.g.addClass("node-link-" + this.source.nodeType + '-hover');
+
             this.source.g.addClass("node-" + this.source.nodeType + "-hover");
             this.target.g.addClass("node-" + this.target.nodeType + "-hover");
-            if (this.source.nodeType === "person") {
-                this.line.marker("end", self.draw.defs().select("#arrowPersonHover").first());
-            } else {
+            if (this.type !== "equal") {
+                this.g.addClass("node-link-" + this.source.nodeType + '-hover');
                 this.line.marker("end", self.draw.defs().select("#arrowCompanyHover").first());
+
+            } else {
+                this.g.addClass("node-link-person-hover");
+                //    this.line.marker("end", self.draw.defs().select("#arrowPersonHover").first());
+
             }
         });
     },
@@ -695,13 +693,17 @@ $.extend(Figure.prototype, {
         var linksNodes = self.getLinkNodes(item);
         // item.g.removeClass("node-" + item.nodeType + "-hover");
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-            this.g.removeClass("node-link-" + this.source.nodeType + '-hover');
+
             this.source.g.removeClass("node-" + this.source.nodeType + "-hover");
             this.target.g.removeClass("node-" + this.target.nodeType + "-hover");
-            if (this.source.nodeType === "person") {
-                this.line.marker("end", self.draw.defs().select("#arrowPerson").first());
-            } else {
+            if (this.type !== "equal") {
+                this.g.removeClass("node-link-" + this.source.nodeType + '-hover');
                 this.line.marker("end", self.draw.defs().select("#arrowCompany").first());
+
+            } else {
+                this.g.removeClass("node-link-person-hover");
+                //  this.line.marker("end", self.draw.defs().select("#arrowPerson").first());
+
             }
         });
     },
@@ -763,7 +765,7 @@ $.extend(Figure.prototype, {
         var tx = 33.5, ty = 33.5;
         if (item.nodeType === "company") {
             tx = item.bor_rect_w / 2;
-            ty = 25;
+            ty = 17;
         }
         item.x = drag.x + moveX + tx;
         item.y = drag.y + moveY + ty;
@@ -806,7 +808,6 @@ $.extend(Figure.prototype, {
             var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
             var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
             this.line.translate(_x, -_y);
-            // console.log(this.line.x(),this.line.getMatrix())
             if (deg > 90 && deg < 270) {
                 deg -= 180;
             }

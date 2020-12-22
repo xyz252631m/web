@@ -1,0 +1,36 @@
+/*快捷操作层*/
+.op-box { border: #ccc solid 1px;position: absolute; background: #fff;
+  width: 46px;
+  right: 20px;
+  bottom: 150px;
+  font-size: 18px;
+  z-index: 20;
+
+  li { cursor: pointer;height: 55px;color: #999;
+    text-align: center;box-sizing: border-box;
+    font-size: 12px;padding: 5px;
+    i {display: block;text-align: center;width: 100%;font-size: 20px;margin-top: 5px;}
+  }
+  .active { color: #fff;
+    background-color: #128BED;}
+  li:hover {
+    .active
+  }
+}
+
+.mind-op-panel { position: fixed; right: 50px; top: 50px; z-index: 999; width: 30px; height: 300px;user-select: none;
+  .op-range-box { position: absolute; top: 30px; left: 5px; border: #e9eaec solid 1px; width: 24px; height: 216px; box-sizing: border-box; box-shadow: #ccc 3px 3px 3px; background-color: white }
+  .op-range { width: 4px; height: 200px; position: absolute; left: 9px; top: 7px; z-index: 999; box-sizing: border-box; background-color: #e9eaec }
+  .range-content { width: 14px; height: 14px; border-radius: 50%; background-color: white; border: #57a3f3 solid 2px; position: absolute;
+    top: 57.7px; left: -5px; cursor: pointer;
+    box-sizing: border-box; user-select: none; }
+  .range-select { width: 4px; height: 57.7px; position: absolute; left: 0; top: 0; z-index: 9; background-color: #57a3f3 }
+  .range-content:hover { transform: scale(1.15); transition: transform .4s }
+  /**/
+  .op-btn { position: absolute; width: 22px; text-align: center; height: 22px;background-color: white; border: #e9eaec solid 1px; left: 5px; color: #6eb4fd; cursor: pointer; z-index: 999; box-shadow: #ccc 3px 3px 3px; }
+  .op-btn:hover { color: #57a3f3; transform: scale(1.1); transition: transform .4s; }
+  .op-btn-minus { top: 0; }
+  .op-btn-plus { top: 254px; }
+  .op-btn-refresh { top: 283px; }
+  .op-btn-expand {top: 312px; }
+}

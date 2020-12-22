@@ -36,6 +36,7 @@ function Figure(SVG, option) {
         anTime: 300
     };
     var opt = this.opt = $.extend(defs, option);
+
     this._nodes = JSON.parse(JSON.stringify(opt.nodes));
     this._links = JSON.parse(JSON.stringify(opt.links));
     this.rootItem = {
@@ -43,11 +44,13 @@ function Figure(SVG, option) {
         h: 40
     };
 
+    //legend by type
+    this.typeMap = {};
     //中心点
     this.center = [0, 0];
     this.$box = opt.$box;
-    this.center[0] = Math.floor(this.$box.width() / 2);
-    this.center[1] = Math.floor(this.$box.height() / 2);
+    this.center[0] = parseInt(this.$box.width() / 2);
+    this.center[1] = parseInt(this.$box.height() / 2);
     this.draw = SVG(opt.$box.find("svg")[0]);
     this.root = this.draw.group();
 
@@ -60,13 +63,14 @@ function Figure(SVG, option) {
 
     // SVG.on(window, 'resize.svg', this.resize, this);
     var isDown = false, x1, y1, x, y, isMove = false;
-    //双击事件时间记录
-    var t1 = 0, t2 = 0;
     //拖动事件
     $(window).on("mousedown.relation", function (e) {
+
         if ($(".left-tip-panel")[0].contains(e.target)) {
             return;
         }
+
+
         isDown = true;
         isMove = false;
         x1 = e.pageX;
@@ -80,21 +84,21 @@ function Figure(SVG, option) {
 
         }
     });
-    $(window)
-        .on("mousemove.relation", function (e) {
-            if (isDown) {
-                isMove = true;
-                self.root.translate(x + e.pageX - x1, y + e.pageY - y1);
-            }
-            if (self.dragNode.isDown) {
-                self.nodeMouseMove(self, e);
-            }
-        })
+    $(window).on("mousemove.relation", function (e) {
+        if (isDown) {
+            isMove = true;
+            self.root.translate(x + e.pageX - x1, y + e.pageY - y1);
+        }
+        if (self.dragNode.isDown) {
+            self.nodeMouseMove(self, e);
+        }
+    })
         .on("mouseup", function () {
             if (self.infoPanelEvent) {
                 self.infoPanelEvent = false;
                 return;
             }
+
             if (self.dragNode.isDown) {
                 if (!self.dragNode.isMove) {
                     if (self.hoverParam.isActive) {
@@ -106,16 +110,7 @@ function Figure(SVG, option) {
                     self.hoverParam.isActive = true;
                     self.hoverParam.item = self.dragNode.item;
                     self.clickItemHover(self.dragNode.item);
-                    if (t1) {
-                        clearTimeout(t1);
-                        t1 = 0;
-                        opt.nodeDbclick && opt.nodeDbclick.call(self, self.dragNode.item);
-                    } else {
-                        t1 = setTimeout(function () {
-                            opt.nodeClick && opt.nodeClick.call(self, self.dragNode.item);
-                            t1 = 0;
-                        }, 300);
-                    }
+                    opt.nodeClick && opt.nodeClick.call(self, self.dragNode.item);
                 } else {
                     if (self.hoverParam.isActive) {
                         self.hoverParam.isActive = false;
@@ -137,7 +132,7 @@ function Figure(SVG, option) {
     //高亮激活（点击）参数
     this.hoverParam = {
         isActive: false,
-        item: null
+        item: null,
     };
     //拖拽参数
     this.dragNode = {
@@ -151,18 +146,20 @@ function Figure(SVG, option) {
         y1: 0
     };
 
-    this.scale = 1;
+    var scale = 1;
+
+    this.scale = scale;
 
     // 缩放事件
     function drag(e) {
-        var direct = null;
+        var driect = null;
         var scale = this.scale;
         if (e.wheelDelta) {
-            direct = e.wheelDelta;
+            driect = e.wheelDelta;
         } else {
-            direct = -e.detail * 40;
+            driect = -e.detail * 40;
         }
-        var isUp = direct > 0;
+        var isUp = driect > 0;
         if (isUp) {
             scale += 0.1;
             if (scale > 3) {
@@ -193,7 +190,7 @@ var tool = {
         var x = px2 - px1;
         var y = py2 - py1;
         var hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));//斜边长度
-        if (hypotenuse === 0) {
+        if (hypotenuse == 0) {
             return 0;
         }
         var cos = x / hypotenuse;
@@ -201,7 +198,7 @@ var tool = {
         var angle = radian * 180 / Math.PI;//用弧度算出角度
         if (y < 0) {
             angle = -angle;
-        } else if ((y === 0) && (x < 0)) {
+        } else if ((y == 0) && (x < 0)) {
             angle = 180;
         }
         return angle;
@@ -241,43 +238,7 @@ var tool = {
         }
         return list
     },
-    getStrTwoList: function (str) {
-        var b = 0;
-        var list = [], tem = "", splitIdx = 0, splitList = [20, 18];
-        for (var i = 0; i < str.length; i++) {
-            var c = str.charAt(i);
-            if (/^[\u0000-\u00ff]$/.test(c)) {
-                b++;
-            } else {
-                b += 2;
-            }
-            tem += c;
 
-            if (b >= (splitList[splitIdx] || 20)) {
-                splitIdx++;
-                list.push(tem);
-                tem = "";
-                b = 0;
-            } else {
-                if (i === str.length - 1) {
-                    list.push(tem);
-                }
-            }
-        }
-
-
-        if (list.length >= 3) {
-            list[2] = list[2][0] + list[2][1] + "...";
-            var temList = [];
-            $.each(list, function (i) {
-                if (i < 2) {
-                    temList.push(this);
-                }
-            });
-            list = temList;
-        }
-        return list
-    },
     temRender: function (d) {
         var list = tool.getStrList(d.name);
         var tspans = d3.select(this).selectAll("tspan").data(list).enter().append("tspan")
@@ -300,10 +261,7 @@ var tool = {
 
 $.extend(Figure.prototype, {
     init: function () {
-
         var self = this;
-        //legend by type
-        this.typeMap = {};
         var opt = this.opt;
         this.up_line = this.root.group();
         this.up_node = this.root.group();
@@ -317,7 +275,7 @@ $.extend(Figure.prototype, {
         });
         this.linksNumber(opt.links);
         //渲染 连接线
-        $.each(opt.links, function () {
+        $.each(opt.links, function (idx) {
             self.renderLink(this);
         });
         // this.halfGroup.y(-(r_centerY - this.hh))
@@ -329,19 +287,6 @@ $.extend(Figure.prototype, {
         var self = this;
         var $ul = $(".legend-box");
         var typeMap = this.typeMap, typeList = [];
-        //预置两种类型
-        typeMap["company"] = {
-            typeId: "company",
-            typeName: "公司",
-            color: "",
-            list: []
-        }
-        typeMap["person"] = {
-            typeId: "person",
-            typeName: "个人",
-            color: "",
-            list: []
-        }
         nodes.forEach(function (d) {
             if (!typeMap[d.typeId]) {
                 typeMap[d.typeId] = {
@@ -353,94 +298,62 @@ $.extend(Figure.prototype, {
                 typeList.push(typeMap[d.typeId]);
             }
             typeMap[d.typeId].list.push(d);
-            typeMap[d.nodeType].list.push(d);
         });
 
         var h = [];
         typeList.forEach(function (d) {
             h.push('<li data-type-id="' + d.typeId + '"><i class="i-icon" data-color="' + d.color + '" style="background-color: ' + d.color + '"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
         })
-        //其他类型
-        h.push('<li class="li-line"></li>')
-        h.push('<li class="li-two-type li-person" data-type-id="person"><i class="i-icon"></i><span>个人</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
-        h.push('<li class="li-two-type li-company" data-type-id="company"><i class="i-icon"></i><span>公司</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
         $ul.html(h.join(""));
 
         //图例点击事件
-        $ul.off("click");
         $ul.on("click", "li", function () {
-            var cls = "active", tcls = "li-two-type";
+            var cls = "active";
             var $el = $(this);
+            var $i = $el.find(".i-icon");
             if ($el.hasClass(cls)) {
-                $el.removeClass(cls);
-            } else {
-                //公司 or 个人
-                if ($el.hasClass(tcls)) {
-                    $ul.find("li").not("." + tcls).removeClass(cls);
-                } else {
-                    $ul.find("." + tcls).removeClass(cls);
-                }
-                $el.addClass(cls);
-            }
-
-            //是否存在激活项
-            if ($ul.find(".active").length === 0) {
                 $ul.removeClass("legend-box-dis");
+                $el.removeClass(cls);
                 self.opt.$box.removeClass("svg-node-legend");
                 $ul.find("li").each(function () {
                     var $ti = $(this).find(".i-icon");
                     $ti.css("background-color", $ti.attr("data-color"));
                 })
+                self.hoverItemByType(typeId, true);
+
             } else {
                 $ul.addClass("legend-box-dis");
                 self.opt.$box.addClass("svg-node-legend");
-                var typeIdList = [];
-                $ul.find("li").each(function () {
-                    var $li = $(this);
-                    var $ti = $li.find(".i-icon");
-                    if ($li.hasClass(cls)) {
-                        typeIdList.push($li.attr("data-type-id"))
-                        if ($li.hasClass(tcls)) {
-
-                        } else {
-                            $ti.css("background-color", $ti.attr("data-color"));
-                        }
-                    } else {
-                        $ti.css("background-color", "");
-                    }
-                })
-                self.hoverItemByType(typeIdList);
+                var typeId = $el.attr("data-type-id");
+                $ul.find("li").removeClass(cls).find(".i-icon").css("background-color", "");
+                $i.css("background-color", $i.attr("data-color"))
+                $el.addClass(cls);
+                self.hoverItemByType(typeId);
             }
+
         })
 
-        $ul.on("click", ".i-btn-colse", function () {
-            $ul.find("li").removeClass('active');
-            $ul.removeClass("legend-box-dis");
-            self.opt.$box.removeClass("svg-node-legend");
-            $ul.find("li").each(function () {
-                var $ti = $(this).find(".i-icon");
-                $ti.css("background-color", $ti.attr("data-color"));
-            })
-            return false;
-        })
     },
 
-    hoverItemByType: function (typeIdList) {
+    hoverItemByType: function (typeId, isCel) {
         var typeMap = this.typeMap;
         for (var key in typeMap) {
-            if (typeMap.hasOwnProperty(key)) {
+            if (isCel) {
                 typeMap[key].list.forEach(function (d) {
-                    d.g.removeClass("node-show");
-                    d.legendShow = false;
+                    d.g.removeClass("node-show")
                 })
+            } else {
+                if (key === typeId) {
+                    typeMap[key].list.forEach(function (d) {
+                        d.g.addClass("node-show")
+                    })
+                } else {
+                    typeMap[key].list.forEach(function (d) {
+                        d.g.removeClass("node-show")
+                    })
+                }
             }
         }
-        typeIdList.forEach(function (d) {
-            typeMap[d].list.forEach(function (d) {
-                d.g.addClass("node-show")
-                d.legendShow = true;
-            })
-        })
     },
     //连接线分配编号
     linksNumber: function (links) {
@@ -469,75 +382,42 @@ $.extend(Figure.prototype, {
 
     renderNode: function (item) {
         var self = this;
-        var g = self.up_node.group().addClass("node-" + item.nodeType);
+        var g = self.up_node.group().transform({x: item.x - 33.5, y: item.y - 33.5}).addClass("node-" + item.nodeType);
         item.g = g;
-        var bg = self.opt.nodeColorByTypeId(item.typeId, item);
-        var list;
-        var text;
+        var circle = g.circle(67);
         if (item.nodeType === "person") {
-            g.transform({x: item.x - 33.5, y: item.y - 33.5});
-            var circle = g.circle(67);
             circle.radius(22.5);
-            circle.fill(bg);
-            list = tool.getStrList(item.name || item.properties.name);
-            text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
-            if (list.length === 2) {
-                text.y(20);
-                text.build(true);
-                text.tspan(list[1] + '').x(10).dy(15);
-                text.build(false);
-            } else if (list.length === 3) {
-                text.build(true);
-                text.tspan(list[1] + '').x(5).dy(15);
-                text.tspan(list[2] + '').x(10).dy(15);
-                text.build(false);
-            } else {
-                text.x(33).y(27).attr("text-anchor", "middle");
-            }
-
         } else {
-            var rect = g.rect(150, 50);
-            rect.rx(5).ry(5).fill(bg);
 
-            var icon = this.draw.defs().select("#companyIcon").first();
-            icon.width(20).height(20).fill("#fff");
-            var icon_g = g.group().x(-48).y(14).use(icon);
-            list = tool.getStrTwoList(item.name || item.properties.name);
-            text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
-            if (list.length === 1) {
-                text.x(35).y(18)
-            } else {
-                text.x(35).y(11);
-                text.build(true);
-                text.tspan(list[1] + '').x(35).dy(15);
-                text.build(false);
-            }
-
-
-            var text_box = text.rbox();
-            item.bor_rect_w = text_box.width + 35 + 12;
-
-
-            rect.width(item.bor_rect_w);
-            g.transform({x: item.x - item.bor_rect_w / 2, y: item.y - 25});
-            if (item.isRoot) {
-                g.addClass("root-node")
-                rect.addClass("root-rect");
-                rect.stroke({color: bg, opacity: 1, width: 5});
-            }
-            // var text = status_g.text(item.properties.status).font({size: 12}).fill("#333").x(5).dy(0);
-
-            var status_g = g.group().addClass("node-status");
-            status_g.transform({x: item.bor_rect_w - 15, y: -10})
-            var rect_s = status_g.rect(100, 22);
-            var b_color = self.opt.statusColor(item);
-            rect_s.rx(5).ry(5).fill(b_color);
-            var s_text = status_g.text(item.properties.status).font({size: 12}).fill("#333").x(5).dy(0);
-            var s_text_box = s_text.rbox();
-            item.status_w = s_text_box.width + 10;
-            rect_s.width(item.status_w);
         }
-
+        var list = tool.getStrList(item.name || item.properties.name);
+        var text = g.text(list[0] + '').font({size: 12}).fill("#333").x(10).y(11);
+        if (list.length === 2) {
+            text.y(20);
+            text.build(true);
+            text.tspan(list[1] + '').x(10).dy(15);
+            text.build(false);
+        } else if (list.length === 3) {
+            text.build(true);
+            text.tspan(list[1] + '').x(5).dy(15);
+            text.tspan(list[2] + '').x(10).dy(15);
+            text.build(false);
+        } else {
+            text.x(33).y(27).attr("text-anchor", "middle");
+        }
+        var bg = self.opt.nodeColorByTypeId(item.typeId, item);
+        circle.fill(bg)
+        if (item.nodeType === "company") {
+            var status_g = g.group().addClass("node-status");
+            status_g.transform({x: 45, y: -10})
+            var rect = status_g.rect(100, 22);
+            var b_color = self.opt.statusColor(item);
+            rect.rx(5).ry(5).fill(b_color);
+            var text = status_g.text(item.properties.status).font({size: 12}).fill("#333").x(5).dy(0);
+            var text_rbox = text.rbox();
+            item.status_w = text_rbox.width + 10;
+            rect.width(item.status_w);
+        }
         g.on("mousedown", this.mousedown, {self: self, item: item});
         g.on("mouseenter", this.mouseenterNode, {self: self, item: item});
         g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
@@ -546,31 +426,26 @@ $.extend(Figure.prototype, {
         var self = this;
         var g = self.up_line.group().addClass("node-link-" + item.source.nodeType);
         item.g = g;
-
-        var points = self.convertStartEndPoint(item.source, item.target);
         var x = item.source.x;
         var y = item.source.y;
         var x1 = item.target.x;
         var y1 = item.target.y;
         var ty = 0;
-        var line = g.line(points.x, points.y, points.x1, points.y1).attr("data-id", item.source.x);
-        var space = 26;
+        var line = g.line(item.source.x, item.source.y, item.target.x, item.target.y).attr("data-id", item.source.x);
 
         if (item.ox_size === 1) {
 
         } else {
-            var flag = 1;
             if (item.ox_size % 2 === 0) {
-                space = 14;
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                flag = item.ox_index % 2 === 0 ? -1 : 1;
-                ty = flag * space * Math.floor(item.ox_index / 2) + (flag * space * 0.5);
+                var flag = item.ox_index % 2 === 0 ? -1 : 1;
+                ty = flag * 14 * parseInt(item.ox_index / 2) + (flag * 7);
             } else {
                 //0 0, 1 -7 , 2 7,
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                if (item.ox_index > 0) {
-                    flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
-                    ty = flag * space * Math.floor((item.ox_index - 1) / 2) + (flag * space * 0.5);
+                if (itme.ox_index > 0) {
+                    var flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
+                    ty = flag * 14 * parseInt((item.ox_index - 1) / 2) + (flag * 7);
                 }
             }
         }
@@ -593,65 +468,15 @@ $.extend(Figure.prototype, {
         }
 
         var txt = self.opt.lineText(item) || "";
-        var textColor = self.opt.lineTextColor(txt, item);
+
         var text = g.text(txt).x(x + _x + (x1 - x) / 2).y(y - _y + (y1 - y) / 2 - 6).rotate(deg);
-
-        if (textColor) {
-            text.fill(textColor);
-        }
-
         item.textNode = text;
 
-        var arrow_marker;
         if (item.source.nodeType === "person") {
-            arrow_marker = this.draw.defs().select("#arrowPerson").first();
+            line.marker("end", this.draw.defs().select("#arrowPerson").first());
         } else {
-            arrow_marker = this.draw.defs().select("#arrowCompany").first();
+            line.marker("end", this.draw.defs().select("#arrowCompany").first());
         }
-        line.marker("end", arrow_marker);
-    },
-    //转换坐标点
-    convertStartEndPoint: function (source, target) {
-        var obj = {
-            x: source.x,
-            y: source.y,
-            x1: target.x,
-            y1: target.y
-        }
-
-        if (target.nodeType === "company") {
-            var x2 = target.bor_rect_w / 2;
-            var deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
-            var tem = 25 / Math.tan((180 - deg) * Math.PI / 180);
-            if (-x2 < tem && tem < x2) {
-                if (deg < -90) {
-                    obj.x1 -= tem;
-                    obj.y1 += 25;
-                } else {
-                    if (deg < 0) {
-                        obj.x1 -= tem;
-                    } else {
-                        obj.x1 += tem;
-                    }
-                    if (deg < 0) {
-                        obj.y1 += 25;
-                    } else {
-                        obj.y1 -= 25;
-                    }
-                }
-            } else {
-                if (deg > 90 || deg < -90) {
-                    obj.x1 += x2
-                    obj.y1 -= Math.tan((180 - deg) * Math.PI / 180) * x2;
-                } else {
-                    obj.x1 -= x2
-                    obj.y1 += Math.tan((180 - deg) * Math.PI / 180) * x2;
-                }
-            }
-        }
-
-
-        return obj
     },
     //nodes mousedown
     mousedown: function (e) {
@@ -671,7 +496,7 @@ $.extend(Figure.prototype, {
         } catch (e) {
 
         }
-        e.stopPropagation();
+        window.event ? window.event.cancelBubble = true : e.stopPropagation();
     },
     //高亮
     hoverItem: function (item) {
@@ -680,6 +505,7 @@ $.extend(Figure.prototype, {
         // item.g.addClass("node-" + item.nodeType + "-hover");
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
             this.g.addClass("node-link-" + this.source.nodeType + '-hover');
+
             this.source.g.addClass("node-" + this.source.nodeType + "-hover");
             this.target.g.addClass("node-" + this.target.nodeType + "-hover");
             if (this.source.nodeType === "person") {
@@ -706,7 +532,7 @@ $.extend(Figure.prototype, {
         });
     },
     //nodes mouseenter
-    mouseenterNode: function () {
+    mouseenterNode: function (e) {
         var self = this.self, item = this.item;
         if (!self.hoverParam.isActive) {
             self.hoverItem(item);
@@ -714,7 +540,7 @@ $.extend(Figure.prototype, {
 
     },
     //nodes mouseleave
-    mouseleaveNode: function () {
+    mouseleaveNode: function (e) {
         var self = this.self, item = this.item;
         if (!self.hoverParam.isActive) {
             self.celHoverItem(item);
@@ -760,43 +586,33 @@ $.extend(Figure.prototype, {
         var moveX = (e.pageX - drag.x1) * (1 / scale);
         var moveY = (e.pageY - drag.y1) * (1 / scale);
         //node
-        var tx = 33.5, ty = 33.5;
-        if (item.nodeType === "company") {
-            tx = item.bor_rect_w / 2;
-            ty = 25;
-        }
-        item.x = drag.x + moveX + tx;
-        item.y = drag.y + moveY + ty;
-        item.g.translate(item.x - tx, item.y - ty);
+        var t = 33.5;
+        item.x = drag.x + moveX + t;
+        item.y = drag.y + moveY + t;
+        item.g.translate(item.x - t, item.y - t);
         //line
         var linksNodes = self.getLinkNodes(item);
-        var space = 26;
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-            var points = self.convertStartEndPoint(this.source, this.target);
             var x = this.source.x;
             var y = this.source.y;
             var x1 = this.target.x;
             var y1 = this.target.y;
             var ty = 0;
-            this.line.plot(points.x, points.y, points.x1, points.y1);
-
+            this.line.plot(this.source.x, this.source.y, this.target.x, this.target.y);
             if (this.ox_size === 1) {
 
             } else {
-                var flag = 1;
                 if (this.ox_size % 2 === 0) {
-                    space = 14;
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                    flag = this.ox_index % 2 === 0 ? -1 : 1;
-                    ty = flag * space * Math.floor(this.ox_index / 2) + (flag * space * 0.5);
+                    var flag = this.ox_index % 2 === 0 ? -1 : 1;
+                    ty = flag * 14 * parseInt(this.ox_index / 2) + (flag * 7);
 
                 } else {
-                    space = 26;
                     //0 0, 1 -7 , 2 7,
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                    if (this.ox_index > 0) {
-                        flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
-                        ty = flag * space * Math.floor((this.ox_index - 1) / 2) + (flag * space * 0.5);
+                    if (itme.ox_index > 0) {
+                        var flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
+                        ty = flag * 14 * parseInt((this.ox_index - 1) / 2) + (flag * 7);
 
                     }
                 }
@@ -806,7 +622,6 @@ $.extend(Figure.prototype, {
             var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
             var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
             this.line.translate(_x, -_y);
-            // console.log(this.line.x(),this.line.getMatrix())
             if (deg > 90 && deg < 270) {
                 deg -= 180;
             }
@@ -851,11 +666,6 @@ $.extend(Figure.prototype, {
         this.scale = scale;
     },
     reset: function () {
-        var $li = $(".legend-box .active");
-        if ($li.length) {
-            $li.trigger("click");
-        }
-
         this.root.clear();
         this.root = this.draw.group();
         $.each(this.opt.nodes, function () {

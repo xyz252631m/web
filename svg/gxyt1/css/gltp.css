@@ -24,9 +24,6 @@
 .svg-node-legend .node-company text {
   fill: transparent;
 }
-.svg-node-legend .node-company rect {
-  opacity: 0.4;
-}
 .svg-node-legend .node-company .node-status {
   opacity: 0.2;
 }
@@ -39,25 +36,10 @@
 .svg-node-legend .node-show circle {
   opacity: 1;
 }
-.svg-node-legend .node-show rect {
-  opacity: 1;
-}
 .svg-node-legend .node-show text {
   fill: #fff;
 }
 .svg-node-legend .node-show .node-status {
-  opacity: 1;
-}
-.svg-node-legend .root-node circle {
-  opacity: 1;
-}
-.svg-node-legend .root-node rect {
-  opacity: 1;
-}
-.svg-node-legend .root-node text {
-  fill: #fff;
-}
-.svg-node-legend .root-node .node-status {
   opacity: 1;
 }
 .svg-node-legend .node-link-company {
@@ -75,9 +57,6 @@
 .svg-node-hover .node-company circle {
   opacity: 0.4;
 }
-.svg-node-hover .node-company rect {
-  opacity: 0.4;
-}
 .svg-node-hover .node-company text {
   fill: transparent;
 }
@@ -91,9 +70,6 @@
   fill: transparent;
 }
 .svg-node-hover .node-company-hover circle {
-  opacity: 1;
-}
-.svg-node-hover .node-company-hover rect {
   opacity: 1;
 }
 .svg-node-hover .node-company-hover text {
@@ -149,6 +125,7 @@
   stroke: #fabc79;
 }
 .node-link-company text {
+  fill: #333;
   font-size: 12px;
   text-anchor: middle;
 }
@@ -160,6 +137,7 @@
   stroke: #7ac5f5;
 }
 .node-link-person text {
+  fill: #333;
   font-size: 12px;
   text-anchor: middle;
 }
@@ -177,15 +155,6 @@
 }
 #arrowPersonHover path {
   fill: #096ff4;
-}
-/*根节点*/
-.root-node .root-rect {
-  fill: #FF367D;
-  stroke: #ff86b5;
-}
-@keyframes bor1 {
-}
-@keyframes dong2 {
 }
 /*左侧提示框*/
 .left-tip-panel {
@@ -406,31 +375,11 @@
 .legend-box li .i-btn-colse:hover {
   opacity: 0.6;
 }
-.legend-box .li-line {
-  height: 1px;
-  background-color: #dbdbdb;
-  pointer-events: none;
-}
-.legend-box .li-company .i-icon {
-  background-color: transparent;
-  border: #1aa2e6 solid 2px;
-  box-sizing: border-box;
-}
-.legend-box .li-person .i-icon {
-  width: 13px;
-  border-radius: 50%;
-  margin-left: 4px;
-  margin-right: 8px;
-  background-color: transparent;
-  border: #1aa2e6 solid 2px;
-  box-sizing: border-box;
-}
 .legend-box .active .i-btn-colse {
   display: inline-block;
 }
-.legend-box-dis li:not(.active) .i-icon {
+.legend-box-dis li .i-icon {
   background-color: #eee;
-  border-color: #eee;
 }
 /*快捷操作层*/
 /*快捷操作层*/
