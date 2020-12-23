@@ -5,8 +5,8 @@
       {
         "id": "1",
         "nodeType": "company",
-        "typeId": "01",
-        "typeName": "一级进项",
+        "typeId": "root",
+        "typeName": "目标企业",
         "isRoot": true,
         "properties": {
           "keyNo": "276352a95db7aa252420e896ffb1ff6c",
@@ -36,8 +36,8 @@
       {
         "id": "3",
         "nodeType": "company",
-        "typeId": "03",
-        "typeName": "二级进项",
+        "typeId": "01",
+        "typeName": "一级进项",
         "properties": {
           "keyNo": "d0ca754f7049728c42859eb8a28a17fb",
           "registCapi": "5000.000",
@@ -51,8 +51,8 @@
       {
         "id": "4",
         "nodeType": "company",
-        "typeId": "04",
-        "typeName": "二级销项",
+        "typeId": "02",
+        "typeName": "一级销项",
         "properties": {
           "keyNo": "dee21f29a987890b7fd1e0d0d826a1c2",
           "registCapi": "500.000",
@@ -81,8 +81,8 @@
       {
         "id": "51",
         "nodeType": "company",
-        "typeId": "04",
-        "typeName": "二级销项",
+        "typeId": "02",
+        "typeName": "一级销项",
         "properties": {
           "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
           "registCapi": "221.053",
@@ -94,8 +94,8 @@
       {
         "id": "52",
         "nodeType": "company",
-        "typeId": "04",
-        "typeName": "二级销项",
+        "typeId": "02",
+        "typeName": "一级销项",
         "properties": {
           "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
           "registCapi": "221.053",
@@ -107,8 +107,8 @@
       {
         "id": "53",
         "nodeType": "company",
-        "typeId": "01",
-        "typeName": "一级进项",
+        "typeId": "02",
+        "typeName": "一级销项",
         "properties": {
           "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
           "registCapi": "221.053",
@@ -144,7 +144,7 @@
       {
         "id": "8",
         "nodeType": "company",
-        "typeId": "02",
+        "typeId": "01",
         "typeName": "一级进项",
         "properties": {
           "keyNo": "p9716455e8dfef7326b39ec43003af2d",
@@ -156,7 +156,7 @@
       {
         "id": "9",
         "nodeType": "company",
-        "typeId": "02",
+        "typeId": "01",
         "typeName": "一级进项",
         "properties": {
           "keyNo": "pbd00865ba4e05a06afd85a30e687b72",
@@ -168,8 +168,8 @@
       {
         "id": "10",
         "nodeType": "company",
-        "typeId": "02",
-        "typeName": "一级进项",
+        "typeId": "04",
+        "typeName": "二级销项",
         "properties": {
           "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
           "registCapi": "221.053",
@@ -181,8 +181,8 @@
       {
         "id": "11",
         "nodeType": "company",
-        "typeId": "02",
-        "typeName": "一级进项",
+        "typeId": "04",
+        "typeName": "二级销项",
         "properties": {
           "name": "上海唐盛投资股份有限公司11"
         }
@@ -251,28 +251,6 @@
         }
       },
       {
-        "id": "19",
-        "nodeType": "company",
-        "equalType": "equal_01",
-        "equalTypeName": "同法人",
-        "typeId": "04",
-        "typeName": "二级销项",
-        "properties": {
-          "name": "上海唐盛投资股份有限公司19"
-        }
-      },
-      {
-        "id": "20",
-        "nodeType": "company",
-        "typeId": "04",
-        "equalType": "equal_02",
-        "equalTypeName": "同办税员",
-        "typeName": "二级销项",
-        "properties": {
-          "name": "上海唐盛投资股份有限公司20"
-        }
-      },
-      {
         "id": "21",
         "nodeType": "company",
         "typeId": "04",
@@ -289,8 +267,117 @@
         "properties": {
           "name": "上海唐盛投资股份有限公司22"
         }
+      },
+      {
+        "id": "23",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司23"
+        }
+      },
+      {
+        "id": "24",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司24"
+        }
+      },
+      {
+        "id": "25",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "26",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "27",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "28",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "29",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "30",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "31",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司24"
+        }
+      },
+      {
+        "id": "32",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司24"
+        }
+      },
+      {
+        "id": "19",
+        "nodeType": "company",
+        "typeId": "equal",
+        "typeName": "团伙",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司19"
+        }
+      },
+      {
+        "id": "20",
+        "nodeType": "company",
+        "typeId": "equal",
+        "typeName": "团伙",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司20"
+        }
       }
     ],
+
     "links": [
       {
         "id": "6562919",
@@ -464,18 +551,135 @@
         }
       },
       {
-        "id": "34",
+        "id": "36",
+        "source": "9",
+        "target": "22",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "37",
+        "source": "9",
+        "target": "10",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "38",
+        "source": "9",
+        "target": "21",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "39",
+        "source": "23",
+        "target": "9",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "40",
+        "source": "24",
+        "target": "9",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "41",
+        "source": "25",
+        "target": "6",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "42",
+        "source": "8",
+        "target": "26",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "43",
+        "source": "8",
+        "target": "27",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "44",
+        "source": "8",
+        "target": "28",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "45",
+        "source": "8",
+        "target": "29",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "46",
+        "source": "8",
+        "target": "30",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "47",
+        "source": "31",
+        "target": "4",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "48",
+        "source": "32",
+        "target": "4",
+        "type": "equal",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "49",
         "source": "1",
-        "target": "19",
+        "target": "20",
         "type": "equal",
         "properties": {
           "role": "同法人"
         }
       },
       {
-        "id": "35",
+        "id": "50",
         "source": "1",
-        "target": "20",
+        "target": "19",
         "type": "equal",
         "properties": {
           "role": "同办税员"
