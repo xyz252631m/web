@@ -25,7 +25,7 @@ http.createServer(function (request, response) {
                 //写会相应内容
                 if (files) {
                     var style="overflow:auto";
-                    response.write("<div stylt='overflow:auto;background:#222'>"+files.map(d => `<p style="margin:0"><a href="${path.join(pathname, d)}">${d}</a></p>`).join("").toString()+"</div>");
+                    response.write("<div style='overflow:auto;background:#222'>"+files.map(d => `<p style="margin:0"><a href="${path.join(pathname, d)}">${d}</a></p>`).join("").toString()+"</div>");
                 }
                 //发送响应数据
                 response.end();
