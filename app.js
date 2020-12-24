@@ -24,7 +24,8 @@ http.createServer(function (request, response) {
                 response.writeHead(200, {'Content-Type': 'text/html'});
                 //写会相应内容
                 if (files) {
-                    response.write(files.map(d => `<p style="margin:0"><a href="${path.join(pathname, d)}">${d}</a></p>`).join("").toString());
+                    var style="overflow:auto";
+                    response.write("<div stylt='overflow:auto;background:#222'>"+files.map(d => `<p style="margin:0"><a href="${path.join(pathname, d)}">${d}</a></p>`).join("").toString()+"</div>");
                 }
                 //发送响应数据
                 response.end();
