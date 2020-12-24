@@ -5,10 +5,11 @@
 }
 
 @company: #3ba1f4;
-@companyLine: #7ac5f5;
-@person: #ffae64;
-@personLine: #fabc79;
+@companyLine: #ccc;
+@person: #3ba1f4;
+@personLine: #80c7ff;
 
+@txtColor: #666;
 .svg-node-legend {
   .node-company {
     circle { opacity: .4}
@@ -16,30 +17,25 @@
     rect {opacity: .4}
     .node-status { opacity: .2}
   }
-  .node-person {
-    circle {opacity: .4}
-    text { fill: transparent;}
-  }
 
 
   .node-show {
     circle { opacity: 1}
     rect {opacity: 1}
-    text { fill: #fff;}
+    text { fill: @txtColor;}
     .node-status { opacity: 1}
   }
 
   .root-node {
     circle { opacity: 1}
     rect {opacity: 1}
-    text { fill: #fff;}
+    text { fill: @txtColor;}
     .node-status { opacity: 1}
   }
 
   .node-link-company {opacity: .2}
-  .node-link-person {opacity: .2}
   .node-link-company-hover {opacity: .2}
-  .node-link-person-hover {opacity: .2}
+  .link-show {opacity: 1}
 }
 
 .svg-node-hover {
@@ -49,68 +45,65 @@
     text { fill: transparent;}
     .node-status { opacity: .2}
   }
-  .node-person {
-    circle {opacity: .4}
-    text { fill: transparent;}
-  }
+
 
   .node-company-hover {
     circle { opacity: 1}
     rect {opacity: 1}
-    text { fill: #fff;}
+    text { fill: @txtColor;}
     .node-status { opacity: 1}
   }
 
-  .node-person-hover {
-    circle {opacity: 1}
-    text { fill: #fff;}
-  }
+
   .node-link-company {opacity: .2}
-  .node-link-person {opacity: .2}
   .node-link-company-hover {opacity: 1}
   .node-link-person-hover {opacity: 1}
 }
 
 .node-company {
-  circle { stroke: none;}
-  text { fill: #fff;}
+  circle { }
+  text { fill: @txtColor;}
 }
 .node-company-hover {
   .node-company
 }
-.node-person {
-  circle { stroke: none;}
-  text { fill: #fff;}
-}
-.node-person-hover {
-  .node-person
-}
+
 .node-link-company {
-  line {stroke-width: 1px; stroke: @personLine;}
-  text { font-size: 12px;text-anchor: middle;}
+  line { stroke-width: 1.5px; stroke: @personLine;cursor: pointer; }
+
+  &:hover {
+    line { stroke: #ff7f19;}
+    text {fill: #333;stroke: #333;stroke-width: .5}
+    .cus-text-color {stroke-width: 0}
+  }
+  text { font-size: 12px;text-anchor: middle;cursor: pointer;fill: #555; }
+
 }
+.node-link-01 {
+  line {stroke-width: 2.5px; stroke: #74c2ff}
+}
+.node-link-02 {
+  line {stroke-width: 1.5px;}
+}
+.node-link-03 {
+  line {stroke-width: 1.5px; stroke-dasharray: 5 5;}
+}
+
+.node-link-equal {
+  line {stroke: #b457ff;stroke-width: 1.5px;opacity: .6}
+}
+
 .node-link-company-hover {
   line { stroke: #ff7f19;}
 }
-.node-link-person {
-  line {stroke-width: 1px; stroke: @companyLine;}
-  text { font-size: 12px;text-anchor: middle;}
-}
-.node-link-person-hover {
-  line { stroke: #096ff4;}
-}
+
 #arrowCompany {
   path {fill: @personLine}
 }
 #arrowCompanyHover {
   path {fill: #ff7f19}
 }
-#arrowPerson {
-  path {fill: @companyLine}
-}
-#arrowPersonHover {
-  path {fill: #096ff4}
-}
+
 /*根节点*/
 .root-node {
   .root-rect {
@@ -189,7 +182,13 @@
 .left-tip-panel .main { text-align: left; padding: 0 10px;}
 
 
-.legend-box {position: absolute;left: 20px;top: 20px;
+.legend-box {background: #fff;
+  padding: 10px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  border-radius: 5px;
+  box-shadow: #ccc 3px 3px 3px;
   li { height: 20px;line-height: 20px; cursor: pointer; margin-bottom: 5px;
     .i-icon { display: inline-block; background-color: #0e90d2; width: 20px;height: 13px;border-radius: 3px;margin-right: 5px;
       vertical-align: -1px;}
@@ -206,10 +205,18 @@
   .li-company {
     .i-icon {background-color: transparent; border: #1aa2e6 solid 2px;box-sizing: border-box; }
   }
-  .li-person {
-    .i-icon { width: 13px; border-radius: 50%; margin-left: 4px;margin-right: 8px; background-color: transparent; border: #1aa2e6 solid 2px;box-sizing: border-box; }
+  .li_node-link-01 {
+    .i-icon {background-color: transparent;border: none;border-radius: 0;border-bottom: #5faeec solid 3px;height: 3px;
+      vertical-align: 3px;}
   }
-
+  .li_node-link-02 {
+    .i-icon {background-color: transparent;border: none;border-radius: 0;border-bottom: #5faeec solid 1px;height: 3px;
+      vertical-align: 3px;}
+  }
+  .li_node-link-03 {
+    .i-icon {background-color: transparent;border: none;border-radius: 0;border-bottom: #5faeec dashed 1px;height: 3px;
+      vertical-align: 3px;}
+  }
   .active {
     .i-btn-colse {display: inline-block;}
   }

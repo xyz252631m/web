@@ -6,29 +6,23 @@ function Figure(SVG, option) {
         links: [],
         //是否可以缩放
         isScale: false,
+        //一级节点和根节点之间的距离
+        oneLevelSpace: 500,
+        //二级节点和一级节点之间的距离
+        twoLevelSpace: 300,
+        // //根节点圆大小
+        // rootLevelCircle: 67,
+        // //一级节点圆大小
+        // oneLevelCircle: 42,
+        // //二级节点圆大小
+        // twoLevelCircle: 26,
         //节点点击事件
         nodeClick: null,
         celNodeClick: null,
-        //根节点name
-        rootName: "",
-        //左边图片路径
-        leftImgPath: "",
-        //右边图片路径
-        rightImgPath: "",
-        //上部点击事件
-        upClick: null,
-        //下部点击事件
-        downClick: null,
-        //获取下级数据 必须返回一个Promise类型
-        getNextItem: null,
         //进入根节点事件
         enterRoot: null,
         //离开根节点事件
         leaveRoot: null,
-        //左边图片click事件
-        leftImgClick: null,
-        //右边图片click事件
-        rightImgClick: null,
         //进入子节点事件
         enter: null,
         //离开子节点事件
@@ -63,13 +57,12 @@ function Figure(SVG, option) {
     };
     var tem = this.conventData(opt.nodes, opt.links);
 
+    //名称向上偏移量
+    this.nameTextY = -16;
     this._nodes = tem.nodes;
     this._links = tem.links;
 
-    console.log(this._map)
-
     this.rootItem = tem.root;
-
     //中心点
     this.center = [0, 0];
     this.$box = opt.$box;
@@ -77,14 +70,11 @@ function Figure(SVG, option) {
     this.center[1] = Math.floor(this.$box.height() / 2);
     this.draw = SVG(opt.$box.find("svg")[0]);
     this.root = this.draw.group();
-
     //是否为信息面板里的事件
     this.infoPanelEvent = false;
-
     this.init();
     // this.renderCenter(this.rootItem);
     var self = this;
-
     // SVG.on(window, 'resize.svg', this.resize, this);
     var isDown = false, x1, y1, x, y, isMove = false;
     //双击事件时间记录
@@ -136,7 +126,7 @@ function Figure(SVG, option) {
                     if (t1) {
                         clearTimeout(t1);
                         t1 = 0;
-                        opt.nodeDbclick && opt.nodeDbclick.call(self, self.dragNode.item);
+                        opt.nodeDbClick && opt.nodeDbClick.call(self, self.dragNode.item);
                     } else {
                         t1 = setTimeout(function () {
                             opt.nodeClick && opt.nodeClick.call(self, self.dragNode.item);
@@ -232,119 +222,24 @@ var tool = {
             angle = 180;
         }
         return angle;
-    },
-    getStrList: function (str) {
-        var b = 0;
-        var list = [], tem = "", splitIdx = 0, splitList = [7, 9, 7];
-        for (var i = 0; i < str.length; i++) {
-            var c = str.charAt(i);
-            if (/^[\u0000-\u00ff]$/.test(c)) {
-                b++;
-            } else {
-                b += 2;
-            }
-            tem += c;
-            if (b >= (splitList[splitIdx] || 7)) {
-                splitIdx++;
-                list.push(tem);
-                tem = "";
-                b = 0;
-            } else {
-                if (i === str.length - 1) {
-                    list.push(tem);
-                }
-            }
-        }
-
-        if (list.length >= 4) {
-            list[2] = list[2][0] + list[2][1] + list[2][2] + "...";
-            var temList = [];
-            $.each(list, function (i) {
-                if (i < 3) {
-                    temList.push(this);
-                }
-            });
-            list = temList;
-        }
-        return list
-    },
-    getStrTwoList: function (str) {
-        var b = 0;
-        var list = [], tem = "", splitIdx = 0, splitList = [20, 18];
-        for (var i = 0; i < str.length; i++) {
-            var c = str.charAt(i);
-            if (/^[\u0000-\u00ff]$/.test(c)) {
-                b++;
-            } else {
-                b += 2;
-            }
-            tem += c;
-
-            if (b >= (splitList[splitIdx] || 20)) {
-                splitIdx++;
-                list.push(tem);
-                tem = "";
-                b = 0;
-            } else {
-                if (i === str.length - 1) {
-                    list.push(tem);
-                }
-            }
-        }
-
-
-        if (list.length >= 3) {
-            list[2] = list[2][0] + list[2][1] + "...";
-            var temList = [];
-            $.each(list, function (i) {
-                if (i < 2) {
-                    temList.push(this);
-                }
-            });
-            list = temList;
-        }
-        return list
-    },
-    temRender: function (d) {
-        var list = tool.getStrList(d.name);
-        var tspans = d3.select(this).selectAll("tspan").data(list).enter().append("tspan")
-            .text(function (d) {
-                return d
-            });
-        if (list.length === 3) {
-            var dyList = [-0.5, 1.3, 1.3];
-            tspans.attr("dy", function (d, i) {
-                return dyList[i] + "em";
-            })
-        } else if (list.length === 2) {
-            var dy2List = [-0.1, 1.1];
-            tspans.attr("dy", function (d, i) {
-                return dy2List[i] + "em";
-            })
-        }
     }
 };
 
 $.extend(Figure.prototype, {
     init: function () {
-
         var self = this;
+        this.linksStyle();
         //legend by type
         this.typeMap = {};
+        this.linkTypeMap = {};
         var opt = this.opt;
-
         var _map = this._map;
-
         this.createGroup();
-
-
-        this.renderLegend(this._nodes);
         this.calcItemPos();
 
+        this.renderLegend(this._nodes, this._links);
         //渲染node
-
         this.renderRootItem(_map.root);
-
         //渲染 连接线
         $.each(this._links, function () {
             self.renderLink(this);
@@ -355,29 +250,30 @@ $.extend(Figure.prototype, {
             d.in.concat(d.out).forEach(function (p) {
                 self.renderNode(p, self.leftNodeGroup, 2);
             })
-
         })
+
         _map.level1_out.forEach(function (d) {
             self.renderNode(d, self.rightNodeGroup, 1);
             d.in.concat(d.out).forEach(function (p) {
                 self.renderNode(p, self.rightNodeGroup, 2);
             })
         })
-
-        // this.linksNumber(this.links);
-
-        // this.halfGroup.y(-(r_centerY - this.hh))
-
     },
     renderRootItem: function (item) {
+        var self = this;
         var g = this.root.group();
         item.g = g;
         var r = 67;
         item.r = r;
-        var circle = g.circle(r).fill(this.typeMap[item.data.typeId].color);
-        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(-14);
+        var bg = this.typeMap[item.data.typeId].color;
+        var circle = g.circle(r).fill(bg);
+        circle.stroke({color: bg, width: 3, opacity: .6})
+        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("text-anchor", "middle");
         g.transform({x: item.x - r / 2, y: item.y - r / 2});
+        g.on("mousedown", this.mousedown, {self: self, item: item});
+        g.on("mouseenter", this.mouseenterNode, {self: self, item: item});
+        g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
     },
     createGroup: function () {
         this.leftGroup = this.root.group();
@@ -396,7 +292,6 @@ $.extend(Figure.prototype, {
         var _nodeMap = this._nodeMap
         var _nodes = [], _links = [], root = null;
         nodes.forEach(function (d, i) {
-
             var tem = {
                 id: d.id + "_" + i,
                 x: 0,
@@ -405,10 +300,14 @@ $.extend(Figure.prototype, {
                 out: [],
                 //位置 left or right
                 pos: "",
+                //圆大小，直径
+                r: 26,
                 name: d.name || d.properties.name,
-                data: d
+                data: d,
+                typeId: d.typeId
             }
             if (d.isRoot) {
+                tem.r = 67;
                 root = tem;
                 _map.root = tem;
             }
@@ -416,33 +315,72 @@ $.extend(Figure.prototype, {
             _nodeMap[tem.id] = tem;
             _nodes.push(tem);
         });
+        var typeEqualLinks = [];
         links.forEach(function (d, i) {
             var tem = {
                 id: d.id + "_" + i,
                 source: map[d.source],
                 target: map[d.target],
-                data: d
+                typeId: d.typeId,
+                data: d,
+                level: 1
             }
 
             if (d.source === root.data.id) {
                 //1 out
-                tem.target.pos = "right";
-                root.out.push(tem.target);
-                _map.level1_out.push(tem.target);
-
+                tem.target.r = 42;
+                if (self.opt.isTypeEqual.call(self, tem.target)) {
+                    typeEqualLinks.push(tem);
+                } else {
+                    tem.target.pos = "right";
+                    root.out.push(tem.target);
+                    _map.level1_out.push(tem.target);
+                }
             } else if (d.target === root.data.id) {
                 //1 in
-                tem.source.pos = "left";
-                root.in.push(tem.source);
-                _map.level1_in.push(tem.source);
-                // tem.isRight = false;
+                tem.source.r = 42;
+                if (self.opt.isTypeEqual.call(self, tem.source)) {
+                    typeEqualLinks.push(tem);
+                } else {
+                    tem.source.pos = "left";
+                    root.in.push(tem.source);
+                    _map.level1_in.push(tem.source);
+                }
             } else {
                 //2
+                tem.level = 2;
                 tem.target.in.push(tem.source);
                 tem.source.out.push(tem.target);
             }
             _links.push(tem);
         });
+
+        //团伙节点 -- 比较左右两侧一级节点数，添加到少的一侧
+        var isEqualRight = false
+        if (_map.level1_out.length <= _map.level1_in.length) {
+            isEqualRight = true;
+        }
+        typeEqualLinks.forEach(function (d) {
+            if (isEqualRight) {
+                if (d.target === _map.root) {
+                    var tem = d.target;
+                    d.target = d.source;
+                    d.source = tem;
+                }
+                d.target.pos = "right";
+                root.out.push(d.target);
+                _map.level1_out.push(d.target);
+            } else {
+                if (d.target === _map.root) {
+                    var tem = d.target;
+                    d.target = d.source;
+                    d.source = tem;
+                }
+                d.target.pos = "left";
+                root.in.push(d.target);
+                _map.level1_in.push(d.target);
+            }
+        })
 
         return {
             root: root,
@@ -462,6 +400,8 @@ $.extend(Figure.prototype, {
         root.x = hw;
         root.y = hh;
         var itemH = 60;
+        var space1 = this.opt.oneLevelSpace;
+        var space2 = this.opt.twoLevelSpace;
 
         function getH(item, list) {
             var frist = list[0];
@@ -536,8 +476,6 @@ $.extend(Figure.prototype, {
                         if (num < itemH) {
                             hasRepeat = true;
                             var t = itemH - num + d.space;
-                            console.log(d.centerId)
-                            // console.log(nodeMap[d.centerId], d, nodeMap)
                             moveCenterItem(nodeMap[d.centerId], t);
                         }
                     }
@@ -545,18 +483,47 @@ $.extend(Figure.prototype, {
             }
 
             //美化节点 -- 均等分高度
-            //
-            // console.log(234, rigthList)
+            var r_len = centerList.length;
+            centerList.forEach(function (d, i) {
+                if (i) {
+                    if (i < r_len - 1) {
+                        var nextOpen = centerList[i + 1].in.length || centerList[i + 1].out.length;
+                        var currOpen = d.in.length && d.out.length;
+                        if (!currOpen && nextOpen) {
+                            var tem_idx = i;
+                            var temList = [];
+                            while (tem_idx >= 0) {
+                                if (!centerList[tem_idx].in.length && !centerList[tem_idx].out.length) {
+                                    temList.unshift(centerList[tem_idx]);
+                                } else {
+                                    break;
+                                }
+                                tem_idx--;
+                            }
+                            if (temList.length) {
+                                var upItem = centerList[i - temList.length];
+                                var downItem = centerList[i + 1];
+                                if (upItem) {
+                                    var num = (downItem.y - upItem.y) / (temList.length + 1);
+                                    temList.forEach(function (tem, tem_i) {
+                                        tem.y = upItem.y + num * (tem_i + 1);
+                                    })
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         var space = 10;
 
         var left_in = [], left_out = [];
         _map.level1_in.forEach(function (d) {
-            d.x = hw - 500;
+            d.x = hw - space1;
             //d.space = space;
             d.in.forEach(function (p, i) {
-                p.x = d.x - 300;
+                p.x = d.x - space2;
                 if (i === 0) {
                     if (left_in.length) {
                         p.space = space;
@@ -565,7 +532,7 @@ $.extend(Figure.prototype, {
                 left_in.push(p);
             })
             d.out.forEach(function (p, i) {
-                p.x = d.x + 300;
+                p.x = d.x + space2;
                 p.centerId = d.id;
                 if (i === 0) {
                     if (left_out.length) {
@@ -576,12 +543,24 @@ $.extend(Figure.prototype, {
             })
         })
         calc(left_in, _map.level1_in, left_out, itemH);
+        //居中
+        var l_frist = _map.level1_in[0];
+        var l_last = _map.level1_in[_map.level1_in.length - 1];
+        var l_centerY = l_frist.y + (l_last.y + l_last.h - l_frist.y) / 2;
+        //减掉字体距离
+        var lc = -(l_centerY - this.hh) - self.nameTextY;
+        _map.level1_in.forEach(function (d) {
+            d.y += lc;
+            d.in.concat(d.out).forEach(function (p) {
+                p.y += lc;
+            })
+        })
         //
         var right_in = [], right_out = [];
         _map.level1_out.forEach(function (d) {
-            d.x = hw + 500;
+            d.x = hw + space1;
             d.in.forEach(function (p, i) {
-                p.x = d.x - 300;
+                p.x = d.x - space2;
                 if (i === 0) {
                     if (right_in.length) {
                         p.space = space;
@@ -590,7 +569,7 @@ $.extend(Figure.prototype, {
                 right_in.push(p);
             })
             d.out.forEach(function (p, i) {
-                p.x = d.x + 300;
+                p.x = d.x + space2;
                 p.centerId = d.id;
                 if (i === 0) {
                     if (right_out.length) {
@@ -601,27 +580,33 @@ $.extend(Figure.prototype, {
             })
         })
         calc(right_in, _map.level1_out, right_out, itemH);
+        //居中
+        var r_frist = _map.level1_out[0];
+        var r_last = _map.level1_out[_map.level1_out.length - 1];
+        var r_centerY = r_frist.y + (r_last.y + r_last.h - r_frist.y) / 2;
+        //减掉字体距离
+        var rc = -(r_centerY - this.hh) + self.nameTextY;
+        _map.level1_out.forEach(function (d) {
+            d.y += rc;
+            d.in.concat(d.out).forEach(function (p) {
+                p.y += rc;
+            })
+        })
+    },
+
+    linksStyle: function () {
+        this.linksStyleMap = {};
+        var self = this;
+        this.opt.linksStyle.forEach(function (d) {
+            self.linksStyleMap[d.typeId] = d;
+        })
     },
     //渲染图例
-    renderLegend: function (nodes) {
+    renderLegend: function (nodes, links) {
         var self = this;
         var $ul = $(".legend-box");
         var typeMap = this.typeMap, typeList = [], equalTypeList = [];
-        //预置类型
-
-
-        // typeMap["company"] = {
-        //     typeId: "company",
-        //     typeName: "公司",
-        //     color: "",
-        //     list: []
-        // }
-        // typeMap["person"] = {
-        //     typeId: "person",
-        //     typeName: "个人",
-        //     color: "",
-        //     list: []
-        // }
+        //类型
         nodes.forEach(function (p) {
             var d = p.data;
             if (!typeMap[d.typeId]) {
@@ -634,40 +619,43 @@ $.extend(Figure.prototype, {
                 typeList.push(typeMap[d.typeId]);
             }
             typeMap[d.typeId].list.push(p);
-            if (d.equalType !== undefined) {
-
-
-                if (!typeMap[d.equalType]) {
-                    typeMap[d.equalType] = {
-                        typeId: d.equalType,
-                        typeName: d.equalTypeName,
-                        color: "",
-                        list: []
-                    };
-                    equalTypeList.push(typeMap[d.equalType]);
-                }
-                typeMap[d.equalType].list.push(p);
-            }
         });
 
+        var linksStyleMap = this.linksStyleMap;
+        var linkTypeMap = this.linkTypeMap;
+        //线
+        links.forEach(function (p) {
+            var d = p.data;
+            var t = d.typeId;
+            var style = linkTypeMap[t] || {};
+            if (!linkTypeMap[t]) {
+                linkTypeMap[t] = {
+                    typeId: t,
+                    name: style.name || "",
+                    list: []
+                };
+            }
+            linkTypeMap[t].list.push(p);
+        });
 
         var h = [];
         typeList.forEach(function (d) {
-            h.push('<li data-type-id="' + d.typeId + '"><i class="i-icon" data-color="' + d.color + '" style="background-color: ' + d.color + '"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+            if (!self.opt.isTypeEqual(d)) {
+                h.push('<li data-type-id="' + d.typeId + '"><i class="i-icon" data-color="' + d.color + '" style="background-color: ' + d.color + '"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+            }
         })
-        //其他类型
-        if (equalTypeList.length) {
-            h.push('<li class="li-line"></li>')
-            equalTypeList.forEach(function (d) {
 
-                h.push('<li class="li-two-type li-company" data-type-id="' + d.typeId + '"><i class="i-icon"></i><span>' + d.typeName + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+        var isOne = true;
+        self.opt.linksStyle.forEach(function (d) {
+            if (d.legendShow && linkTypeMap[d.typeId] && linkTypeMap[d.typeId].list.length) {
+                if (isOne) {
+                    h.push('<li class="li-line"></li>');
+                    isOne = false;
+                }
+                h.push('<li data-type-id="' + d.typeId + '" class="li-two-type ' + ("li_" + d.cls) + '"><i class="i-icon"></i><span>' + d.name + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
+            }
+        });
 
-            })
-        }
-
-        // h.push('<li class="li-line"></li>')
-        // h.push('<li class="li-two-type li-person" data-type-id="person"><i class="i-icon"></i><span>个人</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
-        // h.push('<li class="li-two-type li-company" data-type-id="company"><i class="i-icon"></i><span>公司</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
         $ul.html(h.join(""));
 
         //图例点击事件
@@ -698,25 +686,24 @@ $.extend(Figure.prototype, {
             } else {
                 $ul.addClass("legend-box-dis");
                 self.opt.$box.addClass("svg-node-legend");
-                var typeIdList = [];
+                var typeIdList = [], linkTypeIdList = [];
                 $ul.find("li").each(function () {
                     var $li = $(this);
                     var $ti = $li.find(".i-icon");
                     if ($li.hasClass(cls)) {
-                        typeIdList.push($li.attr("data-type-id"))
                         if ($li.hasClass(tcls)) {
-
+                            linkTypeIdList.push($li.attr("data-type-id"))
                         } else {
+                            typeIdList.push($li.attr("data-type-id"))
                             $ti.css("background-color", $ti.attr("data-color"));
                         }
                     } else {
                         $ti.css("background-color", "");
                     }
                 })
-                self.hoverItemByType(typeIdList);
+                self.hoverItemByType(typeIdList, linkTypeIdList);
             }
         })
-
         $ul.on("click", ".i-btn-colse", function () {
             $ul.find("li").removeClass('active');
             $ul.removeClass("legend-box-dis");
@@ -729,114 +716,66 @@ $.extend(Figure.prototype, {
         })
     },
 
-    hoverItemByType: function (typeIdList) {
+
+    hoverItemByType: function (typeIdList, linkTypeIdList) {
         var typeMap = this.typeMap;
+        var linkTypeMap = this.linkTypeMap;
+        for (var key in linkTypeMap) {
+            if (linkTypeMap.hasOwnProperty(key)) {
+                linkTypeMap[key].list.forEach(function (d) {
+                    d.g.removeClass("link-show")
+                })
+            }
+        }
         for (var key in typeMap) {
             if (typeMap.hasOwnProperty(key)) {
                 typeMap[key].list.forEach(function (d) {
                     d.g.removeClass("node-show");
-                    d.legendShow = false;
                 })
             }
         }
-        typeIdList.forEach(function (d) {
-            typeMap[d].list.forEach(function (d) {
-                d.g.addClass("node-show")
-                d.legendShow = true;
+        if (typeIdList.length) {
+            typeIdList.forEach(function (p) {
+                typeMap[p].list.forEach(function (d) {
+                    d.g.addClass("node-show")
+                })
             })
-        })
-    },
-    //连接线分配编号
-    linksNumber: function (links) {
-        var linkGroup = {};
-        links.forEach(function (d) {
-            var key = d.source.id < d.target.id ? d.source.id + ':' + d.target.id : d.target.id + ':' + d.source.id;
-            if (!linkGroup[key]) {
-                linkGroup[key] = {
-                    num: 0,
-                    list: []
-                }
-            }
-            linkGroup[key].num++;
-            linkGroup[key].list.push(d);
-        })
-
-        for (var key in linkGroup) {
-            var group = linkGroup[key];
-            var num = group.num;
-            group.list.forEach(function (d, i) {
-                d.ox_size = num;
-                d.ox_index = i;
-            });
+        }
+        if (linkTypeIdList.length) {
+            linkTypeIdList.forEach(function (p) {
+                linkTypeMap[p].list.forEach(function (d) {
+                    d.g.addClass("link-show")
+                    d.source.g.addClass("node-show");
+                    d.target.g.addClass("node-show");
+                })
+            })
         }
     },
 
-    //渲染根节点
-    renderRoot: function (root) {
-        // var group = this.rootGroup.group().attr("class", "svg-root-node");
-        // rootItem.g = group;
-        // var w = rootItem.name.length * 14 + 32;
-        // var rect = group.rect(w, 40);
-        // rootItem.x = this.hw - w / 2;
-        // rootItem.y = this.hh - 20;
-        // group.transform({x: rootItem.x, y: rootItem.y});
-        // var text = group.text(rootItem.name);
-        // text.font({
-        //     size: 14
-        // });
-        // text.x(15);
-        // text.y(12);
-        // group.line(-35, 20, 0, 20).stroke({width: lineWidth, color: option.lineColor});
-        // var r_w = rect.width();
-        // rootItem.w = r_w;
-        // maxInfo[0] = r_w / 2;
-        // group.line(r_w, 20, r_w + 35, 20).stroke({width: lineWidth, color: option.lineColor});
-        // this.rootRect = rect;
-
-
-    },
 
     renderNode: function (item, nodeGroup, level) {
         var self = this;
-        var r = 42;
-        if (level === 1) {
-            r = 42;
-        } else if (level === 2) {
-            r = 26;
-        }
-        item.r = r;
-        var g = nodeGroup.group().addClass("node-" + item.nodeType);
+        var r = item.r;
+        var g = nodeGroup.group().addClass("node-company");
         item.g = g;
-        // var bg = self.opt.nodeColorByTypeId(item.data.typeId, item.data);
         var bg = this.typeMap[item.data.typeId].color;
-
-
         var circle = g.circle(r).fill(bg);
-
-        // var rect = g.rect(150, 35);
-        // rect.rx(5).ry(5).fill(bg);
-
-        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(-14);
+        circle.stroke({color: bg, width: 3, opacity: .6})
+        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("data-id", item.data.id).attr("text-anchor", "middle");
-        // rect.width(item.bor_rect_w);
         g.transform({x: item.x - r / 2, y: item.y - r / 2});
         if (item.isRoot) {
             g.addClass("root-node")
             rect.addClass("root-rect");
             rect.stroke({color: bg, opacity: 1, width: 5});
         }
-
         g.on("mousedown", this.mousedown, {self: self, item: item});
         g.on("mouseenter", this.mouseenterNode, {self: self, item: item});
         g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
     },
     renderLink: function (item) {
         var self = this;
-
-        var cls = "node-link-" + item.source.nodeType;
-        //  if (item.type === "equal") {
-        cls = "node-link-person";
-        //   }
+        var cls = "node-link-company";
         var group = this.rightLinkGroup;
         var pos = item.source.pos || item.target.pos;
         if (pos === "left") {
@@ -853,63 +792,55 @@ $.extend(Figure.prototype, {
         var y1 = item.target.y;
         var ty = 0;
         var line = g.line(points.x, points.y, points.x1, points.y1).attr("data-id", item.source.x);
-        var space = 26;
-
-        // if (item.ox_size === 1) {
-        //
-        // } else {
-        //     var flag = 1;
-        //     if (item.ox_size % 2 === 0) {
-        //         space = 14;
-        //         //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-        //         flag = item.ox_index % 2 === 0 ? -1 : 1;
-        //         ty = flag * space * Math.floor(item.ox_index / 2) + (flag * space * 0.5);
-        //     } else {
-        //         //0 0, 1 -7 , 2 7,
-        //         //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-        //         if (item.ox_index > 0) {
-        //             flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
-        //             ty = flag * space * Math.floor((item.ox_index - 1) / 2) + (flag * space * 0.5);
-        //         }
-        //     }
-        // }
-
-
         var deg = tool.getAngle(x, y, x1, y1);
-
-
-//        var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-        //   var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
-        //  line.translate(_x, -_y);
         item.line = line;
-
-
+        var txt = self.opt.lineText(item.data) || "";
+        var textColor = self.opt.lineTextColor(txt, item);
         if (deg > 90 && deg < 270) {
             deg -= 180;
         }
         if (deg > -270 && deg < -90) {
             deg += 180;
         }
-
-        var txt = self.opt.lineText(item.data) || "";
-        var textColor = self.opt.lineTextColor(txt, item);
-        var text = g.text(txt).x(x + (x1 - x) / 2).y(y + (y1 - y) / 2 - 6).rotate(deg);
-
+        var offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+        if (item.level === 1) {
+            var _deg = 0;
+            if (item.source === self._map.root) {
+                _deg = tool.getAngle(item.source.x, item.source.y, item.target.x, item.target.y);
+            } else {
+                _deg = tool.getAngle(item.target.x, item.target.y, item.source.x, item.source.y);
+            }
+            offsetX = -Math.cos((_deg) * Math.PI / 180) * textOffset;
+            offsetY = -Math.sin((_deg) * Math.PI / 180) * textOffset;
+        }
+        var text = g.text(txt).x(x + offsetX + (x1 - x) / 2).y(y + offsetY + (y1 - y) / 2 - 6).rotate(deg);
         if (textColor) {
-            text.fill(textColor);
+            text.addClass('cus-text-color').style({fill: textColor});
         }
         item.textNode = text;
         var arrow_marker;
-        if (item.type !== "equal") {
+        var hasArrow = true;
+        var styleCls = "node-link-02";
+        var linkStyle = self.linksStyleMap[item.typeId];
+        if (linkStyle) {
+            hasArrow = linkStyle.arrow;
+            styleCls = linkStyle.cls;
+        }
+        g.addClass(styleCls)
+        if (hasArrow) {
             arrow_marker = this.draw.defs().select("#arrowCompany").first();
             line.marker("end", arrow_marker);
-        } else {
-
-
-            // arrow_marker = this.draw.defs().select("#arrowPerson").first();
-            // line.marker("end", arrow_marker);
         }
-
+        item.hasArrow = hasArrow;
+        g.on("click", this.linkClick, {self: self, item: item});
+    },
+    linkClick: function (e) {
+        var self = this.self, item = this.item;
+        var opt = self.opt;
+        opt.lineClick && opt.lineClick.call(self, item);
+    },
+    //获取一级文字，偏移x,y距离
+    getOneLevelOffsetX: function (link) {
 
     },
     //转换坐标点
@@ -922,38 +853,11 @@ $.extend(Figure.prototype, {
         }
 
         var h2 = 17;
-        if (target.nodeType === "company") {
-            var x2 = target.r / 2;
-            var deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
-            var tem = 25 / Math.tan((180 - deg) * Math.PI / 180);
-            if (-x2 < tem && tem < x2) {
-                if (deg < -90) {
-                    obj.x1 -= tem;
-                    obj.y1 += h2;
-                } else {
-                    if (deg < 0) {
-                        obj.x1 -= tem;
-                    } else {
-                        obj.x1 += tem;
-                    }
-                    if (deg < 0) {
-                        obj.y1 += h2;
-                    } else {
-                        obj.y1 -= h2;
-                    }
-                }
-            } else {
-                if (deg > 90 || deg < -90) {
-                    obj.x1 += x2;
-                    obj.y1 -= Math.tan((180 - deg) * Math.PI / 180) * x2;
-                } else {
-                    obj.x1 -= x2;
-                    obj.y1 += Math.tan((180 - deg) * Math.PI / 180) * x2;
-                }
-            }
-        }
+        var x2 = target.r / 2;
+        var deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
 
-
+        obj.x1 -= Math.cos((deg) * Math.PI / 180) * x2;
+        obj.y1 -= Math.sin((deg) * Math.PI / 180) * x2;
         return obj
     },
     //nodes mousedown
@@ -980,21 +884,14 @@ $.extend(Figure.prototype, {
     hoverItem: function (item) {
         var self = this;
         var linksNodes = self.getLinkNodes(item);
-
-        console.log(linksNodes)
-        // item.g.addClass("node-" + item.nodeType + "-hover");
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-
-            this.source.g.addClass("node-" + this.source.nodeType + "-hover");
-            this.target.g.addClass("node-" + this.target.nodeType + "-hover");
-            if (this.type !== "equal") {
-                this.g.addClass("node-link-" + this.source.nodeType + '-hover');
+            this.source.g.addClass("node-company-hover");
+            this.target.g.addClass("node-company-hover");
+            if (this.hasArrow) {
+                this.g.addClass("node-link-company-hover");
                 this.line.marker("end", self.draw.defs().select("#arrowCompanyHover").first());
-
             } else {
                 this.g.addClass("node-link-person-hover");
-                //    this.line.marker("end", self.draw.defs().select("#arrowPersonHover").first());
-
             }
         });
     },
@@ -1002,19 +899,14 @@ $.extend(Figure.prototype, {
     celHoverItem: function (item) {
         var self = this;
         var linksNodes = self.getLinkNodes(item);
-        // item.g.removeClass("node-" + item.nodeType + "-hover");
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-
-            this.source.g.removeClass("node-" + this.source.nodeType + "-hover");
-            this.target.g.removeClass("node-" + this.target.nodeType + "-hover");
-            if (this.type !== "equal") {
-                this.g.removeClass("node-link-" + this.source.nodeType + '-hover');
+            this.source.g.removeClass("node-company-hover");
+            this.target.g.removeClass("node-company-hover");
+            if (this.hasArrow) {
+                this.g.removeClass("node-link-company-hover");
                 this.line.marker("end", self.draw.defs().select("#arrowCompany").first());
-
             } else {
                 this.g.removeClass("node-link-person-hover");
-                //  this.line.marker("end", self.draw.defs().select("#arrowPerson").first());
-
             }
         });
     },
@@ -1073,17 +965,12 @@ $.extend(Figure.prototype, {
         var moveX = (e.pageX - drag.x1) * (1 / scale);
         var moveY = (e.pageY - drag.y1) * (1 / scale);
         //node
-        var tx = 33.5, ty = 33.5;
-        if (item.nodeType === "company") {
-            tx = item.bor_rect_w / 2;
-            ty = 17;
-        }
-        item.x = drag.x + moveX + tx;
-        item.y = drag.y + moveY + ty;
-        item.g.translate(item.x - tx, item.y - ty);
+        var r = (item.r || 0) / 2;
+        item.x = drag.x + moveX + r;
+        item.y = drag.y + moveY + r;
+        item.g.translate(item.x - r, item.y - r);
         //line
         var linksNodes = self.getLinkNodes(item);
-        var space = 26;
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
             var points = self.convertStartEndPoint(this.source, this.target);
             var x = this.source.x;
@@ -1092,33 +979,10 @@ $.extend(Figure.prototype, {
             var y1 = this.target.y;
             var ty = 0;
             this.line.plot(points.x, points.y, points.x1, points.y1);
+            var pos = this.source.pos || this.target.pos;
 
-            // if (this.ox_size === 1) {
-            //
-            // } else {
-            //     var flag = 1;
-            //     if (this.ox_size % 2 === 0) {
-            //         space = 14;
-            //         //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-            //         flag = this.ox_index % 2 === 0 ? -1 : 1;
-            //         ty = flag * space * Math.floor(this.ox_index / 2) + (flag * space * 0.5);
-            //
-            //     } else {
-            //         space = 26;
-            //         //0 0, 1 -7 , 2 7,
-            //         //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-            //         if (this.ox_index > 0) {
-            //             flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
-            //             ty = flag * space * Math.floor((this.ox_index - 1) / 2) + (flag * space * 0.5);
-            //
-            //         }
-            //     }
-            // }
             var deg = tool.getAngle(x, y, x1, y1);
 
-            // var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-            // var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
-            // this.line.translate(_x, -_y);
             if (deg > 90 && deg < 270) {
                 deg -= 180;
             }
@@ -1126,7 +990,20 @@ $.extend(Figure.prototype, {
                 deg += 180;
             }
 
-            this.textNode.rotate(0).x(x + (x1 - x) / 2).y(y + (y1 - y) / 2 - 6).rotate(deg);
+            var offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+            if (this.level === 1) {
+                var _deg = 0;
+                if (this.source === self._map.root) {
+                    _deg = tool.getAngle(this.source.x, this.source.y, this.target.x, this.target.y);
+                } else {
+                    _deg = tool.getAngle(this.target.x, this.target.y, this.source.x, this.source.y);
+                }
+
+                offsetX = -Math.cos((_deg) * Math.PI / 180) * textOffset;
+                offsetY = -Math.sin((_deg) * Math.PI / 180) * textOffset;
+                //
+            }
+            this.textNode.rotate(0).x(x + offsetX + (x1 - x) / 2).y(y + offsetY + (y1 - y) / 2 - 6).rotate(deg);
         });
 
         return false;

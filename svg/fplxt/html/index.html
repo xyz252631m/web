@@ -14,19 +14,19 @@
 <div id="svgBox">
     <svg id="svg" style="width: 100%;height: 100%;">
         <defs>
-            <marker id="arrowCompany" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+            <marker id="arrowCompany" markerHeight="12" markerUnits="strokeWidth" style="stroke-width: 5.5;" markerWidth="12" orient="auto"
                     refX="9.5" refY="6" viewBox="0 0 12 12">
                 <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
             </marker>
-            <marker id="arrowCompanyHover" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+            <marker id="arrowCompanyHover" markerHeight="12" markerUnits="strokeWidth" markerWidth="12" orient="auto"
                     refX="9.5" refY="6" viewBox="0 0 12 12">
                 <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
             </marker>
-            <marker id="arrowPerson" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+            <marker id="arrowPerson" markerHeight="12" markerUnits="strokeWidth" markerWidth="12" orient="auto"
                     refX="9.5" refY="6" viewBox="0 0 12 12">
                 <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
             </marker>
-            <marker id="arrowPersonHover" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+            <marker id="arrowPersonHover" markerHeight="12" markerUnits="strokeWidth" markerWidth="12" orient="auto"
                     refX="9.5" refY="6" viewBox="0 0 12 12">
                 <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
             </marker>
@@ -366,7 +366,7 @@
         $.getJSON("../json/gltp.json", function (res) {
             initMap(res.result);
         });
-        // initMap(res.result);
+        //initMap(res.result);
         var figure = {};
         //右侧滑条
         var rangeBox = {
@@ -453,49 +453,12 @@
                 isScale: true,
                 nodes: nodes,
                 links: links,
-                //状态颜色
-                statusColor: function (item) {
-                    var statusId = item.properties.statusId;
-                    var color = "#17acf1";
-                    switch (statusId) {
-                        case "01"://受理
-                            color = "#71cdfc"
-                            break;
-                        case "02"://筹建期
-                            color = "#71cdfc"
-                            break;
-                        case "03"://正常
-                            color = "#1bab13"
-                            break;
-                        case "04"://停业
-                            color = "#e3a810"
-                            break;
-                        case "05"://非正常
-                            color = "#e2270e"
-                            break;
-                        case "06"://清算
-                            color = "#ab6558"
-                            break;
-                        case "07"://注销
-                            color = "#e07d7d"
-                            break;
-                        case "08"://非正常户注销
-                            color = "#afafaf"
-                            break;
-                        case "09"://报验
-                            break;
-                        case "10"://核销报验
-                            break;
-                        case "11"://中断缴费
-                            break;
-                        case "12"://恢复缴费
-                            break;
-                        case "99"://其他
-                            break;
-                    }
-
-                    return color;
-                },
+                //一级节点和根节点之间的距离
+                oneLevelSpace: 700,
+                //二级节点和一级节点之间的距离
+                twoLevelSpace: 280,
+                //一级连线上文字，x偏移量
+                textOffset: 100,
                 //节点颜色
                 nodeColorByTypeId: function (typeId, item) {
                     var color = "#3ba1f4";
@@ -507,14 +470,23 @@
                         color = "#884e37"
                     } else if (typeId === "04") {//二级销项
                         color = "#148ee3"
-                    } else if (typeId === "05") {//团伙
-                        color = "#8162ec"
                     } else if (typeId === "equal") {//团伙
-                        color = "#8f8f8f"
-                    }else if (typeId === "root") {//团伙
+                        color = "#8162ec"
+                    } else if (typeId === "root") {//目标企业
                         color = "#FF367D"
                     }
                     return color;
+                },
+                //连接线样式
+                linksStyle: [
+                    {name: "金额 > 1000万", typeId: "01", cls: "node-link-01", legendShow: true, arrow: true},
+                    {name: "金额 > 100万", typeId: "02", cls: "node-link-02", legendShow: true, arrow: true},
+                    {name: "金额 < 100万", typeId: "03", cls: "node-link-03", legendShow: true, arrow: true},
+                    {name: "团伙连线", typeId: "equal", cls: "node-link-equal", legendShow: false, arrow: false}
+                ],
+                //判断是否为团伙类型节点
+                isTypeEqual: function (node) {
+                    return node.typeId === "equal";
                 },
                 //连接线上的文本
                 lineText: function (link) {
@@ -542,22 +514,25 @@
                 },
                 //节点点击事件
                 nodeClick: function (item) {
-                    console.log(item, item.id)
+                    alert("节点点击事件")
+                    console.log("节点点击事件", item)
                     // item.name = item.properties.name;
                     // showInfo(item)
                 },
                 //节点双击事件
-                nodeDbclick: function (item) {
+                nodeDbClick: function (item) {
                     alert("双击事件")
                     console.log('双击事件', item);
+                },
+                lineClick: function (link) {
+                    alert("线点击事件")
+                    console.log('线点击事件', link);
                 },
                 //关闭信息面板事件
                 celNodeClick: function (item) {
                     $(".left-tip-panel").hide();
                 }
             });
-
-
         }
 
         var $box = $(".left-tip-panel");
