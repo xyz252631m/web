@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/gltp.css">
     <script src="../js/jquery-1.11.1.min.js"></script>
+    <style>
+        svg text{ fill: red;}
+    </style>
 </head>
 <body>
 <div class="body-bg"></div>
@@ -364,6 +367,11 @@
 
     $(function () {
         $.getJSON("../json/gltp.json", function (res) {
+
+            // res.result.nodes.forEach(d=>{
+            //     d.nodeType = "hjk";
+            // })
+
             initMap(res.result);
         });
         //initMap(res.result);
@@ -533,6 +541,11 @@
                     $(".left-tip-panel").hide();
                 }
             });
+
+            // figure.hoverParam.isActive = false;
+            // figure.celClickHover(figure.hoverParam.item);
+
+            window.figure = figure
         }
 
         var $box = $(".left-tip-panel");

@@ -959,9 +959,14 @@ $.extend(Figure.prototype, {
     },
     nodeMouseMove: function (self, e) {
         var drag = self.dragNode;
-        drag.isMove = true;
         var scale = self.scale;
         var item = drag.item;
+        var _tem_x = e.pageX - drag.x1;
+        var _tem_y = e.pageY - drag.y1;
+        if(_tem_x ===0&&_tem_y===0){
+            return;
+        }
+        drag.isMove = true;
         var moveX = (e.pageX - drag.x1) * (1 / scale);
         var moveY = (e.pageY - drag.y1) * (1 / scale);
         //node
