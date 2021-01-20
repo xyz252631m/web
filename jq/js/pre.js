@@ -10,4 +10,15 @@ $(function () {
         $(".tab-main xmp").hide().eq(idx).show();
     })
 
+    var tool = {
+    	            //数组 删除某项
+            arrayDel: function(list, transformer){
+                for (var i = list.length-1;i>=0;i--){
+                    if(transformer(list[i])){
+                        list.splice(i, 1);
+                    }
+                }
+            }
+    }
+
 });
