@@ -11,7 +11,7 @@ $(function () {
     })
 
     var tool = {
-    	            //数组 删除某项
+    	    //数组 删除某项
             arrayDel: function(list, transformer){
                 for (var i = list.length-1;i>=0;i--){
                     if(transformer(list[i])){
