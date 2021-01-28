@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="../assets/lib/jquery/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" href="../assets/lib/bootstrap/bootstrap.min.css">
-    <script src="Convert_Pinyin.js"></script>
+    <title>generating tables</title>
+    <link rel="stylesheet" href="../lib/bootstrap-5.0.0-beta1/css/bootstrap.min.css">
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/Convert_Pinyin.js"></script>
     <style>
+        .page-content {width: 50%;margin: 0 auto;}
         body {text-align: center}
-        p {margin: 5px auto;padding: 0;text-align: left;width: 600px;}
-        textarea {width: 600px;border: #0077aa solid 1px; margin: 20px auto;height: 100px;}
-        input {border: #0077aa solid 1px; height: 28px;}
+        p { padding: 0;text-align: left; }
         ul {width: 600px;margin: 20px auto;padding: 0;}
         li {list-style: none;display: inline-block; margin: 5px; padding: 5px 10px; border: #0077aa solid 1px;}
     </style>
+
+
 </head>
 <body>
 
-<p>thead</p>
-<textarea id="th"><tr>
+<div class="page-content">
+    <p>thead</p>
+    <textarea id="th" class="form-control" rows="6"><tr>
                     <th>序号</th>
                     <th>银行账号</th>
                     <th>账户名称</th>
@@ -38,23 +40,40 @@
                     <th>录入人</th>
                     <th>录入日期</th>
                 </tr></textarea>
-<p>tbody</p>
-<textarea id="jsonData"></textarea>
-<p>标题：<input id="title"/> <span id="py_title"></span> <label for=""><input style="vertical-align:-10px" id="show_py" type="checkbox"/>显示对应信息</label></p>
-<p>
-    <button class="btn btn-info">生成</button>
-    <input id="jsonObj">
-</p>
-<ul style="display: none">
-
-</ul>
+    <p>tbody</p>
+    <textarea id="jsonData" class="form-control" rows="6"></textarea>
 
 
-<p>grid</p>
-<textarea id="out_grid"></textarea>
-<p>json</p>
+    <div class="row my-3">
+        <div class="col-auto"><span class="col-form-label">标题：</span></div>
+        <div class="col-auto"><input id="title" class="form-control form-control-sm"/></div>
+        <div class="col-auto">
+            <input class="form-check-input " id="show_py" name="show_py" type="checkbox"/>
+            <label for="show_py" class="form-check-label">显示对应信息</label>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <button class="btn btn-info">生成</button>
 
-<textarea id="out_json"></textarea>
+    </p>
+    <ul style="display: none">
+
+    </ul>
+
+
+    <p>grid</p>
+    <textarea id="out_grid" class="form-control" rows="6"></textarea>
+    <p>json</p>
+
+    <textarea id="out_json" class="form-control" rows="6"></textarea>
+
+
+    <p>
+        <input id="jsonObj" class="form-control">
+    </p>
+</div>
 
 <script>
     var ConvertName = function () {
@@ -103,14 +122,14 @@
         var js_obj = $("#jsonObj").val().split(",");
         var set_obj = Array.from(new Set(js_obj));
         var isRep = set_obj.length === js_obj.length;
-        if(!isRep){
-            set_obj.forEach(d=>{
+        if (!isRep) {
+            set_obj.forEach(d => {
                 var idx = js_obj.indexOf(d);
-                js_obj.splice(idx,1);
+                js_obj.splice(idx, 1);
             })
         }
 
-        console.log("是否有重复项：", !isRep,js_obj);
+        console.log("是否有重复项：", !isRep, js_obj);
 
 
         var h = [];
