@@ -1,0 +1,27 @@
+<ion-view view-title="目录">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-ios-arrow-left button-clear" on-tap="goDetail()"> 详情</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-arrow-thin-up" on-tap="goTop()"></button>
+    <button class="button" on-tap="desc()">{{isAsc?"倒序":"正序"}}</button>
+  </ion-nav-buttons>
+  <ion-content delegate-handle="muluScroll">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down"
+                   spinner="ios"></ion-refresher>
+    <ion-list class="m-list">
+      <ion-item collection-repeat="item in list track by $index" item-height="44px" on-tap="yuedu(item)">
+        <a ng-class="{'active':item.active}">{{item.text}}</a>
+      </ion-item>
+
+    </ion-list>
+    <span ng-if="pageInfo.isNext" class="go-page">
+      <input type="text" ng-model="pageIndex">
+      <button on-tap="goPage(pageIndex)">go</button>
+      <label>{{pageInfo.currPage}}/{{pageInfo.sumPage}}</label>
+      <button on-tap="goPage(-1,pageInfo.currPage)">上一页</button>
+      <button on-tap="goPage(1,pageInfo.currPage)">下一页</button>
+      <button on-tap="goPage(0,pageInfo.sumPage)">末页</button>
+    </span>
+  </ion-content>
+</ion-view>

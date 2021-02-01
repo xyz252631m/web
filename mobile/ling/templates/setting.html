@@ -1,0 +1,33 @@
+<ion-view view-title = "设置">
+  <ion-nav-buttons side = "left">
+    <button class = "button button-icon icon ion-ios-arrow-left button-clear" on-tap = "back()"> 书架</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list class="setting-list">
+      <!--<ion-toggle ng-model = "settings.enableFriends">-->
+      <!--Enable Friends-->
+      <!--</ion-toggle>-->
+      <ion-item ng-if = "!isLogin" on-tap = "myInfo()">登录</ion-item>
+      <ion-item ng-if = "isLogin" class = "info-img">
+        <img ng-src = "{{info.figureurl_qq_1}}"/>
+        <span>{{info.nickname}}</span></ion-item>
+      <ion-item ng-if = "isLogin" on-tap = "setBooks()">同步书架</ion-item>
+      <!--<ion-item ng-if = "isLogin" on-tap = "downBooks()">下载书架</ion-item>-->
+      <ion-item href = "#/tab/localStorage">配置信息</ion-item>
+      <ion-item href = "#/tab/error">错误消息</ion-item>
+      <!--<ion-item href = "#/crawler/mei/1">设置</ion-item>-->
+      <ion-item class = "item-toggle">
+        夜间模式
+        <label class = "toggle toggle-dark" on-tap = "changeSkin(hasSkin)">
+          <input type = "checkbox" ng-model = "hasSkin">
+          <div class = "track">
+            <div class = "handle"></div>
+          </div>
+        </label>
+      </ion-item>
+      <ion-item href = "#/joke">测试页面</ion-item>
+      <ion-item ng-if = "isLogin" on-tap = "logout()">退出登录</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

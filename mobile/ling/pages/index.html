@@ -1,0 +1,54 @@
+<div class="page-view page-index"   v-cloak  >
+    <div class="page-title">
+        <span>首页</span>
+        <button class="btn btn-left btn-icon btn-menu" @click="toggleLeftSideMenu()">
+            <i class="ion-navicon"></i>
+        </button>
+    </div>
+
+    <div class="side-menu">
+        <p v-for="menu in menuList" class="xui-menu-item">
+            <a @click="changeType(menu)" :class="{'active':btype==menu.name}">{{menu.text}}</a>
+        </p>
+    </div>
+
+    <div class="page-content">
+        {{str}}
+        <div class="tui-jian" v-for="tab in tabList" v-if="tab.list.length>0">
+            <h2>{{tab.title.text}} <span v-if="tab.title.typeId" @click="toType(tab.title.typeId)">更多...</span></h2>
+            <div class="main-one clearfix" v-if="tab.one">
+                <a @click="toBook(tab.one.bookId)">
+                    <!--                    <img :src="tab.one.src" onerror="nofind()"/>-->
+                </a>
+                <div class="item-info">
+                    <h3>{{tab.one.title}}</h3>
+                    <p><label>{{tab.one.author}}</label></p>
+                    <p>{{tab.one.info}}</p>
+                </div>
+            </div>
+            <div class="main-list">
+                <p v-for="item in tab.list">
+                    <label>{{item.sort}}</label>
+                    <a @click="toBook(item.bookId)">{{item.title}}</a>
+                    <span>{{item.author}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="xui-list" v-if="list&&list.length>0" v-for="nitem in list">
+            <h2>{{nitem.title}}</h2>
+            <p v-for="book in nitem.list">
+                <a @click="toBook(book)"> <span>{{book.time}}</span>{{book.title}}<label>({{book.author}})</label></a>
+            </p>
+        </div>
+
+        <div class="page-loading" v-if="loading===1">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+
+</div>

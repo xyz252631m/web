@@ -1,0 +1,84 @@
+<div class="page-view page-index">
+    <div class="page-title">
+        <span>path 添加</span>
+        <button class="btn btn-left" @click="back()"><i class="ion-ios-arrow-left"></i>返回</button>
+    </div>
+    <div class="page-content">
+        <div class="path-add-box">
+            <ul>
+                <li>
+                    <span>名称：</span>
+                    <div>
+                        <input class="input-text" type="text" v-model="name"/>
+                    </div>
+                </li>
+                <li>
+                    <span>协议：</span>
+                    <div>
+                        <label class="input-radio" :class="{'radio-active':protocol==='https'}">
+                            <input type="radio" v-model="protocol" value="https">
+                            <i class="icon ion-ios-checkmark grey"></i><span>https</span>
+                        </label>
+                        <label class="input-radio" :class="{'radio-active':protocol==='http'}">
+                            <input type="radio" v-model="protocol" value="http">
+                            <i class="icon ion-ios-checkmark grey"></i><span>http</span>
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span>域名：</span>
+                    <div>
+                        <input class="input-text" type="text" v-model="host"/>
+                    </div>
+                </li>
+            </ul>
+            <p class="hr-title">首页</p>
+            <ul>
+                <li>
+                    <span>面板选择器：</span>
+                    <div>
+                        <input class="input-text" type="text" v-model="host"/>
+                    </div>
+                </li>
+                <li>
+                    <span>排除项索引：</span>
+                    <div>
+                        <input class="input-text" type="text" v-model="host"/>
+                    </div>
+                </li>
+                <li :class="{'h-all':1}">
+                    <span>属性列表：</span>
+                    <div class="btn-box">
+                        <button class="button" @click="index.attrShow=!index.attrShow"><i class="ion-chevron-down"></i>{{index.attrShow?"收起":"展开"}}</button>
+                    </div>
+                    <pathChild v-model="index.value" :class="{'hide-height':!index.attrShow}"></pathChild>
+                    <!--                    <div class="attr-list-box" :class="{'hide-height':!index.attrShow}">-->
+                    <!--                        <pathChild v-for="attr in index.attr" :key="attr.name" v-model="attr"></pathChild>-->
+                    <!--                    </div>-->
+                </li>
+                <li>
+                    <span>数据列表：</span>
+                    <div class="btn-box">
+                        <button class="button" @click="index.listShow=!index.listShow"><i class="ion-chevron-down"></i>{{index.listShow?"收起":"展开"}}</button>
+                    </div>
+                    <!--                    <div class="attr-list-box" :class="{'hide-height':!index.attrShow}">-->
+                    <!--                        <pathChild v-for="attr in index.attr"></pathChild>-->
+                    <!--                    </div>-->
+
+                </li>
+                <li v-for="item in index.children" :class="{'hide-height':!index.listShow}">
+                    <span>选择器：</span>
+                    <div>
+                        <input class="input-text" type="text" v-model="host" placeholder="选择器"/>
+                    </div>
+                    <pathChild v-model="item.value"></pathChild>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-bottom-box">
+            <button class="button btn-add-path button-block" @click="sumbit()">提交</button>
+        </div>
+
+    </div>
+</div>
+

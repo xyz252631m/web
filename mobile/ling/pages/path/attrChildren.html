@@ -1,0 +1,37 @@
+<div class="attr-list-box">
+    <ol v-for="m in list" :key="m.name">
+        <li>
+            <span>名称</span>
+            <div><input class="input-text" type="text" v-model="m.name" placeholder="名称"/></div>
+        </li>
+        <li>
+            <span>选择器</span>
+            <div><input class="input-text" type="text" v-model="m.path" placeholder="选择器"/></div>
+        </li>
+        <li>
+            <span>类型</span>
+            <div>
+                <label class="label-select">
+                    <select v-model="m.type">
+                        <option v-for="t in attrTypeList" :value="t">{{t}}</option>
+                    </select>
+                </label>
+            </div>
+        </li>
+        <li>
+            <span>属性值</span>
+            <div><input class="input-text" type="text" v-model="host" placeholder="attr"/></div>
+        </li>
+        <li>
+            <span>过滤规则</span>
+            <div>
+                <button class="button btn-left" @click="addRule()"><i class="ion-plus-round"></i>新增</button>
+            </div>
+            <ruleChildren  v-model="m.rule"></ruleChildren>
+<!--            <div class="rule-list-box">-->
+<!--                <ruleChildren v-for="(r,$index) in m.rule" :key="$index"></ruleChildren>-->
+<!--            </div>-->
+
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,84 @@
+body, html { height: 100% }
+
+blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul { margin: 0; padding: 0 }
+
+body { background-color: #fff; color: #313131; font: 14px/1.5 webfont, "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-serif }
+
+button, input, select, textarea { font-family: inherit; font-size: 100%; outline: 0; background-color: #fff }
+
+button { cursor: pointer }
+
+iframe { border: none }
+
+li { list-style: none }
+
+a { text-decoration: none; color: #666; cursor: pointer; outline: 0 }
+
+a:hover { color: #f63 }
+
+h1, h2, h3, h4, h5, h6 { font-size: 100% }
+
+input[type=button] { border: none; cursor: pointer }
+
+textarea { border: none }
+
+table { border-collapse: collapse; border-spacing: 0 }
+
+fieldset, img { border: 0 }
+
+cite, code, em, strong, var { font-style: normal; font-weight: 400 }
+
+.bold, .fb { font-weight: 700 }
+
+.clearfix:after { content: "."; display: block; height: 0; visibility: hidden; clear: both }
+
+.clearfix { *zoom: 1 }
+
+.transit:hover { -webkit-transition: all 350ms; transition: all 350ms }
+
+.clear { clear: both }
+
+.left { text-align: left }
+
+.center, .none-list { text-align: center }
+
+.error { color: Red }
+
+.succeed { color: Green }
+
+.f-left { float: left }
+
+.f-right { float: right }
+
+.hidden { visibility: hidden }
+
+.none { display: none }
+
+.block { display: block }
+
+.f12 { font-size: 12px }
+
+.f13 { font-size: 13px }
+
+.f14 { font-size: 14px }
+
+.f16 { font-size: 16px }
+
+.f20 { font-size: 20px }
+
+.fn { font-weight: 400 }
+
+.t2 { text-indent: 2em }
+
+.mar20 { margin-top: 20px }
+
+.none-list { padding-top: 30px; width: 100%; float: left }
+
+.loading { width: 100%; position: absolute; height: 50px; background: url(/images/loading.gif) center center no-repeat }
+
+
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+
+*::-webkit-scrollbar-thumb { -webkit-border-radius: 0; border-radius: 0; background: #ccc; }
+
+*::selection { background-color: #ea6f5a; color: white }

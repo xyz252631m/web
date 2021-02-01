@@ -1,0 +1,12 @@
+<ion-view view-title="Joke">
+    <ion-content overflow-scroll="false" has-bouncing="true">
+         <ion-list>
+            <ion-item  collection-repeat="item in list"  class="item-text-wrap">
+                <p>{{item.content}}</p>
+                <img ng-src="{{item.url}}">
+            </ion-item>
+        </ion-list>
+        <button class="button button-block button-positive" ng-if="!isScroll" on-tap="next()">下一页</button>
+        <ion-infinite-scroll ng-if="isScroll" on-infinite="next(1)" distance="1%"></ion-infinite-scroll>
+     </ion-content>
+ </ion-view>

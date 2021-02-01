@@ -1,0 +1,49 @@
+<div class="page-view page-index">
+    <div class="page-title">
+        <button class="btn btn-right btn-icon" @click="toSetting()"><i class="ion-ios-gear-outline"></i></button>
+        <span>我的</span>
+        <button class="btn btn-left" @click="toIndex()"><i></i>首页</button>
+
+    </div>
+    <div class="page-content">
+        <div class="books-list">
+<!--            <p class="item" ng-repeat="b in list" on-hold="edit()">-->
+<!--                <label class="checkbox" ng-if="isEdit">-->
+<!--                    <input type="checkbox" class="rs-chk" ng-model="b.isSelect">-->
+<!--                </label>-->
+<!--                <a @click="yuedu(b)">-->
+<!--                    <label>{{b.name||b.bookId}}-{{b.typeName}}</label><span>{{b.author}}</span></a>-->
+<!--            </p>-->
+        </div>
+        <div class="op-btn-list" v-if="isEdit">
+            <a @click="edit()">更新</a>
+            <a @click="del()">删除</a>
+        </div>
+    </div>
+</div>
+
+
+<!--<ion-view view-title = "我的">-->
+<!--<ion-nav-buttons side = "left">-->
+<!--    <button class = "button button-icon icon ion-ios-arrow-left button-clear" on-tap = "toIndex()"> 首页</button>-->
+<!--  </ion-nav-buttons>-->
+<!--  <ion-nav-buttons side = "right">-->
+<!--    <button class = "button button-icon icon ion-ios-gear-outline" on-tap = "goSetting()"></button>-->
+<!--  </ion-nav-buttons>-->
+<!--  <ion-content>-->
+<!--    <div class = "books-list">-->
+<!--      <p class = "item" ng-repeat = "b in list" on-hold = "edit()">-->
+<!--        <label class = "checkbox" ng-if = "isEdit">-->
+<!--          <input type = "checkbox" class="rs-chk" ng-model = "b.isSelect">-->
+<!--        </label>-->
+<!--        <a on-tap = "yuedu(b)">-->
+<!--          <label>{{b.name||b.bookId}}-{{b.typeName}}</label><span>{{b.author}}</span></a>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--    <span class = "op-btn-list" ng-if = "isEdit">-->
+<!--      <a on-tap = "edit()">更新</a>-->
+<!--      <a on-tap = "del()">删除</a>-->
+<!--    </span>-->
+<!--  </ion-content>-->
+<!--</ion-view>-->
+

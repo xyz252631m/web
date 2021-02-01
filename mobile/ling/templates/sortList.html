@@ -1,0 +1,25 @@
+<ion-view view-title="分类">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-ios-arrow-left button-clear" on-tap="toSort()"> 返回</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="s-search">
+      <label class="item item-input s-search-input">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="搜索">
+      </label>
+      <button class="btn-sra" on-tap="toSearch()">
+        搜索
+      </button>
+    </div>
+
+    <div class="main-list">
+      <p collection-repeat="item in list track by $index">
+        <label>[{{item.sort}}] </label>
+        <a on-tap="toBook(item.bookId)">{{item.title}}</a>
+        <span>--{{item.author}}</span>
+      </p>
+    </div>
+    <ion-infinite-scroll ng-if="isScroll" icon="ios-small" on-infinite="next()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

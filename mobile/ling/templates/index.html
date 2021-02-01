@@ -1,0 +1,49 @@
+<ion-view view-title="首页">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" on-tap="toggleLeftSideMenu()"></button>
+  </ion-nav-buttons>
+  <ion-side-menus>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+      <ion-content>
+        <p collection-repeat="menu in menuList" class="xui-menu-item" item-height="39px">
+          <a on-tap="changeType(menu)" ng-class="{'active':btype==menu.name}">{{menu.text}}</a>
+        </p>
+      </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content>
+      <ion-content on-scroll="lazyImg()" delegate-handle="indexScroll">
+        <!--<a   on-tap="add()"> add </a>-->
+        <div class="tui-jian" ng-repeat="tab in tabList track by $index" ng-if="tab.list.length>0">
+          <h2>{{tab.title.text}} <span ng-if="tab.title.typeId" on-tap="toType(tab.title.typeId)">更多...</span></h2>
+          <div class="main-one clearfix" ng-if="tab.one">
+            <a on-tap="toBook(tab.one.bookId)">
+              <img data-src="{{tab.one.src}}" onerror="nofind()">
+            </a>
+            <div class="item-info">
+              <h3>{{tab.one.title}}</h3>
+              <p><label>{{tab.one.author}}</label></p>
+              <p>{{tab.one.info}}</p>
+            </div>
+          </div>
+          <div class="main-list">
+            <p ng-repeat="item in tab.list">
+              <label>{{item.sort}}</label>
+              <a on-tap="toBook(item.bookId)">{{item.title}}</a>
+              <span>{{item.author}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="xui-list" ng-if="list&&list.length>0" ng-repeat="nitem in list">
+          <h2>{{nitem.title}}</h2>
+          <p ng-repeat="book in nitem.list">
+            <a on-tap="toBook(book)"> <span>{{book.time}}</span>{{book.title}}<label>({{book.author}})</label></a>
+          </p>
+        </div>
+        <!--<ion-infinite-scroll ng-if="isSroll" icon="ion-loading-c" distance="1%" on-infinite="loadMoreData()">-->
+        <!--</ion-infinite-scroll>-->
+      </ion-content>
+    </ion-side-menu-content>
+  </ion-side-menus>
+</ion-view>

@@ -1,0 +1,19 @@
+<div class="page-view page-index">
+    <div class="page-title">
+        <button class="btn btn-right" @click="back()">编辑</button>
+        <span>path 配置</span>
+        <button class="btn btn-left" @click="back()"><i class="ion-ios-arrow-left"></i>返回</button>
+    </div>
+    <div class="page-content">
+        <ul class="setting-list">
+            <li v-for="m in list" @click="toEditPath(m)">
+                <span>{{m.host}}</span>
+            </li>
+        </ul>
+        <div class="btn-bottom-box">
+            <button class="button btn-add-path button-block" @click="toAdd()">添加</button>
+        </div>
+
+    </div>
+</div>
+
