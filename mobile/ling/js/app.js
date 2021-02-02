@@ -97,9 +97,22 @@ VueRouter.prototype.push = function push(to) {
 const router = new VueRouter({
     routes: [
         {
-            path: '/tab',
-            component: {
-                templateUrl: "../pages/tabs.html"
+            path: '/',
+            component: function (resolve) {
+                if(tool.isMobile){
+                    loadComponent(resolve, {
+                        name: "setting",
+                        jsSrc: "./js/setting.js",
+                        htmlSrc: "./pages/setting.html"
+                    });
+                }else{
+                    loadComponent(resolve, {
+                        name: "design",
+                        jsSrc: "./js/design.js",
+                        htmlSrc: "./pages/design.html"
+                    });
+                }
+
             }
         },
         {
@@ -111,7 +124,16 @@ const router = new VueRouter({
                     htmlSrc: "./pages/index.html"
                 });
             }
-
+        },
+        {
+            path: '/design',
+            component: function (resolve) {
+                loadComponent(resolve, {
+                    name: "design",
+                    jsSrc: "./js/design.js",
+                    htmlSrc: "./pages/design.html"
+                });
+            }
         },
         {
             path: '/ling',
@@ -208,7 +230,8 @@ const router = new VueRouter({
                     htmlSrc: "./pages/setting.html"
                 });
             }
-        }, {
+        },
+        {
             path: '/localStorage',
             component: {
                 templateUrl: "../pages/localStorage.html"
@@ -216,6 +239,7 @@ const router = new VueRouter({
         },
     ]
 });
+
 
 function initApp() {
     // Vue.use(Vuex);
@@ -225,22 +249,18 @@ function initApp() {
         router,
         store,
         mixins: [mixin],
-        computed: {
-            tabIdx() {
-                let tabIdx = store.state.tabIdx;
-                this.changeTab(tabIdx);
-                return tabIdx
-            }
-        },
+        computed: {},
         data: {
-            //  tabIdx: 0
+            tabIdx: 3,
+            tabItem: null,
+            tabList: tool.isMobile ? all_config.tabList : []
         },
         methods: {
-            toTab(tabIdx) {
-                store.commit("changTabIdx", tabIdx);
-            },
-            changeTab(tabIdx) {
-                router.push(store.state.tabName);
+            toTab(item, idx) {
+                this.tabIdx = idx;
+                this.tabItem = item;
+                store.commit("changTabIdx", idx);
+                this.$route.push(item.path);
             },
             showExit() {
                 this.$modal.confirm("确认退出吗！", {

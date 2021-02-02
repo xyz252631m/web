@@ -1,3 +1,12 @@
+let all_config = {
+    tabList: [
+        {title: "catalog", path: "/catalog"},
+        {title: "design", path: "/design"},
+        {title: "code", path: "/code"},
+        {title: "setting", path: "/setting"}
+    ]
+}
+
 let mixin = {
 
     methods: {
