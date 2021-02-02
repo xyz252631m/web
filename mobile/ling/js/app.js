@@ -1,8 +1,4 @@
 
-import {demo as demo2} from './books.js';
-
-
-
 window.mjs = {};
 window.define = function (name, fn) {
     console.log("define", name)
@@ -239,6 +235,7 @@ function initApp() {
 }
 
 function ready() {
+    console.log(111,"ready")
     let vm = initApp();
     window.vm = vm;
     //监听物理返回按键

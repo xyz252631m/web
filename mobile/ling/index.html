@@ -24,9 +24,8 @@
 
     <script src="js/vconsole.min.js"></script>
     <script>
-        var vConsole = new VConsole();
+        // var vConsole = new VConsole();
     </script>
-
 
 
     <script src="../../vue/js/vue.min.js"></script>
@@ -44,15 +43,15 @@
     <div class="ifr-box">
         <router-view></router-view>
     </div>
-    <ul class="yd-tabs">
-        <li @click="toTab(0)" :class="{'active':tabIdx===0}"><span>首页</span></li>
-        <li @click="toTab(1)" :class="{'active':tabIdx===1}"><span>分类</span></li>
-        <li @click="toTab(2)" :class="{'active':tabIdx===2}"><span>推荐</span></li>
-        <li @click="toTab(3)" :class="{'active':tabIdx===3}"><span>我的</span></li>
-    </ul>
+<!--    <ul class="yd-tabs">-->
+<!--                <li @click="toTab(0)" :class="{'active':tabIdx===0}"><span>catalog</span></li>-->
+<!--                <li @click="toTab(1)" :class="{'active':tabIdx===1}"><span>design</span></li>-->
+<!--                <li @click="toTab(2)" :class="{'active':tabIdx===2}"><span>code</span></li>-->
+<!--                <li @click="toTab(3)" :class="{'active':tabIdx===3}"><span>setting</span></li>-->
+<!--    </ul>-->
 </div>
 <div class="backdrop"></div>
-<script src="js/app.js"></script>
+<script src="js/app.js" ></script>
 
 <script>
     ready();
