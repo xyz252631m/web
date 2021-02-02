@@ -1,4 +1,31 @@
+//ee966633dd719e0be4048d3b2a189ca9847bfd13
 
+
+// axios.defaults.withCredentials = false;
+// axios.defaults.headers.common['OAUTH-TOKEN'] = token;
+// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';//配置请求头
+//
+// //添加一个请求拦截器
+// axios.interceptors.request.use(function (config) {
+//     // let user = JSON.parse(window.sessionStorage.getItem('token'));
+//     // if (user) {
+//     //     token = user.token;
+//     // }
+//     console.log(111,config)
+//     config.headers.common['OAUTH-TOKEN'] = 'ee966633dd719e0be4048d3b2a189ca9847bfd13';
+//     //console.dir(config);
+//     return config;
+// }, function (error) {
+//     // Do something with request error
+//     console.info("error: ");
+//     console.info(error);
+//     return Promise.reject(error);
+// });
+
+
+// $.post("https://api.github.com/user/repos", {token : 'ee966633dd719e0be4048d3b2a189ca9847bfd13'}, function (res) {
+//     console.log(res)
+// })
 window.mjs = {};
 window.define = function (name, fn) {
     console.log("define", name)
@@ -235,7 +262,7 @@ function initApp() {
 }
 
 function ready() {
-    console.log(111,"ready")
+    console.log(111, "ready")
     let vm = initApp();
     window.vm = vm;
     //监听物理返回按键

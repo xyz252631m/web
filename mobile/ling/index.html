@@ -17,14 +17,13 @@
     <title>首页</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="lib/vonic/vonic.min.css">
-
-
     <link rel="stylesheet" href="css/style.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
     <script src="../../lib/ramda.min.js"></script>
-
+    <script src="./js/mixin.js"></script>
     <script src="js/vconsole.min.js"></script>
     <script>
-         var vConsole = new VConsole();
+        tool.isMobile && new VConsole();
     </script>
 
 
@@ -33,9 +32,12 @@
     <script src="../../vue/js/vue-router.min.js"></script>
     <script src="../../lib/axios.min.js"></script>
 
-    <script src="./js/mixin.js"></script>
+
     <script src="./js/store.js"></script>
     <script src="./js/vue-plugin.js"></script>
+    <script src="../../lib/acorn/acorn.js"></script>
+    <script src="js/github.js"></script>
+
 
 </head>
 <body>
@@ -43,15 +45,15 @@
     <div class="ifr-box">
         <router-view></router-view>
     </div>
-<!--    <ul class="yd-tabs">-->
-<!--                <li @click="toTab(0)" :class="{'active':tabIdx===0}"><span>catalog</span></li>-->
-<!--                <li @click="toTab(1)" :class="{'active':tabIdx===1}"><span>design</span></li>-->
-<!--                <li @click="toTab(2)" :class="{'active':tabIdx===2}"><span>code</span></li>-->
-<!--                <li @click="toTab(3)" :class="{'active':tabIdx===3}"><span>setting</span></li>-->
-<!--    </ul>-->
+    <!--    <ul class="yd-tabs">-->
+    <!--                <li @click="toTab(0)" :class="{'active':tabIdx===0}"><span>catalog</span></li>-->
+    <!--                <li @click="toTab(1)" :class="{'active':tabIdx===1}"><span>design</span></li>-->
+    <!--                <li @click="toTab(2)" :class="{'active':tabIdx===2}"><span>code</span></li>-->
+    <!--                <li @click="toTab(3)" :class="{'active':tabIdx===3}"><span>setting</span></li>-->
+    <!--    </ul>-->
 </div>
 <div class="backdrop"></div>
-<script src="js/app.js" ></script>
+<script src="js/app.js"></script>
 
 <script>
     ready();
