@@ -260,7 +260,7 @@ function initApp() {
                 this.tabIdx = idx;
                 this.tabItem = item;
                 store.commit("changTabIdx", idx);
-                this.$route.push(item.path);
+                this.$router.push(item.path);
             },
             showExit() {
                 this.$modal.confirm("确认退出吗！", {
