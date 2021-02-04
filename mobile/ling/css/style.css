@@ -638,6 +638,14 @@
 .ye .setting {
   background-color: #080c10;
 }
+/*common*/
+.fix-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .ling-ling {
   position: absolute;
   top: 0;
@@ -865,6 +873,15 @@
 /*
 * design.html
 */
+.design-op-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.design-op-box li {
+  display: inline-block;
+}
 .error-list {
   padding-top: 0;
 }

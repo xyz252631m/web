@@ -73,7 +73,7 @@ function getTemp(url, fn) {
     xhr.send();
 }
 
-function loadComponent(resolve, opt) {
+function loadComponent(opt, resolve) {
     var jsModule = require(opt.name, opt.jsSrc);
     getTemp(opt.htmlSrc, function (res) {
         jsModule.then(function (module) {
@@ -85,6 +85,8 @@ function loadComponent(resolve, opt) {
         })
     })
 }
+
+window.getComponent = R.curry(loadComponent)
 
 const VueRouterPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(to) {
@@ -99,41 +101,38 @@ const router = new VueRouter({
         {
             path: '/',
             component: function (resolve) {
-                if(tool.isMobile){
-                    loadComponent(resolve, {
+                if (tool.isMobile) {
+                    loadComponent({
                         name: "setting",
                         jsSrc: "./js/setting.js",
                         htmlSrc: "./pages/setting.html"
-                    });
-                }else{
-                    loadComponent(resolve, {
+                    }, resolve);
+                } else {
+                    loadComponent({
                         name: "design",
                         jsSrc: "./js/design.js",
                         htmlSrc: "./pages/design.html"
-                    });
+                    }, resolve);
                 }
 
             }
         },
         {
             path: '/index',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "index",
-                    jsSrc: "./js/index.js",
-                    htmlSrc: "./pages/index.html"
-                });
-            }
+            component: getComponent({
+                name: "index",
+                jsSrc: "./js/index.js",
+                htmlSrc: "./pages/index.html"
+            })
+
         },
         {
             path: '/design',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "design",
-                    jsSrc: "./js/design.js",
-                    htmlSrc: "./pages/design.html"
-                });
-            }
+            component: getComponent({
+                name: "design",
+                jsSrc: "./js/design.js",
+                htmlSrc: "./pages/design.html"
+            })
         },
         {
             path: '/ling',
@@ -171,13 +170,12 @@ const router = new VueRouter({
         {
 
             path: '/sort',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "sort",
-                    jsSrc: "./js/sort.js",
-                    htmlSrc: "./pages/sort.html"
-                });
-            }
+            component: getComponent({
+                name: "sort",
+                jsSrc: "./js/sort.js",
+                htmlSrc: "./pages/sort.html"
+            })
+
         },
         {
             path: '/sortBook/:sortId',
@@ -187,33 +185,30 @@ const router = new VueRouter({
         },
         {
             path: '/books',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "books",
-                    jsSrc: "./js/books.js",
-                    htmlSrc: "./pages/books.html"
-                });
-            }
+            component: getComponent({
+                name: "books",
+                jsSrc: "./js/books.js",
+                htmlSrc: "./pages/books.html"
+            })
+
         },
         {
             path: '/pathConfig',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "pathConfig",
-                    jsSrc: "./js/pathConfig.js",
-                    htmlSrc: "./pages/pathConfig.html"
-                });
-            }
+            component: getComponent({
+                name: "pathConfig",
+                jsSrc: "./js/pathConfig.js",
+                htmlSrc: "./pages/pathConfig.html"
+            })
+
         },
         {
             path: '/pathAdd/:id?',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "pathAdd",
-                    jsSrc: "./js/pathAdd.js",
-                    htmlSrc: "./pages/pathAdd.html"
-                });
-            }
+            component: getComponent({
+                name: "pathAdd",
+                jsSrc: "./js/pathAdd.js",
+                htmlSrc: "./pages/pathAdd.html"
+            })
+
         },
         {
             path: '/search/:p',
@@ -223,13 +218,12 @@ const router = new VueRouter({
         },
         {
             path: '/setting',
-            component: function (resolve) {
-                loadComponent(resolve, {
-                    name: "setting",
-                    jsSrc: "./js/setting.js",
-                    htmlSrc: "./pages/setting.html"
-                });
-            }
+            component: getComponent({
+                name: "setting",
+                jsSrc: "./js/setting.js",
+                htmlSrc: "./pages/setting.html"
+            })
+
         },
         {
             path: '/localStorage',

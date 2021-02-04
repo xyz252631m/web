@@ -9,7 +9,7 @@
         <div class="design-op-box">
             <ul>
                 <li>
-                    <button class="button button-positive button-small">创建</button>
+                    <button class="button button-positive button-small" @click="showCreate">创建</button>
                 </li>
                 <li>
                     <button class="button button-positive button-small">追加</button>
@@ -28,6 +28,12 @@
                 </li>
             </ul>
         </div>
+
+
+        <div class="fix-box" v-show="showLayer">
+            <type-list></type-list>
+        </div>
+
     </div>
 </div>
 
