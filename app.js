@@ -13,6 +13,23 @@ function getdir(url) {
 }
 
 http.createServer(function (request, response) {
+    //获取请求头
+
+    console.log(request.headers)
+    //判断请求方式
+    //post
+    let pathUrl = request.url;
+    if(pathUrl==="/update"){
+
+    }else if(pathUrl==="/rename"){
+
+    }else if(pathUrl==="/delete"){
+
+    }else if(pathUrl==="/getFile"){
+
+    }
+
+
     //解析请求，包括文件名
     var pathname = url.parse(request.url).pathname;
     //输出请求的文件名

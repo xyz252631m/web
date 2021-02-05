@@ -460,3 +460,30 @@ const tree={
         return getPath(fn(tree, []), id, []).reverse();
     },
 }
+
+let tool = {
+    //交换位置 - 上移
+    up(i) {
+        if (i === 0) {
+            return;
+        }
+        let theme = this.lookThemeItem;
+        if (theme) {
+            let old = theme.colorList[i];
+            this.changeColor(theme.colorList[i - 1], i);
+            this.changeColor(old, i - 1);
+        }
+    },
+    //交换位置 - 下移
+    down(i) {
+        let theme = this.lookThemeItem;
+        if (theme) {
+            if (i === theme.colorList.length - 1) {
+                return;
+            }
+            let old = theme.colorList[i];
+            this.changeColor(theme.colorList[i + 1], i);
+            this.changeColor(old, i + 1);
+        }
+    },
+}
