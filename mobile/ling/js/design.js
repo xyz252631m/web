@@ -9,9 +9,6 @@ define("design", function () {
             }
         },
         methods: {
-            yuedu() {
-
-            },
             edit() {
 
             },
@@ -28,7 +25,23 @@ define("design", function () {
             },
             //创建
             showCreate(){
-                this.showLayer = true;
+                console.log(this.$modal.fromComponent)
+               this.showLayer = true;
+               let a= this.$modal.fromComponent({
+                    template:"<div>234</div>"
+                },{title:'title',theme:"",destroyOnHide:true,onHide:false});
+                console.log(a)
+                a.then(function(r){
+                    r.show();
+                })
+
+                // this.$modal.fromComponent(
+                // getComponent({
+                //     name: "typeList",
+                //     jsSrc: "./js/components/typeList.js",
+                //     htmlSrc: "./pages/components/typeList.html"
+                // }),
+                // {title:'23',theme:"",destroyOnHide:true,onHide:false})
             }
         },
         created() {
@@ -38,11 +51,11 @@ define("design", function () {
             console.log("mounted books")
         },
         components: {
-            typeList: getComponent({
-                name: "typeList",
-                jsSrc: "./js/components/typeList.js",
-                htmlSrc: "./pages/components/typeList.html"
-            })
+            // typeList: getComponent({
+            //     name: "typeList",
+            //     jsSrc: "./js/components/typeList.js",
+            //     htmlSrc: "./pages/components/typeList.html"
+            // })
 
         }
     };

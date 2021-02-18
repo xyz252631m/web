@@ -1,28 +1,31 @@
-
 define("typeList", function () {
     console.log("this is typeList");
     return {
         data() {
             return {
-                isEdit:false
+                list: [
+                    {val: 'function', txt: "函数(fn)"},
+                    {val: 'let', txt: "变量(let)"},
+                    {val: 'const', txt: "常量(const)"},
+                ]
             }
         },
         methods: {
             yuedu() {
 
             },
-            edit(){
+            edit() {
 
             },
-            del(){
+            del() {
 
             },
-            toIndex(){
+            toIndex() {
                 console.log(this)
                 this.$store.commit("changTabIdx", 0);
                 // console.log(this,this.$router.push("/index"))
             },
-            toSetting(){
+            toSetting() {
                 this.$router.push("/setting");
             }
         },

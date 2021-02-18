@@ -95,147 +95,153 @@ VueRouter.prototype.push = function push(to) {
     })
 };
 
+const routes = [
+    {
+        path: '/',
+        component: function (resolve) {
+            if (tool.isMobile) {
+                loadComponent({
+                    name: "setting",
+                    jsSrc: "./js/setting.js",
+                    htmlSrc: "./pages/setting.html"
+                }, resolve);
+            } else {
+                loadComponent({
+                    name: "design",
+                    jsSrc: "./js/design.js",
+                    htmlSrc: "./pages/design.html"
+                }, resolve);
+            }
+
+        }
+    },
+    {
+        path: '/index',
+        component: getComponent({
+            name: "index",
+            jsSrc: "./js/index.js",
+            htmlSrc: "./pages/index.html"
+        })
+
+    },
+    {
+        path: '/design',
+        component: getComponent({
+            name: "design",
+            jsSrc: "./js/design.js",
+            htmlSrc: "./pages/design.html"
+        })
+    },
+    {
+        path: '/ling',
+        component: {
+            templateUrl: "../pages/lingling.html"
+        }
+    },
+    {
+        path: '/detail/:bookId',
+        component: {
+            templateUrl: "../pages/detail.html"
+        }
+    },
+    {
+        path: '/mulu/:bid',
+        component: {
+            templateUrl: "../pages/mulu.html"
+        }
+    },
+    {
+        path: '/error',
+        component: {
+            templateUrl: "../pages/error.html"
+        }
+    },
+    {
+        path: '/yuedu/:bid/:cid/:typeId',
+        params: {
+            typeId: -1
+        },
+        component: {
+            templateUrl: "../pages/yuedu.html"
+        }
+    },
+    {
+
+        path: '/sort',
+        component: getComponent({
+            name: "sort",
+            jsSrc: "./js/sort.js",
+            htmlSrc: "./pages/sort.html"
+        })
+
+    },
+    {
+        path: '/sortBook/:sortId',
+        component: {
+            templateUrl: "../pages/sortList.html"
+        }
+    },
+    {
+        path: '/books',
+        component: getComponent({
+            name: "books",
+            jsSrc: "./js/books.js",
+            htmlSrc: "./pages/books.html"
+        })
+
+    },
+    {
+        path: '/pathConfig',
+        component: getComponent({
+            name: "pathConfig",
+            jsSrc: "./js/pathConfig.js",
+            htmlSrc: "./pages/pathConfig.html"
+        })
+
+    },
+    {
+        path: '/pathAdd/:id?',
+        component: getComponent({
+            name: "pathAdd",
+            jsSrc: "./js/pathAdd.js",
+            htmlSrc: "./pages/pathAdd.html"
+        })
+
+    },
+    {
+        path: '/search/:p',
+        component: {
+            templateUrl: "../pages/search.html"
+        }
+    },
+    {
+        path: '/setting',
+        component: getComponent({
+            name: "setting",
+            jsSrc: "./js/setting.js",
+            htmlSrc: "./pages/setting.html"
+        })
+
+    },
+    {
+        path: '/localStorage',
+        component: {
+            templateUrl: "../pages/localStorage.html"
+        }
+    },
+];
 //路由列表
 const router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            component: function (resolve) {
-                if (tool.isMobile) {
-                    loadComponent({
-                        name: "setting",
-                        jsSrc: "./js/setting.js",
-                        htmlSrc: "./pages/setting.html"
-                    }, resolve);
-                } else {
-                    loadComponent({
-                        name: "design",
-                        jsSrc: "./js/design.js",
-                        htmlSrc: "./pages/design.html"
-                    }, resolve);
-                }
-
-            }
-        },
-        {
-            path: '/index',
-            component: getComponent({
-                name: "index",
-                jsSrc: "./js/index.js",
-                htmlSrc: "./pages/index.html"
-            })
-
-        },
-        {
-            path: '/design',
-            component: getComponent({
-                name: "design",
-                jsSrc: "./js/design.js",
-                htmlSrc: "./pages/design.html"
-            })
-        },
-        {
-            path: '/ling',
-            component: {
-                templateUrl: "../pages/lingling.html"
-            }
-        },
-        {
-            path: '/detail/:bookId',
-            component: {
-                templateUrl: "../pages/detail.html"
-            }
-        },
-        {
-            path: '/mulu/:bid',
-            component: {
-                templateUrl: "../pages/mulu.html"
-            }
-        },
-        {
-            path: '/error',
-            component: {
-                templateUrl: "../pages/error.html"
-            }
-        },
-        {
-            path: '/yuedu/:bid/:cid/:typeId',
-            params: {
-                typeId: -1
-            },
-            component: {
-                templateUrl: "../pages/yuedu.html"
-            }
-        },
-        {
-
-            path: '/sort',
-            component: getComponent({
-                name: "sort",
-                jsSrc: "./js/sort.js",
-                htmlSrc: "./pages/sort.html"
-            })
-
-        },
-        {
-            path: '/sortBook/:sortId',
-            component: {
-                templateUrl: "../pages/sortList.html"
-            }
-        },
-        {
-            path: '/books',
-            component: getComponent({
-                name: "books",
-                jsSrc: "./js/books.js",
-                htmlSrc: "./pages/books.html"
-            })
-
-        },
-        {
-            path: '/pathConfig',
-            component: getComponent({
-                name: "pathConfig",
-                jsSrc: "./js/pathConfig.js",
-                htmlSrc: "./pages/pathConfig.html"
-            })
-
-        },
-        {
-            path: '/pathAdd/:id?',
-            component: getComponent({
-                name: "pathAdd",
-                jsSrc: "./js/pathAdd.js",
-                htmlSrc: "./pages/pathAdd.html"
-            })
-
-        },
-        {
-            path: '/search/:p',
-            component: {
-                templateUrl: "../pages/search.html"
-            }
-        },
-        {
-            path: '/setting',
-            component: getComponent({
-                name: "setting",
-                jsSrc: "./js/setting.js",
-                htmlSrc: "./pages/setting.html"
-            })
-
-        },
-        {
-            path: '/localStorage',
-            component: {
-                templateUrl: "../pages/localStorage.html"
-            }
-        },
-    ]
+    routes:routes
 });
 
 
 function initApp() {
+    Vue.use(Vonic.default);
+    // let vm =  Vue.use(Vonic.default.app, {
+    //     router: router
+    // })
+
     // Vue.use(Vuex);
     // Vue.use(VueRouter);
     let vm = new Vue({
