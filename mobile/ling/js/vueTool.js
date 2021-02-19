@@ -1104,9 +1104,18 @@ define("vueTool", function () {
         }
     };
 
+    let typeMap = {
+        init: [
+            {val: 'function', txt: "函数(fn)"},
+            {val: 'let', txt: "变量(let)"},
+            {val: 'const', txt: "常量(const)"},
+        ],
+    }
+
     return {
         bookTypeList,
         books,
-        lc
+        lc,
+        typeMap
     }
 });

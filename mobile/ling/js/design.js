@@ -3,12 +3,23 @@ define("design", function () {
     return {
         data() {
             return {
-                isEdit: false,
                 //显示 - 弹层
-                showLayer:false,
+                showLayer: false,
+                //当前类型
+                selectType: "init",
+                //当前选中项
+                selectItem: null,
+                typeList: []
             }
         },
         methods: {
+            async getListByType(type) {
+                let tool = await require("vueTool");
+                this.typeList = tool.typeMap[type] || [];
+            },
+            typeOp(val) {
+
+            },
             edit() {
 
             },
@@ -24,28 +35,21 @@ define("design", function () {
                 this.$router.push("/setting");
             },
             //创建
-            showCreate(){
-                console.log(this.$modal.fromComponent)
-               this.showLayer = true;
-               let a= this.$modal.fromComponent({
-                    template:"<div>234</div>"
-                },{title:'title',theme:"",destroyOnHide:true,onHide:false});
-                console.log(a)
-                a.then(function(r){
-                    r.show();
-                })
+            showCreate() {
+                this.showLayer = true;
+                // let a = this.$modal.fromComponent({
+                //     template: "<div>234</div>"
+                // }, {title: 'title', theme: "", destroyOnHide: true, onHide: false});
+                // console.log(a)
+                // a.then(function (r) {
+                //     r.show();
+                // })
 
-                // this.$modal.fromComponent(
-                // getComponent({
-                //     name: "typeList",
-                //     jsSrc: "./js/components/typeList.js",
-                //     htmlSrc: "./pages/components/typeList.html"
-                // }),
-                // {title:'23',theme:"",destroyOnHide:true,onHide:false})
             }
         },
         created() {
-
+            this.getListByType(this.selectType);
+            console.log(12, this.typeList)
         },
         mounted() {
             console.log("mounted books")

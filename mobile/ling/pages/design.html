@@ -31,17 +31,18 @@
                 </li>
             </ul>
         </div>
-
-
+    </div>
+    <div class="fix-box"  v-show="showLayer">
+        <div class="bg"></div>
+        <div class="main">
+            <div class="cp-type-box">
+                <ul>
+                    <li v-for="m in typeList" @click="typeOp(m.val)">{{m.txt}}</li>
+                </ul>
+            </div>
+        </div>
 
     </div>
-<!--    <div class="fix-box" von-modal v-if="showLayer">-->
-<!--        <div class="bg"></div>-->
-<!--        <div class="main">-->
-<!--            <type-list></type-list>-->
-<!--        </div>-->
-
-<!--    </div>-->
 </div>
 
 
