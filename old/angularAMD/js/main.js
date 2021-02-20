@@ -2,19 +2,19 @@ var isExitJson = (typeof (JSON) !== 'undefined');
 var isIE7 = navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i) == "7.";
 // isIE7=true
 require.config({
-    baseUrl: '/web/js/',
+     // baseUrl: '/web/lib/',
     urlArgs: 'v=1.0.0',
     paths: {
         jquery: ['http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min', 'jquery-1.11.1.min'],
-        json2: 'json2',
-        domReady: 'domReady',
-        angular: isIE7 ? 'angular-1.2.20/angular.min' : "angular/angular.min",
-        angularAMD: 'angular/angularAMD.min',
-        angularCSS: 'angular/angular-css.min',
-        'uiRoute': 'angular/angular-ui-router.min',
-        date: 'My97DatePicker/WdatePicker',
-        flowerDialog: 'lib/flower-dialog',
-        extend: "lib/extend",
+        json2: '/web/js/json2',
+        domReady: '/web/js/domReady',
+        angular: isIE7 ? '/web/lib/angular-1.2.20/angular.min' : "/web/lib/angular/angular.min",
+        angularAMD: '/web/lib/angular/angularAMD.min',
+        angularCSS: '/web/lib/angular/angular-css.min',
+        'uiRoute': '/web/lib/angular/angular-ui-router.min',
+        date: '/web/lib/My97DatePicker/WdatePicker',
+        flowerDialog: './js/lib/flower-dialog',
+        extend: "./js/lib/extend",
     },
     shim: {
         'angular': {
@@ -55,7 +55,7 @@ require.config({
     }
 });
 
-var htmlUrl = '../html/';
+var htmlUrl = './';
 require(["angularAMD", "uiRoute", "extend", "angularCSS", "flowerDialog", "date"], function (angularAMD) {
     var app = ngModule("webs", ["ui.router", "angularCSS", "extend", "flowerDialog"]);
     var controllerNameByParams = function ($stateParams) {
