@@ -1,0 +1,786 @@
+{
+  "status": 200,
+  "result": {
+    "id": "7e0aa06c3776851a903e1ce0ee6d0568",
+    "name": "陕西煤业化工集团有限责任公司",
+    "nodetype": "999",
+    "children": [
+      {
+        "id": "",
+        "name": "广东合利金融科技服务有限公司",
+        "nodetype": "108",
+        "children": [
+          {
+            "id": "",
+            "name": "深圳前海民盛天宫供应链管理有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999",
+            "children": [
+              {
+                "id": "555564778934sdf",
+                "name": "深圳前海链管理有限公司",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodetype": "999",
+                "children": [
+                  {
+                    "id": "a86dfgdfga4d567e74de",
+                    "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+                    "name": "宏磊集团有限公司常州分公司",
+                    "nodetype": "999",
+                    "children": [
+                      {
+                        "id": "sdfsdf567567tyutyue74de",
+                        "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+                        "name": "宏磊集团有限公司常州分公司",
+                        "nodetype": "999"
+                      },
+                      {
+                        "id": "c734534578fghcfef1tyutyu0d",
+                        "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+                        "name": "宏磊集团有限公司余姚分公司",
+                        "nodetype": "999"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "c7ba7952e56757fdghef10d",
+                    "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+                    "name": "宏磊集团有限公司余姚分公司",
+                    "nodetype": "999"
+                  }
+                ]
+              },
+              {
+                "id": "34535sgdgrrty567",
+                "name": "天宫供应链管理有限公司",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodetype": "999"
+              }
+            ]
+          },
+          {
+            "id": "",
+            "name": "深圳前海合利商业保理有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "",
+            "name": "深圳民盛云尚信息技术有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          }
+        ]
+      },
+
+
+      {
+        "id": "",
+        "name": "深圳民盛大数据技术有限公司",
+        "nodetype": "106",
+        "children": [
+          {
+            "id": "8ddc748477f59285ba6fad6f5bbd7936",
+            "name": "共青城民盛金控投资管理有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/8ddc748477f59285ba6fad6f5bbd7936.jpg",
+            "percent": "100%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999",
+            "children": [
+              {
+                "id": "5b6cdeaa6666019b5",
+                "name": "浙江仁东新材料科技有限公司",
+                "image": "https:\/\/qccdata.qichacha.com\/autoimage\/5b6cdeaa40a19aab93121230ebe019b5.jpg",
+                "percent": "100%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodetype": "999"
+              }
+            ]
+          },
+          {
+            "id": "a9abe2c194fdcdbdf9e55d65da629237",
+            "name": "天津民盛金科信息技术有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a9abe2c194fdcdbdf9e55d65da629237.jpg",
+            "percent": "100%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "da2e10e629af103994a5a987a3eef151",
+            "name": "深圳民盛大数据技术有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/da2e10e629af103994a5a987a3eef151.jpg",
+            "percent": "100%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "5b6cdeaa40a19aab93121230ebe019b5",
+            "name": "浙江仁东新材料科技有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/5b6cdeaa40a19aab93121230ebe019b5.jpg",
+            "percent": "100%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "e6d3678b2df351c303051638872a12f2",
+            "name": "广东合利金融科技服务有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/e6d3678b2df351c303051638872a12f2.jpg",
+            "percent": "90.00%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "0240da058ce5cf1be65ca3e2742d5221",
+            "name": "广州民盛互联网小额贷款有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/0240da058ce5cf1be65ca3e2742d5221.jpg",
+            "percent": "80.00%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "dc637152b62ca323663a28f885395ef2",
+            "name": "民盛租赁有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/dc637152b62ca323663a28f885395ef2.jpg",
+            "percent": "70.00%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "a8e1f44aa68439810082361c45899f22",
+            "name": "鹰潭市金泉有色金属再生利有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a8e1f44aa68439810082361c45899f22.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "ee4ee8e3fd785a75791085ad6d02f889",
+            "name": "霍尔果斯民盛创业投资有限公司",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/ee4ee8e3fd785a75791085ad6d02f889.jpg",
+            "percent": "100%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "febe3c5c86cbd7291faefb2e1c9f1485",
+            "name": "诸暨市东南电磁线有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/febe3c5c86cbd7291faefb2e1c9f1485.jpg",
+            "percent": "92.27%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "08b015d68eca9ec5bbb32345b8b5d16e",
+            "name": "浙江新科铜管机械制造有限公司",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/08b015d68eca9ec5bbb32345b8b5d16e.jpg",
+            "percent": "51.00%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          }
+        ]
+      },
+      {
+        "id": "227cb85dc38303c0447371035700c19d",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/227cb85dc38303c0447371035700c19d.jpg",
+        "name": "山西民盛供应链管理有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "5b6cdeaa40a19aab93121230ebe019b5",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/5b6cdeaa40a19aab93121230ebe019b5.jpg",
+        "name": "浙江仁东新材料科技有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "8a8f99798d964459b38fc813401a16b3",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/8a8f99798d964459b38fc813401a16b3.jpg",
+        "name": "北京仁东科技有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "8ddc748477f59285ba6fad6f5bbd7936",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/8ddc748477f59285ba6fad6f5bbd7936.jpg",
+        "name": "共青城民盛金控投资管理有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "941bf520c592441d2ce720e73f0c3d24",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/941bf520c592441d2ce720e73f0c3d24.jpg",
+        "name": "广州民盛经济信息服务有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "9f9130a859c7a21af4d28ddcb96ec7e4",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/9f9130a859c7a21af4d28ddcb96ec7e4.jpg",
+        "name": "广州合利征信服务有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "a9abe2c194fdcdbdf9e55d65da629237",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a9abe2c194fdcdbdf9e55d65da629237.jpg",
+        "name": "天津民盛金科信息技术有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "bcaf0d9f65ee488d2c66245e7812780b",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/bcaf0d9f65ee488d2c66245e7812780b.jpg",
+        "name": "仁东金融信息服务有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "c77fff18428d73603cb0fb147c98e962",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/c77fff18428d73603cb0fb147c98e962.jpg",
+        "name": "深圳前海民盛天宫供应链管理有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "da2e10e629af103994a5a987a3eef151",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/da2e10e629af103994a5a987a3eef151.jpg",
+        "name": "深圳民盛大数据技术有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "e6d3678b2df351c303051638872a12f2",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/e6d3678b2df351c303051638872a12f2.jpg",
+        "name": "广东合利金融科技服务有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "ee4ee8e3fd785a75791085ad6d02f889",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/ee4ee8e3fd785a75791085ad6d02f889.jpg",
+        "name": "霍尔果斯民盛创业投资有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "f3f54257e95bee23d98e4039b175974f",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/f3f54257e95bee23d98e4039b175974f.jpg",
+        "name": "深圳前海合利商业保理有限公司",
+        "percent": "100%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "eafc7b2454a59f9e046a05253614cde2",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/eafc7b2454a59f9e046a05253614cde2.jpg",
+        "name": "广州合利宝支付科技有限公司",
+        "percent": "95%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "febe3c5c86cbd7291faefb2e1c9f1485",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/febe3c5c86cbd7291faefb2e1c9f1485.jpg",
+        "name": "诸暨市东南电磁线有限公司",
+        "percent": "92.27%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999",
+        "children": [
+          {
+            "id": "dc637152b62ca323663a28f885395ef2",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/dc637152b62ca323663a28f885395ef2.jpg",
+            "name": "民盛租赁有限公司",
+            "percent": "70%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "4d9090361374c88cca242f4edc6c4947",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/4d9090361374c88cca242f4edc6c4947.jpg",
+            "name": "北京仁东无双信息科技有限公司",
+            "percent": "60%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "f8065dd4aea87f9f47d9b24a44f45124",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/f8065dd4aea87f9f47d9b24a44f45124.jpg",
+            "name": "广州民盛振兴信息技术有限公司",
+            "percent": "60%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "f6105902bd3c0ce27f150bb1d6df8b97",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/f6105902bd3c0ce27f150bb1d6df8b97.jpg",
+            "name": "天津民盛国际融资租赁有限公司",
+            "percent": "52.5%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "08b015d68eca9ec5bbb32345b8b5d16e",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/08b015d68eca9ec5bbb32345b8b5d16e.jpg",
+            "name": "浙江新科铜管机械制造有限公司",
+            "percent": "51%",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          }
+        ]
+      },
+
+      {
+        "id": "a6abd3ddaf6f88c770badafa0a53c0a4",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a6abd3ddaf6f88c770badafa0a53c0a4.jpg",
+        "name": "天津亿东科技有限公司",
+        "percent": "51%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999",
+        "children": [
+          {
+            "id": "2355554",
+            "name": "广东合利金融科技服务有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },  {
+            "id": "2657675734",
+            "name": "广东合利金融科技服务有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          }
+        ]
+      },
+      {
+        "id": "a8e1f44aa68439810082361c45899f22",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a8e1f44aa68439810082361c45899f22.jpg",
+        "name": "鹰潭市金泉有色金属再生利有限公司",
+        "percent": "51%",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999",
+        "children": [
+
+          {
+            "id": "456456",
+            "name": "深圳前海合利商业保理有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "768678",
+            "name": "深圳民盛云尚信息技术有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999",
+            "children": [
+
+              {
+                "id": "768678we",
+                "name": "深圳民盛云尚科技技术有限公司",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodetype": "999"
+              },
+              {
+                "id": "768678tr",
+                "name": "深圳民盛云尚财务技术有限公司",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodetype": "999"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": "",
+        "name": "宏磊集团有限公司常州分公司",
+        "nodetype": "109",
+        "children": [
+
+        ]
+      },
+      {
+        "id": "15f2e16e63206b0a6252d1d91351bddd",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/15f2e16e63206b0a6252d1d91351bddd.jpg",
+        "name": "宏磊集团有限公司嵊州分公司",
+        "nodetype": "999",
+        "children": [
+
+          {
+            "id": "c7ba7952e7a3dcfef10d",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+            "name": "宏磊集团有限公司余姚分公司",
+            "nodetype": "999"
+          },
+          {
+            "id": "dfe7197fbda4c23e0aefa4",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/dfe7197fbda4c47f8f9fa1523e0aefa4.jpg",
+            "name": "浙江宏磊集团有限公司上海分公司",
+            "nodetype": "999"
+          }
+        ]
+
+      },
+      {
+        "id": "1a7596c6cfe5e1e1991ecf2f5ed44a41",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/1a7596c6cfe5e1e1991ecf2f5ed44a41.jpg",
+        "name": "宏磊集团有限公司销售分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "37c9d63cf50575dec72a2e4831b0e86f",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/37c9d63cf50575dec72a2e4831b0e86f.jpg",
+        "name": "宏磊集团有限公司杭州分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "40a808044ec94f5b43a8713ebf03db3f",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/40a808044ec94f5b43a8713ebf03db3f.jpg",
+        "name": "浙江宏磊铜业有限公司杭州分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "5d8774fa025bc0a47f4cc719cc16b392",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/5d8774fa025bc0a47f4cc719cc16b392.jpg",
+        "name": "宏磊集团有限公司上海分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "6df82c7c24dcea7bc925b69490bf6ac7",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/6df82c7c24dcea7bc925b69490bf6ac7.jpg",
+        "name": "仁东控股股份有限公司北京企业管理分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "6e3557b7c281c7034f7767321e852963",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/6e3557b7c281c7034f7767321e852963.jpg",
+        "name": "浙江宏磊铜业股份有限公司南海分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "7a9bd32919052be11c62c8f123a93907",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/7a9bd32919052be11c62c8f123a93907.jpg",
+        "name": "民盛金科控股股份有限公司深圳分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "a86cd7eb9298b7a11a4dfc44ae0e74de",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+        "name": "宏磊集团有限公司常州分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "c7ba7952e1768be14588a7a3dcfef10d",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+        "name": "宏磊集团有限公司余姚分公司",
+        "nodetype": "999"
+      },
+      {
+        "id": "dfe7197fbda4c47f8f9fa1523e0aefa4",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/dfe7197fbda4c47f8f9fa1523e0aefa4.jpg",
+        "name": "浙江宏磊集团有限公司上海分公司",
+        "nodetype": "999",
+        "children": [
+          {
+            "id": "a86cd7eb92955747tryrty4ae0e74de",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+            "name": "宏磊集团有限公司常州分公司",
+            "nodetype": "999"
+          },
+          {
+            "id": "c7ba7rtyrtyuj588a7a3dcfef10d",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+            "name": "宏磊集团有限公司余姚分公司",
+            "nodetype": "999"
+          }
+        ]
+      },
+      {
+        "id": "ff20faf5446b805484c9d8277e33e312",
+        "image": "https:\/\/co-image.qichacha.com\/companyimage\/ff20faf5446b805484c9d8277e33e312.jpg",
+        "name": "宏磊集团有限公司金华分公司",
+        "nodetype": "999",
+        "children":[
+          {
+            "id": "a86cd7eb9298b7fc44ae0e74de",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+            "name": "宏磊集团有限公司常州分公司",
+            "nodetype": "999",
+            "children": [
+              {
+                "id": "a3453457a11a4dfc44ae0e74de",
+                "image": "https:\/\/co-image.qichacha.com\/companyimage\/a86cd7eb9298b7a11a4dfc44ae0e74de.jpg",
+                "name": "宏磊集团有限公司常州分公司",
+                "nodetype": "999"
+              },
+              {
+                "id": "c7ba754653534e14588a7a3dcfef10d",
+                "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+                "name": "宏磊集团有限公司余姚分公司",
+                "nodetype": "999"
+              },
+              {
+                "id": "dfe7197fbda4c5566yhrftyaefa4",
+                "image": "https:\/\/co-image.qichacha.com\/companyimage\/dfe7197fbda4c47f8f9fa1523e0aefa4.jpg",
+                "name": "浙江宏磊集团有限公司上海分公司",
+                "nodetype": "999"
+              }
+            ]
+          },
+          {
+            "id": "c7ba7952e1768be13dcfef10d",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/c7ba7952e1768be14588a7a3dcfef10d.jpg",
+            "name": "宏磊集团有限公司余姚分公司",
+            "nodetype": "999"
+          },
+          {
+            "id": "dfe7197fbda4c47f8f9faefa4",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/dfe7197fbda4c47f8f9fa1523e0aefa4.jpg",
+            "name": "浙江宏磊集团有限公司上海分公司",
+            "nodetype": "999"
+          }
+        ]
+
+      },
+      {
+        "id": "",
+        "name": "安徽广博机电制造股份有限公司",
+        "nodetype": "110",
+        "children": [
+
+
+        ]
+      },
+      {
+        "id": "677fb8063454e486e12b5acebdc54d1f",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/677fb8063454e486e12b5acebdc54d1f.jpg",
+        "name": "郑州德恒宏盛科技发展股份有限公司",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "",
+        "name": "上海宝锦贸易有限公司",
+        "nodetype": "111",
+        "children": [
+
+          {
+            "id": "ba11422d448a7472a0633db417d18322",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/ba11422d448a7472a0633db417d18322.jpg",
+            "name": "新界泵业集团股份有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "",
+            "image": "",
+            "name": "营业收入",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "927de337e54e5b71a2ec403b9a71a1dc",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/927de337e54e5b71a2ec403b9a71a1dc.jpg",
+            "name": "中山大洋电机股份有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "afeed57fd8713c725d1d6bb4f4de10ee",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/afeed57fd8713c725d1d6bb4f4de10ee.jpg",
+            "name": "宁波百道尔投资有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "d65be44b0828847578ff6d9d938c9a28",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/d65be44b0828847578ff6d9d938c9a28.jpg",
+            "name": "上海辽筠贸易有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "a53c3741963a0a0a6dd3b4ecad4ae8d4",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/a53c3741963a0a0a6dd3b4ecad4ae8d4.jpg",
+            "name": "中国兵工物资华东有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "63c91771b2dda8e3911073cf2455a140",
+            "image": "https:\/\/qccdata.qichacha.com\/autoimage\/63c91771b2dda8e3911073cf2455a140.jpg",
+            "name": "上海晋金实业有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          },
+          {
+            "id": "60f5877ea009eeded21ca4e8c7b58ee9",
+            "image": "https:\/\/co-image.qichacha.com\/companyimage\/60f5877ea009eeded21ca4e8c7b58ee9.jpg",
+            "name": "浙江东音泵业股份有限公司",
+            "location": "",
+            "productname": "",
+            "stockcode": "",
+            "nodetype": "999"
+          }
+        ]
+      },
+      {
+        "id": "",
+        "name": "深圳前海民盛天宫供应链管理有限公司",
+        "nodetype": "112",
+        "children": [
+
+
+        ]
+      },
+      {
+        "id": "567d54bcf1b3228bb12e51caa0724d4b",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/567d54bcf1b3228bb12e51caa0724d4b.jpg",
+        "name": "诸暨市宏润小额贷款有限公司",
+        "percent": "",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "968833c24c6d300be5eb3a58498b1707",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/968833c24c6d300be5eb3a58498b1707.jpg",
+        "name": "江西宏磊铜业有限公司",
+        "percent": "",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      },
+      {
+        "id": "a3cc459e3e4937b5d98d406c19b6b03e",
+        "image": "https:\/\/qccdata.qichacha.com\/autoimage\/a3cc459e3e4937b5d98d406c19b6b03e.jpg",
+        "name": "浙江宏天铜业有限公司",
+        "percent": "",
+        "location": "",
+        "productname": "",
+        "stockcode": "",
+        "nodetype": "999"
+      }
+
+    ]
+  }
+}

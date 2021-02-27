@@ -7,21 +7,18 @@ function NodeReader(isRight, data, option) {
             data._id = data.id || "root";
             data.open = true;
             this.data = data;
-
             this.renderRoot(data);
-
-
             this.createGroup();
             var firstList = data.children;
             if (firstList && firstList.length) {
                 var half = Math.ceil(firstList.length / 2);
                 var leftList = [], rightList = [];
                 $.each(firstList, function (idx, item) {
-                    if (idx < half) {
-                        rightList.push(item);
-                    } else {
-                        leftList.push(item);
-                    }
+                    // if (idx < half) {
+                    rightList.push(item);
+                    // } else {
+                    //     leftList.push(item);
+                    // }
                 });
                 if (isRight) {
                     conventData(rightList);
@@ -96,54 +93,26 @@ function NodeReader(isRight, data, option) {
         //鼠标移入事件
         mouseenter: function (e) {
             var rect = this.g.rbox();
-            var self = this;
             var left = rect.x - 340 + 25;
             if (!isRight) {
                 left = rect.x + rect.width - 25;
             }
             var top = rect.y;
             if (option.hasDetailInfo) {
-                if (option.detailInfoShowBefore) {
-                    var t_falg = option.detailInfoShowBefore.call(tool, this, $(".info-box"));
-                    //排除undefined
-                    if (t_falg === false) {
-
-                    } else {
-                        $(".info-box").css({
-                            left: left + "px",
-                            top: top + "px"
-                        }).show();
-                    }
-                }
-
-
+                option.detailInfoShowBefore && option.detailInfoShowBefore.call(tool, this, $(".info-box"));
+                $(".info-box").css({
+                    left: left + "px",
+                    top: top + "px"
+                }).show();
             }
 
             if (this.children.length && this.open) {
 
                 $.each(this.children, function (idx) {
-                    if (isRight) {
-                        this.hover_polyline = tool.lineGroup.polyline([
-                            [this.x, this.y + 20],
-                            [this.x - 35, this.y + 20],
-                            [this.x - 35, self.y + 20],
-                            [self.x + self.w, self.y + 20]])
-                            .fill("transparent")
-                            .addClass(option.lineHoverCls);
-                    } else {
-                        this.hover_polyline = tool.lineGroup.polyline([
-                            [this.x + this.w, this.y + 20],
-                            [this.x + this.w + 35, this.y + 20],
-                            [this.x + this.w + 35, self.y + 20],
-                            [self.x, self.y + 20]])
-                            .fill("transparent")
-                            .addClass(option.lineHoverCls);
-
-                    }
-                    this.hLine.hide();
+                    this.hLine.stroke({color: option.hoverLineColor})
                 });
-                this.vLine && this.vLine.hide();
-                this.rightLine && this.rightLine.hide();
+                this.vLine && this.vLine.stroke({color: option.hoverLineColor})
+                this.rightLine && this.rightLine.stroke({color: option.hoverLineColor})
             }
             if (mapId[this.pid]) {
                 var pItem = mapId[this.pid];
@@ -162,9 +131,8 @@ function NodeReader(isRight, data, option) {
                         [this.x - 35, pItem.y + 20],
                         [pItem.x + pItem.w, pItem.y + 20]])
                         .fill("transparent")
-
-                        .addClass(option.lineHoverCls)
-                        .addClass("left-link-hover");
+                        .stroke({width: lineWidth, color: option.hoverLineColor})
+                        .style({zIndex: 999});
                 } else {
                     if (this.level == 1) {
                         var m = tool.halfGroup.matrixify();
@@ -180,8 +148,8 @@ function NodeReader(isRight, data, option) {
                         [this.x + this.w + 35, pItem.y + 20],
                         [pItem.x, pItem.y + 20]])
                         .fill("transparent")
-                        .addClass(option.lineHoverCls)
-                        .addClass("left-link-hover");
+                        .stroke({width: lineWidth, color: option.hoverLineColor})
+                        .style({zIndex: 999});
                 }
             }
         },
@@ -192,14 +160,10 @@ function NodeReader(isRight, data, option) {
             }
             if (this.children.length && this.open) {
                 $.each(this.children, function (idx) {
-                    this.hLine.show();
-                    if (this.hover_polyline) {
-                        this.hover_polyline.remove();
-                        this.hover_polyline = null;
-                    }
+                    this.hLine.stroke({color: option.lineColor})
                 });
-                this.vLine && this.vLine.show();
-                this.rightLine && this.rightLine.show();
+                this.vLine && this.vLine.stroke({color: option.lineColor})
+                this.rightLine && this.rightLine.stroke({color: option.lineColor})
             }
             if (mapId[this.pid]) {
                 if (this.hover_polyline) {
@@ -211,25 +175,11 @@ function NodeReader(isRight, data, option) {
         //单击事件
         openClick: function (e) {
             var node = e.target.parentNode;
-            if ((node.getAttribute("class") || "").indexOf("svg-node") === -1) {
+            if (node.getAttribute("class") !== "svg-node") {
                 node = node.parentNode;
             }
             var _id = node.getAttribute("data-id");
             var item = mapId[_id];
-
-            if (item.children.length && item.open) {
-                $.each(item.children, function (idx) {
-                    this.hLine.show();
-                    if (this.hover_polyline) {
-                        this.hover_polyline.remove();
-                        this.hover_polyline = null;
-                    }
-                });
-                item.vLine && item.vLine.show();
-                item.rightLine && item.rightLine.show();
-            }
-
-
             if (item.hover_polyline) {
                 item.hover_polyline.remove();
                 item.hover_polyline = null;
@@ -248,7 +198,7 @@ function NodeReader(isRight, data, option) {
                 var pid = item._id;
                 var fn = function (list) {
                     $.each(list, function (idx, d) {
-                        if (idx < 10) {
+                        if (idx < option.childShowNum) {
                             d.idx = idx;
                             d._id = d.id;
                             d.hide = false;
@@ -277,7 +227,7 @@ function NodeReader(isRight, data, option) {
                     });
                 };
                 fn(item.childrenList);
-                if (item.childrenList.length > 10) {
+                if (item.childrenList.length > option.childShowNum) {
                     var mItem = this.moreItemObj(item);
                     item.moreOpen = false;
                     mapId[mItem._id] = mItem;
@@ -299,16 +249,15 @@ function NodeReader(isRight, data, option) {
                 } else {
                     Array.prototype.splice.apply(mapLevel[item.level + 1], [0, 0].concat(temList));
                 }
-
-                temList.forEach(function (d) {
+                temList.concat([item]).forEach(function (d) {
                     d.animateAdd = true;
                     d.animateMoreAdd = false;
                     d.py = item.y;
+                    d.ph = item.h;
                     d.px = item.x;
                     d.pw = item.w;
                 });
                 this.calcItemPos(isRight);
-                item.animateAdd = true;
                 this.render(isRight);
             }
 
@@ -332,12 +281,13 @@ function NodeReader(isRight, data, option) {
                 }
             }
 
+
             celHover();
             var item = mapId[pid];
             if (!item) {
                 return;
             }
-            if (item.childrenList.length < 10) {
+            if (item.childrenList.length < option.childShowNum) {
                 return;
             }
             //收起
@@ -347,7 +297,7 @@ function NodeReader(isRight, data, option) {
                 var len = item.children.length;
                 var removeList = [];
                 $.each(item.children, function (i, d) {
-                    if (i > 9 && i < len - 1) {
+                    if (i >= option.childShowNum && i < len - 1) {
                         d.hide = true;
                         var idx = mapLevel[item.level + 1].indexOf(d);
                         if (idx >= 0) {
@@ -361,17 +311,22 @@ function NodeReader(isRight, data, option) {
                 item.children = temList;
                 var lastItem = item.children[item.children.length - 1];
                 lastItem.name = "展开";
-                lastItem.g.select("text").get(0).text(lastItem.name);
+                lastItem.g.select("text").get(0).text(function (add) {
+                    lastItem.name.split("").forEach(function (txt) {
+                        add.tspan(txt).dy(17).x(14)
+                    });
+                });
                 lastItem.moreOpen = false;
                 this.calcItemPos(isRight);
-                var tem = temList[9];
+                //末位item
+                var tem = temList[option.childShowNum-1];
                 removeList.forEach(function (d, idx) {
-                    d.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
+                    d.g.animate(option.anTime).opacity(0).x(tem.x + 40).after(function () {
                         this.remove();
                     });
                     //d.hLine.animate(option.anTime).x(0);
                     if (d.open) {
-                        self.closeItemChildren(d, tem, false)
+                        self.closeItemChildren(d, tem, false, true)
                     }
                 });
                 this.render(isRight);
@@ -379,7 +334,7 @@ function NodeReader(isRight, data, option) {
                 item.moreOpen = true;
                 var temList = [];
                 $.each(item.childrenList, function (i, d) {
-                    if (i > 9) {
+                    if (i >= option.childShowNum) {
                         d.idx = i;
                         d._id = d.id;
                         d.hide = false;
@@ -403,17 +358,21 @@ function NodeReader(isRight, data, option) {
                         temList.push(d);
                     }
                 });
-                Array.prototype.splice.apply(item.children, [10, 0].concat(temList));
+                Array.prototype.splice.apply(item.children, [option.childShowNum, 0].concat(temList));
                 var lastItem = item.children[item.children.length - 1];
                 var idx = mapLevel[item.level + 1].indexOf(lastItem);
                 Array.prototype.splice.apply(mapLevel[item.level + 1], [idx, 0].concat(temList));
                 lastItem.name = "收缩";
-                lastItem.g.select("text").get(0).text(lastItem.name);
+                lastItem.g.select("text").get(0).text(function (add) {
+                    lastItem.name.split("").forEach(function (txt) {
+                        add.tspan(txt).dy(17).x(14)
+                    });
+                });
                 lastItem.moreOpen = true;
                 this.calcItemPos(isRight);
-                var temItem = item.children[9];
+                var temItem = item.children[option.childShowNum-1];
                 temList.forEach(function (d) {
-                    d.py = temItem.y;
+                    d.px = temItem.x;
                 });
                 this.render(isRight);
             }
@@ -426,11 +385,11 @@ function NodeReader(isRight, data, option) {
                 keys.push(Number(key));
             }
             var max = Math.max.apply(Math, keys);
-            var idx = max, list;
+            var idx = max, temList;
             var self = this;
             while (idx > 0) {
-                list = mapLevel[idx];
-                $.each(list, function (i, d) {
+                temList = mapLevel[idx];
+                $.each(temList, function (i, d) {
                     if (d.hide) {
 
                     } else {
@@ -445,34 +404,25 @@ function NodeReader(isRight, data, option) {
                 idx--;
             }
             var list = mapLevel[1];
-            var r_frist = list[0];
+            var r_first = list[0];
             var r_last = list[list.length - 1];
-            var r_centerX;
-            if (isRight) {
-                r_centerX = r_frist.x - 35;
-            } else {
-                r_centerX = r_frist.x + r_frist.w + 35;
-            }
+            var r_centerY;
+            r_centerY = r_first.y - 35;
 
-            if (isRight) {
-                if (this.data.right_vLine) {
-                    this.data.right_vLine.animate(option.anTime).y(r_frist.y + 20).height(r_last.y - r_frist.y);
-                } else {
-                    this.data.right_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
-                }
-
+            if (this.data.right_vLine) {
+                this.data.right_vLine.animate(option.anTime).x(r_first.x + 20).width(r_last.x - r_first.x);
             } else {
-                if (this.data.left_vLine) {
-                    this.data.left_vLine.animate(option.anTime).y(r_frist.y + 20).height(r_last.y - r_frist.y);
-                } else {
-                    this.data.left_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
-                }
+                this.data.right_vLine = this.lineGroup.line(r_first.x + 20, r_centerY, r_last.x + 20, r_centerY).stroke({
+                    width: lineWidth,
+                    color: option.lineColor
+                }).attr("data-id", this.data._id);
             }
-            var r_centerY = r_frist.y + (r_last.y + 40 - r_frist.y) / 2;
+            var r_centerX = r_first.x + (r_last.x + 40 - r_first.x) / 2;
+            this.halfGroup.y(-(this.hh + 53));
             if (isInit) {
-                this.halfGroup.y(-(r_centerY - this.hh))
+                this.halfGroup.x(-(r_centerX - this.hw))
             } else {
-                this.halfGroup.animate(option.anTime).y(-(r_centerY - this.hh));
+                this.halfGroup.animate(option.anTime).x(-(r_centerX - this.hw));
             }
         },
         //计算位置
@@ -497,51 +447,52 @@ function NodeReader(isRight, data, option) {
                 }
             }
 
-            function getH(item) {
-                var frist = item.children[0];
+            function getW(item) {
+                var first = item.children[0];
                 var last = item.children[item.children.length - 1];
-                var centerY;
+                var centerX;
                 if (item.hasMore) {
                     if (!item.moreOpen) {
-                        last = item.children[8];
+                        last = item.children[option.childShowNum-1-1];
                     } else {
                         last = item.children[item.children.length - 2];
                     }
-                    centerY = frist.y + (last.y + 50 + 40 - frist.y) / 2;
-                    item.vLineH = last.y + 50 - frist.y;
+                    centerX = first.x + (last.x + 50 + 40 - first.x) / 2;
+                    item.vLineW = last.x + 50 - first.x;
                 } else {
-                    centerY = frist.y + (last.y + 40 - frist.y) / 2;
-                    item.vLineH = last.y - frist.y;
+                    centerX = first.x + (last.x + 40 - first.x) / 2;
+                    item.vLineW = last.x - first.x;
                 }
-                item.centerY = centerY;
+                item.centerX = centerX;
             }
 
             var i = 1;
             //默认排列位置
             while (i <= max) {
                 list = mapLevel[i];
-                var max_w = 0;
+                var max_h = 0;
                 $.each(list, function (di, d) {
-                    var w = getLength(d.name) * 14 / 2 + 20;//20 padding
+                    var h = getLength(d.name) * (14 + 4) / 2 + 20;//20 padding
                     if (d.children.length || d.isMoreItem) {
-                        w += 20;  //展开收缩按钮
+                        h += 20;  //展开收缩按钮
                     }
-                    d.w = w;
-                    max_w = Math.max(max_w, w);
-                    var off_x = 0;
+                    d.h = h;
+                    max_h = Math.max(max_h, h);
+                    var off_y = 0;
                     $.each(maxInfo, function (mi, m) {
                         if (mi < d.level) {
-                            off_x += m;
+                            off_y += m;
                         }
                     });
                     if (isRight) {
-                        d.x = self.hw + off_x + d.level * 70;
+                        d.y = self.hh + off_y + d.level * 70;
                     } else {
-                        d.x = self.hw - d.w - off_x - d.level * 70;
+                        d.y = self.hh - d.h - off_y - d.level * 70;
                     }
                 });
 
-                maxInfo[i] = max_w;
+                maxInfo[i] = max_h;
+
                 i++;
             }
 
@@ -553,25 +504,25 @@ function NodeReader(isRight, data, option) {
                     $.each(list, function (i, d) {
                         d.space = getSpace(d);
                         if (d.children.length) {
-                            // w += 20;  //展开收缩按钮
+                            // h += 20;  //展开收缩按钮
                             if (d.open) {
-                                getH(d);
-                                d.y = d.centerY - 20;
+                                getW(d);
+                                d.x = d.centerX - 20;
                             } else {
                                 if (i) {
-                                    d.y = list[i - 1].y + 40 + d.space;
+                                    d.x = list[i - 1].x + 40 + d.space;
                                 } else {
-                                    d.y = 0
+                                    d.x = 0
                                 }
                             }
                         } else {
                             if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
+                                d.x = list[i - 1].x + 40 + d.space;
                             } else {
-                                d.y = 0
+                                d.x = 0
                             }
                         }
-                        d.h = 40;
+                        d.w = 40;
                     });
 
                     idx--;
@@ -581,6 +532,7 @@ function NodeReader(isRight, data, option) {
             calcParentItem();
             var hasRepeat = true;
             var count = 1;
+
             while (hasRepeat && count < 10) {
                 hasRepeat = false;
                 i = 1;
@@ -589,7 +541,7 @@ function NodeReader(isRight, data, option) {
                     list = mapLevel[i];
                     var fn = function (list, t) {
                         $.each(list, function (idx, d) {
-                            d.y += t;
+                            d.x += t;
                             if (d.children) {
                                 if (d.children.length) {
                                     fn(d.children, t);
@@ -601,15 +553,15 @@ function NodeReader(isRight, data, option) {
                     //从上层到下层 计算位置
                     $.each(list, function (idx, d) {
                         if (idx) {
-                            var num = d.y - list[idx - 1].y;
-                            var top = 50;
+                            var num = d.x - list[idx - 1].x;
+                            var left = 50;
                             if (d.pid !== list[idx - 1].pid) {
-                                top = 80;
+                                left = 80;
                             }
-                            if (num < top) {
+                            if (num < left) {
                                 hasRepeat = true;
-                                var t = top - num;
-                                d.y += t;
+                                var t = left - num;
+                                d.x += t;
                                 if (d.children.length) {
                                     fn(d.children, t);
                                 }
@@ -629,8 +581,8 @@ function NodeReader(isRight, data, option) {
                             d.space = getSpace(d);
                             if (d.children.length) {
                                 if (d.open) {
-                                    getH(d);
-                                    d.y = d.centerY - 20;
+                                    getW(d);
+                                    d.x = d.centerX - 20;
                                 }
                             }
                         });
@@ -668,9 +620,9 @@ function NodeReader(isRight, data, option) {
                                         var upItem = list[idx - temList.length];
                                         var downItem = list[idx + 1];
                                         if (upItem && upItem.pid === downItem.pid) {
-                                            var num = (downItem.y - upItem.y) / (temList.length + 1);
+                                            var num = (downItem.x - upItem.x) / (temList.length + 1);
                                             temList.forEach(function (tem, tem_i) {
-                                                tem.y = upItem.y + num * (tem_i + 1);
+                                                tem.x = upItem.x + num * (tem_i + 1);
                                             })
                                         }
                                     }
@@ -679,12 +631,12 @@ function NodeReader(isRight, data, option) {
                         } else {
                             if (!d.open || !d.children.length) {
                                 if (list[idx + 1].pid === d.pid) {
-                                    if (list[idx + 1].y - d.y > 50) {
-                                        var top_num = parseInt((list[idx + 1].y - 50 - d.y) / 2);
-                                        d.y = list[idx + 1].y - 50;
+                                    if (list[idx + 1].x - d.x > 50) {
+                                        var top_num = parseInt((list[idx + 1].x - 50 - d.x) / 2);
+                                        d.x = list[idx + 1].x - 50;
                                         var pItem = mapId[d.pid];
                                         while (pItem) {
-                                            pItem.y += top_num;
+                                            pItem.x += top_num;
                                             pItem = mapId[pItem.pid];
                                         }
                                     }
@@ -695,6 +647,7 @@ function NodeReader(isRight, data, option) {
                 }
                 i++;
             }
+
         },
 
         moreItemObj: function (d) {
@@ -705,7 +658,7 @@ function NodeReader(isRight, data, option) {
                 name: "展开",
                 isMoreItem: true,
                 pid: d._id,
-                idx: 10,
+                idx: option.childShowNum,
                 level: d.level + 1,
                 moreOpen: false,
                 children: []
@@ -719,7 +672,7 @@ function NodeReader(isRight, data, option) {
             var w = rootItem.name.length * 14 + 32;
             var rect = group.rect(w, 40);
             rootItem.x = this.hw - w / 2;
-            rootItem.y = this.hh - 20;
+            rootItem.y = 20;
             group.transform({x: rootItem.x, y: rootItem.y});
             var text = group.text(rootItem.name);
             text.font({
@@ -727,60 +680,11 @@ function NodeReader(isRight, data, option) {
             });
             text.x(15);
             text.y(12);
-
-            if (isRight) {
-                group.line(-35, 20, 0, 20);
-
-            }
+            group.line(w / 2, 40, w / 2, 75).stroke({width: lineWidth, color: option.lineColor});
             var r_w = rect.width();
             rootItem.w = r_w;
             maxInfo[0] = r_w / 2;
-            if (isRight) {
-                group.line(r_w, 20, r_w + 35, 20);
-            }
             this.rootRect = rect;
-            var fn = function (g, tool, rootItem, $box) {
-                var rect = g.rbox();
-                var left = rect.x - 340 + 25;
-                if (!isRight) {
-                    left = rect.x + rect.width - 25;
-                }
-                var top = rect.y;
-                if (option.detailInfoShowBefore) {
-                    var t_falg = option.detailInfoShowBefore.call(tool, rootItem, $box);
-                    //排除undefined
-                    if (t_falg === false) {
-
-                    } else {
-                        $(".info-box").css({
-                            left: left + "px",
-                            top: top + "px"
-                        }).show();
-                    }
-
-
-                }
-
-
-            }
-            if (option.hasDetailInfo) {
-                rect.on("mouseenter", function (e) {
-                    fn(group, tool, rootItem, $(".info-box"));
-                });
-                rect.on("mouseleave", function () {
-                    if (option.hasDetailInfo) {
-                        $(".info-box").hide();
-                    }
-                });
-                text.on("mouseenter", function (e) {
-                    fn(group, tool, rootItem, $(".info-box"));
-                });
-                text.on("mouseleave", function () {
-                    if (option.hasDetailInfo) {
-                        $(".info-box").hide();
-                    }
-                });
-            }
         },
         //渲染子节点
         childNode: function (isRight, item) {
@@ -790,45 +694,43 @@ function NodeReader(isRight, data, option) {
                 this.updateState(item);
                 return;
             }
-            var g = this.nodeGroup.group()
+            var g = this.nodeGroup.group();
             item.g = g;
-            var rect = g.rect(item.w, 40);
+            var rect = g.rect(40, item.h);
             if (item.animateAdd) {
-                if (isRight) {
-                    g.transform({x: item.px + item.pw, y: item.py}).animate(option.anTime).transform({
-                        x: item.x,
-                        y: item.y
-                    });
-                } else {
-                    g.transform({x: item.px - item.w, y: item.py}).animate(option.anTime).transform({
-                        x: item.x,
-                        y: item.y
-                    });
-                }
+                g.transform({x: item.px, y: item.py + item.ph}).animate(option.anTime).transform({
+                    x: item.x,
+                    y: item.y
+                });
             } else if (item.animateMoreAdd) {
-                g.opacity(0).transform({x: item.x, y: item.py}).animate(option.anTime).opacity(1).transform({
+                g.opacity(0).transform({x: item.px, y: item.y}).animate(option.anTime).opacity(1).transform({
                     x: item.x,
                     y: item.y
                 });
             } else {
                 g.transform({x: item.x, y: item.y});
             }
-            var text = g.text(item.name);
-            text.font({
+
+            var text = g.text(function (add) {
+                item.name.split("").forEach(function (txt) {
+                    add.tspan(txt).dy(17).x(14)
+                });
+            }).font({
                 size: 14
-            });
+            })
+
             text.x(10);
             text.y(12);
             var text_rbox = text.rbox();
             var tr = this.rootGroup.matrixify();
             if (isRight) {
                 //计算缩放 width
-                item.op_x = (text_rbox.width / tr.d) + 5 + 10;
+                item.op_y = (text_rbox.height / tr.d) + 5 + 10;
             } else {
-                item.op_x = 8;
+                item.op_y = 8;
             }
 
-            item.op_y = text_rbox.y;
+            // item.op_y = text_rbox.y;
             if (item.children && item.children.length) {
                 if (!isRight) {
                     text.x(30);
@@ -838,23 +740,14 @@ function NodeReader(isRight, data, option) {
                 g.on("click", this.openClick, this)
             }
             item.rect = rect;
-            if (isRight) {
-                if (item.animateAdd) {
-                    item.hLine = g.line(0, 20, 0, 20);
-                    item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
-                } else {
-                    item.hLine = g.line(-35, 20, 0, 20);
-                }
+
+            if (item.animateAdd) {
+                item.hLine = g.line(20, 0, 20, 0).stroke({width: lineWidth, color: option.lineColor});
+                item.hLine.animate(option.anTime).plot(20, -35, 20, 0);
             } else {
-                if (item.animateAdd) {
-                    item.hLine = g.line(item.w, 20, item.w, 20);
-                    item.hLine.animate(option.anTime).plot(item.w, 20, item.w + 35, 20);
-                } else {
-                    item.hLine = g.line(item.w, 20, item.w + 35, 20).stroke({
-                        width: lineWidth
-                    });
-                }
+                item.hLine = g.line(20, -35, 20, 0).stroke({width: lineWidth, color: option.lineColor});
             }
+
 
             if (item.isMoreItem) {
                 if (!isRight) {
@@ -867,11 +760,10 @@ function NodeReader(isRight, data, option) {
                 g.attr("class", "svg-more").attr("data-id", item._id).attr("data-pid", item.pid);
                 g.on("click", this.moreClick, this);
             } else {
-                g.attr("class", "svg-node").addClass("level-" + item.level);
-                ;
+                g.attr("class", "svg-node");
             }
-            g.on("mouseenter", this.mouseenter, item);
-            g.on("mouseleave", this.mouseleave, item);
+            // g.on("mouseenter", this.mouseenter, item);
+            // g.on("mouseleave", this.mouseleave, item);
         },
         //更新状态 + -
         updateState: function (item) {
@@ -891,7 +783,7 @@ function NodeReader(isRight, data, option) {
             }
         },
         //关闭item子节点 item 要关闭的item posItem 动画定位到的item 默认为item
-        closeItemChildren: function (item, posItem, isResetPos) {
+        closeItemChildren: function (item, posItem, isResetPos, isAllChild) {
             if (!posItem) {
                 posItem = item;
             }
@@ -919,60 +811,50 @@ function NodeReader(isRight, data, option) {
             };
             fn(item.children);
             isResetPos && this.calcItemPos(isRight);
-
-            if (isRight) {
-                queue.forEach(function (d, idx) {
-                    d.g.animate(option.anTime).opacity(0).translate(posItem.x + posItem.w, posItem.y).after(function () {
-                        this.remove();
-                    });
-                    d.hLine.animate(option.anTime).x(0);
-                    d.rightLine && d.rightLine.animate(option.anTime).width(0).after(function () {
-                        this.remove();
-                        d.rightLine = null;
-                    });
-                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x + posItem.w).y(posItem.y).height(40).after(function () {
-                        this.remove();
-                        d.vLine = null;
-                    });
+            queue.forEach(function (d, idx) {
+                d.g.animate(option.anTime).opacity(0).translate(posItem.x, posItem.y + posItem.h).after(function () {
+                    this.remove();
                 });
-                item.rightLine && item.rightLine.animate(option.anTime).width(0).after(function () {
+                //上级连接线
+                d.hLine.animate(option.anTime).y(0).height(0);
+                //下级延伸线
+                d.rightLine && d.rightLine.animate(option.anTime).height(0).after(function () {
+                    this.remove();
+                    d.rightLine = null;
+                });
+                //所有子级连接线
+                d.vLine && d.vLine.animate(option.anTime).x(posItem.x + 20).y(posItem.y + posItem.h).width(0).after(function () {
+                    this.remove();
+                    d.vLine = null;
+                });
+            });
+            if (isAllChild) {
+                item.rightLine && item.rightLine.animate(option.anTime).height(0).after(function () {
                     this.remove();
                     item.rightLine = null;
                 });
-                item.vLine && item.vLine.animate(option.anTime).x(item.x + item.w).y(item.y).height(40).after(function () {
+                item.vLine && item.vLine.animate(option.anTime).x(posItem.x + 20).y(posItem.y + posItem.h).width(0).after(function () {
                     this.remove();
                     item.vLine = null;
                 });
             } else {
-                queue.forEach(function (d, idx) {
-                    d.g.animate(option.anTime).opacity(0).translate(posItem.x - d.w, posItem.y).after(function () {
-                        this.remove();
-                    });
-                    d.hLine.animate(option.anTime).x(0);
-                    d.rightLine && d.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
-                        this.remove();
-                        d.rightLine = null;
-                    });
-                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x).y(posItem.y).height(40).after(function () {
-                        this.remove();
-                        d.vLine = null;
-                    });
-                });
-                item.rightLine && item.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
+                item.rightLine && item.rightLine.animate(option.anTime).height(0).after(function () {
                     this.remove();
                     item.rightLine = null;
                 });
-                item.vLine && item.vLine.animate(option.anTime).x(item.x).y(item.y).height(40).after(function () {
+                item.vLine && item.vLine.animate(option.anTime).x(item.x + 20).y(item.y + item.h).width(0).after(function () {
                     this.remove();
                     item.vLine = null;
                 });
             }
+
+
         },
         //渲染+ - 按钮状态
         renderState: function (group, item) {
             var g = group.group().attr("class", "node-op-state");
             item.op_g = g;
-            g.transform({x: item.op_x, y: 13});
+            g.transform({x: 13, y: item.op_y});
             g.circle(15).stroke({width: 1});
             g.line(4, 7.5, 11, 7.5).stroke({width: 1});
             if (item.isMoreItem) {
@@ -989,68 +871,51 @@ function NodeReader(isRight, data, option) {
         renderLine: function (isRight, item) {
             var g = item.g;
             if (item.open && item.children.length) {
-                var frist = item.children[0];
+                var first = item.children[0];
                 var last = item.children[item.children.length - 1];
-                var centerX;
-                if (isRight) {
-                    centerX = frist.x - item.x - 35;
-                    if (item.rightLine) {
-                        item.rightLine.animate(option.anTime).width(centerX - item.w)
-                    } else {
-                        if (item.animateAdd) {
-                            item.rightLine = g.line(item.w, 20, item.w, 20);
-                            // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
-                            item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
-                        } else {
-                            item.rightLine = g.line(item.w, 20, centerX, 20);
-                        }
-                    }
-                    //  var centerY = frist.y + (last.y + 40 - frist.y) / 2;
-                    if (item.children.length > 1) {
-                        if (item.vLine) {
-                            item.vLine.animate(option.anTime).x(item.x + centerX).y(frist.y + 20).height(last.y - frist.y)
-                        } else {
-                            if (item.animateAdd) {
-                                item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20)
-                            } else {
-                                item.vLine = this.lineGroup.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
-                            }
-                        }
-                    }
+                var centerY;
+                centerY = first.y - item.y - 35;
+                //下级延伸线
+                if (item.rightLine) {
+                    item.rightLine.animate(option.anTime).height(centerY - item.h)
                 } else {
-                    centerX = item.x - frist.x - frist.w - 35;
-                    if (item.rightLine) {
-
+                    if (item.animateAdd) {
+                        item.rightLine = g.line(20, item.h, 20, item.h).stroke({
+                            width: lineWidth,
+                            color: option.lineColor
+                        });
+                        // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
+                        item.rightLine.animate(option.anTime).plot(20, item.h, 20, centerY)
+                    } else {
+                        item.rightLine = g.line(20, item.h, 20, centerY).stroke({
+                            width: lineWidth,
+                            color: option.lineColor
+                        });
+                    }
+                }
+                //  var centerY = first.y + (last.y + 40 - first.y) / 2;
+                if (item.children.length > 1) {
+                    //子节点连接线
+                    if (item.vLine) {
+                        item.vLine.animate(option.anTime).x(first.x + 20).y(item.y + centerY).width(last.x - first.x)
                     } else {
                         if (item.animateAdd) {
-                            //item.w, 20, item.w, 20
-                            item.rightLine = g.line(0, 20, 0, 20);
-                            item.rightLine.animate(option.anTime).plot(0, 20, -centerX, 20)
+                            item.vLine = this.lineGroup.line(item.px + 20, item.py + item.ph, item.px + 20, item.py + item.ph).stroke({
+                                width: lineWidth,
+                                color: option.lineColor
+                            }).attr("data-id", item._id);
+                            item.vLine.animate(option.anTime).plot(first.x + 20, item.y + centerY, last.x + 20, item.y + centerY)
                         } else {
-                            item.rightLine = g.line(0, 20, -centerX, 20);
-                        }
-
-
-                    }
-                    if (item.children.length > 1) {
-                        if (item.vLine) {
-                            // item.vLine.animate(option.anTime).y(frist.y + 20)
-                            item.vLine.animate(option.anTime).x(item.x - centerX).y(frist.y + 20).height(last.y - frist.y)
-                        } else {
-                            if (item.animateAdd) {
-                                //item.x + item.w, item.y + 20, item.x + item.w, item.y + 20
-                                item.vLine = this.lineGroup.line(item.x, item.y + 20, item.x, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20)
-                            } else {
-                                item.vLine = this.lineGroup.line(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20).attr("data-id", item._id);
-                            }
-
+                            item.vLine = this.lineGroup.line(first.x + 20, item.y + centerY, last.x + 20, item.y + centerY).stroke({
+                                width: lineWidth,
+                                color: option.lineColor
+                            }).attr("data-id", item._id);
                         }
                     }
                 }
             }
-        },
+
+        }
 
     };
     tool.hw = option.hw;
@@ -1073,7 +938,7 @@ function NodeReader(isRight, data, option) {
                 d.pid = pid;
                 d._id = d.id;
                 d.childrenList = d.children || [];
-                if (idx >= 10) {
+                if (idx >= option.childShowNum) {
                     return
                 }
                 if (!mapLevel[level.toString()]) {
@@ -1099,12 +964,12 @@ function NodeReader(isRight, data, option) {
         fn(list, mapLevel, mapId, infoList, 1, data._id);
 
         infoList.forEach(function (d, i) {
-            if (d.children.length > 10) {
+            if (d.children.length > option.childShowNum) {
                 var child = [], moreList = [];
                 d.children.forEach(function (k, idx) {
-                    if (idx < 10) {
+                    if (idx < option.childShowNum) {
                         child.push(k);
-                    } else if (idx === 10) {
+                    } else if (idx === option.childShowNum) {
                         var tem = {
                             id: "more_" + d._id + "_01",
                             _id: "more_" + d._id + "_01",
@@ -1118,7 +983,7 @@ function NodeReader(isRight, data, option) {
                         };
                         mapId[tem._id] = tem;
                         infoList.push(tem);
-                        var upItem = d.children[9];
+                        var upItem = d.children[option.childShowNum-1];
                         var upIdx = mapLevel[tem.level].indexOf(upItem);
                         mapLevel[tem.level].splice(upIdx + 1, 0, tem);
                         child.push(tem);
@@ -1146,10 +1011,10 @@ function Relation(SVG, option) {
         //动画时长
         anTime: 200,
         //初始渲染层级数量
-        renderLevel: 2,
-        scale: 1,
-        //line hover 样式名称
-        lineHoverCls: "line-hover"
+        renderLevel: 3,
+        //超过10个，显示更多
+        childShowNum: 10,
+        scale: 1
     };
     this.option = $.extend({}, def, option);
     var box_dom = document.getElementById(option.id);
@@ -1158,25 +1023,17 @@ function Relation(SVG, option) {
     this.hw = this.width / 2;
     this.hh = this.height / 2;
     var draw = SVG('svgBox').size(this.width, this.height);
-    this.draw = draw;
     this.rootGroup = draw.group();
     var isDown = false, x1, y1, x, y;
     var self = this;
     //拖动事件
     $(window).on("mousedown.relation", function (e) {
-        if (box_dom.contains(e.target)) {
-            isDown = true;
-            x1 = e.pageX;
-            y1 = e.pageY;
-            x = self.rootGroup.x();
-            y = self.rootGroup.y();
-            $(box_dom).addClass("svg-move");
-            try {
-                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-            } catch (e) {
-
-            }
-        }
+        isDown = true;
+        x1 = e.pageX;
+        y1 = e.pageY;
+        x = self.rootGroup.x();
+        y = self.rootGroup.y();
+        $(box_dom).addClass("svg-move");
     }).on("click", function () {
         $(".info-box").hide();
         $(this).removeClass("svg-move");
@@ -1185,7 +1042,6 @@ function Relation(SVG, option) {
         if (isDown) {
             self.rootGroup.translate(x + e.pageX - x1, y + e.pageY - y1);
         }
-        return false
     }).on("mouseup", function () {
         isDown = false;
         $(box_dom).removeClass("svg-move");
@@ -1194,12 +1050,10 @@ function Relation(SVG, option) {
         draw.height($(window).height());
     });
     var scale = this.option.scale || 1;
-    this.scale = scale;
 
     // 缩放事件
     function drag(e) {
         var driect = null;
-        var scale = this.scale;
         if (e.wheelDelta) {
             driect = e.wheelDelta;
         } else {
@@ -1217,71 +1071,23 @@ function Relation(SVG, option) {
                 scale = 0.1;
             }
         }
-        this.rootGroup.scale(scale);
-        this.scale = scale;
+        this.rootGroup.scale(scale)
     }
 
     draw.on("mousewheel", function (e) {
-        drag.call(self, e);
-        self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
+        drag.call(self, e)
     });
 }
 
-Relation.prototype.plus = function () {
-    var scale = this.scale;
-    scale += 0.1;
-    if (scale > 3) {
-        scale = 3;
-    }
-    this.rootGroup.scale(scale);
-    this.scale = scale;
-    return scale;
-};
-Relation.prototype.minus = function () {
-    var scale = this.scale;
-    scale -= 0.1;
-    if (scale < 0.1) {
-        scale = 0.1;
-    }
-    this.rootGroup.scale(scale);
-    this.scale = scale;
-    return scale;
-};
-Relation.prototype.scaleMap = function (scale) {
-    if (scale < 0.1) {
-        scale = 0.1;
-    }
-    if (scale > 3) {
-        scale = 3;
-    }
-    this.rootGroup.scale(scale);
-    this.scale = scale;
-};
-Relation.prototype.reset = function () {
-    this.rootGroup.clear();
-    this.rootGroup = this.draw.group();
-    var obj = JSON.parse(JSON.stringify(this._jData));
-    var opt = $.extend({
-        hw: this.hw,
-        hh: this.hh,
-        rootGroup: this.rootGroup
-    }, this.option);
-    this.rightGroup = new NodeReader(true, obj, opt);
-    this.leftGroup = new NodeReader(false, obj, opt);
-    this.scale = 1;
-    this.rootGroup.scale(1)
-};
 Relation.prototype.init = function (obj) {
     var opt = $.extend({
         hw: this.hw,
         hh: this.hh,
         rootGroup: this.rootGroup
     }, this.option);
-
-    this._jData = JSON.parse(JSON.stringify(obj));
     this.rightGroup = new NodeReader(true, obj, opt);
-    this.leftGroup = new NodeReader(false, obj, opt);
-    this.rootGroup.scale(this.option.scale || 1);
+    // this.leftGroup = new NodeReader(false, obj, opt);
+    this.rootGroup.scale(this.option.scale || 1)
 };
 
 

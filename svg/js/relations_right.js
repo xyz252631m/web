@@ -698,7 +698,7 @@ function NodeReader(isRight, data, option) {
         },
 
         moreItemObj: function (d) {
-            var id = "more_" + d.id + "_01";
+            var id = "more_" + d._id + "_01";
             var tem = {
                 id: id,
                 _id: id,
