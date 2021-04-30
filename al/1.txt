@@ -1,5 +1,8 @@
 123456 121.5.68.150
 
+#放弃本地更改
+git reset --hard origin/master
+git pull
 
 # 从HEAD版本开始往过去数3个版本
 $ git rebase -i HEAD~3
