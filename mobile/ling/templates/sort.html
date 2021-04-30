@@ -1,0 +1,21 @@
+<ion-view view-title="分类">
+  <ion-nav-buttons side="right">
+
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="s-search">
+      <label class="item item-input s-search-input">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="搜索,请输入id" ng-model="pname">
+      </label>
+      <button class="  btn-sra" on-tap="toSearch(pname)">
+        搜索
+      </button>
+    </div>
+    <ul class="sort-list">
+      <li ng-repeat="item in list track by $index">
+        <a on-tap="toSortBook(item.id)">{{item.text}}</a>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

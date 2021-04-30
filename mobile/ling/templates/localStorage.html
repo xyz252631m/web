@@ -1,0 +1,23 @@
+<ion-view view-title="信息">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-ios-arrow-left button-clear" on-tap="back()"> 设置</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button" on-tap="edit()">{{isEdit?"取消":"编辑"}}</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list loc-list">
+      <p class="item " ng-repeat="item in list">
+        <label class="checkbox" ng-if="isEdit">
+          <input type="checkbox" ng-model="item.isSelect">
+        </label>
+        <span>{{item.key}}：</span>
+        <input type="text" ng-model="item.val"/>
+      </p>
+    </div>
+
+    <!--<button class = "button  button-balanced" on-tap = "add()">新增</button>-->
+    <button class="button  button-balanced" ng-class="{'disabled':!isEdit}" on-tap="update()">更新</button>
+    <button class="button  button-balanced" ng-class="{'disabled':!isEdit}" on-tap="clear()">clear</button>
+  </ion-content>
+</ion-view>

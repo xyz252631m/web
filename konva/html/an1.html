@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>动画1</title>
+
+    <link rel="stylesheet" href="../../css/base.css">
+
+
+    <!--    <script src="../../d3v4/d3.v4.min.js"></script>-->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/konva.min.js"></script>
+
+
+</head>
+<body>
+<div class="body-bg"></div>
+<div class="map-box"></div>
+
+
+<script>
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+            default:
+                return 0;
+        }
+    }
+
+    $(function () {
+        let w = window.innerWidth, h = window.innerHeight;
+        let w2 = Math.ceil(w / 2), h2 = Math.ceil(h / 2);
+        let stage = new Konva.Stage({
+            container: $('.map-box')[0],
+            width: w,
+            height: h
+        });
+
+
+        let layer = new Konva.Layer();
+
+
+        function creatLine() {
+            let line = new Konva.Line({
+                x: w2,
+                y: h2,
+                points: [0, 0, 0, 0],
+                stroke: '#ff2828',
+                strokeWidth: 2,
+                opacity: 1
+            });
+
+            return line;
+        }
+
+
+        let line = creatLine();
+
+        line.rotate(120);
+        layer.add(line);
+        window.line = line;
+        console.log(line.position())
+        // var velocity = 50;
+        //
+
+        //获取起点位置
+        function getPos(line) {
+            let rect = line.getClientRect();
+            let r = line.getRotation();
+            let f = 0;
+            let pos = {
+                r: r,
+                x: rect.x + rect.width - f,
+                y: rect.y + f
+            };
+
+            if (r === 120) {
+                pos.x = rect.x + f;
+                pos.y = rect.height + rect.y - f;
+            } else if (r === 240) {
+                pos.x = rect.x + f;
+                pos.y = rect.y + f;
+            }
+
+
+            return pos;
+        }
+
+        let rList = [0, 120, 240];
+
+        //移动到新位置
+        function getMovePos(line, pos) {
+            let num = randomNum(0, 100) % 3;
+            let new_r = rList[num];
+            if (pos.r === new_r) {
+                num++;
+                if (num >= 3) {
+                    num = 0;
+                }
+                new_r = rList[num];
+            }
+            line.rotate((new_r + pos.r) % 360);
+            line.position({x: Math.ceil(pos.x), y:  Math.ceil(pos.y)});
+
+        }
+
+
+        let list = [{
+            isDel: false,
+            line: line
+        }];
+
+
+        let anim = new Konva.Animation(function (frame) {
+            //  console.log(frame,frame.timeDiff)
+
+            // line.move({x:dist,y:0})
+            let delList = [];
+            list.forEach((d, idx) => {
+                if (!d.isDel) {
+                    let x = d.line.points()[2];
+                    if (x <= 40) {
+                        let dist = 40 * (frame.timeDiff / 1000);
+                        d.line.points([0, 0, x + dist, 0]);
+
+                    } else {
+                        let opa = d.line.getOpacity();
+                        opa -= 0.05;
+                        d.line.opacity(opa);
+
+                        if (opa > 0) {
+                            if (list.length < 1000) {
+                                let pos = getPos(d.line);
+                                let line = creatLine();
+                                getMovePos(line, pos);
+                                list.push({
+                                    isDel: false,
+                                    line: line
+                                });
+                                layer.add(line);
+                            }
+
+                        } else {
+                            d.isDel = true;
+                            delList.push(idx);
+                        }
+                    }
+                }
+            });
+            if (delList.length) {
+                delList.reverse().forEach(d => {
+                    list[d].line.destroy()
+                    list.splice(d, 1);
+                });
+            }
+            // console.log(line.points())
+        }, layer);
+
+        anim.start();
+
+        let rect = new Konva.Rect({
+            x: 100,
+            y: 50,
+            width: 200,
+            height: 100,
+            fill: '#ccc'
+        });
+        layer.add(rect);
+        stage.add(layer);
+        layer.draw();
+
+    })
+</script>
+</body>
+</html>

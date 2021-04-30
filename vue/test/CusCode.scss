@@ -1,0 +1,15 @@
+.cv-code {position: absolute;top: 0;right: 0;bottom: 0;left: 0;font-family: monospace;}
+.cv-textarea {height: 0;overflow: hidden;
+    textarea {outline: none;}
+
+}
+.cv-cursor-list {position: relative;visibility: hidden;
+    .cv-cursor {position: absolute;border-left: 1px solid #776e71;height: 17px;}
+}
+.cv-code-main {overflow: auto; height: 100%;
+    pre {word-wrap: break-word; white-space: pre-wrap;margin: 0;font-family: inherit;
+        font-size: inherit;word-break: keep-all;min-height: 17px;
+        -webkit-tap-highlight-color: transparent; -webkit-font-variant-ligatures: contextual; font-variant-ligatures: contextual;}
+
+    pre::selection {background: #d0e4f9;}
+}

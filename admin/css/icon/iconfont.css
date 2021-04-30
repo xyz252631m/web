@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1584327236224'); /* IE9 */
+  src: url('iconfont.eot?t=1584327236224#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPYAAsAAAAACJQAAAOLAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqEeIQNATYCJAMMCwgABCAFhG0HPBtZB8ieA+7mMtbEb49gycy5b8ngedSl70s6RycFeSogzcC8p3amMsHUrsybr1/7LWqhLRLP40+YJe0n++78HXuLZ8+ioTOdSiWRITRNgIDgcgq8OJw2pi2Q+d5wmWNy1AUYBxTQGBMXJVogCXoKw2sXO8zTEMBRztDWZXF9C3ox0EkCyOQ09qE3Y8I0VAsWIahYaZAlJLBqrnoALA6+L59olAVFQkPP6j52IYLpt8m3tXUYhwzWIeF0DkBYBxqoAzAgQytd/emIUnV04DRVZ3NxgEFQU0XjmECkKwLrDw8UAhJAK1MBqMGkFbxNOqJEXRuSqxY/3PgA8MAL4JNszkXrNDY32x0btYS44eR6Xv7Y23m5o69PbSoYdzc/b8xN2HfVLhHnnhTt937+Xgh3TJ6/Nk+FK72Xor4IxFeLXrc/eoOoNXuqOB2tyncrVqDcrn2io/3j3LxnItHj5v7kxTKerzTpe7Uil5uVeX716qo+q9yI/nnXymXz5VrkQ9QTKoSkAlkVGN9/6lEnzfPBrgt9V3BKP6sAiHziqUvY64oHTUJFCCF65rfe5YvCORUVW6NbLvurDc8vX/61xld+SX73jysZaaMjJIsZqkxzZmbc+pL2PbWx3Z+c+ynvQd4F627m01x73tbPevsePcz5Dq+cPTc9DPdZ96rD/bweQ7BmRVSFKeye0SBqEOv6e4PwZ2rs+/hIdCROnUoS/lf5Xq6I65EZaIQQQtiOD8UiK5gAhcKwlh0/KjUVa9efUwsgaERlSBuEzJlHGA4A8fqKbg+Abqeu/v/fsHt28H9YRps/1hsAXq70XYJQvKF72qJAEP9tcccmo0upWRtV5IjMrKYS+y6NON1LjPqyfQ335IHEIVhRDFCkUAYaSxWkwdaBBJ4mEGBpD47altZ7cjAdiEkCtZwSEDK9gCKdy6DJ9I402E9IkO8bAjLT4OgrOTt6qjWhvzOTLxRhcIRpqCtlW6U/rN6geK/wOS0NaDvETRpF13Ly2SWqiKeY0+zHnohCxbrERXIeFYXGmnVGoViJSN2ybVX1IivUJfTTGYbwEYgIFHAESgnRVCivvdBf+PwGRMweBT7c0FDj3YFgGtLukcvidEAuqapODbfSv2GfGI8gKHacgtGUoEU4iMJKaVBdPSyDCBEsyYBETYvNtFJdVdbymvL9dgAOulCLEi2GYFai946o7/SLTaFGAAAA') format('woff2'),
+  url('iconfont.woff?t=1584327236224') format('woff'),
+  url('iconfont.ttf?t=1584327236224') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1584327236224#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e62b";
+}
+
+.icon-menu:before {
+  content: "\e609";
+}
+

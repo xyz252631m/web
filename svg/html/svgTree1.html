@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg tree 1</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/tupu.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <script src="../../js/base.js"></script>
+    <!--    <script src="../js/citeTree.js"></script>-->
+
+    <style>
+        .body-bg {display: none}
+        .mind-op-panel {display: none}
+        svg rect {fill: #fff !important; stroke: #eee !important;}
+        .node-op-state {opacity: 0 !important;}
+        svg line {opacity: 0 !important;}
+
+    </style>
+
+</head>
+<body>
+<div class="div-1">
+
+    <p><span>111</span></p>
+</div>
+<div class="div-2">
+    <p>222</p>
+    <p>333</p>
+</div>
+
+<div class="body-bg"></div>
+<div class="box" id="svgBox">
+
+</div>
+
+<!--提示弹层-->
+<div class="info-box">
+    <div class="info-box-main info-box-1">
+        <div class="img-box">
+            <span>北</span>
+            <span>京</span>
+            <span>撒</span>
+            <span>考</span>
+        </div>
+        <div class="info-list">
+            <h4>北京撒考虑到考公司</h4>
+            <p class="tag-list"><label>在业</label><label></label></p>
+            <p><label>法定代表人：</label><span>张三</span></p>
+            <p><label>注册资本：</label><span>400</span>万人民币</p>
+            <p><label>成立日期：</label><span>2000-10-21</span></p>
+        </div>
+    </div>
+    <div class="info-box-main info-box-2" style="display: none">
+        <div class="img-box">
+            <span>张</span>
+        </div>
+        <div class="info-list">
+            <h4>张三</h4>
+            <p><label>企业：</label><a>美林数据技术股份有限公司</a></p>
+        </div>
+        <div class="hr-line"></div>
+        <div class="per-info-list">
+            <ol>
+                <li><label>担任法人：</label><span>2</span>家</li>
+                <li><label>对外投资：</label><span>3</span>家</li>
+                <li><label>在外任职：</label><span>1</span>家</li>
+                <li><label>控股企业：</label><span>1</span>家</li>
+            </ol>
+        </div>
+    </div>
+
+
+</div>
+<!--操作层-->
+<div class="mind-op-panel">
+    <div class="op-btn op-btn-minus">
+        <i class="fa fa-fw fa-minus"></i>
+    </div>
+    <div class="op-range-box">
+        <div class="op-range">
+            <div class="range-select"></div>
+            <div class="range-content"></div>
+        </div>
+    </div>
+    <div class="op-btn op-btn-plus">
+        <i class="fa fa-fw fa-plus"></i>
+    </div>
+    <div class="op-btn op-btn-refresh  ">
+        <i class="fa fa-fw fa-undo"></i>
+    </div>
+    <div class="op-btn op-btn-expand">
+        <i class="fa fa-expand"></i>
+    </div>
+</div>
+<script src="../js/svgTree.js"></script>
+
+</body>
+</html>

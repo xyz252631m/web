@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+
+        <input type="text" placeholder="请输入" oninput="input()">
+    </div>
+
+
+
+    <script>
+        function input(){
+            e=event;
+            console.log("input",e,e.propertyName)
+        }
+
+        // $.ajaxPrefilter(function (options) {
+        //     if (options.crossDomain && jQuery.support.cors) {
+        //         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+        //         options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+        //     }
+        // });
+
+
+        $.ajax({
+            type: "GET",
+            url: "http://www.baidu.com",
+            // dataType: "string",
+            success: function (data) {
+                console.log(data)
+            },
+            error: function () {
+                console.log(44)
+            },
+            complete: function (data) {
+                console.log(data)
+            }
+        })
+    </script>
+</body>
+
+</html>

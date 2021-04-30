@@ -1,0 +1,180 @@
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="../dist/echarts.js"></script>
+    <script src="./twoAxis/twoAxis.js"></script>
+    <!--<script src="../my/echarts-wordcloud-master/dist/echarts-wordcloud.js"></script>-->
+
+    <!--<script src="bmap.js"></script>-->
+</head>
+<body>
+<style>
+    h1 {
+        line-height: 60px;
+        height: 60px;
+        background: #146402;
+        text-align: center;
+        font-weight: bold;
+        color: #eee;
+        font-size: 14px;
+    }
+    .chart {
+        height: 600px;
+    }
+</style>
+
+<div id="main" class="chart"></div>
+<script>
+
+    // import * as echarts from "../../src/echarts";
+
+    var chart = echarts.init(document.getElementById('main'));
+
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
+    var data4 = [];
+
+    var twoAxisData = [];
+    for (var i = 0; i < 24; i++) {
+        xAxisData.push('类目' + i);
+        data1.push((Math.random() * 5).toFixed(2));
+        data2.push(-Math.random().toFixed(2));
+        data3.push((Math.random() + 0.5).toFixed(2));
+        data4.push((Math.random() + 0.3).toFixed(2));
+        if (i < 7) {
+            twoAxisData.push("类型1")
+        } else if (i < 10) {
+            twoAxisData.push("类型2")
+        } else if (i < 14) {
+            twoAxisData.push("类型3")
+        } else if (i < 16) {
+            twoAxisData.push("类型4")
+        } else {
+            twoAxisData.push("类型5")
+        }
+    }
+
+    xAxisData = ["微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量", "微信付款订单量", "支付宝付款订单量", "网银付款订单量"];
+
+
+    twoAxisData = ["上海", "上海", "上海", "北京", "北京", "北京", "广州", "广州", "广州", "成都", "成都", "成都", "杭州", "杭州", "杭州", "武汉", "武汉", "武汉", "深圳", "深圳", "深圳", "长沙", "长沙", "长沙"];
+
+
+    chart.setOption({
+
+        tooltip: {},
+        grid: {
+            top: 100,
+            bottom: 90
+        },
+        bmap: {
+            a: 5
+        },
+        dataZoom: {},
+
+        xAxis: {
+
+            name: '横轴',
+
+            silent: false,
+
+
+            data: xAxisData,
+            axisTick: {
+                show: true,
+            },
+            axisLabel: {
+                show: true,
+                // align: "left",
+                interval: 0,
+                // rotate: -45,
+                // formatter: function (label) {
+                //     return label.split('').join("\n")
+                // }
+                //  color:"red"
+            },
+            axisLine: {
+                onZero: true
+            },
+            splitLine: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+        twoAxis: {
+            data: twoAxisData,
+            splitArea: {
+                show: true,
+                areaStyle: {
+                    // color:['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+                    // color:['rgba(200,200,200,0.3)','rgba(250,250,250,0.3)']
+                }
+            },
+            axisLabel: {
+                show: true,
+                // color:"rgba(224, 16, 16, 1)"
+                // color:"red"
+
+                // formatter: function (label) {
+                //     return label+"666";
+                // }
+            }
+        },
+        yAxis: {
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            splitArea: {
+                show: false
+            }
+        },
+
+        series: [{
+            name: 'bar',
+            type: 'bar',
+            stack: 'one',
+
+            itemStyle: {
+                color: '#3398DB',
+            },
+            cursor: 'move',
+            data: data1
+        }]
+    });
+
+
+    window.onresize = chart.resize;
+
+</script>
+</body>
+</html>

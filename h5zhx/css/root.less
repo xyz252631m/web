@@ -1,0 +1,20 @@
+﻿//颜色
+//@col-main: #00ae65;
+//tool
+@img: "../images";
+@col-msg: #c32523;
+.width(@w : 1000px) { width: @w; margin: 0 auto; }
+.h(@num) { height: @num; line-height: @num; }
+.bold(@a: bold) { font-weight: @a; }
+.normal(@a: normal) { font-weight: @a; }
+.align(@a: middle) { vertical-align: @a; }
+.bor(@col:#cccccc,@size:1px) { border: @col solid @size; }
+.full() { width: 100%; height: 100%; display: block; }
+.bp(@x,@y) { background-position: @x @y; }
+//font-size
+.font(@num) { font-size: @num; }
+.font12(@num:12px) { .font(@num); }
+.font14(@num:14px) { .font(@num); }
+.font16(@num:16px) { .font(@num); }
+.font18(@num:18px) { .font(@num); }
+.font20(@num:20px) { .font(@num); }

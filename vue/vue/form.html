@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue project</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+   <input type="text" v-model="name"/>
+    <p>val:{{name}}</p>
+<p>checkbox</p>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <br/>
+    <input type="checkbox" id="chba" value="a" v-model="checkeds">a
+    <input type="checkbox" id="chbb" value="b" v-model="checkeds">b
+    <input type="checkbox" id="chbc" value="c" v-model="checkeds">c
+    <p>checkeds:{{checkeds}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            name:"tom",
+            checked:true,
+            checkeds:[]
+        },
+        methods:{
+            showNode(){
+                this.show=true;
+            }
+        }
+    });
+    //window.vm = vm;
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粒子散开</title>
+
+    <style>
+        @-webkit-keyframes fadeOut {
+            0% {opacity: 1;display: block}
+            100% {opacity: 0}
+        }
+        @keyframes fadeOut {
+            0% {opacity: 1;display: block}
+            100% {opacity: 0}
+        }
+        .fadeOut {animation: fadeOut linear .1s forwards; }
+    </style>
+
+</head>
+<body style="background-color: #012343">
+<canvas id="canvasLoading" width="847" height="500"></canvas>
+<script id="shader-fs" type="x-shader/x-fragment">
+				#ifdef GL_ES
+				  precision highp float;
+				  #endif
+    		void main(void) {
+    		 gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); //vec4(0.2, 0.3, 0.4, 1.0);
+    		}
+
+
+</script>
+<script id="shader-vs" type="x-shader/x-vertex">
+    	attribute vec3 vertexPosition;
+
+  	uniform mat4 modelViewMatrix;
+  	uniform mat4 perspectiveMatrix;
+
+   	void main(void) {
+  		gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0);
+  	}
+
+</script>
+<script src="lz.js"></script>
+</body>
+</html>

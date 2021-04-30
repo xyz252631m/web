@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/icon/iconfont.css">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/jBox/jquery.jBox-2.3.min.js"></script>
+    <script src="../js/jBox/i18n/jquery.jBox-zh-CN.js"></script>
+    <link rel="stylesheet" href="../js/jBox/Skins/Blue/jbox.css">
+    <script src="../js/menu.js"></script>
+    <script src="../js/index.js"></script>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">XXX系统</div>
+    <div class="top-btn tb-menu"><i class="iconfont icon-menu"></i></div>
+    <div class="top-btn tb-email"><i class="fa fa-envelope-o"></i></div>
+    <div class="top-btn tb-message"><i class="fa fa-bell-o"></i></div>
+    <div class="top-btn tb-home"><i class="iconfont icon-home"></i></div>
+    <div class="menu-list">
+        <!--        <ol>-->
+        <!--            <li>-->
+        <!--                <i class="fa fa-heart-o"></i>-->
+        <!--                <p>数据资源目录管理</p>-->
+        <!--            </li>-->
+        <!--            <li>-->
+        <!--                <i class="fa fa-heart-o"></i>-->
+        <!--                <p>税收档案</p>-->
+        <!--            </li>-->
+        <!--        </ol>-->
+    </div>
+    <div class="user-info">
+        <img class="avatar-img" src="../images/1.jpg" alt="">
+        <p class="user-name">Jane </p>
+        <p class="user-type">系统管理员</p>
+        <i class="fa fa-angle-down icon-down"></i>
+        <div class="system-menu-box" style="overflow: inherit; padding-bottom: 0px; height: auto;">
+            <ul>
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-user"></i>
+                        &nbsp;用户信息
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-user-times"></i>
+                        &nbsp;切换岗位
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-edit"></i>
+                        &nbsp;修改密码
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-info"></i>
+                        &nbsp;关于我们
+                    </a>
+                </li>
+                <li class="last">
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-sign-out"></i>
+                        &nbsp;退出系统
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>
+
+<div class="left-menu">
+    <div class="sidebar-toggler">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="has-sub">
+            <a href="javascript:void(0);" class="">
+                <span class="icon-box"> <i class="fa fa-fw fa-dashboard"></i></span> Dashboard
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0);">Dashboard 1</a></li>
+                <li><a class="" href="javascript:void(0);">Dashboard 2</a></li>
+            </ul>
+        </li>
+        <li class="has-sub  ">
+            <a href="javascript:;" class="">
+                <span class="icon-box"> <i class="fa fa-fw fa-book"></i></span> UI Elements
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">General</a></li>
+                <li><a class="" href="javascript:void(0)">Buttons</a></li>
+
+                <li><a class="" href="javascript:void(0)">Tabs &amp; Accordions</a></li>
+                <li><a class="" href="javascript:void(0)">Typography</a></li>
+                <li>
+                    <a class="" href="javascript:void(0)">
+                        Tree View
+                        <span class="arrow"></span>
+                    </a>
+                    <ul>
+                        <li><a class="" href="javascript:void(0)">General2</a></li>
+                        <li><a class="" href="javascript:void(0)">Buttons2</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="" href="javascript:void(0)">Nestable List</a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:void(0)" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-cogs"></i></span> Components
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">Calendar</a></li>
+                <li><a class="" href="javascript:void(0)">Data Table</a></li>
+                <li><a class="" href="javascript:void(0)">Grids</a></li>
+                <li><a class="" href="javascript:void(0)">Visual Charts</a></li>
+                <li><a class="" href="javascript:void(0)">Conversations</a></li>
+                <li><a class="" href="javascript:void(0)"> Gallery</a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:;" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-tasks"></i></span> Form Stuff
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">Form Layouts</a></li>
+                <li><a class="" href="javascript:void(0)">Form Components</a></li>
+                <li><a class="" href="javascript:void(0)">Form Wizard</a></li>
+                <li><a class="" href="javascript:void(0)">Form Validation</a></li>
+                <li><a class="" href="javascript:void(0)">Dropzone File Upload </a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:;" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-fire"></i></span> Icons
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">Font Awesome</a></li>
+                <li><a class="" href="javascript:void(0)">Glyphicons</a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:;" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-map-marker"></i></span> Maps
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)"> Google Maps</a></li>
+                <li><a class="" href="javascript:void(0)"> Vector Maps</a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:;" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-file-text"></i></span> Sample Pages
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">Blank Page</a></li>
+                <li><a class="" href="javascript:void(0)">Sidebar Closed Page</a></li>
+                <li><a class="" href="javascript:void(0)">Coming Soon</a></li>
+                <li><a class="" href="javascript:void(0)">Blog</a></li>
+                <li><a class="" href="javascript:void(0)">About Us</a></li>
+                <li><a class="" href="javascript:void(0)">Contact Us</a></li>
+            </ul>
+        </li>
+        <li class="has-sub">
+            <a href="javascript:;" class="">
+                <span class="icon-box"><i class="fa fa-fw fa-glass"></i></span> Extra
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub">
+                <li><a class="" href="javascript:void(0)">Lock Screen</a></li>
+                <li><a class="" href="javascript:void(0)">Profile</a></li>
+                <li><a class="" href="javascript:void(0)">Invoice</a></li>
+                <li><a class="" href="javascript:void(0)">Pricing Tables</a></li>
+                <li><a class="" href="javascript:void(0)">FAQ</a></li>
+                <li><a class="" href="javascript:void(0)">404 Error</a></li>
+                <li><a class="" href="javascript:void(0)">500 Error</a></li>
+            </ul>
+        </li>
+        <li><a class="" href="javascript:void(0)"><span class="icon-box"><i class="fa fa-fw fa-user"></i></span> Login Page</a></li>
+    </ul>
+</div>
+
+
+<div class="tab-box" style="margin-left:221px">
+    <ul>
+        <li class="active">
+            <a href="javascript:void(0)">
+                <i class="fa fa-home"></i><span>首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <span>标签1</span><i class="fa fa-close i-close"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <span>标签2</span><i class="fa fa-close i-close"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="menu-box">
+    <div class="tool-link">
+        <ul>
+            <li class="li-1">
+                <i class="fa fa-home"></i>
+                <p>快捷入口</p>
+            </li>
+            <li class="li-2">
+                <i class="fa fa-recycle"></i>
+                <p>快捷入口</p>
+            </li>
+            <li class="li-3">
+                <i class="fa fa-user"></i>
+                <p>快捷入口</p>
+            </li>
+            <li class="li-4">
+                <i class="fa fa-trophy"></i>
+                <p>快捷入口</p>
+            </li>
+        </ul>
+    </div>
+    <div class="list-box">
+        <ul>
+            <li><i class="fa fa-file-text-o"></i>资源目录<i class=" fa fa-angle-right icon-arrow"></i></li>
+            <li><i class="fa fa-file-text-o"></i>数据源配置3</li>
+        </ul>
+        <ul>
+            <li><i class="fa fa-file-text-o"></i>资源目录</li>
+            <li><i class="fa fa-file-text-o"></i>数据源配置3</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+
+        $.browser = {
+            mise: 6.0
+        };
+        $(".tb-menu").on("click", function () {
+            var w = window.innerWidth, h = window.innerHeight;
+            // $.jBox("iframe:http://www.baidu.com", {
+            //     title: "百度一下",
+            //     top: 80,
+            //     border:0,
+            //     width: w-2-100,
+            //     height: h - 45-2-50,
+            //     buttons: {'关闭': true}
+            // });
+            if ($(".menu-box").hasClass("menu-show")) {
+                hideMenu();
+            } else {
+                showMenu();
+            }
+
+        });
+
+        function hideMenu() {
+            $(".menu-box").addClass("menu-hide").removeClass("menu-show");
+        }
+
+        function showMenu() {
+            $(".menu-box").addClass("menu-show").removeClass("menu-hide");
+        }
+
+        function getSearchName(name) {
+            var str = location.search.replace(/\?/, "");
+            var arry = str.split("&");
+            var obj = {};
+            $.each(arry, function () {
+                var tem = this.split("=");
+                obj[tem[0]] = decodeURIComponent(tem[1]);
+            });
+            return obj[name] || "";
+        }
+
+        var mode = getSearchName("mode") || 1;
+
+        if (mode === 1) {
+
+
+        } else if (mode == 2) {
+            console.log(22)
+            $(".left-menu").hide();
+            $(".tab-box")[0].removeAttribute("style");
+
+        }
+
+        //showMenu()
+    })
+
+
+</script>
+</body>
+</html>

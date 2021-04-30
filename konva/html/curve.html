@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>曲线</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/konva.min.js"></script>
+</head>
+<body>
+<div class="map-box"></div>
+<button id="btn">test</button>
+<!--<script>-->
+
+<!--    $(function () {-->
+<!--        let w = window.innerWidth, h = window.innerHeight;-->
+<!--        let w2 = Math.ceil(w / 2), h2 = Math.ceil(h / 2);-->
+<!--        let stage = new Konva.Stage({-->
+<!--            container: $('.map-box')[0],-->
+<!--            width: w,-->
+<!--            height: h-->
+<!--        });-->
+
+
+<!--        let layer = new Konva.Layer();-->
+
+<!--    });-->
+
+
+<!--</script>-->
+
+<script>
+    localStorage.setItem("key",555);
+    const bc = new BroadcastChannel('test_channel');
+
+    $("#btn").on("click",function () {
+        localStorage.setItem("key",new Date())
+        bc.postMessage('2:'+new Date());
+    })
+</script>
+</body>
+</html>

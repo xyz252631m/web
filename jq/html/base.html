@@ -1,0 +1,32 @@
+<!DOCTYPE html  >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <script src="../../js/base.js"></script>
+</head>
+
+
+<body bgcolor="#999999">
+<div style="position:absolute;top:250px;left:250px;">
+</div>
+<script type="text/javascript">
+    function getFileString(data, callback) {
+        _$.post("/code/getFileString", data, function (res) {
+            callback && callback(res);
+        });
+    }
+    let filePath = "/server/codeDesign/js/index.js";
+    console.log("---t1")
+    getFileString({path: filePath}, function (res) {
+        console.log(111);
+    });
+    console.log("---t2")
+    getFileString({path: filePath}, function (res) {
+        console.log(222);
+    });
+    console.log("---t3")
+</script>
+</body>
+</html>

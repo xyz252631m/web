@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>竖行数据转为表格数据</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <style>
+        .table-info {border-collapse: collapse}
+        .table-info td {border: #ccc solid 1px;padding: 5px 8px;}
+    </style>
+</head>
+<body>
+<table class="table-info" style=" width: 1600px; border:#e6e6e6 solid 1px">
+    <thead>
+    <tr>
+        <td rowspan="2" valign="middle" align="center"><b>单位</b>
+        </td>
+        <td rowspan="2" valign="middle" align="center"><b>疑点总数</b>
+        </td>
+        <td colspan="4" valign="middle" align="center"><b>统筹情况</b>
+        </td>
+        <td colspan="3" valign="middle" align="center">
+            <b>任务认领</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>统筹数目</b>
+        </td>
+        <td>
+            <b>处理中</b>
+        </td>
+        <td>
+            <b>完成</b>
+        </td>
+        <td>
+            <b>进度</b>
+        </td>
+        <td style="border-right: #E6E6E6 solid 1px;">
+            <b>认领数</b>
+        </td>
+        <td>
+            <b>处理中</b>
+        </td>
+        <td>
+            <b>完成</b>
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <b>合计</b>
+        </td>
+        <td>45</td>
+        <td>42</td>
+        <td>58</td>
+        <td>58</td>
+        <td>3%</td>
+        <td>189</td>
+        <td>263</td>
+        <td>86</td>
+    </tr>
+
+    <tr>
+        <td>
+            <b>西安市</b>
+        </td>
+        <td>45</td>
+        <td>42</td>
+        <td>58</td>
+        <td>58</td>
+        <td>3%</td>
+        <td>189</td>
+        <td>263</td>
+        <td>86</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script>
+    $(function () {
+
+        var c1 = "合计\n西安市\n" +
+            "铜川市\n" +
+            "宝鸡市\n" +
+            "咸阳市\n" +
+            "渭南市\n" +
+            "延安市\n" +
+            "汉中市\n" +
+            "榆林市\n" +
+            "安康市\n" +
+            "商洛市\n" +
+            "西咸新区\n" +
+            "杨凌示范区\n" +
+            "二分局";
+        var c2 = "45\n" +
+            "10\n" +
+            "5\n" +
+            "5\n" +
+            "8\n" +
+            "6\n" +
+            "9\n" +
+            "3\n" +
+            "4\n" +
+            "6\n" +
+            "4\n" +
+            "7\n" +
+            "5\n" +
+            "8";
+        var c3 = "42\n" +
+            "8\n" +
+            "3\n" +
+            "4\n" +
+            "6\n" +
+            "5\n" +
+            "8\n" +
+            "2\n" +
+            "3\n" +
+            "5\n" +
+            "3\n" +
+            "6\n" +
+            "3\n" +
+            "6";
+        var c4 = "58\n" +
+            "8\n" +
+            "3\n" +
+            "4\n" +
+            "6\n" +
+            "5\n" +
+            "8\n" +
+            "2\n" +
+            "3\n" +
+            "5\n" +
+            "3\n" +
+            "6\n" +
+            "3\n" +
+            "6";
+        var c5 = "58\n" +
+            "8\n" +
+            "3\n" +
+            "4\n" +
+            "6\n" +
+            "5\n" +
+            "8\n" +
+            "2\n" +
+            "3\n" +
+            "5\n" +
+            "3\n" +
+            "6\n" +
+            "3\n" +
+            "6";
+        var c6 = "3%\n" +
+            "2%\n" +
+            "2%\n" +
+            "1%\n" +
+            "2%\n" +
+            "1%\n" +
+            "1%\n" +
+            "1%\n" +
+            "1%\n" +
+            "1%\n" +
+            "1%\n" +
+            "1%\n" +
+            "2%\n" +
+            "2%";
+
+        var c7 = "189\n" +
+            "56\n" +
+            "23\n" +
+            "12\n" +
+            "45\n" +
+            "26\n" +
+            "23\n" +
+            "12\n" +
+            "18\n" +
+            "13\n" +
+            "18\n" +
+            "18\n" +
+            "8\n" +
+            "14";
+        var c8 = "263\n" +
+            "58\n" +
+            "24\n" +
+            "13\n" +
+            "46\n" +
+            "27\n" +
+            "25\n" +
+            "26\n" +
+            "29\n" +
+            "18\n" +
+            "23\n" +
+            "23\n" +
+            "15\n" +
+            "26";
+
+
+        var c9 = "86\n" +
+            "2\n" +
+            "1\n" +
+            "1\n" +
+            "1\n" +
+            "1\n" +
+            "2\n" +
+            "13\n" +
+            "9\n" +
+            "5\n" +
+            "5\n" +
+            "7\n" +
+            "7\n" +
+            "12";
+
+
+        var list = c1.split("\n");
+        console.log(list)
+        var h = [];
+        $.each(list, function (idx) {
+            h.push('<tr>');
+            h.push('<td>' + this + '</td>');
+
+            h.push('<td>' + c2.split("\n")[idx] + '</td>');
+            h.push('<td>' + c3.split("\n")[idx] + '</td>');
+            h.push('<td>' + c4.split("\n")[idx] + '</td>');
+            h.push('<td>' + c5.split("\n")[idx] + '</td>');
+            h.push('<td>' + c6.split("\n")[idx] + '</td>');
+            h.push('<td>' + c7.split("\n")[idx] + '</td>');
+            h.push('<td>' + c8.split("\n")[idx] + '</td>');
+            h.push('<td>' + c9.split("\n")[idx] + '</td>');
+
+
+            h.push('</tr>');
+        });
+
+
+        $("tbody").html(h.join(""))
+
+
+    })
+
+
+</script>
+</body>
+</html>

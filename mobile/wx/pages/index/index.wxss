@@ -1,0 +1,71 @@
+/**index.wxss**/
+
+.userinfo-box {
+  background-color: #fff;
+  padding: 10rpx;
+  height: 50rpx;
+}
+
+.userinfo-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.list-box {
+  position: absolute;
+  top: 80rpx;
+  bottom: 10rpx;
+  left: 10rpx;
+  right: 10rpx;
+  width: auto;
+}
+
+.list-box .item {
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align:top;
+  margin-bottom: 10rpx;
+}
+
+.item:nth-child(2n) {
+  padding-left: 5rpx;
+  float:right;
+}
+
+.item:nth-child(2n+1) {
+  padding-right: 5rpx;
+  float:left;
+}
+
+.item-main {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.add-item{text-align: center;  height:300rpx;  line-height: 280rpx; 
+  font-size: 100rpx; color: #19aeff
+}
+
+
+.item-title {
+  font-size: 0.8rem;color: #999;
+}
+
+.item-text{}
+
+.date {
+   font-size: 0.8rem;
+  text-align: right;
+  padding-right: 5rpx;
+  color: #999;
+}

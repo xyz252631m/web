@@ -1,0 +1,72 @@
+@import "../root";
+
+/*文本导航*/
+.text-nav {
+	.mc { padding: 0 10px 0 10px; }
+	.i-right { float: right; width: 10px; height: 18px; margin-top: 11px; margin-right: 10px; background: url("@{img}/i_right.png") center no-repeat; background-size: 10px 18px; }
+	h3 { line-height: 40px; border-bottom: #ececec solid 1px; height: 40px;
+		span { color: #333333; word-break: break-all; }
+		a { margin-left: 10px; color: #075fbe; font-weight: normal; }
+	}
+	.no-bor { border: none; }
+}
+
+
+/*设置文本导航*/
+.set-text-nav { padding: 10px 0;
+	p { line-height: 40px; }
+	span { display: inline-block; width: 6em; text-align: right; }
+	label { }
+	.label-input { width: 220px; }
+	.label-color { width: 220px;
+		input { width: 200px; }
+	}
+}
+.stn-nav-list {
+	li { margin: 0 10px 10px; width: 396px; border: #cccccc solid 1px; background-color: white; position: relative;
+		&::selection { color: transparent }
+		span { vertical-align: middle; }
+		&:hover {
+			.i-close { display: block; }
+		}
+	}
+	.link-sname { display: inline-block; vertical-align: middle; position: relative;
+		em { border-radius: 3px;display: inline-block; vertical-align: middle;  max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; height: 1.5em; background-color: #2d7232; line-height: 1.5; color: white; }
+		i { position: absolute; display: none; font-style: normal; font-size: 12px; font-family: "Microsoft YaHei"; cursor: pointer; top: 6px; right: -8px; width: 15px; height: 15px; line-height: 16px; text-align: center; background-color: #333333; opacity: .8; color: white; border-radius: 50%; }
+		&:hover {
+			i { display: block; }
+		}
+	}
+	.link-mar15 { margin-right: 15px;
+		em { padding: 0 4px; }
+	}
+	.move-li { display: none; position: absolute; z-index: 999; }
+	.ad-img-bg { float: left; position: relative;
+		img { width: 118px; height: 118px; border: #eeeeee solid 1px; margin: 10px 0 0 10px; }
+		cite { position: absolute; bottom: 5px; left: 10px; right: 0; height: 28px; line-height: 28px; }
+	}
+	.c-bg { background-color: #333333; opacity: .7 }
+	.c-txt { color: white; text-align: center; cursor: pointer; }
+
+	.ad-img-info { float: right; width: 230px; padding-top: 10px;
+		span { width: 55px; vertical-align: middle; }
+		.label-input { width: 160px; }
+	}
+	.other-link-box { position: absolute; display: none; z-index: 999; left: -50px; width: 320px; height: 55px; border: #9a9a9a solid 1px; border-radius: 5px; background-color: white;
+		.i-top { position: absolute; top: -6px; left: 50%; width: 12px; height: 6px; background: #ffffff url("@{img}/icon.png") -7px -133px no-repeat }
+		p { margin-top: 5px; }
+		.label-input { width: 180px;
+			input{}
+		}
+		.label-oth-link { margin-left: 10px; }
+		a { display: inline-block; vertical-align: middle; font-size: 12px; width: 50px; height: 29px; line-height: 29px; text-align: center; border-radius: 3px; margin-left: 5px; }
+		.btn-oth-ok { background-color: #3283fa; color: white; border: 1px solid #3283fa; }
+		.btn-oth-cel { border: 1px solid #bbbbbb; background-color: #ffffff; }
+	}
+	.i-close { position: absolute; display: none; font-style: normal; font-family: "Microsoft YaHei"; cursor: pointer; top: -8px; right: -8px; width: 20px; height: 20px; line-height: 16px; text-align: center; background-color: #333333; opacity: .8; color: white; border-radius: 50%; }
+}
+
+
+
+
+

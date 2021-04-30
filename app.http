@@ -1,0 +1,23 @@
+GET http://localhost:8888/
+Accept: application/json
+token:8345eret3453re345
+
+### Send a form with the text and file fields
+POST http://localhost:8888/getFile
+Content-Type: application/json; charset=utf-8
+token:8345eret3453re345
+
+{
+  "url": "/app.js"
+}
+###
+POST http://localhost:8888/updateFile
+Content-Type: application/json; charset=utf-8
+token:8345eret3453re345
+
+{
+  "url": "/al/1.txt",
+  "text": "123456"
+}
+
+###

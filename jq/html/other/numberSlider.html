@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>数字</title>
+    <link rel="stylesheet" href="../../../css/animate.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <style>
+        body {color: #333;font-size: 14px;}
+        .main {padding: 100px 200px;}
+        /*style*/
+        em {font-style: normal;font-size: 20px; color: #00a0e9;display: inline-block; width: 5em;text-align: right}
+        em strong {position: relative;display: inline-block; vertical-align: top; width: 90px;font-size: 20px;
+        }
+        em b {font-weight: normal;display: inline-block;position: absolute;top: 0;right: 0;
+            font-family: "Microsoft Yahei";}
+        @keyframes flipOutSd {
+            0% {
+                -webkit-transform: perspective(400px);
+                transform: perspective(400px);
+            }
+            25% {
+                opacity: 1;
+            }
+
+            50%, 100% {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                opacity: 1;
+            }
+        }
+        .flipOutSd {
+            -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+            -webkit-animation-name: flipOutSd;
+            animation-name: flipOutSd;
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+        }
+        @keyframes flipOutSd1 {
+            0%, 50% {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 270deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, 270deg);
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 360deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, 360deg);
+                opacity: 1;
+            }
+        }
+        .flipOutSd1 {
+            -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+            -webkit-animation-name: flipOutSd1;
+            animation-name: flipOutSd1;
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+        }
+    </style>
+
+</head>
+<body>
+<div class="main">
+
+    <div class="num-sd-2">
+        <label>数字</label>
+        <em>4645654</em>
+        <span>个</span>
+    </div>
+
+    <div class="num-sd-1">
+        <label for="">数字</label>
+        <em>26546546</em>
+        <span>个</span>
+    </div>
+</div>
+
+
+<script>
+
+
+    $(function () {
+
+        $.fn.setFlipX = function (text, width) {
+            var html = [];
+
+            var oldText = $(this).data("val") || $(this).text();
+            html.push('<strong style="width:' + (width || '100px') + '">');
+            html.push('<b class="animated flipOutSd">' + oldText + '</b>');
+            html.push('<b class="animated flipOutSd1">' + text + '</b>');
+            html.push('</strong>');
+            $(this).data("val", text);
+            $(this).html(html.join(" "))
+        };
+
+
+        setInterval(function () {
+            var text = parseInt(Math.random() * 100000);
+            $(".num-sd-1").find("em").setFlipX(text);
+
+        }, 1800)
+
+
+        setInterval(function () {
+            var text = parseInt(Math.random() * 100000);
+            $(".num-sd-2").find("em").setFlipX(text);
+
+        }, 2300)
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+.svg-edit .state {
+  height: 50px;
+  border-bottom: #ccc solid 1px;
+}
+.svg-main {
+  position: absolute;
+  width: 100%;
+  top: 51px;
+  bottom: 10px;
+}
+.svg-main .left-menu {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  top: 0;
+  width: 55px;
+  border-right: #ccc solid 1px;
+}
+.svg-main .bg {
+  position: absolute;
+  left: 55px;
+  right: 0;
+  height: 100%;
+}
+.left-menu ul {
+  width: 80px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.left-menu ul li {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin-left: 5px;
+  float: left;
+  border: #cecece solid 1px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.left-menu ul li:hover {
+  background-color: #5fbae7;
+  border-color: #5fbae7;
+  color: white;
+}
+.left-menu ul .active {
+  background-color: #5fbae7;
+  border-color: #5fbae7;
+  color: white;
+}
+.left-menu ul i {
+  font-size: 22px;
+}
+.bg {
+  background-color: #e0e0e0;
+}
+.m-edit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+}

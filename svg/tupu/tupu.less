@@ -1,0 +1,48 @@
+
+.box{width: 100%;height: 100%;font-size: 0;
+  svg{font-size: 14px;transform: translateZ(0)}
+}
+
+
+.info-box{width: 310px;height: 100px;display: none; position: fixed;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px, rgba(0, 0, 0, 0.2) -2px 0px 4px;
+  background-color: #fff;
+  border-radius: 6px;
+
+  .img-box{width: 50px;
+    height: 50px;
+    background-size: cover;
+    float: left;
+    border-radius: 8px;
+img{max-width: 50px;max-height:50px}
+  }
+  .info-list{float: left;
+    min-height: 100px;
+    padding-left: 15px;
+    width: 240px;
+    p{margin-top: 7px;}
+  }
+
+}
+.svg-root-node{user-select: none;
+  rect{fill:#128BED;}
+  text{fill: #fff}
+}
+.svg-node{user-select: none;
+  rect{fill:#128BED;cursor: pointer}
+  text{fill: #fff;cursor: pointer}
+  circle{cursor: pointer}
+}
+.svg-more {cursor: pointer;
+  rect{fill:#f1f1f1;}
+  text{fill: #333}
+}
+.node-op-state{
+  circle{fill:#fff;stroke:#666}
+  line{stroke:#666}
+}
+
+.svg-csp {cursor: pointer}
+
+.svg-move{cursor: move}

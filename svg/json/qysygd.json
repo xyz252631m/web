@@ -1,0 +1,248 @@
+{
+  "status": 200,
+  "result": {
+    "id": "09782728cbcaa15cdbd53898db3a0013",
+    "name": "美林数据技术股份有限公司",
+    "paths": [
+      {
+        "id": "p69fac020a22087689a8f9935c24a373",
+        "name": "程宏亮",
+        "Percent": "",
+        "percentTotal": "20.58%",
+        "Level": "1,2",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 2,
+        "paths": [
+          [
+            {
+              "id": "p69fac020a22087689a8f9935c24a373",
+              "name": "程宏亮",
+              "Percent": "20.58%",
+              "percentTotal": "20.58%",
+              "Level": "1",
+              "DataType": 0,
+              "Org": 2
+            }
+          ],
+          [
+            {
+              "id": "3877951898d6d2f163d08a9f8f08ae77",
+              "name": "北京天睿聚合投资管理中心（有限合伙）",
+              "Percent": "3.17%",
+              "percentTotal": "3.17%",
+              "Level": "1",
+              "DataType": 0,
+              "Org": 0
+            },
+            {
+              "id": "p69fac020a22087689a8f9935c24a373",
+              "name": "程宏亮",
+              "Percent": "10.83%",
+              "percentTotal": "0.3433%",
+              "Level": "2",
+              "DataType": 5,
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "A",
+          "U",
+          "B"
+        ]
+      },
+      {
+        "id": "p475fdfef0acc0df5952c53bd8e05e30",
+        "name": "王璐",
+        "Percent": "",
+        "percentTotal": "20.35%",
+        "Level": "1",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 1,
+        "paths": [
+          [
+            {
+              "id": "p475fdfef0acc0df5952c53bd8e05e30",
+              "name": "王璐",
+              "Percent": "20.35%",
+              "percentTotal": "20.35%",
+              "Level": "1",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      },
+      {
+        "id": "p3c9e41f50a13f1432cc16da7f39da77",
+        "name": "程宏斌",
+        "Percent": "",
+        "percentTotal": "10.18%",
+        "Level": "1",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 1,
+        "paths": [
+          [
+            {
+              "id": "p3c9e41f50a13f1432cc16da7f39da77",
+              "name": "程宏斌",
+              "Percent": "10.18%",
+              "percentTotal": "10.18%",
+              "Level": "1",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      },
+      {
+        "id": "p40c2c1ac32b6d47d758d291a40fcbec",
+        "name": "黄惠敏",
+        "Percent": "",
+        "percentTotal": "3.97%",
+        "Level": "1",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 1,
+        "paths": [
+          [
+            {
+              "id": "p40c2c1ac32b6d47d758d291a40fcbec",
+              "name": "黄惠敏",
+              "Percent": "3.97%",
+              "percentTotal": "3.97%",
+              "Level": "1",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      },
+      {
+        "id": "pfb0621adc2a66a938c27f86be2ac8be",
+        "name": "张亚军",
+        "Percent": "",
+        "percentTotal": "3.25%",
+        "Level": "1",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 1,
+        "paths": [
+          [
+            {
+              "id": "pfb0621adc2a66a938c27f86be2ac8be",
+              "name": "张亚军",
+              "Percent": "3.25%",
+              "percentTotal": "3.25%",
+              "Level": "1",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      },
+      {
+        "id": "pccecaae707f68a47a2763ac31abb924",
+        "name": "刘宏",
+        "Percent": "",
+        "percentTotal": "2.6446%",
+        "Level": "1,2",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 2,
+        "paths": [
+          [
+            {
+              "id": "pccecaae707f68a47a2763ac31abb924",
+              "name": "刘宏",
+              "Percent": "2.61%",
+              "percentTotal": "2.61%",
+              "Level": "1",
+              "Org": 2
+            }
+          ],
+          [
+            {
+              "id": "3877951898d6d2f163d08a9f8f08ae77",
+              "name": "北京天睿聚合投资管理中心（有限合伙）",
+              "Percent": "3.17%",
+              "percentTotal": "3.17%",
+              "Level": "1",
+              "Org": 0
+            },
+            {
+              "id": "pccecaae707f68a47a2763ac31abb924",
+              "name": "刘宏",
+              "Percent": "1.09%",
+              "percentTotal": "0.0346%",
+              "Level": "2",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      },
+      {
+        "id": "p013c4c47a4ccbbc3733814b3b6000cd",
+        "name": "王水福",
+        "Percent": "",
+        "percentTotal": "1.8414%",
+        "Level": "3",
+        "DataType": 0,
+        "Org": 2,
+        "HasImage": false,
+        "pathsCount": 1,
+        "paths": [
+          [
+            {
+              "id": "f8958f6a18f79b76fa25aaa42d7136f5",
+              "name": "浙江方向投资有限公司",
+              "Percent": "4.37%",
+              "percentTotal": "4.37%",
+              "Level": "1",
+              "Org": 0
+            },
+            {
+              "id": "d189c49cd98fe50173de6239d92d647f",
+              "name": "西子电梯集团有限公司",
+              "Percent": "75.76%",
+              "percentTotal": "3.3107%",
+              "Level": "2",
+              "Org": 0
+            },
+            {
+              "id": "p013c4c47a4ccbbc3733814b3b6000cd",
+              "name": "王水福",
+              "Percent": "55.62%",
+              "percentTotal": "1.8414%",
+              "Level": "3",
+              "Org": 2
+            }
+          ]
+        ],
+        "PathType": [
+          "B"
+        ]
+      }
+    ]
+  }
+}

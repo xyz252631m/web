@@ -1,0 +1,152 @@
+/*
+* des:编辑装修页面
+*/
+@import "root";
+/*店铺列表页面*/
+.store-list {
+	h3 { height: 40px; line-height: 40px; }
+	table { width: 100%; border-bottom: none; }
+	//th, td { border-bottom: 1px solid #e5e5e5; height: 39px; line-height: 39px; font-size: 12px; }
+	tr {
+		&:hover { background-color: #f8f8f8; }
+	}
+	//th { font-weight: normal; background-color: #f8f8f8; }
+	//td { text-align: center; }
+	a { color: #4169e1; }
+	.td-op { text-align: right; padding-right: 20px; border-right: none;
+		span { color: #4169e1; margin-left: 3px; }
+		.dis { color: #999999; cursor: default; }
+		a { margin-left: 10px; }
+	}
+	.page { border: #d3d3d3 solid 1px; border-top: 1px solid #f0f0f0; line-height: 30px; margin-top: 0; padding-right: 20px;
+		a { color: #696969; }
+	}
+	
+	.store-tip { height: 40px; line-height: 40px; text-align: right;
+		a { margin-left: 20px; text-decoration: none; color: #333333; }
+	}
+	
+}
+/*店铺信息页面*/
+.store-info {
+	h3 { }
+	p { margin-left: 50px; line-height: 35px; margin-top: 20px;
+		img { display: inline-block; max-width: 70px; max-height: 70px; }
+		
+	}
+	.store-name { border: #cccccc solid 1px; height: 24px; line-height: 24px; padding: 0 2px; outline: none; }
+	.btn-upload { width: 6em; height: 35px; display: inline-block; vertical-align: middle; margin-left: 20px;  color: #4169e1;
+		input { opacity: 0;font-size: 0; width: 100%; filter: alpha(opacity=0); cursor: default; outline: none;}
+		&:hover{text-decoration: underline;}
+	}
+	.img-tip { font-size: 12px; color: red; margin-left: 20px; display: none; }
+	textarea { vertical-align: text-top; border: #cccccc solid 1px; width: 400px; height: 120px; outline: none; padding: 2px; }
+	.btn-submit, .btn-return { float: left; margin-top: 20px; margin-left: 200px; cursor: pointer;
+		background-color: #ff6600; text-decoration: none;
+		color: white; height: 30px; line-height: 30px; padding: 0 20px; border-radius: 2px; font-size: 12px; text-align: center;
+	}
+	.btn-return { margin-left: 10px; }
+}
+/*模板选择页面*/
+.template-list {
+	ul { margin: 20px auto; text-align: center; }
+	li { margin: 20px 25px 0; width: 178px; height: 88px; line-height: 88px; cursor: pointer; border: #cccccc solid 1px; display: inline-block; text-align: center; }
+	.active { border-color: #ff6600; color: #ff6600; }
+	p { text-align: center }
+	.btn-submit { margin: 20px auto; cursor: pointer; display: inline-block;;
+		background-color: #ff6600; text-decoration: none;
+		color: white; height: 30px; line-height: 30px; padding: 0 20px; border-radius: 2px; font-size: 12px; text-align: center;
+	}
+}
+/*成功提示页*/
+.complete-info { min-width: 800px;
+	h3 { color: #44bb00; font-size: 15px; text-indent: 20px; }
+	.coder { float: left; border-right: #cccccc solid 1px; width: 45%;
+		h3 { text-align: center }
+		label { font-size: 12px; color: #999999; }
+		p { text-indent: 22px; text-align: center; }
+		.coder-img { margin: 10px auto; padding: 15px; background-color: #f3f3f3; width: 238px;
+			img { background-color: white; width: 238px; height: 238px; }
+		}
+	}
+	.link-info { float: left; width: 50%;
+		h3 { text-align: center }
+		a { display: block; margin: 80px auto 0; width: 230px; height: 70px; line-height: 70px; text-decoration: none; background-color: #009dd9; color: white; text-align: center; font-size: 16px; }
+	}
+	
+}
+/*微页面列表*/
+.title-box { height: 40px; line-height: 40px; padding: 10px; background-color: #eeeeee;
+	.logo, .store-title { float: left; }
+	.link-list { float: right; }
+	.logo {
+		img { max-width: 40px; max-height: 40px; border: #cccccc solid 1px; }
+		
+	}
+	.store-title { margin-left: 10px;
+		p { line-height: 20px; }
+		span { font-size: 12px; color: #999999; }
+		a { color: #4169e1; margin-left: 10px; }
+	}
+	.link-list { position: relative;
+		a { padding: 2px 4px; font-size: 12px; color: #4169e1; margin-left: 5px; border: 1px solid #4169e1; background: #ffffff; line-height: 38px; border-radius: 2px; }
+	}
+	.wx-info { position: absolute; border: #cccccc solid 1px; width: 190px; right: 0; background-color: white; padding: 15px 0; display: none;
+		img { width: 180px; margin-left: 5px; }
+		p { text-align: center; line-height: 1.1; }
+		a { border: none; line-height: 1; }
+	}
+}
+.op-box { height: 30px; margin-top: 15px;
+	.btn-create { float: left; background-color: #ff6600; text-decoration: none;
+		color: white; height: 30px; line-height: 30px; padding: 0 10px; border-radius: 2px; font-size: 12px; text-align: center;
+	}
+	.search-box { float: right;
+		input { width: 70px; transition: width linear 0.25s; background: url("@{img}/search.png") 3px center no-repeat; padding: 0 5px 0 25px; border: #dddddd solid 1px; outline: none; height: 30px; line-height: 30px; }
+		input:focus { width: 150px }
+	}
+}
+.data-box { margin-top: 15px;
+	table { width: 100%; }
+	thead {
+		a { position: relative; }
+		.up::after { position: absolute; top: -1px; content: '\2191'; }
+		.down::after { position: absolute; top: -1px; content: '\2193'; }
+
+	}
+	//th, td { border-bottom: 1px solid #e5e5e5; height: 39px; line-height: 39px; font-size: 12px; }
+	tr {
+		&:hover { background-color: #f8f8f8; }
+	}
+	//th { font-weight: normal; background-color: #f8f8f8; }
+	//td { text-align: center; }
+	a { color: #4169e1; }
+	.t-num { border: #cccccc solid 1px; display: none; width: 70px; height: 20px; line-height: 20px; }
+	.td-op { text-align: right; padding-right: 20px; border-right: none;
+		span { color: #4169e1; margin-left: 3px; }
+		.dis { color: #999999; cursor: default; }
+	}
+	.page {
+		a { color: #696969; }
+	}
+}
+.url-box { position: absolute; z-index: 3; left: 0; top: 0; -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+	background: #ffffff; width: 300px; height: 50px;
+	border-radius: 2px;
+	.url-content { z-index: 2; padding: 10px 20px; background-color: white; position: relative; height: 30px;
+		input { height: 28px; line-height: 28px; width: 200px; border: #cccccc solid 1px; float: left; background-color: #eeeeee; padding: 0 3px; border-radius: 3px 0 0 3px; }
+		.btn-copy { height: 30px; line-height: 30px; width: 50px; background-color: #f8f8f8; outline: none;
+			border: 1px solid #dddddd; float: left; border-radius: 0 4px 4px 0; margin-left: -1px; cursor: pointer; }
+	}
+	.arrow {
+		position: absolute; top: 50%; right: 0; transform-origin: 100% 0; transform: rotate(45deg) translateX(50%) translateY(-50%);
+		width: 6px;
+		height: 6px;
+		background: #ffffff;
+		-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+		z-index: 1;
+	}
+}
+/*end  微页面列表*/
+

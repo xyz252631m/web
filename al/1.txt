@@ -1,0 +1,45 @@
+123456 121.5.68.150
+
+
+# 从HEAD版本开始往过去数3个版本
+$ git rebase -i HEAD~3
+
+# 合并指定版本号（不包含此版本）
+$ git rebase -i [commitid]
+
+squash 向上合并
+
+2.创建一个screen会话并进入
+screen -S me
+4.重新连接查看screen
+screen -r me
+5.销毁一个会话并退出
+screen -S me -X  quit
+========
+screen -ls
+进入
+screen -r 27267
+如果想杀掉终端可以执行
+kill 27267
+
+
+(function (global, factory) {
+    if (typeof exports === 'object' && typeof module !== 'undefined') {
+        // CommonJS、CMD规范检查
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD规范检查
+        define(factory);
+    } else {
+        // 浏览器注册全局对象
+        global.Hentai = factory();
+    }
+})(this, (function () {
+    function say() {
+        console.log('hello hentai');
+    }
+
+    return {
+        say: say
+    }
+}))

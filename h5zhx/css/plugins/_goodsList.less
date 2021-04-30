@@ -1,0 +1,284 @@
+@import "../root";
+/*商品列表*/
+.goods-list {
+	ul { padding: 2%; }
+	ul li { font-size: 0; float: left; box-sizing: border-box; position: relative; background-color: white;
+		a { }
+	}
+	.ul-2 { display: none; }
+	//.hairlines:after { content: ''; position: absolute; left: 0; background: #000000; width: 100%; height: 1px; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }
+	.hairlines:after { content: ''; position: absolute; top: 0; left: 0; border: 1px solid #000000; -webkit-box-sizing: border-box; box-sizing: border-box; width: 200%; height: 200%; -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+	.goods-img { display: block; }
+	img { width: 100%; }
+	.goods-name { font-size: 14px; line-height: 20px; padding-left: 5px; padding-top: 5px; overflow: hidden; color: #333333; }
+	.goods-des { font-size: 12px; color: #999999; line-height: 16px; padding-left: 5px; }
+	.goods-price { color: red; font-size: 14px; font-weight: bold; line-height: 25px; padding-left: 5px; }
+
+	/*购买按钮样式*/
+	.buy-none {
+		.btn-buy { display: none; }
+	}
+	.buy-1 {
+		.btn-buy { position: absolute; bottom: 5px; right: 10px; width: 17px; height: 17px; background: url("@{img}/icon.png") -1px -89px no-repeat; }
+	}
+	.buy-2 {
+		.btn-buy { position: absolute; bottom: 5px; right: 5px; width: 26px; height: 24px; background: url("@{img}/icon.png") -3px -1px no-repeat; }
+	}
+	.buy-3 {
+		.btn-buy { position: absolute; bottom: 5px; right: -3px; width: 37px; height: 22px; background: url("@{img}/icon.png") -1px -26px no-repeat; }
+	}
+	.buy-4 {
+		.btn-buy { position: absolute; bottom: 5px; right: 5px; padding: 2px 8px; background-color: #cc9900; font-size: 12px; color: white; border-radius: 4px; }
+	}
+}
+/*大图模式*/
+.goods-big {
+	ul li { width: 100%; margin-bottom: 5px; border: #cccccc solid 1px; padding: 5px; }
+	ul li:last-child { margin-bottom: 0; }
+	.goods-name { font-weight: bold; }
+	/*卡片*/
+	.card {
+		.goods-des { line-height: 25px; }
+	}
+	/*极简*/
+	.simple {
+		li { padding: 0 0 5px 0; border: none; }
+		.info-box { position: relative; height: 40px; }
+		.goods-name { padding-top: 0; height: 25px; line-height: 25px; width: 70%; position: absolute; top: 0; left: 0; }
+		.goods-des { position: absolute; bottom: 0; left: 0; }
+		.goods-price { position: absolute; top: 0; right: 5px; }
+		.btn-buy { display: none; }
+
+		/*无描述信息时 浮动样式*/
+		.float-info { position: absolute; height: 22px; border-radius: 3px; right: 10px; bottom: 10px; background-color: #333333; opacity: .8;
+			.goods-des { display: none; }
+			.goods-name, .goods-price { color: white; height: 22px; line-height: 22px; font-weight: normal; padding: 0; font-size: 12px; }
+			.goods-name { text-indent: 5px; width: 287px; position: static; }
+			.goods-price { text-align: right; padding: 0 5px; border-radius: 3px; position: absolute; right: 0; bottom: 0; background-color: #333333; }
+		}
+
+	}
+}
+/*小图模式*/
+.goods-small {
+	ul { }
+	ul li { width: 49%; margin-bottom: 5px; }
+	ul li:nth-child(2n-1) { margin-right: 2%; }
+	//ul li:nth-child(4n-1), li:nth-child(4n) { margin-bottom: 0 }
+	/*卡片*/
+	.card {
+		li { border: #dedede solid 1px; padding: 1px; }
+		.goods-name { text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; padding-bottom: 5px; min-height: 40px; }
+		.none { display: none; }
+		.goods-des { display: none; }
+		.goods-price { padding-bottom: 4px; }
+	}
+	/*瀑布流*/
+	.waterfall:nth-child(1){width: 47%;padding: 2% 1% 2% 2%;}
+	.waterfall:nth-child(2){width: 47%;padding: 2% 2% 2% 1%;}
+	.waterfall { float: left;
+		//-webkit-column-count: 2; -webkit-column-gap: 10px;
+		li { width: 100%;   border: #dedede solid 1px; padding: 1px; }
+		img { max-height: 192px; max-width: 100%; }
+		li:nth-child(2n+1) { float: left; clear: left; }
+		li:nth-child(2n) { float: right; clear: right; }
+		//.li-1 img { height: 130px; }
+		//.li-2 img { height: 145px; }
+		//.li-3 img { height: 130px; }
+		//.li-4 img { height: 110px; }
+		.goods-des { display: none }
+		.info-box { position: relative; padding-bottom: 33px;
+			.goods-name, .goods-price { line-height: 22px; }
+			.goods-name { padding: 0 5px; position: static; max-height: 40px; overflow: hidden; }
+			.goods-price { height: 22px; text-align: right; padding-bottom: 4px; border-radius: 3px; position: absolute; left: 5px; bottom: 0; }
+		}
+		/*无商品名称*/
+		.h-25 { height: 32px; }
+		/*只有按钮*/
+		.pos-box { position: absolute; left: 0; right: 0; bottom: 0; }
+		/*无内容时*/
+		.h-none { height: auto; }
+	}
+	/*极简*/
+	.simple {
+		.goods-name, .goods-des, .btn-buy { display: none }
+		.goods-price { line-height: 20px; font-weight: normal; position: absolute; right: 10px; bottom: 10px; background-color: #333333; opacity: .8; color: white; font-size: 12px; border-radius: 3px; padding: 0 5px; }
+	}
+	/*促销*/
+	.promotion {
+		li { border: #dedede solid 1px; padding: 1px; }
+		.goods-name, .goods-des, .btn-buy, .goods-price { display: none }
+
+		.promotion-box { display: block; height: 40px; }
+		.prom-price { float: left; width: 70%; font-size: 13px;
+			strong, del { display: block; text-indent: 5px; line-height: 1; }
+			strong { font-weight: bold; color: red; font-size: 16px; margin-top: 5px; }
+			del { font-size: 12px; color: #999999; margin-top: 2px; }
+		}
+		.btn-prom { position: absolute; height: 30px; line-height: 1; bottom: 1px; right: 1px; width: 2em; padding: 5px 10px; background-color: #ff0033; font-size: 14px; color: white; }
+
+	}
+
+}
+/*一大两小 模式*/
+.goods-big-small {
+	//ul li:nth-child(4n-3) { width: 100%; margin-bottom: 5px;
+	//	.goods-name { font-weight: bold; }
+	//}
+	//ul li:nth-child(4n-2) { width: 49%; margin-right: 2%; }
+	//ul li:nth-child(4n-1) { display: none; }
+	//ul li:nth-child(4n) { width: 49%; }
+
+	ul li:nth-child(3n-2) { width: 100%;
+		.goods-name { font-weight: bold; }
+	}
+	li{margin-bottom: 5px;}
+	ul li:nth-child(3n-1) { width: 49%; margin-right: 2%;}
+	ul li:nth-child(3n) { width: 49%; }
+	/*卡片*/
+	.card { padding: 5px; border: #dedede solid 1px;
+		li { border: #dedede solid 1px; padding: 5px; }
+		.goods-des { display: none; }
+		li:nth-child(3n-2) { }
+		li:nth-child(3n-1), li:nth-child(3n) { padding-bottom: 4px;
+			.goods-name { padding-bottom: 5px; min-height: 40px; }
+		}
+	}
+
+	/*极简*/
+	.simple {
+		.goods-des, .btn-buy { display: none }
+		li:nth-child(3n-2)  {
+			.info-box { position: absolute; height: 22px; border-radius: 3px; right: 10px; bottom: 5px; background-color: #333333; opacity: .8; }
+			.goods-name, .goods-price { color: white; height: 22px; line-height: 22px; font-weight: normal; padding: 0; font-size: 12px; }
+			.goods-name { text-indent: 5px; width: 287px; }
+			.goods-price { text-align: right; padding: 0 5px; border-radius: 3px; position: absolute; right: 0; bottom: 0; background-color: #333333; }
+		}
+		li:nth-child(3n-1), li:nth-child(3n) {
+			.goods-name { display: none }
+			.goods-price { line-height: 20px; font-weight: normal; position: absolute; right: 10px; bottom: 5px; background-color: #333333; opacity: .8; color: white; font-size: 12px; border-radius: 3px; padding: 0 5px; }
+		}
+	}
+}
+/*详细列表 模式*/
+.goods-detail {
+	ul li { padding: 6px; }
+	.goods-img { float: left;
+		img { max-width: 128px; max-height: 128px; }
+	}
+	/*卡片*/
+	.card {
+		li { border: #dedede solid 1px; width: 100%; margin-bottom: 5px; }
+		li:last-child { margin-bottom: 0; }
+		.goods-name { text-overflow: ellipsis; padding-top: 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+		.goods-price { padding-left: 5px; float: left; }
+		.goods-des { display: none; }
+	}
+	/*极简*/
+	.simple {
+		li { border-bottom: #dedede solid 1px; width: 100%; padding: 6px 0; }
+		li:first-child { padding-top: 3px; }
+		li:last-child{ margin-bottom: 0; padding-bottom: 6px; }
+		.goods-name { text-overflow: ellipsis; padding-top: 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+		.goods-price { padding-left: 5px; float: left; }
+		.goods-des { display: none; }
+		.btn-buy { bottom: 6px; }
+	}
+}
+
+/*商品设置*/
+.set-goods-list {
+	p { line-height: 40px; }
+	span { display: inline-block; font-size: 14px; margin-left: 10px; min-width: 6em; height: 40px; text-align: right; vertical-align: middle; }
+	label { display: inline-block; vertical-align: middle; }
+	.r-list { border-radius: 8px;
+		a { display: inline-block; vertical-align: middle; color: #277ed2; cursor: pointer; }
+		label { display: inline-block; vertical-align: middle; position: relative;
+			em { border-radius: 3px; display: inline-block; vertical-align: middle; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; height: 1.5em; background-color: #2d7232; line-height: 1.5; color: white; }
+		}
+		.link-mar15 { margin-right: 15px;
+			em { padding: 0 4px; }
+		}
+	}
+	.r-tip { font-size: 12px; line-height: 1;
+		label { width: 300px; color: #999999; }
+	}
+	.dta-tip{display: none;}
+	.show-num {
+		.label-radio { margin-right: 10px; }
+	}
+	.buy-btn-style { padding-left: 40px; }
+}
+/*商品详细设置*/
+.detail-info { background-color: #ffffff; border: #cccccc solid 1px; margin: 0 12px 13px; padding: 5px 0;
+	p { padding-left: 20px; line-height: 35px; }
+	.show-type { border-bottom: #cccccc solid 1px; padding: 0; margin: 0 20px; }
+
+}
+/*大图模式*/
+.dta-big {
+	.show-type {
+		.label-radio:nth-child(2), .label-radio:nth-child(4) { display: none; }
+	}
+	/*卡片*/
+	.card {
+	}
+	/*极简*/
+	.simple {
+		.buy-chk, .buy-btn-style { display: none; }
+	}
+}
+/*小图模式*/
+.dta-small {
+
+	/*卡片*/
+	.card {
+		.show-des { display: none; }
+	}
+	/*瀑布流*/
+	.waterfall {
+		.show-des { display: none; }
+	}
+	/*极简*/
+	.simple {
+		.buy-chk, .buy-btn-style, .show-des, .show-name { display: none; }
+	}
+	/*促销*/
+	.promotion { padding-bottom: 20px;
+		.buy-chk, .buy-btn-style, .show-des, .show-price, .show-name { display: none; }
+	}
+}
+/*一大两小模式*/
+.dta-bs {
+	.dta-tip{display: inline;}
+	.show-type {
+		.label-radio:nth-child(2), .label-radio:nth-child(4) { display: none; }
+	}
+	/*卡片*/
+	.card {
+
+		.show-des { display: none; }
+	}
+	/*极简*/
+	.simple {
+		.buy-chk, .buy-btn-style, .show-des { display: none; }
+	}
+
+}
+/*详细模式*/
+.dta-list {
+	.show-type {
+		.label-radio:nth-child(2), .label-radio:nth-child(4) { display: none; }
+	}
+	/*卡片*/
+	.card {
+		.show-name, .show-des, .show-price { display: none; }
+	}
+	/*极简*/
+	.simple {
+		.show-name, .show-des, .show-price { display: none; }
+		.buy-btn-style {
+			.label-radio:nth-child(3) { display: none; }
+		}
+	}
+}

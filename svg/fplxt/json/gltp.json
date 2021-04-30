@@ -1,0 +1,638 @@
+{
+  "status": 200,
+  "result": {
+    "nodes": [
+      {
+        "id": "1",
+        "nodeType": "company",
+        "typeId": "root",
+        "typeName": "目标企业",
+        "isRoot": true,
+        "properties": {
+          "keyNo": "276352a95db7aa252420e896ffb1ff6c",
+          "registCapi": "46415.828",
+          "name": "XXX股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "statusId": "03",
+          "status": "正常户"
+        }
+      },
+      {
+        "id": "2",
+        "nodeType": "company",
+        "typeId": "02",
+        "typeName": "一级销项",
+        "properties": {
+          "keyNo": "47635c2a6eabc66e0c54edf44e112a11",
+          "registCapi": "6000.000",
+          "name": "华农健康产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "statusId": "05",
+          "status": "非正常户"
+        }
+      },
+      {
+        "id": "3",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "d0ca754f7049728c42859eb8a28a17fb",
+          "registCapi": "5000.000",
+          "name": "无锡美林数联科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "statusId": "06",
+          "status": "清算"
+        }
+      },
+      {
+        "id": "4",
+        "nodeType": "company",
+        "typeId": "02",
+        "typeName": "一级销项",
+        "properties": {
+          "keyNo": "dee21f29a987890b7fd1e0d0d826a1c2",
+          "registCapi": "500.000",
+          "name": "上海琢学科技有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "statusId": "03",
+          "status": "正常户"
+        }
+      },
+      {
+        "id": "5",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "西安深谱之光智能科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "statusId": "07",
+          "status": "注销"
+        }
+      },
+      {
+        "id": "51",
+        "nodeType": "company",
+        "typeId": "02",
+        "typeName": "一级销项",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "海口玖锦大药房有限公司",
+          "statusId": "01",
+          "status": "受理"
+        }
+      },
+      {
+        "id": "52",
+        "nodeType": "company",
+        "typeId": "02",
+        "typeName": "一级销项",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "红孩子文化产业发展有限公司",
+          "statusId": "02",
+          "status": "筹建"
+        }
+      },
+      {
+        "id": "53",
+        "nodeType": "company",
+        "typeId": "02",
+        "typeName": "一级销项",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "上海唐盛投资股份有限公司",
+          "statusId": "04",
+          "status": "停业"
+        }
+      },
+      {
+        "id": "6",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "p5bf198309851fe05e3dad0bc3d3e48e",
+          "role": "自然人股东",
+          "name": "上海唐盛投资股份有限公司2",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "7",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "p6fcdfc51320ba2f68e07b19f0678b96",
+          "role": "自然人股东",
+          "name": "上海唐盛投资股份有限公司3",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "8",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "p9716455e8dfef7326b39ec43003af2d",
+          "role": "自然人股东",
+          "name": "上海唐盛投资股份有限公司4",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "9",
+        "nodeType": "company",
+        "typeId": "01",
+        "typeName": "一级进项",
+        "properties": {
+          "keyNo": "pbd00865ba4e05a06afd85a30e687b72",
+          "role": "自然人股东",
+          "name": "上海唐盛投资股份有限公司5",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "10",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "上海唐盛投资股份有限公司",
+          "statusId": "04",
+          "status": "停业"
+        }
+      },
+      {
+        "id": "11",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司11"
+        }
+      },
+      {
+        "id": "12",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司12"
+        }
+      },
+      {
+        "id": "13",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司13"
+        }
+      },
+      {
+        "id": "14",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司14"
+        }
+      },
+      {
+        "id": "15",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司15"
+        }
+      },
+      {
+        "id": "16",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司16"
+        }
+      },
+      {
+        "id": "17",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司17"
+        }
+      },
+      {
+        "id": "18",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司18"
+        }
+      },
+      {
+        "id": "21",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司21"
+        }
+      },
+      {
+        "id": "22",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司22"
+        }
+      },
+      {
+        "id": "26",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "27",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "28",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "29",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "30",
+        "nodeType": "company",
+        "typeId": "04",
+        "typeName": "二级销项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司25"
+        }
+      },
+      {
+        "id": "31",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司24"
+        }
+      },
+      {
+        "id": "32",
+        "nodeType": "company",
+        "typeId": "03",
+        "typeName": "二级进项",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司24"
+        }
+      },
+      {
+        "id": "19",
+        "nodeType": "company",
+        "typeId": "equal",
+        "typeName": "团伙",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司19"
+        }
+      },
+      {
+        "id": "20",
+        "nodeType": "company",
+        "typeId": "equal",
+        "typeName": "团伙",
+        "properties": {
+          "name": "上海唐盛投资股份有限公司20"
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "6562919",
+        "source": "1",
+        "target": "2",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "6562919ng",
+        "source": "1",
+        "target": "52",
+        "typeId": "01",
+        "properties": {
+          "role": "1450万元",
+          "num": 1450
+        }
+      },
+      {
+        "id": "6562919sf",
+        "source": "1",
+        "target": "51",
+        "typeId": "01",
+        "properties": {
+          "role": "1260万元",
+          "num": 1260
+        }
+      },
+      {
+        "id": "150868219",
+        "source": "3",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "6562919n345g",
+        "source": "1",
+        "target": "53",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "6562920",
+        "source": "1",
+        "target": "4",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "656292033",
+        "source": "5",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "138822743",
+        "source": "6",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "153442098",
+        "source": "7",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "4561500",
+        "source": "8",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "189975922",
+        "source": "9",
+        "target": "1",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "20",
+        "source": "4",
+        "target": "11",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "21",
+        "source": "4",
+        "target": "12",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "22",
+        "source": "4",
+        "target": "13",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "23",
+        "source": "4",
+        "target": "14",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "24",
+        "source": "4",
+        "target": "15",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "31",
+        "source": "52",
+        "target": "16",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "32",
+        "source": "52",
+        "target": "17",
+        "typeId": "02",
+        "properties": {
+          "role": "260万元"
+        }
+      },
+      {
+        "id": "33",
+        "source": "52",
+        "target": "18",
+        "typeId": "02",
+        "properties": {
+          "role": "60万元"
+        }
+      },
+      {
+        "id": "36",
+        "source": "9",
+        "target": "22",
+        "typeId": "03",
+        "properties": {
+          "role": "10万元"
+        }
+      },
+      {
+        "id": "37",
+        "source": "9",
+        "target": "10",
+        "typeId": "03",
+        "properties": {
+          "role": "34万元"
+        }
+      },
+      {
+        "id": "38",
+        "source": "9",
+        "target": "21",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "42",
+        "source": "8",
+        "target": "26",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "43",
+        "source": "8",
+        "target": "27",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "44",
+        "source": "8",
+        "target": "28",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "45",
+        "source": "8",
+        "target": "29",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "46",
+        "source": "8",
+        "target": "30",
+        "type": "equal",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "47",
+        "source": "31",
+        "target": "4",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "48",
+        "source": "32",
+        "target": "4",
+        "typeId": "02",
+        "properties": {
+          "role": "100万元"
+        }
+      },
+      {
+        "id": "49",
+        "source": "1",
+        "target": "20",
+        "typeId": "equal",
+        "properties": {
+          "role": "同法人"
+        }
+      },
+      {
+        "id": "50",
+        "source": "19",
+        "target": "1",
+        "typeId": "equal",
+        "properties": {
+          "role": "同办税员"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+@w:1200;
+@wx:90%;
+@wpx:1200px;
+//颜色
+@col-blue:rgb(32,132,214);
+@col-link: #067c99;    //a链接颜色
+//tool    a,b,c 对应规格文档里的A,B,C
+.height(@num) { height:@num; line-height:@num; }
+.bold(@a: bold) { font-weight: @a; }
+.normal(@a: normal) { font-weight: @a; }
+.align(@a: middle) { vertical-align: @a; }
+.valign(@a: middle) { vertical-align: @a; }
+//font-size
+.font(@num) { font-size: @num; }
+.font12(@num:12px){ .font(@num);}
+.font14(@num:14px){ .font(@num); }
+.font16(@num:16px){ .font(@num); }
+.font18(@num:18px){ .font(@num);}
+
+.bor(@col:#ccc){border:@col solid 1px;}

@@ -1,0 +1,23 @@
+/*
+* des: index page style
+*/
+.top-box {
+  height: 70px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.left-box {
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+}
+.main-box {
+  top: 70px;
+  left: 260px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}

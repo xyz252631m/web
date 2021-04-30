@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echart table</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../lib/bulma/css/bulma.min.css">
+    <script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<div class="page-view">
+    <textarea class="textarea is-primary" placeholder="Primary textarea">
+
+    </textarea>
+</div>
+
+<table class="table">
+    <tbody></tbody>
+</table>
+
+
+<script>
+    $(function () {
+        $("textarea").on("input", function () {
+            let str = $("textarea").val();
+            str = str.replace(/\n/g, "").replace(/\t/g, "");
+            let obj = JSON.parse(str);
+            console.log(obj)
+            createTable(obj)
+        })
+
+
+        function createTable(list) {
+            let h = [];
+            list.forEach(function (tr) {
+                h.push('<tr>');
+                tr.forEach(function (td) {
+                    h.push('<td>' + td + '</td>');
+                });
+                h.push('</tr>');
+            });
+            $("tbody").html(h.join(""))
+        }
+    })
+
+
+</script>
+</body>
+</html>

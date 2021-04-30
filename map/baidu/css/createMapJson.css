@@ -1,0 +1,59 @@
+body, html { width: 100%; height: 100%; overflow: hidden; margin: 0; }
+#allmap { margin-right: 300px; height: 100%; overflow: hidden; }
+#result { border-left: 1px solid #dedede; height: 100%; width: 300px; position: absolute; top: 0px; right: 0px; font-size: 12px; }
+dl, dt, dd, ul, li { margin: 0; padding: 0; list-style: none;}
+
+p { font-size: 12px; }
+
+dt {
+    font-size: 14px;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    border-bottom: 1px dotted #000;
+    padding: 5px 0 5px 5px;
+    margin: 5px 0;
+}
+
+dd { padding: 5px 0 0 5px;}
+
+li { line-height: 28px;}
+
+/*打开文件按钮组*/
+.file-op-box {position: absolute;top: 20px;left: 20px;height: 40px;width: 200px;}
+.btn-file-open {overflow: hidden;}
+.input-json-file {opacity: 0; position: absolute; left: 0; top: 0; right: 0; bottom: 0;}
+/*信息窗口*/
+.attr-table {color: #333;}
+.attr-table td, .attr-table th { position: relative; font-weight: normal; padding: 5px; height: 22px;line-height: 22px; width: 50%;box-sizing: border-box}
+.attr-table td input, .attr-table th input {border: none;width: 100%; padding-left: 5px;background-color: transparent;}
+.attr-table tr:nth-of-type(odd) {
+    background-color: #f7f7f7;
+}
+.attr-no-style .style-row {display: none;}
+.attr-table .info-marker {position: absolute;right: -10px;top: 24px; border-color: transparent; background-color: transparent;
+    padding: 1px 4px 0 4px; color: #999; z-index: 9 }
+.attr-table .info-marker span {transition: all .4s;}
+.attr-table .info-marker:hover {color: #5bc0de;border-color: #ddd; background-color: #fff}
+.attr-table .info-marker:hover + .pos-marker-tip-box {display: block !important;}
+.pos-marker-tip-box { color: #666;padding: 11px 2px 9px; left: 14px; top: 14px; right: 23px;font-size: 12px;}
+.pos-marker-tip-box .popover-content {text-align: center}
+/*min op*/
+.info-min-op-box {position: relative; height: 30px; float: left; margin-top: 13px; }
+.info-min-op-box button { border-color: #ddd;color: #666;}
+.info-min-op-box .info-min-edit {padding: 5px 9px;}
+/*btn box*/
+.info-btn-box {margin-top: 13px; text-align: right;}
+.info-btn-box button {margin-left: 6px;}
+
+
+/*右侧操作菜单*/
+.op-btn-box {position: absolute;right: 20px;top: 20%; border: #ccc solid 1px;border-radius: 3px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);}
+.op-btn-box p {margin: 0;padding: 0;}
+.op-btn-box p button { padding: 0;width: 28px;height: 28px;border: none;border-radius: 0; }
+
+/*提示*/
+.pop-edit-box button {padding: 5px 10px;border: none;}
+
+/*地图 样式*/
+.BMap_pop > img {display: none}
+.BMap_vectex_nodeT {background-image: none !important;border: 1px rgb(51, 51, 51) dotted; background: #fff;opacity: 0.7;}

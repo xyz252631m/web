@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>css</title>
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../lib/bulma/css/bulma.min.css">
+    <script src="../../../js/base.js"></script>
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="css2less.js"></script>
+</head>
+<body>
+
+<div class="  is-flex is-overlay  is-flex-direction-column  px-5">
+    <p class="py-2"><label for="in_txt">输入：</label></p>
+    <textarea class="column textarea" id="in_txt">
+  .ellipsis {text-overflow: ellipsis;white-space: nowrap;overflow: hidden}
+  .table {margin-bottom: 0 !important}
+  .table tr th {font-size: 16px;color: #777}
+  .table-striped > tbody > tr:nth-of-type(odd) {background-color: #f5f5f5}
+  .m-head {position: relative;height: 164px;border-top-left-radius: 5px;border-top-right-radius: 5px}
+  .m-head .m-title {position: relative;display: inline-block;border: 0 !important}
+  .m-head .head-icon {width: 99px;position: absolute;top: 0;left: 0;bottom: 0}
+  .m-head .head-icon .bg, .m-head .head-icon i {position: absolute;top: 0;left: 0;right: 0;bottom: 0}
+  .m-head .head-icon .bg { opacity: 0.2}
+  .m-head .icon-bg {position: absolute;top: 0;right: 23px;width: 112px;height: 95px;opacity: 0.1;bottom: 0;margin: auto;transform: scale(1.35)}
+  .m-head .head-main {color: #fff;position: absolute;left: 100px;top: 0;right: 0;bottom: 0;text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6)}
+  .m-head .head-main .head-top {display: inline-block;width: 100%;white-space: nowrap}
+  .m-head .head-main .head-left {float: left}
+  .m-head .head-main .head-left h4 {font-size: 24px;letter-spacing: 4px;color: #fefefe;font-weight: bold;margin: 24px auto 8px 0}
+  .m-head .head-main .head-left h4 span {font-size: 16px}
+  .m-head .head-main .head-left p {font-size: 16px;color: rgba(254, 254, 254, 0.8)}
+  .m-head .head-main .head-right {float: right;margin-top: 15px;margin-right: 35px}
+  .m-head .head-main .head-right::after {content: "";display: table;clear: both}
+  .m-head .head-main .head-right p {font-size: 16px;margin-bottom: 5px;display: inline-block;margin-left: 15px}
+  .m-head .head-main .head-right p .td-num {font-size: 32px;font-weight: bold;margin: 0 10px}
+  .row-head span {font-size: 28px;color: #333}
+  .m-block {position: relative; padding: 8px;margin-bottom: 30px;border-radius: 5px;overflow: hidden;transition: all .2s ease-in-out}
+  .m-block .card-img {position: absolute;height: 100%;right: 0;top: 0;pointer-events: none;opacity: .5}
+  .m-block .block-ico {font-size: 28px;display: inline-block;color: #fff;margin-right: 5px;vertical-align: middle}
+  .m-block .m-title {vertical-align: middle;color: #019eef;font-size: 16px}
+  .m-block .m-body {padding: 5px;font-size: 0}
+  .m-block .m-body > div, .m-block .m-body > table {height: 330px}
+  .m-block .m-body .table tr td, .m-block .m-body .table tr th {text-align: center;vertical-align: middle}
+  .m-block .m-body td {font-size: 12px}
+  .m-block .m-map > div {width: 100%;height: 100%}
+  .m-block .m-list {text-align: right;color: #fff;overflow: hidden;position: relative}
+  .m-block .m-list::before {content: " ";position: absolute;top: 0;left: 0;right: 0;height: 36px}
+  .m-block .m-list .m-list-title {float: left}
+  .m-block .m-list:last-of-type {border-bottom: 0}
+  .m-block .m-list .m-num {font-family: fantasy;font-size: 18px;letter-spacing: 2px;text-shadow: 1px 1px 3px rgba(51, 51, 51, 0.69)}
+  .m-block .m-list span {vertical-align: middle}
+  .m-box {padding: 0;position: relative}
+  .m-box .m-title {color: #fde318;font-weight: 600;font-size: 18px}
+  .m-table {width: 100%;height: 100%;position: relative}
+  .m-table th {padding: 8px 0;white-space: nowrap;color: #fff;text-align: right}
+  .m-table .tr1 td .td-num {font-size: 26px;font-weight: bold}
+  .m-table .tr1 td.td-label {width: 60%;font-size: 22px;letter-spacing: 1px;font-weight: bold}
+  .m-table .tr2 {background-color: rgba(0, 0, 0, 0.2)}
+  .m-table td {color: #fff;text-align: left;padding: 5px 15px}
+  .m-table td.td-label {width: 50%;font-size: 18px}
+  .m-table td.td-text {font-size: 16px}
+  .m-table td .td-num {font-weight: bold;font-size: 26px;vertical-align: -4px;}
+  .m-table tr {transition: all .35s ease}
+  .m-table .two-level-name {text-indent: 2em}
+  .m-table .progress {margin-bottom: 0;height: 17px;background-color: #bed1ec;border-radius: 11px;width: 100%}
+  .m-table .progress-bar-info {background-color: #2867be}
+  .panel-1 .m-head {background: rgba(80,159,255,.25); }
+  .panel-1 .m-head i {background: url("../../images/yixianshi/icon_bg_01.png") center center no-repeat}
+  .panel-1 .m-head .icon-bg {background-size: 100% 100%}
+  .panel-2 .m-head {background: rgba(80,159,255,.25);}
+  .panel-2 .m-head i {background: url("../../images/yixianshi/icon_bg_02.png") center center no-repeat}
+  .panel-2 .m-list::before {background-color: #38b2c1}
+
+  .panel-4 .m-head {background: rgba(80,159,255,.25);}
+  .panel-4 .m-head i {background: url("../../images/yixianshi/icon_bg_04.png") center center no-repeat}
+  .panel-4 .m-head .icon-bg {background-size: 100% 100%}
+  .col-sm-4-top {position: relative}
+  .text-left {text-align: left !important}
+  .text-center {text-align: center !important}
+  .text-right {text-align: right !important}
+  .block-12 {width: 100%}
+  .sy-tabs {width: 100%;margin-bottom: -1px}
+  .sy-tabs .sy-tabs-item {cursor: pointer;font-size: 16px;padding: 0;position: relative;user-select: none;padding: 0 15px;text-align: center;height: 30px;line-height: 30px;color: #888}
+  .sy-tabs .sy-tabs-item [data-toggle=tab] {display: inline-block;width: 100%;height: 100%}
+  .sy-tabs .sy-tabs-item:hover {background: #efefef}
+  .sy-tabs .sy-tabs-item.active {color: #24a4e4;background: #d1f0ff;border-top-left-radius: 8px;border-top-right-radius: 8px}
+  .sy-tabs .sy-tabs-item.active::after {content: "";position: absolute;height: 1px;width: 100%;background: #24a4e4;left: 0;bottom: 0;animation: tabLine .35s ease-in-out}
+  .tab-pane {height: 100%}
+  .tab-content > .tab-pane {height: 100%;width: 100%}
+
+  .tab-content {padding: 15px}
+  .m-block .m-title2 {margin: 0 7px;font-size: 16px;border-bottom: 1px solid #ddd;color: #6d6f72}
+  .m-block .m-title2 > span {display: inline-block;padding: 5px 10px;margin-bottom: -1px;border-bottom: 2px solid #24a4e4}
+  .m-block .m-title2 > span > i {margin-right: 9px;font-size: 22px;color: #3373d2}
+  .m-body .card3 {position: relative;padding: 20px 5px 20px 20px;cursor: default;border-radius: 5px;background: #e1f1f9;overflow: hidden}
+  .m-body .card3.card3-1 {padding: 5px 10px}
+  .m-body .card3 i {font-size: 30px;width: 60px;height: 60px;border-radius: 50%;background: #47a7f5;text-align: center;line-height: 60px;color: #fff;vertical-align: middle}
+  .m-body .card3 i.ghost {position: absolute;font-size: 80px;opacity: .1;-webkit-border-radius: 0;border-radius: 0;background: transparent;color: #047edf;transform: rotate(23deg);right: 13px;bottom: 2px}
+  .m-body .card3 .text {font-size: 16px;display: inline-block;vertical-align: middle;margin-left: 9px}
+  .m-body .card3 .text .num {font-family: fantasy;letter-spacing: 1px;font-size: 28px}
+  .m-body .card3 .text .num sub {vertical-align: super}
+  .tab-content {position: relative;font-size: 0}
+  .tab-content.tab-content-2 {width: 50%;display: inline-block;vertical-align: middle}
+  .tab-content.tab-content-2 .tab-content-2-title {margin: 0;position: absolute;font-size: 16px;top: 2px;left: 15px;padding: 5px 15px;right: 16px;text-align: center;border: 1px solid #ddd;border-bottom: 1px solid #1882b7;background: #24b6ff;color: #fff;background: -webkit-linear-gradient(#a4c9d8, #17a1e6);border-top-left-radius: 5px;border-top-right-radius: 5px;text-shadow: 1px 1px 3px rgba(51, 51, 51, 0.65);letter-spacing: 2px;font-weight: bold}
+  .tab-content.tab-content-2 .tab-content-2-title i {color: #ff4c21}
+  .tab-content .sb-left-box {width: 250px;display: inline-block;vertical-align: middle;font-size: 16px}
+  .tab-content .sb-right-box-all {position: absolute;top: 0;right: 0;bottom: 0;left: 250px;padding: 10px 20px}
+  .tab-content .sb-center-box {width: 50%;height: 100%;display: inline-block;vertical-align: middle;font-size: 16px;padding: 10px 20px}
+  .tab-content .sb-right-box {position: relative;width: 50%;height: 100%;display: inline-block;vertical-align: middle;font-size: 16px;padding: 23px 0 10px 20px}
+  .tab-content .sb-right-box .sy-tabs {position: absolute;width: auto;left: 21px;top: -11px}
+  .fade {display: none}
+  .fade.in {display: initial}
+
+  @keyframes tabLine {
+    0% {opacity: 0;-webkit-transform: translate3d(2px, 3px, 0);-moz-transform: translate3d(2px, 3px, 0);transform: translate3d(2px, 3px, 0)}
+    100% {opacity: 1;-webkit-transform: none;-moz-transform: none;-o-transform: none;transform: none}
+  }
+  @keyframes newTr {
+    0% {-webkit-transform: rotateX(90deg) translate3d(5px, 30px, 0) scale(1.25);-moz-transform: rotateX(90deg) translate3d(5px, 30px, 0) scale(1.25);transform: rotateX(90deg) translate3d(5px, 30px, 0) scale(1.25);background: #ff7714}
+    100% {-webkit-transform: none;-moz-transform: none;-o-transform: none;transform: none}
+  }
+  @keyframes leftTabActive {
+    0% {opacity: 0;-webkit-transform: translate3d(15px, 0, 0);-moz-transform: translate3d(15px, 0, 0);transform: translate3d(15px, 0, 0)}
+    100% {opacity: 1;-webkit-transform: none;-moz-transform: none;-o-transform: none;transform: none}
+  }
+  .item-inner {position: absolute;top: 0;left: 0;background: #fff;display: flex;width: 100%;height: 100%;justify-content: center;align-items: center}
+  .item-inner .la-line-scale.la-2x {width: 80px;height: 64px;display: block;font-size: 0;color: #5eb0da}
+  .item-inner .la-line-scale > div {width: 8px;height: 64px;margin: 0 4px;display: inline-block;float: none;background-color: currentColor;border: 0 solid currentColor;animation: line-scale 1.2s infinite ease;border-radius: 0}
+  .item-inner .la-line-scale > div:nth-child(1) {animation-delay: -1.2s}
+  .item-inner .la-line-scale > div:nth-child(2) {animation-delay: -1.1s}
+  .item-inner .la-line-scale > div:nth-child(3) {animation-delay: -1s}
+  .item-inner .la-line-scale > div:nth-child(4) {animation-delay: -.9s}
+  .item-inner .la-line-scale > div:nth-child(5) {animation-delay: -.8s}
+  @keyframes line-scale {
+    0%, 100%, 40% {transform: scaleY(0.4)}
+    20% {transform: scaleY(1)}
+  }
+  .tab-content {position: relative}
+  .sczt-box {position: relative;display: inline-block;width: 25%;height: 100%;vertical-align: top}
+  .chart-dom {width: 100%;height: 100%}
+  .bg-all {cursor: pointer;position: absolute;background: url(../../images/yixianshi/bg_all.png) 0 0 no-repeat;background-size: 100% 100%;width: 90px;height: 35px;padding: 0;top: 15px;left: 0;right: 0;margin: auto;font-size: 16px;color: #fff;text-align: center;line-height: 35px;z-index: 1;user-select: none}
+  .m-title-btn {cursor: pointer;position: absolute;top: 15px;right: 15px;font-size: 16px;color: #fff;background: #24a4e4;padding: 3px 8px;border-radius: 5px}
+  .modal-table-box {font-size: 0;text-align: center;padding: 10px}
+  .modal-table-box .modal-table {display: inline-block;height: 505px;vertical-align: top}
+  .dialog-big {width: 80%}
+  .dialog-big #a-table2 {width: 48%;margin-right: 2%}
+  .dialog-big #a-table3 {width: 48%}
+  .top-list-box {position: absolute;top: 31px;left: 40px;right: 40px;bottom: 30px}
+  .top-list-box.c-1 li .span-progress span {background-image: -webkit-linear-gradient(0deg, #395aff 0%, rgba(57, 90, 255, 0.6) 100%)}
+  .top-list-box ul {height: 100%;display: flex;flex-direction: column;justify-content: space-between;list-style: none;padding: 0;margin: 0}
+  .top-list-box li {position: relative;padding-left: 40px;padding-top: 1em;font-size: 16px;margin-bottom: 25px}
+  .top-list-box li i {position: absolute;left: 0;top: 50%;transform: translateY(-50%);width: 30px;height: 30px;line-height: 30px;text-align: center;color: #fff;font-size: 16px;font-style: normal;background-color: #395aff;float: left;border-radius: 50%}
+  .top-list-box li label {position: absolute;top: -.5em;color: #666;font-weight: normal}
+  .top-list-box li label.bar-val {right: 0}
+  .top-list-box .span-progress {transition: all .4s;height: 20px;width: 0;display: block;border-radius: 30px;position: relative}
+  .top-list-box .span-progress span {border-radius: 30px;position: absolute;left: 0;top: 0;bottom: 0;animation: span_progress .5s forwards;background-image: -webkit-linear-gradient(0deg, #395aff 0%, #2ec7cf 100%)}
+  .top-list-box .li-1 .span-progress span {background-image: -webkit-linear-gradient(0deg, #eb3c5a 0%, #fe9b5a 100%)}
+  .top-list-box .li-1 i {background-color: #eb3c5a}
+  .top-list-box .li-2 .span-progress span {background-image: -webkit-linear-gradient(0deg, #fa8331 0%, #ffd14c 100%)}
+  .top-list-box .li-2 i {background-color: #fa8331}
+  .top-list-box .li-3 .span-progress span {background-image: -webkit-linear-gradient(0deg, #f7b832 0%, #ffed94 100%)}
+  .top-list-box .li-3 i {background-color: #f7b832}
+  @keyframes span_progress {
+    0% {width: 0}
+    100% {width: 100%}
+  }
+  .m-b-tab {position: absolute;top: 0;right: 32px}
+  .m-b-tab span {cursor: pointer;padding: 14px 10px 6px;display: inline-block;border-bottom: 2px solid #fff}
+  .m-b-tab span.active {color: #24a4e4;border-bottom: 2px solid currentColor}
+  .row-head {position: relative;height: 75px;line-height: 80px;padding-left: 83px;position: relative;margin-bottom: 25px;margin-left: 13px}
+  .row-head::after {content: "";position: absolute;height: 1px;background: #b8b8b8;top: 36px;left: 284px;right: 50px}
+  .row-head.h-1 {background: url(../../images/yixianshi/title1.png) no-repeat;background-size: 258px 75px}
+  .row-head.h-1::before {content: "";position: absolute;width: 50px;height: 50px;background: url(../img/t1-ico.png) no-repeat;background-size: contain;left: 21px;top: 0;bottom: 0;margin: auto}
+  .row-head.h-2 {background: url(../../images/yixianshi/title2.png) no-repeat;background-size: 258px 75px}
+  .row-head.h-2::before {content: "";position: absolute;width: 50px;height: 50px;background: url(../img/t2-ico.png) no-repeat;background-size: contain;left: 21px;top: 0;bottom: 0;margin: auto}
+  .row-head.h-3 {background-size: 462px 75px}
+  .row-head.h-3::after {content: "";position: absolute;height: 1px;background: #b8b8b8;top: 35px;left: 507px;right: 50px}
+  .row-head.h-4 {background-size: 503px 75px}
+  .row-head.h-4::after {left: 520px}
+  .row-head span {color: #fff;letter-spacing: 3px}
+  .row-head .h-arr {width: 0;height: 0;border: 15px solid #b8b8b8;position: absolute;right: 20px;top: 22px;border-top-color: transparent;border-right-color: transparent;border-bottom-color: transparent}
+  .x-modal-table {overflow: hidden}
+  .x-modal-table .table-head {height: 44px}
+  .x-modal-table .table-head table {width: auto;user-select: none}
+  .x-modal-table .table-head table th {position: relative}
+  .x-modal-table .table-head table th.th-has-sort:active {background-color: rgba(255, 255, 255, 0.1)}
+  .x-modal-table .table-head table th .th-sort {cursor: pointer;position: absolute;font-size: 16px;color: #fff;top: 11px;right: 9px}
+  .x-modal-table .table-body {overflow: auto;height: calc(100% - 43px)}
+  .chart-hide {display: none}
+  .ani-table .table-body table tr.selected {background: #157ac3}
+  .ani-table .table-body table tr.selected td {color: #ffffff;border-color: #1f70a9;font-weight: bold}
+  .panel-1-c1 .panel-1 .m-head {background-image: -webkit-linear-gradient(90deg, #44d1bd 0%, #2195b9 100%)}
+  .panel-1-c2 .panel-1 .m-head {background-image: -webkit-linear-gradient(90deg, #8144d1 0%, #fe78f3 100%)}
+  .row-head.h-3 {padding-left: 100px;position: relative}
+  .row-head.h-3.h-3-1 .head .ht-1 {background: url(../../images/yixianshi/title3-1-1.png);background-size: auto 75px}
+  .row-head.h-3 .h-arr {top: 21px}
+  .row-head.h-3 .head {position: relative;display: inline-block;min-width: 155px;height: 75px;background: url(../../images/yixianshi/title3-2.png);background-size: auto 75px;padding-left: 15px;line-height: 75px}
+  .row-head.h-3 .head .ht-1 {position: absolute;left: -90px;top: 0;display: inline-block;width: 90px;height: 75px;background: url(../../images/yixianshi/title3-1.png) no-repeat;background-size: auto 75px}
+  .row-head.h-3 .head .ht-2 {position: absolute;right: -52px;top: 0;display: inline-block;width: 52px;height: 75px;background: url(../../images/yixianshi/title3-3.png) no-repeat;background-size: auto 75px}
+  .row-head.h-3 .head span {font-weight: bold}
+  .modal-dialog2 {width: 1100px}
+  .h-title::after {display: none}
+</textarea>
+    <p class="py-2"><label for="out_txt">输出：</label></p>
+    <textarea class="column textarea" id="out_txt"></textarea>
+</div>
+
+
+<script>
+
+
+    $(function () {
+        let cl = new css2less();
+        let inDom = $("#in_txt"), outDom = $("#out_txt");
+        inDom.on("input", function () {
+            to();
+        })
+
+        function to() {
+            let out_str = cl.convent(inDom.val());
+            outDom.val(out_str);
+        }
+
+        to();
+    })
+
+</script>
+</body>
+</html>

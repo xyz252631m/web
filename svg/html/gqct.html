@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>股权穿透图</title>
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/gqct.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../svg.min.js"></script>
+</head>
+<body>
+<div class="body-bg"></div>
+<div id="svgBox">
+    <svg id="svg" style="width: 100%;height: 100%;">
+        <defs>
+            <marker id="arrow" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto" refX="11"
+                    refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#ccc"></path>
+            </marker>
+            <marker id="arrowCompany" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="11" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#65A1EA"></path>
+            </marker>
+            <marker id="arrowPerson" markerHeight="24" markerUnits="strokeWidth" markerWidth="24" orient="auto"
+                    refX="11" refY="6" viewBox="0 0 12 12">
+                <path d="M2,2 L10,6 L2,10 L6,6 L2,2" fill="#F0A23A"></path>
+            </marker>
+        </defs>
+    </svg>
+</div>
+
+<div class="show-tip-panel " style="display: none">
+    <div class="main">
+
+    </div>
+</div>
+
+<!--左侧提示面板-->
+<div class="left-tip-panel" style="display:none;">
+    <!--公司-->
+    <div class="info-panel info-panel-1">
+        <div class="head-wrap">
+            <span class="head-title">人员信息</span>
+            <span class="head-close">×</span>
+        </div>
+
+        <div class="detail-wrap">
+            <!--基本信息-->
+            <div class="base-info">
+                <div class="img-box">
+                    <span>北</span>
+                    <span>京</span>
+                    <span>撒</span>
+                    <span>考</span>
+                </div>
+                <div class="info-list">
+                    <h4>北京撒考虑到考公司</h4>
+                    <p><label>法定代表人：</label><span>张三</span></p>
+                    <p><label>注册资本：</label><span>400</span>万人民币</p>
+                    <p><label>成立日期：</label><span>2000-10-21</span></p>
+                </div>
+            </div>
+            <!--公司信息-->
+            <div class="company-info">
+                <ul class="com-tabs">
+                    <li class="active"><span>股东</span></li>
+                    <li><span>对外投资</span></li>
+                    <li><span>主要成员</span></li>
+                </ul>
+                <div class="tabs-box tabs-box-1" style="display: block">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>类型</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/firm_d189c49cd98fe50173de6239d92d647f.html">西子电梯集团有限公司</a></td>
+                            <td>企业法人</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/firm_1d06d5a1297cb4d10f4997bea72887ba.html">杭州华威实业投资有限公司</a></td>
+                            <td>企业法人</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/firm_9afe352b5a0774a49f5152c9e3ba55b8.html">四季青服装集团有限公司</a></td>
+                            <td>企业法人</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/firm_8f731fc8481d64e4a20cc6583e8e1812.html">杭州城北电气承装公司</a></td>
+                            <td>企业法人</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/firm_3da0bae3fcc5140daac10b088d80bf50.html">浙江广翔实业投资有限公司</a></td>
+                            <td>企业法人</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs-box tabs-box-2">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>名称</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a onclick="" href="/firm_ceb902682d71dd34617bfab362393e1c.html" target="_blank">深圳前海慧联科技发展有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_8fc5cefb83f9cef9060a3f2f1e46e5ec.html" target="_blank">天智（苏州）智能系统有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_e12115032f0df68bbe06bf3341cd34e6.html" target="_blank">杭州昊方控制设备有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_ca8bcf2c04ba319c61d197986bb9e592.html" target="_blank">杭州赤霄科技有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_1514de55d4584ddd3b2a3192b836ce6e.html" target="_blank">杭州禧筠朝旭创业投资合伙企业（有限合伙）</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_ce4c080da5455193e3eccfcdad6de269.html" target="_blank">杭州大天数控机床有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_4532b719c46f42a38514fc39296b44b9.html" target="_blank">彩盟财务管理咨询（杭州）有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_8f050a030edc778eaa265c1215a63afc.html" target="_blank">浙江天子股份有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_09782728cbcaa15cdbd53898db3a0013.html" target="_blank">美林数据技术股份有限公司</a></td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" href="/firm_b91907c09b584362fd32db12d1d0f72c.html" target="_blank">杭州慕华股权投资基金合伙企业（有限合伙）</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs-box tabs-box-3">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>类型</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_p013c4c47a4ccbbc3733814b3b6000cd.html">王水福</a></td>
+                            <td>董事长,董事</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_p0ad05883c832fcb0a66dd8acad3479f.html">陈瑜</a></td>
+                            <td>董事</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_pc226720e08a8c02c4bbd26bb354c38c.html">祝慧良</a></td>
+                            <td>董事</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_p60d57ad53e339b77c1a9c9862b19722.html">胡卫伟</a></td>
+                            <td>董事</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_p2d088f4426b38165d72037ab9103906.html">洪一新</a></td>
+                            <td>董事</td>
+                        </tr>
+                        <tr>
+                            <td><a onclick="" target="_blank" href="/pl_pr751774615563a4b00c82ae72ac93be.html">查晓荣</a></td>
+                            <td>监事</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--个人-->
+    <div class="info-panel info-panel-2" style="display: none">
+        <div class="head-wrap">
+            <span class="head-title">人员信息</span>
+            <span class="head-close">×</span>
+        </div>
+
+        <div class="detail-wrap">
+            <!--基本信息-->
+            <div class="base-info">
+                <div class="img-box">
+                    <span>张</span>
+                </div>
+                <div class="info-list">
+                    <h4>张三</h4>
+                    <p><label>企业：</label><span>美林数据技术股份有限公司</span></p>
+                    <p><label>职位：</label><span>法定代表人</span></p>
+                </div>
+            </div>
+            <!--个人其他信息-->
+            <div class="per-info">
+                <h4>关联公司</h4>
+                <div class="table-box">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="tb" style="text-align: left;">名称</th>
+                            <th class="tb" style="width: 96px;">法定代表人</th>
+                        </tr>
+                        </thead>
+                        <tbody id="relativeInfoData">
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_4c35a7a98b43bb980711cda9571440e3"><span>广东红孩子文化传媒有限公司</span></a></td>
+                            <td style="text-align: center;">常立亚</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_adc9a60e88cd3ebbf4807597f5e6685b"><span>广州华影信息科技有限公司</span></a></td>
+                            <td style="text-align: center;">黄惠敏</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_dc04ef42068ff7108ab16ad8eea0ebde"><span>北京君鼎方达投资管理中心（有限合伙）</span></a></td>
+                            <td style="text-align: center;">天津万景明企业管理咨询有限公司</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_372796bf7f719aa57e95c2fbdb2eecae"><span>知好乐教育科技集团有限公司</span></a></td>
+                            <td style="text-align: center;">赵海波</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_09782728cbcaa15cdbd53898db3a0013"><span>美林数据技术股份有限公司</span></a></td>
+                            <td style="text-align: center;">程宏亮</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_0aff53bd6ad254385e3ea75de9527571"><span>佛山市南海区大沥盐步华悦贸易商行</span></a></td>
+                            <td style="text-align: center;">黄惠敏</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_0b427b802f2d62f298d20179af4cbe87"><span>红孩子文化产业发展有限公司</span></a></td>
+                            <td style="text-align: center;">常立亚</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_d1ab40186b5c85bb0698313f8a7e8752"><span>北京知好乐信息科技有限公司</span></a></td>
+                            <td style="text-align: center;">赵海波</td>
+                        </tr>
+                        <tr>
+                            <td><a class="c_a" target="_blank" href="/firm_4371e030aa0509e29cbd01c8f7d2af8e"><span>同方知好乐教育科技（北京）有限公司广东分公司</span></a></td>
+                            <td style="text-align: center;">黄惠敏</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--操作层-->
+<div class="mind-op-panel">
+    <div class="op-btn op-btn-minus">
+        <i class="fa fa-fw fa-minus"></i>
+    </div>
+    <div class="op-range-box">
+        <div class="op-range">
+            <div class="range-select"></div>
+            <div class="range-content"></div>
+        </div>
+    </div>
+    <div class="op-btn op-btn-plus">
+        <i class="fa fa-fw fa-plus"></i>
+    </div>
+    <div class="op-btn op-btn-refresh  ">
+        <i class="fa fa-fw fa-undo"></i>
+    </div>
+    <div class="op-btn op-btn-expand">
+        <i class="fa fa-expand"></i>
+    </div>
+</div>
+<script src="../js/upTree.js"></script>
+<script>
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    var nameList = ["高大山", "谢大海", "马宏宇", "林莽", "黄强辉", "章汉夫", "范长江", "林君雄", "谭平山", "朱希亮", "李四光", "甘铁生", "张伍绍祖", "马继祖", "程孝先", "宗敬先",
+        "年广嗣", "汤绍箕", "吕显祖", "何光宗", "孙念祖", "马建国", "节振国", "冯兴国", "郝爱民", "于学忠", "马连良", "胡宝善", "李宗仁", "洪学智", "余克勤", "吴克俭", "杨惟义", "李文信",
+        "王德茂", "李书诚", "杨勇", "高尚德", "刁富贵", "汤念祖", "吕奉先", "何光宗", "冷德友", "安怡孙", "贾德善", "蔡德霖", "关仁", "郑义贾怡孙天民", "赵大华", "赵进喜", "赵德荣", "赵德茂",
+        "钱汉祥", "钱运高", "钱生禄", "孙寿康", "孙应吉", "孙顺达", "李秉贵", "李厚福", "李开富", "王子久", "刘永生", "刘宝瑞", "关玉和", "王仁兴", "李际泰", "罗元发", "刘造时", "刘乃超", "刘长胜",
+        "张成基", "张国柱", "张志远", "张广才", "吕德榜", "吕文达", "吴家栋", "吴国梁", "吴立功李大江", "张石山", "王海"];
+
+
+    var companyList = [
+        {name: "河南建业控股发展有限公司", type: "法人股东"},
+        {name: "中原金控（深圳）投资有限公司", type: "企业法人"},
+        {name: "郑州六合投资有限公司", type: "企业法人"},
+        {name: "漯河南华城企业总部基地管理有限公司", type: "企业法人"},
+        {name: "西子电梯集团有限公司", type: "企业法人"},
+        {name: "杭州华威实业投资有限公司", type: "企业法人"},
+        {name: "四季青服装集团有限公司", type: "企业法人"},
+        {name: "杭州城北电气承装公司", type: "企业法人"},
+        {name: "浙江广翔实业投资有限公司", type: "企业法人"},
+        {name: "马宝军", type: "自然人股东"},
+        {name: "程宏亮", type: "自然人股东"},
+        {name: "曹辉", type: "自然人股东"},
+        {name: "张松", type: "自然人股东"},
+        {name: "侯娟", type: "自然人股东"},
+        {name: "白朝旭", type: "自然人股东"},
+        {name: "张平梅", type: "自然人股东"},
+    ];
+
+    function companyTableFn(num, len) {
+        var list = [], item;
+        for (var i = 0; i < num; i++) {
+            item = companyList[randomNum(0, len || companyList.length - 1)];
+            while (list.indexOf(item) >= 0) {
+                item = companyList[randomNum(0, len || companyList.length - 1)];
+            }
+            list.push(item);
+        }
+        return list;
+    }
+
+    function nameTableFn(num) {
+        var list = [], item;
+        for (var i = 0; i < num; i++) {
+            item = nameList[randomNum(0, nameList.length - 1)];
+            while (list.indexOf(item) >= 0) {
+                item = nameList[randomNum(0, nameList.length - 1)];
+            }
+            list.push(item);
+        }
+        return list;
+    }
+
+    $(function () {
+        $.getJSON("../json/gqct.json", function (res) {
+            var obj = res.result;
+            initMap(obj);
+        });
+        var upTree = {};
+        var rangeBox = {
+            //滑条总高度
+            rangeDomHeight: 200 - 14,
+            //当前的滑条移动位置
+            range: 57.7,
+            init: function () {
+                var isDown = false;
+                var self = this;
+                var range = self.range;
+                var newRange = 0; //画布移动后的坐标
+                var enterY = 0; //点击时的坐标
+                $(".range-content").on("mousedown", function (e) {
+                    isDown = true;
+                    enterY = e.pageY;
+                    range = $(".range-select").height();
+                    window.event ? window.event.cancelBubble = true : e.stopPropagation();
+                });
+                $(window).on("mousemove", function (e) {
+                    if (isDown) {
+                        var range_h = self.rangeDomHeight;
+                        newRange = range + e.pageY - enterY;
+                        if (newRange < 0) {
+                            newRange = 0;
+                        }
+                        if (newRange > range_h) {
+                            newRange = range_h;
+                        }
+                        self.setRangeCss(newRange);
+                        upTree.scaleMap(self.getScaleByRange(newRange));
+                        // self.moveNodes(op.enterPoint, getScaleByRange(newRange))
+                    }
+                }).on("mouseup", function () {
+                    if (isDown) {
+                        isDown = false;
+                        self.range = newRange
+                    }
+                });
+                self.setScaleVal(1);
+            },
+            setScaleVal: function (scale) {
+                var min = 0.1, max = 3, rangeDomHeight = 200 - 14;
+                var range = (scale - min) / (max - min) * rangeDomHeight;
+                this.setRangeCss(range)
+            },
+            getRangeByScale: function (scale) {
+                var min = 0.1, max = 3, rangeDomHeight = 200 - 14;
+                var range = (scale - min) / (max - min) * rangeDomHeight;
+                return range;
+            },
+            getScaleByRange: function (range) {
+                var min = 0.1, max = 3;
+                this.scale =  range   / this.rangeDomHeight * (max - min) + min;
+                return this.scale;
+            },
+            //设置滑块值-dom
+            setRangeCss: function (top) {
+                $(".range-content").css({
+                    top: top + 'px'
+                });
+                $(".range-select").css({
+                    height: top + 'px'
+                });
+            }
+        };
+        rangeBox.init();
+
+        //初始化
+        function initMap(obj) {
+            upTree = new UpTree(SVG, {
+                $box: $("#svgBox"),//父级容器
+                isDrag: true,
+                upList: obj.gudong.children,      //上部数据
+                downList: obj.touzi.children,    //下部数据
+                rootName: obj.gudong.name,      //中间名称
+                mousewheel: function (scale) {
+                    rangeBox.setScaleVal(scale);
+                },
+                upClick: function (item) {
+                    //上部click
+                    showInfo(item);
+                },
+                downClick: function (item) {
+                    //下部click
+                    showInfo(item);
+                },
+
+            });
+        }
+
+        var $box = $(".left-tip-panel");
+
+        //显示信息
+        function showInfo(item) {
+            var $info = $box.find(".info-panel-1");
+            if (item.nodeType === 0) {
+
+                var companyCallback = function () {
+                    //公司
+                    $box.find(".info-panel-2").hide();
+                    $box.find(".info-panel-1").show();
+                    $info.find("h4").text(item.name);
+                    //名称简称
+                    var $nameList = $info.find(".img-box span");
+                    $nameList.eq(0).text(item.name[0]);
+                    $nameList.eq(1).text(item.name[1]);
+                    $nameList.eq(2).text(item.name[2]);
+                    $nameList.eq(3).text(item.name[3]);
+                    //人名、注册 等信息
+                    var $ceList = $info.find(".info-list span");
+                    if (!item.hasInfo) {
+                        item.hasInfo = {
+                            name: nameList[randomNum(0, nameList.length)],
+                            money: randomNum(10, 200) * 10,
+                            date: [randomNum(1990, 2015), randomNum(1, 12), randomNum(1, 28)].join("-"),
+                            table1: companyTableFn(randomNum(1, 6)),
+                            table2: companyTableFn(randomNum(1, 4), 9),
+                            table3: nameTableFn(randomNum(2, 5)),
+                        };
+                    }
+
+                    $ceList.eq(0).text(item.hasInfo.name);
+                    $ceList.eq(1).text(item.hasInfo.money);
+                    $ceList.eq(2).text(item.hasInfo.date);
+                    //表格随机数据
+                    var h1 = [], h2 = [], h3 = [];
+                    $.each(item.hasInfo.table1, function () {
+                        h1.push('<tr>');
+                        h1.push('<td>' + this.name + '</td><td>' + this.type + '</td>');
+                        h1.push('</tr>')
+                    });
+                    $info.find(".tabs-box-1 tbody").html(h1.join(""));
+                    $.each(item.hasInfo.table2, function () {
+                        h2.push('<tr>');
+                        h2.push('<td>' + this.name + '</td>');
+                        h2.push('</tr>')
+                    });
+                    $info.find(".tabs-box-2 tbody").html(h2.join(""));
+                    $.each(item.hasInfo.table3, function (idx) {
+                        h3.push('<tr>');
+                        h3.push('<td>' + this + '</td><td>' + (!idx ? '董事长' : '董事') + '</td>');
+                        h3.push('</tr>')
+                    });
+                    $info.find(".tabs-box-3 tbody").html(h3.join(""));
+
+                }
+
+                if ($box.is(":hidden")) {
+                    companyCallback();
+                    $box.fadeIn();
+                } else {
+                    $box.fadeOut(250, function () {
+                        companyCallback();
+                        $box.fadeIn();
+                    });
+                }
+
+            } else if (item.nodeType === 2) {
+                $info = $box.find(".info-panel-2");
+
+                var perCallback = function () {
+                    $info.find(".info-list h4").text(item.name);
+                    $info.find(".img-box span").text(item.name[0]);
+                    //企业 职位
+                    var $otherList = $info.find(".info-list span");
+                    if (!item.hasInfo2) {
+                        item.hasInfo2 = {
+                            comName: companyList[randomNum(0, companyList.length - 1)].name,
+                            table1: companyTableFn(randomNum(1, 6), 9)
+                        };
+                    }
+                    $otherList.eq(0).text(item.hasInfo2.comName);
+                    //表格随机数据
+                    var h = [];
+                    $.each(item.hasInfo2.table1, function () {
+                        if (!this.perName) {
+                            this.perName = nameList[randomNum(0, nameList.length - 1)];
+                        }
+                        h.push('<tr>');
+                        h.push('<td>' + this.name + '</td><td>' + this.perName + '</td>');
+                        h.push('</tr>')
+                    });
+                    $info.find(".per-info tbody").html(h.join(""));
+
+                    //个人
+                    $box.find(".info-panel-1").hide();
+                    $box.find(".info-panel-2").show();
+                }
+
+
+                if ($box.is(":hidden")) {
+                    perCallback();
+                    $box.fadeIn();
+                } else {
+                    $box.fadeOut(250, function () {
+                        perCallback();
+                        $box.fadeIn();
+                    });
+                }
+            }
+        }
+
+
+        //公司 tabs
+        var $comTabList = $(".company-info .com-tabs li");
+        $comTabList.on("click", function () {
+            var $el = $(this);
+            var idx = $comTabList.index($el);
+            $comTabList.removeClass('active').eq(idx).addClass('active');
+            $(".tabs-box").hide().eq(idx).show();
+        });
+
+        //guanb
+        $box.find(".head-close").on("click", function () {
+            $box.fadeOut(250);
+        });
+
+        //放大
+        $(".op-btn-plus").on("click", function () {
+            var scale = upTree.plus();
+            rangeBox.setScaleVal(scale);
+        });
+        //缩小
+        $(".op-btn-minus").on("click", function () {
+            var scale = upTree.minus();
+            rangeBox.setScaleVal(scale);
+        });
+        //重置
+        $(".op-btn-refresh").on("click", function () {
+            upTree.reset();
+            rangeBox.setScaleVal(1);
+        });
+        // 全屏事件
+        var fullscreen = false;
+        $(".op-btn-expand").on("click", function () {
+            let element = document.documentElement;
+            // 判断是否已经是全屏
+            // 如果是全屏，退出
+            if (fullscreen) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                $(this).find("i").removeClass("fa-compress");
+                $(this).find("p").text("全屏");
+            } else {    // 否则，进入全屏
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.msRequestFullscreen) {
+                    // IE11
+                    element.msRequestFullscreen();
+                }
+                $(this).find("i").addClass("fa-compress");
+                $(this).find("p").text("退出");
+            }
+            // 改变当前全屏状态
+            fullscreen = !fullscreen;
+        });
+
+    })
+</script>
+</body>
+</html>

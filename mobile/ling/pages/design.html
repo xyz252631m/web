@@ -1,0 +1,48 @@
+<div class="page-view page-design">
+    <!--    <div class="page-title">-->
+    <!--        <button class="btn btn-right btn-icon" @click="toSetting()"><i class="ion-ios-gear-outline"></i></button>-->
+    <!--        <span>设计</span>-->
+    <!--    </div>-->
+    <div class="page-content">
+
+        <div class="canvas-box">
+
+        </div>
+
+        <div class="design-op-box">
+            <ul>
+                <li>
+                    <button class="button button-positive button-small" @click="showCreate">创建</button>
+                </li>
+                <li>
+                    <button class="button button-positive button-small">追加</button>
+                </li>
+                <li>
+                    <button class="button button-positive button-small">进入</button>
+                </li>
+                <li>
+                    <button class="button button-positive button-small">删除</button>
+                </li>
+                <li>
+                    <button class="button button-positive button-small">编辑</button>
+                </li>
+                <li>
+                    <button class="button button-positive button-small">代码</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="fix-box"  v-show="showLayer">
+        <div class="bg"></div>
+        <div class="main">
+            <div class="cp-type-box">
+                <ul>
+                    <li v-for="m in typeList" @click="typeOp(m.val)">{{m.txt}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

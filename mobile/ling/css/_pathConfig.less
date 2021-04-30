@@ -1,0 +1,64 @@
+
+.btn-bottom-box {position: fixed;bottom: 40px;left: 10px;right: 10px;
+  .btn-add-path {background-color: @themeBtnCol;color: #fff;
+    &:active { opacity: .9}
+  }
+}
+
+
+/*TODO 添加*/
+.path-add-box {
+  li {height: 40px; line-height: 40px;font-size: 0; margin: 0; border-top: none; padding: 0; border-bottom: #ececec solid 1px;
+
+
+    > span, > div {display: inline-block;vertical-align: middle;font-size: 14px;}
+    > span {width: 20%;text-indent: 10px; background-color: @themeSpanBg; color: #fff; box-shadow: inset 0 -1px #dfdfdf;}
+
+    > div {width: 80%;}
+
+    .attr-list-box {width: 100%;}
+
+
+    .input-text {width: 100%;padding: 0 17px;}
+    .input-radio {
+      input {opacity: 0}
+      i {color: #ccc;font-size: 20px;
+        vertical-align: -2px;
+        margin-right: 5px;}
+    }
+    .radio-active {
+      i {color: @themeBtnCol;}
+    }
+    .label-select {width: 100%;height: 100%;display: inline-block;padding-left: 17px;
+      select {border: none;width: 100%;pointer-events: auto; }
+    }
+
+    .btn-box {padding-left: 17px;
+      button {margin-right: 20px;height: 30px;line-height: 30px;min-height: auto; background-color: #b5b5b5;color: #fff;
+        font-size: 14px;margin-top: 5px;
+        i{margin-right: 4px;}
+        &:active {opacity: .9}
+      }
+    }
+  }
+  .h-all { transform: translateZ(0); height: auto; }
+
+
+  .hide-height {overflow: hidden;animation: hideHeight 300ms forwards;}
+  ol {margin: 0;}
+
+  .hr-title {
+    margin: 10px 0 0 0;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: #4ec6e6;
+  }
+
+}
+
+@keyframes hideHeight {
+  0% {height: 100%;}
+  100% {height: 0; opacity: 0; display: none;}
+}

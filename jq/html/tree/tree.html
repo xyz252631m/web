@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树</title>
+    <link rel="stylesheet" href="../../../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../css/tree.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+<!--    <script src="../../../js/base.js"></script>-->
+<!--    <script src="../../js/virTree.js"></script>-->
+
+
+</head>
+<body>
+
+<div style="position: relative;width: 300px;height: 600px;border: #ccc solid 1px">
+    <div class="tree-box left-sidebar-menu">
+        <ul class="sidebar-menu">
+
+
+        </ul>
+    </div>
+    <div class="tree-loading" style="display: none">
+        <div class="k-ring-2">
+            <div class="k-ball-holder2">
+                <div class="k-ball1e"></div>
+                <div class="k-ball2c"></div>
+                <div class="k-ball5b"></div>
+                <div class="k-ball6b"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="op-menu-box">
+    <p data-type="edit"><span>编辑</span></p>
+    <p data-type="del"><span>删除</span></p>
+</div>
+<script>
+
+    //模拟数据 id:唯一标识 icoType:小图标类型 name:显示的文本 type:类型 (目录 catalog or table)
+
+    var dataList =[
+
+        {
+            "id": "1",
+            "icoType": "home",
+            "name": "异步目录1",
+            "type": "catalog"
+        },
+        {
+            "id": "2",
+            "icoType": "home",
+            "name": "异步目录2",
+            "type": "catalog"
+        },
+        {
+            "id": "12",
+            "icoType": "home",
+            "name": "异步节点1",
+
+        },
+        {
+            "id": "3",
+            "icoType": "home",
+            "name": "异步节点2"
+        },
+    ];
+
+    var childrenList = [
+
+        {
+            "id": "1",
+            "icoType": "home",
+            "name": "异步节点1",
+        },
+        {
+            "id": "2",
+            "icoType": "home",
+            "name": "异步节点2"
+        },
+        {
+            "id": "3",
+            "icoType": "home",
+            "name": "异步目录1",
+            "type": "catalog"
+        }
+    ];
+
+
+    var $treeLoading = $(".tree-loading");
+    var menu = new TreeMenu({
+        $el: $(".virtual-tree-menu"),
+        //操作框
+        $opBox: $(".op-menu-box"),
+        //是否存在操作按钮 默认为Boolean 类型 ， 可以为function需要返回 Boolean 类型值
+        hasOpBtn: function (item) {
+            return true;
+            // return item.type === "FOLDER";
+        },
+        //图标管理 和item type对应
+        icon: {
+            //主题
+            theme: "icomoon icon-shuju",
+            //专题
+            special: "icomoon icon-huizong",
+            //基础
+            base: "icomoon icon-sanweiliti",
+            //汇总
+            summary: "icomoon icon-shuju1",
+            //表
+            //table:"icomoon icon-biao"
+            //原始区
+            database: "fa fa-database",
+
+
+            //文件夹
+            folder: "fa fa-folder-o i-bold",
+            //文件夹开启状态  （追加Open字符串）
+            folderOpen: "fa fa-folder-open-o i-bold",
+
+        },
+        //样式管理 和item type对应，用于修改颜色
+        itemCls: {
+            // //主题
+            // theme:"li-theme",
+            // //专题
+            // special:"li-special",
+            // //基础
+            // base:"li-base",
+            // //汇总
+            // summary:"li-summary"
+        },
+        //添加数据项时 按 type 类型排序
+        //softList: ["catalog"],
+        //点击事件 item: 数据 ; dom: 当前li node; catalogOpen:目录是否打开（只针对目录）
+        click: function (item, dom, catalogOpen) {
+            //console.log("this is click", catalogOpen, item, dom);
+            var self = this;
+            if (item.type !== "table") {
+                //异步未获取数据时 and 无下级节点数据
+                if (!item.isGetedData) {
+                    // /&& item.children.length === 0
+                    if (item.loading) {
+                        return;
+                    }
+                    item.loading = this.openLiLoading(dom);
+                    //模拟数据
+                    setTimeout(function () {
+                        item.loading = self.closeLiLoading(dom);
+                        var list = JSON.parse(JSON.stringify(childrenList));
+                        list.forEach(function (d) {
+                            d.id = Math.random();
+                        })
+
+                        for (var i = 0; i < 100000; i++) {
+                            list.push({
+                                id: Math.random() + i + 1,
+                                type: "table",
+                                name: Math.random() + i + 1
+                            })
+                        }
+                        self.refreshNodeData(item, dom, list);
+                    }, 2000);
+                } else {
+                    //文件夹点击 业务
+                    //...
+                }
+            } else {
+                //表点击 业务
+                //...
+            }
+        },
+        //操作框点击事件 type：返回html上的data-type属性值
+        opClick: function (item, type) {
+            console.log("this is opClick", item, type);
+
+            if (type === "del") {
+                if (item.type !== "table") {
+
+                } else {
+                    var list = JSON.parse(JSON.stringify(childrenList));
+                    list.forEach(function (d) {
+                        d.name = "新增节点";
+                        d.type = "table";
+                        d.id = Math.random();
+                    });
+                    list.push({
+                        id: "guding",
+                        name: "固定节点",
+                        type: "table",
+                    });
+                    //pid 和 子节点目录列表
+                    menu.refreshTreeByItem("is-folder", list, true);
+
+                }
+            }
+            if (type === "edit") {
+                //修改 item 数据
+                item.name = "333333";
+                //刷新节点文本
+                menu.refreshItemNode(item);
+            }
+
+        }
+    });
+    // menu.toTree(JSON.parse(JSON.stringify(res.data)));
+    menu.toTree(JSON.parse(JSON.stringify(menuData)));
+    menu.init();
+    menu.selectItem("test-1");
+
+    window.menu = menu;
+    //搜索
+    $(".btn-tree-search").on("click", function () {
+        $treeLoading.show();
+        //模拟数据
+        setTimeout(function () {
+            $treeLoading.hide();
+            menu.resetTree(JSON.parse(JSON.stringify(childrenList)));
+        }, 3000);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.da-date-input {display: inline-block;}
+.drm-date-box {position: absolute;top: 0;bottom: 0;left: 0;right: 0; transform: translateZ(0);}
+.drm-data-bg {background: #000;opacity: 0.3;position: absolute;top: 0;bottom: 0;left: 0;right: 0;}
+.drm-date-main {position: absolute;top: 30%;left: 4%;width: 92%; background-color: white; box-sizing: border-box;border-radius: 3px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15), 0 -3px 10px rgba(0, 0, 0, .15);
+    .curr-date {height: 40px;line-height: 40px; padding: 10px 10px 0; font-size: 16px; text-indent: 10px;}
+    .sc-box { display: flex;padding: 0 10px 0 10px;}
+    .sc-item {flex: 0.7; margin: 0 5px;height: 120px;position: relative;
+    }
+    .sc-year {flex: 1}
+}
+.button-list {height: 40px;margin-top: 20px;border-top: #eee solid 1px;
+    button {border: none; height: 40px;line-height: 40px; background-color: transparent; outline: none;width: 50%;padding: 0;margin: 0;float: left;
+        &:active {background-color: #2d8cf0;color: white;border-color: #2d8cf0}
+    }
+    .btn-cel {border-right: #eee solid 1px; box-sizing: border-box;border-bottom-left-radius: 3px;}
+    .btn-ok {border-bottom-right-radius: 3px;}
+}
+.date-enter-active, .date-leave-active { transition: .4s all ease; }
+.date-enter-active { opacity: 1; }
+.date-leave-active {opacity: 0 }
+.date-enter, .date-leave { opacity: 0 }

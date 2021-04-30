@@ -1,0 +1,225 @@
+/*树形菜单*/
+.left-sidebar-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: hidden;
+  padding: 0 5px 5px 10px;
+}
+.left-sidebar-menu:hover {
+  overflow-y: auto;
+}
+.left-sidebar-menu .sidebar-menu {
+  padding: 0;
+}
+.left-sidebar-menu .sidebar-toggler {
+  text-indent: 5px;
+  background-color: #fff;
+  border-radius: 15px 0 0 15px;
+  cursor: pointer;
+  display: block;
+  float: right;
+  margin-top: 6px;
+  width: 23px;
+  height: 25px;
+  font-size: 16px;
+}
+.left-sidebar-menu .icon-box {
+  display: inline-block;
+  height: auto;
+  padding: 5px 0;
+  margin-right: 3px;
+  line-height: normal;
+}
+.left-sidebar-menu ul {
+  margin: 0;
+  padding: 0;
+}
+/*.left-sidebar-menu > ul {position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow-y: auto;padding-top: 0;list-style: none;margin: 0;border-radius: 0}*/
+.left-sidebar-menu > ul > li {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+.left-sidebar-menu > ul > li ul {
+  display: none;
+}
+.left-sidebar-menu a {
+  background-color: #fff;
+  color: #333;
+  display: block;
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding-left: 19px;
+  padding-right: 20px;
+  border-radius: 0 !important;
+  text-decoration: none;
+  font-size: 0;
+  font-weight: normal;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: #f1f1f1 dotted 1px;
+}
+/*loading*/
+.k-bar {
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #4b9cdb;
+  bottom: -2px;
+  left: 0;
+  z-index: 2;
+  -webkit-animation: k-loadingJ 4s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+  animation: k-loadingJ 4s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+@-webkit-keyframes k-loadingJ {
+  0%,
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(220px, 0);
+    transform: translate(220px, 0);
+    background-color: #f5634a;
+    width: 40px;
+  }
+}
+@keyframes k-loadingJ {
+  0%,
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(220px, 0);
+    transform: translate(220px, 0);
+    background-color: #f5634a;
+    width: 40px;
+  }
+}
+/*hover*/
+.left-sidebar-menu a:hover {
+  background-color: #61b8f9;
+  border-color: #61b8f9;
+  color: #fff;
+}
+.left-sidebar-menu a:hover i {
+  color: #fff;
+}
+.left-sidebar-menu a:hover .icon-op {
+  display: block;
+}
+.left-sidebar-menu .arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 3px;
+  height: auto;
+  line-height: normal;
+}
+.left-sidebar-menu .icon-op {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  right: 6px;
+  height: auto;
+  line-height: normal;
+  display: none;
+}
+.left-sidebar-menu .icon-op i {
+  pointer-events: none;
+}
+.left-sidebar-menu li {
+  font-size: 0;
+}
+/*active*/
+.left-sidebar-menu .active > a {
+  background-color: #61b8f9;
+  border-color: #61b8f9;
+  color: #fff;
+}
+.left-sidebar-menu .active > a i {
+  color: #fff;
+}
+/*open*/
+.left-sidebar-menu .open-li > a > .arrow > i::before {
+  content: "\f0d7";
+}
+.left-sidebar-menu i {
+  font-size: 14px;
+  color: #666;
+}
+.left-sidebar-menu label {
+  font-size: 12px;
+  width: 100%;
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*2 级*/
+.left-sidebar-menu > ul ul li a {
+  padding-left: 38px;
+}
+.left-sidebar-menu > ul ul li .arrow {
+  left: 20px;
+}
+/*3级*/
+.left-sidebar-menu > ul ul ul li a {
+  padding-left: 57px;
+}
+.left-sidebar-menu > ul ul ul li .arrow {
+  left: 39px;
+}
+/*4级*/
+.left-sidebar-menu > ul ul ul ul li a {
+  padding-left: 77px;
+}
+.left-sidebar-menu > ul ul ul ul li .arrow {
+  left: 58px;
+}
+/*5级*/
+.left-sidebar-menu > ul ul ul ul ul li a {
+  padding-left: 97px;
+}
+.left-sidebar-menu > ul ul ul ul ul li .arrow {
+  left: 78px;
+}
+/*6级*/
+.left-sidebar-menu > ul ul ul ul ul ul li a {
+  padding-left: 117px;
+}
+.left-sidebar-menu > ul ul ul ul ul ul li .arrow {
+  left: 98px;
+}
+.op-menu-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  border: #ededed solid 1px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px #ccc;
+}
+.op-menu-box p {
+  height: 27px;
+  line-height: 27px;
+  padding: 0 15px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.op-menu-box p:hover {
+  background-color: #bbe4f8;
+}
+/*# sourceMappingURL=tree.css.map */

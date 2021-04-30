@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>point</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="./js/img-point.js"></script>
+
+</head>
+<body>
+
+
+<div class="content">
+    <div class="img-box">
+        <img src="./images/1.png" alt="">
+        <div class="point-list-box">
+
+        </div>
+    </div>
+</div>
+
+<!--选择类型-->
+<div class="select-list-box">
+    <ul>
+        <li data-type="collection"><i class="iconfont icon-shoucang"></i>收藏</li>
+        <li data-type="record"><i class="iconfont icon-youji"></i>记录</li>
+    </ul>
+</div>
+<!--信息面板-->
+<div class="info-box">
+    <span class="arrow-bg"></span>
+    <h3>id:<span></span></h3>
+    <div class="main"></div>
+</div>
+<script>
+    new ImgPoint(".img-box", {
+        typeBoxSelector: ".select-list-box",
+        pointBox: ".point-list-box",
+        infoBox: ".info-box",
+        pointList: [
+            {id: "234234", x: 283, y: 148, type: "collection"},
+            {id: "234234", x: 245, y: 182, type: "collection"}
+        ]
+    })
+</script>
+
+
+</body>
+</html>

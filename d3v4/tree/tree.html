@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树形图（集群图）</title>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="tree.css" rel="stylesheet">
+    <script src="../d3.v4.min.js"></script>
+    <!--    <script src="../../d3v5/d3.min.js"></script>-->
+    <script src="tree.js"></script>
+
+</head>
+<body>
+<!--数据一共3级-->
+<div class="box">
+    <svg></svg>
+</div>
+<div class="info-box">
+    <div class="img-box">
+        <img alt="" src="1.jpg">
+    </div>
+    <div class="info-list">
+        <h4>北京撒考虑到考公司</h4>
+        <p>法定代表人：张三</p>
+        <p>注册资本：400万人民币</p>
+        <p>成立日期：2000-10-21</p>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    d3.json('data.json', function (error, root) {//root是读入的数据；
+        var tree = new Tree(d3.select("svg"), {
+            data: root.result
+        });
+    });
+
+</script>

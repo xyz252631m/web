@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .tabs { font-size: 0; position: relative;padding-left: 20px; width: 350px;
+            height: 80px; }
+        .tabs .bg {position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: .5; }
+        .tabs ul {position: relative;z-index: 10;padding-bottom: 10px; }
+        .tabs li { display: inline-block; height: 60px; width: 80px; color: #a0a0a0; font-size: 15px; cursor: pointer;
+            margin-top: 9px; margin-left: -1px;text-align: center;
+        }
+        .tabs li i {display: block; margin: 0 auto; height: 50px; line-height: 50px; width: 50px; background-color: #97bbdd;font-size: 26px; color: #fff; border-radius: 50%;
+            box-shadow: 5px 5px 5px #ccc;
+        }
+        .tabs .icon-gudongxinxi {font-size: 22px;}
+        .tabs .icon-tupu {font-size: 22px;}
+        .tabs .icon-chuantou {font-size: 32px}
+        .tabs li span {font-size: 12px; text-shadow: 5px 5px 5px #ccc;color: #777; }
+        .tabs .active i { color: #fff; border-color: #4cbbff; z-index: 1; position: relative; background: #4cbbff;}
+
+        .ifr-box { position: absolute; top: 0; left: 0; right: 0; bottom: 0;font-size: 0; }
+        .ifr-box iframe { width: 100%; height: 100%; border: none}
+    </style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/lib/iconfont.css">
+</head>
+<body>
+
+<div class="tabs">
+    <div class="bg"></div>
+    <ul>
+        <li class="active">
+            <i class="iconfont icon-qiyetupu"></i>
+            <span data-src="./html/tupu.html">企业图谱</span>
+        </li>
+        <li>
+            <i class="iconfont icon-gudongxinxi"></i>
+            <span data-src="./html/qysygd.html">企业受益股东</span>
+        </li>
+        <li>
+            <i class="iconfont icon-tupu"></i>
+            <span data-src="./html/gltp.html">关联图谱</span>
+        </li>
+        <li>
+            <i class="iconfont icon-chuantou"></i>
+            <span data-src="./html/gqct.html">股权穿透图</span>
+        </li>
+    </ul>
+</div>
+<div class="ifr-box">
+    <iframe src="./html/tupu.html"></iframe>
+</div>
+
+<script>
+    $(function () {
+
+        var $list = $(".tabs li");
+        $list.on("click", function () {
+            var src = $(this).find("span").attr("data-src");
+            var idx = $list.index($(this));
+            $list.removeClass("active").eq(idx).addClass("active");
+            $(".ifr-box iframe").attr("src", src)
+        })
+    });
+
+</script>
+</body>
+</html>

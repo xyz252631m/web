@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="initial-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>绘制工具</title>
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <!--key-->
+    <script src="http://api.map.baidu.com/api?v=3.0&ak=0m6Br2LcLYd2FXSHyfxTOkhUZFR6oiBT" type="text/javascript"></script>
+    <!--加载鼠标绘制工具-->
+    <script src="js/DrawingManager.js"></script>
+    <link href="js/DrawingManager_min.css" rel="stylesheet">
+    <script charset="utf-8" src="./js/CurveLine.js" type="text/javascript"></script>
+    <script charset="utf-8" src="./js/encodePolygon.js" type="text/javascript"></script>
+    <script src="js/createMapJson.js"></script>
+    <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/createMapJson.css" rel="stylesheet">
+    <link href="css/iconfont/iconfont.css" rel="stylesheet">
+    <script src="../../lib/codemirror-5.44.0/lib/codemirror.js"></script>
+    <link href="../../lib/codemirror-5.44.0/lib/codemirror.css" rel="stylesheet">
+    <script src="../../lib/codemirror-5.44.0/mode/javascript/javascript.js"></script>
+    <!--<link rel="stylesheet" href="codemirror-5.44.0/theme/eclipse.css">-->
+    <link href="../../lib/codemirror-5.44.0/theme/xq-light.css" rel="stylesheet">
+    <script src="../../lib/codemirror-5.44.0/fomatting.js"></script>
+    <link href="../../lib/codemirror-5.44.0/addon/fold/foldgutter.css" rel="stylesheet">
+    <script src="../../lib/codemirror-5.44.0/addon/fold/foldcode.js"></script>
+    <script src="../../lib/codemirror-5.44.0/addon/fold/foldgutter.js"></script>
+    <script src="../../lib/codemirror-5.44.0/addon/fold/brace-fold.js"></script>
+    <script src="../../lib/codemirror-5.44.0/addon/fold/comment-fold.js"></script>
+
+</head>
+<body>
+<!--地图-->
+<div id="allmap" style="overflow:hidden;zoom:1;position:relative;">
+    <div id="map" style="height:100%;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;"></div>
+    <div class="op-btn-box">
+        <!--<p>-->
+        <!--<button class="btn btn-default btn-xs" type="button"><span aria-hidden="true" class="glyphicon glyphicon-map-marker" style="margin-left: -1px;"></span></button>-->
+        <!--</p>-->
+        <p>
+            <button class="btn btn-default btn-xs btn-polygon" type="button"><i aria-hidden="true" class="iconfont icon-polygon" style=" display: block; margin-top: -2px;font-size: 18px;"></i></button>
+        </p>
+        <p style="border-bottom: #ccc solid 1px;">
+            <button class="btn btn-default btn-xs btn-rect" type="button"><span aria-hidden="true" class="glyphicon glyphicon-stop" style="margin-left: -1px;"></span></button>
+        </p>
+        <p>
+            <button class="btn btn-default btn-xs btn-edit" type="button"><span aria-hidden="true" class="glyphicon glyphicon-edit" style="margin-left: 1px;"></span></button>
+        </p>
+        <p>
+            <button class="btn btn-default btn-xs btn-clear" type="button"><span aria-hidden="true" class="glyphicon glyphicon-trash" style="margin-left: -1px;"></span></button>
+        </p>
+
+        <div class="popover fade left in pop-box" style="top: 55px;left: -97px;display: none;">
+            <div class="arrow"></div>
+            <h3 class="popover-title" style="display: none;"></h3>
+            <div class="popover-content pop-edit-box" style="padding: 0;">
+                <button class="btn btn-default btn-xs btn-polygon btn-save-edit" type="button">保存</button>
+                <button class="btn btn-default btn-xs btn-polygon btn-cel-edit" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--打开文件 按钮-->
+<div class="file-op-box btn-group">
+    <button class="btn btn-default btn-file-open" type="button">打开
+        <input class="input-json-file" data-input="false" id="select_file" tabindex="-1" type="file">
+    </button>
+
+    <div class="btn-group">
+        <button aria-expanded="false" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+            保存 <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li id="download_json"><a href="javascript:void(0)">JSON</a></li>
+            <li id="download_jsons"><a href="javascript:void(0)">JSON（加密）</a></li>
+        </ul>
+    </div>
+
+    <button class="btn btn-default btn-file-new" type="button">新建</button>
+
+</div>
+<!-- json 预览容器 -->
+<div id="result">
+    <div style="height: 100%;">
+        <textarea id="code" name="code" style="height: 100%;"></textarea>
+    </div>
+</div>
+<!-- 弹窗模板 -->
+<script id="info_html" type="text/html">
+    <div>
+        <table class="table-bordered attr-table">
+            <tbody>
+            <tr>
+                <th><input type="text" value="名称" readonly="" data-key="name"></th>
+                <td><input type="text" value=""></td>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" value="名称位置经度" readonly="" data-key="cp" data-idx="0">
+                    <button class="btn btn-default btn-xs info-marker" type="button">
+                        <span aria-hidden="true" class="glyphicon glyphicon-map-marker " style="margin-left: -1px;"></span>
+                    </button>
+                    <div class="popover fade left in pos-marker-tip-box" style="display: none;">
+                        <div class="arrow"></div>
+                        <h3 class="popover-title" style="display: none;"></h3>
+                        <div class="popover-content pop-edit-box" style="padding: 0;">
+                            <span>填入当前经纬度</span>
+                        </div>
+                    </div>
+                </th>
+                <td><input type="number" step="0.1" value="">
+                </td>
+            </tr>
+            <tr>
+                <th><input type="text" value="名称位置纬度" readonly="" data-key="cp" data-idx="1"></th>
+                <td><input type="number" step="0.1" value=""></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="info-min-op-box btn-group">
+            <button class="btn btn-default btn-sm info-min-edit" type="button"><span aria-hidden="true" class="glyphicon glyphicon-edit" style="margin-left: 1px;"></span></button>
+            <button class="btn btn-default btn-sm info-min-del" type="button"><span aria-hidden="true" class="glyphicon glyphicon-trash" style="margin-left: -1px;"></span></button>
+        </div>
+
+        <div class="info-btn-box">
+            <button type="button" class="btn  btn-sm btn-info btn-info-save">保存</button>
+            <button type="button" class="btn  btn-sm btn-default btn-info-cel">取消</button>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        tabSize: 4,
+        mode: "application/json",
+        line: true,
+        styleActiveLine: true,
+        lineNumbers: true,
+        autofocus: true,
+        indentWithTabs: true,
+        smartIndent: true,
+        theme: "xq-light",
+        placeholder: "",
+        //括号匹配
+        matchBrackets: true,
+        //代码折叠
+        lineWrapping: true,
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
+        //快捷键
+        extraKeys: {
+            "Ctrl-Space": "autocomplete", "F7": function autoFormat(editor) {
+                var totalLines = editor.lineCount();
+                editor.autoFormatRange({line: 0, ch: 0}, {line: totalLines});
+            }
+        },
+        hintOptions: {
+            tables: {}
+        }
+    });
+    editor.setSize('100%', '100%');
+
+    editor.on("focus", function () {
+        cmap.isEdit = true;
+    });
+    editor.on("blur", function () {
+        cmap.isEdit = false;
+    });
+
+    editor.on("changes", function (a, b, c) {
+        if (cmap.isEdit) {
+            let str = editor.getValue();
+            let jsonObj = JSON.parse(str || null);
+            if (jsonObj) {
+                jsonOp.loadJson(jsonObj, false);
+            }
+        }
+    });
+
+    // 百度地图API功能
+    let map = new BMap.Map('map', {
+        enableMapClick: false
+    });
+    map.centerAndZoom("西安", 12);  // 初始化地图,设置中心点坐标和地图级别
+    map.enableScrollWheelZoom();
+    // map.addControl(new BMap.NavigationControl());
+    map.disableDoubleClickZoom();   //禁用双击放大
+    let op = cmap.init(map, null, editor);
+
+    //
+    // $.getJSON("./mapjson/XiAnShi.json", function (res) {
+    //     op = cmap.init(map, res, editor);
+    // });
+    //多边形
+    $(".btn-polygon").on("click", function () {
+        op.drawingManager.open();
+        op.drawingManager.setDrawingMode(BMAP_DRAWING_POLYGON);
+    });
+    //矩形
+    $(".btn-rect").on("click", function () {
+        op.drawingManager.open();
+        op.drawingManager.setDrawingMode(BMAP_DRAWING_RECTANGLE);
+    });
+    var historyList = [];
+    //编辑
+    $(".btn-edit").on("click", function () {
+        historyList = [];
+        cmap.itemEdit = false;
+        // op.drawingManager.close();
+        cmap.list.forEach(function (d) {
+            historyList.push(d.getPath());
+            d.enableEditing();
+        });
+        $(".pop-box").show();
+    });
+
+    //编辑保存
+    $(".btn-save-edit").on("click", function () {
+        cmap.list.forEach(function (d) {
+            d.disableEditing();
+        });
+        op.drawingManager.close();
+        $(".pop-box").hide();
+        cmap.updateAllPolygonPath();
+    });
+    //编辑-取消
+    $(".btn-cel-edit").on("click", function () {
+        if (cmap.itemEdit) {
+            cmap.editPolygon.setPath(cmap.points);
+            cmap.editPolygon.disableEditing();
+        } else {
+            cmap.list.forEach(function (d, i) {
+                d.setPath(historyList[i]);
+                d.disableEditing();
+            });
+        }
+        op.drawingManager.close();
+        $(".pop-box").hide();
+        cmap.updateAllPolygonPath();
+    });
+
+    //清除
+    $(".btn-clear").on("click", function () {
+        map.clearOverlays();
+        cmap.list = [];
+        $(this).blur();
+    });
+
+    //新建
+    $(".btn-file-new").on("click", function () {
+        window.open(location.href)
+    });
+
+
+    //打开
+    $('#select_file').change(function (evt) {
+        let files = evt.target.files, reader = new FileReader();
+        reader.onload = function (e) {
+            if (e.target) {
+                let str = e.target.result;
+                let jsonObj = JSON.parse(str);
+                jsonOp.loadJson(jsonObj, true);
+            }
+        };
+        reader.readAsText(files[0]);
+    });
+
+    //下载json
+    $("#download_json").on("click", function () {
+        let str = JSON.stringify(jsonOp.obj);
+        let blob = new Blob([str]);
+        let urlObject = window.URL || window.webkitURL || window;
+        let base64data = urlObject.createObjectURL(blob);
+        down(document, base64data, "test.json")
+    });
+
+
+    const down = function (doc, base64data, fileName) {
+        let link = doc.createElement('a');
+        link.href = base64data;
+        link.download = fileName;
+        doc.body.appendChild(link);
+        link.click();
+        doc.body.removeChild(link);
+    };
+    //下载加密后的json
+    $("#download_jsons").on("click", function () {
+        let str = JSON.stringify(jsonOp.obj);
+        let obj = JSON.parse(str);
+        jsonOp.encodeJsonObj(obj);
+        let jsonStr = JSON.stringify(obj);
+        let blob = new Blob([jsonStr]);
+        let urlObject = window.URL || window.webkitURL || window;
+        let base64data = urlObject.createObjectURL(blob);
+        down(document, base64data, "test.json")
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,458 @@
+.pos-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.pos-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.pos-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pos-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 1440px;
+  background-color: #090925;
+}
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 65px;
+  background: url("./images/header_bg.jpg") top center repeat-x;
+  text-align: center;
+  color: #fff;
+}
+.header .timer {
+  position: absolute;
+  left: 100px;
+  line-height: 33px;
+  font-size: 18px;
+}
+.header .title {
+  font-size: 28px;
+  color: #01e5ff;
+  line-height: 55px;
+}
+.main {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 65px;
+}
+.cell-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0 0 15px #0977aa;
+  pointer-events: none;
+  z-index: 10;
+}
+.cell-bg span {
+  position: absolute;
+  border: #0b77a8 solid 3px;
+  width: 24px;
+  height: 24px;
+}
+.cell-bg .s-1 {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+.cell-bg .s-2 {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+.cell-bg .s-3 {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+.cell-bg .s-4 {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+.txt-bor {
+  width: 82px;
+  background-color: #16154e;
+  display: inline-block;
+  border: #07496c solid 1px;
+  box-shadow: inset 0 0 10px #162357;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #fff;
+}
+.txt-bor2 {
+  width: 82px;
+  background-color: #16154e;
+  display: inline-block;
+  border: #07496c solid 1px;
+  box-shadow: inset 0 0 10px #162357;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #fff;
+  width: 122px;
+  height: 34px;
+  line-height: 32px;
+  border-color: #0a2a59;
+  box-shadow: inset 0 0 10px #0a2a59;
+  background-color: transparent;
+  font-size: 16px;
+}
+.row {
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 0;
+}
+.row .cell {
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  padding: 1px;
+  overflow: hidden;
+}
+.row .cell-1,
+.row .cell-3 {
+  width: 26%;
+}
+.row .cell-2 {
+  width: 43.5%;
+}
+.row .cell-1,
+.row .cell-2 {
+  margin-right: 15px;
+}
+.row .cell-main {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  border: #003c56 solid 1px;
+}
+.row .cell-title {
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  background-color: #1e1e54;
+  color: #00d9f8;
+  font-size: 18px;
+}
+.row-1 {
+  height: 547px;
+}
+.row-1 .nan-nv {
+  margin-top: 30px;
+}
+.row-1 .nan-nv > div {
+  display: inline-block;
+}
+.row-1 .nan-nv .nan-box,
+.row-1 .nan-nv .nv-box {
+  width: 100px;
+}
+.row-1 .nan-box {
+  margin-right: 10px;
+}
+.row-1 .nan-box i {
+  font-size: 62px;
+  color: #00fcff;
+}
+.row-1 .nv-box {
+  margin-right: 30px;
+}
+.row-1 .nv-box i {
+  font-size: 62px;
+  color: #b25438;
+}
+.row-1 .legend-box {
+  vertical-align: 8px;
+}
+.row-1 .legend-box .icon-nan {
+  font-size: 32px;
+  color: #00fcff;
+}
+.row-1 .legend-box .icon-nv {
+  font-size: 32px;
+  color: #b25438;
+}
+.row-1 .legend-box i {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.row-1 .legend-box span {
+  font-size: 14px;
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+}
+.row-1 .chart-legend-box li {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  margin: 3px;
+}
+.row-1 .chart-legend-box i {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.row-1 .chart-legend-box .i-1 {
+  background-color: #fe912a;
+}
+.row-1 .chart-legend-box .i-2 {
+  background-color: #5b39ce;
+}
+.row-1 .chart-legend-box .i-3 {
+  background-color: #00c4ff;
+}
+.row-1 .chart-legend-box .i-4 {
+  background-color: #31fd00;
+}
+.row-1 .chart-legend-box .i-5 {
+  background-color: #df2938;
+}
+.row-1 .chart-legend-box .txt-bor {
+  width: 90px;
+}
+.row-1 .map-box {
+  height: 313px;
+}
+.row-1 .map-info-box {
+  background-color: #0a0c45;
+  padding: 10px 20px;
+  border-bottom: #07587c solid 1px;
+}
+.row-1 .map-info-box li {
+  width: 33%;
+  display: inline-block;
+}
+.row-1 .map-info-box .li-1 {
+  text-align: left;
+}
+.row-1 .map-info-box .li-2 {
+  width: 34%;
+  text-align: center;
+}
+.row-1 .map-info-box .li-3 {
+  text-align: right;
+}
+.row-1 .map-info-box li > div {
+  display: inline-block;
+  width: 136px;
+  height: 39px;
+  line-height: 39px;
+  border: #00a3fe solid 1px;
+}
+.row-1 .map-info-box li > div span,
+.row-1 .map-info-box li > div label {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  box-shadow: inset 0 0 15px #1e4e76;
+}
+.row-1 .map-info-box li > div span {
+  width: 73px;
+  border-right: #00a3fe solid 1px;
+  background-color: #1e1e54;
+}
+.row-1 .map-info-box li > div label {
+  width: 62px;
+}
+.row-1 .map-info-box li > div .err-tip {
+  background-color: #ae0105;
+}
+.row-1 .map-info-box ul {
+  margin: 7px 0;
+  height: 41px;
+}
+.row-1 .tag-box {
+  padding: 10px 20px;
+}
+.row-1 .tag-box ul:first-child {
+  margin-bottom: 7px;
+}
+.row-1 .tag-box ul {
+  padding-right: 136px;
+  position: relative;
+}
+.row-1 .tag-box li {
+  display: inline-block;
+  width: 33.3%;
+  text-align: left;
+}
+.row-1 .tag-box li:last-child {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+.row-1 .tag-box li > div {
+  display: inline-block;
+  width: 136px;
+  height: 39px;
+  text-align: center;
+  line-height: 39px;
+  border: #00a3fe solid 1px;
+  background-color: #1e1e54;
+  box-shadow: inset 0 0 15px #1e4e76;
+}
+.row-1 .tag-box i,
+.row-1 .tag-box span {
+  font-size: 20px;
+  color: #fff;
+}
+.row-1 .tag-box i {
+  margin-right: 5px;
+}
+.row-1 .pie-box li {
+  width: 50%;
+  height: 200px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.row-1 .pie-box svg {
+  transform: rotate(-90deg);
+}
+.row-1 .pie-box .pie {
+  width: 145px;
+  height: 145px;
+  position: relative;
+  margin: 0 auto;
+}
+.row-1 .pie-box .center-txt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 50%;
+  margin-top: -13px;
+  font-size: 26px;
+  height: 26px;
+  line-height: 26px;
+  color: #00ffe9;
+  text-align: center;
+}
+.row-1 .pie-box .txt-bor2 {
+  height: 33px;
+  line-height: 33px;
+  margin-top: 15px;
+}
+.row-1 .pie-box .weather i {
+  font-size: 64px;
+}
+.row-2 {
+  height: 253px;
+  margin-top: 15px;
+}
+.row-2 .bar-box {
+  text-align: center;
+}
+.row-2 .bar-box li {
+  display: inline-block;
+  width: 30%;
+}
+.row-2 .bar-box .bar {
+  height: 127px;
+  position: relative;
+  display: block;
+  margin-bottom: 7px;
+  margin-top: 37px;
+}
+.row-2 .bar-box .bar i {
+  position: absolute;
+  width: 28px;
+  left: 50%;
+  bottom: 0;
+  margin-left: -14px;
+}
+.row-2 .bar-box .bar-1 .bar-label {
+  bottom: 100%;
+}
+.row-2 .bar-box .bar-1 i {
+  background-color: #f2f603;
+  height: 100%;
+}
+.row-2 .bar-box .bar-2 i {
+  background-color: #fe912a;
+}
+.row-2 .bar-box .bar-3 i {
+  background-color: #00a0ea;
+}
+.row-2 .bar-box .bar-label {
+  text-align: center;
+  color: #00d9f8;
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.row-2 .bar-box .txt-bor {
+  width: 90px;
+}
+.row-2 .img-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  top: 45px;
+  bottom: 11px;
+}
+.row-2 .img-box > div {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+.row-2 .img-box img {
+  width: 100%;
+  height: 100%;
+  border: #fff solid 1px;
+  border-radius: 2px;
+}
+.row-2 .water-box i {
+  font-size: 104px;
+  color: #2f65ab;
+}
+.row-2 .water-box li {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */

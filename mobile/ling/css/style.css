@@ -1,0 +1,922 @@
+/* Empty. Add your own CSS if you like */
+[v-cloak] {
+  display: none;
+}
+.yd-tabs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  font-size: 0;
+  border-top: #ea5a49 solid 1px;
+}
+.yd-tabs li {
+  flex: 1;
+  font-size: 13px;
+  text-align: center;
+  color: #ea5a49;
+  cursor: pointer;
+}
+.yd-tabs li:last-child {
+  border-right: none;
+}
+.yd-tabs .active {
+  background-color: #ea5a49;
+  color: #fff;
+}
+.ifr-box {
+  position: absolute;
+  top: 0;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+.ifr-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.page-view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
+.page-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #ea5a49;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+.page-title > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+.page-title .btn {
+  border: none;
+  background: none;
+  padding: 0 13px;
+  color: #fff;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}
+.page-title .btn-icon {
+  font-size: 18px;
+}
+.page-title .btn-left {
+  float: left;
+}
+.page-title .btn-left i {
+  margin-right: 3px;
+}
+.page-title .btn-right {
+  float: right;
+}
+.page-title .btn-right i {
+  margin-right: 3px;
+}
+.page-content {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.page-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 9999;
+  text-align: center;
+}
+.page-loading .dot {
+  width: 18px;
+  height: 18px;
+  background: #3ac;
+  border-radius: 100%;
+  display: inline-block;
+  margin-top: 50%;
+  animation: slide 1s infinite;
+}
+.page-loading .dot:nth-child(1) {
+  animation-delay: 0.1s;
+  background: #32aacc;
+}
+.page-loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #64aacc;
+}
+.page-loading .dot:nth-child(3) {
+  animation-delay: 0.3s;
+  background: #96aacc;
+}
+.page-loading .dot:nth-child(4) {
+  animation-delay: 0.4s;
+  background: #c8aacc;
+}
+.page-loading .dot:nth-child(5) {
+  animation-delay: 0.5s;
+  background: #faaacc;
+}
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.xui-loading {
+  padding-top: 10%;
+  text-align: center;
+}
+.side-menu {
+  display: none;
+}
+.side-menu .xui-menu-item {
+  border-bottom: #eeeeee solid 1px;
+  height: 40px;
+  line-height: 40px;
+}
+.side-menu .xui-menu-item a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 39px;
+  text-indent: 20px;
+  color: #666666;
+}
+.side-menu .xui-menu-item .active {
+  color: red;
+}
+/*TODO 首页*/
+.tui-jian h2 {
+  padding-left: 10px;
+  border-bottom: #cccccc solid 1px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+.tui-jian h2 span {
+  float: right;
+  margin-right: 10px;
+}
+.tui-jian .main-one > a {
+  float: left;
+  width: 25%;
+  margin-left: 2%;
+  margin-right: 5%;
+}
+.tui-jian .main-one img {
+  width: 100%;
+  padding: 1px;
+  border: #cccccc solid 1px;
+}
+.tui-jian .main-one .item-info {
+  width: 66%;
+  float: left;
+  margin-right: 2%;
+}
+.tui-jian .main-one .item-info h3 {
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tui-jian .main-one .item-info label {
+  color: #999999;
+}
+.tui-jian .main-one .item-info p {
+  max-height: 60px;
+  overflow: hidden;
+  line-height: 20px;
+}
+.main-list p {
+  margin: 0;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: #eeeeee solid 1px;
+  text-indent: 2%;
+}
+.main-list span {
+  color: #999999;
+}
+.main-list label {
+  color: #666666;
+}
+.main-list a {
+  text-decoration: none;
+  text-indent: 5px;
+  color: #2f2f2f;
+  display: inline-block;
+  margin-right: 10px;
+}
+.main-list a:active {
+  background-color: #f1f1f1;
+}
+.xui-list {
+  padding-top: 30px;
+}
+.xui-list h2 {
+  padding-left: 10px;
+  margin: 0;
+  border-bottom: #cccccc solid 1px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+.xui-list p {
+  margin: 0;
+  height: 39px;
+  line-height: 39px;
+  border-bottom: #eeeeee solid 1px;
+}
+.xui-list span {
+  float: right;
+  margin-right: 10px;
+}
+.xui-list label {
+  color: #999999;
+  font-size: 12px;
+}
+.xui-list a {
+  text-indent: 15px;
+  color: #129151;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.xui-list a:active {
+  background-color: #f1f1f1;
+}
+/*detail*/
+.detail-info {
+  margin-top: 10px;
+}
+.detail-info > a {
+  float: left;
+  width: 25%;
+  margin-left: 3%;
+  margin-right: 5%;
+}
+.detail-info img {
+  width: 100%;
+  border: #cccccc solid 1px;
+}
+.detail-info .item-info {
+  width: 60%;
+  float: left;
+  margin-right: 2%;
+}
+.detail-info .item-info label {
+  color: #999999;
+}
+.detail-info .item-info p {
+  overflow: hidden;
+  line-height: 1em;
+}
+.de-info {
+  padding-left: 2%;
+}
+.btn-yuedu {
+  padding-left: 3%;
+  position: relative;
+  margin-top: 10px;
+  height: 50px;
+}
+.btn-yuedu a {
+  float: left;
+  width: 29%;
+  margin-right: 3%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: #cccccc solid 1px;
+}
+.de-mu-list h3 {
+  padding-left: 2%;
+}
+.de-mu-list p {
+  margin: 0;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: #eeeeee solid 1px;
+  text-indent: 2%;
+}
+.de-mu-list a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 44px;
+  text-indent: 20px;
+  color: #666666;
+}
+/*TODO mulu*/
+.m-list p {
+  height: 45px;
+  border-bottom: #eeeeee solid 1px;
+  line-height: 45px;
+}
+.m-list .item {
+  padding: 12px;
+  border-color: #eeeeee;
+}
+.m-list .item:active {
+  background-color: #eeeeee;
+}
+.m-list a {
+  color: #333333;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.m-list .active {
+  color: red;
+}
+.go-page {
+  height: 50px;
+  padding-top: 10px;
+  display: block;
+}
+.go-page input {
+  color: #9b9b9b;
+  height: 28px;
+  line-height: 28px;
+  width: 3em;
+  padding: 0 5px;
+  border: #dcdcdc solid 1px;
+  float: left;
+  margin-left: 10px;
+}
+.go-page label {
+  float: left;
+  margin-top: 4px;
+  color: #9b9b9b;
+}
+.go-page button {
+  color: #9b9b9b;
+  background-color: white;
+  border: #dcdcdc solid 1px;
+  float: left;
+  height: 28px;
+  margin-left: 10px;
+}
+/*sort*/
+.s-search {
+  padding: 0 2%;
+  height: 35px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.s-search .s-search-input {
+  width: 75%;
+  float: left;
+  margin-left: 2%;
+  height: 35px;
+  border: #ea732e solid 1px;
+  background-color: #fff;
+}
+.s-search .s-search-input input {
+  font-size: 14px;
+  height: 33px;
+  width: 100%;
+  padding-top: 0;
+  background: transparent;
+}
+.s-search .btn-sra {
+  color: #fff;
+  border: none;
+  background-color: #ea732e;
+  float: left;
+  min-height: 0;
+  height: 35px;
+  margin-left: 10px;
+  border-radius: 3px;
+  padding: 0 20px;
+}
+.sort-list {
+  padding: 0 2%;
+}
+.sort-list li {
+  float: left;
+  width: 30%;
+  margin-left: 2%;
+  text-align: center;
+  height: 43px;
+  line-height: 43px;
+  background-color: #f8f8f8;
+  margin-bottom: 10px;
+}
+.sort-list a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #2f2f2f;
+}
+.sort-list a:active {
+  background-color: #eeeeee;
+}
+/*search*/
+.search-list p {
+  margin: 0;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: #eeeeee solid 1px;
+  text-indent: 2%;
+}
+.search-list label {
+  color: #999999;
+}
+.search-list a {
+  text-decoration: none;
+  text-indent: 15px;
+  color: #129151;
+  display: inline-block;
+  margin: 0 10px;
+}
+.search-list a:active {
+  background-color: #f1f1f1;
+}
+/*yuedu*/
+#yuedu {
+  padding: 0 10px;
+  color: #333333;
+  min-height: 100%;
+  -webkit-filter: brightness(1) saturate(1) contrast(1);
+  font-family: 'Microsoft YaHei';
+}
+#yuedu h3 {
+  line-height: 1.2em;
+  margin: 0;
+  font-size: 22px;
+}
+#yuedu p {
+  line-height: 1;
+}
+#yuedu .box-txt {
+  color: #333333;
+  font-family: 'Microsoft YaHei';
+}
+.setting {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  min-height: 150px;
+  background-color: #efefef;
+  padding: 0 10px;
+}
+.setting p {
+  line-height: 40px;
+  height: 40px;
+}
+.setting p i {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: #eeeeee solid 1px;
+  margin-left: 10px;
+  font-style: normal;
+}
+.setting .change-range {
+  line-height: 40px;
+  height: 40px;
+}
+.setting .change-range a {
+  color: #333333;
+}
+.setting .change-range .c-prep {
+  float: left;
+}
+.setting .change-range .c-next {
+  float: right;
+}
+.setting .change-range input::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+.setting .change-range input::-webkit-slider-thumb:before {
+  top: 6px;
+  background: #ecf0f0 !important;
+  z-index: 1;
+}
+.setting .bg-active {
+  background-color: #f8f8f8;
+}
+.setting .sett-bg label {
+  float: left;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+}
+.setting .sett-bg span {
+  display: block;
+  float: left;
+  height: 38px;
+  width: 38px;
+  border: #cccccc solid 1px;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+/*TODO books*/
+.books-list {
+  padding-bottom: 10px;
+}
+.books-list p {
+  height: 44px;
+  border-color: #eeeeee;
+  padding: 0;
+}
+.books-list p .checkbox {
+  padding: 0;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.books-list p .checkbox .rs-chk {
+  width: 22px;
+  height: 22px;
+}
+.books-list p .checkbox .rs-chk::after {
+  width: 11px;
+  height: 6px;
+}
+.books-list p a {
+  height: 43px;
+  margin-left: 10px;
+  line-height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #2f2f2f;
+}
+.books-list a {
+  line-height: 43px;
+}
+.books-list label {
+  font-size: 14px;
+}
+.books-list span {
+  color: #999999;
+  margin-left: 10px;
+  font-size: 12px;
+}
+.op-btn-list {
+  display: block;
+  height: 45px;
+  margin-top: 10px;
+}
+.op-btn-list a {
+  padding: 10px 20px;
+  color: #2f2f2f;
+  margin-left: 5px;
+  display: inline-block;
+  border: #e1e1e1 solid 1px;
+  border-radius: 4px;
+}
+/*storage*/
+.loc-list .checkbox {
+  padding: 0;
+}
+.loc-list label {
+  vertical-align: middle;
+}
+.loc-list span {
+  vertical-align: middle;
+  padding: 0 10px;
+}
+.loc-list input[type=text] {
+  display: inline;
+  vertical-align: middle;
+}
+.ye {
+  background-color: #080c10;
+}
+.ye .pane {
+  background-color: #080c10;
+}
+.ye .bar-stable {
+  background-color: #212121;
+}
+.ye .title {
+  background-color: #212121;
+}
+.ye .tabs {
+  background-color: #212121;
+}
+.ye .scroll-content {
+  background-color: #080c10;
+}
+.ye .item {
+  background-color: #080c10;
+}
+.ye .item-content {
+  background-color: #080c10;
+}
+.ye .setting {
+  background-color: #080c10;
+}
+/*common*/
+.fix-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/*弹层*/
+.fix-box,
+.fix-box .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.fix-box .bg {
+  background-color: #000;
+  opacity: 0.4;
+}
+.fix-box .main {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+/*弹窗-列表*/
+.cp-type-box li {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+.ling-ling {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.ling-ling .ling-list {
+  position: absolute;
+  top: 10px;
+  bottom: 80px;
+  left: 5px;
+  right: 5px;
+  overflow: auto;
+  border-bottom: #cccccc solid 1px;
+}
+.ling-ling .ling-list p {
+  line-height: 25px;
+  padding: 0 5px;
+  margin: 0;
+}
+.ling-ling .ling-list .m-txt {
+  color: #cccccc;
+}
+.ling-ling .ling-list a {
+  color: #1b93e1;
+  opacity: 0.8;
+}
+.ling-ling .ling-bottom {
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  bottom: 20px;
+}
+.ling-ling input {
+  width: 220px;
+  height: 25px;
+  line-height: 25px;
+  border: #cccccc solid 1px;
+  padding: 2px;
+  margin-left: 10px;
+}
+.ling-ling .btn-send {
+  text-decoration: none;
+  margin-left: 10px;
+  background-color: #1b93e1;
+  width: 60px;
+  color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.ling-ling .btn-clear {
+  text-decoration: none;
+  background-color: #cccccc;
+  width: 60px;
+  color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.setting-list {
+  padding-top: 0;
+}
+.setting-list li {
+  height: 40px;
+  line-height: 40px;
+  text-indent: 10px;
+  margin: 0;
+  border-top: none;
+  padding: 0;
+  border-bottom: #ececec solid 1px;
+  cursor: pointer;
+}
+.setting-list li:active {
+  background-color: #eee;
+}
+.setting-list li .item-content {
+  padding: 0;
+}
+.setting-list li .toggle {
+  top: 7px;
+}
+.setting-list li .toggle .track {
+  width: 46px;
+  height: 25px;
+}
+.setting-list li .toggle .handle {
+  width: 23px;
+  height: 23px;
+  top: 6px;
+  left: 17px;
+}
+.info-img img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.info-img span {
+  vertical-align: middle;
+}
+.btn-bottom-box {
+  position: fixed;
+  bottom: 40px;
+  left: 10px;
+  right: 10px;
+}
+.btn-bottom-box .btn-add-path {
+  background-color: #ea732e;
+  color: #fff;
+}
+.btn-bottom-box .btn-add-path:active {
+  opacity: 0.9;
+}
+/*TODO 添加*/
+.path-add-box li {
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+  margin: 0;
+  border-top: none;
+  padding: 0;
+  border-bottom: #ececec solid 1px;
+}
+.path-add-box li > span,
+.path-add-box li > div {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+}
+.path-add-box li > span {
+  width: 20%;
+  text-indent: 10px;
+  background-color: #ff9bb4;
+  color: #fff;
+  box-shadow: inset 0 -1px #dfdfdf;
+}
+.path-add-box li > div {
+  width: 80%;
+}
+.path-add-box li .attr-list-box {
+  width: 100%;
+}
+.path-add-box li .input-text {
+  width: 100%;
+  padding: 0 17px;
+}
+.path-add-box li .input-radio input {
+  opacity: 0;
+}
+.path-add-box li .input-radio i {
+  color: #ccc;
+  font-size: 20px;
+  vertical-align: -2px;
+  margin-right: 5px;
+}
+.path-add-box li .radio-active i {
+  color: #ea732e;
+}
+.path-add-box li .label-select {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  padding-left: 17px;
+}
+.path-add-box li .label-select select {
+  border: none;
+  width: 100%;
+  pointer-events: auto;
+}
+.path-add-box li .btn-box {
+  padding-left: 17px;
+}
+.path-add-box li .btn-box button {
+  margin-right: 20px;
+  height: 30px;
+  line-height: 30px;
+  min-height: auto;
+  background-color: #b5b5b5;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.path-add-box li .btn-box button i {
+  margin-right: 4px;
+}
+.path-add-box li .btn-box button:active {
+  opacity: 0.9;
+}
+.path-add-box .h-all {
+  transform: translateZ(0);
+  height: auto;
+}
+.path-add-box .hide-height {
+  overflow: hidden;
+  animation: hideHeight 300ms forwards;
+}
+.path-add-box ol {
+  margin: 0;
+}
+.path-add-box .hr-title {
+  margin: 10px 0 0 0;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  color: #fff;
+  background-color: #4ec6e6;
+}
+@keyframes hideHeight {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    display: none;
+  }
+}
+/*
+* design.html
+*/
+.design-op-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.design-op-box li {
+  display: inline-block;
+}
+.error-list {
+  padding-top: 0;
+}
+.error-list .item {
+  height: 40px;
+  line-height: 40px;
+  text-indent: 10px;
+  margin: 0 -1px;
+  border-top: none;
+  padding: 0;
+}

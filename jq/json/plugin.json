@@ -1,0 +1,19 @@
+[
+  {
+    "name": "jquery",
+    "children": [
+      {
+        "name": "分页pager",
+        "src": "./list/pager.html"
+      },
+      {
+        "name": "自定义select",
+        "src": "./form/select.html"
+      },
+      {
+        "name": "图片轮播",
+        "src": "./form/select.html"
+      }
+    ]
+  }
+]

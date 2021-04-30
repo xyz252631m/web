@@ -1,0 +1,100 @@
+/*index 首页*/
+.view-header {
+  height: 0px;
+  box-shadow: 0 3px 15px #ccc;
+  position: relative;
+  z-index: 100;
+  background-color: #be85dc;
+}
+.view-header canvas {
+  width: 100%;
+  height: 100%;
+}
+.view-header .txt {
+  padding-left: 20px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  line-height: 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  color: #333;
+  text-shadow: 1px 1px 1px #666;
+}
+.view-header .theme-list {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -15px;
+}
+.view-box {
+  display: flex;
+  align-items: stretch;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  width: 100%;
+}
+.left-menu {
+  width: 320px;
+  overflow: hidden;
+  position: relative;
+  z-index: 50;
+  box-shadow: 0.5em 0 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02);
+  /*2 级*/
+  /*3级*/
+  /*4级*/
+  /*5级*/
+  /*6级*/
+}
+.left-menu .control {
+  padding: 10px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02);
+}
+.left-menu .virtual-tree-menu {
+  top: 50px;
+  padding-top: 10px;
+}
+.left-menu .virtual-tree-menu .level-li-2 a {
+  padding-left: 38px;
+}
+.left-menu .virtual-tree-menu .level-li-2 .arrow {
+  left: 20px;
+}
+.left-menu .virtual-tree-menu .level-li-3 a {
+  padding-left: 57px;
+}
+.left-menu .virtual-tree-menu .level-li-3 .arrow {
+  left: 39px;
+}
+.left-menu .virtual-tree-menu .level-li-4 a {
+  padding-left: 76px;
+}
+.left-menu .virtual-tree-menu .level-li-4 .arrow {
+  left: 58px;
+}
+.left-menu .virtual-tree-menu .level-li-5 a {
+  padding-left: 95px;
+}
+.left-menu .virtual-tree-menu .level-li-5 .arrow {
+  left: 77px;
+}
+.left-menu .virtual-tree-menu .level-li-6 a {
+  padding-left: 114px;
+}
+.left-menu .virtual-tree-menu .level-li-6 .arrow {
+  left: 96px;
+}
+.right-box {
+  flex: 1;
+  box-shadow: inset 3px 0 5px #ccc;
+  overflow: hidden;
+  padding: 5px 0 0 5px;
+  display: none;
+}
+.right-box iframe {
+  width: 100%;
+  height: 100%;
+}

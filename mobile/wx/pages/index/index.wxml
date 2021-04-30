@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo-box">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <scroll-view class="list-box" scroll-y="true">
+    <view class="item" wx:for="{{list}}" wx:key="id">
+      <navigator class="item-main" url="../notice/notice?id={{item.id}}">
+        <view class="item-title">
+          <text>{{item.time}}</text>
+        </view>
+        <view class="item-text"> {{item.des}} </view>
+      </navigator>
+    </view>
+    <view class="item add-item">
+        <view class="item-main" bindtap="newNotice">
+        <text>+</text>
+        </view>
+        
+    </view>
+  </scroll-view>
+</view>

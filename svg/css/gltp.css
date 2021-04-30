@@ -1,0 +1,82 @@
+.body-bg {background: url("../images/body_bg_01.png") repeat;position: absolute;left: 0;top: 0;right: 0;bottom: 0}
+#svgBox {position: absolute;top: 0;bottom: 0;left: 0;right: 0;font-size: 0}
+#svgBox svg {cursor: move;user-select: none}
+.svg-node-hover .node-company circle {fill: #e0e6f3;stroke: #e0e6f3}
+.svg-node-hover .node-company text {fill: transparent}
+.svg-node-hover .node-company-hover circle {fill: #3ba1f4;stroke: #3ba1f4}
+.svg-node-hover .node-company-hover text {fill: #fff}
+.svg-node-hover .node-person circle {fill: #f5e0d5;stroke: #f5e0d5}
+.svg-node-hover .node-person text {fill: transparent}
+.svg-node-hover .node-person-hover circle {fill: #ffae64;stroke: #ffae64}
+.svg-node-hover .node-person-hover text {fill: #fff}
+.svg-node-hover .node-link-company {opacity: .5}
+.svg-node-hover .node-link-person {opacity: .5}
+.svg-node-hover .node-link-company-hover {opacity: 1}
+.svg-node-hover .node-link-person-hover {opacity: 1}
+.node-company circle {fill: #3ba1f4;stroke: #3ba1f4}
+.node-company text {fill: #fff}
+.node-company-hover circle {fill: #3ba1f4;stroke: #3ba1f4}
+.node-company-hover text {fill: #fff}
+.node-person circle {fill: #ffae64;stroke: #ffae64}
+.node-person text {fill: #fff}
+.node-person-hover circle {fill: #ffae64;stroke: #ffae64}
+.node-person-hover text {fill: #fff}
+.node-link-company line {stroke-width: 1px;stroke: #fabc79}
+.node-link-company text {fill: #888;font-size: 12px;text-anchor: middle}
+.node-link-company-hover line {stroke: #ff7f19}
+.node-link-person line {stroke-width: 1px;stroke: #7ac5f5}
+.node-link-person text {fill: #888;font-size: 12px;text-anchor: middle}
+.node-link-person-hover line {stroke: #096ff4}
+#arrowCompany path {fill: #fabc79}
+#arrowCompanyHover path {fill: #ff7f19}
+#arrowPerson path {fill: #7ac5f5}
+#arrowPersonHover path {fill: #096ff4}
+.left-tip-panel {position: absolute;left: 20px;top: 90px;width: 300px;background: #fff;border-radius: 5px;border: #ccc solid 1px;box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.16);z-index: 9999}
+.left-tip-panel .head-wrap {height: 52px;border-bottom: #e5e5e5 1px solid;padding: 0 15px}
+.left-tip-panel .head-title {color: #000;font-size: 18px;line-height: 52px;display: inline-block;float: left}
+.left-tip-panel .head-close {color: #128bed;font-size: 30px;font-weight: 700;line-height: 52px;display: inline-block;float: right;cursor: pointer}
+.left-tip-panel .base-info .img-box {margin: 15px;width: 40px;height: 40px;background-size: cover;float: left;border-radius: 8px}
+.left-tip-panel .base-info .img-box img {max-width: 50px;max-height: 50px}
+.left-tip-panel .base-info .info-list {text-align: left;float: left;min-height: 60px;padding: 10px;width: 210px}
+.left-tip-panel .base-info .info-list h4 {color: #128bed}
+.left-tip-panel .base-info .info-list p {margin-top: 4px}
+.left-tip-panel .base-info label {color: #999}
+.left-tip-panel .company-info {clear: both;padding: 0 15px;margin-top: 10px}
+.left-tip-panel .company-info .com-tabs {font-size: 0;height: 40px;border-bottom: 1px solid #ddd}
+.left-tip-panel .company-info li {float: left;height: 40px;line-height: 40px;border: 1px solid transparent;border-radius: 4px 4px 0 0;padding: 0 15px;cursor: pointer}
+.left-tip-panel .company-info li span {font-size: 14px}
+.left-tip-panel .company-info .active {color: #555;margin-bottom: -1px;background-color: #fff;border: 1px solid #ddd;border-bottom-color: transparent}
+.left-tip-panel .company-info .tabs-box {display: none;margin-bottom: 20px;padding-top: 7px;height: 250px;overflow-y: auto;clear: both}
+.left-tip-panel .company-info .tabs-box table {width: 100%;font-size: 12px}
+.left-tip-panel .company-info .tabs-box th, .left-tip-panel .company-info .tabs-box td {padding: 8px;border: 1px solid #eee;vertical-align: middle}
+.left-tip-panel .company-info .tabs-box th {background-color: #d9e9fe;color: #666}
+.left-tip-panel .per-info {margin: 15px;clear: both;padding: 10px 0;min-height: 300px}
+.left-tip-panel .per-info h4 {height: 40px;line-height: 40px;font-size: 16px}
+.left-tip-panel .per-info .table-box {max-height: 250px;overflow-y: auto}
+.left-tip-panel .per-info table {width: 100%;font-size: 12px}
+.left-tip-panel .per-info th, .left-tip-panel .per-info td {padding: 8px;border: 1px solid #eee;vertical-align: middle}
+.left-tip-panel .per-info th {background-color: #d9e9fe;color: #666}
+.left-tip-panel .info-panel-1 .img-box {font-size: 0;border-radius: 10px;background-color: #d08080;padding: 5px;margin-right: 5px}
+.left-tip-panel .info-panel-1 .img-box span {display: inline-block;width: 20px;height: 20px;text-align: center;line-height: 20px;color: #fff;font-size: 18px}
+.left-tip-panel .info-panel-1 .info-list {min-height: 100px}
+.left-tip-panel .info-panel-2 .img-box {margin-right: 15px}
+.left-tip-panel .info-panel-2 .img-box span {display: block;width: 50px;height: 50px;border-radius: 10px;background-color: #d08080;text-align: center;line-height: 50px;color: #fff;font-size: 30px}
+.left-tip-panel .main {text-align: left;padding: 0 10px}
+.op-box {border: #ccc solid 1px;position: absolute;background: #fff;width: 46px;right: 20px;bottom: 150px;font-size: 18px;z-index: 20}
+.op-box li {cursor: pointer;height: 55px;color: #999;text-align: center;box-sizing: border-box;font-size: 12px;padding: 5px}
+.op-box li i {display: block;text-align: center;width: 100%;font-size: 20px;margin-top: 5px}
+.op-box .active {color: #fff;background-color: #128bed}
+.op-box li:hover {color: #fff;background-color: #128bed}
+.mind-op-panel {position: fixed;right: 50px;top: 50px;z-index: 999;width: 30px;height: 300px;user-select: none}
+.mind-op-panel .op-range-box {position: absolute;top: 30px;left: 5px;border: #e9eaec solid 1px;width: 24px;height: 216px;box-sizing: border-box;box-shadow: #ccc 3px 3px 3px;background-color: #fff}
+.mind-op-panel .op-range {width: 4px;height: 200px;position: absolute;left: 9px;top: 7px;z-index: 999;box-sizing: border-box;background-color: #e9eaec}
+.mind-op-panel .range-content {width: 14px;height: 14px;border-radius: 50%;background-color: #fff;border: #57a3f3 solid 2px;position: absolute;top: 57.7px;left: -5px;cursor: pointer;box-sizing: border-box;user-select: none}
+.mind-op-panel .range-select {width: 4px;height: 57.7px;position: absolute;left: 0;top: 0;z-index: 9;background-color: #57a3f3}
+.mind-op-panel .range-content:hover {transform: scale(1.15);transition: transform .4s}
+.mind-op-panel .op-btn {position: absolute;width: 22px;text-align: center;height: 22px;background-color: #fff;border: #e9eaec solid 1px;left: 5px;color: #6eb4fd;cursor: pointer;z-index: 999;box-shadow: #ccc 3px 3px 3px}
+.mind-op-panel .op-btn:hover {color: #57a3f3;transform: scale(1.1);transition: transform .4s}
+.mind-op-panel .op-btn-minus {top: 0}
+.mind-op-panel .op-btn-plus {top: 254px}
+.mind-op-panel .op-btn-refresh {top: 283px}
+.mind-op-panel .op-btn-expand {top: 312px}
+/*# sourceMappingURL=gltp.css.map */

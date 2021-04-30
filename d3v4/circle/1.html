@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>气泡图</title>
+    <style>
+        body { background-color: #f0f0f0; min-width: 1024px; }
+    </style>
+    <script src="../d3.v4.min.js"></script>
+</head>
+<body>
+<div style="text-align:center">
+    <svg width="1560" height="960" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+</div>
+<script>
+    var svg = d3.select("svg"), width = +svg.attr("width"), height = +svg.attr("height");
+    svg.append("g").append("text").text("标题").attr("class", "title").attr("x", 400).attr("y", 30).style("font-size", "18px");
+    var transform = {
+        x: 0,
+        y: 0,
+        x1: 0,
+        y1: 0,
+        z: 1
+    };
+
+    var drag = d3.drag().on("drag", function () {
+        transform.x1 = transform.x - (d3.event.subject.x - d3.event.x);
+        transform.y1 = transform.y - (d3.event.subject.y - d3.event.y);
+        svg.attr("style", "transform:translate(" + transform.x1 + "px," + transform.y1 + "px) scale(" + transform.z + ")")
+    }).on("end", function () {
+        transform.x = transform.x1;
+        transform.y = transform.y1;
+    });
+
+    svg.call(drag);
+
+    //svg.call(zoom);
+
+    var colorList = d3.scaleOrdinal(d3.schemeCategory20c);
+    var pack = d3.pack().size([width, height]).radius(null).padding(20);
+    var data = [
+        {id: "1", value: 56, name: "文具文具文具"},
+        {id: "2", value: 725700, name: "母婴母婴母婴"},
+        {id: "3", value: 1823396, name: "食品食品食品"},
+        {id: "4", value: 1121648, name: "家居"},
+        {id: "5", value: 672144, name: "鞋"},
+        {id: "6", value: 432323, name: "书"},
+        {id: "7", value: 566880, name: "数码"},
+        {id: "8", value: 909117, name: "服装"},
+        {id: "9", value: 578599, name: "运动"},
+        {id: "10", value: 610143, name: "饰品"}
+    ];
+
+
+    function initD3(data) {
+        var i = 0;
+        var root = d3.hierarchy({children: data})
+            .sum(function (d) {
+                return d.value;
+            })
+            .each(function (d) {
+
+                console.log(d)
+                d.colorIdx = i++;
+            });
+        svg.selectAll(".node").remove();
+        var node = svg.selectAll(".node")
+            .data(pack(root).leaves())
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                //console.log(d)
+
+
+                return "translate(" + d.x * 1 + "," + d.y * 1 + ")";
+            });
+
+        node.append("circle")
+            .attr("id", function (d) {
+                return d.id;
+            })
+            .attr("r", function (d) {
+                var text = d.data.name;
+                if (text.length * 15 > d.r) {
+                    d.r = text.length * 15
+                }
+
+                return d.r;
+            })
+            .style("fill", function (d) {
+                //背景颜色
+                return colorList(d.colorIdx);
+            });
+
+        node.append("clipPath")
+            .attr("id", function (d) {
+                return "clip-" + d.data.id;
+            })
+            .append("use")
+            .attr("xlink:href", function (d) {
+                return "#" + d.data.id;
+            });
+
+        node.append("text")
+            .selectAll("tspan")
+            .data(function (d) {
+                //显示的文本
+                return [d.data.name, d.data.value]
+            })
+            .enter().append("tspan")
+            .attr("x", 0)
+            .attr("y", function (d, i, nodes) {
+                return 20 + (i - nodes.length / 2 - 0.5) * 15;
+            })
+            .style("fill", function (d) {
+                //文字颜色
+                return "#000"
+            })
+            .style("font-size", function (d) {
+                return "14px"
+            })
+            .text(function (d) {
+                return d;
+            });
+
+    }
+
+    initD3(data)
+
+
+    // setTimeout(function () {
+    //     // d3.selectAll('.node').remove();   //删除整个SVG
+    //     initD3([
+    //         {id: "39", value: 578599, name: "运3动"},
+    //         {id: "130", value: 610143, name: "饰3品"}])
+    //
+    // }, 2000)
+
+
+</script>
+</body>
+
+</html>

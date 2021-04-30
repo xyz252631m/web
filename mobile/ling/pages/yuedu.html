@@ -1,0 +1,28 @@
+<ion-view view-title="" hide-nav-bar="!isSetting">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-more-outline" on-tap="toMu()"></button>
+  </ion-nav-buttons>
+  <ion-content id="yueBox" delegate-handle="yueScroll" overflow-scroll="true" style="overflow: hidden">
+    <div ng-style="style" id="yuedu">
+      <h3>{{item.title}}</h3>
+      <div class="box-txt" ng-bind-html="item.content"></div>
+    </div>
+  </ion-content>
+  <div class="setting" ng-if="isSetting">
+    <p class="range change-range">
+      <a class="c-prep" on-tap="changYue(-1)">上一章</a>
+      <input type="range" name="volume">
+      <a class="c-next"  on-tap="changYue(1)">下一章</a>
+    </p>
+    <!--<div class="range">-->
+      <!--<i class="icon ion-ios-sunny-outline"></i>-->
+      <!--<input type="range" name="volume">-->
+      <!--<i class="icon ion-ios-sunny"></i>-->
+    <!--</div>-->
+    <p><label>字体</label><i ng-repeat="font in setting.font" ng-class="{'bg-active':style.fontSize==(font.num+'px')}"
+                           on-tap="setFont(font)">{{font.name}}</i></p>
+    <p><label>行高</label><i ng-repeat="lh in setting.lh" on-tap="setlh(lh)" ng-class="{'bg-active':style.lineHeight==(lh+'em')}">{{lh}}</i></p>
+    <p class="sett-bg"><span ng-repeat="bg in setting.bg" ng-style="{'backgroundColor':bg.color}"
+                                               ng-class="{'font-active':bg.active}" on-tap="setBg(bg)"></span></p>
+  </div>
+</ion-view>

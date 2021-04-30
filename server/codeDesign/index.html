@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>design</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../lib/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../../jq/css/virtualTree.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="../../lib/konva.min.js"></script>
+    <script src="../../js/zepto.min.js"></script>
+    <script src="../../js/vconsole.min.js"></script>
+    <script src="../../lib/acorn-8.0.5/acorn.js"></script>
+    <script src="../../lib/escodegen/escodegen.browser.min.js"></script>
+    <script src="../../js/base.js"></script>
+
+
+    <script>
+       // new VConsole();
+    </script>
+</head>
+<body>
+
+<div class="tabs is-toggle is-toggle-rounded is-small is-centered ">
+    <ul style="display:none">
+        <li class="is-active"><a><span>tree</span></a></li>
+        <li><a><span>code</span></a></li>
+        <li><a><span>canvas</span></a></li>
+        <li><a><span>result</span></a></li>
+    </ul>
+</div>
+
+<div class="tabs-panel is-active"  >
+    <div class="virtual-tree-menu tree-box none">
+        <ul>
+            <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+            <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+            <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+            <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a>
+                <ul>
+                    <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+                    <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+                    <li><a><span class="arrow"><i class="fa fa-fw fa-caret-right"></i></span><label>234234</label></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="tabs-panel">
+    <pre class="code-box" contenteditable="true">
+
+    </pre>
+</div>
+<div class="tabs-panel">
+    <div id="container"></div>
+</div>
+<div class="tabs-panel">
+    <pre class="result-box">
+
+    </pre>
+</div>
+<div class="tabs-panel">
+    <div class="virtual-tree-menu menu-list-box">
+        <ul></ul>
+    </div>
+</div>
+<div class="op-box none">
+    <div class="buttons">
+        <button data-type="menu" class="button is-danger is-small">菜单</button>
+        <button data-type="add" class="button is-primary is-small">新增</button>
+        <button data-type="edit" class="button is-success is-small">修改</button>
+        <button data-type="convert" class="button is-info is-small">转换</button>
+        <button data-type="convert2" class="button is-success is-small">转换2</button>
+        <button data-type="canvas" class="button is-primary is-small">画布</button>
+        <button data-type="save" class="button is-danger is-small">保存</button>
+        <button data-type="test" class="button is-info is-small">test</button>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+
+        <div class="edit-modal-main">
+            <label>name:</label>
+            <input class="input is-primary" type="text" placeholder="Primary input">
+        </div>
+
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

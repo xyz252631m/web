@@ -1,0 +1,41 @@
+<ion-view view-title="详情" hide-nav-bar="true">
+  <ion-content delegate-handle="detailScroll">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="ion-ios-arrow-thin-down"
+                   spinner="ios"></ion-refresher>
+    <div class="xui-loading" ng-if="!isComplete">
+      <ion-spinner icon="bubbles" class="spinner-balanced spinner spinner-bubbles"></ion-spinner>
+    </div>
+
+    <div ng-if="isComplete">
+      <div class="detail-info clearfix">
+        <a>
+          <img data-src="{{book.src}}" onerror="nofind()">
+        </a>
+        <div class="item-info">
+          <h3>{{book.title}}</h3>
+          <p>作者：{{book.author}}</p>
+          <p>分类：{{book.sort}}</p>
+          <p>{{book.state}}</p>
+          <p>{{book.time}}</p>
+          <p>最新：<a on-tap="toDu(book.newCid)">{{book.newC}}</a></p>
+        </div>
+      </div>
+
+      <div class="de-info">
+        <h3>小说简介</h3>
+        <p>{{book.info}}</p>
+      </div>
+      <div class="btn-yuedu">
+        <a on-tap="yuedu(isAddBookshelf)">{{isAddBookshelf?"继续阅读":"立即阅读"}}</a>
+        <a class=" " on-tap="mulu()">查看目录</a>
+        <a class=" " on-tap="addBookshelf()">加入书架</a>
+      </div>
+      <div class="de-mu-list">
+        <h3>最新章节预览</h3>
+        <p collection-repeat="a in book.list">
+          <a on-tap="toDu(a.cid)">{{a.title}}</a>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

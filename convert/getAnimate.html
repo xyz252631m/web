@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/jquery-3.5.1.js"></script>
+    <style>
+        body {font-size: 12px;}
+        .map-box { width: 600px; margin: 0 auto; height: 500px; border: var(--bs-purple) solid 1px;}
+        .panel-box { position: fixed;top: 0;left: 0; }
+        .move-title {cursor: move;text-align: center;}
+        /*attr-list-box*/
+        .attr-list-box {position: fixed; top:0;right: 0;}
+        /*.attr-list-box p {position: relative;padding-left: 4em; }*/
+        .attr-list-box label { width: 5em; font-weight:normal;text-align: right; padding-right: 15px;}
+        /*item-list-box*/
+        .item-list-box {width: 240px;}
+        .t {transform: scale(0)}
+    </style>
+    <!--    <script src="../fabric/js/fabric.min.js"></script>-->
+    <script src="../fabric/js/fabric.js"></script>
+    <script src="animateTool.js"></script>
+    <link rel="stylesheet" href="../lib/bulma/css/bulma.min.css">
+<!--    <link rel="stylesheet" href="../lib/bootstrap-3.3.7/css/bootstrap.min.css">-->
+</head>
+<body>
+
+<div class="panel-box item-list-box" style="left:0;top:0;">
+    <h6 class="move-title">列表
+        <button id="btn_refresh" class="btn btn-sm">刷新</button>
+    </h6>
+    <ul class="panel-main list-group"></ul>
+</div>
+
+<div class="map-box">
+    <canvas id="canvas" style="width: 100%;height: 100%;"></canvas>
+</div>
+
+<!--基本属性-->
+<div id="attr1" class=" panel is-primary   attr-list-box is-shadowless">
+    <h6 class="panel-heading  move-title">基本信息</h6>
+    <div class="panel-main box">
+
+    </div>
+
+</div>
+
+
+<div class="panel-box ani-setting-box ">
+    <h6 class="move-title">动画</h6>
+    <div class="panel-main">
+        <p><label class="form-label">name</label>
+            <select>
+                <option value="translateX">水平位移</option>
+                <option value="translateY">垂直位移</option>
+                <option value="rotate">旋转</option>
+                <option value="scale">缩放</option>
+            </select>
+        </p>
+
+        <div>
+            <p><label class="form-label">type</label><input type="text" class="form-control form-control-sm "></p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    init();
+    let $box = $(".map-box");
+    let w = $box.width(), h = $box.height();
+    console.log(w, h);
+
+    $(window).on("resize", function () {
+        w = $box.width();
+        h = $box.height();
+        canvas.setWidth(w);
+        canvas.setHeight(h);
+    });
+
+    let canvas = new fabric.Canvas('canvas');
+
+
+    canvas.setWidth(w);
+    canvas.setHeight(h);
+
+
+    let op = {}
+
+
+    let rect = new fabric.Rect({
+        top: 100,
+        left: 100,
+        width: 60,
+        height: 70,
+        fill: '#ccc',
+        selectable: true
+    });
+
+    canvas.on("mouse:down", function (e) {
+        activeItem();
+        return false;
+    });
+    // $box.on("drop",function(ev){
+    //     console.log(123,ev)
+    //     ev.preventDefault();
+    // })
+    // $box.on("dragover",function(ev){
+    //     console.log(ev)
+    //     ev.preventDefault();
+    // })
+    canvas.add(rect);
+    canvas.on("drop", function (ev) {
+        // console.log(ev)
+        console.log(ev.e.dataTransfer.files)
+        addImage(ev.e.dataTransfer.files[0]);
+        ev.e.preventDefault();
+    })
+    canvas.on("dragover", function (ev) {
+        // console.log("over",ev)
+        ev.e.preventDefault();
+    })
+    canvas.on("dragend", function (e) {
+        console.log('dragend', e)
+    })
+
+    console.log(canvas)
+
+    function addImage(file) {
+        let reader = new FileReader();
+        reader.onload = function (ev) {
+            new fabric.Image.fromURL(ev.target.result, function (img) {
+                img.data_name = file.name;
+
+
+                console.log(img)
+                canvas.add(img);
+                // canvas.renderAll()
+            });
+            // canvas.add(img);
+            // canvas.renderAll()
+        }
+        reader.readAsDataURL(file)
+        // console.log(image)
+        // context.drawImage(image, 0, 0, 100, 100);
+    }
+
+    let $input = $(".attr-list-box input");
+    $input.on("input", function (e) {
+        let key = $(this).parent().find("label").text();
+        let obj = canvas.getActiveObject();
+        if (obj) {
+            obj.set({[key]: Math.abs(e.target.value)});
+            canvas.renderAll();
+        }
+    })
+    let $itemListBox = $(".item-list-box .panel-main");
+    let _allList = [];
+    $("#btn_refresh").on("click", function () {
+        let list = _allList = canvas.getObjects();
+        let str = '';
+        list.forEach(d => {
+            str += ` <li class="list-group-item">${d.type}</li>`;
+        })
+        $itemListBox.html(str);
+    })
+    $itemListBox.on("click", "li", function (e) {
+        let idx = $itemListBox.find("li").index(this);
+        if (idx >= 0) {
+            canvas.setActiveObject(_allList[idx]);
+            canvas.renderAll()
+        }
+    });
+
+    //激活item
+    function activeItem() {
+        let obj = canvas.getActiveObject();
+        console.log(obj)
+        if (obj) {
+            $input.eq(0).val(obj.type);
+            $input.eq(1).val(obj.width);
+            $input.eq(2).val(obj.height);
+            $input.eq(3).val(obj.top);
+            $input.eq(4).val(obj.left);
+            $input.eq(5).val(obj.scaleX);
+            $input.eq(6).val(obj.scaleY);
+        }
+    }
+
+</script>
+</body>
+</html>

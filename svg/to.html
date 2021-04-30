@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    function rect2path(x, y, width, height, rx, ry) {
+        /*
+        * rx 和 ry 的规则是：
+        * 1. 如果其中一个设置为 0 则圆角不生效
+        * 2. 如果有一个没有设置则取值为另一个
+        */
+        rx = rx || ry || 0;
+        ry = ry || rx || 0;
+
+        //非数值单位计算，如当宽度像100%则移除
+        if (isNaN(x - y + width - height + rx - ry)) return;
+
+        rx = rx > width / 2 ? width / 2 : rx;
+        ry = ry > height / 2 ? height / 2 : ry;
+
+        //如果其中一个设置为 0 则圆角不生效
+        if(0 == rx || 0 == ry){
+            // var path =
+            //     'M' + x + ' ' + y +
+            //     'H' + (x + width) +     不推荐用绝对路径，相对路径节省代码量
+            //     'V' + (y + height) +
+            //     'H' + x +
+            //     'z';
+            var path =
+                'M' + x + ' ' + y +
+                'h' + width +
+                'v' + height +
+                'h' + -width +
+                'z';
+        }else{
+            var path =
+                'M' + x + ' ' + (y+ry) +
+                'a' + rx + ' ' + ry + ' 0 0 1 ' + rx + ' ' + (-ry) +
+                'h' + (width - rx - rx) +
+                'a' + rx + ' ' + ry + ' 0 0 1 ' + rx + ' ' + ry +
+                'v' + (height - ry -ry) +
+                'a' + rx + ' ' + ry + ' 0 0 1 ' + (-rx) + ' ' + ry +
+                'h' + (rx + rx -width) +
+                'a' + rx + ' ' + ry + ' 0 0 1 ' + (-rx) + ' ' + (-ry) +
+                'z';
+        }
+
+        return path;
+    }
+
+
+    console.log(rect2path(1,1,110,74,10,10))
+
+    function ellipse2path(cx, cy, rx, ry) {
+        //非数值单位计算，如当宽度像100%则移除
+        if (isNaN(cx - cy + rx - ry)) return;
+
+        var path =
+            'M' + (cx-rx) + ' ' + cy +
+            'a' + rx + ' ' + ry + ' 0 1 0 ' + 2*rx + ' 0' +
+            'a' + rx + ' ' + ry + ' 0 1 0 ' + (-2*rx) + ' 0' +
+            'z';
+
+        return path;
+    }
+    //<ellipse stroke="#000" id="svg_1" fill="#fff" stroke-width="1.5" cx="340.5" cy="266.95313" rx="431.00002" ry="150.49999"/>
+    // <ellipse stroke="#000" ry="167.49999" rx="431.00002" id="svg_2" cy="175.95313" cx="441.5" stroke-width="1.5" fill="#fff"/>
+    // console.log(ellipse2path(421.5,173,421.5,173))
+    //cx 属性定义圆点的 x 坐标
+    // cy 属性定义圆点的 y 坐标
+    // rx 属性定义水平半径
+    // ry 属性定义垂直半径
+    console.log(ellipse2path(417.5,170.5,417.5,170.5))
+    
+    
+    function sp(num1,num2){
+      
+        var a = (num2-num1)/5;
+        if(num1===num2){
+             a = num2/5;
+
+
+        }
+        console.log([num1+a*0,num1+a*1,num1+a*2,num1+a*3,num1+a*4,num2]);
+     
+     return [num1+a*0,num1+a*1,num1+a*2,num1+a*3,num1+a*4,num2];
+    }
+    function sp2(num1,num2,num3){
+        var a = (num2-num1)/5;
+        console.log([num1+a*0,num1+a*1,num1+a*2,num1+a*3,num1+a*4,num2]);
+
+        return [num1+a*0,num1+a*1,num1+a*2,num1+a*3,num1+a*4,num2];
+    }
+    var list1 = sp(-70,700)
+    var list2 = sp(127,127);
+
+
+    // var list1 = sp2(280,700)
+    // var list2 = sp2(320,127);
+    
+    var h=`
+     0% { left:${list1[0]}px;top:${list2[0]}px; }
+    20%{left:${list1[1]}px;top:${list2[1]}px; }
+    40%{left:${list1[2]}px;top:${list2[2]}px; }
+    60%{left:${list1[3]}px;top:${list2[3]}px; }
+    80%{left:${list1[4]}px;top:${list2[4]}px; }
+    100% { left:${list1[5]}px;top:${list2[5]}px; }
+    `
+    console.log(h)
+
+    function line2path(x1, y1, x2, y2) {
+        //非数值单位计算，如当宽度像100%则移除
+        if (isNaN(x1 - y1 + x2 - y2)) return;
+
+        x1 = x1 || 0;
+        y1 = y1 || 0;
+        x2 = x2 || 0;
+        y2 = y2 || 0;
+
+        var path = 'M' + x1 + ' '+ y1 + 'L' + x2 + ' ' + y2;
+        return path;
+    }
+    // polygon折线转换
+   // var points = [x1, y1, x2, y2, x3, y3];
+    function polyline2path (points) {
+        var path = 'M' + points.slice(0,2).join(' ') +
+            'L' + points.slice(2).join(' ');
+        return path;
+    }
+
+    // polygon多边形转换
+    //   points = [x1, y1, x2, y2, x3, y3 ];
+    function polygon2path (points) {
+        var path = 'M' + points.slice(0,2).join(' ') +
+            'L' + points.slice(2).join(' ') + 'z';
+        return path;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5中的SVG属性实现圆形进度条效果</title>
+    <style>
+        svg {transform: rotate(-90deg)}
+        .circle_bar {
+            stroke-dasharray: 562, 562;
+            stroke-dashoffset: 0;
+            animation: donut 800ms infinite;
+        }
+        @keyframes donut {
+            from {
+                stroke-dasharray: 0, 562;
+            }
+            to {
+                stroke-dasharray: 562, 562;
+            }
+        }
+        @keyframes donut1 {
+            from {
+                stroke-dashoffset: 100%;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<svg height="186" width="186" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="93" cy="93" fill="none" r="90" stroke="#333" stroke-width="3"></circle>
+    <circle class="circle_bar" cx="93" cy="93" fill="none" r="90" stroke="orange" stroke-linecap="round" stroke-width="4">
+        <animate attributeName="stroke-dasharray"
+                 begin="0s" dur="5s"
+                 fill="remove" from="0, 562"
+                 repeatCount="indefinite" to="562, 562"></animate>
+    </circle>
+</svg>
+<script>
+
+
+    // function setring() {
+    //     var path = document.getElementById('ring');
+    //     var r = 100;
+    //
+    //     var progress = 0.9;
+    //
+    //     //将path平移到我们需要的坐标位置
+    //     ring.setAttribute('transform', 'translate(' + r + ',' + r + ')');
+    //
+    //     // 计算当前的进度对应的角度值
+    //     var degrees = progress * 360;
+    //
+    //     // 计算当前角度对应的弧度值
+    //     var rad = degrees * (Math.PI / 180);
+    //
+    //     //极坐标转换成直角坐标
+    //     var x = (Math.sin(rad) * r).toFixed(2);
+    //     var y = -(Math.cos(rad) * r).toFixed(2);
+    //
+    //     //大于180度时候画大角度弧，小于180度的画小角度弧，(deg > 180) ? 1 : 0
+    //     var lenghty = window.Number(degrees > 180);
+    //
+    //     //path 属性
+    //     var descriptions = ['M', 0, -r, 'A', r, r, 0, lenghty, 1, x, y];
+    //
+    //     // 给path 设置属性
+    //     path.setAttribute('d', descriptions.join(' '));
+    // }
+
+    //setring()
+</script>
+</body>
+</html>

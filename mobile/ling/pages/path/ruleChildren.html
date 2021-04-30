@@ -1,0 +1,12 @@
+<div class="rule-list-box">
+    <p v-for="(r,$index) in list" :key="$index">
+        <label class="label-select">
+            <select>
+                <option v-for="t in ruleTypeList" :value="t">{{t}}</option>
+            </select>
+        </label>
+        <label>
+            <input class="input-text" type="text" v-model="host" placeholder="attr"/>
+        </label>
+    </p>
+</div>

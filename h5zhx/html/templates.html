@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<meta http-equiv = X-UA-Compatible content = "IE=edge,chrome=1">
+	<title>模板选择面</title>
+	<!--<link rel = "stylesheet" type = "text/css" href = "../css/base.css?v=1.0"/>-->
+	<link rel = "stylesheet" href = "//i0.beta.ule.com/tomshopping/c/sys/csslib/110119/APE-admin.css">
+	<link rel = "stylesheet" href = "//i0.beta.ule.com/tomshopping/c/sys/130111/template-admin.css">
+	<script type = "text/javascript" src = "//i0.beta.ule.com/j/lib/jquery.js"></script>
+	<script type = "text/javascript" src = "//i0.beta.ule.com/j/jend/jend.js"></script>
+	<!--<link rel = "stylesheet" type = "text/css" href = "../css/pages.css?v=1.0"/>-->
+	<link rel = "stylesheet" type = "text/css" href = "//i1.beta.ulecdn.com/mobile/decorate/161226/css/pages.css?v=1.0"/>
+</head>
+<body>
+<div class = "mainInner">
+	<ul class = "crumbs">
+		<li><a href = "#" class = "score-0">后台管理系统</a><span class = "direct">&gt;</span></li>
+		<!--<li><a href = "#" class = "score-0">店铺信息</a><span class = "direct">&gt;</span></li>-->
+		<li>微商城装修</li>
+	</ul>
+
+	<div class = "mt20 pages-main">
+		<div class = "template-list">
+			<form id = "js_form" action="./complete.html">
+				<input id = "js_type" type = "hidden" name = "" value = ""/>
+				<h3>请选择微商城页面模版</h3>
+				<ul>
+					<li data-type = "custom">空白自定义模版</li>
+					<li data-type = "storeMain">店铺主页模版</li>
+				</ul>
+				<p>
+					<a class = "btn-submit">确认</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type = "text/javascript">
+	$(function () {
+		$(".template-list li").bind("click", function () {
+			var $item = $(this);
+			$(".template-list li").removeClass("active");
+			$item.addClass("active");
+			$("#js_type").val($item.attr("data-type"));
+		})
+		//提交
+		$(".btn-submit").bind("click", function () {
+			if ($("#js_type").val().trim()) {
+				$("#js_form").submit();
+			}
+		})
+	})
+</script>
+</body>
+</html>

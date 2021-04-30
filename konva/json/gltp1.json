@@ -1,0 +1,664 @@
+{
+  "status": 200,
+  "result": {
+    "nodes": [
+      {
+        "id": "10328725",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "276352a95db7aa252420e896ffb1ff6c",
+          "registCapi": "46415.828",
+          "name": "湖南发展集团股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "99589094",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p5bf198309851fe05e3dad0bc3d3e48e",
+          "role": "自然人股东",
+          "name": "王志坚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "54882632",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d0ca754f7049728c42859eb8a28a17fb",
+          "registCapi": "5000.000",
+          "name": "无锡美林数联科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "105847362",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p6fcdfc51320ba2f68e07b19f0678b96",
+          "role": "自然人股东",
+          "name": "李炜",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "18721549",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "47635c2a6eabc66e0c54edf44e112a11",
+          "registCapi": "6000.000",
+          "name": "华农健康产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "118225688",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9716455e8dfef7326b39ec43003af2d",
+          "role": "自然人股东",
+          "name": "郭联伟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "130149854",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pbd00865ba4e05a06afd85a30e687b72",
+          "role": "自然人股东",
+          "name": "张鹏飞",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "120535311",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p9e6c7f6f13f28a07bacb4fcd36da88b",
+          "role": "自然人股东",
+          "name": "安葆红",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "91005263",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p40c2c1ac32b6d47d758d291a40fcbec",
+          "role": "",
+          "name": "黄惠敏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "58592085",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "dee21f29a987890b7fd1e0d0d826a1c2",
+          "registCapi": "500.000",
+          "name": "上海琢学科技有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "66594746",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "fd53eebf6fec1c00d41f1c4406ebbb87",
+          "registCapi": "221.053",
+          "name": "西安深谱之光智能科技有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "167952471",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr7eaf873405472b2b26bcb3821b7a49",
+          "role": "监事",
+          "name": "刘强",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "75227160",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p0edea422c58a4890b8bbe3dabeb45b7",
+          "role": "自然人股东",
+          "name": "郭刚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "104011861",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p69fac020a22087689a8f9935c24a373",
+          "role": "董事",
+          "name": "程宏亮",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "92934628",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p46dd517843b53e17e3913f8ef60742f",
+          "role": "",
+          "name": "李慧斌",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "19988291",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4c35a7a98b43bb980711cda9571440e3",
+          "registCapi": "1000.000",
+          "name": "广东红孩子文化传媒有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "126819832",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pb26a4c85fd3826b339ab87d8e8b7d24",
+          "role": "自然人股东",
+          "name": "苏菲",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "149752416",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pfb72440b555e765792e6bd306e95a69",
+          "role": "自然人股东",
+          "name": "马良",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "67107694",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "ff4c36b5ab00a428bd2275c72f7aa4bf",
+          "registCapi": "5000.000",
+          "name": "河南中原大数据研究院有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "4424914",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "10f772b84fe6010d55f8e63bb7dbdc6c",
+          "registCapi": "7200.000",
+          "name": "昆山嘉成晨丰投资中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "61398323",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "e98cbd72d346c3887f4362e69b222eb2",
+          "registCapi": "0.000",
+          "name": "霍尔果斯数聚通达股权投资合伙企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "133706085",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pc84ff6cd6fbd7b5b2efe0e5bbf0dd68",
+          "role": "自然人股东",
+          "name": "梅峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "157590523",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr2edeee67af8d18baba45e089dfeaae",
+          "role": "自然人股东",
+          "name": "张超",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "23080390",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5807955ad5c70cbd0636a9d80ec6f68f",
+          "registCapi": "500.000",
+          "name": "无锡融合大数据创新中心有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "93095220",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p475fdfef0acc0df5952c53bd8e05e30",
+          "role": "自然人股东",
+          "name": "王璐",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "144226395",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe9d489c4f9a42243116ba0cfd4caee3",
+          "role": "自然人股东",
+          "name": "高伟朋",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "89698204",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p3c9e41f50a13f1432cc16da7f39da77",
+          "role": "",
+          "name": "程宏斌",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "94296407",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p4b2d1d3008771cf5e4f00751613e7ae",
+          "role": "董事",
+          "name": "窦勇",
+          "hasImage": true
+        }
+      },
+      {
+        "id": "91033531",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p40d9ae6606f3ed2551728367e9e3c21",
+          "role": "自然人股东",
+          "name": "陈浩铭",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "11047498",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "2a201531da85a67a60d6d41ab2b0c230",
+          "registCapi": "987.088",
+          "name": "成都数联铭品科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "165130047",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr688895ad52372eff45bd9e1ccbf356",
+          "role": "董事",
+          "name": "周琳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "23203950",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5880d9fb1e4a21232ea64466ff3a604b",
+          "registCapi": "6800.000",
+          "name": "上海唐盛投资股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "152146945",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr06e451b362e1b923b662d4cdb16b7e",
+          "role": "监事",
+          "name": "杨浩英",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "2924859",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "0b427b802f2d62f298d20179af4cbe87",
+          "registCapi": "10000.000",
+          "name": "红孩子文化产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "141180750",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pe01dc89891e93b47c9d030b2758976e",
+          "role": "自然人股东",
+          "name": "蔡昊黎",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "102129494",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p640188a9e9748ebcd7866f7d486f4a5",
+          "role": "自然人股东",
+          "name": "王锟",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "41658175",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "9ea43a58de295aa9f78524ebf9ec8bfb",
+          "registCapi": "6800.000",
+          "name": "创业黑马科技集团股份有限公司",
+          "econKind": "其他股份有限公司(上市)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "6722338",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "19a85585cc3713a3807361dc67fe7774",
+          "registCapi": "146.958",
+          "name": "昆仑智汇数据科技（北京）有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "19524710",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "4a70fcaa533e162e35c68d96d262c121",
+          "registCapi": "204700.000",
+          "name": "深圳市达晨创丰股权投资企业（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "35513161",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "8754c774f55bb8e48e976cdb7a33d254",
+          "registCapi": "10000.000",
+          "name": "嵩岳科技产业发展有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "23747594",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "5a9e7a9cd1d02504dfa803b55efa8337",
+          "registCapi": "1000.000",
+          "name": "西咸新区大数据交易所有限责任公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "42574830",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "a224e4720c1f828f37a38f1d62b0b11c",
+          "registCapi": "495.807",
+          "name": "北京六人游国际旅行社股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "2459983",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "09782728cbcaa15cdbd53898db3a0013",
+          "registCapi": "8690.000",
+          "name": "美林数据技术股份有限公司",
+          "econKind": "股份有限公司(非上市、自然人投资或控股)",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "51842682",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "c54cb69cfd09d31cbd281604c2a3df99",
+          "registCapi": "10.000",
+          "name": "海口玖锦大药房有限公司",
+          "econKind": "有限责任公司(自然人投资或控股)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "55485497",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "d3141342b3c845aab5a225aa0e7f6c6b",
+          "registCapi": "1000.000",
+          "name": "美林数据技术（杭州）有限公司",
+          "econKind": "有限责任公司（自然人投资或控股的法人独资）",
+          "hasImage": true,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "135155590",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pccecaae707f68a47a2763ac31abb924",
+          "role": "自然人股东",
+          "name": "刘宏",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "83345279",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p288515dc3d3481bb8bf59470b7186e9",
+          "role": "自然人股东",
+          "name": "吴垌沅",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "149620093",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pfb0621adc2a66a938c27f86be2ac8be",
+          "role": "自然人股东",
+          "name": "张亚军",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "75503908",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "p0fbe59e6aa87cdfcfb81916584f9f25",
+          "role": "自然人股东",
+          "name": "赵耀峰",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "133332567",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pc720264657ab4787515cba4e64ee011",
+          "role": "自然人股东",
+          "name": "淡阳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "14808401",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3877951898d6d2f163d08a9f8f08ae77",
+          "registCapi": "0.000",
+          "name": "北京天睿聚合投资管理中心（有限合伙）",
+          "econKind": "有限合伙企业",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "5350891",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "147a787bbe8899e055cffff63c663008",
+          "registCapi": "10000.000",
+          "name": "深圳协和方元投资基金管理股份有限公司",
+          "econKind": "股份有限公司(非上市)",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "12891512",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3122e69eecf2aa1b47db9308183b7196",
+          "registCapi": "1000.000",
+          "name": "北京瀚沙科技有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": false,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "137008021",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pd2d1a394b5b024b58ec125e972a892c",
+          "role": "监事",
+          "name": "常立亚",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "14253341",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "3657120203ab56c2d5c215ba78042d1c",
+          "registCapi": "50000.000",
+          "name": "西咸新区智慧城市发展集团有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "在业"
+        }
+      },
+      {
+        "id": "136451565",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pd10bf556a1b4146fd4185520300f23b",
+          "role": "自然人股东",
+          "name": "王艳",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "5951884",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "16c1b2df7d088f21b05cf9eb316bfd16",
+          "registCapi": "2000.000",
+          "name": "美林数据（江苏）有限公司",
+          "econKind": "有限责任公司",
+          "hasImage": false,
+          "status": "存续"
+        }
+      },
+      {
+        "id": "140297095",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pdd4d7c79f767c553b7957cbafd95284",
+          "role": "自然人股东",
+          "name": "宋林利",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "158768301",
+        "nodeType": "person",
+        "properties": {
+          "keyNo": "pr37bbd25620b3f918d6335c0ce1edcc",
+          "role": "总经理",
+          "name": "韩笑康",
+          "hasImage": false
+        }
+      },
+      {
+        "id": "49264390",
+        "nodeType": "company",
+        "properties": {
+          "keyNo": "bb8a833f3635af5a861c46c04e99f3ee",
+          "registCapi": "7902.632",
+          "name": "武汉华康世纪洁净室技术工程有限公司",
+          "econKind": "其他有限责任公司",
+          "hasImage": true,
+          "status": "存续"
+        }
+      }
+    ],
+    "links": [{"id":"6562919","type":"INVEST","source":"14253341","target":"23747594","properties":{"role":"法人股东","stockPercent":70,"shouldCapi":700}},{"id":"150868219","type":"LEGAL","source":"104011861","target":"2459983","properties":{"role":""}},{"id":"6562920","type":"INVEST","source":"2459983","target":"23747594","properties":{"role":"法人股东","stockPercent":30,"shouldCapi":300}},{"id":"138822743","type":"LEGAL","source":"137008021","target":"19988291","properties":{"role":""}},{"id":"153442098","type":"LEGAL","source":"93095220","target":"54882632","properties":{"role":""}},{"id":"4561500","type":"INVEST","source":"67107694","target":"66594746","properties":{"role":"法人股东","stockPercent":5,"shouldCapi":11.0526}},{"id":"189975922","type":"EMPLOY","source":"94296407","target":"11047498","properties":{"role":"董事"}},{"id":"1799220","type":"INVEST","source":"19524710","target":"11047498","properties":{"role":"企业法人","stockPercent":12.03,"shouldCapi":118.75}},{"id":"276747328","type":"EMPLOY","source":"152146945","target":"54882632","properties":{"role":"监事"}},{"id":"113223808","type":"LEGAL","source":"93095220","target":"55485497","properties":{"role":""}},{"id":"168011836","type":"EMPLOY","source":"137008021","target":"18721549","properties":{"role":"执行董事"}},{"id":"276747326","type":"EMPLOY","source":"99589094","target":"54882632","properties":{"role":"总经理,董事"}},{"id":"276747327","type":"EMPLOY","source":"165130047","target":"54882632","properties":{"role":"董事"}},{"id":"232864674","type":"EMPLOY","source":"99589094","target":"23080390","properties":{"role":"执行董事"}},{"id":"232864676","type":"EMPLOY","source":"152146945","target":"23080390","properties":{"role":"监事"}},{"id":"362581","type":"INVEST","source":"93095220","target":"2459983","properties":{"stockPercent":20.35}},{"id":"1530436","type":"INVEST","source":"2459983","target":"67107694","properties":{"role":"企业法人","stockPercent":20,"shouldCapi":1000}},{"id":"362582","type":"INVEST","source":"89698204","target":"2459983","properties":{"stockPercent":10.18}},{"id":"1530432","type":"INVEST","source":"35513161","target":"67107694","properties":{"role":"企业法人","stockPercent":55,"shouldCapi":2750}},{"id":"2360444","type":"INVEST","source":"2459983","target":"55485497","properties":{"role":"","stockPercent":100,"shouldCapi":1000}},{"id":"5715980","type":"INVEST","source":"19524710","target":"42574830","properties":{"role":"企业法人","stockPercent":9,"shouldCapi":38.7931}},{"id":"201662052","type":"EMPLOY","source":"137008021","target":"2924859","properties":{"role":"董事长"}},{"id":"201662059","type":"EMPLOY","source":"91005263","target":"2924859","properties":{"role":"董事"}},{"id":"509045","type":"INVEST","source":"19524710","target":"49264390","properties":{"role":"企业法人","stockPercent":5.01,"shouldCapi":395.1315}},{"id":"5061183","type":"INVEST","source":"55485497","target":"5951884","properties":{"role":"企业法人","stockPercent":40,"shouldCapi":800}},{"id":"66464142","type":"INVEST","source":"91005263","target":"19988291","properties":{"role":"自然人股东","stockPercent":39,"shouldCapi":390}},{"id":"70601291","type":"INVEST","source":"104011861","target":"12891512","properties":{"role":"自然人股东","stockPercent":1,"shouldCapi":10}},{"id":"365179","type":"INVEST","source":"149620093","target":"2459983","properties":{"stockPercent":3.25}},{"id":"232864671","type":"EMPLOY","source":"158768301","target":"23080390","properties":{"role":"总经理"}},{"id":"365178","type":"INVEST","source":"91005263","target":"2459983","properties":{"stockPercent":3.97}},{"id":"6507747","type":"INVEST","source":"19524710","target":"6722338","properties":{"role":"企业法人","stockPercent":8.23,"shouldCapi":12.089}},{"id":"59312387","type":"INVEST","source":"92934628","target":"66594746","properties":{"role":"自然人股东","stockPercent":81.43,"shouldCapi":180}},{"id":"25205515","type":"INVEST","source":"149620093","target":"51842682","properties":{"role":"自然人股东","stockPercent":60,"shouldCapi":0}},{"id":"7280352","type":"INVEST","source":"5350891","target":"19524710","properties":{"role":"其他投资者","stockPercent":1.47,"shouldCapi":3000}},{"id":"120854947","type":"LEGAL","source":"104011861","target":"14808401","properties":{"role":""}},{"id":"7280350","type":"INVEST","source":"23203950","target":"19524710","properties":{"role":"其他投资者","stockPercent":1.47,"shouldCapi":3000}},{"id":"7280347","type":"INVEST","source":"10328725","target":"19524710","properties":{"role":"其他投资者","stockPercent":2.44,"shouldCapi":5000}},{"id":"7280346","type":"INVEST","source":"4424914","target":"19524710","properties":{"role":"其他投资者","stockPercent":3.52,"shouldCapi":7200}},{"id":"157940190","type":"LEGAL","source":"105847362","target":"58592085","properties":{"role":""}},{"id":"4275853","type":"INVEST","source":"2459983","target":"23080390","properties":{"role":"企业法人","stockPercent":100,"shouldCapi":500}},{"id":"365768","type":"INVEST","source":"135155590","target":"2459983","properties":{"stockPercent":2.61}},{"id":"237849340","type":"EMPLOY","source":"104011861","target":"66594746","properties":{"role":"董事"}},{"id":"7117956","type":"INVEST","source":"19524710","target":"41658175","properties":{"stockPercent":5.83}},{"id":"253133335","type":"EMPLOY","source":"141180750","target":"14253341","properties":{"role":"副总经理,董事"}},{"id":"43847071","type":"INVEST","source":"157590523","target":"14808401","properties":{"role":"自然人股东","stockPercent":0.73,"shouldCapi":2.8361}},{"id":"7297899","type":"INVEST","source":"2459983","target":"58592085","properties":{"role":"企业法人","stockPercent":100,"shouldCapi":500}},{"id":"43847064","type":"INVEST","source":"133706085","target":"14808401","properties":{"role":"自然人股东","stockPercent":1.41,"shouldCapi":5.5303}},{"id":"43847067","type":"INVEST","source":"135155590","target":"14808401","properties":{"role":"自然人股东","stockPercent":1.09,"shouldCapi":4.2541}},{"id":"43847066","type":"INVEST","source":"126819832","target":"14808401","properties":{"role":"自然人股东","stockPercent":1.23,"shouldCapi":4.8213}},{"id":"285353477","type":"EMPLOY","source":"167952471","target":"58592085","properties":{"role":"监事"}},{"id":"43847061","type":"INVEST","source":"75227160","target":"14808401","properties":{"role":"自然人股东","stockPercent":1.63,"shouldCapi":6.3811}},{"id":"43847060","type":"INVEST","source":"83345279","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.29,"shouldCapi":8.9336}},{"id":"43847062","type":"INVEST","source":"91033531","target":"14808401","properties":{"role":"自然人股东","stockPercent":1.52,"shouldCapi":5.9557}},{"id":"43847057","type":"INVEST","source":"149752416","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.72,"shouldCapi":10.6352}},{"id":"43847056","type":"INVEST","source":"75503908","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.83,"shouldCapi":11.0606}},{"id":"43847059","type":"INVEST","source":"102129494","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.39,"shouldCapi":9.359}},{"id":"43847052","type":"INVEST","source":"136451565","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.95,"shouldCapi":11.5286}},{"id":"43847055","type":"INVEST","source":"118225688","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.92,"shouldCapi":11.4009}},{"id":"43847054","type":"INVEST","source":"130149854","target":"14808401","properties":{"role":"自然人股东","stockPercent":2.93,"shouldCapi":11.4435}},{"id":"43847051","type":"INVEST","source":"144226395","target":"14808401","properties":{"role":"自然人股东","stockPercent":3.26,"shouldCapi":12.7622}},{"id":"43847047","type":"INVEST","source":"133332567","target":"14808401","properties":{"role":"自然人股东","stockPercent":3.26,"shouldCapi":12.7622}},{"id":"43847040","type":"INVEST","source":"120535311","target":"14808401","properties":{"role":"自然人股东","stockPercent":5.31,"shouldCapi":20.7599}},{"id":"43847042","type":"INVEST","source":"140297095","target":"14808401","properties":{"role":"自然人股东","stockPercent":4.87,"shouldCapi":19.0441}},{"id":"49442262","type":"INVEST","source":"104011861","target":"61398323","properties":{"role":"自然人股东","stockPercent":1.58,"shouldCapi":100}},{"id":"4944223444","type":"INVEST","source":"14253341","target":"19524710","properties":{"role":"自然人股东","stockPercent":1.58,"shouldCapi":100}}]
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../lib/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../../css/icomoon/style.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/virTree.js"></script>
+    <link rel="stylesheet" href="../css/virtualTree.css">
+</head>
+<body>
+
+<div class="view-header none">
+    <canvas id="canvas"></canvas>
+    <div class="txt">插件示例</div>
+    <div class="theme-list">
+        <span>主题切换：</span>
+        <label class="xui-label-select" data-val="1">
+            <i></i><span>蓝色</span>
+            <a>
+                <label data-val="1">蓝色</label>
+            </a>
+        </label>
+    </div>
+</div>
+<div class="view-box">
+    <div class="left-menu">
+        <!--        <h4>目录清单</h4>-->
+        <div class="control has-icons-left">
+            <div class="select is-rounded is-small">
+                <select id="select_type">
+                    <option value="plugin" selected>插件</option>
+                    <option value="tool">可视化工具</option>
+                    <!--css 第三方插件 布局-->
+                    <option value="example">示例</option>
+                </select>
+                <span class="icon is-small is-left">
+                    <i class="fa fa-globe"></i>
+                </span>
+            </div>
+        </div>
+        <aside class="  virtual-tree-menu">
+            <ul class="">
+                <li><a href="./list/pager.html" target="jquery_ifr"></a></li>
+                <li><a href="./form/select.html" target="jquery_ifr"></a></li>
+                <li><a href="./form/select.html" target="jquery_ifr"></a></li>
+            </ul>
+        </aside>
+    </div>
+    <div class="right-box">
+        <iframe name="jquery_ifr" src="./list/pager.html"></iframe>
+    </div>
+</div>
+<script src="../js/index.js"></script>
+
+</body>
+</html>

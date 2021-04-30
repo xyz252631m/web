@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片裁切</title>
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/pre.css">
+    <link rel="stylesheet" href="../../css/clip.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+
+
+</head>
+<body>
+<div class="pre-view">
+    <h1>图片裁切</h1>
+    <h3>使用方式：</h3>
+    <div class="use-box">
+        <span class="pre-tab">
+            <a class="active">js</a><a>css</a><a>less</a><a>html</a>
+        </span>
+        <div class="tab-main">
+            <xmp class="active">
+                let pager = new Page($(".xui-pages"));
+                var option={
+                prefixCount: 2
+                };
+                pager.config(option);
+                pager.post("../../json/list.json", {}, function (res, opts) {
+                opts.listCount = res.count; //重新赋值list总条数
+                //执行绑定逻辑
+                //...
+                })
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0 }
+                .xui-pages label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px }
+                .xui-pages a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px;
+                border: #ccc solid 1px; border-radius: 3px; text-align: center; user-select: none }
+                .xui-pages .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999 }
+                .xui-pages .dis:hover { background-color: #eee; border-color: #eee; color: #999 }
+                .xui-pages a:hover { background-color: #f5f5f5 }
+                .xui-pages .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: #fff }
+                .xui-pages .active:hover { background-color: #ea6f5a }
+                .xui-pages .btn-pager { padding: 5px 12px }
+                .xui-pages .go-input{font-size: 0;}
+                .xui-pages .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #ccc
+                solid 1px; border-right: none; border-radius: 3px 0 0 3px }
+                .xui-pages .btn-go { border: #ccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size:
+                12px; }
+            </xmp>
+            <xmp>
+                .xui-pages { width: 100%; font-size: 0;
+                label { padding: 5px 12px; display: inline-block; margin: 0 2px; font-size: 12px; }
+                a { font-size: 12px; color: #333; display: inline-block; margin: 0 2px; padding: 5px 12px; border: #ccc
+                solid 1px; border-radius: 3px; text-align: center;user-select: none;
+                }
+                .dis { background-color: #eee; border-color: #eee; cursor: no-drop; color: #999;
+                &:hover { background-color: #eee; border-color: #eee; color: #999; }
+                }
+                a:hover { background-color: #f5f5f5; }
+                .active { border: #ea6f5a solid 1px; background-color: #ea6f5a; color: white; }
+                .active:hover { background-color: #ea6f5a; }
+                .btn-pager { padding: 5px 12px; }
+                .go-input{font-size: 0;}
+                .go-page { padding: 5px 10px; text-align: center; width: 30px; font-size: 12px; border: #cccccc solid
+                1px; border-right: none; border-radius: 3px 0 0 3px }
+                .btn-go { border: #cccccc solid 1px; padding: 5px 10px; border-radius: 0 3px 3px 0;font-size: 12px; }
+                }
+            </xmp>
+            <xmp>
+                <div class="xui-clip-box">
+                    <div class="clip-op">
+                        <img src="../../images/tem/tem_1.jpg"/>
+                        <div class="clip-shadow"></div>
+                        <div class="clip-select">
+                            <i class="i-1"></i><i class="i-2"></i><i class="i-3"></i><i class="i-4"></i><i
+                                class="i-5"></i><i class="i-6"></i><i class="i-7"></i><i class="i-8"></i>
+                        </div>
+                    </div>
+
+                    <div class="clip-preview"></div>
+                </div>
+            </xmp>
+        </div>
+
+    </div>
+    <h3>示例：</h3>
+    <div class="pre-box pre-edit-pager" contenteditable="true">
+        <pre class="ex-1">
+        option = {
+            url: "../../json/list.json",
+            numCount: 5,        //中间显示的数子个数
+            prefixCount: 2,     //省略号前后显示的个数
+            pageIndex: 1,
+            pageSize: 10,
+            data: {},           //ajax data参数
+            loading: null,      //loading 开始执行函数
+            loadTime: 300,      //ajax请求300ms后执行loading函数
+            closeLoading: null, //loading 结束执行函数
+            success: function(res){     //ajax成功执行函数
+                //重新赋值list总条数
+                this.listCount = res.count;
+                //执行绑定逻辑
+                //...
+            },
+            method: "post",
+            dataType: "json",   //传入数据格式  默认为json 可设置为string
+            error: null         ////ajax请求出错执行函数
+        }
+        </pre>
+
+    </div>
+    <div class="btn-list pre-btn-list">
+        <button class="apply-opt">执行</button>
+    </div>
+
+    <div class="dome-box">
+
+        <div class="xui-clip-box">
+            <p><input type="file" class="clip-file"></p>
+            <div class="clip-op">
+                <!--<img src="../../images/tem/tem_1.jpg"/>-->
+                <div class="img-bg-box">
+                    <canvas id="clipImgCanvas"></canvas>
+                </div>
+                <div class="clip-shadow">
+
+                    <div class="shadow-rect shadow-1"></div>
+                    <div class="shadow-rect shadow-2"></div>
+                    <div class="shadow-rect shadow-3"></div>
+                    <div class="shadow-rect shadow-4"></div>
+                    <div class="clip-select">
+                        <i class="i-1"></i><i class="i-2"></i><i class="i-3"></i><i class="i-4"></i>
+                        <i class="i-5"></i><i class="i-6"></i><i class="i-7"></i><i class="i-8"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="clip-preview">
+                <!--<img id="preview" src="" alt="">-->
+                <!--<img id="source" src="" style="display: none;">-->
+                <!--<img id="source2" src="">-->
+
+                <div class="preview-img pv-1">
+                    <canvas id="preImg_1"></canvas>
+                </div>
+                <div class="preview-img pv-2">
+                    <canvas id="preImg_2"></canvas>
+                </div>
+                <div class="preview-img pv-3">
+                    <canvas id="preImg_3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3>Page对象：</h3>
+    <div class="plist-box">
+        <p><span>info<em>&lt;object&gt;</em>：</span><label>分页信息 --- {pageShow:分页显示状态 size:每页条数 index:当前页码
+            count:总条数}</label></p>
+        <p>
+            <span>config<em>&lt;function(option)&gt;</em>：</span><label>配置option，会合并到当前option里，可配合reset和update方法使用</label>
+        </p>
+        <p>
+            <span>post<em>&lt;function(url, data, success, option)&gt;</em>：</span><label>发起请求，需要在success函数里重新赋值listCount</label>
+        </p>
+        <p><span>reset<em>&lt;function()&gt;</em>：</span><label>重置页面索引为1，并发起请求，适用于搜索</label></p>
+        <p><span>refresh<em>&lt;function()&gt;</em>：</span><label>重新请求，不会修改任何配置，适用于刷新</label></p>
+    </div>
+    <h3 style="margin-top: 10px;">搜索/刷新示例：</h3>
+    <div class="pre-box">
+        <pre>
+        let pager = new Page($(".xui-pages"));
+        var option={
+            prefixCount: 2
+        };
+        pager.config(option);
+        pager.post("../../json/list.json", {}, function (res, opts) {
+            opts.listCount = res.count;     //重新赋值list总条数
+            //执行绑定逻辑
+            //...
+        });
+        //获取所有参数
+        function getParams(){
+
+        }
+        //搜索
+        $(".btn-search").on("click",function(){
+            pager.config({data:getParams()});
+            pager.reset();
+        })
+        //刷新
+        $(".btn-refresh").on("click",function(){
+            pager.refresh();
+        })
+        </pre>
+
+    </div>
+</div>
+<script src="../../js/pre.js"></script>
+<script src="../../js/carousel.js"></script>
+<script>
+    $(function () {
+        $(".apply-opt").on("click", function () {
+            eval($(".pre-edit-pager").text());
+            applyPage();
+        });
+    });
+
+    /*分页*/
+
+    function applyPage() {
+
+    }
+
+    function imgClip(option) {
+        var self = this;
+        var def = {
+            aspectRatio: 1 //宽高比
+        };
+        var opt = $.extend({}, def, option);
+        var $elem = $(opt.elem), $shadow = $elem.find(".clip-shadow"), shaCls = "clip-shadow-active";
+
+        var $shadowList = $shadow.find(".shadow-rect");
+
+        var $op = $elem.find(".clip-op");
+        this.box = {
+            w: $op.width(),
+            h: $op.height(),
+            aspectRatio: 0
+        };
+        this.box.aspectRatio = this.box.w / this.box.h;
+        console.log(this.box)
+        $elem.find(".clip-file").on("change", function (e) {
+
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function () {
+
+                var img = new Image();
+                img.onload = function () {
+                    console.log(this.width)
+                    readerBg(this)
+                };
+                img.src = reader.result;
+                self.imgInfo.source = img;
+            }
+        })
+        //原图信息
+        this.imgInfo = {
+            source: null
+        }
+
+
+        //选中框信息
+        this.info = {
+            top: 0, left: 0, width: 0, height: 0
+        };
+        //原图缩放信息
+        this.zoomObj = {
+            x: 0, y: 0, w: 0, h: 0,
+            normal: {
+                w: 0,
+                h: 0,
+                ar: 0
+            }
+        }
+        var op = {
+            isDown: false,
+            rect: {//画选框
+                left: 0, top: 0,
+                x: 0, y: 0,
+                x1: 0, y1: 0,
+                w: 0, h: 0
+            }
+        }
+        //选中框
+        var op_rect = {
+            isDown: false,
+            left: 0,//移动时的left
+            top: 0  //移动时的top
+        }
+        $shadow.on("mousedown", function (e) {
+            op.isDown = true;
+            $shadow.addClass(shaCls);
+            op.rect.x = e.pageX;
+            op.rect.y = e.pageY;
+            op.rect.left = e.offsetX;
+            op.rect.top = e.offsetY;
+
+        }).on("mousemove", function (e) {
+            if (op.isDown) {
+                op.rect.x1 = e.pageX;
+                op.rect.y1 = e.pageY;
+                op.rect.w = Math.abs(op.rect.x1 - op.rect.x);
+                if (op.rect.w + op.rect.left >= self.box.w) {
+                    op.rect.w = self.box.w - op.rect.left;
+                }
+                if (opt.aspectRatio) {
+                    op.rect.h = op.rect.w / opt.aspectRatio;
+                } else {
+                    op.rect.h = Math.abs(op.rect.y1 - op.rect.y);
+                }
+                if (op.rect.h + op.rect.top >= self.box.h) {
+                    op.rect.h = self.box.h - op.rect.top;
+                }
+
+                //计算选框位置信息
+                function resetSelect(rect) {
+                    self.info = {
+                        left: rect.x1 > rect.x ? rect.left : rect.left + rect.w,
+                        top: rect.y1 > rect.y ? rect.top : rect.top + rect.h,
+                        width: rect.w,
+                        height: rect.h
+                    };
+                }
+
+                resetSelect(op.rect);
+//                /$select.css(self.info);
+                drawSelect(self.info.left, self.info.top, self.info.width, self.info.height)
+            }
+            if (op_rect.isDown) {
+                op.rect.x1 = e.pageX;
+                op.rect.y1 = e.pageY;
+                op_rect.left = self.info.left + e.pageX - op.rect.x;
+                op_rect.top = self.info.top + e.pageY - op.rect.y;
+                if (op_rect.left + self.info.width >= self.box.w) {
+                    op_rect.left = self.box.w - self.info.width;
+                }
+                if (op_rect.top + self.info.height >= self.box.h) {
+                    op_rect.top = self.box.h - self.info.height;
+                }
+                if (op_rect.left < 0) {
+                    op_rect.left = 0;
+                }
+                if (op_rect.top < 0) {
+                    op_rect.top = 0;
+                }
+                drawSelect(op_rect.left, op_rect.top, self.info.width, self.info.height);
+                drawPreview(canvas, op_rect.left, op_rect.top, self.info.width, self.info.height)
+            }
+        });
+
+        //绘制选框
+        function drawSelect(left, top, width, height) {
+            $shadowList.eq(0).css({height: top});
+            $shadowList.eq(1).css({left: left + width, top, height});
+            $shadowList.eq(2).css({top: top + height});
+            $shadowList.eq(3).css({width: left, height, top});
+            $select.css({left, top, width, height});
+        }
+
+        $(document).on("mouseup", function () {
+            op.isDown = false;
+            if (op_rect.isDown) {
+                self.info.left = op_rect.left;
+                self.info.top = op_rect.top;
+                op_rect.isDown = false;
+            }
+            //$shadow.Class(shaCls);
+        });
+        var $select = $elem.find(".clip-select"), $select_i = $select.find("i");
+        $select.on("mousedown", function (e) {
+            var node = e.target;
+            if (node.nodeName === "DIV") {
+                op_rect.isDown = true;
+                op.rect.x = e.pageX;
+                op.rect.y = e.pageY;
+            } else if (node.nodeName === "I") {
+
+            }
+
+            return false
+        });
+        var canvas = document.getElementById('clipImgCanvas');
+        var source = document.getElementById('source');
+        var preview = document.getElementById('preview');
+
+        function readerBg(sourceImg) {
+            var width = sourceImg.width;
+            var height = sourceImg.height;
+            var lp = width / height;
+            let zm = self.zoomObj = {
+                x: 0,
+                y: 0,
+                w: width,
+                h: height,
+                normal: {
+                    w: width,
+                    h: height,
+                    ar: lp
+                }
+            };
+            if (lp >= self.box.aspectRatio) {
+                if (width > self.box.w) {
+                    zm.w = self.box.w;
+                    zm.h = self.box.w / width * height;
+                } else {
+                    zm.x = (self.box.w - zm.x) / 2
+                }
+                zm.y = (self.box.h - zm.h) / 2
+            } else {
+                if (height > self.box.h) {
+                    zm.h = self.box.h;
+                    zm.w = self.box.h / height * width;
+                } else {
+                    zm.y = (self.box.h - zm.y) / 2
+                }
+                zm.x = (self.box.w - zm.w) / 2
+            }
+            var context = canvas.getContext('2d');
+            var quality = 0.92;
+            canvas.width = self.box.w;
+            canvas.height = self.box.h;
+            context.drawImage(sourceImg, 0, 0, width, height, zm.x, zm.y, zm.w, zm.h);
+        }
+
+
+        let preImg_1 = document.getElementById("preImg_1");
+        let preImg_2 = document.getElementById("preImg_2");
+        let preImg_3 = document.getElementById("preImg_3");
+        let preImgWH = {
+            pre1: {
+                w: preImg_1.offsetWidth,
+                h: preImg_1.offsetHeight
+            },
+            pre2: {
+                w: preImg_2.offsetWidth,
+                h: preImg_2.offsetHeight
+            },
+            pre3: {
+                w: preImg_3.offsetWidth,
+                h: preImg_3.offsetHeight
+            }
+        };
+        preImg_1.width = preImgWH.pre1.w;
+        preImg_1.height = preImgWH.pre1.h;
+        preImg_2.width = preImgWH.pre2.w;
+        preImg_2.height = preImgWH.pre2.h;
+        preImg_3.width = preImgWH.pre3.w;
+        preImg_3.height = preImgWH.pre3.h;
+
+        function drawPreview(canvas, x, y, width, height) {
+            let context = canvas.getContext('2d');
+            let pos = {
+                x: self.zoomObj.normal.w / (self.zoomObj.w / (x - self.zoomObj.x)),
+                y: self.zoomObj.normal.h / (self.zoomObj.h / (y - self.zoomObj.y)),
+                w: self.zoomObj.normal.w / (self.zoomObj.w / width),
+                h: self.zoomObj.normal.h / (self.zoomObj.h / height)
+            };
+            let c1 = preImg_1.getContext('2d');
+            let c2 = preImg_2.getContext('2d');
+            let c3 = preImg_3.getContext('2d');
+            //clear
+            c1.clearRect(0, 0, preImgWH.pre1.w, preImgWH.pre1.h);
+            c2.clearRect(0, 0, preImgWH.pre2.w, preImgWH.pre2.h);
+            c3.clearRect(0, 0, preImgWH.pre3.w, preImgWH.pre3.h);
+            //draw
+            c1.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre1.w, preImgWH.pre1.h);
+            c2.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre2.w, preImgWH.pre2.h);
+            c3.drawImage(self.imgInfo.source, pos.x, pos.y, pos.w, pos.h, 0, 0, preImgWH.pre3.w, preImgWH.pre3.h);
+        }
+    }
+
+
+    $(function () {
+
+    })
+    var clip = new imgClip({elem: ".xui-clip-box"});
+
+</script>
+</body>
+</html>
