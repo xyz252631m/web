@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>zReader</title>
-    <script src="dist/echarts.js"></script>
-    <script src="../js/base.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+
     <style>
         .chart-dom {width: 600px;height: 400px;}
     </style>
-    <script src="js/dy-index.js"></script>
-
-
 </head>
 <body>
 
@@ -19,6 +17,9 @@
 </div>
 
 <script>
+
+    $.getScript("./js/dy-index.js")
+
 
     function chart1(id) {
         var myChart = echarts.init(document.getElementById(id));
@@ -72,7 +73,7 @@
         return myChart;
     }
 
-    let myChart = chart1("chart1");
+   // let myChart = chart1("chart1");
     
     initZr(myChart);
 
