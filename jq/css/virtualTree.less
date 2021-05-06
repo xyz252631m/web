@@ -1,17 +1,16 @@
-
 /*树形菜单*/
 
-.virtual-tree-menu {position: absolute;top:0;bottom: 0;left: 0; right: 0; overflow-y: hidden; padding: 0 5px 5px 10px;}
+.virtual-tree-menu {position: absolute;top: 0;bottom: 0;left: 0; right: 0; overflow-y: hidden; padding: 0 5px 5px 10px;font-size: 14px; }
 .virtual-tree-menu:hover { overflow-y: auto}
 .virtual-tree-menu .sidebar-menu {padding: 0;}
 .virtual-tree-menu .sidebar-toggler {text-indent: 5px;background-color: #fff;border-radius: 15px 0 0 15px;cursor: pointer;display: block;float: right;margin-top: 6px;width: 23px;height: 25px;font-size: 16px}
-.virtual-tree-menu .icon-box {display: inline-block;height: auto;padding: 5px 0; margin-right: 3px; line-height: normal;}
+.virtual-tree-menu .icon-box {display: inline-block;height: auto;padding: 0; margin-right: 3px; line-height: 30px; font-size: 16px; vertical-align: -2px;}
 .virtual-tree-menu ul {margin: 0; padding: 0}
 /*.virtual-tree-menu > ul {position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow-y: auto;padding-top: 0;list-style: none;margin: 0;border-radius: 0}*/
 .virtual-tree-menu > ul > li {display: block; padding: 0;border: 0; }
 .virtual-tree-menu > ul > li ul {display: none}
 .virtual-tree-menu a {background-color: #fff;color: #333;display: block;position: relative;margin: 0;border: 0;padding-left: 19px;padding-right: 20px;
-  border-radius: 0 !important;text-decoration: none;font-size: 0;font-weight: normal;height: 30px;line-height: 30px;border-bottom: #f1f1f1 dotted 1px}
+  border-radius: 0 !important;text-decoration: none; font-weight: normal;height: 30px;line-height: 30px;border-bottom: #f1f1f1 dotted 1px}
 /*loading*/
 .k-bar {
   position: absolute; width: 25px; height: 2px; border-radius: 2px; background-color: #4b9cdb;
@@ -29,8 +28,7 @@
 }
 
 /*hover*/
-.virtual-tree-menu a:hover {background-color: #61b8f9;border-color: #61b8f9;
-  color: #fff;}
+.virtual-tree-menu a:hover {background-color: #61b8f9;border-color: #61b8f9; color: #fff;}
 .virtual-tree-menu a:hover i {color: #fff}
 .virtual-tree-menu a:hover .icon-op {display: block}
 .virtual-tree-menu .arrow { position: absolute;top: 50%; margin-top: -8px; left: 3px; height: auto; line-height: normal;
@@ -39,7 +37,7 @@
 /*.virtual-tree-menu .has-arrow .arrow {display: block;}*/
 .virtual-tree-menu .icon-op { position: absolute;top: 50%; margin-top: -8px; right: 6px;height: auto; line-height: normal; display: none}
 .virtual-tree-menu .icon-op i {pointer-events: none}
-.virtual-tree-menu li {font-size: 0;}
+.virtual-tree-menu li { }
 .virtual-tree-menu .active {}
 /*active*/
 .virtual-tree-menu .active > a {background-color: #61b8f9;border-color: #61b8f9; color: #fff;}
@@ -47,10 +45,10 @@
 
 /*open*/
 .virtual-tree-menu .open-li > a > .arrow > i::before {transform: rotate(90deg)}
-.virtual-tree-menu i {font-size: 14px;color: #666}
+.virtual-tree-menu i { color: #666}
 
-.virtual-tree-menu label {font-size: 12px;width: 100%;margin: 0;font-weight: normal;cursor: pointer;
-  display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.virtual-tree-menu label { width: 100%;margin: 0;font-weight: normal;cursor: pointer;line-height: 30px;
+  display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .virtual-tree-bg {position: absolute;top: 0;left: 0;right: 0;}
 /*2 级*/
 .virtual-tree-menu .level-li-2 a {padding-left: 38px; }

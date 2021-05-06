@@ -7,6 +7,7 @@
   right: 0;
   overflow-y: hidden;
   padding: 0 5px 5px 10px;
+  font-size: 14px;
 }
 .virtual-tree-menu:hover {
   overflow-y: auto;
@@ -29,9 +30,11 @@
 .virtual-tree-menu .icon-box {
   display: inline-block;
   height: auto;
-  padding: 5px 0;
+  padding: 0;
   margin-right: 3px;
-  line-height: normal;
+  line-height: 30px;
+  font-size: 16px;
+  vertical-align: -2px;
 }
 .virtual-tree-menu ul {
   margin: 0;
@@ -57,7 +60,6 @@
   padding-right: 20px;
   border-radius: 0 !important;
   text-decoration: none;
-  font-size: 0;
   font-weight: normal;
   height: 30px;
   line-height: 30px;
@@ -135,9 +137,6 @@
 .virtual-tree-menu .icon-op i {
   pointer-events: none;
 }
-.virtual-tree-menu li {
-  font-size: 0;
-}
 /*active*/
 .virtual-tree-menu .active > a {
   background-color: #61b8f9;
@@ -152,15 +151,14 @@
   transform: rotate(90deg);
 }
 .virtual-tree-menu i {
-  font-size: 14px;
   color: #666;
 }
 .virtual-tree-menu label {
-  font-size: 12px;
   width: 100%;
   margin: 0;
   font-weight: normal;
   cursor: pointer;
+  line-height: 30px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
