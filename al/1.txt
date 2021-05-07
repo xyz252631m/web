@@ -1,10 +1,18 @@
 123456 121.5.68.150
+git remote -v
+git branch
+
+#切换分支
+git checkout master
 
 #放弃本地更改
 git reset --hard origin/master
 git pull
 
-# 从HEAD版本开始往过去数3个版本
+
+使用 git reset --hard HEAD^ 来回退到上一次commit的状态
+
+# 合并 从HEAD版本开始往过去数3个版本
 $ git rebase -i HEAD~3
 
 # 合并指定版本号（不包含此版本）

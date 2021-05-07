@@ -17,10 +17,6 @@
 </div>
 
 <script>
-
-    $.getScript("./js/dy-index.js")
-
-
     function chart1(id) {
         var myChart = echarts.init(document.getElementById(id));
         let option = {
@@ -73,7 +69,7 @@
         return myChart;
     }
 
-   // let myChart = chart1("chart1");
+   let myChart = chart1("chart1");
     
     initZr(myChart);
 
