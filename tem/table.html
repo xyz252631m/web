@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿 bootstrap-table 表格</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/dy-table.css">
+    <style>
+        .main-box {width: 90%;height: 600px;}
+    </style>
+</head>
+<body>
+
+
+<div class="main-box">
+    <div class="dy-table"></div>
+</div>
+<script src="js/table.js"></script>
+
+<script>
+    var table = new Table();
+    $.getJSON("./json/sj_39.json", function (res) {
+        table.init({
+            $el: $(".dy-table"),
+            fixedNumber: res.fixedNumber,
+            columns: res.column,
+            data: res.data,
+            rowReader: function ($row, data, index) {
+                var addPre = function (tdIdx) {
+                    var txt = $row.find("td").eq(tdIdx).text();
+                    $row.find("td").eq(tdIdx).html('<pre>' + txt + '</pre>')
+                }
+                addPre(1);
+                addPre(2);
+            }
+        })
+        //合并单元格（行）
+        mergeCells(res.data, "name1");
+        //合并单元格（列）
+        mergeCells2(res.data, ["name1", "name2"]);
+
+    })
+
+    //合并单元格（行）
+    function mergeCells(data, fieldName) {
+        var list = [], temVal = "";
+        var len = data.length;
+        data.forEach(function (d, i) {
+            var val = d[fieldName];
+            if (i < len - 1) {
+                var nextItem = data[i + 1];
+                if (val === nextItem[fieldName]) {
+                    if (!temVal) {
+                        temVal = val;
+                        list.push({
+                            index: i,
+                            field: fieldName,
+                            colspan: 1,
+                            rowspan: 1
+                        })
+                    }
+                    var lastMerge = list[list.length - 1];
+                    lastMerge.rowspan++;
+                } else {
+                    temVal = "";
+                }
+            }
+        })
+        list.forEach(function (d) {
+            table.mergeCells(d)
+        })
+    }
+
+    //合并单元格（行）
+    function mergeCells2(data, fieldNames) {
+        var list = [];
+        var len = fieldNames.length;
+        data.forEach(function (d, i) {
+            var temVal = "";
+            fieldNames.forEach(function (f, fi) {
+                var val = d[f];
+                if (fi < len - 1) {
+                    var nextItem = fieldNames[fi + 1];
+                    if (val === d[nextItem]) {
+                        if (!temVal) {
+                            temVal = val;
+                            list.push({
+                                index: i,
+                                field: f,
+                                colspan: 1,
+                                rowspan: 1
+                            })
+                        }
+                        var lastMerge = list[list.length - 1];
+                        lastMerge.colspan++;
+                    } else {
+                        temVal = "";
+                    }
+                }
+            })
+
+        })
+        list.forEach(function (d) {
+            table.mergeCells(d)
+        })
+    }
+</script>
+</body>
+</html>
