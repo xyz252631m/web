@@ -348,7 +348,7 @@ Created by iconfont
         let val = $("#textarea").val();
         let svg = $(val).siblings("svg");
         let list = svg.find("glyph");
-        let el = $("#svg_box");
+        let el = $("#svg_box").html("");
         list.each((i, d) => {
             let $li = $('<li><span></span></li>');
             el.append($li);

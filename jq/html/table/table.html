@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿 bootstrap-table 表格</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="dy-table.css">
+    <style>
+        .main-box {width: 90%;height: 600px;}
+    </style>
+</head>
+<body>
+<div class="form-inline mb-2">
+    <label for="json_data" class="col-auto col-form-label">表格：</label>
+    <select id="json_data" class="col-auto form-control form-control-sm col-md-2">
+        <option value="t1">t1</option>
+        <option value="t2" selected>t2</option>
+    </select>
+</div>
+
+
+<div class="main-box">
+    <div class="dy-table"></div>
+</div>
+<script src="table.js"></script>
+
+<script>
+    var table = new Table();
+
+
+    function readTable(name) {
+        $.getJSON("./json/" + name + ".json", function (res) {
+            table.init({
+                $el: $(".dy-table"),
+                fixedNumber: res.fixedNumber,
+                columns: res.column,
+                data: res.data,
+                rowReader: function ($row, data, index) {
+                    var addPre = function (tdIdx) {
+                        var txt = $row.find("td").eq(tdIdx).text();
+                        $row.find("td").eq(tdIdx).html('<pre>' + txt + '</pre>')
+                    }
+                    addPre(1);
+                    addPre(2);
+
+                    //sj_05 存在附属表格，须特殊处理
+                    //附属表格 标题
+                    if (data.type === "subTitle") {
+                        $row.find("td").hide().eq(0).show().attr("colspan", $row.find("td").length);
+                    } else if (data.type === "subTh1") {
+                        $row.find("td").each(function (idx) {
+                            //从第三个单元格开始 (排除序号列，name列)
+                            if (idx >= 2) {
+                                if (idx % 2 === 1) {
+                                    $(this).addClass("text-center");
+                                }
+                            }
+                        })
+                    } else if (data.type === "subTh2") {
+                        $row.find("td").each(function (idx) {
+                            $(this).addClass("text-center");
+                        })
+                        subTablespace($row.find("td"));
+                    } else if (data.type === "subTd2") {
+                        subTablespace($row.find("td"));
+                    }
+
+                    //附属表格合并空白
+                    function subTablespace($list) {
+                        var len = $list.length;
+                        var isSpace = false, count = 1;
+                        for (var i = len - 1; i >= 0; i--) {
+                            isSpace = !$list.eq(i).text();
+                            if (isSpace) {
+                                count++;
+                                $list.eq(i).hide();
+                            } else {
+                                $list.eq(i).attr("colspan", count);
+                                count = 1;
+                            }
+                        }
+                    }
+                }
+            })
+            //合并单元格（行）
+            mergeCells(res.data, "name1");
+            //合并单元格（列）
+            mergeCells2(res.data, ["name1", "name2"]);
+
+        })
+    }
+
+
+    //合并单元格（行）
+    function mergeCells(data, fieldName) {
+        var list = [], temVal = "";
+        var len = data.length;
+        data.forEach(function (d, i) {
+            var val = d[fieldName];
+            if (i < len - 1) {
+                var nextItem = data[i + 1];
+                if (val === nextItem[fieldName]) {
+                    if (!temVal) {
+                        temVal = val;
+                        list.push({
+                            index: i,
+                            field: fieldName,
+                            colspan: 1,
+                            rowspan: 1
+                        })
+                    }
+                    var lastMerge = list[list.length - 1];
+                    lastMerge.rowspan++;
+                } else {
+                    temVal = "";
+                }
+            }
+        })
+        list.forEach(function (d) {
+            table.mergeCells(d)
+        })
+    }
+
+    //合并单元格（行）
+    function mergeCells2(data, fieldNames) {
+        var list = [];
+        var len = fieldNames.length;
+        data.forEach(function (d, i) {
+            var temVal = "";
+            fieldNames.forEach(function (f, fi) {
+                var val = d[f];
+                if (fi < len - 1) {
+                    var nextItem = fieldNames[fi + 1];
+                    if (val === d[nextItem]) {
+                        if (!temVal) {
+                            temVal = val;
+                            list.push({
+                                index: i,
+                                field: f,
+                                colspan: 1,
+                                rowspan: 1
+                            })
+                        }
+                        var lastMerge = list[list.length - 1];
+                        lastMerge.colspan++;
+                    } else {
+                        temVal = "";
+                    }
+                }
+            })
+
+        })
+        list.forEach(function (d) {
+            table.mergeCells(d)
+        })
+    }
+
+
+    $("#json_data").on("change", function (e) {
+        readTable(e.target.value);
+    })
+    readTable($("#json_data").val());
+</script>
+</body>
+</html>

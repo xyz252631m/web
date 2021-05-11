@@ -1,0 +1,164 @@
+{
+  "fixedNumber": 1,
+  "column": [
+    [
+      {
+        "field": "num",
+        "title": "序号",
+        "rowspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "colspan": 3,
+        "thClass": "text-center",
+        "tdClass": ""
+
+      },
+      {
+        "field": "",
+        "title": "col",
+        "thClass": "text-center",
+        "colspan": 3
+      }
+    ],
+    [
+      {
+        "field": "attr1",
+        "title": "col"
+      },
+      {
+        "field": "attr2",
+        "title": "col"
+      },
+      {
+        "field": "attr3",
+        "title": "col"
+      },
+      {
+        "field": "attr4",
+        "title": "col"
+      },
+      {
+        "field": "attr5",
+        "title": "col"
+      },
+      {
+        "field": "attr6",
+        "title": "col"
+      }
+    ]
+  ],
+  "data": [
+    {
+      "num": 1,
+      "attr1": "合 计",
+      "attr2": "1 ",
+      "attr3": "1",
+      "attr4": "合 计",
+      "attr5": "1",
+      "attr6": "1"
+    },
+    {
+      "num": 2,
+      "attr1": "   1.x",
+      "attr2": "1 ",
+      "attr3": 1,
+      "attr4": "  1.x",
+      "attr5": 1,
+      "attr6": 1
+    },
+    {
+      "num": 3,
+      "attr1": "   2.x",
+      "attr2": 1,
+      "attr3": 1,
+      "attr4": "  2.x",
+      "attr5": 1,
+      "attr6": 1
+    },
+    {
+      "num": 4,
+      "attr1": "   3.x",
+      "attr2": 0,
+      "attr3": "1",
+      "attr4": "  3.x",
+      "attr5": "1",
+      "attr6": "1 "
+    },
+    {
+      "num": 5,
+      "attr1": "   4.x",
+      "attr2": 1,
+      "attr3": 0,
+      "attr4": "  4.x",
+      "attr5": 0,
+      "attr6": 0
+    },
+    {
+      "num": 6,
+      "attr1": "   5.x",
+      "attr2": 1,
+      "attr3": 1,
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 7,
+      "attr1": "   6.x",
+      "attr2": 0,
+      "attr3": "34,478,942 ",
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 8,
+      "attr1": "   7.xxx",
+      "attr2": 0,
+      "attr3": "5",
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 9,
+      "attr1": "   8.xxx",
+      "attr2": 0,
+      "attr3": "1 ",
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 10,
+      "attr1": "   9.xxx ",
+      "attr2": 187,
+      "attr3": 187,
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 11,
+      "attr1": "   10.xxx",
+      "attr2": 0,
+      "attr3": 0,
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    },
+    {
+      "num": 12,
+      "attr1": "   11.xxx",
+      "attr2": 0,
+      "attr3": 0,
+      "attr4": "",
+      "attr5": "",
+      "attr6": ""
+    }
+  ]
+}
+
+

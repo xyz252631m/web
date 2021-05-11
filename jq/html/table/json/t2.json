@@ -1,0 +1,187 @@
+{
+  "fixedNumber": 3,
+  "column": [
+    [
+      {
+        "field": "num",
+        "title": "序号",
+        "rowspan": 3,
+        "valign": "middle"
+      },
+      {
+        "field": [
+          "name1",
+          "name2"
+        ],
+        "title": "col",
+        "rowspan": 3,
+        "colspan": 2,
+        "valign": "middle"
+      },
+      {
+        "field": "",
+        "title": "合计",
+        "colspan": 2,
+        "rowspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "colspan": 2,
+        "rowspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "colspan": 2,
+        "rowspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "thClass": "text-center",
+        "colspan": 6
+      }
+    ],
+    [
+      {
+        "field": "",
+        "title": "小计",
+        "colspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "colspan": 2
+      },
+      {
+        "field": "",
+        "title": "col",
+        "colspan": 2
+      }
+    ],
+    [
+      {
+        "field": "attr3",
+        "title": "col"
+      },
+      {
+        "field": "attr4",
+        "title": "col"
+      },
+      {
+        "field": "attr5",
+        "title": "col"
+      },
+      {
+        "field": "attr6",
+        "title": "col"
+      },
+      {
+        "field": "attr7",
+        "title": "col"
+      },
+      {
+        "field": "attr8",
+        "title": "col"
+      },
+      {
+        "field": "attr9",
+        "title": "col"
+      },
+      {
+        "field": "attr10",
+        "title": "col"
+      },
+      {
+        "field": "attr11",
+        "title": "col"
+      },
+      {
+        "field": "attr12",
+        "title": "col"
+      },
+      {
+        "field": "attr13",
+        "title": "col"
+      },
+      {
+        "field": "attr14",
+        "title": "col"
+      }
+    ]
+  ],
+  "data": [
+    {
+      "num": 1,
+      "name1": "合计",
+      "name2": "合计",
+      "attr3": 2,
+      "attr4": 2,
+      "attr5": 2,
+      "attr6": 2,
+      "attr7": 2,
+      "attr8": 2,
+      "attr9": 2,
+      "attr10": 2,
+      "attr11":2,
+      "attr12": 2,
+      "attr13":2,
+      "attr14": 2
+    },
+    {
+      "num": 2,
+      "name1": "一",
+      "name2": " 小计",
+      "attr3": 2,
+      "attr4": 2,
+      "attr5": 2,
+      "attr6": 2,
+      "attr7": 2,
+      "attr8": 2,
+      "attr9": 2,
+      "attr10": 2,
+      "attr11":2,
+      "attr12": 2,
+      "attr13":2,
+      "attr14": 2
+    },
+    {
+      "num": 3,
+      "name1": "一",
+      "name2": " 1",
+      "attr3": 2,
+      "attr4": 2,
+      "attr5": 2,
+      "attr6": 2,
+      "attr7": 2,
+      "attr8": 2,
+      "attr9": 2,
+      "attr10": 2,
+      "attr11":2,
+      "attr12": 2,
+      "attr13":2,
+      "attr14": 2
+    },
+    {
+      "num": 4,
+      "name1": "一",
+      "name2": " 2",
+      "attr3": 2,
+      "attr4": 2,
+      "attr5": 2,
+      "attr6": 2,
+      "attr7": 2,
+      "attr8": 2,
+      "attr9": 2,
+      "attr10": 2,
+      "attr11":2,
+      "attr12": 2,
+      "attr13":2,
+      "attr14": 2
+    }
+
+  ]
+}
+
+

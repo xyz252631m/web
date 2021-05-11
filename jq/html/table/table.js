@@ -75,14 +75,14 @@ $.extend(Table.prototype, {
         columns.forEach(function (d, i) {
             if (Array.isArray(d)) {
                 d.forEach(function (f) {
-                    h.push('<th rowspan="' + f.rowspan + '" colspan="' + f.colspan + '">' + f.title + '</th>');
+                    h.push('<th rowspan="' + (f.rowspan||1) + '" colspan="' + (f.colspan||1) + '" class="' + (f.thClass || "") + '">' + f.title + '</th>');
                 })
                 h.push('</tr>');
                 if (i < columns.length - 1) {
                     h.push('<tr>');
                 }
             } else {
-                h.push('<th rowspan="' + d.rowspan + '" colspan="' + d.colspan + '">' + d.title + '</th>');
+                h.push('<th rowspan="' + (d.rowspan||1) + '" colspan="' + (d.colspan||1) + '" class="' + (d.thClass || "") + '">' + d.title + '</th>');
             }
         })
         h.push('</tr>');
@@ -134,7 +134,8 @@ $.extend(Table.prototype, {
             var tr = ['<tr data-index="' + di + '">']
             for (var i = 1; i <= keys.length; i++) {
                 var item = map[i];
-                tr.push('<td>' + d[item.filed] + '</td>');
+                var tdClass = item.opt.tdClass || "";
+                tr.push('<td class="'+tdClass+'">' + d[item.filed] + '</td>');
             }
             tr.push('</tr>');
             var $tr = $(tr.join(""));
@@ -184,12 +185,12 @@ $.extend(Table.prototype, {
 
     bindEvent: function () {
         var box = this.box, self = this;
-        box.baseBox.on("scroll", function (e) {
+        box.baseBox.off("scroll.table").on("scroll.table", function (e) {
             var div = e.target;
             box.headerBox[0].scrollLeft = div.scrollLeft;
             box.leftFixed.baseBox[0].scrollTop = div.scrollTop;
         });
-        box.leftFixed.box.on("mousewheel", function (e) {
+        box.leftFixed.box.off("mousewheel.table").on("mousewheel.table", function (e) {
             var num = box.baseBox[0].scrollTop - e.originalEvent.wheelDelta;
             box.leftFixed.baseBox.animate({scrollTop: num}, 0);
             box.baseBox[0].scrollTop = num;
@@ -210,7 +211,7 @@ $.extend(Table.prototype, {
             box.baseTable.find("tbody tr").eq(idx).removeAttr("style");
         });
 
-        $(window).on("resize", function () {
+        $(window).off("resize.table").on("resize.table", function () {
             self.setThWidth();
             self.setLeftFixedWidth();
         })
@@ -228,6 +229,9 @@ $.extend(Table.prototype, {
                 tdIdx = key - 1;
                 break;
             }
+        }
+        if (tdIdx === -1) {
+            return;
         }
         var $tr = box.baseTable.find("tbody tr");
         var $fixTr = box.leftFixed.baseBox.find("tbody tr");
