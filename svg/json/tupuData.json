@@ -6,6 +6,94 @@
     "nodeType": "999",
     "children": [
       {
+        "id": "234234",
+        "name": "test",
+        "nodeType": "101",
+        "children": [
+          {
+            "id": "t1",
+            "name": "1"
+          },
+          {
+            "id": "t2",
+            "name": "2"
+          },
+          {
+            "id": "t3",
+            "name": "3",
+            "children": [
+              {
+                "id": "t4",
+                "name": "4",
+                "children": [
+                  {
+                    "id": "t5",
+                    "name": "5",
+                    "children": [
+                      {
+                        "id": "t51",
+                        "name": "51"
+                      },
+                      {
+                        "id": "t52",
+                        "name": "52"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "t6",
+                    "name": "6"
+                  },
+                  {
+                    "id": "t7",
+                    "name": "7"
+                  },
+                  {
+                    "id": "t8",
+                    "name": "8",
+                    "children": [
+                      {
+                        "id": "t81",
+                        "name": "81"
+                      },
+                      {
+                        "id": "t82",
+                        "name": "82",
+                        "children": [
+                          {
+                            "id": "t9",
+                            "name": "9",
+                            "children": [
+                              {
+                                "id": "t10",
+                                "name": "10"
+                              },
+                              {
+                                "id": "t11",
+                                "name": "11",   "children": [
+                                {
+                                  "id": "t101",
+                                  "name": "101"
+                                },
+                                {
+                                  "id": "t112",
+                                  "name": "121"
+                                }
+                              ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "",
         "name": "法定代表人",
         "nodeType": "101",
@@ -75,7 +163,8 @@
                 "productname": "",
                 "stockcode": "",
                 "nodeType": "999"
-              }, {
+              },
+              {
                 "id": "9ad7cc95777cdbb29225a1fdce86e250",
                 "name": "宁波明和投资管理有限公司",
                 "image": "https://qccdata.qichacha.com/autoimage/9ad7cc95777cdbb29225a1fdce86e250.jpg",
@@ -84,7 +173,8 @@
                 "productname": "",
                 "stockcode": "",
                 "nodeType": "999"
-              }, {
+              },
+              {
                 "id": "4770c071f33bd609e30b5d1538d71491",
                 "name": "上海联创永宣创业投资企业",
                 "image": "https://qccdata.qichacha.com/autoimage/4770c071f33bd609e30b5d1538d71491.jpg",
@@ -105,25 +195,27 @@
             "productName": "",
             "stockCode": "",
             "nodeType": "998",
-            "children": [{
-              "id": "b5d5f52fe7ab62ef3b09e371b81a71c1",
-              "name": "北京欧比特控制工程研究院有限公司",
-              "image": "https://co-image.qichacha.com/companyimage/b5d5f52fe7ab62ef3b09e371b81a71c1.jpg",
-              "percent": "100%",
-              "location": "",
-              "productname": "",
-              "stockcode": "",
-              "nodeType": "999"
-            }, {
-              "id": "d8cf99d0b8ca68a31fba221882891132",
-              "name": "上海智建电子工程有限公司",
-              "image": "https://qccdata.qichacha.com/autoimage/d8cf99d0b8ca68a31fba221882891132.jpg",
-              "percent": "100%",
-              "location": "",
-              "productname": "",
-              "stockcode": "",
-              "nodeType": "999"
-            }
+            "children": [
+              {
+                "id": "b5d5f52fe7ab62ef3b09e371b81a71c1",
+                "name": "北京欧比特控制工程研究院有限公司",
+                "image": "https://co-image.qichacha.com/companyimage/b5d5f52fe7ab62ef3b09e371b81a71c1.jpg",
+                "percent": "100%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              },
+              {
+                "id": "d8cf99d0b8ca68a31fba221882891132",
+                "name": "上海智建电子工程有限公司",
+                "image": "https://qccdata.qichacha.com/autoimage/d8cf99d0b8ca68a31fba221882891132.jpg",
+                "percent": "100%",
+                "location": "",
+                "productname": "",
+                "stockcode": "",
+                "nodeType": "999"
+              }
             ]
           },
           {
@@ -135,7 +227,7 @@
             "productName": "",
             "stockCode": "",
             "nodeType": "998",
-            "children":[
+            "children": [
               {
                 "id": "742ce0e4de642d8df03dca96b50c24be",
                 "image": "https://qccdata.qichacha.com/autoimage/742ce0e4de642d8df03dca96b50c24be.jpg",
@@ -185,7 +277,8 @@
                 "productname": "",
                 "stockcode": "",
                 "nodeType": "999"
-              }, {
+              },
+              {
                 "id": "cbeb53ea1bef38629525bc6514bbd26b",
                 "name": "珠海金特科技有限公司",
                 "image": "https://qccdata.qichacha.com/autoimage/cbeb53ea1bef38629525bc6514bbd26b.jpg",
@@ -531,7 +624,6 @@
             "stockCode": "",
             "nodeType": "999"
           },
-
           {
             "id": "59dec34b556ee426279df77fd9cf2902",
             "name": "富通时代科技有限公司",

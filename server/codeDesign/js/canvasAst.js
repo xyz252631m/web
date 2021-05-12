@@ -165,7 +165,7 @@
             }
             item.children.forEach(d => {
                 mapId[d.id] = d;
-                d.open=false;
+                d.open = false;
                 d.animateAdd = true;
                 d.py = item.y;
                 d.px = item.x;
@@ -352,24 +352,24 @@
             centerX = first.x - item.x - 35;
             if (item.rightLine) {
                 item.rightLine.to({
-                    x:item.w,
-                    y:20,
-                    points: [0,0, centerX-item.w, 0],
+                    x: item.w,
+                    y: 20,
+                    points: [0, 0, centerX - item.w, 0],
                     duration: this.opt.anTime / 1000
                 })
             } else {
                 if (item.animateAdd) {
                     item.rightLine = new Konva.Line({
-                        x:item.w,
-                        y:20,
-                        points: [0,0,0,0],
+                        x: item.w,
+                        y: 20,
+                        points: [0, 0, 0, 0],
                         ...this.opt.lineStyle,
                     });
                     g.add(item.rightLine);
                     item.rightLine.to({
-                        x:item.w,
-                        y:20,
-                        points: [0,0,centerX-item.w,0],
+                        x: item.w,
+                        y: 20,
+                        points: [0, 0, centerX - item.w, 0],
                         duration: this.opt.anTime / 1000
                     });
 
@@ -406,14 +406,14 @@
                         item.vLine = new Konva.Line({
                             x: item.x + item.w,
                             y: item.y + 20,
-                            points: [0, 0, 0, last.y-first.y],
+                            points: [0, 0, 0, last.y - first.y],
                             ...this.opt.lineStyle,
                         });
                         this.lineGroup.add(item.vLine)
                         item.vLine.to({
                             x: item.x + centerX,
                             y: first.y + 20,
-                            points: [0, 0, 0, last.y-first.y],
+                            points: [0, 0, 0, last.y - first.y],
                             duration: this.opt.anTime / 1000
                         })
 
@@ -679,40 +679,22 @@
             i++;
         }
 
-        //根据子节点计算父级位置
-        function calcParentItem() {
-            idx = max;
-            while (idx >= 0) {
-                list = mapLevel[idx];
-                $.each(list, function (i, d) {
-                    d.space = getSpace(d);
+        function initY() {
+            let fn = function (item) {
+                let len = item.children.length;
+                let y = item.y;
+                //40  40+10
+                item.children.forEach(function (d, i) {
+                    d.y = y - ((len * 50 - 10)) / 2 + 40 / 2 + i * 50;
                     if (d.children.length) {
-                        // w += 20;  //展开收缩按钮
-                        if (d.open) {
-                            getH(d);
-                            d.y = d.centerY - 20;
-                        } else {
-                            if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
-                            } else {
-                                d.y = 0
-                            }
-                        }
-                    } else {
-                        if (i) {
-                            d.y = list[i - 1].y + 40 + d.space;
-                        } else {
-                            d.y = 0
-                        }
+                        fn(d)
                     }
-                    d.h = 40;
-                });
-
-                idx--;
+                })
             }
+            fn(mapLevel[0][0]);
         }
 
-        calcParentItem();
+        initY();
 
         let hasRepeat = true;
         let count = 1;

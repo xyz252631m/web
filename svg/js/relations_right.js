@@ -1,3 +1,7 @@
+/*
+* v2.0
+* des:修改默认y坐标
+* */
 function NodeReader(isRight, data, option) {
     var mapLevel = {}, mapId = {}, infoList = [];
     var maxInfo = [];
@@ -48,7 +52,7 @@ function NodeReader(isRight, data, option) {
                 return null;
             }
         },
-        //寻找到上一个展开的iten ,用来获取y位置
+        //寻找到上一个展开的item ,用来获取y位置
         getPrevItem: function (list, idx) {
             var item = list[idx - 1];
             while (!item.open || !item.children.length) {
@@ -64,7 +68,7 @@ function NodeReader(isRight, data, option) {
                 return null;
             }
         },
-        //寻找到下一个展开的iten ,用来重置y位置
+        //寻找到下一个展开的item ,用来重置y位置
         getNextItem: function (list, idx) {
             if (idx >= list.length - 1) {
                 return null;
@@ -104,12 +108,13 @@ function NodeReader(isRight, data, option) {
             var top = rect.y;
             if (option.hasDetailInfo) {
                 if (option.detailInfoShowBefore) {
-                    var t_falg = option.detailInfoShowBefore.call(tool, this, $(".info-box"));
+                    var $infoBox = $(".info-box");
+                    var t_flag = option.detailInfoShowBefore.call(tool, this, $infoBox);
                     //排除undefined
-                    if (t_falg === false) {
+                    if (t_flag === false) {
 
                     } else {
-                        $(".info-box").css({
+                        $infoBox.css({
                             left: left + "px",
                             top: top + "px"
                         }).show();
@@ -340,10 +345,12 @@ function NodeReader(isRight, data, option) {
             if (item.childrenList.length < 10) {
                 return;
             }
+            var temList = [];
+            var lastItem;
             //收起
             if (item.moreOpen) {
                 item.moreOpen = false;
-                var temList = [];
+
                 var len = item.children.length;
                 var removeList = [];
                 $.each(item.children, function (i, d) {
@@ -359,7 +366,7 @@ function NodeReader(isRight, data, option) {
                     }
                 });
                 item.children = temList;
-                var lastItem = item.children[item.children.length - 1];
+                lastItem = item.children[item.children.length - 1];
                 lastItem.name = "展开";
                 lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = false;
@@ -377,7 +384,6 @@ function NodeReader(isRight, data, option) {
                 this.render(isRight);
             } else {
                 item.moreOpen = true;
-                var temList = [];
                 $.each(item.childrenList, function (i, d) {
                     if (i > 9) {
                         d.idx = i;
@@ -404,7 +410,7 @@ function NodeReader(isRight, data, option) {
                     }
                 });
                 Array.prototype.splice.apply(item.children, [10, 0].concat(temList));
-                var lastItem = item.children[item.children.length - 1];
+                lastItem = item.children[item.children.length - 1];
                 var idx = mapLevel[item.level + 1].indexOf(lastItem);
                 Array.prototype.splice.apply(mapLevel[item.level + 1], [idx, 0].concat(temList));
                 lastItem.name = "收缩";
@@ -545,42 +551,30 @@ function NodeReader(isRight, data, option) {
                 i++;
             }
 
-            //根据子节点计算父级位置
-            function calcParentItem() {
-                idx = max;
-                while (idx > 0) {
-                    list = mapLevel[idx];
-                    $.each(list, function (i, d) {
-                        d.space = getSpace(d);
+            //初始化y坐标
+            function initY() {
+                idx = 1;
+                var fn = function (item) {
+                    var len = item.children.length;
+                    var y = item.y;
+                    //40  40+10
+                    item.children.forEach(function (d, i) {
+                        d.y = y - ((len * 50 - 10)) / 2 + 40 / 2 + i * 50;
                         if (d.children.length) {
-                            // w += 20;  //展开收缩按钮
-                            if (d.open) {
-                                getH(d);
-                                d.y = d.centerY - 20;
-                            } else {
-                                if (i) {
-                                    d.y = list[i - 1].y + 40 + d.space;
-                                } else {
-                                    d.y = 0
-                                }
-                            }
-                        } else {
-                            if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
-                            } else {
-                                d.y = 0
-                            }
+                            fn(d)
                         }
-                        d.h = 40;
-                    });
-
-                    idx--;
+                    })
                 }
+                fn(data);
             }
 
-            calcParentItem();
+            initY();
+
             var hasRepeat = true;
             var count = 1;
+
+
+            //
             while (hasRepeat && count < 10) {
                 hasRepeat = false;
                 i = 1;
@@ -618,7 +612,6 @@ function NodeReader(isRight, data, option) {
                     });
                     i++;
                 }
-
 
                 if (hasRepeat) {
                     idx = max;
@@ -699,7 +692,7 @@ function NodeReader(isRight, data, option) {
 
         moreItemObj: function (d) {
             var id = "more_" + d._id + "_01";
-            var tem = {
+            return {
                 id: id,
                 _id: id,
                 name: "展开",
@@ -710,7 +703,6 @@ function NodeReader(isRight, data, option) {
                 moreOpen: false,
                 children: []
             };
-            return tem;
         },
         //渲染根节点
         renderRoot: function (rootItem) {
@@ -822,10 +814,10 @@ function NodeReader(isRight, data, option) {
             //点击事件
             if (option.nodeClick) {
                 rect.on("click", function () {
-                    option.nodeClick.call(this,item);
+                    option.nodeClick.call(this, item);
                 });
                 text.on("click", function () {
-                    option.nodeClick.call(this,item);
+                    option.nodeClick.call(this, item);
                 });
             }
             var text_rbox = text.rbox();
@@ -1110,7 +1102,7 @@ function NodeReader(isRight, data, option) {
         };
         fn(list, mapLevel, mapId, infoList, 1, data._id);
 
-        infoList.forEach(function (d, i) {
+        infoList.forEach(function (d) {
             if (d.children.length > 10) {
                 var child = [], moreList = [];
                 d.children.forEach(function (k, idx) {
@@ -1199,19 +1191,18 @@ function Relation(SVG, option) {
         draw.width($(window).width());
         draw.height($(window).height());
     });
-    var scale = this.option.scale || 1;
-    this.scale = scale;
+    this.scale = this.option.scale || 1;
 
     // 缩放事件
     function drag(e) {
-        var driect = null;
-        var scale = this.scale;
+        var direct;
+        var scale = self.scale;
         if (e.wheelDelta) {
-            driect = e.wheelDelta;
+            direct = e.wheelDelta;
         } else {
-            driect = -e.detail * 40;
+            direct = -e.detail * 40;
         }
-        var isUp = driect > 0;
+        var isUp = direct > 0;
         if (isUp) {
             scale += 0.1;
             if (scale > 3) {
@@ -1223,12 +1214,12 @@ function Relation(SVG, option) {
                 scale = 0.1;
             }
         }
-        this.rootGroup.scale(scale);
-        this.scale = scale;
+        self.rootGroup.scale(scale);
+        self.scale = scale;
     }
 
     draw.on("mousewheel", function (e) {
-        drag.call(self, e);
+        drag(e);
         self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
     });
 }

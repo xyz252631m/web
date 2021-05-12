@@ -504,40 +504,24 @@ function NodeReader(isRight, data, option) {
                 i++;
             }
 
-            //根据子节点计算父级位置
-            function calcParentItem() {
-                idx = max;
-                while (idx > 0) {
-                    list = mapLevel[idx];
-                    $.each(list, function (i, d) {
-                        d.space = getSpace(d);
+            //初始化y坐标
+            function initY() {
+                idx = 1;
+                var fn = function (item) {
+                    var len = item.children.length;
+                    var y = item.y;
+                    //40  40+10
+                    item.children.forEach(function (d, i) {
+                        d.y = y - ((len * 50 - 10)) / 2+40/2 + i * 50;
                         if (d.children.length) {
-                            // w += 20;  //展开收缩按钮
-                            if (d.open) {
-                                getH(d);
-                                d.y = d.centerY - 20;
-                            } else {
-                                if (i) {
-                                    d.y = list[i - 1].y + 40 + d.space;
-                                } else {
-                                    d.y = 0
-                                }
-                            }
-                        } else {
-                            if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
-                            } else {
-                                d.y = 0
-                            }
+                            fn(d)
                         }
-                        d.h = 40;
-                    });
-
-                    idx--;
+                    })
                 }
+                fn(data);
             }
 
-            calcParentItem();
+            initY();
             var hasRepeat = true;
             var count = 1;
             while (hasRepeat && count < 10) {

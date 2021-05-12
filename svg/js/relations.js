@@ -1,3 +1,7 @@
+/*
+* v2.0
+* des:修改默认y坐标
+* */
 function NodeReader(isRight, data, option) {
     var mapLevel = {}, mapId = {}, infoList = [];
     var maxInfo = [];
@@ -48,7 +52,7 @@ function NodeReader(isRight, data, option) {
                 return null;
             }
         },
-        //寻找到上一个展开的iten ,用来获取y位置
+        //寻找到上一个展开的item ,用来获取y位置
         getPrevItem: function (list, idx) {
             var item = list[idx - 1];
             while (!item.open || !item.children.length) {
@@ -64,7 +68,7 @@ function NodeReader(isRight, data, option) {
                 return null;
             }
         },
-        //寻找到下一个展开的iten ,用来重置y位置
+        //寻找到下一个展开的item ,用来重置y位置
         getNextItem: function (list, idx) {
             if (idx >= list.length - 1) {
                 return null;
@@ -94,7 +98,7 @@ function NodeReader(isRight, data, option) {
         },
 
         //鼠标移入事件
-        mouseenter: function (e) {
+        mouseenter: function () {
             var rect = this.g.rbox();
             var self = this;
             var left = rect.x - 340 + 25;
@@ -104,12 +108,13 @@ function NodeReader(isRight, data, option) {
             var top = rect.y;
             if (option.hasDetailInfo) {
                 if (option.detailInfoShowBefore) {
-                    var t_falg = option.detailInfoShowBefore.call(tool, this, $(".info-box"));
+                    var $infoBox = $(".info-box");
+                    var t_flag = option.detailInfoShowBefore.call(tool, this, $infoBox);
                     //排除undefined
-                    if (t_falg === false) {
+                    if (t_flag === false) {
 
                     } else {
-                        $(".info-box").css({
+                        $infoBox.css({
                             left: left + "px",
                             top: top + "px"
                         }).show();
@@ -120,42 +125,41 @@ function NodeReader(isRight, data, option) {
             }
 
             if (this.children.length && this.open) {
-
-                $.each(this.children, function (idx) {
+                this.children.forEach(function (d) {
                     if (isRight) {
-                        this.hover_polyline = tool.lineGroup.polyline([
-                            [this.x, this.y + 20],
-                            [this.x - 35, this.y + 20],
-                            [this.x - 35, self.y + 20],
+                        d.hover_polyline = tool.lineGroup.polyline([
+                            [d.x, d.y + 20],
+                            [d.x - 35, d.y + 20],
+                            [d.x - 35, self.y + 20],
                             [self.x + self.w, self.y + 20]])
                             .fill("transparent")
                             .addClass(option.lineHoverCls);
                     } else {
-                        this.hover_polyline = tool.lineGroup.polyline([
-                            [this.x + this.w, this.y + 20],
-                            [this.x + this.w + 35, this.y + 20],
-                            [this.x + this.w + 35, self.y + 20],
+                        d.hover_polyline = tool.lineGroup.polyline([
+                            [d.x + d.w, d.y + 20],
+                            [d.x + d.w + 35, d.y + 20],
+                            [d.x + d.w + 35, self.y + 20],
                             [self.x, self.y + 20]])
                             .fill("transparent")
                             .addClass(option.lineHoverCls);
 
                     }
-                    this.hLine.hide();
-                });
+                    d.hLine.hide();
+                })
                 this.vLine && this.vLine.hide();
                 this.rightLine && this.rightLine.hide();
             }
             if (mapId[this.pid]) {
                 var pItem = mapId[this.pid];
-                if (isRight) {
-                    if (this.level == 1) {
-                        var m = tool.halfGroup.matrixify();
-                        pItem = {
-                            x: pItem.x,
-                            w: pItem.w,
-                            y: pItem.y - m.f
-                        }
+                if (this.level === 1) {
+                    var m = tool.halfGroup.matrixify();
+                    pItem = {
+                        x: pItem.x,
+                        w: pItem.w,
+                        y: pItem.y - m.f
                     }
+                }
+                if (isRight) {
                     this.hover_polyline = tool.lineGroup.polyline([
                         [this.x, this.y + 20],
                         [this.x - 35, this.y + 20],
@@ -166,14 +170,6 @@ function NodeReader(isRight, data, option) {
                         .addClass(option.lineHoverCls)
                         .addClass("left-link-hover");
                 } else {
-                    if (this.level == 1) {
-                        var m = tool.halfGroup.matrixify();
-                        pItem = {
-                            x: pItem.x,
-                            w: pItem.w,
-                            y: pItem.y - m.f
-                        }
-                    }
                     this.hover_polyline = tool.lineGroup.polyline([
                         [this.x + this.w, this.y + 20],
                         [this.x + this.w + 35, this.y + 20],
@@ -191,13 +187,13 @@ function NodeReader(isRight, data, option) {
                 $(".info-box").hide();
             }
             if (this.children.length && this.open) {
-                $.each(this.children, function (idx) {
-                    this.hLine.show();
-                    if (this.hover_polyline) {
-                        this.hover_polyline.remove();
-                        this.hover_polyline = null;
+                this.children.forEach(function (d) {
+                    d.hLine.show();
+                    if (d.hover_polyline) {
+                        d.hover_polyline.remove();
+                        d.hover_polyline = null;
                     }
-                });
+                })
                 this.vLine && this.vLine.show();
                 this.rightLine && this.rightLine.show();
             }
@@ -218,7 +214,7 @@ function NodeReader(isRight, data, option) {
             var item = mapId[_id];
 
             if (item.children.length && item.open) {
-                $.each(item.children, function (idx) {
+                $.each(item.children, function () {
                     this.hLine.show();
                     if (this.hover_polyline) {
                         this.hover_polyline.remove();
@@ -340,10 +336,13 @@ function NodeReader(isRight, data, option) {
             if (item.childrenList.length < 10) {
                 return;
             }
+
+            var temList = [];
+            var lastItem;
             //收起
             if (item.moreOpen) {
                 item.moreOpen = false;
-                var temList = [];
+
                 var len = item.children.length;
                 var removeList = [];
                 $.each(item.children, function (i, d) {
@@ -359,13 +358,13 @@ function NodeReader(isRight, data, option) {
                     }
                 });
                 item.children = temList;
-                var lastItem = item.children[item.children.length - 1];
+                lastItem = item.children[item.children.length - 1];
                 lastItem.name = "展开";
                 lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = false;
                 this.calcItemPos(isRight);
                 var tem = temList[9];
-                removeList.forEach(function (d, idx) {
+                removeList.forEach(function (d) {
                     d.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
                         this.remove();
                     });
@@ -377,7 +376,6 @@ function NodeReader(isRight, data, option) {
                 this.render(isRight);
             } else {
                 item.moreOpen = true;
-                var temList = [];
                 $.each(item.childrenList, function (i, d) {
                     if (i > 9) {
                         d.idx = i;
@@ -404,7 +402,7 @@ function NodeReader(isRight, data, option) {
                     }
                 });
                 Array.prototype.splice.apply(item.children, [10, 0].concat(temList));
-                var lastItem = item.children[item.children.length - 1];
+                lastItem = item.children[item.children.length - 1];
                 var idx = mapLevel[item.level + 1].indexOf(lastItem);
                 Array.prototype.splice.apply(mapLevel[item.level + 1], [idx, 0].concat(temList));
                 lastItem.name = "收缩";
@@ -444,31 +442,31 @@ function NodeReader(isRight, data, option) {
                 });
                 idx--;
             }
-            var list = mapLevel[1];
-            var r_frist = list[0];
+            list = mapLevel[1];
+            var r_first = list[0];
             var r_last = list[list.length - 1];
             var r_centerX;
             if (isRight) {
-                r_centerX = r_frist.x - 35;
+                r_centerX = r_first.x - 35;
             } else {
-                r_centerX = r_frist.x + r_frist.w + 35;
+                r_centerX = r_first.x + r_first.w + 35;
             }
 
             if (isRight) {
                 if (this.data.right_vLine) {
-                    this.data.right_vLine.animate(option.anTime).y(r_frist.y + 20).height(r_last.y - r_frist.y);
+                    this.data.right_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
                 } else {
-                    this.data.right_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
+                    this.data.right_vLine = this.lineGroup.line(r_centerX, r_first.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
                 }
 
             } else {
                 if (this.data.left_vLine) {
-                    this.data.left_vLine.animate(option.anTime).y(r_frist.y + 20).height(r_last.y - r_frist.y);
+                    this.data.left_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
                 } else {
-                    this.data.left_vLine = this.lineGroup.line(r_centerX, r_frist.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
+                    this.data.left_vLine = this.lineGroup.line(r_centerX, r_first.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
                 }
             }
-            var r_centerY = r_frist.y + (r_last.y + 40 - r_frist.y) / 2;
+            var r_centerY = r_first.y + (r_last.y + 40 - r_first.y) / 2;
             if (isInit) {
                 this.halfGroup.y(-(r_centerY - this.hh))
             } else {
@@ -498,7 +496,7 @@ function NodeReader(isRight, data, option) {
             }
 
             function getH(item) {
-                var frist = item.children[0];
+                var first = item.children[0];
                 var last = item.children[item.children.length - 1];
                 var centerY;
                 if (item.hasMore) {
@@ -507,11 +505,11 @@ function NodeReader(isRight, data, option) {
                     } else {
                         last = item.children[item.children.length - 2];
                     }
-                    centerY = frist.y + (last.y + 50 + 40 - frist.y) / 2;
-                    item.vLineH = last.y + 50 - frist.y;
+                    centerY = first.y + (last.y + 50 + 40 - first.y) / 2;
+                    item.vLineH = last.y + 50 - first.y;
                 } else {
-                    centerY = frist.y + (last.y + 40 - frist.y) / 2;
-                    item.vLineH = last.y - frist.y;
+                    centerY = first.y + (last.y + 40 - first.y) / 2;
+                    item.vLineH = last.y - first.y;
                 }
                 item.centerY = centerY;
             }
@@ -545,40 +543,24 @@ function NodeReader(isRight, data, option) {
                 i++;
             }
 
-            //根据子节点计算父级位置
-            function calcParentItem() {
-                idx = max;
-                while (idx > 0) {
-                    list = mapLevel[idx];
-                    $.each(list, function (i, d) {
-                        d.space = getSpace(d);
+            //初始化y坐标
+            function initY() {
+                idx = 1;
+                var fn = function (item) {
+                    var len = item.children.length;
+                    var y = item.y;
+                    //40  40+10
+                    item.children.forEach(function (d, i) {
+                        d.y = y - ((len * 50 - 10)) / 2 + 40 / 2 + i * 50;
                         if (d.children.length) {
-                            // w += 20;  //展开收缩按钮
-                            if (d.open) {
-                                getH(d);
-                                d.y = d.centerY - 20;
-                            } else {
-                                if (i) {
-                                    d.y = list[i - 1].y + 40 + d.space;
-                                } else {
-                                    d.y = 0
-                                }
-                            }
-                        } else {
-                            if (i) {
-                                d.y = list[i - 1].y + 40 + d.space;
-                            } else {
-                                d.y = 0
-                            }
+                            fn(d)
                         }
-                        d.h = 40;
-                    });
-
-                    idx--;
+                    })
                 }
+                fn(data);
             }
 
-            calcParentItem();
+            initY();
             var hasRepeat = true;
             var count = 1;
             while (hasRepeat && count < 10) {
@@ -680,7 +662,7 @@ function NodeReader(isRight, data, option) {
                             if (!d.open || !d.children.length) {
                                 if (list[idx + 1].pid === d.pid) {
                                     if (list[idx + 1].y - d.y > 50) {
-                                        var top_num = parseInt((list[idx + 1].y - 50 - d.y) / 2);
+                                        var top_num = Math.floor((list[idx + 1].y - 50 - d.y) / 2);
                                         d.y = list[idx + 1].y - 50;
                                         var pItem = mapId[d.pid];
                                         while (pItem) {
@@ -699,7 +681,7 @@ function NodeReader(isRight, data, option) {
 
         moreItemObj: function (d) {
             var id = "more_" + d._id + "_01";
-            var tem = {
+            return {
                 id: id,
                 _id: id,
                 name: "展开",
@@ -710,7 +692,6 @@ function NodeReader(isRight, data, option) {
                 moreOpen: false,
                 children: []
             };
-            return tem;
         },
         //渲染根节点
         renderRoot: function (rootItem) {
@@ -747,9 +728,9 @@ function NodeReader(isRight, data, option) {
                 }
                 var top = rect.y;
                 if (option.detailInfoShowBefore) {
-                    var t_falg = option.detailInfoShowBefore.call(tool, rootItem, $box);
+                    var t_flag = option.detailInfoShowBefore.call(tool, rootItem, $box);
                     //排除undefined
-                    if (t_falg === false) {
+                    if (t_flag === false) {
 
                     } else {
                         $(".info-box").css({
@@ -764,7 +745,7 @@ function NodeReader(isRight, data, option) {
 
             }
             if (option.hasDetailInfo) {
-                rect.on("mouseenter", function (e) {
+                rect.on("mouseenter", function () {
                     fn(group, tool, rootItem, $(".info-box"));
                 });
                 rect.on("mouseleave", function () {
@@ -772,7 +753,7 @@ function NodeReader(isRight, data, option) {
                         $(".info-box").hide();
                     }
                 });
-                text.on("mouseenter", function (e) {
+                text.on("mouseenter", function () {
                     fn(group, tool, rootItem, $(".info-box"));
                 });
                 text.on("mouseleave", function () {
@@ -784,13 +765,14 @@ function NodeReader(isRight, data, option) {
         },
         //渲染子节点
         childNode: function (isRight, item) {
+            var g;
             if (item.g) {
-                var g = item.g;
+                g = item.g;
                 g.animate(option.anTime).transform({x: item.x, y: item.y});
                 this.updateState(item);
                 return;
             }
-            var g = this.nodeGroup.group()
+            g = this.nodeGroup.group()
             item.g = g;
             var rect = g.rect(item.w, 40);
             if (item.animateAdd) {
@@ -819,16 +801,16 @@ function NodeReader(isRight, data, option) {
             });
             text.x(10);
             text.y(12);
-            var text_rbox = text.rbox();
+            var text_rBox = text.rbox();
             var tr = this.rootGroup.matrixify();
             if (isRight) {
                 //计算缩放 width
-                item.op_x = (text_rbox.width / tr.d) + 5 + 10;
+                item.op_x = (text_rBox.width / tr.d) + 5 + 10;
             } else {
                 item.op_x = 8;
             }
 
-            item.op_y = text_rbox.y;
+            item.op_y = text_rBox.y;
             if (item.children && item.children.length) {
                 if (!isRight) {
                     text.x(30);
@@ -868,7 +850,6 @@ function NodeReader(isRight, data, option) {
                 g.on("click", this.moreClick, this);
             } else {
                 g.attr("class", "svg-node").addClass("level-" + item.level);
-                ;
             }
             g.on("mouseenter", this.mouseenter, item);
             g.on("mouseleave", this.mouseleave, item);
@@ -921,7 +902,7 @@ function NodeReader(isRight, data, option) {
             isResetPos && this.calcItemPos(isRight);
 
             if (isRight) {
-                queue.forEach(function (d, idx) {
+                queue.forEach(function (d) {
                     d.g.animate(option.anTime).opacity(0).translate(posItem.x + posItem.w, posItem.y).after(function () {
                         this.remove();
                     });
@@ -944,7 +925,7 @@ function NodeReader(isRight, data, option) {
                     item.vLine = null;
                 });
             } else {
-                queue.forEach(function (d, idx) {
+                queue.forEach(function (d) {
                     d.g.animate(option.anTime).opacity(0).translate(posItem.x - d.w, posItem.y).after(function () {
                         this.remove();
                     });
@@ -989,11 +970,11 @@ function NodeReader(isRight, data, option) {
         renderLine: function (isRight, item) {
             var g = item.g;
             if (item.open && item.children.length) {
-                var frist = item.children[0];
+                var first = item.children[0];
                 var last = item.children[item.children.length - 1];
                 var centerX;
                 if (isRight) {
-                    centerX = frist.x - item.x - 35;
+                    centerX = first.x - item.x - 35;
                     if (item.rightLine) {
                         item.rightLine.animate(option.anTime).width(centerX - item.w)
                     } else {
@@ -1005,21 +986,21 @@ function NodeReader(isRight, data, option) {
                             item.rightLine = g.line(item.w, 20, centerX, 20);
                         }
                     }
-                    //  var centerY = frist.y + (last.y + 40 - frist.y) / 2;
+                    //  var centerY = first.y + (last.y + 40 - first.y) / 2;
                     if (item.children.length > 1) {
                         if (item.vLine) {
-                            item.vLine.animate(option.anTime).x(item.x + centerX).y(frist.y + 20).height(last.y - frist.y)
+                            item.vLine.animate(option.anTime).x(item.x + centerX).y(first.y + 20).height(last.y - first.y)
                         } else {
                             if (item.animateAdd) {
                                 item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20)
+                                item.vLine.animate(option.anTime).plot(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20)
                             } else {
-                                item.vLine = this.lineGroup.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
+                                item.vLine = this.lineGroup.line(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
                             }
                         }
                     }
                 } else {
-                    centerX = item.x - frist.x - frist.w - 35;
+                    centerX = item.x - first.x - first.w - 35;
                     if (item.rightLine) {
 
                     } else {
@@ -1035,22 +1016,22 @@ function NodeReader(isRight, data, option) {
                     }
                     if (item.children.length > 1) {
                         if (item.vLine) {
-                            // item.vLine.animate(option.anTime).y(frist.y + 20)
-                            item.vLine.animate(option.anTime).x(item.x - centerX).y(frist.y + 20).height(last.y - frist.y)
+                            // item.vLine.animate(option.anTime).y(first.y + 20)
+                            item.vLine.animate(option.anTime).x(item.x - centerX).y(first.y + 20).height(last.y - first.y)
                         } else {
                             if (item.animateAdd) {
                                 //item.x + item.w, item.y + 20, item.x + item.w, item.y + 20
                                 item.vLine = this.lineGroup.line(item.x, item.y + 20, item.x, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20)
+                                item.vLine.animate(option.anTime).plot(item.x - centerX, first.y + 20, item.x - centerX, last.y + 20)
                             } else {
-                                item.vLine = this.lineGroup.line(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20).attr("data-id", item._id);
+                                item.vLine = this.lineGroup.line(item.x - centerX, first.y + 20, item.x - centerX, last.y + 20).attr("data-id", item._id);
                             }
 
                         }
                     }
                 }
             }
-        },
+        }
 
     };
     tool.hw = option.hw;
@@ -1098,7 +1079,7 @@ function NodeReader(isRight, data, option) {
         };
         fn(list, mapLevel, mapId, infoList, 1, data._id);
 
-        infoList.forEach(function (d, i) {
+        infoList.forEach(function (d) {
             if (d.children.length > 10) {
                 var child = [], moreList = [];
                 d.children.forEach(function (k, idx) {
@@ -1160,6 +1141,8 @@ function Relation(SVG, option) {
     var draw = SVG('svgBox').size(this.width, this.height);
     this.draw = draw;
     this.rootGroup = draw.group();
+    this.rightGroup = null;
+    this.leftGroup = null;
     var isDown = false, x1, y1, x, y;
     var self = this;
     //拖动事件
@@ -1193,19 +1176,18 @@ function Relation(SVG, option) {
         draw.width($(window).width());
         draw.height($(window).height());
     });
-    var scale = this.option.scale || 1;
-    this.scale = scale;
+    this.scale = this.option.scale || 1;
 
     // 缩放事件
     function drag(e) {
-        var driect = null;
-        var scale = this.scale;
+        var direct;
+        var scale = self.scale;
         if (e.wheelDelta) {
-            driect = e.wheelDelta;
+            direct = e.wheelDelta;
         } else {
-            driect = -e.detail * 40;
+            direct = -e.detail * 40;
         }
-        var isUp = driect > 0;
+        var isUp = direct > 0;
         if (isUp) {
             scale += 0.1;
             if (scale > 3) {
@@ -1217,12 +1199,12 @@ function Relation(SVG, option) {
                 scale = 0.1;
             }
         }
-        this.rootGroup.scale(scale);
-        this.scale = scale;
+        self.rootGroup.scale(scale);
+        self.scale = scale;
     }
 
     draw.on("mousewheel", function (e) {
-        drag.call(self, e);
+        drag(e);
         self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
     });
 }
