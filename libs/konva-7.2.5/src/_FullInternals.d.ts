@@ -128,7 +128,7 @@ export declare const Konva: {
             startPointerPos: import("./types").Vector2d;
             offset: import("./types").Vector2d;
             pointerId?: number;
-            dragStatus: "stopped" | "ready" | "dragging";
+            dragStatus: "ready" | "stopped" | "dragging";
         }>;
         _drag(evt: any): void;
         _endDragBefore(evt?: any): void;

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>word</title>
+    <script src="../svg/tupu/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 
@@ -14,9 +15,46 @@
     // word.Documents.Open("./123.docx");
 
 
-    var openDocObj;
-    openDocObj = new ActiveXObject("SharePoint.OpenDocuments.2");
-    openDocObj.editDocument("./123.docx");
+    // var openDocObj;
+    // openDocObj = new ActiveXObject("SharePoint.OpenDocuments.2");
+    // openDocObj.editDocument("./123.docx");
+
+    function extend(_from, to) {
+        for (let key in to) {
+            _from[key] = to[key];
+        }
+        return _from;
+    };
+
+
+    function merge(target, source) {
+        for (let key in source) {
+            if (key in source && key in target) {
+                merge(target[key], source[key])
+            } else {
+                target[key] = source[key]
+            }
+        }
+    }
+
+    var a = {}
+    var b = {
+        k: 677
+    }
+
+
+    // Object.prototype.mm = 99;
+    var c = function () {
+    }
+    c.prototype.kk = 555;
+    var c1 = new c();
+    // $.extend(true,a,{"__proto__":   {"kk": true}})
+    // $.extend(true,a,JSON.parse('{"__proto__":{"kk":"hello"}}'))
+    // extend(a,JSON.parse('{"__proto__":{"kk":"hello"}}'))
+    // extend(a,JSON.parse('{"constructor": {"prototype": {"kk": true}}}'))
+    extend(a, JSON.parse('{ "__proto__": {"kk": 2}}'));
+    console.log(b.kk)
+
 </script>
 </body>
 </html>
