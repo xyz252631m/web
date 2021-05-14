@@ -1,31 +1,71 @@
 /*
 * v2.0
-* des:修改默认y坐标
+* des:canvas
 * */
+Konva.Group.prototype.line = function (lineOpt) {
+    var line = new Konva.Line(lineOpt);
+    this.add(line);
+    return line;
+}
+Konva.Group.prototype.group = function (opt) {
+    var g = new Konva.Group(opt);
+    this.add(g);
+    return g;
+}
+Konva.Group.prototype.rect = function (opt) {
+    var rect = new Konva.Rect(opt);
+    this.add(rect);
+    return rect;
+}
+Konva.Group.prototype.text = function (opt) {
+    var txt = new Konva.Text(opt);
+    this.add(txt);
+    return txt;
+}
+Konva.Group.prototype.circle = function (opt) {
+    var p = new Konva.Circle(opt);
+    this.add(p);
+    return p;
+}
+
+
 function NodeReader(isRight, data, option) {
     var mapLevel = {}, mapId = {}, infoList = [];
     var maxInfo = [];
     var lineWidth = 1;
     var tool = {
+        getItemBgColor: function (item) {
+            if (typeof option.itemBgColor === "function") {
+                return option.itemBgColor(item);
+            } else {
+                return option.itemBgColor;
+            }
+        },
+        getTextColor: function (item) {
+            if (typeof option.textColor === "function") {
+                return option.textColor(item);
+            } else {
+                return option.textColor;
+            }
+        },
         init: function (data) {
             data._id = data.id || "root";
             data.open = true;
+            data.isRoot = true;
             this.data = data;
-
             this.renderRoot(data);
-
-
             this.createGroup();
+
             var firstList = data.children;
             if (firstList && firstList.length) {
                 var half = Math.ceil(firstList.length / 2);
                 var leftList = [], rightList = [];
                 $.each(firstList, function (idx, item) {
-                    if (idx < half) {
-                        rightList.push(item);
-                    } else {
-                        leftList.push(item);
-                    }
+                    //  if (idx < half) {
+                    rightList.push(item);
+                    // } else {
+                    //     leftList.push(item);
+                    // }
                 });
                 if (isRight) {
                     conventData(rightList);
@@ -98,8 +138,13 @@ function NodeReader(isRight, data, option) {
         },
 
         //鼠标移入事件
-        mouseenter: function () {
-            var rect = this.g.rbox();
+        mouseenter: function (e) {
+            this.getStage().container().style.cursor = 'pointer';
+            console.log(e)
+            // var rect = this.g.rbox();
+            var rect = this.getClientRect();
+
+
             var self = this;
             var left = rect.x - 340 + 25;
             if (!isRight) {
@@ -125,41 +170,42 @@ function NodeReader(isRight, data, option) {
             }
 
             if (this.children.length && this.open) {
-                this.children.forEach(function (d) {
+
+                $.each(this.children, function (idx) {
                     if (isRight) {
-                        d.hover_polyline = tool.lineGroup.polyline([
-                            [d.x, d.y + 20],
-                            [d.x - 35, d.y + 20],
-                            [d.x - 35, self.y + 20],
+                        this.hover_polyline = tool.lineGroup.polyline([
+                            [this.x, this.y + 20],
+                            [this.x - 35, this.y + 20],
+                            [this.x - 35, self.y + 20],
                             [self.x + self.w, self.y + 20]])
                             .fill("transparent")
                             .addClass(option.lineHoverCls);
                     } else {
-                        d.hover_polyline = tool.lineGroup.polyline([
-                            [d.x + d.w, d.y + 20],
-                            [d.x + d.w + 35, d.y + 20],
-                            [d.x + d.w + 35, self.y + 20],
+                        this.hover_polyline = tool.lineGroup.polyline([
+                            [this.x + this.w, this.y + 20],
+                            [this.x + this.w + 35, this.y + 20],
+                            [this.x + this.w + 35, self.y + 20],
                             [self.x, self.y + 20]])
                             .fill("transparent")
                             .addClass(option.lineHoverCls);
 
                     }
-                    d.hLine.hide();
-                })
+                    this.hLine.hide();
+                });
                 this.vLine && this.vLine.hide();
                 this.rightLine && this.rightLine.hide();
             }
             if (mapId[this.pid]) {
                 var pItem = mapId[this.pid];
-                if (this.level === 1) {
-                    var m = tool.halfGroup.matrixify();
-                    pItem = {
-                        x: pItem.x,
-                        w: pItem.w,
-                        y: pItem.y - m.f
-                    }
-                }
                 if (isRight) {
+                    if (this.level == 1) {
+                        var m = tool.halfGroup.matrixify();
+                        pItem = {
+                            x: pItem.x,
+                            w: pItem.w,
+                            y: pItem.y - m.f
+                        }
+                    }
                     this.hover_polyline = tool.lineGroup.polyline([
                         [this.x, this.y + 20],
                         [this.x - 35, this.y + 20],
@@ -170,6 +216,14 @@ function NodeReader(isRight, data, option) {
                         .addClass(option.lineHoverCls)
                         .addClass("left-link-hover");
                 } else {
+                    if (this.level == 1) {
+                        var m = tool.halfGroup.matrixify();
+                        pItem = {
+                            x: pItem.x,
+                            w: pItem.w,
+                            y: pItem.y - m.f
+                        }
+                    }
                     this.hover_polyline = tool.lineGroup.polyline([
                         [this.x + this.w, this.y + 20],
                         [this.x + this.w + 35, this.y + 20],
@@ -182,18 +236,19 @@ function NodeReader(isRight, data, option) {
             }
         },
         //鼠标移出事件
-        mouseleave: function () {
+        mouseleave: function (e) {
+            this.getStage().container().style.cursor = 'default';
             if (option.hasDetailInfo) {
                 $(".info-box").hide();
             }
             if (this.children.length && this.open) {
-                this.children.forEach(function (d) {
-                    d.hLine.show();
-                    if (d.hover_polyline) {
-                        d.hover_polyline.remove();
-                        d.hover_polyline = null;
+                $.each(this.children, function (idx) {
+                    this.hLine.show();
+                    if (this.hover_polyline) {
+                        this.hover_polyline.remove();
+                        this.hover_polyline = null;
                     }
-                })
+                });
                 this.vLine && this.vLine.show();
                 this.rightLine && this.rightLine.show();
             }
@@ -206,15 +261,13 @@ function NodeReader(isRight, data, option) {
         },
         //单击事件
         openClick: function (e) {
-            var node = e.target.parentNode;
-            if ((node.getAttribute("class") || "").indexOf("svg-node") === -1) {
-                node = node.parentNode;
-            }
-            var _id = node.getAttribute("data-id");
+            console.log(this)
+
+            var _id = e.currentTarget.getId();
             var item = mapId[_id];
 
             if (item.children.length && item.open) {
-                $.each(item.children, function () {
+                $.each(item.children, function (idx) {
                     this.hLine.show();
                     if (this.hover_polyline) {
                         this.hover_polyline.remove();
@@ -312,15 +365,13 @@ function NodeReader(isRight, data, option) {
         },
         //更多点击事件
         moreClick: function (e) {
-            var node = e.target.parentNode;
-            if (node.getAttribute("class") !== "svg-more") {
-                node = node.parentNode;
-            }
+            var _id = e.currentTarget.getId();
+            var _item = mapId[_id];
+
             var self = this;
-            var pid = node.getAttribute("data-pid");
+            var pid = _item.pid;
 
             function celHover() {
-                var _id = node.getAttribute("data-id");
                 var item = mapId[_id];
                 if (item && item.hover_polyline) {
                     item.hover_polyline.remove();
@@ -336,7 +387,6 @@ function NodeReader(isRight, data, option) {
             if (item.childrenList.length < 10) {
                 return;
             }
-
             var temList = [];
             var lastItem;
             //收起
@@ -360,14 +410,24 @@ function NodeReader(isRight, data, option) {
                 item.children = temList;
                 lastItem = item.children[item.children.length - 1];
                 lastItem.name = "展开";
-                lastItem.g.select("text").get(0).text(lastItem.name);
+                lastItem.g.find("Text")[0].text(lastItem.name);
+                // lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = false;
                 this.calcItemPos(isRight);
                 var tem = temList[9];
-                removeList.forEach(function (d) {
-                    d.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
-                        this.remove();
-                    });
+                removeList.forEach(function (d, idx) {
+                    d.g.to({
+                        opacity: 0,
+                        y: tem.y + 40,
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.g.remove();
+                        }
+                    })
+
+                    // d.g.animate(option.anTime).opacity(0).y(tem.y + 40).after(function () {
+                    //     this.remove();
+                    // });
                     //d.hLine.animate(option.anTime).x(0);
                     if (d.open) {
                         self.closeItemChildren(d, tem, false)
@@ -406,7 +466,8 @@ function NodeReader(isRight, data, option) {
                 var idx = mapLevel[item.level + 1].indexOf(lastItem);
                 Array.prototype.splice.apply(mapLevel[item.level + 1], [idx, 0].concat(temList));
                 lastItem.name = "收缩";
-                lastItem.g.select("text").get(0).text(lastItem.name);
+                lastItem.g.find("Text")[0].text(lastItem.name);
+                // lastItem.g.select("text").get(0).text(lastItem.name);
                 lastItem.moreOpen = true;
                 this.calcItemPos(isRight);
                 var temItem = item.children[9];
@@ -452,25 +513,35 @@ function NodeReader(isRight, data, option) {
                 r_centerX = r_first.x + r_first.w + 35;
             }
 
-            if (isRight) {
-                if (this.data.right_vLine) {
-                    this.data.right_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
-                } else {
-                    this.data.right_vLine = this.lineGroup.line(r_centerX, r_first.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
-                }
-
-            } else {
-                if (this.data.left_vLine) {
-                    this.data.left_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
-                } else {
-                    this.data.left_vLine = this.lineGroup.line(r_centerX, r_first.y + 20, r_centerX, r_last.y + 20).attr("data-id", this.data._id);
-                }
-            }
+            // if (isRight) {
+            //     if (this.data.right_vLine) {
+            //         this.data.right_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
+            //     } else {
+            //         this.data.right_vLine = this.lineGroup.line({
+            //             points: [r_centerX, r_first.y + 20, r_centerX, r_last.y + 20],
+            //             id: this.data._id
+            //         });
+            //     }
+            //
+            // } else {
+            //     if (this.data.left_vLine) {
+            //         this.data.left_vLine.animate(option.anTime).y(r_first.y + 20).height(r_last.y - r_first.y);
+            //     } else {
+            //
+            //         this.data.left_vLine = this.lineGroup.line({
+            //             points: [r_centerX, r_first.y + 20, r_centerX, r_last.y + 20],
+            //             id: this.data._id
+            //         })
+            //     }
+            // }
             var r_centerY = r_first.y + (r_last.y + 40 - r_first.y) / 2;
             if (isInit) {
                 this.halfGroup.y(-(r_centerY - this.hh))
             } else {
-                this.halfGroup.animate(option.anTime).y(-(r_centerY - this.hh));
+                this.halfGroup.to({
+                    y: -(r_centerY - this.hh),
+                    duration: option.anTime / 1000
+                })
             }
         },
         //计算位置
@@ -496,7 +567,7 @@ function NodeReader(isRight, data, option) {
             }
 
             function getH(item) {
-                var first = item.children[0];
+                var frist = item.children[0];
                 var last = item.children[item.children.length - 1];
                 var centerY;
                 if (item.hasMore) {
@@ -505,11 +576,11 @@ function NodeReader(isRight, data, option) {
                     } else {
                         last = item.children[item.children.length - 2];
                     }
-                    centerY = first.y + (last.y + 50 + 40 - first.y) / 2;
-                    item.vLineH = last.y + 50 - first.y;
+                    centerY = frist.y + (last.y + 50 + 40 - frist.y) / 2;
+                    item.vLineH = last.y + 50 - frist.y;
                 } else {
-                    centerY = first.y + (last.y + 40 - first.y) / 2;
-                    item.vLineH = last.y - first.y;
+                    centerY = frist.y + (last.y + 40 - frist.y) / 2;
+                    item.vLineH = last.y - frist.y;
                 }
                 item.centerY = centerY;
             }
@@ -552,7 +623,7 @@ function NodeReader(isRight, data, option) {
                     //40  40+10
                     item.children.forEach(function (d, i) {
                         d.y = y - ((len * 50 - 10)) / 2 + 40 / 2 + i * 50;
-                        if (d.children&&d.children.length) {
+                        if (d.children && d.children.length) {
                             fn(d)
                         }
                     })
@@ -561,8 +632,12 @@ function NodeReader(isRight, data, option) {
             }
 
             initY();
+
             var hasRepeat = true;
             var count = 1;
+
+
+            //
             while (hasRepeat && count < 10) {
                 hasRepeat = false;
                 i = 1;
@@ -600,7 +675,6 @@ function NodeReader(isRight, data, option) {
                     });
                     i++;
                 }
-
 
                 if (hasRepeat) {
                     idx = max;
@@ -662,7 +736,7 @@ function NodeReader(isRight, data, option) {
                             if (!d.open || !d.children.length) {
                                 if (list[idx + 1].pid === d.pid) {
                                     if (list[idx + 1].y - d.y > 50) {
-                                        var top_num = Math.floor((list[idx + 1].y - 50 - d.y) / 2);
+                                        var top_num = parseInt((list[idx + 1].y - 50 - d.y) / 2);
                                         d.y = list[idx + 1].y - 50;
                                         var pItem = mapId[d.pid];
                                         while (pItem) {
@@ -695,29 +769,46 @@ function NodeReader(isRight, data, option) {
         },
         //渲染根节点
         renderRoot: function (rootItem) {
-            var group = this.rootGroup.group().attr("class", "svg-root-node");
+            //.attr("class", "svg-root-node");
+            var group = new Konva.Group();
             rootItem.g = group;
             var w = rootItem.name.length * 14 + 32;
-            var rect = group.rect(w, 40);
+            var rect = group.rect({
+                width: w,
+                height: 40,
+                fill: this.getItemBgColor(rootItem)
+            });
             rootItem.x = this.hw - w / 2;
             rootItem.y = this.hh - 20;
-            group.transform({x: rootItem.x, y: rootItem.y});
-            var text = group.text(rootItem.name);
-            text.font({
-                size: 14
+            //  group.move({x: rootItem.x, y: rootItem.y});
+            var text = group.text({
+                text: rootItem.name,
+                fontSize: 14,
+                x: 15,
+                y: 14,
+                fill: "#fff"
             });
-            text.x(15);
-            text.y(12);
-
-            if (isRight) {
-                group.line(-35, 20, 0, 20);
-
+            if (!isRight) {
+                // group.line(-35, 20, 0, 20);
+                group.line({
+                    x: 0,
+                    y: 0,
+                    points: [-35, 20, 0, 20],
+                    stroke: '#cecece',
+                    tension: 1
+                });
             }
             var r_w = rect.width();
             rootItem.w = r_w;
             maxInfo[0] = r_w / 2;
             if (isRight) {
-                group.line(r_w, 20, r_w + 35, 20);
+                group.line({
+                    x: 0,
+                    y: 0,
+                    points: [r_w, 20, r_w + 35, 20],
+                    stroke: '#cecece',
+                    tension: 1
+                });
             }
             this.rootRect = rect;
             var fn = function (g, tool, rootItem, $box) {
@@ -728,9 +819,9 @@ function NodeReader(isRight, data, option) {
                 }
                 var top = rect.y;
                 if (option.detailInfoShowBefore) {
-                    var t_flag = option.detailInfoShowBefore.call(tool, rootItem, $box);
+                    var t_falg = option.detailInfoShowBefore.call(tool, rootItem, $box);
                     //排除undefined
-                    if (t_flag === false) {
+                    if (t_falg === false) {
 
                     } else {
                         $(".info-box").css({
@@ -745,7 +836,7 @@ function NodeReader(isRight, data, option) {
 
             }
             if (option.hasDetailInfo) {
-                rect.on("mouseenter", function () {
+                rect.on("mouseenter", function (e) {
                     fn(group, tool, rootItem, $(".info-box"));
                 });
                 rect.on("mouseleave", function () {
@@ -753,7 +844,7 @@ function NodeReader(isRight, data, option) {
                         $(".info-box").hide();
                     }
                 });
-                text.on("mouseenter", function () {
+                text.on("mouseenter", function (e) {
                     fn(group, tool, rootItem, $(".info-box"));
                 });
                 text.on("mouseleave", function () {
@@ -762,24 +853,44 @@ function NodeReader(isRight, data, option) {
                     }
                 });
             }
+            this.rootGroup.add(group);
         },
         //渲染子节点
         childNode: function (isRight, item) {
-            var g;
+            var self = this, g;
             if (item.g) {
                 g = item.g;
-                g.animate(option.anTime).transform({x: item.x, y: item.y});
+                g.to({
+                    x: item.x,
+                    y: item.y,
+                    duration: option.anTime / 1000
+                })
                 this.updateState(item);
                 return;
             }
-            g = this.nodeGroup.group()
+            g = this.nodeGroup.group({id: item._id});
             item.g = g;
-            var rect = g.rect(item.w, 40);
+            var rect = g.rect({
+                width: item.w,
+                height: 40,
+                fill: this.getItemBgColor(item)
+            });
+
+
             if (item.animateAdd) {
                 if (isRight) {
-                    g.transform({x: item.px + item.pw, y: item.py}).animate(option.anTime).transform({
+                    // g.transform({x: item.px + item.pw, y: item.py}).animate(option.anTime).transform({
+                    //     x: item.x,
+                    //     y: item.y
+                    // });
+
+
+                    g.move({
+                        x: item.px + item.pw, y: item.py
+                    }).to({
                         x: item.x,
-                        y: item.y
+                        y: item.y,
+                        duration: option.anTime / 1000
                     });
                 } else {
                     g.transform({x: item.px - item.w, y: item.py}).animate(option.anTime).transform({
@@ -788,44 +899,78 @@ function NodeReader(isRight, data, option) {
                     });
                 }
             } else if (item.animateMoreAdd) {
-                g.opacity(0).transform({x: item.x, y: item.py}).animate(option.anTime).opacity(1).transform({
+                g.opacity(0).move({x: item.x, y: item.py}).to({
                     x: item.x,
-                    y: item.y
-                });
+                    y: item.y,
+                    opacity: 1,
+                    duration: option.anTime / 1000
+                })
             } else {
-                g.transform({x: item.x, y: item.y});
+                g.move({x: item.x, y: item.y});
             }
-            var text = g.text(item.name);
-            text.font({
-                size: 14
+            var text = g.text({
+                text: item.name,
+                fontSize: 14,
+                x: 10,
+                y: 14,
+                fill: this.getTextColor(item)
             });
-            text.x(10);
-            text.y(12);
-            var text_rBox = text.rbox();
-            var tr = this.rootGroup.matrixify();
+
+            //点击事件
+            if (option.nodeClick) {
+                rect.on("click", function () {
+                    option.nodeClick.call(this, item);
+                });
+                text.on("click", function () {
+                    option.nodeClick.call(this, item);
+                });
+            }
+            var text_w = text.getTextWidth();
+
+            var tr = this.rootGroup.absolutePosition();
+            // console.log(tr)
             if (isRight) {
                 //计算缩放 width
-                item.op_x = (text_rBox.width / tr.d) + 5 + 10;
+                //    item.op_x = (text_w / tr.d) + 5 + 10;
+                item.op_x = text_w + 5 + 10;
             } else {
                 item.op_x = 8;
             }
-
-            item.op_y = text_rBox.y;
+            var text_rbox = text.absolutePosition();
+            item.op_y = text_rbox.y;
             if (item.children && item.children.length) {
                 if (!isRight) {
                     text.x(30);
                 }
-                this.renderState(g, item);
-                g.attr("class", "svg-csp").attr("data-id", item._id);
-                g.on("click", this.openClick, this)
+                var stateG = this.renderState(g, item);
+                // g.attr("class", "svg-csp").attr("data-id", item._id);
+                stateG.on("click", function (e) {
+                    self.openClick(e)
+                });
+                rect.width(text_w + 20 + 20);
+            } else {
+                rect.width(text_w + 20);
             }
+
+            //nodeClick
             item.rect = rect;
             if (isRight) {
                 if (item.animateAdd) {
-                    item.hLine = g.line(0, 20, 0, 20);
-                    item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
+                    item.hLine = g.line({
+                        points: [0, 20, 0, 20],
+                        stroke: "#cecece",
+                        strokeWidth: lineWidth
+                    });
+                    item.hLine.to({
+                        points: [-35, 20, 0, 20],
+                        duration: option.anTime / 1000
+                    })
                 } else {
-                    item.hLine = g.line(-35, 20, 0, 20);
+                    item.hLine = g.line({
+                        points: [-35, 20, 0, 20],
+                        stroke: "#cecece",
+                        strokeWidth: lineWidth
+                    });
                 }
             } else {
                 if (item.animateAdd) {
@@ -840,33 +985,43 @@ function NodeReader(isRight, data, option) {
 
             if (item.isMoreItem) {
                 if (!isRight) {
-                    text.x(30);
+                    // text.x(30);
                 }
-                this.renderState(g, item);
-                text.font({
-                    size: 14
+                var state_g = this.renderState(g, item);
+                rect.width(text_w + 20 + 20);
+                //  g.attr("class", "svg-more").attr("data-id", item._id).attr("data-pid", item.pid);
+                state_g.on("click", function (e) {
+                    self.moreClick(e);
                 });
-                g.attr("class", "svg-more").attr("data-id", item._id).attr("data-pid", item.pid);
-                g.on("click", this.moreClick, this);
             } else {
-                g.attr("class", "svg-node").addClass("level-" + item.level);
+                //  g.attr("class", "svg-node").addClass("level-" + item.level);
+
             }
-            g.on("mouseenter", this.mouseenter, item);
-            g.on("mouseleave", this.mouseleave, item);
+            g.on("mouseenter", this.mouseenter);
+            g.on("mouseleave", this.mouseleave);
         },
         //更新状态 + -
         updateState: function (item) {
             var g = item.op_g;
             if (g) {
-                var line = g.select("line").get(1);
+                var line = g.find("Line")[1];
                 line && line.remove();
                 if (item.isMoreItem) {
                     if (!item.moreOpen) {
-                        g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                        g.line({
+                            points: [7.5, 4, 7.5, 11],
+                            stroke: "#666",
+                            strokeWidth: lineWidth
+                        })
+
                     }
                 } else {
                     if (!item.open) {
-                        g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                        g.line({
+                            points: [7.5, 4, 7.5, 11],
+                            stroke: "#666",
+                            strokeWidth: lineWidth
+                        })
                     }
                 }
             }
@@ -889,7 +1044,7 @@ function NodeReader(isRight, data, option) {
                     }
                     if (mapId[d._id]) {
                         queue.push(mapId[d._id]);
-                        delete mapId[d._id];
+                        mapId[d._id] = undefined;
                     }
                     if (d.children) {
                         if (d.children.length && d.open) {
@@ -903,68 +1058,148 @@ function NodeReader(isRight, data, option) {
 
             if (isRight) {
                 queue.forEach(function (d) {
-                    d.g.animate(option.anTime).opacity(0).translate(posItem.x + posItem.w, posItem.y).after(function () {
-                        this.remove();
-                    });
-                    d.hLine.animate(option.anTime).x(0);
-                    d.rightLine && d.rightLine.animate(option.anTime).width(0).after(function () {
-                        this.remove();
-                        d.rightLine = null;
-                    });
-                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x + posItem.w).y(posItem.y).height(40).after(function () {
-                        this.remove();
-                        d.vLine = null;
-                    });
+                    d.g.to({
+                        x: posItem.x + posItem.w,
+                        y: posItem.y,
+                        opacity: 0,
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.g.remove();
+                        }
+                    })
+                    d.hLine.to({
+                        points: [0, 20, 0, 20],
+                        duration: option.anTime / 1000
+                    })
+                    d.rightLine && d.rightLine.to({
+                        x: item.w,
+                        y: 20,
+                        points: [0, 0, 0, 0],
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.rightLine.remove();
+                            d.rightLine = undefined;
+                        }
+                    })
+                    d.vLine && d.vLine.to({
+                        x: item.x + item.w,
+                        y: posItem.y,
+                        opacity: 0,
+                        points: [0, 0, 0, 40],
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.vLine.remove();
+                            d.vLine = undefined;
+                        }
+                    })
                 });
-                item.rightLine && item.rightLine.animate(option.anTime).width(0).after(function () {
-                    this.remove();
-                    item.rightLine = null;
-                });
-                item.vLine && item.vLine.animate(option.anTime).x(item.x + item.w).y(item.y).height(40).after(function () {
-                    this.remove();
-                    item.vLine = null;
-                });
+                item.rightLine && item.rightLine.to({
+                    x: item.w,
+                    y: 20,
+                    points: [0, 0, 0, 0],
+                    duration: option.anTime / 1000,
+                    onFinish: function () {
+                        item.rightLine.remove();
+                        item.rightLine = undefined;
+                    }
+                })
+                item.vLine && item.vLine.to({
+                    x: item.x + item.w,
+                    y: item.y + 20,
+                    opacity: 0,
+                    points: [0, 0, 0, 0],
+                    duration: option.anTime / 1000,
+                    onFinish: function () {
+                        item.vLine.remove();
+                        item.vLine = undefined;
+                    }
+                })
             } else {
                 queue.forEach(function (d) {
-                    d.g.animate(option.anTime).opacity(0).translate(posItem.x - d.w, posItem.y).after(function () {
-                        this.remove();
-                    });
-                    d.hLine.animate(option.anTime).x(0);
-                    d.rightLine && d.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
-                        this.remove();
-                        d.rightLine = null;
-                    });
-                    d.vLine && d.vLine.animate(option.anTime).x(posItem.x).y(posItem.y).height(40).after(function () {
-                        this.remove();
-                        d.vLine = null;
-                    });
+                    d.g.to({
+                        x: posItem.x - d.w,
+                        y: posItem.y,
+                        opacity: 0,
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.g.remove();
+                        }
+                    })
+                    d.hLine.to({
+                        x: 0,
+                        duration: option.anTime / 1000,
+                    })
+                    d.rightLine && d.rightLine.to({
+                        points: [0, 20, 0, 20],
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.rightLine.remove();
+                            d.rightLine = undefined;
+                        }
+                    })
+                    d.vLine && d.vLine.to({
+                        x: posItem.x,
+                        y: posItem.y,
+                        duration: option.anTime / 1000,
+                        onFinish: function () {
+                            d.vLine.remove();
+                            d.vLine = undefined;
+                        }
+                    })
                 });
-                item.rightLine && item.rightLine.animate(option.anTime).plot(0, 20, 0, 20).after(function () {
-                    this.remove();
-                    item.rightLine = null;
-                });
-                item.vLine && item.vLine.animate(option.anTime).x(item.x).y(item.y).height(40).after(function () {
-                    this.remove();
-                    item.vLine = null;
-                });
+
+                item.rightLine && item.rightLine.to({
+                    points: [0, 20, 0, 20],
+                    duration: option.anTime / 1000,
+                    onFinish: function () {
+                        item.rightLine.remove();
+                        item.rightLine = undefined;
+                    }
+                })
+                item.vLine && item.vLine.to({
+                    x: item.x,
+                    y: item.y,
+                    duration: option.anTime / 1000,
+                    onFinish: function () {
+                        item.vLine.remove();
+                        item.vLine = undefined;
+                    }
+                })
             }
         },
         //渲染+ - 按钮状态
         renderState: function (group, item) {
-            var g = group.group().attr("class", "node-op-state");
+            //.attr("class", "node-op-state");
+            var g = group.group({id: item._id});
             item.op_g = g;
-            g.transform({x: item.op_x, y: 13});
-            g.circle(15).stroke({width: 1});
-            g.line(4, 7.5, 11, 7.5).stroke({width: 1});
+            g.move({x: item.op_x, y: 13});
+            g.circle({
+                x: 7.5,
+                y: 7.5,
+                radius: 7.5,
+                stroke: '#666',
+                strokeWidth: 1,
+                fill: "#fff"
+            });
+            var addLine = function (g, points) {
+                g.line({
+                    points: points,
+                    stroke: "#666",
+                    strokeWidth: 1
+                });
+            }
+            addLine(g, [4, 7.5, 11, 7.5]);
             if (item.isMoreItem) {
                 if (!item.moreOpen) {
-                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                    addLine(g, [7.5, 4, 7.5, 11]);
                 }
             } else {
                 if (!item.open) {
-                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                    addLine(g, [7.5, 4, 7.5, 11]);
                 }
             }
+            return g;
+
         },
         //渲染线条
         renderLine: function (isRight, item) {
@@ -976,26 +1211,79 @@ function NodeReader(isRight, data, option) {
                 if (isRight) {
                     centerX = first.x - item.x - 35;
                     if (item.rightLine) {
-                        item.rightLine.animate(option.anTime).width(centerX - item.w)
+                        item.rightLine.to({
+                            x: item.w,
+                            y: 20,
+                            points: [0, 0, centerX - item.w, 0],
+                            duration: option.anTime / 1000
+                        })
                     } else {
                         if (item.animateAdd) {
-                            item.rightLine = g.line(item.w, 20, item.w, 20);
-                            // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
-                            item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
+                            //item.rightLine = g.line(item.w, 20, item.w, 20);
+                            // item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
+
+
+                            item.rightLine = g.line({
+                                x: item.w,
+                                y: 20,
+                                points: [0, 0, 0, 0],
+                                strokeWidth: 1,
+                                stroke: "#cecece"
+                            });
+
+                            item.rightLine.to({
+                                x: item.w,
+                                y: 20,
+                                points: [0, 0, centerX - item.w, 0],
+                                duration: option.anTime / 1000
+                            });
                         } else {
-                            item.rightLine = g.line(item.w, 20, centerX, 20);
+                            item.rightLine = g.line({
+                                points: [item.w, 20, centerX, 20],
+                                strokeWidth: 1,
+                                stroke: "#cecece"
+                            });
                         }
                     }
                     //  var centerY = first.y + (last.y + 40 - first.y) / 2;
                     if (item.children.length > 1) {
                         if (item.vLine) {
-                            item.vLine.animate(option.anTime).x(item.x + centerX).y(first.y + 20).height(last.y - first.y)
+                            //item.vLine.animate(option.anTime).x(item.x + centerX).y(first.y + 20).height(last.y - first.y)
+
+                            console.log("#4324")
+                            item.vLine.to({
+                                x: item.x + centerX,
+                                y: first.y + 20,
+                                points: [0, 0, 0, last.y - first.y],
+                                duration: option.anTime / 1000
+                            })
                         } else {
                             if (item.animateAdd) {
-                                item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20)
+                                //.attr("data-id", item._id);
+                                item.vLine = this.lineGroup.line({
+                                    x: item.x + item.w,
+                                    y: item.y + 20,
+                                    points: [0, 0, 0, 0],
+                                    strokeWidth: 1,
+                                    stroke: "#cecece"
+                                });
+                                item.vLine.to({
+                                    x: item.x + centerX,
+                                    y: first.y + 20,
+                                    points: [0, 0, 0, last.y - first.y],
+                                    duration: option.anTime / 1000
+                                })
+                                // item.vLine.animate(option.anTime).plot(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20);
                             } else {
-                                item.vLine = this.lineGroup.line(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
+
+                                //.attr("data-id", item._id);
+                                item.vLine = this.lineGroup.line({
+                                    x: item.x + centerX,
+                                    y: first.y + 20,
+                                    points: [0, 0, 0, last.y - first.y],
+                                    strokeWidth: 1,
+                                    stroke: "#cecece"
+                                });
                             }
                         }
                     }
@@ -1031,7 +1319,7 @@ function NodeReader(isRight, data, option) {
                     }
                 }
             }
-        }
+        },
 
     };
     tool.hw = option.hw;
@@ -1122,60 +1410,75 @@ function NodeReader(isRight, data, option) {
 }
 
 
-function Relation(SVG, option) {
+function Relation(Konva, option) {
     var def = {
         //动画时长
-        anTime: 200,
+        anTime: 500,
         //初始渲染层级数量
         renderLevel: 2,
         scale: 1,
         //line hover 样式名称
-        lineHoverCls: "line-hover"
+        lineHoverCls: "line-hover",
+        //节点点击事件
+        nodeClick: null,
+
+        rootStyle: {
+            rect: {
+                fill: "#3ba1f4"
+            }
+        }
+
     };
     this.option = $.extend({}, def, option);
     var box_dom = document.getElementById(option.id);
     this.width = box_dom.offsetWidth;
     this.height = box_dom.offsetHeight;
-    this.hw = this.width / 2;
+    this.hw = this.width / 4;
     this.hh = this.height / 2;
-    var draw = SVG('svgBox').size(this.width, this.height);
-    this.draw = draw;
-    this.rootGroup = draw.group();
-    this.rightGroup = null;
-    this.leftGroup = null;
+    var stage = new Konva.Stage({
+        container: option.id,
+        width: this.width,
+        height: this.height,
+        draggable: true
+    });
+    this.stage = stage;
+
+    var layer = new Konva.Layer();
+    stage.add(layer);
+
+    this.layer = layer;
+
+
+    this.rootGroup = new Konva.Group({
+        x: 0,
+        y: 0
+    });
+    layer.add(this.rootGroup)
     var isDown = false, x1, y1, x, y;
     var self = this;
     //拖动事件
-    $(window).on("mousedown.relation", function (e) {
-        if (box_dom.contains(e.target)) {
-            isDown = true;
-            x1 = e.pageX;
-            y1 = e.pageY;
-            x = self.rootGroup.x();
-            y = self.rootGroup.y();
-            $(box_dom).addClass("svg-move");
-            try {
-                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-            } catch (e) {
-
-            }
-        }
-    }).on("click", function () {
-        $(".info-box").hide();
-        $(this).removeClass("svg-move");
-    });
-    $(window).on("mousemove.relation", function (e) {
-        if (isDown) {
-            self.rootGroup.translate(x + e.pageX - x1, y + e.pageY - y1);
-        }
-        return false
-    }).on("mouseup", function () {
-        isDown = false;
-        $(box_dom).removeClass("svg-move");
-    }).on("resize", function () {
-        draw.width($(window).width());
-        draw.height($(window).height());
-    });
+    // $(window).on("mousedown.relation", function (e) {
+    //     isDown = true;
+    //     x1 = e.pageX;
+    //     y1 = e.pageY;
+    //     x = self.rootGroup.x();
+    //     y = self.rootGroup.y();
+    //     $(box_dom).addClass("svg-move");
+    // }).on("click", function () {
+    //     $(".info-box").hide();
+    //     $(box_dom).removeClass("svg-move");
+    // });
+    // $(window).on("mousemove.relation", function (e) {
+    //     if (isDown) {
+    //         self.rootGroup.translate(x + e.pageX - x1, y + e.pageY - y1);
+    //     }
+    // }).on("mouseup", function () {
+    //     isDown = false;
+    //     $(box_dom).removeClass("svg-move");
+    // }).on("resize", function () {
+    //     draw.width($(window).width());
+    //     draw.height($(window).height());
+    // });
     this.scale = this.option.scale || 1;
 
     // 缩放事件
@@ -1203,7 +1506,7 @@ function Relation(SVG, option) {
         self.scale = scale;
     }
 
-    draw.on("mousewheel", function (e) {
+    stage.on("wheel", function (e) {
         drag(e);
         self.option.mousewheel && self.option.mousewheel.call(self, self.scale);
     });
@@ -1249,9 +1552,9 @@ Relation.prototype.reset = function () {
         rootGroup: this.rootGroup
     }, this.option);
     this.rightGroup = new NodeReader(true, obj, opt);
-    this.leftGroup = new NodeReader(false, obj, opt);
+    //this.leftGroup = new NodeReader(false, obj, opt);
     this.scale = 1;
-    this.rootGroup.scale(1)
+    this.rootGroup.scale(1);
 };
 Relation.prototype.init = function (obj) {
     var opt = $.extend({
@@ -1259,11 +1562,11 @@ Relation.prototype.init = function (obj) {
         hh: this.hh,
         rootGroup: this.rootGroup
     }, this.option);
-
     this._jData = JSON.parse(JSON.stringify(obj));
     this.rightGroup = new NodeReader(true, obj, opt);
-    this.leftGroup = new NodeReader(false, obj, opt);
+    // this.leftGroup = new NodeReader(false, obj, opt);
     this.rootGroup.scale(this.option.scale || 1);
+    this.layer.draw();
 };
 
 

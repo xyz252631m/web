@@ -553,14 +553,13 @@ function NodeReader(isRight, data, option) {
 
             //初始化y坐标
             function initY() {
-                idx = 1;
                 var fn = function (item) {
                     var len = item.children.length;
                     var y = item.y;
                     //40  40+10
                     item.children.forEach(function (d, i) {
                         d.y = y - ((len * 50 - 10)) / 2 + 40 / 2 + i * 50;
-                        if (d.children.length) {
+                        if (d.children && d.children.length) {
                             fn(d)
                         }
                     })
@@ -875,6 +874,25 @@ function NodeReader(isRight, data, option) {
             g.on("mouseenter", this.mouseenter, item);
             g.on("mouseleave", this.mouseleave, item);
         },
+        //渲染+ - 按钮状态
+        renderState: function (group, item) {
+            var g = group.group().attr("class", "node-op-state");
+            item.op_g = g;
+            g.transform({x: item.op_x, y: 13});
+            g.circle(15).stroke({width: 1});
+            g.line(4, 7.5, 11, 7.5).stroke({width: 1});
+            if (item.isMoreItem) {
+                if (!item.moreOpen) {
+                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                }
+            } else {
+                if (!item.open) {
+                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                }
+            }
+            return g;
+
+        },
         //更新状态 + -
         updateState: function (item) {
             var g = item.op_g;
@@ -888,6 +906,72 @@ function NodeReader(isRight, data, option) {
                 } else {
                     if (!item.open) {
                         g.line(7.5, 4, 7.5, 11).stroke({width: 1});
+                    }
+                }
+            }
+        },
+        //渲染线条
+        renderLine: function (isRight, item) {
+            var g = item.g;
+            if (item.open && item.children.length) {
+                var first = item.children[0];
+                var last = item.children[item.children.length - 1];
+                var centerX;
+                if (isRight) {
+                    centerX = first.x - item.x - 35;
+                    if (item.rightLine) {
+                        item.rightLine.animate(option.anTime).width(centerX - item.w)
+                    } else {
+                        if (item.animateAdd) {
+                            item.rightLine = g.line(item.w, 20, item.w, 20);
+                            // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
+                            item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
+                        } else {
+                            item.rightLine = g.line(item.w, 20, centerX, 20);
+                        }
+                    }
+                    //  var centerY = first.y + (last.y + 40 - first.y) / 2;
+                    if (item.children.length > 1) {
+                        if (item.vLine) {
+                            item.vLine.animate(option.anTime).x(item.x + centerX).y(first.y + 20).height(last.y - first.y)
+                        } else {
+                            if (item.animateAdd) {
+                                item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).attr("data-id", item._id);
+                                item.vLine.animate(option.anTime).plot(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20)
+                            } else {
+                                item.vLine = this.lineGroup.line(item.x + centerX, first.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
+                            }
+                        }
+                    }
+                } else {
+                    centerX = item.x - first.x - first.w - 35;
+                    if (item.rightLine) {
+
+                    } else {
+                        if (item.animateAdd) {
+                            //item.w, 20, item.w, 20
+                            item.rightLine = g.line(0, 20, 0, 20);
+                            item.rightLine.animate(option.anTime).plot(0, 20, -centerX, 20)
+                        } else {
+                            item.rightLine = g.line(0, 20, -centerX, 20);
+                        }
+
+
+                    }
+                    if (item.children.length > 1) {
+                        if (item.vLine) {
+                            // item.vLine.animate(option.anTime).y(first.y + 20)
+                            item.vLine.animate(option.anTime).x(item.x - centerX).y(first.y + 20).height(last.y - first.y)
+                        } else {
+                            if (item.animateAdd) {
+                                //item.x + item.w, item.y + 20, item.x + item.w, item.y + 20
+                                item.vLine = this.lineGroup.line(item.x, item.y + 20, item.x, item.y + 20).attr("data-id", item._id);
+                                item.vLine.animate(option.anTime).plot(item.x - centerX, first.y + 20, item.x - centerX, last.y + 20)
+                            } else {
+                                item.vLine = this.lineGroup.line(item.x - centerX, first.y + 20, item.x - centerX, last.y + 20).attr("data-id", item._id);
+                            }
+
+                        }
                     }
                 }
             }
@@ -969,92 +1053,8 @@ function NodeReader(isRight, data, option) {
                     item.vLine = null;
                 });
             }
-        },
-        //渲染+ - 按钮状态
-        renderState: function (group, item) {
-            var g = group.group().attr("class", "node-op-state");
-            item.op_g = g;
-            g.transform({x: item.op_x, y: 13});
-            g.circle(15).stroke({width: 1});
-            g.line(4, 7.5, 11, 7.5).stroke({width: 1});
-            if (item.isMoreItem) {
-                if (!item.moreOpen) {
-                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
-                }
-            } else {
-                if (!item.open) {
-                    g.line(7.5, 4, 7.5, 11).stroke({width: 1});
-                }
-            }
-            return g;
+        }
 
-        },
-        //渲染线条
-        renderLine: function (isRight, item) {
-            var g = item.g;
-            if (item.open && item.children.length) {
-                var frist = item.children[0];
-                var last = item.children[item.children.length - 1];
-                var centerX;
-                if (isRight) {
-                    centerX = frist.x - item.x - 35;
-                    if (item.rightLine) {
-                        item.rightLine.animate(option.anTime).width(centerX - item.w)
-                    } else {
-                        if (item.animateAdd) {
-                            item.rightLine = g.line(item.w, 20, item.w, 20);
-                            // item.hLine.animate(option.anTime).plot(-35, 20, 0, 20);
-                            item.rightLine.animate(option.anTime).plot(item.w, 20, centerX, 20)
-                        } else {
-                            item.rightLine = g.line(item.w, 20, centerX, 20);
-                        }
-                    }
-                    //  var centerY = frist.y + (last.y + 40 - frist.y) / 2;
-                    if (item.children.length > 1) {
-                        if (item.vLine) {
-                            item.vLine.animate(option.anTime).x(item.x + centerX).y(frist.y + 20).height(last.y - frist.y)
-                        } else {
-                            if (item.animateAdd) {
-                                item.vLine = this.lineGroup.line(item.x + item.w, item.y + 20, item.x + item.w, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20)
-                            } else {
-                                item.vLine = this.lineGroup.line(item.x + centerX, frist.y + 20, item.x + centerX, last.y + 20).attr("data-id", item._id);
-                            }
-                        }
-                    }
-                } else {
-                    centerX = item.x - frist.x - frist.w - 35;
-                    if (item.rightLine) {
-
-                    } else {
-                        if (item.animateAdd) {
-                            //item.w, 20, item.w, 20
-                            item.rightLine = g.line(0, 20, 0, 20);
-                            item.rightLine.animate(option.anTime).plot(0, 20, -centerX, 20)
-                        } else {
-                            item.rightLine = g.line(0, 20, -centerX, 20);
-                        }
-
-
-                    }
-                    if (item.children.length > 1) {
-                        if (item.vLine) {
-                            // item.vLine.animate(option.anTime).y(frist.y + 20)
-                            item.vLine.animate(option.anTime).x(item.x - centerX).y(frist.y + 20).height(last.y - frist.y)
-                        } else {
-                            if (item.animateAdd) {
-                                //item.x + item.w, item.y + 20, item.x + item.w, item.y + 20
-                                item.vLine = this.lineGroup.line(item.x, item.y + 20, item.x, item.y + 20).attr("data-id", item._id);
-                                item.vLine.animate(option.anTime).plot(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20)
-                            } else {
-                                item.vLine = this.lineGroup.line(item.x - centerX, frist.y + 20, item.x - centerX, last.y + 20).attr("data-id", item._id);
-                            }
-
-                        }
-                    }
-                }
-            }
-        },
 
     };
     tool.hw = option.hw;
@@ -1064,6 +1064,7 @@ function NodeReader(isRight, data, option) {
 
     //处理数据
     function conventData(list) {
+        console.log("list", list)
         mapLevel = {};
         mapId = {};
         infoList = [];

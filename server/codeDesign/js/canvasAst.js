@@ -305,7 +305,7 @@
             return null;
         }
     }
-    //寻找到上一个展开的iten ,用来获取y位置
+    //寻找到上一个展开的item ,用来获取y位置
     CanvasAst.prototype.getPrevItem = function (list, idx) {
         var item = list[idx - 1];
         while (!item.open || !item.children.length) {
@@ -321,7 +321,7 @@
             return null;
         }
     }
-    //寻找到下一个展开的iten ,用来重置y位置
+    //寻找到下一个展开的item ,用来重置y位置
     CanvasAst.prototype.getNextItem = function (list, idx) {
         if (idx >= list.length - 1) {
             return null;
@@ -604,7 +604,6 @@
         fn(astTree, 0, 0, "root", callback);
     }
 
-    //todo 三级撑开2级，第一项距离过大
     //计算
     CanvasAst.prototype.calcItemPos = function (isRight) {
         let self = this, mapLevel = this.mapLevel, mapId = this.mapId;
@@ -691,6 +690,7 @@
                     }
                 })
             }
+            mapLevel[0][0].y = 500
             fn(mapLevel[0][0]);
         }
 
