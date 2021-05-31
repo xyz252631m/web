@@ -1,0 +1,350 @@
+{
+  "code": "200",
+  "success": true,
+  "data": {
+    "number": [
+      {
+        "num": 3,
+        "typeId": "01"
+      },
+      {
+        "num": 3,
+        "typeId": "02"
+      },
+      {
+        "num": 9,
+        "typeId": "03"
+      },
+      {
+        "num": 9,
+        "typeId": "04"
+      }
+    ],
+    "defNum": [
+      6,
+      18
+    ],
+    "nodes": [
+      {
+        "typeName": "二级进项",
+        "typeId": "03",
+        "id": "jx2222222",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230122",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行22",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "isRoot": true,
+        "typeName": "目标企业",
+        "typeId": "root",
+        "id": "zzzzzzzzzzzzz",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "61013247095812301",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "typeName": "二级销项",
+        "typeId": "04",
+        "id": "xx2222222",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230122xx",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行22xx09",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "typeName": "一级进项",
+        "typeId": "01",
+        "id": "jx1111111",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230111",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行11",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "typeName": "一级销项",
+        "typeId": "02",
+        "id": "xx1111111",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230111xx",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行11xx",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "typeName": "二级进项",
+        "typeId": "03",
+        "id": "jx3333333",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230133",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行333",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      },
+      {
+        "typeName": "二级销项",
+        "typeId": "04",
+        "id": "xx3333333",
+        "nodeType": "company",
+        "properties": {
+          "fddbrxm": "李书诚",
+          "fddbrsfzjhm": "6144781956021231658",
+          "fddbryddh": "13891598234",
+          "fddbrgddh": "029-43645631",
+          "bsrxm": "李可欣",
+          "bsryddh": "13891598232",
+          "cwfzrxm": "张钱",
+          "cwfzrgddh": "0298736253",
+          "shxydm": "6101324709581230133xx",
+          "cwfzrsfzjhm": "610427196702378283",
+          "bsrgddh": "0298736266",
+          "cwfzryddh": "13891598234",
+          "name": "国家开发银行湖南省分行333xx09",
+          "bsrsfzjhm": "610427196702375623"
+        }
+      }
+    ],
+    "links": [
+      {
+        "typeId": "01",
+        "id": "53d331602f614f7598d22e4df9abf604",
+        "source": "jx1111111",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "zzzzzzzzzzzzz"
+      },
+      {
+        "typeId": "03",
+        "id": "dbcdc72102c747bda3a4d931872da150",
+        "source": "jx2222222",
+        "properties": {
+          "role": "86767.34"
+        },
+        "target": "jx1111111"
+      },
+      {
+        "typeId": "03",
+        "id": "82ca2f0b041c487aadd1aca914c6a31b",
+        "source": "jx3333333",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "jx1111111"
+      },
+      {
+        "typeId": "01",
+        "id": "140e6dc0e630470f8c139c6cb7c17bba",
+        "source": "jx2222222",
+        "properties": {
+          "role": "86767.34"
+        },
+        "target": "zzzzzzzzzzzzz"
+      },
+      {
+        "typeId": "03",
+        "id": "82094558443f4de1bfe69d79e01509e8",
+        "source": "jx1111111",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "jx2222222"
+      },
+      {
+        "typeId": "03",
+        "id": "647c9a2aa2d74309857731983b424af0",
+        "source": "jx3333333",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "jx2222222"
+      },
+      {
+        "typeId": "01",
+        "id": "2cab8364224644e9814876b8950d16c2",
+        "source": "jx3333333",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "zzzzzzzzzzzzz"
+      },
+      {
+        "typeId": "03",
+        "id": "9487ca853d7345bf98e63443a843f0ab",
+        "source": "jx1111111",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "jx3333333"
+      },
+      {
+        "typeId": "03",
+        "id": "c8882f1fe54d44fd8c684337e9cdfe49",
+        "source": "jx2222222",
+        "properties": {
+          "role": "86767.34"
+        },
+        "target": "jx3333333"
+      },
+      {
+        "typeId": "02",
+        "id": "7b518732e61942df848ec5e46feff006",
+        "source": "zzzzzzzzzzzzz",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "xx1111111"
+      },
+      {
+        "typeId": "04",
+        "id": "a399a878aae34079868e2801412dbb54",
+        "source": "xx1111111",
+        "properties": {
+          "role": "86767.34"
+        },
+        "target": "xx2222222"
+      },
+      {
+        "typeId": "04",
+        "id": "52c6f8abaa5741b6b0900628ea541c51",
+        "source": "xx1111111",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "xx3333333"
+      },
+      {
+        "typeId": "02",
+        "id": "1e711527437f4876907be29fef02c9de",
+        "source": "zzzzzzzzzzzzz",
+        "properties": {
+          "role": "86767.34"
+        },
+        "target": "xx2222222"
+      },
+      {
+        "typeId": "04",
+        "id": "0ca3979292d540b1830d0b88f36b1a1a",
+        "source": "xx2222222",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "xx1111111"
+      },
+      {
+        "typeId": "04",
+        "id": "4bc285a26bf3451595105876af54d7ef",
+        "source": "xx2222222",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "xx3333333"
+      },
+      {
+        "typeId": "02",
+        "id": "df04d03380084a728838830c2ef8c7d6",
+        "source": "zzzzzzzzzzzzz",
+        "properties": {
+          "role": "857.24"
+        },
+        "target": "xx3333333"
+      },
+      {
+        "typeId": "04",
+        "id": "b1f7cf23483941f2aa7ed30d3492c189",
+        "source": "xx3333333",
+        "properties": {
+          "role": "234.34"
+        },
+        "target": "xx1111111"
+      },
+      {
+        "typeId": "04",
+        "id": "e6548cf85d9644f29948d236c8776b52",
+        "source": "xx3333333",
+        "properties": {
+          "role": "8675767.34"
+        },
+        "target": "xx2222222"
+      }
+    ]
+  },
+  "msg": "执行成功"
+}

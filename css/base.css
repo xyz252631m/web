@@ -6,9 +6,9 @@ body, html { height: 100% }
 
 blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul { margin: 0; padding: 0 }
 
-body { background-color: #fff; color: #313131; font: 14px/1.5 webfont, "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-serif }
+body {   color: #313131; font: 14px/1.5 webfont, "Microsoft Yahei", Arial, Helvetica, "\5b8b\4f53", sans-serif }
 
-button, input, select, textarea { font-family: inherit; font-size: 100%; outline: 0; background-color: #fff }
+button, input, select, textarea { font-family: inherit; font-size: 100%; outline: 0; }
 
 button { cursor: pointer }
 

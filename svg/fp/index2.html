@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>漂流分析2</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/gltp.css">
+
+    <style>
+        .node-link-01 line, .node-link-01 path {
+            stroke-width: 3px;
+        }
+
+        .node-link-02 line, .node-link-02 path {
+            stroke-width: 1.5px;
+        }
+
+        .node-link-03 line, .node-link-03 path {
+            stroke-width: 1.5px;
+            stroke-dasharray: 5 5;
+        }
+
+        /*曲线颜色*/
+        /*.node-link-01 path, .node-link-02 path, .node-link-03 path {*/
+        /*    stroke: #ccc*/
+        /*}*/
+
+        .node-link-equal-01 line, .node-link-equal-01 path {
+            stroke: #b457ff;
+            stroke-width: 1.5px;
+            opacity: .6
+        }
+
+        .node-link-equal-02 line, .node-link-equal-02 path {
+            stroke: #f64433;
+            stroke-width: 1.5px;
+            opacity: .6
+        }
+
+        .node-link-equal-03 line, .node-link-equal-03 path {
+            stroke: #6ed541;
+            stroke-width: 1.5px;
+            opacity: .6
+        }
+
+        .node-link-company-hover line .node-link-company-hover path {
+            stroke: #ff7f19;
+        }
+
+        #arrowEqual_1 {
+            fill: #b457ff
+        }
+
+        #arrowEqual_2 {
+            fill: #f64433
+        }
+
+        #arrowEqual_3 {
+            fill: #6ed541
+        }
+
+        .search-input {
+            width: 88px;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+<div class="body-bg"></div>
+<div id="svgBox">
+    <svg id="svg" style="width: 100%;height: 100%;">
+        <defs>
+            <marker id="arrowCompany" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <!--<path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>-->
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+                <!--                    <path d="M4,4 L20,12 L4,20 L12,12 L4,4"></path>-->
+            </marker>
+            <marker id="arrowCompanyHover" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+
+            <marker id="arrowEqual_1" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+            <marker id="arrowEqual_2" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+            <marker id="arrowEqual_3" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+
+
+            <marker id="arrowPerson" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+            <marker id="arrowPersonHover" markerHeight="20" markerUnits="userSpaceOnUse" markerWidth="20" orient="auto"
+                    refX="15" refY="9" viewBox="0 0 20 20">
+                <path d="M3,3 L15,9 L3,15 L9,9 L3,3"></path>
+            </marker>
+
+            <path id="companyIcon"
+                  d="M924.581266 962.226691V82.327378L798.257071 0 338.179241 200.689186v155.285064L83.901338 442.523544v519.703147H57.977288v61.773309h82.993996V478.52094L478.243183 370.34358v653.65642h233.501627v-66.884051h-51.848101V360.159132L537.424087 288.127306l-137.027125 46.626256V236.649548L732.484051 92.585895v931.377071h233.538661v-61.77331H924.581266z m-742.094467-344.789874l243.871248-77.142567V437.375769l-243.871248 82.364412z m0 133.805136L426.358047 699.949367v-103.066618l-243.871248 61.773309z m0 138.952911L426.358047 859.197107v-102.807378L182.486799 792.535262z m0 133.768102l243.871248-5.18481v-102.881447l-243.871248 10.295551z"
+            ></path>
+
+
+        </defs>
+    </svg>
+    <ul class="legend-box">
+        <!--模板-->
+        <!-- <li><i></i><span>投资方</span></li>-->
+    </ul>
+
+</div>
+<!-- 提示面板-->
+<div class="show-tip-panel " style="display: none">
+    <div class="info-panel">
+        <div class="head-wrap">
+            <span class="head-title">提示</span>
+            <span class="head-close">×</span>
+        </div>
+        <div class="detail-wrap">
+            <p>展示数据量大是否继续?</p>
+        </div>
+        <div class="foot-wrap">
+            <button type="button" class="btn btn-default">取消</button>
+            <button type="button" class="btn btn-primary">确认</button>
+        </div>
+    </div>
+</div>
+
+<!--左侧提示面板-->
+<div class="left-tip-panel" style="display:none;">
+    <!--公司-->
+    <div class="info-panel info-panel-1">
+        <div class="head-wrap">
+            <span class="head-title">开票汇总信息</span>
+            <span class="head-close">×</span>
+        </div>
+
+        <div class="detail-wrap">
+            <div class="company-info">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>进项商品Top5</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart1" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>销项商品Top5</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart2" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>顶额开票</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart3" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>分月发票开具汇总金额</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart4" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--个人-->
+    <div class="info-panel info-panel-2" style="display: none">
+        <div class="head-wrap">
+            <span class="head-title">企业详细信息</span>
+            <span class="head-close">×</span>
+        </div>
+
+        <div class="detail-wrap">
+            <div class="company-info">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>企业概况</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content"
+                                     style="position: unset; display: inline-block; width: 100%;    ">
+                                    <div class="contain"
+                                         style="padding-top: 5px;position: unset; display: inline-block; width: 100%;">
+                                        <div class="table-box" style="position: unset; display: inline-block;">
+                                            <table class="table mytable table-bordered">
+                                                <tr>
+                                                    <td class="td-label ">纳税人名称</td>
+                                                    <td id="nsrmc" style="vertical-align: middle;">长沙市XXX公司有限公司</td>
+                                                    <td class="td-label ">纳税人识别号</td>
+                                                    <td id="nsrsbh" style="vertical-align: middle;">910000000000000</td>
+                                                    <td class="td-label ">社会信用代码</td>
+                                                    <td id="shxydm" style="vertical-align: middle;">910000000000000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">纳税人状态</td>
+                                                    <td id="nsrzt" style="vertical-align: middle;">正常</td>
+                                                    <td class="td-label ">增值税纳税人类型</td>
+                                                    <td id="zzsnsrlx" style="vertical-align: middle;">类型一</td>
+                                                    <td class="td-label ">主管税务机关</td>
+                                                    <td id="zgswjg" style="vertical-align: middle;">长沙市税务局</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">注册资本</td>
+                                                    <td id="zczb" style="vertical-align: middle;">5亿元</td>
+                                                    <td class="td-label ">认证非正常户日期</td>
+                                                    <td id="rzfzchrq" style="vertical-align: middle;">2020-01-01</td>
+                                                    <td class="td-label ">行业大类</td>
+                                                    <td id="hydl" style="vertical-align: middle;">制造业</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">登记日期</td>
+                                                    <td id="djrq" style="vertical-align: middle;">2020-01-01</td>
+                                                    <td class="td-label ">注销日期</td>
+                                                    <td id="zxrq" style="vertical-align: middle;">2020-01-01</td>
+                                                    <td class="td-label ">行业中类</td>
+                                                    <td id="hyzl" style="vertical-align: middle;">制造业</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">财务负责人</td>
+                                                    <td id="cwfzr" style="vertical-align: middle;">李XX</td>
+                                                    <td class="td-label ">财务负责人身份证</td>
+                                                    <td id="cwfzrsfz" style="vertical-align: middle;">
+                                                        9100000001214000000
+                                                    </td>
+                                                    <td class="td-label ">行业门类</td>
+                                                    <td id="hyml" style="vertical-align: middle;">制造业</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">办税人</td>
+                                                    <td id="bsr" style="vertical-align: middle;">李XX</td>
+                                                    <td class="td-label ">办税人身份证</td>
+                                                    <td id="bsrsfz" style="vertical-align: middle;">
+                                                        9100000001214000000
+                                                    </td>
+                                                    <td class="td-label ">行业名称</td>
+                                                    <td id="hymc" style="vertical-align: middle;">制造业</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">法人代表</td>
+                                                    <td id="frdb" style="vertical-align: middle;">李XX</td>
+                                                    <td class="td-label ">法人身份证</td>
+                                                    <td id="frsfz" style="vertical-align: middle;">9100000001214000000
+                                                    </td>
+                                                    <td class="td-label ">法人移动电话</td>
+                                                    <td id="fryddh" style="vertical-align: middle;">1770000000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label ">注册地址</td>
+                                                    <td id="zcdz" colspan="2" style="vertical-align: middle;">
+                                                        长沙市XX区XXX街道XXX号
+                                                    </td>
+                                                    <td class="td-label ">生产经营地址</td>
+                                                    <td id="scjydz" colspan="2" style="vertical-align: middle;">
+                                                        长沙市XX区XXX街道XXX号
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>进项商品Top5</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart5" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>销项商品Top5</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart6" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>进项顶额开票信息</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart7" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>销项顶额开票信息</span>
+                            </div>
+                            <div class="m-body">
+                                <div class="tab-content">
+                                    <div id="chart8" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="m-block">
+                            <div class="m-title m-title2">
+                                    <span>
+                                        <i class="fa fa-tasks"></i>增值税进销开票金额</span>
+                            </div>
+                            <div class="m-body">
+                                <div style="height: 375px" class="tab-content">
+                                    <div id="chart9" class="chart-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--操作层-->
+<div class="mind-op-panel">
+    <div class="op-btn op-btn-minus">
+        <i class="fa fa-fw fa-minus"></i>
+    </div>
+    <div class="op-range-box">
+        <div class="op-range">
+            <div class="range-select"></div>
+            <div class="range-content"></div>
+        </div>
+    </div>
+    <div class="op-btn op-btn-plus">
+        <i class="fa fa-fw fa-plus"></i>
+    </div>
+    <div class="op-btn op-btn-refresh">
+        <i class="fa fa-fw fa-undo"></i>
+    </div>
+    <div class="op-btn op-btn-expand">
+        <i class="fa fa-expand"></i>
+    </div>
+</div>
+<script src="../svg.min.js"></script>
+<script src="./figure2.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
