@@ -1,8 +1,8 @@
 /*
 * 修改版  连线没有规律，以节点为主要渲染对象
 * */
-function Figure(SVG, option) {
-    var defs = {
+function InvoiceAnalysis(SVG, option) {
+    let defs = {
         $box: null,
         draw: null,
         nodes: [],
@@ -44,9 +44,9 @@ function Figure(SVG, option) {
         leave: null,
         anTime: 300
     };
-    var opt = this.opt = $.extend(defs, option);
+    let opt = this.opt = $.extend(defs, option);
 
-    var box_dom = opt.$box[0];
+    let box_dom = opt.$box[0];
     this.width = box_dom.offsetWidth;
     this.height = box_dom.offsetHeight;
     this.hw = this.width / 2;
@@ -74,7 +74,7 @@ function Figure(SVG, option) {
         //团伙节点
         equal: []
     };
-    var tem = this.conventData(opt.nodes, opt.links);
+    let tem = this.conventData(opt.nodes, opt.links);
 
 
     console.log(this._map)
@@ -100,11 +100,11 @@ function Figure(SVG, option) {
     this.infoPanelEvent = false;
     this.init();
     // this.renderCenter(this.rootItem);
-    var self = this;
+    let self = this;
     // SVG.on(window, 'resize.svg', this.resize, this);
-    var isDown = false, x1, y1, x, y, isMove = false;
+    let isDown = false, x1, y1, x, y, isMove = false;
     //双击事件时间记录
-    var t1 = 0, t2 = 0;
+    let t1 = 0;
     //拖动事件
     $(window).on("mousedown.relation", function (e) {
         if ($(".left-tip-panel")[0].contains(e.target)) {
@@ -198,14 +198,14 @@ function Figure(SVG, option) {
 
     // 缩放事件
     function drag(e) {
-        var direct = null;
-        var scale = this.scale;
+        let direct;
+        let scale = self.scale;
         if (e.wheelDelta) {
             direct = e.wheelDelta;
         } else {
             direct = -e.detail * 40;
         }
-        var isUp = direct > 0;
+        let isUp = direct > 0;
         if (isUp) {
             scale += 0.1;
             if (scale > 3) {
@@ -217,31 +217,31 @@ function Figure(SVG, option) {
                 scale = 0.1;
             }
         }
-        this.root.scale(scale);
-        this.scale = scale;
+        self.root.scale(scale);
+        self.scale = scale;
     }
 
     if (opt.isScale) {
         this.draw.on("mousewheel", function (e) {
-            drag.call(self, e)
+            drag(e)
             self.opt.mousewheel && self.opt.mousewheel.call(self, self.scale);
         });
     }
 }
 
-var tool = {
+let tool = {
     //tool method 计算角度
     getAngle: function (px1, py1, px2, py2) {
         //两点的x、y值
-        var x = px2 - px1;
-        var y = py2 - py1;
-        var hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));//斜边长度
+        let x = px2 - px1;
+        let y = py2 - py1;
+        let hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));//斜边长度
         if (hypotenuse === 0) {
             return 0;
         }
-        var cos = x / hypotenuse;
-        var radian = Math.acos(cos);//求出弧度
-        var angle = radian * 180 / Math.PI;//用弧度算出角度
+        let cos = x / hypotenuse;
+        let radian = Math.acos(cos);//求出弧度
+        let angle = radian * 180 / Math.PI;//用弧度算出角度
         if (y < 0) {
             angle = -angle;
         } else if ((y === 0) && (x < 0)) {
@@ -252,8 +252,8 @@ var tool = {
 
     //根据旋转度数返回圆环坐标  x0,y0 圆心坐标 r 半径  angle 角度数
     setPos: function (x0, y0, r, angle) {
-        var x1 = x0 + r * Math.cos(angle * Math.PI / 180);
-        var y1 = y0 + r * Math.sin(angle * Math.PI / 180);
+        let x1 = x0 + r * Math.cos(angle * Math.PI / 180);
+        let y1 = y0 + r * Math.sin(angle * Math.PI / 180);
         return [x1, y1];
     },
     /**
@@ -264,24 +264,23 @@ var tool = {
      * @param {Array} cp 控制点
      */
     twoBezier: function (t, p1, cp, p2) {
-        var x1 = p1[0], y1 = p1[1];
-        var cx = cp[0], cy = cp[1];
-        var x2 = p2[0], y2 = p2[1];
-        var x = (1 - t) * (1 - t) * x1 + 2 * t * (1 - t) * cx + t * t * x2;
-        var y = (1 - t) * (1 - t) * y1 + 2 * t * (1 - t) * cy + t * t * y2;
+        let x1 = p1[0], y1 = p1[1];
+        let cx = cp[0], cy = cp[1];
+        let x2 = p2[0], y2 = p2[1];
+        let x = (1 - t) * (1 - t) * x1 + 2 * t * (1 - t) * cx + t * t * x2;
+        let y = (1 - t) * (1 - t) * y1 + 2 * t * (1 - t) * cy + t * t * y2;
         return [x, y];
     }
 };
 
-$.extend(Figure.prototype, {
+$.extend(InvoiceAnalysis.prototype, {
     init: function () {
-        var self = this;
+        let self = this;
         this.linksStyle();
         //legend by type
         this.typeMap = {};
         this.linkTypeMap = {};
-        var opt = this.opt;
-        var _map = this._map;
+        let _map = this._map;
         this.createGroup();
         this.linksNumber(this._links);
 
@@ -296,7 +295,7 @@ $.extend(Figure.prototype, {
         })
 
         this.calcItemPos();
-        this.renderLegend(this._nodes, this._links);
+        this.renderLegend(this._nodes, this._links.concat(this._sameLinks, this._otherLinks));
         //渲染node
         this.renderRootItem(_map.root);
         //渲染 连接线
@@ -331,9 +330,9 @@ $.extend(Figure.prototype, {
     },
     //连接线分配编号
     linksNumber: function (links) {
-        var linkGroup = {};
+        let linkGroup = {};
         links.forEach(function (d) {
-            var key = d.source.idx < d.target.idx ? d.source.idx + ':' + d.target.idx : d.target.idx + ':' + d.source.idx;
+            let key = d.source.idx < d.target.idx ? d.source.idx + ':' + d.target.idx : d.target.idx + ':' + d.source.idx;
             if (!linkGroup[key]) {
                 linkGroup[key] = {
                     num: 0,
@@ -343,9 +342,9 @@ $.extend(Figure.prototype, {
             linkGroup[key].num++;
             linkGroup[key].list.push(d);
         })
-        for (var key in linkGroup) {
-            var group = linkGroup[key];
-            var num = group.num;
+        for (let key in linkGroup) {
+            let group = linkGroup[key];
+            let num = group.num;
             group.list.forEach(function (d, i) {
                 d.ox_size = num;
                 d.ox_index = i;
@@ -354,9 +353,9 @@ $.extend(Figure.prototype, {
     },
     //连接线分配编号2
     linksNumber2: function (links, callback) {
-        var linkGroup = {};
+        let linkGroup = {};
         links.forEach(function (d) {
-            var key = d.source.idx < d.target.idx ? d.source.idx + ':' + d.target.idx : d.target.idx + ':' + d.source.idx;
+            let key = d.source.idx < d.target.idx ? d.source.idx + ':' + d.target.idx : d.target.idx + ':' + d.source.idx;
             if (!linkGroup[key]) {
                 linkGroup[key] = {
                     num: 0,
@@ -366,9 +365,9 @@ $.extend(Figure.prototype, {
             linkGroup[key].num++;
             linkGroup[key].list.push(d);
         })
-        for (var key in linkGroup) {
-            var group = linkGroup[key];
-            var num = group.num;
+        for (let key in linkGroup) {
+            let group = linkGroup[key];
+            let num = group.num;
             group.list.forEach(function (d, i) {
                 callback(d, num, i)
                 // d.ox_size2 = num;
@@ -377,15 +376,15 @@ $.extend(Figure.prototype, {
         }
     },
     renderRootItem: function (item) {
-        var self = this;
-        var g = this.root.group();
+        let self = this;
+        let g = this.root.group();
         item.g = g;
-        var r = 67;
+        let r = 67;
         item.r = r;
-        var bg = this.typeMap[item.data.typeId].color;
-        var circle = g.circle(r).fill(bg);
+        let bg = this.typeMap[item.data.typeId].color;
+        let circle = g.circle(r).fill(bg);
         circle.stroke({color: bg, width: 3, opacity: .6})
-        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
+        let text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("text-anchor", "middle");
         g.transform({x: item.x - r / 2, y: item.y - r / 2});
         g.on("mousedown", this.mousedown, {self: self, item: item});
@@ -405,16 +404,16 @@ $.extend(Figure.prototype, {
     },
     //处理数据
     conventData: function (nodes, links) {
-        var self = this;
+        let self = this;
         this.nodeMap = {};
-        var map = this.nodeMap;
-        var _map = this._map;
-        var _nodeMap = this._nodeMap;
-        var typeList = this.opt.typeList;
-        var _sameLinks = [];
-        var _nodes = [], _links = [], _otherLinks = [], root = null;
+        let map = this.nodeMap;
+        let _map = this._map;
+        let _nodeMap = this._nodeMap;
+        let typeList = this.opt.typeList;
+        let _sameLinks;
+        let _nodes = [], _links = [], _otherLinks = [], root = null;
         nodes.forEach(function (d, i) {
-            var tem = {
+            let tem = {
                 id: d.id + "_" + i,
                 idx: i,
                 x: 0,
@@ -467,21 +466,18 @@ $.extend(Figure.prototype, {
             }
             // tem.target.r = 42;
         });
-        var typeEqualLinks = [];
+        let typeEqualLinks = [];
 
-        var addList = function (list, item) {
+        let addList = function (list, item) {
             if (list.indexOf(item) === -1) {
                 list.push(item);
             }
         }
-        var linkGroup = {};
-        var join = function (t1, t2) {
-            return [t1, t2].join("_");
-        }
+        let linkGroup = {};
 
         //基础连线布局
         links.forEach(function (d, i) {
-            var tem = {
+            let tem = {
                 id: d.id + "_" + i,
                 source: map[d.source],
                 target: map[d.target],
@@ -493,8 +489,8 @@ $.extend(Figure.prototype, {
                 moreText: [],
                 level: 1
             }
-            var text = self.opt.lineText(d) || "";
-            var key = tem.source.idx + ':' + tem.target.idx;
+            let text = self.opt.lineText(d) || "";
+            let key = tem.source.idx + ':' + tem.target.idx;
             if (!linkGroup[key]) {
                 tem.text = text;
                 linkGroup[key] = {
@@ -595,14 +591,14 @@ $.extend(Figure.prototype, {
         console.log(9999, links, _otherLinks, _links, typeEqualLinks)
 
         //团伙节点 -- 比较左右两侧一级节点数，添加到少的一侧
-        var isEqualRight = false
+        let isEqualRight = false
         if (_map.level1_out.length <= _map.level1_in.length) {
             isEqualRight = true;
         }
         typeEqualLinks.forEach(function (d) {
             if (isEqualRight) {
                 if (d.target === _map.root) {
-                    var tem = d.target;
+                    let tem = d.target;
                     d.target = d.source;
                     d.source = tem;
                 }
@@ -612,7 +608,7 @@ $.extend(Figure.prototype, {
                 _map.level1_out.push(d.target);
             } else {
                 if (d.target === _map.root) {
-                    var tem = d.target;
+                    let tem = d.target;
                     d.target = d.source;
                     d.source = tem;
                 }
@@ -623,9 +619,9 @@ $.extend(Figure.prototype, {
             }
         })
         //同列连线
-        var tem1 = [], tem2 = [];
+        let tem1 = [], tem2 = [];
         _otherLinks.forEach(function (d) {
-            var source = d.source, target = d.target;
+            let source = d.source, target = d.target;
             if (source.levelType === target.levelType) {
                 tem1.push(d)
             } else {
@@ -644,30 +640,30 @@ $.extend(Figure.prototype, {
     },
     //计算位置
     calcItemPos: function () {
-        var self = this;
-        var nodes = this._nodes;
-        var _links = this._links;
-        var _map = this._map;
-        var root = this.rootItem;
-        var hw = this.hw, hh = this.hh;
+        let self = this;
+        // let nodes = this._nodes;
+        // let _links = this._links;
+        let _map = this._map;
+        let root = this.rootItem;
+        let hw = this.hw, hh = this.hh;
         //x
         root.x = hw;
         root.y = hh;
 
-        var item_h1 = this.opt.oneLevelHeight;
-        var item_h2 = this.opt.twoLevelHeight;
+        let item_h1 = this.opt.oneLevelHeight;
+        let item_h2 = this.opt.twoLevelHeight;
 
-        var space1 = this.opt.oneLevelSpace;
-        var space2 = this.opt.twoLevelSpace;
+        let space1 = this.opt.oneLevelSpace;
+        let space2 = this.opt.twoLevelSpace;
 
         function getH(item, list) {
-            var first = list[0];
-            var last = list[list.length - 1];
+            let first = list[0];
+            let last = list[list.length - 1];
             // item.vLineH = last.y - first.y;
             item.centerY = first.y + (last.y - first.y) / 2;
         }
 
-        var nodeMap = this._nodeMap;
+        let nodeMap = this._nodeMap;
 
         function calc(leftList, centerList, rightList, item_h1, item_h2) {
             leftList.forEach(function (d, i) {
@@ -707,15 +703,15 @@ $.extend(Figure.prototype, {
             // });
 
             function orderRightList(y, list) {
-                var half = (list.length * item_h2 - item_h2) / 2;
+                let half = (list.length * item_h2 - item_h2) / 2;
                 list.forEach(function (d, i) {
                     d.y = y + i * item_h2 - half;
                 })
             }
 
-            var hasRepeat = true;
-            var count = 1;
-            var moveCenterItem = function (centerItem, t) {
+            let hasRepeat = true;
+            let count = 1;
+            let moveCenterItem = function (centerItem, t) {
                 centerItem.y += t;
                 centerItem.in.forEach(function (d) {
                     d.y += t;
@@ -729,10 +725,10 @@ $.extend(Figure.prototype, {
                 count++;
                 centerList.forEach(function (d, i) {
                     if (i) {
-                        var num = d.y - centerList[i - 1].y;
+                        let num = d.y - centerList[i - 1].y;
                         if (num < item_h1 + d.space) {
                             hasRepeat = true;
-                            var t = item_h1 + d.space - num;
+                            let t = item_h1 + d.space - num;
                             moveCenterItem(d, t);
                         }
                     }
@@ -741,10 +737,10 @@ $.extend(Figure.prototype, {
 
                 rightList.forEach(function (d, i) {
                     if (i) {
-                        var num = d.y - rightList[i - 1].y;
+                        let num = d.y - rightList[i - 1].y;
                         if (num < item_h2) {
                             hasRepeat = true;
-                            var t = item_h2 - num + d.space;
+                            let t = item_h2 - num + d.space;
                             moveCenterItem(nodeMap[d.centerId], t);
                         }
                     }
@@ -752,15 +748,15 @@ $.extend(Figure.prototype, {
             }
 
             //美化节点 -- 均等分高度
-            var r_len = centerList.length;
+            let r_len = centerList.length;
             centerList.forEach(function (d, i) {
                 if (i) {
                     if (i < r_len - 1) {
-                        var nextOpen = centerList[i + 1].in.length || centerList[i + 1].out.length;
-                        var currOpen = d.in.length && d.out.length;
+                        let nextOpen = centerList[i + 1].in.length || centerList[i + 1].out.length;
+                        let currOpen = d.in.length && d.out.length;
                         if (!currOpen && nextOpen) {
-                            var tem_idx = i;
-                            var temList = [];
+                            let tem_idx = i;
+                            let temList = [];
                             while (tem_idx >= 0) {
                                 if (!centerList[tem_idx].in.length && !centerList[tem_idx].out.length) {
                                     temList.unshift(centerList[tem_idx]);
@@ -770,10 +766,10 @@ $.extend(Figure.prototype, {
                                 tem_idx--;
                             }
                             if (temList.length) {
-                                var upItem = centerList[i - temList.length];
-                                var downItem = centerList[i + 1];
+                                let upItem = centerList[i - temList.length];
+                                let downItem = centerList[i + 1];
                                 if (upItem) {
-                                    var num = (downItem.y - upItem.y) / (temList.length + 1);
+                                    let num = (downItem.y - upItem.y) / (temList.length + 1);
                                     temList.forEach(function (tem, tem_i) {
                                         tem.y = upItem.y + num * (tem_i + 1);
                                     })
@@ -785,7 +781,7 @@ $.extend(Figure.prototype, {
             });
         }
 
-        var space = 10;
+        let space = 10;
 
         //获取y轴, 一级 item 之间的间距
         function getSpace(currItem, upItem, defSpace, isIn) {
@@ -800,7 +796,7 @@ $.extend(Figure.prototype, {
         }
 
 
-        var left_in = [], left_out = [];
+        let left_in = [], left_out = [];
         _map.level1_in.forEach(function (d, di) {
             d.x = hw - space1;
             //d.space = space;
@@ -829,11 +825,11 @@ $.extend(Figure.prototype, {
         })
         calc(left_in, _map.level1_in, left_out, item_h1, item_h2);
         //居中
-        var l_first = _map.level1_in[0];
-        var l_last = _map.level1_in[_map.level1_in.length - 1];
-        var l_centerY = l_first.y + (l_last.y + l_last.h - l_first.y) / 2;
+        let l_first = _map.level1_in[0];
+        let l_last = _map.level1_in[_map.level1_in.length - 1];
+        let l_centerY = l_first.y + (l_last.y + l_last.h - l_first.y) / 2;
         //减掉字体距离
-        var lc = -(l_centerY - this.hh) - self.nameTextY;
+        let lc = -(l_centerY - this.hh) - self.nameTextY;
 
         _map.level1_in.forEach(function (d) {
             d.y += lc;
@@ -842,7 +838,7 @@ $.extend(Figure.prototype, {
             })
         })
         //
-        var right_in = [], right_out = [];
+        let right_in = [], right_out = [];
         _map.level1_out.forEach(function (d, di) {
             d.x = hw + space1;
             d.space = getSpace(d, _map.level1_out[di - 1], space, false);
@@ -868,11 +864,11 @@ $.extend(Figure.prototype, {
         })
         calc(right_in, _map.level1_out, right_out, item_h1, item_h2);
         //居中
-        var r_frist = _map.level1_out[0];
-        var r_last = _map.level1_out[_map.level1_out.length - 1];
-        var r_centerY = r_frist.y + (r_last.y + r_last.h - r_frist.y) / 2;
+        let r_frist = _map.level1_out[0];
+        let r_last = _map.level1_out[_map.level1_out.length - 1];
+        let r_centerY = r_frist.y + (r_last.y + r_last.h - r_frist.y) / 2;
         //减掉字体距离
-        var rc = -(r_centerY - this.hh) - self.nameTextY;
+        let rc = -(r_centerY - this.hh) - self.nameTextY;
 
         _map.level1_out.forEach(function (d) {
             d.y += rc;
@@ -884,19 +880,19 @@ $.extend(Figure.prototype, {
 
     linksStyle: function () {
         this.linksStyleMap = {};
-        var self = this;
+        let self = this;
         this.opt.linksStyle.forEach(function (d) {
             self.linksStyleMap[d.typeId] = d;
         })
     },
     //渲染图例
     renderLegend: function (nodes, links) {
-        var self = this;
-        var $ul = $(".legend-box");
-        var typeMap = this.typeMap, typeList = [], equalTypeList = [];
+        let self = this;
+        let $ul = $(".legend-box");
+        let typeMap = this.typeMap, typeList = [];
         //类型
         nodes.forEach(function (p) {
-            var d = p.data;
+            let d = p.data;
             if (!typeMap[d.typeId]) {
                 typeMap[d.typeId] = {
                     typeId: d.typeId,
@@ -909,13 +905,13 @@ $.extend(Figure.prototype, {
             typeMap[d.typeId].list.push(p);
         });
 
-        var linksStyleMap = this.linksStyleMap;
-        var linkTypeMap = this.linkTypeMap;
+        // let linksStyleMap = this.linksStyleMap;
+        let linkTypeMap = this.linkTypeMap;
         //线
         links.forEach(function (p) {
-            var d = p.data;
-            var t = d.typeId;
-            var style = linkTypeMap[t] || {};
+            let d = p.data;
+            let t = d.typeId;
+            let style = linkTypeMap[t] || {};
             if (!linkTypeMap[t]) {
                 linkTypeMap[t] = {
                     typeId: t,
@@ -926,10 +922,10 @@ $.extend(Figure.prototype, {
             linkTypeMap[t].list.push(p);
         });
 
-        var h = [];
+        let h = [];
         typeList.forEach(function (d) {
             if (!self.opt.isTypeEqual(d)) {
-                var txt = d.typeName;
+                let txt = d.typeName;
                 if (typeof self.opt.legendNodeTypeFormatter === "function") {
                     txt = self.opt.legendNodeTypeFormatter(d);//.typeName;
                 }
@@ -937,7 +933,7 @@ $.extend(Figure.prototype, {
             }
         })
 
-        var isOne = true;
+        let isOne = true;
         self.opt.linksStyle.forEach(function (d) {
             if (d.legendShow && linkTypeMap[d.typeId] && linkTypeMap[d.typeId].list.length) {
                 if (isOne) {
@@ -953,8 +949,8 @@ $.extend(Figure.prototype, {
         //图例点击事件
         $ul.off("click");
         $ul.on("click", "li", function () {
-            var cls = "active", tcls = "li-two-type";
-            var $el = $(this);
+            let cls = "active", tcls = "li-two-type";
+            let $el = $(this);
             if ($el.hasClass(cls)) {
                 $el.removeClass(cls);
             } else {
@@ -972,16 +968,16 @@ $.extend(Figure.prototype, {
                 $ul.removeClass("legend-box-dis");
                 self.opt.$box.removeClass("svg-node-legend");
                 $ul.find("li").each(function () {
-                    var $ti = $(this).find(".i-icon");
+                    let $ti = $(this).find(".i-icon");
                     $ti.css("background-color", $ti.attr("data-color"));
                 })
             } else {
                 $ul.addClass("legend-box-dis");
                 self.opt.$box.addClass("svg-node-legend");
-                var typeIdList = [], linkTypeIdList = [];
+                let typeIdList = [], linkTypeIdList = [];
                 $ul.find("li").each(function () {
-                    var $li = $(this);
-                    var $ti = $li.find(".i-icon");
+                    let $li = $(this);
+                    let $ti = $li.find(".i-icon");
                     if ($li.hasClass(cls)) {
                         if ($li.hasClass(tcls)) {
                             linkTypeIdList.push($li.attr("data-type-id"))
@@ -1001,7 +997,7 @@ $.extend(Figure.prototype, {
             $ul.removeClass("legend-box-dis");
             self.opt.$box.removeClass("svg-node-legend");
             $ul.find("li").each(function () {
-                var $ti = $(this).find(".i-icon");
+                let $ti = $(this).find(".i-icon");
                 $ti.css("background-color", $ti.attr("data-color"));
             })
             return false;
@@ -1010,16 +1006,16 @@ $.extend(Figure.prototype, {
 
 
     hoverItemByType: function (typeIdList, linkTypeIdList) {
-        var typeMap = this.typeMap;
-        var linkTypeMap = this.linkTypeMap;
-        for (var key in linkTypeMap) {
+        let typeMap = this.typeMap;
+        let linkTypeMap = this.linkTypeMap;
+        for (let key in linkTypeMap) {
             if (linkTypeMap.hasOwnProperty(key)) {
                 linkTypeMap[key].list.forEach(function (d) {
                     d.g.removeClass("link-show")
                 })
             }
         }
-        for (var key in typeMap) {
+        for (let key in typeMap) {
             if (typeMap.hasOwnProperty(key)) {
                 typeMap[key].list.forEach(function (d) {
                     d.g.removeClass("node-show");
@@ -1045,15 +1041,15 @@ $.extend(Figure.prototype, {
     },
 
 
-    renderNode: function (item, nodeGroup, level) {
-        var self = this;
-        var r = item.r;
-        var g = nodeGroup.group().addClass("node-company");
+    renderNode: function (item, nodeGroup) {
+        let self = this;
+        let r = item.r;
+        let g = nodeGroup.group().addClass("node-company");
         item.g = g;
-        var bg = this.typeMap[item.data.typeId].color;
-        var circle = g.circle(r).fill(bg);
+        let bg = this.typeMap[item.data.typeId].color;
+        let circle = g.circle(r).fill(bg);
         circle.stroke({color: bg, width: 3, opacity: .6})
-        var text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
+        let text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("data-id", item.data.id).attr("text-anchor", "middle");
         g.transform({x: item.x - r / 2, y: item.y - r / 2});
         if (item.isRoot) {
@@ -1066,74 +1062,74 @@ $.extend(Figure.prototype, {
         g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
     },
     renderLink: function (item) {
-        var self = this;
-        var cls = "node-link-company";
-        var group = this.rightLinkGroup;
-        var pos = item.source.pos || item.target.pos;
+        let self = this;
+        let cls = "node-link-company";
+        let group = this.rightLinkGroup;
+        let pos = item.source.pos || item.target.pos;
         if (pos === "left") {
             group = this.leftLinkGroup;
         }
 
-        var g = group.group().addClass(cls);
+        let g = group.group().addClass(cls);
         item.g = g;
 
-        var points = self.convertStartEndPoint(item.source, item.target);
-        var x = item.source.x;
-        var y = item.source.y;
-        var x1 = item.target.x;
-        var y1 = item.target.y;
-        var ty = 0;
-        var bl = 1;
+        let points = self.convertStartEndPoint(item.source, item.target);
+        let x = item.source.x;
+        let y = item.source.y;
+        let x1 = item.target.x;
+        let y1 = item.target.y;
+        let ty = 0;
+        let bl = 1;
         //判断是否为反方向线条 默认从左到右
         if (x > x1) {
             bl = -1;
         }
 
-        var line = g.line(points.x, points.y, points.x1, points.y1).attr("data-id", item.source.x);
+        let line = g.line(points.x, points.y, points.x1, points.y1).attr("data-id", item.source.x);
 
 
         if (item.ox_size === 1) {
 
         } else {
 
-            var sp = 5;
+            let sp = 5;
             if (item.ox_size % 2 === 0) {
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                var flag = (item.ox_index % 2 === 0 ? -1 : 1) * bl;
+                let flag = (item.ox_index % 2 === 0 ? -1 : 1) * bl;
                 ty = flag * 14 * parseInt(item.ox_index / 2) + (flag * sp);
             } else {
                 //0 0, 1 -7 , 2 7,
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                 if (item.ox_index > 0) {
-                    var flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
+                    let flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
                     ty = flag * 14 * parseInt((item.ox_index - 1) / 2) + (flag * sp);
                 }
             }
 
         }
 
-        var deg = tool.getAngle(x, y, x1, y1);
-        var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-        var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
+        let deg = tool.getAngle(x, y, x1, y1);
+        let _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
+        let _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
         _y = -_y;
         line.translate(_x, _y);
-        // var deg = tool.getAngle(x, y, x1, y1);
+        // let deg = tool.getAngle(x, y, x1, y1);
         item.line = line;
-        var txt = item.text;
+        let txt = item.text;
         if (item.moreText.length) {
             txt += ("（" + item.moreText.join("、") + "）")
         }
 
-        var textColor = self.opt.lineTextColor(txt, item);
+        let textColor = self.opt.lineTextColor(txt, item);
         if (deg > 90 && deg < 270) {
             deg -= 180;
         }
         if (deg > -270 && deg < -90) {
             deg += 180;
         }
-        var offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+        let offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
         if (item.level === 1) {
-            var _deg = 0;
+            let _deg;
             if (item.source === self._map.root) {
                 _deg = tool.getAngle(item.source.x, item.source.y, item.target.x, item.target.y);
             } else {
@@ -1142,18 +1138,18 @@ $.extend(Figure.prototype, {
             offsetX = -Math.cos((_deg) * Math.PI / 180) * textOffset;
             offsetY = -Math.sin((_deg) * Math.PI / 180) * textOffset;
         }
-        // var text = g.text(txt).x(x + offsetX + (x1 - x) / 2).y(y + offsetY + (y1 - y) / 2 - 6).rotate(deg);
+        // let text = g.text(txt).x(x + offsetX + (x1 - x) / 2).y(y + offsetY + (y1 - y) / 2 - 6).rotate(deg);
 
-        var text = g.text(txt).x(x + offsetX + _x + (x1 - x) / 2).y(y + offsetY + _y + (y1 - y) / 2 - 6).rotate(deg);
+        let text = g.text(txt).x(x + offsetX + _x + (x1 - x) / 2).y(y + offsetY + _y + (y1 - y) / 2 - 6).rotate(deg);
         if (textColor) {
             text.addClass('cus-text-color').style({fill: textColor});
         }
         item.textNode = text;
-        var arrow_marker;
-        var hasArrow = true;
-        var styleCls = "node-link-02";
-        var linkStyle = self.linksStyleMap[item.typeId];
-        var arrowId = "";
+        let arrow_marker;
+        let hasArrow = true;
+        let styleCls = "node-link-02";
+        let linkStyle = self.linksStyleMap[item.typeId];
+        let arrowId = "";
         if (linkStyle) {
             hasArrow = linkStyle.arrow;
             styleCls = linkStyle.cls;
@@ -1174,28 +1170,28 @@ $.extend(Figure.prototype, {
 
 
     _sameRenderLink: function (item) {
-        var g = item.g;
-        var x = item.source.x;
-        var y = item.source.y;
-        var x1 = item.target.x;
-        var y1 = item.target.y;
-        var ox_index = item.ox_index2 || item.ox_index3 || 0;
-        var deg = tool.getAngle(x, y, x1, y1);
+        let g = item.g;
+        let x = item.source.x;
+        let y = item.source.y;
+        let x1 = item.target.x;
+        let y1 = item.target.y;
+        let ox_index = item.ox_index2 || item.ox_index3 || 0;
+        let deg = tool.getAngle(x, y, x1, y1);
 
         //贝塞尔曲线 y控制点间隔
-        var bx = 40;
+        let bx = 40;
 
-        var hx = x + (x1 - x) / 2;
-        var hy = y + (y1 - y) / 2;
+        let hx = x + (x1 - x) / 2;
+        let hy = y + (y1 - y) / 2;
 
         //二次贝塞尔曲线
-        var qx = 0, qy = 0;
-        var qh = (ox_index + 1) * bx;
+        let qx, qy;
+        let qh = (ox_index + 1) * bx;
 
-        var deg2 = deg + 90;
+        let deg2 = deg + 90;
         //方向 根据坐标系判断
-        var leftPos = ["c1", "c2", "c3"];
-        var rightPos = ["c4", "c5", "c6"];
+        let leftPos = ["c1", "c2", "c3"];
+        let rightPos = ["c4", "c5", "c6"];
 
         if (leftPos.indexOf(item.source.levelType) >= 0) {
             if (deg <= 0) {
@@ -1208,17 +1204,17 @@ $.extend(Figure.prototype, {
             }
         }
 
-        var q_point = tool.setPos(hx, hy, qh, deg2)
+        let q_point = tool.setPos(hx, hy, qh, deg2)
         qx = q_point[0];
         qy = q_point[1];
-        var points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
+        let points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
         x = points[0];
         y = points[1];
         x1 = points[2];
         y1 = points[3];
-        var q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
+        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
 
-        var d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
+        let d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
 
         if (item.path) {
             item.path.plot(d);
@@ -1226,12 +1222,12 @@ $.extend(Figure.prototype, {
             item.path = g.path(d).fill("none").attr("data-id", item.source.x);
         }
 
-        var txt = item.text;
+        let txt = item.text;
         if (item.moreText.length) {
             txt += ("（" + item.moreText.join("、") + "）")
         }
 
-        var textColor = this.opt.lineTextColor(txt, item);
+        let textColor = this.opt.lineTextColor(txt, item);
         if (deg >= 90 && deg < 270) {
             deg -= 180;
         }
@@ -1242,7 +1238,7 @@ $.extend(Figure.prototype, {
         if (item.textNode) {
             item.textNode.rotate(0).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
         } else {
-            var text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
+            let text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
             if (textColor) {
                 text.addClass('cus-text-color').style({fill: textColor});
             }
@@ -1251,25 +1247,25 @@ $.extend(Figure.prototype, {
     },
 
     renderSameLink: function (item) {
-        var self = this;
-        var cls = "node-link-company";
-        var group = this.rightLinkGroup;
-        var pos = item.source.pos || item.target.pos;
+        let self = this;
+        let cls = "node-link-company";
+        let group = this.rightLinkGroup;
+        let pos = item.source.pos || item.target.pos;
         if (pos === "left") {
             group = this.leftLinkGroup;
         }
 
-        var g = group.group().addClass(cls);
+        let g = group.group().addClass(cls);
         item.g = g;
 
         this._sameRenderLink(item);
 
-        var path = item.path;
-        var arrow_marker;
-        var hasArrow = true;
-        var styleCls = "node-link-02";
-        var linkStyle = self.linksStyleMap[item.typeId];
-        var arrowId = "";
+        let path = item.path;
+        let arrow_marker;
+        let hasArrow = true;
+        let styleCls = "node-link-02";
+        let linkStyle = self.linksStyleMap[item.typeId];
+        let arrowId = "";
         if (linkStyle) {
             hasArrow = linkStyle.arrow;
             styleCls = linkStyle.cls;
@@ -1289,26 +1285,26 @@ $.extend(Figure.prototype, {
     },
 
     _otherRenderLink: function (item) {
-        var g = item.g;
-        var x = item.source.x;
-        var y = item.source.y;
-        var x1 = item.target.x;
-        var y1 = item.target.y;
-        var ox_index = item.ox_index2 || item.ox_index3 || 0;
-        var deg = tool.getAngle(x, y, x1, y1);
+        let g = item.g;
+        let x = item.source.x;
+        let y = item.source.y;
+        let x1 = item.target.x;
+        let y1 = item.target.y;
+        let ox_index = item.ox_index2 || item.ox_index3 || 0;
+        let deg = tool.getAngle(x, y, x1, y1);
 
         //贝塞尔曲线 y控制点间隔
-        var bx = 40;
-        var hx = x + (x1 - x) / 2;
-        var hy = y + (y1 - y) / 2;
+        let bx = 40;
+        let hx = x + (x1 - x) / 2;
+        let hy = y + (y1 - y) / 2;
         //二次贝塞尔曲线
-        var qx = 0, qy = 0;
-        var qh = (ox_index + 1) * bx;
+        let qx, qy;
+        let qh = (ox_index + 1) * bx;
 
-        var deg2 = deg + 90;
+        let deg2 = deg + 90;
         //方向 根据坐标系判断
-        var leftPos = ["c1", "c2", "c3"];
-        var rightPos = ["c4", "c5", "c6"];
+        let leftPos = ["c1", "c2", "c3"];
+        let rightPos = ["c4", "c5", "c6"];
 
         if (leftPos.indexOf(item.source.levelType) >= 0) {
             if (deg > 0) {
@@ -1332,26 +1328,26 @@ $.extend(Figure.prototype, {
             }
         }
 
-        var q_point = tool.setPos(hx, hy, qh, deg2)
+        let q_point = tool.setPos(hx, hy, qh, deg2)
         qx = q_point[0];
         qy = q_point[1];
-        var points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
+        let points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
         x = points[0];
         y = points[1];
         x1 = points[2];
         y1 = points[3];
-        var q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
-        var d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
+        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
+        let d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
         if (item.path) {
             item.path.plot(d);
         } else {
             item.path = g.path(d).fill("none").attr("data-id", item.source.x);
         }
-        var txt = item.text;
+        let txt = item.text;
         if (item.moreText.length) {
             txt += ("（" + item.moreText.join("、") + "）")
         }
-        var textColor = this.opt.lineTextColor(txt, item);
+        let textColor = this.opt.lineTextColor(txt, item);
         if (deg >= 90 && deg < 270) {
             deg -= 180;
         }
@@ -1361,7 +1357,7 @@ $.extend(Figure.prototype, {
         if (item.textNode) {
             item.textNode.rotate(0).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
         } else {
-            var text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
+            let text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
             if (textColor) {
                 text.addClass('cus-text-color').style({fill: textColor});
             }
@@ -1370,22 +1366,22 @@ $.extend(Figure.prototype, {
     },
 
     renderOtherLink: function (item) {
-        var self = this;
-        var cls = "node-link-company";
-        var group = this.rightLinkGroup;
-        var pos = item.source.pos || item.target.pos;
+        let self = this;
+        let cls = "node-link-company";
+        let group = this.rightLinkGroup;
+        let pos = item.source.pos || item.target.pos;
         if (pos === "left") {
             group = this.leftLinkGroup;
         }
-        var g = group.group().addClass(cls);
+        let g = group.group().addClass(cls);
         item.g = g;
         self._otherRenderLink(item);
-        var path = item.path;
-        var arrow_marker;
-        var hasArrow = true;
-        var styleCls = "node-link-02";
-        var linkStyle = self.linksStyleMap[item.typeId];
-        var arrowId = "";
+        let path = item.path;
+        let arrow_marker;
+        let hasArrow = true;
+        let styleCls = "node-link-02";
+        let linkStyle = self.linksStyleMap[item.typeId];
+        let arrowId = "";
         if (linkStyle) {
             hasArrow = linkStyle.arrow;
             styleCls = linkStyle.cls;
@@ -1404,9 +1400,9 @@ $.extend(Figure.prototype, {
         g.on("click", this.linkClick, {self: self, item: item});
     },
 
-    linkClick: function (e) {
-        var self = this.self, item = this.item;
-        var opt = self.opt;
+    linkClick: function () {
+        let self = this.self, item = this.item;
+        let opt = self.opt;
         opt.lineClick && opt.lineClick.call(self, item);
     },
     //获取一级文字，偏移x,y距离
@@ -1415,16 +1411,15 @@ $.extend(Figure.prototype, {
     },
     //转换坐标点
     convertStartEndPoint: function (source, target) {
-        var obj = {
+        let obj = {
             x: source.x,
             y: source.y,
             x1: target.x,
             y1: target.y
         }
 
-        var h2 = 17;
-        var x2 = target.r / 2;
-        var deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
+        let x2 = target.r / 2;
+        let deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
 
         obj.x1 -= Math.cos((deg) * Math.PI / 180) * x2;
         obj.y1 -= Math.sin((deg) * Math.PI / 180) * x2;
@@ -1432,23 +1427,25 @@ $.extend(Figure.prototype, {
     },
     //转换坐标点
     convertStartEndPoint2: function (source, target, bezArr, h) {
-        var x = source.x,
+        let x = source.x,
             y = source.y,
             x1 = target.x,
             y1 = target.y;
-        var a = Math.abs(x1 - x);
-        var b = Math.abs(y1 - y);
-        var c = Math.sqrt((a * a + b * b) / 4 + h * h);
-        //2 ===> 4
-        var t1 = tool.twoBezier(source.r / 4 / c, [x, y], bezArr, [x1, y1]);
-        var t2 = tool.twoBezier(1 - target.r / 4 / c, [x, y], bezArr, [x1, y1]);
+        let a = Math.abs(x1 - x);
+        let b = Math.abs(y1 - y);
+        // Math.sqrt(Math.sqrt((a * a + b * b))/2*Math.sqrt((a * a + b * b))/2 +h*h
+        let c = Math.sqrt((a * a + b * b) / 4 + h * h);
+        console.log(c)
+        //2
+        let t1 = tool.twoBezier(source.r / 2 / c / 2, [x, y], bezArr, [x1, y1]);
+        let t2 = tool.twoBezier(1 - target.r / 2 / c / 2, [x, y], bezArr, [x1, y1]);
         return [t1[0], t1[1], t2[0], t2[1]]
     },
 
     //nodes mousedown
     mousedown: function (e) {
-        var self = this.self, item = this.item;
-        var drag = self.dragNode;
+        let self = this.self, item = this.item;
+        let drag = self.dragNode;
         drag.isMove = false;
         drag.isHover = false;
         drag.isDown = true;
@@ -1467,10 +1464,10 @@ $.extend(Figure.prototype, {
     },
     //高亮
     hoverItem: function (item) {
-        var self = this;
-        var linksNodes = self.getLinkNodes(item);
-        var linksNodes2 = self.getSameLinkNodes(item);
-        var linksNodes3 = self.getOtherLinkNodes(item);
+        let self = this;
+        let linksNodes = self.getLinkNodes(item);
+        let linksNodes2 = self.getSameLinkNodes(item);
+        let linksNodes3 = self.getOtherLinkNodes(item);
         $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList,
             linksNodes3.sourceList, linksNodes3.targetList), function () {
             this.source.g.addClass("node-company-hover");
@@ -1491,24 +1488,22 @@ $.extend(Figure.prototype, {
     },
     //取消高亮
     celHoverItem: function (item) {
-        var self = this;
-        var linksNodes = self.getLinkNodes(item);
-        var linksNodes2 = self.getSameLinkNodes(item);
-        var linksNodes3 = self.getOtherLinkNodes(item);
+        let self = this;
+        let linksNodes = self.getLinkNodes(item);
+        let linksNodes2 = self.getSameLinkNodes(item);
+        let linksNodes3 = self.getOtherLinkNodes(item);
         $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList,
             linksNodes3.sourceList, linksNodes3.targetList), function () {
             this.source.g.removeClass("node-company-hover");
             this.target.g.removeClass("node-company-hover");
             if (this.hasArrow) {
                 this.g.removeClass("node-link-company-hover");
-                var linkStyle = self.linksStyleMap[this.typeId];
-                var arrowId = "";
+                let linkStyle = self.linksStyleMap[this.typeId];
+                let arrowId = "";
                 if (linkStyle) {
                     arrowId = linkStyle.arrowId;
                 }
                 if (arrowId) {
-
-
                     if (this.line) {
                         this.line.marker("end", self.draw.defs().select(arrowId).first());
                     }
@@ -1516,8 +1511,6 @@ $.extend(Figure.prototype, {
                         this.path.marker("end", self.draw.defs().select(arrowId).first());
                     }
                 } else {
-
-
                     if (this.line) {
                         this.line.marker("end", self.draw.defs().select("#arrowCompany").first());
                     }
@@ -1525,8 +1518,6 @@ $.extend(Figure.prototype, {
                         this.path.marker("end", self.draw.defs().select("#arrowCompany").first());
                     }
                 }
-
-
             } else {
                 this.g.removeClass("node-link-person-hover");
             }
@@ -1534,7 +1525,7 @@ $.extend(Figure.prototype, {
     },
     //nodes mouseenter
     mouseenterNode: function () {
-        var self = this.self, item = this.item;
+        let self = this.self, item = this.item;
         if (!self.hoverParam.isActive) {
             self.hoverItem(item);
         }
@@ -1542,30 +1533,29 @@ $.extend(Figure.prototype, {
     },
     //nodes mouseleave
     mouseleaveNode: function () {
-        var self = this.self, item = this.item;
+        let self = this.self, item = this.item;
         if (!self.hoverParam.isActive) {
             self.celHoverItem(item);
         }
     },
     //点击高亮
     clickItemHover: function (item) {
-        var self = this;
+        let self = this;
         this.opt.$box.addClass("svg-node-hover");
         self.hoverItem(item);
 
     },
     //取消点击高亮
     celClickHover: function (item) {
-        var self = this;
+        let self = this;
         this.opt.$box.removeClass("svg-node-hover");
         self.celHoverItem(item);
         self.opt.celNodeClick && self.opt.celNodeClick.call(self, item);
     },
     //根据item.id 获取相连接的nodes
     getLinkNodes: function (item) {
-        var self = this;
-        var opt = self.opt, links = this._links;
-        var sourceList = [], targetList = [];
+        let links = this._links;
+        let sourceList = [], targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1581,9 +1571,8 @@ $.extend(Figure.prototype, {
     },
 
     getSameLinkNodes: function (item) {
-        var self = this;
-        var opt = self.opt, links = this._sameLinks;
-        var sourceList = [], targetList = [];
+        let links = this._sameLinks;
+        let sourceList = [], targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1598,9 +1587,8 @@ $.extend(Figure.prototype, {
         }
     },
     getOtherLinkNodes: function (item) {
-        var self = this;
-        var opt = self.opt, links = this._otherLinks;
-        var sourceList = [], targetList = [];
+        let links = this._otherLinks;
+        let sourceList = [], targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1616,61 +1604,60 @@ $.extend(Figure.prototype, {
     },
     //节点移动事件
     nodeMouseMove: function (self, e) {
-        var drag = self.dragNode;
-        var scale = self.scale;
-        var item = drag.item;
-        var _tem_x = e.pageX - drag.x1;
-        var _tem_y = e.pageY - drag.y1;
+        let drag = self.dragNode;
+        let scale = self.scale;
+        let item = drag.item;
+        let _tem_x = e.pageX - drag.x1;
+        let _tem_y = e.pageY - drag.y1;
         if (_tem_x === 0 && _tem_y === 0) {
             return;
         }
         drag.isMove = true;
-        var moveX = (e.pageX - drag.x1) * (1 / scale);
-        var moveY = (e.pageY - drag.y1) * (1 / scale);
+        let moveX = (e.pageX - drag.x1) * (1 / scale);
+        let moveY = (e.pageY - drag.y1) * (1 / scale);
         //node
-        var r = (item.r || 0) / 2;
+        let r = (item.r || 0) / 2;
         item.x = drag.x + moveX + r;
         item.y = drag.y + moveY + r;
         item.g.translate(item.x - r, item.y - r);
         //line
-        var linksNodes = self.getLinkNodes(item);
+        let linksNodes = self.getLinkNodes(item);
         $.each(linksNodes.sourceList.concat(linksNodes.targetList), function () {
-            var points = self.convertStartEndPoint(this.source, this.target);
-            var x = this.source.x;
-            var y = this.source.y;
-            var x1 = this.target.x;
-            var y1 = this.target.y;
-            var bl = 1;
+            let points = self.convertStartEndPoint(this.source, this.target);
+            let x = this.source.x;
+            let y = this.source.y;
+            let x1 = this.target.x;
+            let y1 = this.target.y;
+            let bl = 1;
 
             //判断是否为反方向线条 默认从左到右
             if (x > x1) {
                 bl = -1;
             }
-            var ty = 0;
+            let ty = 0;
             this.line.plot(points.x, points.y, points.x1, points.y1);
-            var pos = this.source.pos || this.target.pos;
             if (this.ox_size === 1) {
 
             } else {
-                var sp = 5;
+                let sp = 5;
                 if (this.ox_size % 2 === 0) {
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
-                    var flag = (this.ox_index % 2 === 0 ? -1 : 1) * bl;
+                    let flag = (this.ox_index % 2 === 0 ? -1 : 1) * bl;
                     ty = flag * 14 * parseInt(this.ox_index / 2) + (flag * sp);
 
                 } else {
                     //0 0, 1 -7 , 2 7,
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                     if (this.ox_index > 0) {
-                        var flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
+                        let flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
                         ty = flag * 14 * parseInt((this.ox_index - 1) / 2) + (flag * sp);
                     }
                 }
             }
 
-            var deg = tool.getAngle(x, y, x1, y1);
-            var _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-            var _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
+            let deg = tool.getAngle(x, y, x1, y1);
+            let _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
+            let _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
             _y = -_y;
             this.line.translate(_x, _y);
             //
@@ -1680,9 +1667,9 @@ $.extend(Figure.prototype, {
             if (deg > -270 && deg < -90) {
                 deg += 180;
             }
-            var offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+            let offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
             if (this.level === 1) {
-                var _deg = 0;
+                let _deg;
                 if (this.source === self._map.root) {
                     _deg = tool.getAngle(this.source.x, this.source.y, this.target.x, this.target.y);
                 } else {
@@ -1697,14 +1684,14 @@ $.extend(Figure.prototype, {
         });
 
         //path
-        var rootY = self._map.root.y;
-        var linksNodes2 = self.getSameLinkNodes(item);
+        // let rootY = self._map.root.y;
+        let linksNodes2 = self.getSameLinkNodes(item);
 
         $.each(linksNodes2.sourceList.concat(linksNodes2.targetList), function () {
             self._sameRenderLink(this);
         });
         //path
-        var linksNodes3 = self.getOtherLinkNodes(item);
+        let linksNodes3 = self.getOtherLinkNodes(item);
         $.each(linksNodes3.sourceList.concat(linksNodes3.targetList), function () {
             self._otherRenderLink(this);
         });
@@ -1712,7 +1699,7 @@ $.extend(Figure.prototype, {
     },
 
     plus: function () {
-        var scale = this.scale;
+        let scale = this.scale;
         scale += 0.1;
         if (scale > 3) {
             scale = 3;
@@ -1722,7 +1709,7 @@ $.extend(Figure.prototype, {
         return scale;
     },
     minus: function () {
-        var scale = this.scale;
+        let scale = this.scale;
         scale -= 0.1;
         if (scale < 0.1) {
             scale = 0.1;
@@ -1742,7 +1729,7 @@ $.extend(Figure.prototype, {
         this.scale = scale;
     },
     reset: function () {
-        var $li = $(".legend-box .active");
+        let $li = $(".legend-box .active");
         if ($li.length) {
             $li.trigger("click");
         }
