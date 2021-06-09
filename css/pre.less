@@ -9,7 +9,13 @@ pre {
   tab-width: 4;
 }
 
+.loop(@i) when (@i > 0) {
+  .loop((@i - 1));
+  .li-@{i} {
 
+  }
+}
+.loop(10);
 
 /*view*/
 .pre-view { padding-left: 5px; padding-right: 5px; padding-bottom: 50px;

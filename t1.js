@@ -76,8 +76,7 @@ function InvoiceAnalysis(SVG, option) {
     };
     let tem = this.conventData(opt.nodes, opt.links);
 
-
-    console.log(this._map)
+    console.log(this._map);
     //名称向上偏移量
     this.nameTextY = -16;
     this._nodes = tem.nodes;
@@ -102,7 +101,12 @@ function InvoiceAnalysis(SVG, option) {
     // this.renderCenter(this.rootItem);
     let self = this;
     // SVG.on(window, 'resize.svg', this.resize, this);
-    let isDown = false, x1, y1, x, y, isMove = false;
+    let isDown = false,
+        x1,
+        y1,
+        x,
+        y,
+        isMove = false;
     //双击事件时间记录
     let t1 = 0;
     //拖动事件
@@ -119,64 +123,60 @@ function InvoiceAnalysis(SVG, option) {
         try {
             //ie 下双击选中报错，故catch掉
             window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-        } catch (e) {
-
-        }
+        } catch (e) {}
     });
-    $(window)
-        .on("mousemove.relation", function (e) {
-            if (isDown) {
-                isMove = true;
-                self.root.translate(x + e.pageX - x1, y + e.pageY - y1);
-            }
-            if (self.dragNode.isDown) {
-                self.nodeMouseMove(self, e);
-            }
-        })
-        .on("mouseup", function () {
-            if (self.infoPanelEvent) {
-                self.infoPanelEvent = false;
-                return;
-            }
-            if (self.dragNode.isDown) {
-                if (!self.dragNode.isMove) {
-                    if (self.hoverParam.isActive) {
-                        self.hoverParam.isActive = false;
-                        if (self.hoverParam.item) {
-                            self.celClickHover(self.hoverParam.item);
-                        }
+    $(window).on("mousemove.relation", function (e) {
+        if (isDown) {
+            isMove = true;
+            self.root.translate(x + e.pageX - x1, y + e.pageY - y1);
+        }
+        if (self.dragNode.isDown) {
+            self.nodeMouseMove(self, e);
+        }
+    }).on("mouseup", function () {
+        if (self.infoPanelEvent) {
+            self.infoPanelEvent = false;
+            return;
+        }
+        if (self.dragNode.isDown) {
+            if (!self.dragNode.isMove) {
+                if (self.hoverParam.isActive) {
+                    self.hoverParam.isActive = false;
+                    if (self.hoverParam.item) {
+                        self.celClickHover(self.hoverParam.item);
                     }
-                    self.hoverParam.isActive = true;
-                    self.hoverParam.item = self.dragNode.item;
-                    self.clickItemHover(self.dragNode.item);
-                    if (t1) {
-                        clearTimeout(t1);
-                        t1 = 0;
-                        opt.nodeDbClick && opt.nodeDbClick.call(self, self.dragNode.item);
-                    } else {
-                        t1 = setTimeout(function () {
-                            opt.nodeClick && opt.nodeClick.call(self, self.dragNode.item);
-                            t1 = 0;
-                        }, 300);
-                    }
+                }
+                self.hoverParam.isActive = true;
+                self.hoverParam.item = self.dragNode.item;
+                self.clickItemHover(self.dragNode.item);
+                if (t1) {
+                    clearTimeout(t1);
+                    t1 = 0;
+                    opt.nodeDbClick && opt.nodeDbClick.call(self, self.dragNode.item);
                 } else {
-                    if (self.hoverParam.isActive) {
-                        self.hoverParam.isActive = false;
-                        self.celClickHover(self.hoverParam.item);
-                    }
+                    t1 = setTimeout(function () {
+                        opt.nodeClick && opt.nodeClick.call(self, self.dragNode.item);
+                        t1 = 0;
+                    }, 300);
+                }
+            } else {
+                if (self.hoverParam.isActive) {
+                    self.hoverParam.isActive = false;
+                    self.celClickHover(self.hoverParam.item);
                 }
             }
-            if (isDown) {
-                if (!isMove) {
-                    if (self.hoverParam.isActive) {
-                        self.hoverParam.isActive = false;
-                        self.celClickHover(self.hoverParam.item);
-                    }
+        }
+        if (isDown) {
+            if (!isMove) {
+                if (self.hoverParam.isActive) {
+                    self.hoverParam.isActive = false;
+                    self.celClickHover(self.hoverParam.item);
                 }
             }
-            isDown = false;
-            self.dragNode.isDown = false;
-        });
+        }
+        isDown = false;
+        self.dragNode.isDown = false;
+    });
     //高亮激活（点击）参数
     this.hoverParam = {
         isActive: false,
@@ -223,7 +223,7 @@ function InvoiceAnalysis(SVG, option) {
 
     if (opt.isScale) {
         this.draw.on("mousewheel", function (e) {
-            drag(e)
+            drag(e);
             self.opt.mousewheel && self.opt.mousewheel.call(self, self.scale);
         });
     }
@@ -235,16 +235,16 @@ let tool = {
         //两点的x、y值
         let x = px2 - px1;
         let y = py2 - py1;
-        let hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));//斜边长度
+        let hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)); //斜边长度
         if (hypotenuse === 0) {
             return 0;
         }
         let cos = x / hypotenuse;
-        let radian = Math.acos(cos);//求出弧度
-        let angle = radian * 180 / Math.PI;//用弧度算出角度
+        let radian = Math.acos(cos); //求出弧度
+        let angle = radian * 180 / Math.PI; //用弧度算出角度
         if (y < 0) {
             angle = -angle;
-        } else if ((y === 0) && (x < 0)) {
+        } else if (y === 0 && x < 0) {
             angle = 180;
         }
         return angle;
@@ -264,9 +264,12 @@ let tool = {
      * @param {Array} cp 控制点
      */
     twoBezier: function (t, p1, cp, p2) {
-        let x1 = p1[0], y1 = p1[1];
-        let cx = cp[0], cy = cp[1];
-        let x2 = p2[0], y2 = p2[1];
+        let x1 = p1[0],
+            y1 = p1[1];
+        let cx = cp[0],
+            cy = cp[1];
+        let x2 = p2[0],
+            y2 = p2[1];
         let x = (1 - t) * (1 - t) * x1 + 2 * t * (1 - t) * cx + t * t * x2;
         let y = (1 - t) * (1 - t) * y1 + 2 * t * (1 - t) * cy + t * t * y2;
         return [x, y];
@@ -284,15 +287,14 @@ $.extend(InvoiceAnalysis.prototype, {
         this.createGroup();
         this.linksNumber(this._links);
 
-
         this.linksNumber2(this._sameLinks, function (d, num, i) {
             d.ox_size2 = num;
             d.ox_index2 = i;
-        })
+        });
         this.linksNumber2(this._otherLinks, function (d, num, i) {
             d.ox_size3 = num;
             d.ox_index3 = i;
-        })
+        });
 
         this.calcItemPos();
         this.renderLegend(this._nodes, this._links.concat(this._sameLinks, this._otherLinks));
@@ -314,16 +316,15 @@ $.extend(InvoiceAnalysis.prototype, {
             self.renderNode(d, self.leftNodeGroup, 1);
             d.in.concat(d.out).forEach(function (p) {
                 self.renderNode(p, self.leftNodeGroup, 2);
-            })
-        })
+            });
+        });
 
         _map.level1_out.forEach(function (d) {
             self.renderNode(d, self.rightNodeGroup, 1);
             d.in.concat(d.out).forEach(function (p) {
                 self.renderNode(p, self.rightNodeGroup, 2);
-            })
-        })
-
+            });
+        });
 
         // this.rightNodeGroup.y(100);
         // this.rightLinkGroup.y(100);
@@ -337,11 +338,11 @@ $.extend(InvoiceAnalysis.prototype, {
                 linkGroup[key] = {
                     num: 0,
                     list: []
-                }
+                };
             }
             linkGroup[key].num++;
             linkGroup[key].list.push(d);
-        })
+        });
         for (let key in linkGroup) {
             let group = linkGroup[key];
             let num = group.num;
@@ -360,16 +361,16 @@ $.extend(InvoiceAnalysis.prototype, {
                 linkGroup[key] = {
                     num: 0,
                     list: []
-                }
+                };
             }
             linkGroup[key].num++;
             linkGroup[key].list.push(d);
-        })
+        });
         for (let key in linkGroup) {
             let group = linkGroup[key];
             let num = group.num;
             group.list.forEach(function (d, i) {
-                callback(d, num, i)
+                callback(d, num, i);
                 // d.ox_size2 = num;
                 // d.ox_index2 = i;
             });
@@ -383,13 +384,13 @@ $.extend(InvoiceAnalysis.prototype, {
         item.r = r;
         let bg = this.typeMap[item.data.typeId].color;
         let circle = g.circle(r).fill(bg);
-        circle.stroke({color: bg, width: 3, opacity: .6})
-        let text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
+        circle.stroke({ color: bg, width: 3, opacity: .6 });
+        let text = g.text((item.name || item.properties.name) + '').font({ size: 12 }).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("text-anchor", "middle");
-        g.transform({x: item.x - r / 2, y: item.y - r / 2});
-        g.on("mousedown", this.mousedown, {self: self, item: item});
-        g.on("mouseenter", this.mouseenterNode, {self: self, item: item});
-        g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
+        g.transform({ x: item.x - r / 2, y: item.y - r / 2 });
+        g.on("mousedown", this.mousedown, { self: self, item: item });
+        g.on("mouseenter", this.mouseenterNode, { self: self, item: item });
+        g.on("mouseleave", this.mouseleaveNode, { self: self, item: item });
     },
     createGroup: function () {
         // this.leftGroup = this.root.group();
@@ -397,7 +398,6 @@ $.extend(InvoiceAnalysis.prototype, {
 
         // this.rightGroup = this.root.group();
         this.rightLinkGroup = this.root.group();
-
 
         this.leftNodeGroup = this.root.group();
         this.rightNodeGroup = this.root.group();
@@ -411,7 +411,10 @@ $.extend(InvoiceAnalysis.prototype, {
         let _nodeMap = this._nodeMap;
         let typeList = this.opt.typeList;
         let _sameLinks;
-        let _nodes = [], _links = [], _otherLinks = [], root = null;
+        let _nodes = [],
+            _links = [],
+            _otherLinks = [],
+            root = null;
         nodes.forEach(function (d, i) {
             let tem = {
                 id: d.id + "_" + i,
@@ -435,7 +438,7 @@ $.extend(InvoiceAnalysis.prototype, {
                 pathNum2: 0,
                 //等级类型 左到右 c1,c2,c3 [root] c4,c5,c6
                 levelType: ""
-            }
+            };
             if (d.isRoot) {
                 tem.r = 67;
                 tem.levelType = "root";
@@ -461,9 +464,9 @@ $.extend(InvoiceAnalysis.prototype, {
                 // _map.level2_in.push(tem);
             } else if (d.typeId === typeList[3]) {
                 // _map.level2_out.push(tem);
-            } else if (d.typeId === typeList[4]) {
-                // _map.equal.push(tem);
-            }
+            } else if (d.typeId === typeList[4]) {}
+            // _map.equal.push(tem);
+
             // tem.target.r = 42;
         });
         let typeEqualLinks = [];
@@ -472,7 +475,7 @@ $.extend(InvoiceAnalysis.prototype, {
             if (list.indexOf(item) === -1) {
                 list.push(item);
             }
-        }
+        };
         let linkGroup = {};
 
         //基础连线布局
@@ -488,14 +491,14 @@ $.extend(InvoiceAnalysis.prototype, {
                 //括号里的文本, 可能有多个, 存为数组
                 moreText: [],
                 level: 1
-            }
+            };
             let text = self.opt.lineText(d) || "";
             let key = tem.source.idx + ':' + tem.target.idx;
             if (!linkGroup[key]) {
                 tem.text = text;
                 linkGroup[key] = {
                     item: tem
-                }
+                };
                 if (d.source === root.data.id) {
                     //1 out
 
@@ -536,7 +539,6 @@ $.extend(InvoiceAnalysis.prototype, {
                         } else {
                             _otherLinks.push(tem);
                         }
-
                     }
                 } else {
                     //2
@@ -555,7 +557,7 @@ $.extend(InvoiceAnalysis.prototype, {
                                 tem.source.levelType = "c1";
                             } else {
                                 addList(_map.right_level2_in, tem.target);
-                                tem.source.levelType = "c4"
+                                tem.source.levelType = "c4";
                             }
                             _links.push(tem);
                         } else {
@@ -588,10 +590,10 @@ $.extend(InvoiceAnalysis.prototype, {
             }
         });
 
-        console.log(9999, links, _otherLinks, _links, typeEqualLinks)
+        console.log(9999, links, _otherLinks, _links, typeEqualLinks);
 
         //团伙节点 -- 比较左右两侧一级节点数，添加到少的一侧
-        let isEqualRight = false
+        let isEqualRight = false;
         if (_map.level1_out.length <= _map.level1_in.length) {
             isEqualRight = true;
         }
@@ -617,17 +619,19 @@ $.extend(InvoiceAnalysis.prototype, {
                 root.in.push(d.target);
                 _map.level1_in.push(d.target);
             }
-        })
+        });
         //同列连线
-        let tem1 = [], tem2 = [];
+        let tem1 = [],
+            tem2 = [];
         _otherLinks.forEach(function (d) {
-            let source = d.source, target = d.target;
+            let source = d.source,
+                target = d.target;
             if (source.levelType === target.levelType) {
-                tem1.push(d)
+                tem1.push(d);
             } else {
-                tem2.push(d)
+                tem2.push(d);
             }
-        })
+        });
         _otherLinks = tem2;
         _sameLinks = tem1;
         return {
@@ -636,7 +640,7 @@ $.extend(InvoiceAnalysis.prototype, {
             links: _links,
             otherLinks: _otherLinks,
             sameLinks: _sameLinks
-        }
+        };
     },
     //计算位置
     calcItemPos: function () {
@@ -645,7 +649,8 @@ $.extend(InvoiceAnalysis.prototype, {
         // let _links = this._links;
         let _map = this._map;
         let root = this.rootItem;
-        let hw = this.hw, hh = this.hh;
+        let hw = this.hw,
+            hh = this.hh;
         //x
         root.x = hw;
         root.y = hh;
@@ -689,7 +694,7 @@ $.extend(InvoiceAnalysis.prototype, {
                     d.y = d.centerY;
                 }
                 if (d.out.length) {
-                    orderRightList(d.y, d.out)
+                    orderRightList(d.y, d.out);
                 }
             });
 
@@ -706,7 +711,7 @@ $.extend(InvoiceAnalysis.prototype, {
                 let half = (list.length * item_h2 - item_h2) / 2;
                 list.forEach(function (d, i) {
                     d.y = y + i * item_h2 - half;
-                })
+                });
             }
 
             let hasRepeat = true;
@@ -715,10 +720,10 @@ $.extend(InvoiceAnalysis.prototype, {
                 centerItem.y += t;
                 centerItem.in.forEach(function (d) {
                     d.y += t;
-                })
+                });
                 centerItem.out.forEach(function (d) {
                     d.y += t;
-                })
+                });
             };
             while (hasRepeat && count < 10) {
                 hasRepeat = false;
@@ -734,7 +739,6 @@ $.extend(InvoiceAnalysis.prototype, {
                     }
                 });
 
-
                 rightList.forEach(function (d, i) {
                     if (i) {
                         let num = d.y - rightList[i - 1].y;
@@ -744,7 +748,7 @@ $.extend(InvoiceAnalysis.prototype, {
                             moveCenterItem(nodeMap[d.centerId], t);
                         }
                     }
-                })
+                });
             }
 
             //美化节点 -- 均等分高度
@@ -772,7 +776,7 @@ $.extend(InvoiceAnalysis.prototype, {
                                     let num = (downItem.y - upItem.y) / (temList.length + 1);
                                     temList.forEach(function (tem, tem_i) {
                                         tem.y = upItem.y + num * (tem_i + 1);
-                                    })
+                                    });
                                 }
                             }
                         }
@@ -787,16 +791,16 @@ $.extend(InvoiceAnalysis.prototype, {
         function getSpace(currItem, upItem, defSpace, isIn) {
             if (upItem) {
                 if (isIn) {
-                    return currItem.out.length * item_h2 / 2 + defSpace
+                    return currItem.out.length * item_h2 / 2 + defSpace;
                 } else {
-                    return currItem.in.length * item_h2 / 2 + defSpace
+                    return currItem.in.length * item_h2 / 2 + defSpace;
                 }
             }
-            return defSpace
+            return defSpace;
         }
 
-
-        let left_in = [], left_out = [];
+        let left_in = [],
+            left_out = [];
         _map.level1_in.forEach(function (d, di) {
             d.x = hw - space1;
             //d.space = space;
@@ -809,7 +813,7 @@ $.extend(InvoiceAnalysis.prototype, {
                     }
                 }
                 left_in.push(p);
-            })
+            });
 
             d.out.forEach(function (p, i) {
                 p.x = d.x + space2;
@@ -821,8 +825,8 @@ $.extend(InvoiceAnalysis.prototype, {
                     }
                 }
                 left_out.push(p);
-            })
-        })
+            });
+        });
         calc(left_in, _map.level1_in, left_out, item_h1, item_h2);
         //居中
         let l_first = _map.level1_in[0];
@@ -835,10 +839,11 @@ $.extend(InvoiceAnalysis.prototype, {
             d.y += lc;
             d.in.concat(d.out).forEach(function (p) {
                 p.y += lc;
-            })
-        })
+            });
+        });
         //
-        let right_in = [], right_out = [];
+        let right_in = [],
+            right_out = [];
         _map.level1_out.forEach(function (d, di) {
             d.x = hw + space1;
             d.space = getSpace(d, _map.level1_out[di - 1], space, false);
@@ -850,7 +855,7 @@ $.extend(InvoiceAnalysis.prototype, {
                     }
                 }
                 right_in.push(p);
-            })
+            });
             d.out.forEach(function (p, i) {
                 p.x = d.x + space2;
                 p.centerId = d.id;
@@ -860,8 +865,8 @@ $.extend(InvoiceAnalysis.prototype, {
                     }
                 }
                 right_out.push(p);
-            })
-        })
+            });
+        });
         calc(right_in, _map.level1_out, right_out, item_h1, item_h2);
         //居中
         let r_frist = _map.level1_out[0];
@@ -874,8 +879,8 @@ $.extend(InvoiceAnalysis.prototype, {
             d.y += rc;
             d.in.concat(d.out).forEach(function (p) {
                 p.y += rc;
-            })
-        })
+            });
+        });
     },
 
     linksStyle: function () {
@@ -883,13 +888,14 @@ $.extend(InvoiceAnalysis.prototype, {
         let self = this;
         this.opt.linksStyle.forEach(function (d) {
             self.linksStyleMap[d.typeId] = d;
-        })
+        });
     },
     //渲染图例
     renderLegend: function (nodes, links) {
         let self = this;
         let $ul = $(".legend-box");
-        let typeMap = this.typeMap, typeList = [];
+        let typeMap = this.typeMap,
+            typeList = [];
         //类型
         nodes.forEach(function (p) {
             let d = p.data;
@@ -927,11 +933,11 @@ $.extend(InvoiceAnalysis.prototype, {
             if (!self.opt.isTypeEqual(d)) {
                 let txt = d.typeName;
                 if (typeof self.opt.legendNodeTypeFormatter === "function") {
-                    txt = self.opt.legendNodeTypeFormatter(d);//.typeName;
+                    txt = self.opt.legendNodeTypeFormatter(d); //.typeName;
                 }
                 h.push('<li data-type-id="' + d.typeId + '"><i class="i-icon" data-color="' + d.color + '" style="background-color: ' + d.color + '"></i><span>' + txt + '</span><i class="i-btn-colse fa fa-crosshairs"></i></li>');
             }
-        })
+        });
 
         let isOne = true;
         self.opt.linksStyle.forEach(function (d) {
@@ -949,7 +955,8 @@ $.extend(InvoiceAnalysis.prototype, {
         //图例点击事件
         $ul.off("click");
         $ul.on("click", "li", function () {
-            let cls = "active", tcls = "li-two-type";
+            let cls = "active",
+                tcls = "li-two-type";
             let $el = $(this);
             if ($el.hasClass(cls)) {
                 $el.removeClass(cls);
@@ -970,28 +977,29 @@ $.extend(InvoiceAnalysis.prototype, {
                 $ul.find("li").each(function () {
                     let $ti = $(this).find(".i-icon");
                     $ti.css("background-color", $ti.attr("data-color"));
-                })
+                });
             } else {
                 $ul.addClass("legend-box-dis");
                 self.opt.$box.addClass("svg-node-legend");
-                let typeIdList = [], linkTypeIdList = [];
+                let typeIdList = [],
+                    linkTypeIdList = [];
                 $ul.find("li").each(function () {
                     let $li = $(this);
                     let $ti = $li.find(".i-icon");
                     if ($li.hasClass(cls)) {
                         if ($li.hasClass(tcls)) {
-                            linkTypeIdList.push($li.attr("data-type-id"))
+                            linkTypeIdList.push($li.attr("data-type-id"));
                         } else {
-                            typeIdList.push($li.attr("data-type-id"))
+                            typeIdList.push($li.attr("data-type-id"));
                             $ti.css("background-color", $ti.attr("data-color"));
                         }
                     } else {
                         $ti.css("background-color", "");
                     }
-                })
+                });
                 self.hoverItemByType(typeIdList, linkTypeIdList);
             }
-        })
+        });
         $ul.on("click", ".i-btn-colse", function () {
             $ul.find("li").removeClass('active');
             $ul.removeClass("legend-box-dis");
@@ -999,11 +1007,10 @@ $.extend(InvoiceAnalysis.prototype, {
             $ul.find("li").each(function () {
                 let $ti = $(this).find(".i-icon");
                 $ti.css("background-color", $ti.attr("data-color"));
-            })
+            });
             return false;
-        })
+        });
     },
-
 
     hoverItemByType: function (typeIdList, linkTypeIdList) {
         let typeMap = this.typeMap;
@@ -1011,35 +1018,34 @@ $.extend(InvoiceAnalysis.prototype, {
         for (let key in linkTypeMap) {
             if (linkTypeMap.hasOwnProperty(key)) {
                 linkTypeMap[key].list.forEach(function (d) {
-                    d.g.removeClass("link-show")
-                })
+                    d.g.removeClass("link-show");
+                });
             }
         }
         for (let key in typeMap) {
             if (typeMap.hasOwnProperty(key)) {
                 typeMap[key].list.forEach(function (d) {
                     d.g.removeClass("node-show");
-                })
+                });
             }
         }
         if (typeIdList.length) {
             typeIdList.forEach(function (p) {
                 typeMap[p].list.forEach(function (d) {
-                    d.g.addClass("node-show")
-                })
-            })
+                    d.g.addClass("node-show");
+                });
+            });
         }
         if (linkTypeIdList.length) {
             linkTypeIdList.forEach(function (p) {
                 linkTypeMap[p].list.forEach(function (d) {
-                    d.g.addClass("link-show")
+                    d.g.addClass("link-show");
                     d.source.g.addClass("node-show");
                     d.target.g.addClass("node-show");
-                })
-            })
+                });
+            });
         }
     },
-
 
     renderNode: function (item, nodeGroup) {
         let self = this;
@@ -1048,18 +1054,18 @@ $.extend(InvoiceAnalysis.prototype, {
         item.g = g;
         let bg = this.typeMap[item.data.typeId].color;
         let circle = g.circle(r).fill(bg);
-        circle.stroke({color: bg, width: 3, opacity: .6})
-        let text = g.text((item.name || item.properties.name) + '').font({size: 12}).fill("#333").x(r / 2).y(self.nameTextY);
+        circle.stroke({ color: bg, width: 3, opacity: .6 });
+        let text = g.text((item.name || item.properties.name) + '').font({ size: 12 }).fill("#333").x(r / 2).y(self.nameTextY);
         text.attr("data-id", item.data.id).attr("text-anchor", "middle");
-        g.transform({x: item.x - r / 2, y: item.y - r / 2});
+        g.transform({ x: item.x - r / 2, y: item.y - r / 2 });
         if (item.isRoot) {
-            g.addClass("root-node")
+            g.addClass("root-node");
             rect.addClass("root-rect");
-            rect.stroke({color: bg, opacity: 1, width: 5});
+            rect.stroke({ color: bg, opacity: 1, width: 5 });
         }
-        g.on("mousedown", this.mousedown, {self: self, item: item});
-        g.on("mouseenter", this.mouseenterNode, {self: self, item: item});
-        g.on("mouseleave", this.mouseleaveNode, {self: self, item: item});
+        g.on("mousedown", this.mousedown, { self: self, item: item });
+        g.on("mouseenter", this.mouseenterNode, { self: self, item: item });
+        g.on("mouseleave", this.mouseleaveNode, { self: self, item: item });
     },
     renderLink: function (item) {
         let self = this;
@@ -1087,37 +1093,33 @@ $.extend(InvoiceAnalysis.prototype, {
 
         let line = g.line(points.x, points.y, points.x1, points.y1).attr("data-id", item.source.x);
 
-
-        if (item.ox_size === 1) {
-
-        } else {
+        if (item.ox_size === 1) {} else {
 
             let sp = 5;
             if (item.ox_size % 2 === 0) {
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                 let flag = (item.ox_index % 2 === 0 ? -1 : 1) * bl;
-                ty = flag * 14 * parseInt(item.ox_index / 2) + (flag * sp);
+                ty = flag * 14 * parseInt(item.ox_index / 2) + flag * sp;
             } else {
                 //0 0, 1 -7 , 2 7,
                 //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                 if (item.ox_index > 0) {
                     let flag = (item.ox_index - 1) % 2 === 0 ? -1 : 1;
-                    ty = flag * 14 * parseInt((item.ox_index - 1) / 2) + (flag * sp);
+                    ty = flag * 14 * parseInt((item.ox_index - 1) / 2) + flag * sp;
                 }
             }
-
         }
 
         let deg = tool.getAngle(x, y, x1, y1);
-        let _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-        let _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
+        let _y = ty * Math.sin((90 - deg) * Math.PI / 180);
+        let _x = ty * Math.cos((90 - deg) * Math.PI / 180);
         _y = -_y;
         line.translate(_x, _y);
         // let deg = tool.getAngle(x, y, x1, y1);
         item.line = line;
         let txt = item.text;
         if (item.moreText.length) {
-            txt += ("（" + item.moreText.join("、") + "）")
+            txt += "（" + item.moreText.join("、") + "）";
         }
 
         let textColor = self.opt.lineTextColor(txt, item);
@@ -1127,7 +1129,9 @@ $.extend(InvoiceAnalysis.prototype, {
         if (deg > -270 && deg < -90) {
             deg += 180;
         }
-        let offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+        let offsetX = 0,
+            offsetY = 0,
+            textOffset = self.opt.textOffset;
         if (item.level === 1) {
             let _deg;
             if (item.source === self._map.root) {
@@ -1135,14 +1139,14 @@ $.extend(InvoiceAnalysis.prototype, {
             } else {
                 _deg = tool.getAngle(item.target.x, item.target.y, item.source.x, item.source.y);
             }
-            offsetX = -Math.cos((_deg) * Math.PI / 180) * textOffset;
-            offsetY = -Math.sin((_deg) * Math.PI / 180) * textOffset;
+            offsetX = -Math.cos(_deg * Math.PI / 180) * textOffset;
+            offsetY = -Math.sin(_deg * Math.PI / 180) * textOffset;
         }
         // let text = g.text(txt).x(x + offsetX + (x1 - x) / 2).y(y + offsetY + (y1 - y) / 2 - 6).rotate(deg);
 
         let text = g.text(txt).x(x + offsetX + _x + (x1 - x) / 2).y(y + offsetY + _y + (y1 - y) / 2 - 6).rotate(deg);
         if (textColor) {
-            text.addClass('cus-text-color').style({fill: textColor});
+            text.addClass('cus-text-color').style({ fill: textColor });
         }
         item.textNode = text;
         let arrow_marker;
@@ -1155,7 +1159,7 @@ $.extend(InvoiceAnalysis.prototype, {
             styleCls = linkStyle.cls;
             arrowId = linkStyle.arrowId;
         }
-        g.addClass(styleCls)
+        g.addClass(styleCls);
         if (hasArrow) {
             if (arrowId) {
                 arrow_marker = this.draw.defs().select(arrowId).first();
@@ -1165,9 +1169,8 @@ $.extend(InvoiceAnalysis.prototype, {
             line.marker("end", arrow_marker);
         }
         item.hasArrow = hasArrow;
-        g.on("click", this.linkClick, {self: self, item: item});
+        g.on("click", this.linkClick, { self: self, item: item });
     },
-
 
     _sameRenderLink: function (item) {
         let g = item.g;
@@ -1197,14 +1200,13 @@ $.extend(InvoiceAnalysis.prototype, {
             if (deg <= 0) {
                 deg2 = deg - 90;
             }
-
         } else if (rightPos.indexOf(item.source.levelType) >= 0) {
             if (deg >= 0) {
                 deg2 = deg - 90;
             }
         }
 
-        let q_point = tool.setPos(hx, hy, qh, deg2)
+        let q_point = tool.setPos(hx, hy, qh, deg2);
         qx = q_point[0];
         qy = q_point[1];
         let points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
@@ -1212,9 +1214,9 @@ $.extend(InvoiceAnalysis.prototype, {
         y = points[1];
         x1 = points[2];
         y1 = points[3];
-        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
+        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1]);
 
-        let d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
+        let d = "M" + x + "," + y + "Q" + qx + "," + qy + "," + x1 + "," + y1;
 
         if (item.path) {
             item.path.plot(d);
@@ -1224,7 +1226,7 @@ $.extend(InvoiceAnalysis.prototype, {
 
         let txt = item.text;
         if (item.moreText.length) {
-            txt += ("（" + item.moreText.join("、") + "）")
+            txt += "（" + item.moreText.join("、") + "）";
         }
 
         let textColor = this.opt.lineTextColor(txt, item);
@@ -1240,7 +1242,7 @@ $.extend(InvoiceAnalysis.prototype, {
         } else {
             let text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
             if (textColor) {
-                text.addClass('cus-text-color').style({fill: textColor});
+                text.addClass('cus-text-color').style({ fill: textColor });
             }
             item.textNode = text;
         }
@@ -1271,7 +1273,7 @@ $.extend(InvoiceAnalysis.prototype, {
             styleCls = linkStyle.cls;
             arrowId = linkStyle.arrowId;
         }
-        g.addClass(styleCls)
+        g.addClass(styleCls);
         if (hasArrow) {
             if (arrowId) {
                 arrow_marker = this.draw.defs().select(arrowId).first();
@@ -1281,7 +1283,7 @@ $.extend(InvoiceAnalysis.prototype, {
             path.marker("end", arrow_marker);
         }
         item.hasArrow = hasArrow;
-        g.on("click", this.linkClick, {self: self, item: item});
+        g.on("click", this.linkClick, { self: self, item: item });
     },
 
     _otherRenderLink: function (item) {
@@ -1310,7 +1312,6 @@ $.extend(InvoiceAnalysis.prototype, {
             if (deg > 0) {
                 deg2 = deg - 90;
             }
-
         } else if (rightPos.indexOf(item.source.levelType) >= 0) {
             if (deg < 0) {
                 deg2 = deg - 90;
@@ -1328,7 +1329,7 @@ $.extend(InvoiceAnalysis.prototype, {
             }
         }
 
-        let q_point = tool.setPos(hx, hy, qh, deg2)
+        let q_point = tool.setPos(hx, hy, qh, deg2);
         qx = q_point[0];
         qy = q_point[1];
         let points = this.convertStartEndPoint2(item.source, item.target, q_point, qh);
@@ -1336,8 +1337,8 @@ $.extend(InvoiceAnalysis.prototype, {
         y = points[1];
         x1 = points[2];
         y1 = points[3];
-        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1])
-        let d = "M" + x + "," + y + "Q" + ((qx)) + "," + ((qy)) + "," + x1 + "," + (y1);
+        let q_point2 = tool.twoBezier(0.5, [x, y], q_point, [x1, y1]);
+        let d = "M" + x + "," + y + "Q" + qx + "," + qy + "," + x1 + "," + y1;
         if (item.path) {
             item.path.plot(d);
         } else {
@@ -1345,7 +1346,7 @@ $.extend(InvoiceAnalysis.prototype, {
         }
         let txt = item.text;
         if (item.moreText.length) {
-            txt += ("（" + item.moreText.join("、") + "）")
+            txt += "（" + item.moreText.join("、") + "）";
         }
         let textColor = this.opt.lineTextColor(txt, item);
         if (deg >= 90 && deg < 270) {
@@ -1359,7 +1360,7 @@ $.extend(InvoiceAnalysis.prototype, {
         } else {
             let text = g.text(txt).x(q_point2[0]).y(q_point2[1] - 6).rotate(deg);
             if (textColor) {
-                text.addClass('cus-text-color').style({fill: textColor});
+                text.addClass('cus-text-color').style({ fill: textColor });
             }
             item.textNode = text;
         }
@@ -1387,7 +1388,7 @@ $.extend(InvoiceAnalysis.prototype, {
             styleCls = linkStyle.cls;
             arrowId = linkStyle.arrowId;
         }
-        g.addClass(styleCls)
+        g.addClass(styleCls);
         if (hasArrow) {
             if (arrowId) {
                 arrow_marker = this.draw.defs().select(arrowId).first();
@@ -1397,18 +1398,17 @@ $.extend(InvoiceAnalysis.prototype, {
             path.marker("end", arrow_marker);
         }
         item.hasArrow = hasArrow;
-        g.on("click", this.linkClick, {self: self, item: item});
+        g.on("click", this.linkClick, { self: self, item: item });
     },
 
     linkClick: function () {
-        let self = this.self, item = this.item;
+        let self = this.self,
+            item = this.item;
         let opt = self.opt;
         opt.lineClick && opt.lineClick.call(self, item);
     },
     //获取一级文字，偏移x,y距离
-    getOneLevelOffsetX: function (link) {
-
-    },
+    getOneLevelOffsetX: function (link) {},
     //转换坐标点
     convertStartEndPoint: function (source, target) {
         let obj = {
@@ -1416,14 +1416,14 @@ $.extend(InvoiceAnalysis.prototype, {
             y: source.y,
             x1: target.x,
             y1: target.y
-        }
+        };
 
         let x2 = target.r / 2;
         let deg = tool.getAngle(obj.x, obj.y, obj.x1, obj.y1);
 
-        obj.x1 -= Math.cos((deg) * Math.PI / 180) * x2;
-        obj.y1 -= Math.sin((deg) * Math.PI / 180) * x2;
-        return obj
+        obj.x1 -= Math.cos(deg * Math.PI / 180) * x2;
+        obj.y1 -= Math.sin(deg * Math.PI / 180) * x2;
+        return obj;
     },
     //转换坐标点
     convertStartEndPoint2: function (source, target, bezArr, h) {
@@ -1435,16 +1435,17 @@ $.extend(InvoiceAnalysis.prototype, {
         let b = Math.abs(y1 - y);
         // Math.sqrt(Math.sqrt((a * a + b * b))/2*Math.sqrt((a * a + b * b))/2 +h*h
         let c = Math.sqrt((a * a + b * b) / 4 + h * h);
-        console.log(c)
+        console.log(c);
         //2 ==>4
         let t1 = tool.twoBezier(source.r / 2 / c / 2, [x, y], bezArr, [x1, y1]);
         let t2 = tool.twoBezier(1 - target.r / 2 / c / 2, [x, y], bezArr, [x1, y1]);
-        return [t1[0], t1[1], t2[0], t2[1]]
+        return [t1[0], t1[1], t2[0], t2[1]];
     },
 
     //nodes mousedown
     mousedown: function (e) {
-        let self = this.self, item = this.item;
+        let self = this.self,
+            item = this.item;
         let drag = self.dragNode;
         drag.isMove = false;
         drag.isHover = false;
@@ -1457,9 +1458,7 @@ $.extend(InvoiceAnalysis.prototype, {
         try {
             //ie 下双击选中报错，故catch掉
             window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
-        } catch (e) {
-
-        }
+        } catch (e) {}
         e.stopPropagation();
     },
     //高亮
@@ -1468,8 +1467,7 @@ $.extend(InvoiceAnalysis.prototype, {
         let linksNodes = self.getLinkNodes(item);
         let linksNodes2 = self.getSameLinkNodes(item);
         let linksNodes3 = self.getOtherLinkNodes(item);
-        $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList,
-            linksNodes3.sourceList, linksNodes3.targetList), function () {
+        $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList, linksNodes3.sourceList, linksNodes3.targetList), function () {
             this.source.g.addClass("node-company-hover");
             this.target.g.addClass("node-company-hover");
             if (this.hasArrow) {
@@ -1480,7 +1478,6 @@ $.extend(InvoiceAnalysis.prototype, {
                 if (this.path) {
                     this.path.marker("end", self.draw.defs().select("#arrowCompanyHover").first());
                 }
-
             } else {
                 this.g.addClass("node-link-person-hover");
             }
@@ -1492,8 +1489,7 @@ $.extend(InvoiceAnalysis.prototype, {
         let linksNodes = self.getLinkNodes(item);
         let linksNodes2 = self.getSameLinkNodes(item);
         let linksNodes3 = self.getOtherLinkNodes(item);
-        $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList,
-            linksNodes3.sourceList, linksNodes3.targetList), function () {
+        $.each(linksNodes.sourceList.concat(linksNodes.targetList, linksNodes2.sourceList, linksNodes2.targetList, linksNodes3.sourceList, linksNodes3.targetList), function () {
             this.source.g.removeClass("node-company-hover");
             this.target.g.removeClass("node-company-hover");
             if (this.hasArrow) {
@@ -1525,15 +1521,16 @@ $.extend(InvoiceAnalysis.prototype, {
     },
     //nodes mouseenter
     mouseenterNode: function () {
-        let self = this.self, item = this.item;
+        let self = this.self,
+            item = this.item;
         if (!self.hoverParam.isActive) {
             self.hoverItem(item);
         }
-
     },
     //nodes mouseleave
     mouseleaveNode: function () {
-        let self = this.self, item = this.item;
+        let self = this.self,
+            item = this.item;
         if (!self.hoverParam.isActive) {
             self.celHoverItem(item);
         }
@@ -1543,7 +1540,6 @@ $.extend(InvoiceAnalysis.prototype, {
         let self = this;
         this.opt.$box.addClass("svg-node-hover");
         self.hoverItem(item);
-
     },
     //取消点击高亮
     celClickHover: function (item) {
@@ -1555,7 +1551,8 @@ $.extend(InvoiceAnalysis.prototype, {
     //根据item.id 获取相连接的nodes
     getLinkNodes: function (item) {
         let links = this._links;
-        let sourceList = [], targetList = [];
+        let sourceList = [],
+            targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1567,12 +1564,13 @@ $.extend(InvoiceAnalysis.prototype, {
         return {
             sourceList: sourceList,
             targetList: targetList
-        }
+        };
     },
 
     getSameLinkNodes: function (item) {
         let links = this._sameLinks;
-        let sourceList = [], targetList = [];
+        let sourceList = [],
+            targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1584,11 +1582,12 @@ $.extend(InvoiceAnalysis.prototype, {
         return {
             sourceList: sourceList,
             targetList: targetList
-        }
+        };
     },
     getOtherLinkNodes: function (item) {
         let links = this._otherLinks;
-        let sourceList = [], targetList = [];
+        let sourceList = [],
+            targetList = [];
         $.each(links, function () {
             if (this.source.id === item.id) {
                 sourceList.push(this);
@@ -1600,7 +1599,7 @@ $.extend(InvoiceAnalysis.prototype, {
         return {
             sourceList: sourceList,
             targetList: targetList
-        }
+        };
     },
     //节点移动事件
     nodeMouseMove: function (self, e) {
@@ -1636,28 +1635,25 @@ $.extend(InvoiceAnalysis.prototype, {
             }
             let ty = 0;
             this.line.plot(points.x, points.y, points.x1, points.y1);
-            if (this.ox_size === 1) {
-
-            } else {
+            if (this.ox_size === 1) {} else {
                 let sp = 5;
                 if (this.ox_size % 2 === 0) {
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                     let flag = (this.ox_index % 2 === 0 ? -1 : 1) * bl;
-                    ty = flag * 14 * parseInt(this.ox_index / 2) + (flag * sp);
-
+                    ty = flag * 14 * parseInt(this.ox_index / 2) + flag * sp;
                 } else {
                     //0 0, 1 -7 , 2 7,
                     //0 -7,  1 7 , 2 -21 , 3  21 ,4 -35
                     if (this.ox_index > 0) {
                         let flag = (this.ox_index - 1) % 2 === 0 ? -1 : 1;
-                        ty = flag * 14 * parseInt((this.ox_index - 1) / 2) + (flag * sp);
+                        ty = flag * 14 * parseInt((this.ox_index - 1) / 2) + flag * sp;
                     }
                 }
             }
 
             let deg = tool.getAngle(x, y, x1, y1);
-            let _y = ty * (Math.sin((90 - deg) * Math.PI / 180));
-            let _x = ty * (Math.cos((90 - deg) * Math.PI / 180));
+            let _y = ty * Math.sin((90 - deg) * Math.PI / 180);
+            let _x = ty * Math.cos((90 - deg) * Math.PI / 180);
             _y = -_y;
             this.line.translate(_x, _y);
             //
@@ -1667,7 +1663,9 @@ $.extend(InvoiceAnalysis.prototype, {
             if (deg > -270 && deg < -90) {
                 deg += 180;
             }
-            let offsetX = 0, offsetY = 0, textOffset = self.opt.textOffset;
+            let offsetX = 0,
+                offsetY = 0,
+                textOffset = self.opt.textOffset;
             if (this.level === 1) {
                 let _deg;
                 if (this.source === self._map.root) {
@@ -1676,8 +1674,8 @@ $.extend(InvoiceAnalysis.prototype, {
                     _deg = tool.getAngle(this.target.x, this.target.y, this.source.x, this.source.y);
                 }
 
-                offsetX = -Math.cos((_deg) * Math.PI / 180) * textOffset;
-                offsetY = -Math.sin((_deg) * Math.PI / 180) * textOffset;
+                offsetX = -Math.cos(_deg * Math.PI / 180) * textOffset;
+                offsetY = -Math.sin(_deg * Math.PI / 180) * textOffset;
                 //
             }
             this.textNode.rotate(0).x(x + offsetX + _x + (x1 - x) / 2).y(y + offsetY + _y + (y1 - y) / 2 - 6).rotate(deg);
@@ -1747,4 +1745,3 @@ $.extend(InvoiceAnalysis.prototype, {
         this.init();
     }
 });
-
